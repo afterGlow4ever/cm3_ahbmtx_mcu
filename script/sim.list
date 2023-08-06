@@ -1,0 +1,2 @@
+../sim/verilog_sim/tb/TOP.v
+../library/models/jlink/jlink_model.v

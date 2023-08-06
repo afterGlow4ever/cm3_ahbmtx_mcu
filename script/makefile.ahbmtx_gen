@@ -1,0 +1,13 @@
+CMSDK_AHBMTX_PATH := ${PRJ_LIB_DIR}/cmsdk/cmsdk_ahb_busmatrix
+AHBMTX_XML_PATH := ${CMSDK_AHBMTX_PATH}/xml
+AHBMTX_MAPFILE := ${AHBMTX_XML_PATH}/cm3_ahbmtx.xml
+CMSDK_AHBMTX_SCRIPT := ${CMSDK_AHBMTX_PATH}/bin/BuildBusMatrix.pl
+SHELL := /bin/bash
+
+all: generation
+
+generation:
+	cd ${CMSDK_AHBMTX_PATH} && ${CMSDK_AHBMTX_SCRIPT} -xmldir ${AHBMTX_XML_PATH} -cfg ${AHBMTX_MAPFILE} -over -verbose
+
+#clean:
+
