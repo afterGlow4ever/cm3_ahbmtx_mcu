@@ -15,7 +15,7 @@
 // Simulation config
 //===============================================
 
-reg											jlink_rstn;
+reg								jlink_rstn;
 
 // jlink internal reset will be release at 10us
 initial
@@ -35,20 +35,20 @@ pulldown(tck);
 
 jlink_model u_swd_model
 (
-	.rstn_i								(jlink_rstn),
-	.tck_o								(tck),
-	.tms_io								(tms),
-	.tdi_i								(tdi),
-	.tdo_o								(tdo),
-	.trstn_o							(trstn),
-	.tms_oen_o						()
+	.rstn_i						(jlink_rstn),
+	.tck_o						(tck),
+	.tms_io						(tms),
+	.tdi_i						(tdi),
+	.tdo_o						(tdo),
+	.trstn_o					(trstn),
+	.tms_oen_o					()
 );
 
 //===============================================
 // Swd command sequences
 //===============================================
 
-reg		[31:0]			rdata;
+reg		[31:0]					rdata;
 
 initial
 begin	

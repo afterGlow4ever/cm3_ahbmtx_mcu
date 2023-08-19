@@ -14,13 +14,13 @@
 
 module TOP;
 
-reg											clk;
-reg											rstn;
-wire										tdi;
-wire										tdo;
-wire										tck;
-wire										tms;
-wire										trstn;
+reg								clk;
+reg								rstn;
+wire							tdi;
+wire							tdo;
+wire							tck;
+wire							tms;
+wire							trstn;
 
 //===============================================
 // Clk and rst
@@ -48,14 +48,14 @@ end
 
 mcu_top u_mcu_top
 (
-	.CLK									(clk				),
-	.RSTN									(rstn				),
+	.CLK						(clk				),
+	.RSTN						(rstn				),
 
-	.TDI									(tdi				),
-	.TCK									(tck				),
-	.TMS									(tms				),
-	.TDO									(tdo				),
-	.TRST									(trstn			)	
+	.TDI						(tdi				),
+	.TCK						(tck				),
+	.TMS						(tms				),
+	.TDO						(tdo				),
+	.TRST						(trstn				)	
 );
 
 //===============================================

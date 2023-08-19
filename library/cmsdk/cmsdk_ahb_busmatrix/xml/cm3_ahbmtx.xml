@@ -52,8 +52,9 @@
 
   <slave_interface name="S0">
     <sparse_connect interface="M0"/>
+    <sparse_connect interface="M1"/>
     <sparse_connect interface= "M5"/>
-    <address_region interface="M0" mem_lo="00000000" mem_hi="00008000" remapping='none'/>
+    <address_region interface="M0" mem_lo="00010000" mem_hi="00012000" remapping='none'/>
     <address_region interface="M5" mem_lo="10000000" mem_hi="10008000" remapping='none'/>
   </slave_interface>
 
@@ -61,7 +62,7 @@
   <slave_interface name="S1">
     <sparse_connect interface="M1"/>
     <sparse_connect interface="M5"/>
-    <address_region interface="M1" mem_lo="00010000" mem_hi="00012000" remapping='none'/>
+    <address_region interface="M1" mem_lo="00000000" mem_hi="00008000" remapping='none'/>
     <address_region interface="M5" mem_lo="10000000" mem_hi="10008000" remapping='none'/>
   </slave_interface>
 
@@ -73,9 +74,9 @@
 
   <!-- Master interface definitions -->
 
-  <!-- itcm -->
-  <master_interface name="M0"/>
   <!-- dtcm -->
+  <master_interface name="M0"/>
+  <!-- itcm -->
   <master_interface name="M1"/>
   <!-- flash0 -->
   <!-- master_interface name="M3"/ -->

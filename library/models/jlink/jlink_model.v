@@ -17,25 +17,25 @@
 
 module jlink_model
 #(
-	parameter							JLINK_CLK_PERIOD = 1000
+	parameter					JLINK_CLK_PERIOD = 1000
 )
 (
-	input									rstn_i,
-	output								tck_o,
-	inout									tms_io,
-	input									tdi_i,
-	output reg						tdo_o,
-	output reg						trstn_o,
-	output reg						tms_oen_o
+	input						rstn_i,
+	output						tck_o,
+	inout						tms_io,
+	input						tdi_i,
+	output reg					tdo_o,
+	output reg					trstn_o,
+	output reg					tms_oen_o
 );
 
-wire										tms_i;
-reg											tms_o;
-reg											jlink_clk;
-reg											tck_enable;
-reg		[2:0]							jlink_ack;
-event										jlink_clk_negedge;
-event										jlink_clk_posedge;
+wire							tms_i;
+reg								tms_o;
+reg								jlink_clk;
+reg								tck_enable;
+reg		[2:0]					jlink_ack;
+event							jlink_clk_negedge;
+event							jlink_clk_posedge;
 
 //===============================================
 // IO control
@@ -85,7 +85,7 @@ end
 //===============================================
 
 wire	[15:0]					jlink2swd_sequence = 16'b0111_1001_1110_0111;
-reg  	[31:0]					cpu_idr;
+reg		[31:0]					cpu_idr;
 
 task swd_init;
 	wait(rstn_i == 1'b1)
@@ -138,9 +138,9 @@ endtask
 //===============================================
 
 task swd_start_cmd;
-	input 							apndp;
-	input 							rnw;
-	input		[1:0]				a23;
+	input 						apndp;
+	input 						rnw;
+	input	[ 1:0]				a23;
 
 	@jlink_clk_negedge;
 	tck_enable = 1'b1;// clk valid
@@ -174,10 +174,10 @@ endtask
 // SWD read word data operation
 //===============================================
 
-reg									parity;
+reg								parity;
 
 task swd_read_data32;
-	output 	[31:0]			rdata;
+	output 	[31:0]				rdata;
 
 //	@jlink_clk_negedge;
 	tck_enable = 1'b1;// clk valid
@@ -210,7 +210,7 @@ endtask
 //===============================================
 
 task swd_write_data32;
-	input 	[31:0]			wdata;
+	input	[31:0]				wdata;
 
 	@jlink_clk_negedge;
 	tck_enable = 1'b1;// clk valid
@@ -240,8 +240,8 @@ endtask
 //===============================================
 
 task swd_read_dpreg;
-	input 	[1:0]				addr;
-	output 	[31:0]			rdata;
+	input 	[ 1:0]				addr;
+	output 	[31:0]				rdata;
 
 	swd_start_cmd(0, 1, addr);// apndp=0, rnw=1
 	if(jlink_ack == 3'b100)
@@ -257,8 +257,8 @@ endtask
 //===============================================
 
 task swd_write_dpreg;
-	input 	[1:0]				addr;
-	input 	[31:0]			wdata;
+	input 	[ 1:0]				addr;
+	input 	[31:0]				wdata;
 
 	swd_start_cmd(0, 0, addr);// apndp=0, rnw=0
 	swd_write_data32(wdata);
@@ -272,8 +272,8 @@ endtask
 //===============================================
 
 task swd_read_apreg;
-	input 	[1:0]				addr;
-	output	[31:0]			rdata;
+	input 	[ 1:0]				addr;
+	output	[31:0]				rdata;
 
 	swd_start_cmd(1, 1, addr);// apndp=1, rnw=1
 	if(jlink_ack == 3'b100)
@@ -289,8 +289,8 @@ endtask
 //===============================================
 
 task swd_write_apreg;
-	input 	[1:0]				addr;
-	input 	[31:0]			wdata;
+	input 	[ 1:0]				addr;
+	input 	[31:0]				wdata;
 
 	swd_start_cmd(1, 0, addr);// apndp=1, rnw=0
 	swd_write_data32(wdata);
@@ -307,7 +307,7 @@ task swd_readreg32;
 	input 	[31:0]			addr;
 	output	[31:0]			rdata;
 
-	swd_read_apreg(2'b01, addr);
+	swd_write_apreg(2'b01, addr);
 	swd_read_apreg(2'b11, rdata);
 	while(jlink_ack == 3'b010)
 		swd_read_apreg(2'b11, rdata);

@@ -23,6 +23,12 @@ cpu_swd_sim:
 cpu_bus_sim:
 	make -f makefile.cpu_bus_sim
 
+sram_wr_sim:
+	make -f makefile.sram_wr_sim
+
+fpga_sram_wr_sim:
+	make -f makefile.fpga_sram_wr_sim
+
 #===============================================
 # RTL auto generation
 #===============================================

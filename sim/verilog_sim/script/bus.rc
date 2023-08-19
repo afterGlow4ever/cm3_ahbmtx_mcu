@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_T-2022.06
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 25 1920 433 161 65
+viewPort 0 25 1920 386 161 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 2723872633.093525
+zoom 0.000000 6679231000.000000
 cursor 449000000.000000
 marker 448920000.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 29
+top 26
 ; marker line index
-markerPos 42
+markerPos 38
 
 ; event list
 ; addEvent event_name event_expression
@@ -69,16 +69,22 @@ addSignal -h 15 -UNSIGNED -HEX -holdScope hresps[1:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope hwdatas[31:0]
 addSignal -h 15 -holdScope hreadys
 addGroup "G4"
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/hselapb1
-addSignal -h 15 -UNSIGNED -HEX -holdScope haddrapb1[14:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope htransapb1[1:0]
-addSignal -h 15 -holdScope hwriteapb1
-addSignal -h 15 -UNSIGNED -HEX -holdScope hsizeapb1[2:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope hwdataapb1[31:0]
-addSignal -h 15 -holdScope hreadyapb1
-addSignal -h 15 -UNSIGNED -HEX -holdScope hrdataapb1[31:0]
-addSignal -h 15 -holdScope hreadyoutapb1
-addSignal -h 15 -holdScope hrespapb1[0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/haddr_apb1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope htrans_apb1[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hsize_apb1[2:0]
+addSignal -h 15 -holdScope hwrite_apb1
+addSignal -h 15 -UNSIGNED -HEX -holdScope hburst_apb1[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hprot_apb1[3:0]
+addSignal -h 15 -holdScope hmastlock_apb1
+addSignal -h 15 -UNSIGNED -HEX -holdScope hmemattr_apb1[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hmaster_apb1[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hwdata_apb1[31:0]
+addSignal -h 15 -holdScope hexreq_apb1
+addSignal -h 15 -holdScope hready_apb1
+addSignal -h 15 -UNSIGNED -HEX -holdScope hrdata_apb1[31:0]
+addSignal -h 15 -holdScope hreadyout_apb1
+addSignal -h 15 -UNSIGNED -HEX -holdScope hresp_apb1[1:0]
+addSignal -h 15 -holdScope hexresp_apb1
 addGroup "G5"
 addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/paddr1[14:0]
 addSignal -h 15 -holdScope penable1

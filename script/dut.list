@@ -25,5 +25,8 @@
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
+../library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
+../library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
 ../user/verilog/domain/fp_domain.v
+../user/verilog/sram/sram_top.v
 ../user/verilog/mcu_top.v

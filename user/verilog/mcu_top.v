@@ -18,31 +18,32 @@
 module mcu_top 
 (
 	// debug port group
-	input  wire						CLK,  
-	input  wire						RSTN,
-	input  wire						TDI, 
-	input  wire						TCK, 
-	inout  wire						TMS, 
-	output wire						TDO, 
-	input  wire						TRST 
+	input  						CLK,  
+	input  						RSTN,
+	input  						TDI, 
+	input  						TCK, 
+	inout  						TMS, 
+	output 						TDO, 
+	input  						TRST 
 );
 
 //===============================================
 // Top for full function domain
 //===============================================
+
 fp_domain u_fp_domain
 (
-	.sys_root_clk					(CLK				),
+	.sys_root_clk				(CLK				),
 	.sys_root_rstn				(RSTN				),
 	.apb1_root_clk				(CLK				),
 	.apb1_root_rstn				(RSTN				),
 	.power_on_rstn				(RSTN				),
 
-	.TDI									(TDI				),
-	.TCK									(TCK				),
-	.TMS									(TMS				),
-	.TDO									(TDO				),
-	.TRST									(TRST				)
+	.TDI						(TDI				),
+	.TCK						(TCK				),
+	.TMS						(TMS				),
+	.TDO						(TDO				),
+	.TRST						(TRST				)
 );
 
 endmodule

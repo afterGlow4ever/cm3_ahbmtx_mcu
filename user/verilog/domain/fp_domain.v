@@ -15,290 +15,290 @@
 
 module fp_domain 
 (
-	input  wire						sys_root_clk,
-	input  wire						apb1_root_clk,
-	input  wire						sys_root_rstn,
-	input  wire						apb1_root_rstn,
-	input  wire						power_on_rstn,
+	input						sys_root_clk,
+	input						apb1_root_clk,
+	input						sys_root_rstn,
+	input						apb1_root_rstn,
+	input						power_on_rstn,
 	
 	// Debug port swd/jlink
-	input  wire						TDI,                  // JTAG TDI
-	input  wire						TCK,                  // SWD Clk / JTAG TCK
-	inout  wire						TMS,                  // SWD I/O / JTAG TMS
-	output wire						TDO,                  // SWV     / JTAG TDO
-	input  wire						TRST                  // SWD Clk / JTAG TCK
+	input						TDI,                  // JTAG TDI
+	input						TCK,                  // SWD Clk / JTAG TCK
+	inout						TMS,                  // SWD I/O / JTAG TMS
+	output						TDO,                  // SWV     / JTAG TDO
+	input						TRST                  // SWD Clk / JTAG TCK
 );
 
-wire		[239:0] 				irq = {240'b0000_0000_0000_0000};
+wire	[239:0] 				irq = {24'b0000_0000_0000_0000};
 
 //===============================================
 // AMBA AHB bus matrix
 //===============================================
    
 // CPU I-Code bus
-wire		[31:0]					haddri;
-wire		[ 1:0]					htransi;
-wire		[ 2:0]					hsizei;
-wire		[ 2:0]					hbursti;
-wire		[ 3:0]					hproti;
-wire		[ 1:0]					hmemattri;
-wire		      					hreadyi;
-wire		[31:0]					hrdatai;
-wire		[ 1:0]					hrespi;
+wire	[31:0]					haddri;
+wire	[ 1:0]					htransi;
+wire	[ 2:0]					hsizei;
+wire	[ 2:0]					hbursti;
+wire	[ 3:0]					hproti;
+wire	[ 1:0]					hmemattri;
+wire	      					hreadyi;
+wire	[31:0]					hrdatai;
+wire	[ 1:0]					hrespi;
 
 // CPU D-Code bus
-wire		[31:0]					haddrd;
-wire		[ 1:0]					htransd;
-wire		[ 2:0]					hsized;
-wire		      					hwrited;
-wire		[ 2:0]					hburstd;
-wire		[ 3:0]					hprotd;
-wire		[ 1:0]					hmemattrd;
-wire		[ 3:0]					hmasterd;
-wire		[31:0]					hwdatad;
-wire		      					hexreqd;
-wire		      					hreadyd;
-wire		[31:0]					hrdatad;
-wire		[ 1:0]					hrespd;
-wire		      					hexrespd;
+wire	[31:0]					haddrd;
+wire	[ 1:0]					htransd;
+wire	[ 2:0]					hsized;
+wire	      					hwrited;
+wire	[ 2:0]					hburstd;
+wire	[ 3:0]					hprotd;
+wire	[ 1:0]					hmemattrd;
+wire	[ 3:0]					hmasterd;
+wire	[31:0]					hwdatad;
+wire	      					hexreqd;
+wire	      					hreadyd;
+wire	[31:0]					hrdatad;
+wire	[ 1:0]					hrespd;
+wire	      					hexrespd;
 
 // CPU System bus
-wire		[31:0]				 	haddrs; 
-wire		[ 1:0]				 	htranss; 
-wire		[ 2:0]				 	hsizes; 
-wire		      					hwrites; 
-wire		[ 2:0]					hbursts; 
-wire		[ 3:0]				 	hprots; 
-wire		      					hmastlocks; 
-wire		[ 1:0]					hmemattrs;
-wire		[ 1:0]					hmasters;
-wire		[31:0]				 	hwdatas; 
-wire		      					hexreqs;
-wire		      					hreadys; 
-wire		[31:0]				 	hrdatas; 
-wire		[ 1:0]				 	hresps;
-wire		      					hexresps;
+wire	[31:0]				 	haddrs; 
+wire	[ 1:0]				 	htranss; 
+wire	[ 2:0]				 	hsizes; 
+wire	      					hwrites; 
+wire	[ 2:0]					hbursts; 
+wire	[ 3:0]				 	hprots; 
+wire	      					hmastlocks; 
+wire	[ 1:0]					hmemattrs;
+wire	[ 1:0]					hmasters;
+wire	[31:0]				 	hwdatas; 
+wire	      					hexreqs;
+wire	      					hreadys; 
+wire	[31:0]				 	hrdatas; 
+wire	[ 1:0]				 	hresps;
+wire	      					hexresps;
 
 // ITCM 
-wire										hselitcm;
-wire		[31:0]				 	haddritcm; 
-wire		[ 1:0]				 	htransitcm; 
-wire		[ 2:0]				 	hsizeitcm; 
-wire		      					hwriteitcm; 
-wire		[ 2:0]					hburstitcm; 
-wire		[ 3:0]				 	hprotitcm; 
-wire		      					hmastlockitcm; 
-wire		[ 1:0]					hmemattritcm;
-wire		[ 3:0]					hmasteritcm;
-wire		[31:0]				 	hwdataitcm; 
-wire		      					hexreqitcm;
-wire		      					hreadyitcm; 
-wire		[31:0]				 	hrdataitcm; 
-wire		      					hreadyoutitcm; 
-wire		[ 1:0]				 	hrespitcm;
-wire		      					hexrespitcm;
+wire							hsel_itcm;
+wire	[31:0]				 	haddr_itcm; 
+wire	[ 1:0]				 	htrans_itcm; 
+wire	[ 2:0]				 	hsize_itcm; 
+wire	      					hwrite_itcm; 
+wire	[ 2:0]					hburst_itcm; 
+wire	[ 3:0]				 	hprot_itcm; 
+wire	      					hmastlock_itcm; 
+wire	[ 1:0]					hmemattr_itcm;
+wire	[ 3:0]					hmaster_itcm;
+wire	[31:0]				 	hwdata_itcm; 
+wire	      					hexreq_itcm;
+wire	      					hready_itcm; 
+wire	[31:0]				 	hrdata_itcm; 
+wire	      					hreadyout_itcm; 
+wire	[ 1:0]				 	hresp_itcm;
+wire	      					hexresp_itcm;
 
 // DTCM 
-wire										hseldtcm;
-wire		[31:0]				 	haddrdtcm; 
-wire		[ 1:0]				 	htransdtcm; 
-wire		[ 2:0]				 	hsizedtcm; 
-wire		      					hwritedtcm; 
-wire		[ 2:0]					hburstdtcm; 
-wire		[ 3:0]				 	hprotdtcm; 
-wire		      					hmastlockdtcm; 
-wire		[ 1:0]					hmemattrdtcm;
-wire		[ 3:0]					hmasterdtcm;
-wire		[31:0]				 	hwdatadtcm; 
-wire		      					hexreqdtcm;
-wire		      					hreadydtcm; 
-wire		[31:0]				 	hrdatadtcm; 
-wire		      					hreadyoutdtcm; 
-wire		[ 1:0]				 	hrespdtcm;
-wire		      					hexrespdtcm;
+wire							hsel_dtcm;
+wire	[31:0]				 	haddr_dtcm; 
+wire	[ 1:0]				 	htrans_dtcm; 
+wire	[ 2:0]				 	hsize_dtcm; 
+wire	      					hwrite_dtcm; 
+wire	[ 2:0]					hburst_dtcm; 
+wire	[ 3:0]				 	hprot_dtcm; 
+wire	      					hmastlock_dtcm; 
+wire	[ 1:0]					hmemattr_dtcm;
+wire	[ 3:0]					hmaster_dtcm;
+wire	[31:0]				 	hwdata_dtcm; 
+wire	      					hexreq_dtcm;
+wire	      					hready_dtcm; 
+wire	[31:0]				 	hrdata_dtcm; 
+wire	      					hreadyout_dtcm; 
+wire	[ 1:0]				 	hresp_dtcm;
+wire	      					hexresp_dtcm;
 
 // sram0 
-wire										hselsram0;
-wire		[31:0]				 	haddrsram0; 
-wire		[ 1:0]				 	htranssram0; 
-wire		[ 2:0]				 	hsizesram0; 
-wire		      					hwritesram0; 
-wire		[ 2:0]					hburstsram0; 
-wire		[ 3:0]				 	hprotsram0; 
-wire		      					hmastlocksram0; 
-wire		[ 1:0]					hmemattrsram0;
-wire		[ 3:0]					hmastersram0;
-wire		[31:0]				 	hwdatasram0; 
-wire		      					hexreqsram0;
-wire		      					hreadysram0; 
-wire		[31:0]				 	hrdatasram0; 
-wire		      					hreadyoutsram0; 
-wire		[ 1:0]				 	hrespsram0;
-wire		      					hexrespsram0;
+wire							hsel_sram0;
+wire	[31:0]				 	haddr_sram0; 
+wire	[ 1:0]				 	htrans_sram0; 
+wire	[ 2:0]				 	hsize_sram0; 
+wire	      					hwrite_sram0; 
+wire	[ 2:0]					hburst_sram0; 
+wire	[ 3:0]				 	hprot_sram0; 
+wire	      					hmastlock_sram0; 
+wire	[ 1:0]					hmemattr_sram0;
+wire	[ 3:0]					hmaster_sram0;
+wire	[31:0]				 	hwdata_sram0; 
+wire	      					hexreq_sram0;
+wire	      					hready_sram0; 
+wire	[31:0]				 	hrdata_sram0; 
+wire	      					hreadyout_sram0; 
+wire	[ 1:0]				 	hresp_sram0;
+wire	      					hexresp_sram0;
 
 
 // apb1 async
-wire										hselapb1;
-wire		[31:0]				 	haddrapb1; 
-wire		[ 1:0]				 	htransapb1; 
-wire		[ 2:0]				 	hsizeapb1; 
-wire		      					hwriteapb1; 
-wire		[ 2:0]					hburstapb1; 
-wire		[ 3:0]				 	hprotapb1; 
-wire		      					hmastlockapb1; 
-wire		[ 1:0]					hmemattrapb1;
-wire		[ 3:0]					hmasterapb1;
-wire		[31:0]				 	hwdataapb1; 
-wire		      					hexreqapb1;
-wire		      					hreadyapb1; 
-wire		[31:0]				 	hrdataapb1; 
-wire		      					hreadyoutapb1; 
-wire		[ 1:0]				 	hrespapb1;
-wire		      					hexrespapb1;
+wire							hsel_apb1;
+wire	[31:0]				 	haddr_apb1; 
+wire	[ 1:0]				 	htrans_apb1; 
+wire	[ 2:0]				 	hsize_apb1; 
+wire	      					hwrite_apb1; 
+wire	[ 2:0]					hburst_apb1; 
+wire	[ 3:0]				 	hprot_apb1; 
+wire	      					hmastlock_apb1; 
+wire	[ 1:0]					hmemattr_apb1;
+wire	[ 3:0]					hmaster_apb1;
+wire	[31:0]				 	hwdata_apb1; 
+wire	      					hexreq_apb1;
+wire	      					hready_apb1; 
+wire	[31:0]				 	hrdata_apb1; 
+wire	      					hreadyout_apb1; 
+wire	[ 1:0]				 	hresp_apb1;
+wire	      					hexresp_apb1;
 
 ahb_bus_matrix u_ahb_bus_matrix 
 (
-	.HCLK									(sys_root_clk),
-	.HRESETn							(sys_root_rstn),
-	.REMAP								(4'b0),
+	.HCLK						(sys_root_clk),
+	.HRESETn					(sys_root_rstn),
+	.REMAP						(4'b0),
 
 	// CPU D-Code
-	.HSELS0								(1'b1),
-	.HADDRS0							(haddrd),
-	.HTRANSS0							(htransd),
-	.HWRITES0							(hwrited),
-	.HSIZES0							(hsized),
-	.HBURSTS0							(hburstd),
-	.HPROTS0							(hprotd),
-	.HMASTERS0						(hmasterd),//?
-	.HWDATAS0							(hwdatad),
-	.HMASTLOCKS0					(1'b0),
-	.HREADYS0							(hreadyd),
-	.HAUSERS0							(32'b0),
-	.HWUSERS0							(32'b0),
-	.HRDATAS0							(hrdatad),
-	.HREADYOUTS0					(hreadyd),
-	.HRESPS0							(hrespd),
-	.HRUSERS0							(),
+	.HSELS0						(1'b1),
+	.HADDRS0					(haddrd),
+	.HTRANSS0					(htransd),
+	.HWRITES0					(hwrited),
+	.HSIZES0					(hsized),
+	.HBURSTS0					(hburstd),
+	.HPROTS0					(hprotd),
+	.HMASTERS0					(hmasterd),//?
+	.HWDATAS0					(hwdatad),
+	.HMASTLOCKS0				(1'b0),
+	.HREADYS0					(hreadyd),
+	.HAUSERS0					(32'b0),
+	.HWUSERS0					(32'b0),
+	.HRDATAS0					(hrdatad),
+	.HREADYOUTS0				(hreadyd),
+	.HRESPS0					(hrespd),
+	.HRUSERS0					(),
 
 	// CPU I-Code
-	.HSELS1								(1'b1),
-	.HADDRS1							(haddri),
-	.HTRANSS1							(htransi),
-	.HWRITES1							(1'b0),
-	.HSIZES1							(hsizei),
-	.HBURSTS1							(hbursti),
-	.HPROTS1							(hproti),
-	.HMASTERS1						(4'b0),//?
-	.HWDATAS1							(32'b0),
-	.HMASTLOCKS1					(1'b0),
-	.HREADYS1							(hreadyi),
-	.HAUSERS1							(32'b0),
-	.HWUSERS1							(32'b0),
-	.HRDATAS1							(hrdatai),
-	.HREADYOUTS1					(hreadyi),
-	.HRESPS1							(hrespi),
-	.HRUSERS1							(),
+	.HSELS1						(1'b1),
+	.HADDRS1					(haddri),
+	.HTRANSS1					(htransi),
+	.HWRITES1					(1'b0),
+	.HSIZES1					(hsizei),
+	.HBURSTS1					(hbursti),
+	.HPROTS1					(hproti),
+	.HMASTERS1					(4'b0),//?
+	.HWDATAS1					(32'b0),
+	.HMASTLOCKS1				(1'b0),
+	.HREADYS1					(hreadyi),
+	.HAUSERS1					(32'b0),
+	.HWUSERS1					(32'b0),
+	.HRDATAS1					(hrdatai),
+	.HREADYOUTS1				(hreadyi),
+	.HRESPS1					(hrespi),
+	.HRUSERS1					(),
 
 	// CPU System
-	.HSELS2								(1'b1),
-	.HADDRS2							(haddrs),
-	.HTRANSS2							(htranss),
-	.HWRITES2							(hwrites),
-	.HSIZES2							(hsizes),
-	.HBURSTS2							(hbursts),
-	.HPROTS2							(hprots),
-	.HMASTERS2						(4'b0),//?
-	.HWDATAS2							(hwdatas),
-	.HMASTLOCKS2					(hmastlocks),
-	.HREADYS2							(hreadys),
-	.HAUSERS2							(32'b0),
-	.HWUSERS2							(32'b0),
-	.HRDATAS2							(hrdatas),
-	.HREADYOUTS2					(hreadys),
-	.HRESPS2							(hresps),
-	.HRUSERS2							(),
-
-	// ITCM
-	.HSELM0								(hselitcm),
-	.HADDRM0							(haddritcm),
-	.HTRANSM0							(htransitcm),
-	.HWRITEM0							(hwriteitcm),
-	.HSIZEM0							(hsizeitcm),
-	.HBURSTM0							(hburstitcm),
-	.HPROTM0							(hprotitcm),
-	.HMASTERM0						(hmasteritcm),
-	.HWDATAM0							(hwdataitcm),
-	.HMASTLOCKM0					(hmastlockitcm),
-	.HREADYMUXM0					(hreadyitcm),
-	.HAUSERM0							(),
-	.HWUSERM0							(),
-	.HRDATAM0							(hrdataitcm),
-	.HREADYOUTM0					(hreadyoutitcm),
-	.HRESPM0							(hrespitcm),
-	.HRUSERM0							(32'b0),
+	.HSELS2						(1'b1),
+	.HADDRS2					(haddrs),
+	.HTRANSS2					(htranss),
+	.HWRITES2					(hwrites),
+	.HSIZES2					(hsizes),
+	.HBURSTS2					(hbursts),
+	.HPROTS2					(hprots),
+	.HMASTERS2					(4'b0),//?
+	.HWDATAS2					(hwdatas),
+	.HMASTLOCKS2				(hmastlocks),
+	.HREADYS2					(hreadys),
+	.HAUSERS2					(32'b0),
+	.HWUSERS2					(32'b0),
+	.HRDATAS2					(hrdatas),
+	.HREADYOUTS2				(hreadys),
+	.HRESPS2					(hresps),
+	.HRUSERS2					(),
 
 	// DTCM
-	.HSELM1								(hseldtcm),
-	.HADDRM1							(haddrdtcm),
-	.HTRANSM1							(htransdtcm),
-	.HWRITEM1							(hwritedtcm),
-	.HSIZEM1							(hsizedtcm),
-	.HBURSTM1							(hburstdtcm),
-	.HPROTM1							(hprotdtcm),
-	.HMASTERM1						(hmasterdtcm),
-	.HWDATAM1							(hwdatadtcm),
-	.HMASTLOCKM1					(hmastlocks),
-	.HREADYMUXM1					(hreadydtcm),
-	.HAUSERM1							(),
-	.HWUSERM1							(),
-	.HRDATAM1							(hrdatadtcm),
-	.HREADYOUTM1					(hreadyoutdtcm),
-	.HRESPM1							(hrespdtcm),
-	.HRUSERM1							(32'b0),
+	.HSELM0						(hsel_dtcm),
+	.HADDRM0					(haddr_dtcm),
+	.HTRANSM0					(htrans_dtcm),
+	.HWRITEM0					(hwrite_dtcm),
+	.HSIZEM0					(hsize_dtcm),
+	.HBURSTM0					(hburst_dtcm),
+	.HPROTM0					(hprot_dtcm),
+	.HMASTERM0					(hmaster_dtcm),
+	.HWDATAM0					(hwdata_dtcm),
+	.HMASTLOCKM0				(hmastlock_dtcm),
+	.HREADYMUXM0				(hready_dtcm),
+	.HAUSERM0					(),
+	.HWUSERM0					(),
+	.HRDATAM0					(hrdata_dtcm),
+	.HREADYOUTM0				(hreadyout_dtcm),
+	.HRESPM0					(hresp_dtcm),
+	.HRUSERM0					(32'b0),
+
+	// ITCM
+	.HSELM1						(hsel_itcm),
+	.HADDRM1					(haddr_itcm),
+	.HTRANSM1					(htrans_itcm),
+	.HWRITEM1					(hwrite_itcm),
+	.HSIZEM1					(hsize_itcm),
+	.HBURSTM1					(hburst_itcm),
+	.HPROTM1					(hprot_itcm),
+	.HMASTERM1					(hmaster_itcm),
+	.HWDATAM1					(hwdata_itcm),
+	.HMASTLOCKM1				(hmastlocks),
+	.HREADYMUXM1				(hready_itcm),
+	.HAUSERM1					(),
+	.HWUSERM1					(),
+	.HRDATAM1					(hrdata_itcm),
+	.HREADYOUTM1				(hreadyout_itcm),
+	.HRESPM1					(hresp_itcm),
+	.HRUSERM1					(32'b0),
 
 	// sram0
-	.HSELM5								(hselsram0),
-	.HADDRM5							(haddrsram0),
-	.HTRANSM5							(htranssram0),
-	.HWRITEM5							(hwritesram0),
-	.HSIZEM5							(hsizesram0),
-	.HBURSTM5							(hburstsram0),
-	.HPROTM5							(hprotsram0),
-	.HMASTERM5						(hmastersram0),
-	.HWDATAM5							(hwdatasram0),
-	.HMASTLOCKM5					(hmastlocksram0),
-	.HREADYMUXM5					(hreadysram0),
-	.HAUSERM5							(),
-	.HWUSERM5							(),
-	.HRDATAM5							(hrdatasram0),
-	.HREADYOUTM5					(hreadyoutsram0),
-	.HRESPM5							(hrespsram0),
-	.HRUSERM5							(32'b0),
+	.HSELM5						(hsel_sram0),
+	.HADDRM5					(haddr_sram0),
+	.HTRANSM5					(htrans_sram0),
+	.HWRITEM5					(hwrite_sram0),
+	.HSIZEM5					(hsize_sram0),
+	.HBURSTM5					(hburst_sram0),
+	.HPROTM5					(hprot_sram0),
+	.HMASTERM5					(hmaster_sram0),
+	.HWDATAM5					(hwdata_sram0),
+	.HMASTLOCKM5				(hmastlock_sram0),
+	.HREADYMUXM5				(hready_sram0),
+	.HAUSERM5					(),
+	.HWUSERM5					(),
+	.HRDATAM5					(hrdata_sram0),
+	.HREADYOUTM5				(hreadyout_sram0),
+	.HRESPM5					(hresp_sram0),
+	.HRUSERM5					(32'b0),
 
 	// apb1 async
-	.HSELM7								(hselapb1),
-	.HADDRM7							(haddrapb1),
-	.HTRANSM7							(htransapb1),
-	.HWRITEM7							(hwriteapb1),
-	.HSIZEM7							(hsizeapb1),
-	.HBURSTM7							(hburstapb1),
-	.HPROTM7							(hprotapb1),
-	.HMASTERM7						(hmasterapb1),
-	.HWDATAM7							(hwdataapb1),
-	.HMASTLOCKM7					(hmastlockapb1),
-	.HREADYMUXM7					(hreadyapb1),
-	.HAUSERM7							(),
-	.HWUSERM7							(),
-	.HRDATAM7							(hrdataapb1),
-//	.HREADYOUTM7					(hreadyoutapb1),
-	.HREADYOUTM7					(1'b1),
-	.HRESPM7							(hrespapb1),
-	.HRUSERM7							(32'b0),
+	.HSELM7						(hsel_apb1),
+	.HADDRM7					(haddr_apb1),
+	.HTRANSM7					(htrans_apb1),
+	.HWRITEM7					(hwrite_apb1),
+	.HSIZEM7					(hsize_apb1),
+	.HBURSTM7					(hburst_apb1),
+	.HPROTM7					(hprot_apb1),
+	.HMASTERM7					(hmaster_apb1),
+	.HWDATAM7					(hwdata_apb1),
+	.HMASTLOCKM7				(hmastlock_apb1),
+	.HREADYMUXM7				(hready_apb1),
+	.HAUSERM7					(),
+	.HWUSERM7					(),
+	.HRDATAM7					(hrdata_apb1),
+//	.HREADYOUTM7				(hreadyout_apb1),
+	.HREADYOUTM7				(1'b1),
+	.HRESPM7					(hresp_apb1),
+	.HRUSERM7					(32'b0),
 
-	.SCANENABLE						(1'b0),
-	.SCANINHCLK						(1'b0),
-	.SCANOUTHCLK					()
+	.SCANENABLE					(1'b0),
+	.SCANINHCLK					(1'b0),
+	.SCANOUTHCLK				()
 );
 
 //===============================================
@@ -307,56 +307,56 @@ ahb_bus_matrix u_ahb_bus_matrix
 // 32k addr:15bit
 //===============================================
 
-wire										psel1;
-wire										penable1;
-wire		[14:0]				 	paddr1; 
-wire		      					pwrite1; 
-wire		[ 3:0]				 	pstrb1; 
-wire		[ 2:0]				 	pprot1; 
-wire		[31:0]				 	pwdata1; 
-wire		      					pready1; 
-wire		[31:0]				 	prdata1; 
-wire		      					pslverr1; 
-wire		      					pactive1; 
+wire							psel1;
+wire							penable1;
+wire	[14:0]				 	paddr1; 
+wire	      					pwrite1; 
+wire	[ 3:0]				 	pstrb1; 
+wire	[ 2:0]				 	pprot1; 
+wire	[31:0]				 	pwdata1; 
+wire	      					pready1; 
+wire	[31:0]				 	prdata1; 
+wire	      					pslverr1; 
+wire	      					pactive1; 
 
-assign hrespapb1[1] = 1'b0;
+assign hresp_apb1[1] = 1'b0;
 
 cmsdk_ahb_to_apb_async
 #(
-	.ADDRWIDTH						(15)	
+	.ADDRWIDTH					(15)	
 )
 u_apb1_async 
 (
-	.HCLK									(sys_root_clk),
-	.HRESETn							(sys_root_rstn),
+	.HCLK						(sys_root_clk),
+	.HRESETn					(sys_root_rstn),
 
-	.HSEL									(hselapb1),
-	.HADDR								(haddrapb1[14:0]),
-	.HTRANS								(htransapb1),
-	.HWRITE								(hwriteapb1),
-	.HSIZE								(hsizeapb1),
-	.HPROT								(hprotapb1),
-	.HWDATA								(hwdataapb1),
-	.HREADY								(hreadyapb1),
-	.HRDATA								(hrdataapb1),
-	.HREADYOUT						(hreadyoutapb1),
-	.HRESP								(hrespapb1[0]),
+	.HSEL						(hsel_apb1),
+	.HADDR						(haddr_apb1[14:0]),
+	.HTRANS						(htrans_apb1),
+	.HWRITE						(hwrite_apb1),
+	.HSIZE						(hsize_apb1),
+	.HPROT						(hprot_apb1),
+	.HWDATA						(hwdata_apb1),
+	.HREADY						(hready_apb1),
+	.HRDATA						(hrdata_apb1),
+	.HREADYOUT					(hreadyout_apb1),
+	.HRESP						(hresp_apb1[0]),
 
-	.PCLK									(apb1_root_clk),
-	.PRESETn							(apb1_root_rstn),
+	.PCLK						(apb1_root_clk),
+	.PRESETn					(apb1_root_rstn),
 	
-	.PADDR								(paddr1),  
-	.PENABLE							(penable1),
-	.PSTRB								(pstrb1),  
-	.PPROT								(pprot1),  
-	.PWRITE								(pwrite1), 
-	.PWDATA								(pwdata1), 
-	.PSEL									(psel1),   
-	.PRDATA								(prdata1), 
-	.PREADY								(pready1),
-	.PSLVERR							(pslverr1),
+	.PADDR						(paddr1),  
+	.PENABLE					(penable1),
+	.PSTRB						(pstrb1),  
+	.PPROT						(pprot1),  
+	.PWRITE						(pwrite1), 
+	.PWDATA						(pwdata1), 
+	.PSEL						(psel1),   
+	.PRDATA						(prdata1), 
+	.PREADY						(pready1),
+	.PSLVERR					(pslverr1),
 	
-	.APBACTIVE						(pactive1)
+	.APBACTIVE					(pactive1)
 );
 
 //===============================================
@@ -364,18 +364,18 @@ u_apb1_async
 //===============================================
 
 // CPU status
-wire										lockup;											// Lockup signal from CPU
-wire										sys_reset_req;              // System reset request from CPU or debug host
+wire							lockup;											// Lockup signal from CPU
+wire							sys_reset_req;              // System reset request from CPU or debug host
 
 // Debug signals (TDO pin is used for SWV unless JTAG mode is active)
-wire										dbg_tdo;                    // SWV / JTAG TDO
-wire										dbg_tdo_nen;                // SWV / JTAG TDO tristate enable (active low)
-wire										dbg_swdo;                   // SWD I/O 3-state output
-wire										dbg_swdo_en;                // SWD I/O 3-state enable
-wire										dbg_jtag_nsw;               // SWD in JTAG state (HIGH)
-wire										dbg_swo;                    // Serial wire viewer/output
-wire										tdo_enable;
-wire										tdo_tms;
+wire							dbg_tdo;                    // SWV / JTAG TDO
+wire							dbg_tdo_nen;                // SWV / JTAG TDO tristate enable (active low)
+wire							dbg_swdo;                   // SWD I/O 3-state output
+wire							dbg_swdo_en;                // SWD I/O 3-state enable
+wire							dbg_jtag_nsw;               // SWD in JTAG state (HIGH)
+wire							dbg_swo;                    // Serial wire viewer/output
+wire							tdo_enable;
+wire							tdo_tms;
 
 // TDO is only used in JTAG mode
 assign tdo_enable = !dbg_tdo_nen | !dbg_jtag_nsw;	
@@ -385,8 +385,8 @@ assign TDO = tdo_enable ? tdo_tms : 1'bz;
 
 // CoreSight requires a loopback from REQ to ACK for a minimal
 // debug power control implementation
-wire										cpu0cdbgpwrupreq;          // Debug Power Domain up request
-wire										cpu0cdbgpwrupack;          // Debug Power Domain up acknowledge
+wire							cpu0cdbgpwrupreq;          // Debug Power Domain up request
+wire							cpu0cdbgpwrupack;          // Debug Power Domain up acknowledge
 
 assign cpu0cdbgpwrupack = cpu0cdbgpwrupreq;
 
@@ -445,10 +445,14 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .HBURSTI        (hbursti),            // I-CODE bus burst length
    .HPROTI         (hproti),             // i-code bus protection
    .MEMATTRI       (hmemattri),          // I-CODE bus memory attributes
-   .HREADYI        (1'b1),            	 // I-CODE bus ready
-   .HRDATAI        (32'b0),            	 // I-CODE bus read data
-   .HRESPI         (2'b0),               // I-CODE bus response
+   .HREADYI        (hreadyi),            	 // I-CODE bus ready
+   .HRDATAI        (hrdatai),            	 // I-CODE bus read data
+   .HRESPI         (hrespi),               // I-CODE bus response
    .IFLUSH         (1'b0),               // Prefetch flush - fixed when using the Designstart system
+  // .HREADYI        (1'b1),            	 // I-CODE bus ready
+  // .HRDATAI        (32'b0),            	 // I-CODE bus read data
+  // .HRESPI         (2'b0),               // I-CODE bus response
+  // .IFLUSH         (1'b0),               // Prefetch flush - fixed when using the Designstart system
 
    // AHB D-Code bus
    .HADDRD         (haddrd),             // D-CODE bus address
@@ -461,9 +465,9 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .HMASTERD       (hmasterd),           // D-CODE bus master
    .HWDATAD        (hwdatad),            // D-CODE bus write data
    .EXREQD         (hexreqd),            // D-CODE bus exclusive request
-   .HREADYD        (1'b1),            	 // D-CODE bus ready
-   .HRDATAD        (32'h0),              // D-CODE bus read data
-   .HRESPD         (2'b0),               // D-CODE bus response
+   .HREADYD        (hreadyd),            	 // D-CODE bus ready
+   .HRDATAD        (hrdatad),              // D-CODE bus read data
+   .HRESPD         (hrespd),               // D-CODE bus response
    .EXRESPD        (1'b0),            	 // D-CODE bus exclusive response
 
    // AHB System bus
@@ -580,6 +584,42 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .WAKEUP         (),                   // Active HIGH signal from WIC to the PMU that indicates a wake-up event has
                                          // occurred and the system requires clocks and power
    .WICENACK       ()                    // Acknowledge for WICENREQ - WIC operation deep sleep mode
+);
+
+//===============================================
+// sram top
+// ITCM 32k 0x00000000~0x00008000
+// DTCM  8k 0x00010000~0x00012000
+//===============================================
+
+sram_top u_sram_top
+(
+	.sys_root_clk				(sys_root_clk),
+	.sys_root_rstn				(sys_root_rstn),
+	        						
+	.hsel_itcm  				(hsel_itcm),
+	.hready_itcm				(hready_itcm),
+	.htrans_itcm				(htrans_itcm),
+	.hsize_itcm 				(hsize_itcm),
+	.hwrite_itcm				(hwrite_itcm),
+	.haddr_itcm 				(haddr_itcm),
+	.hprot_itcm  				(hprot_itcm),
+	.hwdata_itcm				(hwdata_itcm),
+	.hreadyout_itcm				(hreadyout_itcm),
+	.hresp_itcm 				(hresp_itcm),
+	.hrdata_itcm				(hrdata_itcm),
+	            				
+	.hsel_dtcm  				(hsel_dtcm),
+	.hready_dtcm				(hready_dtcm),
+	.htrans_dtcm				(htrans_dtcm),
+	.hsize_dtcm 				(hsize_dtcm),
+	.hwrite_dtcm				(hwrite_dtcm),
+	.haddr_dtcm 				(haddr_dtcm),
+	.hprot_dtcm  				(hprot_dtcm),
+	.hwdata_dtcm				(hwdata_dtcm),
+	.hreadyout_dtcm				(hreadyout_dtcm),
+	.hresp_dtcm 				(hresp_dtcm),
+	.hrdata_dtcm 				(hrdata_dtcm)
 );
 
 endmodule

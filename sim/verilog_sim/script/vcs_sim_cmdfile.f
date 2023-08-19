@@ -10,6 +10,7 @@
 -sverilog
 -debug_all
 -debug_pp
+-debug_access
 //-ALLOWREDEFINATION
 -D__LINUX_OS_
 -l compile.log

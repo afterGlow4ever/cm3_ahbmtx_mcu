@@ -18,5 +18,7 @@
 `include "ahb_apb_bus.v"
 `endif
 
-
+`ifdef SRAM_WR_SIM
+`include "sram_wr.v"
+`endif
 

@@ -203,8 +203,8 @@ module ahb_bus_matrix_decoderS1 (
              decode_addr_dec or data_out_port or trans_dec
            )
     begin : p_addr_out_port_comb
-      // Address region 0x00010000-0x00012000
-      if (((decode_addr_dec >= 22'h000040) & (decode_addr_dec <= 22'h000048))
+      // Address region 0x00000000-0x00008000
+      if (((decode_addr_dec >= 22'h000000) & (decode_addr_dec <= 22'h000020))
                            | ((data_out_port == 3'b001) & (trans_dec == 2'b00)))
         addr_out_port = 3'b001;  // Select Output port MI1
 

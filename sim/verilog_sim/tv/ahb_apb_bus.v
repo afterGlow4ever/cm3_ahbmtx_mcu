@@ -15,7 +15,7 @@
 // Simulation config
 //===============================================
 
-reg											jlink_rstn;
+reg								jlink_rstn;
 
 // jlink internal reset will be release at 10us
 initial
@@ -35,20 +35,20 @@ pulldown(tck);
 
 jlink_model u_swd_model
 (
-	.rstn_i								(jlink_rstn),
-	.tck_o								(tck),
-	.tms_io								(tms),
-	.tdi_i								(tdi),
-	.tdo_o								(tdo),
-	.trstn_o							(trstn),
-	.tms_oen_o						()
+	.rstn_i						(jlink_rstn),
+	.tck_o						(tck),
+	.tms_io						(tms),
+	.tdi_i						(tdi),
+	.tdo_o						(tdo),
+	.trstn_o					(trstn),
+	.tms_oen_o					()
 );
 
 //===============================================
 // Swd command sequences
 //===============================================
 
-reg		[31:0]			rdata;
+reg		[31:0]					rdata;
 
 initial
 begin	
@@ -58,8 +58,6 @@ begin
 	u_swd_model.swd_writereg32(32'h40000004, 32'h12345678);
 	u_swd_model.swd_readreg32(32'h40000004, rdata);
 	u_swd_model.swd_writereg32(32'h40000004, 32'h22345678);
-	u_swd_model.swd_writereg32(32'h10000004, 32'h32345678);
-	u_swd_model.swd_readreg32(32'h10000004, rdata);
 
 	#25000
 	u_swd_model.swd_deinit;
@@ -68,8 +66,6 @@ begin
 	u_swd_model.swd_init;
 	u_swd_model.swd_writereg32(32'h40000010, 32'h12345678);
 	u_swd_model.swd_writereg32(32'h40000010, 32'h22345678);
-	u_swd_model.swd_writereg32(32'h10000010, 32'h32345678);
-	u_swd_model.swd_readreg32(32'h10000010, rdata);
 
 	#25000
 	u_swd_model.swd_deinit;
