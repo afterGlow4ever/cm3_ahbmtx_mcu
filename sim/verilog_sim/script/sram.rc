@@ -1,0 +1,97 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 332 161 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/sram_wr_sim/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 6816591000.000000
+cursor 448960000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 35
+; marker line index
+markerPos 5
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/sram_wr_sim/TOP.fsdb"
+addSignal -h 15 /TOP/u_mcu_top/TDI
+addSignal -h 15 -holdScope TCK
+addSignal -h 15 -holdScope TMS
+addSignal -h 15 -holdScope TDO
+addSignal -h 15 -UNSIGNED -HEX /TOP/rdata[31:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/haddrd[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope htransd[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hsized[2:0]
+addSignal -h 15 -holdScope hwrited
+addSignal -h 15 -UNSIGNED -HEX -holdScope hburstd[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hprotd[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hmemattrd[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hmasterd[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hwdatad[31:0]
+addSignal -h 15 -holdScope hexreqd
+addSignal -h 15 -holdScope hreadyd
+addSignal -h 15 -UNSIGNED -HEX -holdScope hrdatad[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hrespd[1:0]
+addSignal -h 15 -holdScope hexrespd
+addGroup "G2"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/hsel_dtcm
+addSignal -h 15 -UNSIGNED -HEX -holdScope haddr_dtcm[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope htrans_dtcm[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hsize_dtcm[2:0]
+addSignal -h 15 -holdScope hwrite_dtcm
+addSignal -h 15 -UNSIGNED -HEX -holdScope hburst_dtcm[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hprot_dtcm[3:0]
+addSignal -h 15 -holdScope hmastlock_dtcm
+addSignal -h 15 -UNSIGNED -HEX -holdScope hmemattr_dtcm[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hmaster_dtcm[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hwdata_dtcm[31:0]
+addSignal -h 15 -holdScope hexreq_dtcm
+addSignal -h 15 -holdScope hready_dtcm
+addSignal -h 15 -UNSIGNED -HEX -holdScope hrdata_dtcm[31:0]
+addSignal -h 15 -holdScope hreadyout_dtcm
+addSignal -h 15 -UNSIGNED -HEX -holdScope hresp_dtcm[1:0]
+addSignal -h 15 -holdScope hexresp_dtcm
+addGroup "G3"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_sram_top/dtcm_addr[12:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dtcm_wdata[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dtcm_wen[3:0]
+addSignal -h 15 -holdScope dtcm_cs
+addSignal -h 15 -UNSIGNED -HEX -holdScope dtcm_rdata[31:0]
+addGroup "G4"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+
