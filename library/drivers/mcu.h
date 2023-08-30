@@ -15,11 +15,10 @@
 //
 //===============================================
 
-#ifdef __MCU_H_
-#endif __MCU_H_
+#ifndef __MCU_H_
+#define __MCU_H_
 
 #include <stdint.h>
-#include "core_cm3.h"
 
 //===============================================
 // interrupts and exceptions enum
@@ -71,7 +70,7 @@ typedef signed char int8_t;
 typedef signed short int16_t;
 typedef signed long int32_t;
 typedef float float32_t;
-typedef double float64_t
+typedef double float64_t;
 
 #define	TRUE									1
 #define	FALSE									0

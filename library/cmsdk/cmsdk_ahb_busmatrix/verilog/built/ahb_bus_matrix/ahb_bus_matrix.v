@@ -36,7 +36,7 @@
 //                         - xUSER signal width of 32 bits,
 //                         - Arbiter type 'round',
 //                         - Connectivity mapping:
-//                             S0 -> M0, M5, 
+//                             S0 -> M0, M1, M5, 
 //                             S1 -> M1, M5, 
 //                             S2 -> M7,
 //                         - Connectivity type 'sparse'.
@@ -587,6 +587,10 @@ module ahb_bus_matrix (
     wire         i_sel0to0;         // Routing selection signal
     wire         i_active0to0;      // Active signal
 
+    // Bus-switch SI0 to MI1 signals
+    wire         i_sel0to1;         // Routing selection signal
+    wire         i_active0to1;      // Active signal
+
     // Bus-switch SI0 to MI2 signals
     wire         i_sel0to2;         // Routing selection signal
     wire         i_active0to2;      // Active signal
@@ -768,6 +772,13 @@ module ahb_bus_matrix (
     .rdata_dec0     (HRDATAM0),
     .ruser_dec0     (HRUSERM0),
 
+    // Control/Response for Output Stage MI1
+    .active_dec1    (i_active0to1),
+    .readyout_dec1  (i_hready_mux_m1),
+    .resp_dec1      (HRESPM1),
+    .rdata_dec1     (HRDATAM1),
+    .ruser_dec1     (HRUSERM1),
+
     // Control/Response for Output Stage MI2
     .active_dec2    (i_active0to2),
     .readyout_dec2  (i_hready_mux_m5),
@@ -776,6 +787,7 @@ module ahb_bus_matrix (
     .ruser_dec2     (HRUSERM5),
 
     .sel_dec0       (i_sel0to0),
+    .sel_dec1       (i_sel0to1),
     .sel_dec2       (i_sel0to2),
 
     .active_dec     (i_active0),
@@ -912,6 +924,21 @@ module ahb_bus_matrix (
     .HCLK       (HCLK),
     .HRESETn    (HRESETn),
 
+    // Port 0 Signals
+    .sel_op0       (i_sel0to1),
+    .addr_op0      (i_addr0),
+    .auser_op0     (i_auser0),
+    .trans_op0     (i_trans0),
+    .write_op0     (i_write0),
+    .size_op0      (i_size0),
+    .burst_op0     (i_burst0),
+    .prot_op0      (i_prot0),
+    .master_op0    (i_master0),
+    .mastlock_op0  (i_mastlock0),
+    .wdata_op0     (HWDATAS0),
+    .wuser_op0     (HWUSERS0),
+    .held_tran_op0  (i_held_tran0),
+
     // Port 1 Signals
     .sel_op1       (i_sel1to1),
     .addr_op1      (i_addr1),
@@ -930,6 +957,7 @@ module ahb_bus_matrix (
     // Slave read data and response
     .HREADYOUTM (HREADYOUTM1),
 
+    .active_op0    (i_active0to1),
     .active_op1    (i_active1to1),
 
     // Slave Address/Control Signals

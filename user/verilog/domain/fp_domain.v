@@ -449,10 +449,6 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .HRDATAI        (hrdatai),            	 // I-CODE bus read data
    .HRESPI         (hrespi),               // I-CODE bus response
    .IFLUSH         (1'b0),               // Prefetch flush - fixed when using the Designstart system
-  // .HREADYI        (1'b1),            	 // I-CODE bus ready
-  // .HRDATAI        (32'b0),            	 // I-CODE bus read data
-  // .HRESPI         (2'b0),               // I-CODE bus response
-  // .IFLUSH         (1'b0),               // Prefetch flush - fixed when using the Designstart system
 
    // AHB D-Code bus
    .HADDRD         (haddrd),             // D-CODE bus address

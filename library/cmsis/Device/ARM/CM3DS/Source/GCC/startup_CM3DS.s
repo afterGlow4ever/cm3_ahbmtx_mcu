@@ -104,7 +104,7 @@ __isr_vector:
     .long   SysTick_Handler             /* SysTick Handler               */
 
     /* External Interrupts */
-/*    .long   UART0_Handler               /* 16+ 0: UART 0 RX and TX Handler   */*/
+/*    .long   UART0_Handler               /* 16+ 0: UART 0 RX and TX Handler   */
       .size    __isr_vector, . - __isr_vector
 
 /* Reset Handler */
@@ -157,8 +157,8 @@ Reset_Handler:
 
 #ifndef __NO_SYSTEM_INIT
     /* bl    SystemInit */
-    ldr     r0,=SystemInit
-    blx     r0
+#    ldr     r0,=SystemInit
+#    blx     r0
 #endif
 
     bl    main

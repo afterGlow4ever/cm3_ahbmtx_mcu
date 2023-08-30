@@ -10,6 +10,8 @@
 # 	Including:
 # 	1. RTL simulation
 # 	2. RTL auto generation
+# 	3. FW build
+# 	4. cpu boot simulation
 #
 #===============================================
 
@@ -35,4 +37,21 @@ fpga_sram_wr_sim:
 
 ahbmtx_gen:
 	make -f makefile.ahbmtx_gen
+
+#===============================================
+# firmware build
+#===============================================
+
+bootloader:
+	make -f makefile.bootloader
+
+#===============================================
+# cpu boot simulation
+#===============================================
+
+cpu_itcm_boot_sim:
+	make -f makefile.cpu_itcm_boot_sim
+
+fpga_cpu_itcm_boot_sim:
+	make -f makefile.fpga_cpu_itcm_boot_sim
 

@@ -77,8 +77,8 @@ u_ahb_to_itcm
 	.HRESP						(hresp_itcm[0]),
 	.HRDATA						(hrdata_itcm),
 
-	.SRAMRDATA					(32'h0),
-//	.SRAMRDATA					(itcm_rdata),
+//	.SRAMRDATA					(32'h0),
+	.SRAMRDATA					(itcm_rdata),
 	.SRAMADDR					(itcm_addr),
 	.SRAMWEN					(itcm_wen),
 	.SRAMWDATA					(itcm_wdata),
@@ -86,6 +86,7 @@ u_ahb_to_itcm
 );
 
 `ifdef FPGA_SRAM
+`ifdef ALTERA_EP4
 
 ram_32k	u_itcm
 (
@@ -97,13 +98,14 @@ ram_32k	u_itcm
 	.wren						(|itcm_wen),
 	.q							(itcm_rdata)
 );
-	
 
+`endif	
 `else
 
 cmsdk_fpga_sram
 #(
-	.AW							(13)
+	.AW							(13),
+	.MEMFILE					("bootloader.txt")
 )
 u_itcm
 (
@@ -160,6 +162,7 @@ u_ahb_to_dtcm
 );
 
 `ifdef FPGA_SRAM
+`ifdef ALTERA_EP4
 
 ram_8k	u_dtcm
 (
@@ -171,7 +174,8 @@ ram_8k	u_dtcm
 	.wren						(|dtcm_wen),
 	.q							(dtcm_rdata)
 );
-	
+
+`endif
 `else
 
 cmsdk_fpga_sram

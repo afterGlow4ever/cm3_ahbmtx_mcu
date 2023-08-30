@@ -3,23 +3,27 @@
 2	项目使用的资源与软件：
 (1)	VCS-2022
 (2)	Verdi-2022
-(3)	Quartus Prime 2018
+(3)	gcc-arm-none-eabi v10.3-2021.10
+(4)	Quartus Prime 2018
 
 二	工程目标：
 1	实验现象：
 (1)	搭建一个使用ARM Cortex-M3为CPU、AHB总线矩阵为基础的MCU。
 (2)	使用SWD可以正确地读写指定地址。
 (3)	使用SWD可以正确地读写SRAM。
+(4)	当CPU开始运行时可运行在ITCM中存放的bootloader。
 2	实验内容：
 (1)	在MCU内集成CPU、总线、存储器、外设等。
 (2)	使用SWD读写指定地址。
 (3)	使用SWD读写SRAM。
+(4)	ITCM中存放一个bootloader。
 3	具体要求：
 (1)	CPU使用ARM Cortex-M3。
 (2)	片内总线使用AHB总线矩阵。
 (3)	使用异步AHB2APB桥。
 (4)	使用SWD模型读写寄存器并进行仿真。
 (5)	分别使用RTL和FPGA IP实现SRAM并进行读写操作仿真。
+(6)	在ITCM中存放一个bootloader，当CPU开始运行时即运行该程序。
 
 三	学习目标（下述内容非先后顺序）：
 1	学习MCU的基本架构。
@@ -46,8 +50,13 @@
 6	学习SRAM：
 (1)	掌握SRAM读写接口与时序。
 (2)	掌握SRAM的RTL实现和FPGA IP核实现。
-7	学习VCS与Verdi联合仿真环境：
+7	学习bootloader：
+(1)	了解什么是bootloader。
+(2)	掌握bootloader的firmware的用法。
+8	学习VCS与Verdi联合仿真环境：
 (1)	掌握如何使用VCS进行仿真并使用Verdi记录波形。
+9	学习gcc-arm-none-eabi编译firmware环境：
+(1)	掌握如何使用gcc-arm-none-eabi编一个cpu可执行的程序。
 
 四	可以重复利用的资源：
 1	工程项目目录下Library下面的内容，包括Altera仿真库、基本功能逻辑RTL的实现、Cortex-M3的建议版本模型、CMSDK模型（包括AHB总线矩阵、APB总线）、SWD模型等。
@@ -63,9 +72,10 @@
 项目目录下，各文件夹的含义是（含空文件夹，加粗的是本项目包含的文件）：
 Doc目录为项目文档，包括参考资料、设计文档、原理图等。
 Library目录为项目所使用到的库文件，包括仿真库、Monitor、Model等。
+Project目录为项目所涉及到的工程，包括arm-none-eabi工程、fpga工程的。
 Script目录包含“爱上实验室”开发工程环境专用的脚本、功能等。
 Sim目录为项目包含的仿真的目录，包含仿真工程、testbench、激励文件、脚本等、以及仿真专用代码、脚本等。
-User目录包含用户主要的项目文件，包含rtl代码等。
+User目录包含用户主要的项目文件，包含rtl代码、bootloader等。
 
 目前最适合的使用方法是在Linux环境下运行，很多脚本方便使用，可以体会到“爱上实验室”开发工程环境的便利。使用者只需根据自己的环境配置setenv.sh文件即可。
 

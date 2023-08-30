@@ -22,3 +22,8 @@
 `include "sram_wr.v"
 `endif
 
+`ifdef CPU_ITCM_BOOT
+`include "cpu_itcm_boot.v"
+`endif
+
+

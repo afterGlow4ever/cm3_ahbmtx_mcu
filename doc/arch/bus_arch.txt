@@ -1,7 +1,7 @@
 AHB bus matrix
 
 master to ahb slave
-0: cm3 d-code -> dtcm flash sram
+0: cm3 d-code -> dtcm itcm flash sram
 1: cm3 i-code -> itcm flash sram
 2: cm3 system -> apb0 apb1 apb2
 3: reserve ?dma? -> dtcm flash sram apb0 apb1 apb2
@@ -9,8 +9,8 @@ master to ahb slave
 5: reserve
 
 ahb master to slave:
-0: itcm 32k 0x00000000~0x00008000
-1: dtcm 8k 0x00010000~0x00012000
+0: dtcm 8k 0x00010000~0x00012000
+1: itcm 32k 0x00000000~0x00008000
 2: reserve bootrom 16k 0x00020000~0x00024000
 3: reserve flash0 32k 0x08000000~0x08008000
 4: reserve ?flash1?

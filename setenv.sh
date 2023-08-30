@@ -9,8 +9,9 @@
 # 	All environment needed in this whole project.
 # 	Including:
 # 	1. Tools update (Please not use if not using modulefiles)
-#		2. Project environment variable config
-#		4. Shortcut keys for this whole project 
+#	2. Project environment variable config
+#	3. Shortcut keys for this whole project 
+#	4. shell cmd 'run' for running makefile in scripts
 #
 #===============================================
 
@@ -37,6 +38,7 @@ which vivado
 #===============================================
 # set project environment variable
 #===============================================
+
 unset LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$VCS_HOME/amd64/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$VERDI_HOME/share/PLI/VCS/linux64:$LD_LIBRARY_PATH
@@ -46,6 +48,7 @@ export VERDI_DA=$VERDI_HOME/share/PLI/VCS/linux64/pli.a
 #===============================================
 # below: project env cfgs
 #===============================================
+
 export PRJ_DIR=/home/master/project/cm3_ahbmtx_mcu
 export PRJ_DOC_DIR=${PRJ_DIR}/doc
 export PRJ_LIB_DIR=${PRJ_DIR}/library
@@ -65,6 +68,7 @@ export PRJ_SCR_DIR=${PRJ_DIR}/script
 #===============================================
 # shortcut keys for project
 #===============================================
+
 alias cdh='cd ${PRJ_DIR}' 
 alias cddc='cd ${PRJ_DOC_DIR}' 
 alias cdl='cd ${PRJ_LIB_DIR}' 
@@ -80,4 +84,15 @@ alias cds='cd ${PRJ_SIM_DIR}'
 alias cdtb='cd ${PRJ_TB_DIR}' 
 alias cdtv='cd ${PRJ_TV_DIR}' 
 alias cdc='cd ${PRJ_SCR_DIR}' 
+
+#===============================================
+# function 'run' for running makefile in scripts
+#===============================================
+
+function run()
+{
+	cd ${PRJ_SCR_DIR}
+	make $1
+	cd -
+}
 
