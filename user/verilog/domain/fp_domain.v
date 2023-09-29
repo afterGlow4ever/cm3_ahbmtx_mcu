@@ -54,7 +54,7 @@ wire	      					hwrited;
 wire	[ 2:0]					hburstd;
 wire	[ 3:0]					hprotd;
 wire	[ 1:0]					hmemattrd;
-wire	[ 3:0]					hmasterd;
+wire	[ 1:0]					hmasterd;
 wire	[31:0]					hwdatad;
 wire	      					hexreqd;
 wire	      					hreadyd;
@@ -170,7 +170,7 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HSIZES0					(hsized),
 	.HBURSTS0					(hburstd),
 	.HPROTS0					(hprotd),
-	.HMASTERS0					(hmasterd),//?
+	.HMASTERS0					({2'b00, hmasterd}),//?
 	.HWDATAS0					(hwdatad),
 	.HMASTLOCKS0				(1'b0),
 	.HREADYS0					(hreadyd),
@@ -248,7 +248,7 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HPROTM1					(hprot_itcm),
 	.HMASTERM1					(hmaster_itcm),
 	.HWDATAM1					(hwdata_itcm),
-	.HMASTLOCKM1				(hmastlocks),
+	.HMASTLOCKM1				(hmastlock_itcm),
 	.HREADYMUXM1				(hready_itcm),
 	.HAUSERM1					(),
 	.HWUSERM1					(),
@@ -352,9 +352,12 @@ u_apb1_async
 	.PWRITE						(pwrite1), 
 	.PWDATA						(pwdata1), 
 	.PSEL						(psel1),   
-	.PRDATA						(prdata1), 
-	.PREADY						(pready1),
-	.PSLVERR					(pslverr1),
+//	.PRDATA						(prdata1), 
+	.PRDATA						(32'h00000000), 
+//	.PREADY						(pready1),
+	.PREADY						(1'b1),
+//	.PSLVERR					(pslverr1),
+	.PSLVERR					(1'b0),
 	
 	.APBACTIVE					(pactive1)
 );

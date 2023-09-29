@@ -57,8 +57,8 @@ begin
 	u_swd_model.swd_init;
 	u_swd_model.swd_writereg32(32'h40000000, 32'h12345678);
 	u_swd_model.swd_writereg32(32'h40000000, 32'h22345678);
-	u_swd_model.swd_writereg32(32'h10000000, 32'h32345678);
-	u_swd_model.swd_readreg32(32'h10000000, rdata);
+	u_swd_model.swd_writereg32(32'h00000100, 32'h32345678);
+	u_swd_model.swd_readreg32(32'h00000100, rdata);
 
 	#25000
 	u_swd_model.swd_deinit;
@@ -67,8 +67,8 @@ begin
 	u_swd_model.swd_init;
 	u_swd_model.swd_writereg32(32'h40000000, 32'h12345678);
 	u_swd_model.swd_writereg32(32'h40000000, 32'h22345678);
-	u_swd_model.swd_writereg32(32'h10000000, 32'h32345678);
-	u_swd_model.swd_readreg32(32'h10000000, rdata);
+	u_swd_model.swd_writereg32(32'h00000100, 32'h32345678);
+	u_swd_model.swd_readreg32(32'h00000100, rdata);
 
 	#25000
 	u_swd_model.swd_deinit;

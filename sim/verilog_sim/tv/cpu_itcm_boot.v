@@ -12,15 +12,19 @@
 
 
 //===============================================
-// Time set
+// Time set & initial file 
 //===============================================
 
 initial
 begin	
 `ifdef FPGA_SRAM
+`ifdef ALTERA_EP4
 	$readmemh("bootloader.txt", TOP.u_mcu_top.u_fp_domain.u_sram_top.u_itcm.altsyncram_component.m_default.altsyncram_inst.mem_data);
+`elsif ZYNQ_7020
+	$readmemh("bootloader.txt", TOP.u_mcu_top.u_fp_domain.u_sram_top.u_itcm.inst.native_mem_module.blk_mem_gen_v8_4_4_inst.memory);
 `endif
-	#2000000
+`endif
+	#500000
 	$finish;
 end
 

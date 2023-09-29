@@ -28,15 +28,28 @@ module mcu_top
 );
 
 //===============================================
-// Top for full function domain
+// rcc
+//===============================================
+
+wire							sys_root_clk;
+wire							apb1_root_clk;
+wire							sys_root_rstn;
+wire							apb1_root_rstn;
+wire							pll_locked;
+
+assign sys_root_rstn = RSTN & pll_locked;
+assign apb1_root_rstn = RSTN & pll_locked;
+
+//===============================================
+// top for full function domain
 //===============================================
 
 fp_domain u_fp_domain
 (
-	.sys_root_clk				(CLK				),
-	.sys_root_rstn				(RSTN				),
-	.apb1_root_clk				(CLK				),
-	.apb1_root_rstn				(RSTN				),
+	.sys_root_clk				(sys_root_clk		),
+	.sys_root_rstn				(sys_root_rstn		),
+	.apb1_root_clk				(apb1_root_clk		),
+	.apb1_root_rstn				(apb1_root_rstn		),
 	.power_on_rstn				(RSTN				),
 
 	.TDI						(TDI				),
@@ -45,6 +58,30 @@ fp_domain u_fp_domain
 	.TDO						(TDO				),
 	.TRST						(TRST				)
 );
+
+//===============================================
+// fpga platform
+//===============================================
+
+`ifdef FPGA
+
+fpga_platform u_fpga_platform
+(
+	.input_clk					(CLK				),  
+	.rstn						(RSTN				),
+	.output_clk0				(sys_root_clk		),
+	.output_clk1				(apb1_root_clk		),
+	.output_clk2				(					),
+	.pll_locked					(pll_locked			)	
+);
+
+`else
+	
+assign pll_locked = 1'b1;	
+assign sys_root_clk = CLK;
+assign apb1_root_clk = CLK;
+
+`endif
 
 endmodule
 

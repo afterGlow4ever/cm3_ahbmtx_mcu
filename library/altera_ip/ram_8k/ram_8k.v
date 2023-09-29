@@ -36,7 +36,10 @@
 // synopsys translate_off
 `timescale 1 ps / 1 ps
 // synopsys translate_on
-module ram_8k (
+module ram_8k #(
+	parameter MIFFILE = ""
+)
+(
 	address,
 	byteena,
 	clock,
@@ -93,6 +96,7 @@ module ram_8k (
 		altsyncram_component.byte_size = 8,
 		altsyncram_component.clock_enable_input_a = "BYPASS",
 		altsyncram_component.clock_enable_output_a = "BYPASS",
+		altsyncram_component.init_file = "",
 		altsyncram_component.intended_device_family = "Cyclone IV E",
 		altsyncram_component.lpm_hint = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=ram_8k",
 		altsyncram_component.lpm_type = "altsyncram",

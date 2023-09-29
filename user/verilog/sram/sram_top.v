@@ -88,7 +88,11 @@ u_ahb_to_itcm
 `ifdef FPGA_SRAM
 `ifdef ALTERA_EP4
 
-ram_32k	u_itcm
+ram_32k	
+#(
+	.MIFFILE					("bootloader.mif")
+)
+u_itcm
 (
 	.address					(itcm_addr),
 	.byteena					(itcm_wen),
@@ -97,6 +101,18 @@ ram_32k	u_itcm
 	.rden						((itcm_cs && !itcm_wen)),
 	.wren						(|itcm_wen),
 	.q							(itcm_rdata)
+);
+
+`elsif ZYNQ_7020
+
+ram_32k	u_itcm
+(
+	.addra						(itcm_addr),
+	.clka						(sys_root_clk),
+	.dina						(itcm_wdata),
+	.ena						(itcm_cs),
+	.wea						(itcm_wen),
+	.douta						(itcm_rdata)
 );
 
 `endif	
@@ -125,7 +141,7 @@ u_itcm
 // 0x00010000~0x00012000
 //===============================================
 
-wire	[12:0]					dtcm_addr;
+wire	[10:0]					dtcm_addr;
 wire	[31:0]					dtcm_wdata;
 wire	[ 3:0]					dtcm_wen;
 wire							dtcm_cs;
@@ -135,7 +151,7 @@ assign hresp_dtcm[1] = 1'b0;
 
 cmsdk_ahb_to_sram
 #(
-	.AW							(15)	
+	.AW							(13)	
 )
 u_ahb_to_dtcm 
 (
@@ -147,7 +163,7 @@ u_ahb_to_dtcm
 	.HTRANS						(htrans_dtcm),
 	.HSIZE						(hsize_dtcm),
 	.HWRITE						(hwrite_dtcm),
-	.HADDR						(haddr_dtcm[14:0]),
+	.HADDR						(haddr_dtcm[12:0]),
 //	.HPROT						(hprot_dtcm),
 	.HWDATA						(hwdata_dtcm),
 	.HREADYOUT					(hreadyout_dtcm),
@@ -175,12 +191,24 @@ ram_8k	u_dtcm
 	.q							(dtcm_rdata)
 );
 
+`elsif ZYNQ_7020
+
+ram_8k	u_dtcm
+(
+	.addra						(dtcm_addr),
+	.clka						(sys_root_clk),
+	.dina						(dtcm_wdata),
+	.ena						(dtcm_cs),
+	.wea						(dtcm_wen),
+	.douta						(dtcm_rdata)
+);
+
 `endif
 `else
 
 cmsdk_fpga_sram
 #(
-	.AW							(13)
+	.AW							(11)
 )
 u_dtcm
 (

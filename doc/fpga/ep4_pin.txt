@@ -1,0 +1,9 @@
+PIN			FPGA			DB				COMMIT
+
+CLK			T2				Y4				50MHz
+RSTN		K17				K1
+TDI			D8				U2-A15
+TCK			C10				U2-A17
+TMS			E11				U2-A19
+TDO			E14				U2-A21
+TRST		E13				U2-A23

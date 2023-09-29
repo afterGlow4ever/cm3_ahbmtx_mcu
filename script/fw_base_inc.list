@@ -1,0 +1,4 @@
+../library/cmsis/CMSIS/Include
+../library/cmsis/Device/ARM/CM3DS/Include
+../library/drivers
+../user/firmware/bootloader/boot/inc

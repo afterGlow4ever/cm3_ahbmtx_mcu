@@ -3,4 +3,6 @@
 ../library/altera_sim/altera_mf.v
 ../library/altera_ip/ram_32k/ram_32k.v
 ../library/altera_ip/ram_8k/ram_8k.v
+../library/altera_ip/pll_50m/pll_50m.v
+../user/fpga_verilog/fpga_platform.v
 

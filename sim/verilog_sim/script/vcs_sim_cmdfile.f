@@ -11,6 +11,7 @@
 -debug_all
 -debug_pp
 -debug_access
+-debug_region=cell+lib
 //-ALLOWREDEFINATION
 -D__LINUX_OS_
 -l compile.log

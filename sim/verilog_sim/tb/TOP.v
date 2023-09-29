@@ -31,7 +31,7 @@ initial
 begin
 	clk = 1'b0;
 	#100
-	forever #(20) clk = ~clk;
+	forever #(10) clk = ~clk;
 end
 
 // system reset will be release at 500ns

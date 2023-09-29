@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_T-2022.06
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 25 1920 452 161 65
+viewPort 0 25 1920 353 161 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 322613.483920 2868644.221880
-cursor 960000.000000
+zoom 6776979.775909 7089732.386904
+cursor 6890000.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 30
+top 59
 ; marker line index
-markerPos 52
+markerPos 66
 
 ; event list
 ; addEvent event_name event_expression
@@ -44,6 +44,11 @@ COMPLEX_EVENT_END
 ; curSTATUS search_type
 curSTATUS ByChange
 
+
+aliasmapname cmsdk_ahb_to_apb_async_p.curr_state
+nalias fsm_apb_idle		2'b00		NULL
+nalias fsm_apb_cyc1		2'b01		NULL
+nalias fsm_apb_wait		2'b11		NULL
 
 addGroup "G1"
 activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/cpu_itcm_boot_sim/TOP.fsdb"
@@ -100,6 +105,23 @@ addSignal -h 15 -UNSIGNED -HEX -holdScope vis_msp_o[31:2]
 addSignal -h 15 -UNSIGNED -HEX -holdScope vis_psp_o[31:2]
 addSignal -h 15 -UNSIGNED -HEX -holdScope vis_pc_o[31:1]
 addGroup "G6"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/hwdata_apb1[31:0]
+addSignal -h 15 -holdScope hwrite_apb1
+addSignal -h 15 -UNSIGNED -HEX -holdScope haddr_apb1[14:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope paddr1[14:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope haddr_apb1[31:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_addr[12:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb1_async/u_ahb_to_apb_async_h/HADDR[14:2]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/curr_state[0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope s_addr[12:0]
+aliasname cmsdk_ahb_to_apb_async_p.curr_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[1:0]
+addSignal -h 15 -holdScope req_detect
+addSignal -h 15 -holdScope s_trans_valid_reg
+addSignal -h 15 -holdScope PREADY
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/pwdata1[31:0]
+addSignal -h 15 -holdScope pwrite1
+addGroup "G7"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm
