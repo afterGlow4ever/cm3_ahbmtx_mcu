@@ -1,0 +1,4 @@
+Warning (10273): Verilog HDL warning at ram_gen.v(52): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 52
+Warning (10273): Verilog HDL warning at ram_gen.v(96): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 96
+Warning (10273): Verilog HDL warning at ram_gen.v(146): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 146
+Warning (10273): Verilog HDL warning at ram_gen.v(156): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 156

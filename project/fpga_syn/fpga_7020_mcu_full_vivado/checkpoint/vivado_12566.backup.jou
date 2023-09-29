@@ -1,0 +1,74 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Fri Sep 29 10:47:07 2023
+# Process ID: 12566
+# Current directory: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint
+# Command line: vivado route.dcp
+# Log file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/vivado.log
+# Journal file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_checkpoint /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/route.dcp
+set_property mark_debug true [get_nets [list {u_fp_domain/u_sram_top/Yv4nz6_i_6[2]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[0]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[1]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[3]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[4]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[5]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[6]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[7]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[8]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[11]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[12]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[9]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[10]}]]
+set_property mark_debug true [get_nets [list {u_fp_domain/u_sram_top/itcm_rdata[5]} {u_fp_domain/u_sram_top/itcm_rdata[1]} {u_fp_domain/u_sram_top/itcm_rdata[0]} {u_fp_domain/u_sram_top/itcm_rdata[13]} {u_fp_domain/u_sram_top/itcm_rdata[11]} {u_fp_domain/u_sram_top/itcm_rdata[12]} {u_fp_domain/u_sram_top/itcm_rdata[2]} {u_fp_domain/u_sram_top/itcm_rdata[3]} {u_fp_domain/u_sram_top/itcm_rdata[4]} {u_fp_domain/u_sram_top/itcm_rdata[14]} {u_fp_domain/u_sram_top/itcm_rdata[28]} {u_fp_domain/u_sram_top/itcm_rdata[29]} {u_fp_domain/u_sram_top/itcm_rdata[26]} {u_fp_domain/u_sram_top/itcm_rdata[27]} {u_fp_domain/u_sram_top/itcm_rdata[24]} {u_fp_domain/u_sram_top/itcm_rdata[25]} {u_fp_domain/u_sram_top/itcm_rdata[22]} {u_fp_domain/u_sram_top/itcm_rdata[23]} {u_fp_domain/u_sram_top/itcm_rdata[15]} {u_fp_domain/u_sram_top/itcm_rdata[16]} {u_fp_domain/u_sram_top/itcm_rdata[17]} {u_fp_domain/u_sram_top/itcm_rdata[18]} {u_fp_domain/u_sram_top/itcm_rdata[19]} {u_fp_domain/u_sram_top/itcm_rdata[20]} {u_fp_domain/u_sram_top/itcm_rdata[21]} {u_fp_domain/u_sram_top/itcm_rdata[30]} {u_fp_domain/u_sram_top/itcm_rdata[31]} {u_fp_domain/u_sram_top/itcm_rdata[6]} {u_fp_domain/u_sram_top/itcm_rdata[7]} {u_fp_domain/u_sram_top/itcm_rdata[8]} {u_fp_domain/u_sram_top/itcm_rdata[9]} {u_fp_domain/u_sram_top/itcm_rdata[10]}]]
+set_property mark_debug true [get_nets [list u_fp_domain/u_sram_top/ena]]
+set_property mark_debug true [get_nets [list {u_fp_domain/u_sram_top/itcm_wen[0]} {u_fp_domain/u_sram_top/itcm_wen[1]} {u_fp_domain/u_sram_top/itcm_wen[2]} {u_fp_domain/u_sram_top/itcm_wen[3]}]]
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 8192 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+connect_debug_port u_ila_0/clk [get_nets [list u_fpga_platform/u_pll0/inst/clk_out1 ]]
+set_property port_width 13 [get_debug_ports u_ila_0/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {u_fp_domain/u_sram_top/Yv4nz6_i_6[0]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[1]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[2]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[3]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[4]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[5]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[6]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[7]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[8]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[9]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[10]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[11]} {u_fp_domain/u_sram_top/Yv4nz6_i_6[12]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 4 [get_debug_ports u_ila_0/probe1]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list {u_fp_domain/u_sram_top/itcm_wen[0]} {u_fp_domain/u_sram_top/itcm_wen[1]} {u_fp_domain/u_sram_top/itcm_wen[2]} {u_fp_domain/u_sram_top/itcm_wen[3]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 32 [get_debug_ports u_ila_0/probe2]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
+connect_debug_port u_ila_0/probe2 [get_nets [list {u_fp_domain/u_sram_top/itcm_rdata[0]} {u_fp_domain/u_sram_top/itcm_rdata[1]} {u_fp_domain/u_sram_top/itcm_rdata[2]} {u_fp_domain/u_sram_top/itcm_rdata[3]} {u_fp_domain/u_sram_top/itcm_rdata[4]} {u_fp_domain/u_sram_top/itcm_rdata[5]} {u_fp_domain/u_sram_top/itcm_rdata[6]} {u_fp_domain/u_sram_top/itcm_rdata[7]} {u_fp_domain/u_sram_top/itcm_rdata[8]} {u_fp_domain/u_sram_top/itcm_rdata[9]} {u_fp_domain/u_sram_top/itcm_rdata[10]} {u_fp_domain/u_sram_top/itcm_rdata[11]} {u_fp_domain/u_sram_top/itcm_rdata[12]} {u_fp_domain/u_sram_top/itcm_rdata[13]} {u_fp_domain/u_sram_top/itcm_rdata[14]} {u_fp_domain/u_sram_top/itcm_rdata[15]} {u_fp_domain/u_sram_top/itcm_rdata[16]} {u_fp_domain/u_sram_top/itcm_rdata[17]} {u_fp_domain/u_sram_top/itcm_rdata[18]} {u_fp_domain/u_sram_top/itcm_rdata[19]} {u_fp_domain/u_sram_top/itcm_rdata[20]} {u_fp_domain/u_sram_top/itcm_rdata[21]} {u_fp_domain/u_sram_top/itcm_rdata[22]} {u_fp_domain/u_sram_top/itcm_rdata[23]} {u_fp_domain/u_sram_top/itcm_rdata[24]} {u_fp_domain/u_sram_top/itcm_rdata[25]} {u_fp_domain/u_sram_top/itcm_rdata[26]} {u_fp_domain/u_sram_top/itcm_rdata[27]} {u_fp_domain/u_sram_top/itcm_rdata[28]} {u_fp_domain/u_sram_top/itcm_rdata[29]} {u_fp_domain/u_sram_top/itcm_rdata[30]} {u_fp_domain/u_sram_top/itcm_rdata[31]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list u_fp_domain/u_sram_top/ena ]]
+report_drc -name drc_1 -ruledecks {eco_checks}
+opt_design 
+set_property C_LOAD_INIT_FILE 1 [get_cells u_fp_domain/u_sram_top/u_itcm/U0]
+set_property C_INIT_FILE_NAME bootloader.txt [get_cells u_fp_domain/u_sram_top/u_itcm/U0]
+write_checkpoint /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/route.dcp -force
+opt_design 
+place_design 
+phys_opt_design 
+set_param route.incremental.forceEco 1
+route_design
+write_bitstream -force /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/project_route.bit 
+write_debug_probes -force /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/mcu_boot.ltx
+write_checkpoint /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/route.dcp -force
+open_hw_manager
+connect_hw_server -allow_non_jtag
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+connect_hw_server -allow_non_jtag
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+refresh_hw_server {localhost:3121}
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+close_hw_manager
+open_hw_manager
+connect_hw_server -allow_non_jtag
+close_hw_manager
+open_hw_manager
+connect_hw_server -allow_non_jtag
+close_hw_manager

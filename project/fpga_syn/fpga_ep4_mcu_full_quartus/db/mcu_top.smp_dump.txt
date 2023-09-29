@@ -1,0 +1,7 @@
+
+State Machine - |mcu_top|fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_h:u_ahb_to_apb_async_h|curr_state
+Name curr_state.fsm_wait curr_state.fsm_wr1 curr_state.fsm_done curr_state.fsm_idle 
+curr_state.fsm_idle 0 0 0 0 
+curr_state.fsm_done 0 0 1 1 
+curr_state.fsm_wr1 0 1 0 1 
+curr_state.fsm_wait 1 0 0 1 
