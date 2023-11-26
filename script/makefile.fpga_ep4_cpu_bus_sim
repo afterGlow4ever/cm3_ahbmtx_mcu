@@ -1,11 +1,11 @@
-SIM_TARGET := cpu_swd_sim
-SIM_DEFINE := +define+FSDB_DUMP +define+CPU_SWD_SIM +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
+SIM_TARGET := fpga_ep4_cpu_bus_sim
+SIM_DEFINE := +define+FSDB_DUMP +define+CPU_BUS_SIM +define+FPGA +define+FPGA_SRAM +define+ALTERA_EP4
 DUT_LIST := dut.list
 SIM_LIST := sim.list
 SIM_INC_LIST := sim_inc.list
 CMDFILE := ${PRJ_SIM_SCR_DIR}/vcs_sim_cmdfile.f
 WAVEFORM := TOP.fsdb
-WAVELIST := ${PRJ_SIM_SCR_DIR}/swd.rc
+WAVELIST := ${PRJ_SIM_SCR_DIR}/bus.rc
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
 SHELL := /bin/bash
 

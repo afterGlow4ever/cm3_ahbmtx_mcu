@@ -16,8 +16,10 @@
 module fp_domain 
 (
 	input						sys_root_clk,
+	input						apb0_root_clk,
 	input						apb1_root_clk,
 	input						sys_root_rstn,
+	input						apb0_root_rstn,
 	input						apb1_root_rstn,
 	input						power_on_rstn,
 	
@@ -136,6 +138,24 @@ wire	      					hreadyout_sram0;
 wire	[ 1:0]				 	hresp_sram0;
 wire	      					hexresp_sram0;
 
+// apb0 sync
+wire							hsel_apb0;
+wire	[31:0]				 	haddr_apb0; 
+wire	[ 1:0]				 	htrans_apb0; 
+wire	[ 2:0]				 	hsize_apb0; 
+wire	      					hwrite_apb0; 
+wire	[ 2:0]					hburst_apb0; 
+wire	[ 3:0]				 	hprot_apb0; 
+wire	      					hmastlock_apb0; 
+wire	[ 1:0]					hmemattr_apb0;
+wire	[ 3:0]					hmaster_apb0;
+wire	[31:0]				 	hwdata_apb0; 
+wire	      					hexreq_apb0;
+wire	      					hready_apb0; 
+wire	[31:0]				 	hrdata_apb0; 
+wire	      					hreadyout_apb0; 
+wire	[ 1:0]				 	hresp_apb0;
+wire	      					hexresp_apb0;
 
 // apb1 async
 wire							hsel_apb1;
@@ -276,6 +296,25 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HRESPM5					(hresp_sram0),
 	.HRUSERM5					(32'b0),
 
+	// apb0 sync
+	.HSELM6						(hsel_apb0),
+	.HADDRM6					(haddr_apb0),
+	.HTRANSM6					(htrans_apb0),
+	.HWRITEM6					(hwrite_apb0),
+	.HSIZEM6					(hsize_apb0),
+	.HBURSTM6					(hburst_apb0),
+	.HPROTM6					(hprot_apb0),
+	.HMASTERM6					(hmaster_apb0),
+	.HWDATAM6					(hwdata_apb0),
+	.HMASTLOCKM6				(hmastlock_apb0),
+	.HREADYMUXM6				(hready_apb0),
+	.HAUSERM6					(),
+	.HWUSERM6					(),
+	.HRDATAM6					(hrdata_apb0),
+	.HREADYOUTM6				(hreadyout_apb0),
+	.HRESPM6					(hresp_apb0),
+	.HRUSERM6					(32'b0),
+
 	// apb1 async
 	.HSELM7						(hsel_apb1),
 	.HADDRM7					(haddr_apb1),
@@ -291,8 +330,7 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HAUSERM7					(),
 	.HWUSERM7					(),
 	.HRDATAM7					(hrdata_apb1),
-//	.HREADYOUTM7				(hreadyout_apb1),
-	.HREADYOUTM7				(1'b1),
+	.HREADYOUTM7				(hreadyout_apb1),
 	.HRESPM7					(hresp_apb1),
 	.HRUSERM7					(32'b0),
 
@@ -302,14 +340,68 @@ ahb_bus_matrix u_ahb_bus_matrix
 );
 
 //===============================================
+// AMBA APB0 sync
+// 0x40000000 ~ 0x4000FFFF 64k
+//===============================================
+
+wire							psel0;
+wire							penable0;
+wire	[31:0]				 	paddr0; 
+wire	      					pwrite0; 
+wire	[ 3:0]				 	pstrb0; 
+wire	[ 2:0]				 	pprot0; 
+wire	[31:0]				 	pwdata0; 
+wire	      					pready0; 
+wire	[31:0]				 	prdata0; 
+wire	      					pslverr0; 
+wire	      					pactive0; 
+
+assign hresp_apb0[1] = 1'b0;
+
+cmsdk_ahb_to_apb
+#(
+	.ADDRWIDTH					(32)	
+)
+u_apb0_sync 
+(
+	.HCLK						(apb0_root_clk),
+	.HRESETn					(apb0_root_rstn),
+	.PCLKEN						(1'b1),
+
+	.HSEL						(hsel_apb0),
+	.HADDR						(haddr_apb0),
+	.HTRANS						(htrans_apb0),
+	.HWRITE						(hwrite_apb0),
+	.HSIZE						(hsize_apb0),
+	.HPROT						(hprot_apb0),
+	.HWDATA						(hwdata_apb0),
+	.HREADY						(hready_apb0),
+	.HRDATA						(hrdata_apb0),
+	.HREADYOUT					(hreadyout_apb0),
+	.HRESP						(hresp_apb0[0]),
+	
+	.PADDR						(paddr0),  
+	.PENABLE					(penable0),
+	.PSTRB						(pstrb0),  
+	.PPROT						(pprot0),  
+	.PWRITE						(pwrite0), 
+	.PWDATA						(pwdata0), 
+	.PSEL						(psel0),   
+	.PRDATA						(prdata0), 
+	.PREADY						(pready0),
+	.PSLVERR					(pslverr0),
+	
+	.APBACTIVE					(pactive0)
+);
+
+//===============================================
 // AMBA APB1 async
-// 0x40000000 ~ 0x40008000
-// 32k addr:15bit
+// 0x40010000 ~ 0x4001FFFF 64k
 //===============================================
 
 wire							psel1;
 wire							penable1;
-wire	[14:0]				 	paddr1; 
+wire	[31:0]				 	paddr1; 
 wire	      					pwrite1; 
 wire	[ 3:0]				 	pstrb1; 
 wire	[ 2:0]				 	pprot1; 
@@ -323,7 +415,7 @@ assign hresp_apb1[1] = 1'b0;
 
 cmsdk_ahb_to_apb_async
 #(
-	.ADDRWIDTH					(15)	
+	.ADDRWIDTH					(32)	
 )
 u_apb1_async 
 (
@@ -331,7 +423,7 @@ u_apb1_async
 	.HRESETn					(sys_root_rstn),
 
 	.HSEL						(hsel_apb1),
-	.HADDR						(haddr_apb1[14:0]),
+	.HADDR						(haddr_apb1),
 	.HTRANS						(htrans_apb1),
 	.HWRITE						(hwrite_apb1),
 	.HSIZE						(hsize_apb1),
@@ -352,12 +444,9 @@ u_apb1_async
 	.PWRITE						(pwrite1), 
 	.PWDATA						(pwdata1), 
 	.PSEL						(psel1),   
-//	.PRDATA						(prdata1), 
-	.PRDATA						(32'h00000000), 
-//	.PREADY						(pready1),
-	.PREADY						(1'b1),
-//	.PSLVERR					(pslverr1),
-	.PSLVERR					(1'b0),
+	.PRDATA						(prdata1), 
+	.PREADY						(pready1),
+	.PSLVERR					(pslverr1),
 	
 	.APBACTIVE					(pactive1)
 );
@@ -448,9 +537,9 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .HBURSTI        (hbursti),            // I-CODE bus burst length
    .HPROTI         (hproti),             // i-code bus protection
    .MEMATTRI       (hmemattri),          // I-CODE bus memory attributes
-   .HREADYI        (hreadyi),            	 // I-CODE bus ready
-   .HRDATAI        (hrdatai),            	 // I-CODE bus read data
-   .HRESPI         (hrespi),               // I-CODE bus response
+   .HREADYI        (hreadyi),            // I-CODE bus ready
+   .HRDATAI        (hrdatai),            // I-CODE bus read data
+   .HRESPI         (hrespi),             // I-CODE bus response
    .IFLUSH         (1'b0),               // Prefetch flush - fixed when using the Designstart system
 
    // AHB D-Code bus
@@ -464,9 +553,9 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .HMASTERD       (hmasterd),           // D-CODE bus master
    .HWDATAD        (hwdatad),            // D-CODE bus write data
    .EXREQD         (hexreqd),            // D-CODE bus exclusive request
-   .HREADYD        (hreadyd),            	 // D-CODE bus ready
-   .HRDATAD        (hrdatad),              // D-CODE bus read data
-   .HRESPD         (hrespd),               // D-CODE bus response
+   .HREADYD        (hreadyd),            // D-CODE bus ready
+   .HRDATAD        (hrdatad),            // D-CODE bus read data
+   .HRESPD         (hrespd),             // D-CODE bus response
    .EXRESPD        (1'b0),            	 // D-CODE bus exclusive response
 
    // AHB System bus
@@ -481,29 +570,10 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
    .HMASTERS       (),                   // System bus master
    .HWDATAS        (hwdatas),            // System bus write data
    .EXREQS         (),                   // System bus exclusive request
-   .HREADYS        (hreadys),            	 // System bus ready
-   .HRDATAS        (hrdatas),            	 // System bus read data
-   .HRESPS         (hresps),             	 // System bus response
+   .HREADYS        (hreadys),            // System bus ready
+   .HRDATAS        (hrdatas),            // System bus read data
+   .HRESPS         (hresps),             // System bus response
    .EXRESPS        (1'b0),            	 // System bus exclusive response
-
-//     // I-CODE Bus
-// 		 
-//     .HREADYI        (hreadyi),            // I-CODE bus ready
-//     .HRDATAI        (hrdatai),            // I-CODE bus read data
-//     .HRESPI         (hrespi),             // I-CODE bus response
-//     .IFLUSH         (1'b0),               // Prefetch flush - fixed when using the Designstart system
-//
-//     // D-CODE Bus
-//     .HREADYD        (hreadyd),            // D-CODE bus ready
-//     .HRDATAD        (hrdatad),            // D-CODE bus read data
-//     .HRESPD         (hrespd),             // D-CODE bus response
-//     .EXRESPD        (exrespd),            // D-CODE bus exclusive response
-//
-//     // System Bus
-//     .HREADYS        (hreadys),            // System bus ready
-//     .HRDATAS        (hrdatas),            // System bus read data
-//     .HRESPS         (hresps),             // System bus response
-//     .EXRESPS        (exresps),            // System bus exclusive response
 
    // Sleep
    .RXEV           (1'b0),               // Receive Event input
@@ -619,6 +689,48 @@ sram_top u_sram_top
 	.hreadyout_dtcm				(hreadyout_dtcm),
 	.hresp_dtcm 				(hresp_dtcm),
 	.hrdata_dtcm 				(hrdata_dtcm)
+);
+
+//===============================================
+// apb0 sync top
+//===============================================
+
+apb0_top u_apb0_sync_top 
+(
+	.apb0_root_clk				(apb0_root_clk),
+	.apb0_root_rstn				(apb0_root_rstn),
+	
+	.paddr						(paddr0),  
+	.penable					(penable0),
+	.pstrb						(pstrb0),  
+	.pprot						(pprot0),  
+	.pwrite						(pwrite0), 
+	.pwdata						(pwdata0), 
+	.psel						(psel0),   
+	.prdata						(prdata0), 
+	.pready						(pready0),
+	.pslverr					(pslverr0)
+);
+
+//===============================================
+// apb1 async top
+//===============================================
+
+apb1_top u_apb1_async_top 
+(
+	.apb1_root_clk				(apb1_root_clk),
+	.apb1_root_rstn				(apb1_root_rstn),
+	
+	.paddr						(paddr1),  
+	.penable					(penable1),
+	.pstrb						(pstrb1),  
+	.pprot						(pprot1),  
+	.pwrite						(pwrite1), 
+	.pwdata						(pwdata1), 
+	.psel						(psel1),   
+	.prdata						(prdata1), 
+	.pready						(pready1),
+	.pslverr					(pslverr1)
 );
 
 endmodule

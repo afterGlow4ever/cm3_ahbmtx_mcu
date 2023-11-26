@@ -6,6 +6,7 @@
 (3)	gcc-arm-none-eabi v10.3-2021.10
 (4)	Quartus Prime 2018
 (5)	Vivado 2021.1
+(6)	Spyglass-2021
 3	项目使用的资源与硬件：
 (1)	ep4ce55的ad9361开发板及usb-blaster下载器
 (2)	正点原子zynq领航者开发板及xilinx下载器
@@ -45,10 +46,12 @@
 (2)	了解AHB总线矩阵的生成。
 (3)	掌握AHB总线矩阵与CPU、AHB2APB桥、外设的连接方式。
 (4)	掌握AHB总线矩阵如何连接时钟信号和复位信号。
-4	学习异步APB总线：
-(1)	了解异步APB总线矩阵的基本读写时序。
-(2)	掌握异步APB总线与CPU、AHB2APB桥、外设的连接方式。
-(3)	掌握异步APB总线如何连接时钟信号和复位信号。
+4	学习AHB2APB桥和APB总线：
+(1)	了解同步和异步AHB2APB桥的基本读写时序。
+(2)	了解APB总线的基本读写时序。
+(3)	掌握同步和异步AHB2APB桥和AHB总线矩阵、APB总线的连接方式。
+(4)	掌握APB总线如何连接时钟信号和复位信号。
+(5)	掌握APB总线如何连接外设（寄存器）。
 5	学习SWD时序与JTAG使用方法：
 (1)	了解SWD的基本工作原理与模型。
 (2)	掌握SWD读写指定地址的操作方法。
@@ -67,11 +70,15 @@
 (1)	掌握如何使用Quartus和Vivado生成或修改IP核，包括RAM核和PLL核。
 (2)	掌握如何使用Quartus和Vivado进行fpga综合并下载bit文件。
 (3)	掌握如何使用Quartus和Vivado进行在线debug。
-(4)	掌握如何使用Quartus和Vivado进行时序分析。
+(4)	掌握如何使用Quartus和Vivado编写时序约束文件并进行时序分析。
 (5)	掌握如何使用Quartus和Vivado进行ECO操作。
+11	学习spyglass环境：
+(1)	掌握如何编写sgdc约束文件。
+(2)	掌握如何使用spyglass进行语法和cdc分析。
+(3)	了解根据spyglass的分析结果对于rtl的意义。
 
 四	可以重复利用的资源：
-1	工程项目目录下Library下面的内容，包括Altera及Xilinx的部分仿真库、基本功能逻辑RTL的实现、Cortex-M3的建议版本模型、CMSDK模型（包括AHB总线矩阵、APB总线）、SWD模型等。
+1	工程项目目录下Library下面的内容，包括Altera及Xilinx的部分仿真库、基本功能逻辑RTL的实现、Cortex-M3的建议版本模型、CMSDK模型（包括AHB总线矩阵、APB总线）、SWD模型、仿真结果监视器模型等。
 2	工程项目目录下User\Verilog，这里是MCU的基本集成结构。
 3	便于使用者进行工作的“爱上实验室”开发工程环境，包含setenv.sh文件和Script目录下的makefile文件。
 
@@ -86,7 +93,7 @@ Doc目录为项目文档，包括参考资料、设计文档、原理图等。
 Library目录为项目所使用到的库文件，包括仿真库、Monitor、Model等。
 Project目录为项目所涉及到的工程，包括arm-none-eabi工程、fpga工程等。
 Script目录包含“爱上实验室”开发工程环境专用的脚本、功能等。
-Sim目录为项目包含的仿真的目录，包含仿真工程、testbench、激励文件、脚本等、以及仿真专用代码、脚本等。
+Sim目录为项目包含的仿真的目录，包含仿真工程、spyglass工程、testbench、激励文件、脚本等、以及仿真专用代码、脚本等。
 User目录包含用户主要的项目文件，包含rtl代码、bootloader等。
 
 目前最适合的使用方法是在Linux环境下运行，很多脚本方便使用，可以体会到“爱上实验室”开发工程环境的便利。使用者只需根据自己的环境配置setenv.sh文件即可，默认使用的是modulefiles模块管理eda工具。
@@ -102,6 +109,7 @@ cds跳转至仿真目录等。
 工程根目录下面的script文件夹里，即为“爱上实验室”开发工程环境专用的脚本、功能，目前包括以下种类：
 RTL功能仿真；
 AHB总线矩阵生成；
+连接APB总线的寄存器生成；
 firmware编译；
 fpga综合；
 带firmware的综合仿真等。

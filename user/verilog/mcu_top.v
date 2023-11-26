@@ -38,6 +38,7 @@ wire							apb1_root_rstn;
 wire							pll_locked;
 
 assign sys_root_rstn = RSTN & pll_locked;
+assign apb0_root_rstn = RSTN & pll_locked;
 assign apb1_root_rstn = RSTN & pll_locked;
 
 //===============================================
@@ -48,6 +49,8 @@ fp_domain u_fp_domain
 (
 	.sys_root_clk				(sys_root_clk		),
 	.sys_root_rstn				(sys_root_rstn		),
+	.apb0_root_clk				(apb0_root_clk		),
+	.apb0_root_rstn				(apb0_root_rstn		),
 	.apb1_root_clk				(apb1_root_clk		),
 	.apb1_root_rstn				(apb1_root_rstn		),
 	.power_on_rstn				(RSTN				),
@@ -62,6 +65,8 @@ fp_domain u_fp_domain
 //===============================================
 // fpga platform
 //===============================================
+
+assign apb0_root_clk = sys_root_clk;;
 
 `ifdef FPGA
 

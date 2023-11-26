@@ -94,6 +94,12 @@ module ahb_bus_matrix_lite (
     HRUSERM5,
 
     // Output port MI3 (inputs from slave 3)
+    HRDATAM6,
+    HREADYOUTM6,
+    HRESPM6,
+    HRUSERM6,
+
+    // Output port MI4 (inputs from slave 4)
     HRDATAM7,
     HREADYOUTM7,
     HRESPM7,
@@ -147,6 +153,20 @@ module ahb_bus_matrix_lite (
     HWUSERM5,
 
     // Output port MI3 (outputs to slave 3)
+    HSELM6,
+    HADDRM6,
+    HTRANSM6,
+    HWRITEM6,
+    HSIZEM6,
+    HBURSTM6,
+    HPROTM6,
+    HWDATAM6,
+    HMASTLOCKM6,
+    HREADYMUXM6,
+    HAUSERM6,
+    HWUSERM6,
+
+    // Output port MI4 (outputs to slave 4)
     HSELM7,
     HADDRM7,
     HTRANSM7,
@@ -249,6 +269,12 @@ module ahb_bus_matrix_lite (
     input  [31:0] HRUSERM5;        // Read-data USER signals
 
     // Output port MI3 (inputs from slave 3)
+    input  [31:0] HRDATAM6;        // Read data bus
+    input         HREADYOUTM6;     // HREADY feedback
+    input         HRESPM6;         // Transfer response
+    input  [31:0] HRUSERM6;        // Read-data USER signals
+
+    // Output port MI4 (inputs from slave 4)
     input  [31:0] HRDATAM7;        // Read data bus
     input         HREADYOUTM7;     // HREADY feedback
     input         HRESPM7;         // Transfer response
@@ -302,6 +328,20 @@ module ahb_bus_matrix_lite (
     output [31:0] HWUSERM5;        // Write-data USER signals
 
     // Output port MI3 (outputs to slave 3)
+    output        HSELM6;          // Slave Select
+    output [31:0] HADDRM6;         // Address bus
+    output  [1:0] HTRANSM6;        // Transfer type
+    output        HWRITEM6;        // Transfer direction
+    output  [2:0] HSIZEM6;         // Transfer size
+    output  [2:0] HBURSTM6;        // Burst type
+    output  [3:0] HPROTM6;         // Protection control
+    output [31:0] HWDATAM6;        // Write data
+    output        HMASTLOCKM6;     // Locked Sequence
+    output        HREADYMUXM6;     // Transfer done
+    output [31:0] HAUSERM6;        // Address USER signals
+    output [31:0] HWUSERM6;        // Write-data USER signals
+
+    // Output port MI4 (outputs to slave 4)
     output        HSELM7;          // Slave Select
     output [31:0] HADDRM7;         // Address bus
     output  [1:0] HTRANSM7;        // Transfer type
@@ -456,6 +496,25 @@ module ahb_bus_matrix_lite (
     wire  [31:0] HRUSERM5;        // Read-data USER signals
 
     // Output Port MI3
+    wire         HSELM6;          // Slave Select
+    wire  [31:0] HADDRM6;         // Address bus
+    wire   [1:0] HTRANSM6;        // Transfer type
+    wire         HWRITEM6;        // Transfer direction
+    wire   [2:0] HSIZEM6;         // Transfer size
+    wire   [2:0] HBURSTM6;        // Burst type
+    wire   [3:0] HPROTM6;         // Protection control
+    wire  [31:0] HWDATAM6;        // Write data
+    wire         HMASTLOCKM6;     // Locked Sequence
+    wire         HREADYMUXM6;     // Transfer done
+
+    wire  [31:0] HRDATAM6;        // Read data bus
+    wire         HREADYOUTM6;     // HREADY feedback
+    wire         HRESPM6;         // Transfer response
+    wire  [31:0] HAUSERM6;        // Address USER signals
+    wire  [31:0] HWUSERM6;        // Write-data USER signals
+    wire  [31:0] HRUSERM6;        // Read-data USER signals
+
+    // Output Port MI4
     wire         HSELM7;          // Slave Select
     wire  [31:0] HADDRM7;         // Address bus
     wire   [1:0] HTRANSM7;        // Transfer type
@@ -491,6 +550,8 @@ module ahb_bus_matrix_lite (
     wire   [1:0] i_hrespM1;
     wire   [3:0]        i_hmasterM5;
     wire   [1:0] i_hrespM5;
+    wire   [3:0]        i_hmasterM6;
+    wire   [1:0] i_hrespM6;
     wire   [3:0]        i_hmasterM7;
     wire   [1:0] i_hrespM7;
 
@@ -512,6 +573,7 @@ module ahb_bus_matrix_lite (
     assign i_hrespM0 = {tie_low, HRESPM0};
     assign i_hrespM1 = {tie_low, HRESPM1};
     assign i_hrespM5 = {tie_low, HRESPM5};
+    assign i_hrespM6 = {tie_low, HRESPM6};
     assign i_hrespM7 = {tie_low, HRESPM7};
 
 // BusMatrix instance
@@ -636,6 +698,25 @@ module ahb_bus_matrix_lite (
     .HRUSERM5     (HRUSERM5),
 
     // Output port MI3 signals
+    .HSELM6       (HSELM6),
+    .HADDRM6      (HADDRM6),
+    .HTRANSM6     (HTRANSM6),
+    .HWRITEM6     (HWRITEM6),
+    .HSIZEM6      (HSIZEM6),
+    .HBURSTM6     (HBURSTM6),
+    .HPROTM6      (HPROTM6),
+    .HWDATAM6     (HWDATAM6),
+    .HMASTERM6    (i_hmasterM6),
+    .HMASTLOCKM6  (HMASTLOCKM6),
+    .HREADYMUXM6  (HREADYMUXM6),
+    .HAUSERM6     (HAUSERM6),
+    .HWUSERM6     (HWUSERM6),
+    .HRDATAM6     (HRDATAM6),
+    .HREADYOUTM6  (HREADYOUTM6),
+    .HRESPM6      (i_hrespM6),
+    .HRUSERM6     (HRUSERM6),
+
+    // Output port MI4 signals
     .HSELM7       (HSELM7),
     .HADDRM7      (HADDRM7),
     .HTRANSM7     (HTRANSM7),

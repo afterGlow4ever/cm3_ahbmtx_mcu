@@ -9,14 +9,14 @@ master to ahb slave
 5: reserve
 
 ahb master to slave:
-0: dtcm 8k 0x00010000~0x00012000
-1: itcm 32k 0x00000000~0x00008000
+0: dtcm 8k 0x00010000~0x00011FFF
+1: itcm 32k 0x00000000~0x00007FFF
 2: reserve bootrom 16k 0x00020000~0x00024000
 3: reserve flash0 32k 0x08000000~0x08008000
 4: reserve ?flash1?
 5: sram0 32k 0x10000000~0x10008000
-6: reserve ?sram1??apb0?
-7: apb1async ?uart? 0x40000000~0x40008000
+6: apb0sync	0x40000000~0x4000FFFF
+7: apb1async ?uart? 0x40010000~0x4001FFFF
 8: reserve apb2 ?tmr?
 9: reserve apb3
 

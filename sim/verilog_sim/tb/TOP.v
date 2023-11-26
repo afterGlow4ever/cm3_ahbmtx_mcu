@@ -14,7 +14,8 @@
 
 module TOP;
 
-reg								clk;
+reg								clk_50mhz;
+reg								clk_20mhz;
 reg								rstn;
 wire							tdi;
 wire							tdo;
@@ -26,13 +27,26 @@ wire							trstn;
 // Clk and rst
 //===============================================
 
-// clk 25MHz
+// clk 50MHz
 initial
 begin
-	clk = 1'b0;
+	clk_50mhz = 1'b0;
 	#100
-	forever #(10) clk = ~clk;
+	forever #(10) clk_50mhz = ~clk_50mhz;
 end
+
+// clk 20MHz
+initial
+begin
+	clk_20mhz = 1'b0;
+	#100
+	forever #(25) clk_20mhz = ~clk_20mhz;
+end
+
+//initial
+//begin
+//	force TOP.u_mcu_top.apb1_root_clk = clk_20mhz;
+//end
 
 // system reset will be release at 500ns
 initial
@@ -48,7 +62,7 @@ end
 
 mcu_top u_mcu_top
 (
-	.CLK						(clk				),
+	.CLK						(clk_50mhz			),
 	.RSTN						(rstn				),
 
 	.TDI						(tdi				),
@@ -70,6 +84,12 @@ begin
 	$fsdbDumpMDA();
 end
 `endif
+
+//===============================================
+// Simulation result check monitor
+//===============================================
+
+sim_monitor u_sim_monitor();
 
 //===============================================
 // Other modules

@@ -155,8 +155,8 @@ module ahb_bus_matrix_decoderS1 (
     reg    [31:0] HRUSERS;
     reg    [31:0] HRDATAS;         // Read data bus
 
-    reg     [2:0] addr_out_port;     // Address output ports
-    reg     [2:0] data_out_port;     // Data output ports
+    reg     [3:0] addr_out_port;     // Address output ports
+    reg     [3:0] data_out_port;     // Data output ports
 
     // Default slave signals
     reg           sel_dft_slv;       // HSEL signal
@@ -203,18 +203,18 @@ module ahb_bus_matrix_decoderS1 (
              decode_addr_dec or data_out_port or trans_dec
            )
     begin : p_addr_out_port_comb
-      // Address region 0x00000000-0x00008000
-      if (((decode_addr_dec >= 22'h000000) & (decode_addr_dec <= 22'h000020))
-                           | ((data_out_port == 3'b001) & (trans_dec == 2'b00)))
-        addr_out_port = 3'b001;  // Select Output port MI1
+      // Address region 0x00000000-0x00007FFF
+      if (((decode_addr_dec >= 22'h000000) & (decode_addr_dec <= 22'h00001f))
+                           | ((data_out_port == 4'b0001) & (trans_dec == 2'b00)))
+        addr_out_port = 4'b0001;  // Select Output port MI1
 
-      // Address region 0x10000000-0x10008000
-      else if (((decode_addr_dec >= 22'h040000) & (decode_addr_dec <= 22'h040020))
-                           | ((data_out_port == 3'b010) & (trans_dec == 2'b00)))
-        addr_out_port = 3'b010;  // Select Output port MI2
+      // Address region 0x10000000-0x10007FFF
+      else if (((decode_addr_dec >= 22'h040000) & (decode_addr_dec <= 22'h04001f))
+                           | ((data_out_port == 4'b0010) & (trans_dec == 2'b00)))
+        addr_out_port = 4'b0010;  // Select Output port MI2
 
       else
-        addr_out_port = 3'b100;   // Select the default slave
+        addr_out_port = 4'b1000;   // Select the default slave
     end // block: p_addr_out_port_comb
 
   // Select signal decode
@@ -226,9 +226,9 @@ module ahb_bus_matrix_decoderS1 (
 
       if (sel_dec)
         case (addr_out_port)
-          3'b001 : sel_dec1 = 1'b1;
-          3'b010 : sel_dec2 = 1'b1;
-          3'b100 : sel_dft_slv = 1'b1;    // Select the default slave
+          4'b0001 : sel_dec1 = 1'b1;
+          4'b0010 : sel_dec2 = 1'b1;
+          4'b1000 : sel_dft_slv = 1'b1;    // Select the default slave
           default : begin
             sel_dec1 = 1'bx;
             sel_dec2 = 1'bx;
@@ -246,9 +246,9 @@ module ahb_bus_matrix_decoderS1 (
            )
     begin : p_active_comb
       case (addr_out_port)
-        3'b001 : active_dec = active_dec1;
-        3'b010 : active_dec = active_dec2;
-        3'b100 : active_dec = 1'b1;         // Select the default slave
+        4'b0001 : active_dec = active_dec1;
+        4'b0010 : active_dec = active_dec2;
+        4'b1000 : active_dec = 1'b1;         // Select the default slave
         default : active_dec = 1'bx;
       endcase // case(addr_out_port)
     end // block: p_active_comb
@@ -267,7 +267,7 @@ module ahb_bus_matrix_decoderS1 (
   always @ (negedge HRESETn or posedge HCLK)
     begin : p_data_out_port_seq
       if (~HRESETn)
-        data_out_port <= {3{1'b0}};
+        data_out_port <= {4{1'b0}};
       else
         if (HREADYS)
           data_out_port <= addr_out_port;
@@ -282,9 +282,9 @@ module ahb_bus_matrix_decoderS1 (
            )
   begin : p_ready_comb
     case (data_out_port)
-      3'b001 : HREADYOUTS = readyout_dec1;
-      3'b010 : HREADYOUTS = readyout_dec2;
-      3'b100 : HREADYOUTS = readyout_dft_slv;    // Select the default slave
+      4'b0001 : HREADYOUTS = readyout_dec1;
+      4'b0010 : HREADYOUTS = readyout_dec2;
+      4'b1000 : HREADYOUTS = readyout_dft_slv;    // Select the default slave
       default : HREADYOUTS = 1'bx;
     endcase // case(data_out_port)
   end // block: p_ready_comb
@@ -298,9 +298,9 @@ module ahb_bus_matrix_decoderS1 (
            )
   begin : p_resp_comb
     case (data_out_port)
-      3'b001 : HRESPS = resp_dec1;
-      3'b010 : HRESPS = resp_dec2;
-      3'b100 : HRESPS = resp_dft_slv;     // Select the default slave
+      4'b0001 : HRESPS = resp_dec1;
+      4'b0010 : HRESPS = resp_dec2;
+      4'b1000 : HRESPS = resp_dft_slv;     // Select the default slave
       default : HRESPS = {2{1'bx}};
     endcase // case (data_out_port)
   end // block: p_resp_comb
@@ -313,9 +313,9 @@ module ahb_bus_matrix_decoderS1 (
            )
   begin : p_rdata_comb
     case (data_out_port)
-      3'b001 : HRDATAS = rdata_dec1;
-      3'b010 : HRDATAS = rdata_dec2;
-      3'b100 : HRDATAS = {32{1'b0}};   // Select the default slave
+      4'b0001 : HRDATAS = rdata_dec1;
+      4'b0010 : HRDATAS = rdata_dec2;
+      4'b1000 : HRDATAS = {32{1'b0}};   // Select the default slave
       default : HRDATAS = {32{1'bx}};
     endcase // case (data_out_port)
   end // block: p_rdata_comb
@@ -328,9 +328,9 @@ module ahb_bus_matrix_decoderS1 (
            )
   begin : p_ruser_comb
     case (data_out_port)
-      3'b001 : HRUSERS = ruser_dec1;
-      3'b010 : HRUSERS = ruser_dec2;
-      3'b100 : HRUSERS = {32{1'b0}};   // Select the default slave
+      4'b0001 : HRUSERS = ruser_dec1;
+      4'b0010 : HRUSERS = ruser_dec2;
+      4'b1000 : HRUSERS = {32{1'b0}};   // Select the default slave
       default : HRUSERS = {32{1'bx}};
     endcase // case (data_out_port)
   end // block: p_ruser_comb

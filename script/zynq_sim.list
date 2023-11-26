@@ -1,5 +1,6 @@
 ../sim/verilog_sim/tb/TOP.v
 ../library/models/jlink/jlink_model.v
+../library/models/result_monitor.v
 ../library/xilinx_sim/glbl.v
 ../library/xilinx_sim/retarget/BUFGMUX.v
 ../library/xilinx_sim/retarget/IBUFGDS.v

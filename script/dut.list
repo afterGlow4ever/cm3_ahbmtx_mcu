@@ -14,8 +14,10 @@
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
+../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
+../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
@@ -24,9 +26,15 @@
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
+../library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
 ../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
+../library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
 ../library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
 ../library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
+../library/gen_apb/debug0_apb_cfg.v
+../library/gen_apb/debug1_apb_cfg.v
 ../user/verilog/domain/fp_domain.v
+../user/verilog/domain/apb0_top.v
+../user/verilog/domain/apb1_top.v
 ../user/verilog/sram/sram_top.v
 ../user/verilog/mcu_top.v

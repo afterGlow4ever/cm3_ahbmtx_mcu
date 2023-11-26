@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_T-2022.06
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 25 1920 386 161 65
+viewPort 0 25 1920 598 161 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/cpu_bus_sim/TOP.fsdb"
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fpga_ep4_cpu_bus_sim/TOP.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 6679231000.000000
+zoom 0.000000 14184844000.000000
 cursor 449000000.000000
 marker 448920000.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 26
+top 3
 ; marker line index
-markerPos 38
+markerPos 41
 
 ; event list
 ; addEvent event_name event_expression
@@ -46,11 +46,11 @@ curSTATUS ByChange
 
 
 addGroup "G1"
-activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/cpu_bus_sim/TOP.fsdb"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fpga_ep4_cpu_bus_sim/TOP.fsdb"
 addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/sys_root_clk
 addSignal -h 15 -holdScope sys_root_rstn
 addSignal -h 15 -holdScope power_on_rstn
-addGroup "G2"
+addGroup "cpu_bus"
 addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_CORTEXM3INTEGRATION/HADDRS[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope HWDATAS[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope HRDATAS[31:0]
@@ -59,7 +59,7 @@ addSignal -h 15 -UNSIGNED -HEX -holdScope HADDRD[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope HTMDHWDATA[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope HTMDHRDATA[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope HTMDHADDR[31:0]
-addGroup "G3"
+addGroup "sbus"
 addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/haddrs[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope htranss[1:0]
 addSignal -h 15 -holdScope hwrites
@@ -68,7 +68,32 @@ addSignal -h 15 -UNSIGNED -HEX -holdScope hprots[3:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope hresps[1:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope hwdatas[31:0]
 addSignal -h 15 -holdScope hreadys
-addGroup "G4"
+addGroup "ahb2apb0(sync)"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/hsel_apb0
+addSignal -h 15 -UNSIGNED -HEX -holdScope haddr_apb0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope htrans_apb0[1:0]
+addSignal -h 15 -holdScope hwrite_apb0
+addSignal -h 15 -UNSIGNED -HEX -holdScope hsize_apb0[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope hwdata_apb0[31:0]
+addSignal -h 15 -holdScope hready_apb0
+addSignal -h 15 -UNSIGNED -HEX -holdScope hrdata_apb0[31:0]
+addSignal -h 15 -holdScope hreadyout_apb0
+addSignal -h 15 -holdScope hresp_apb0[0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope paddr0[31:0]
+addSignal -h 15 -holdScope penable0
+addSignal -h 15 -UNSIGNED -HEX -holdScope pstrb0[3:0]
+addSignal -h 15 -holdScope pwrite0
+addSignal -h 15 -UNSIGNED -HEX -holdScope pwdata0[31:0]
+addSignal -h 15 -holdScope psel0
+addSignal -h 15 -UNSIGNED -HEX -holdScope prdata0[31:0]
+addSignal -h 15 -holdScope pready0
+addSignal -h 15 -holdScope pslverr0
+addGroup "apb0 debug regs"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addGroup "ahb2apb1(async)"
 addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/haddr_apb1[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope htrans_apb1[1:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope hsize_apb1[2:0]
@@ -85,8 +110,9 @@ addSignal -h 15 -UNSIGNED -HEX -holdScope hrdata_apb1[31:0]
 addSignal -h 15 -holdScope hreadyout_apb1
 addSignal -h 15 -UNSIGNED -HEX -holdScope hresp_apb1[1:0]
 addSignal -h 15 -holdScope hexresp_apb1
-addGroup "G5"
-addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/paddr1[14:0]
+addSignal -h 15 -holdScope sys_root_clk
+addSignal -h 15 -holdScope apb1_root_clk
+addSignal -h 15 -UNSIGNED -HEX -holdScope paddr1[14:0]
 addSignal -h 15 -holdScope penable1
 addSignal -h 15 -UNSIGNED -HEX -holdScope pstrb1[3:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope pprot1[2:0]
@@ -95,7 +121,13 @@ addSignal -h 15 -UNSIGNED -HEX -holdScope pwdata1[31:0]
 addSignal -h 15 -holdScope psel1
 addSignal -h 15 -UNSIGNED -HEX -holdScope prdata1[31:0]
 addSignal -h 15 -holdScope pready1
-addGroup "G6"
+addSignal -h 15 -holdScope pslverr1
+addGroup "apb1 debug regs"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb1_async_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addGroup "G8"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

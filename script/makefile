@@ -12,6 +12,7 @@
 # 	2. RTL auto generation
 # 	3. FW build
 # 	4. cpu boot simulation
+# 	5. fpga synthesis
 #
 #===============================================
 
@@ -28,6 +29,12 @@ cpu_bus_sim:
 sram_wr_sim:
 	make -f makefile.sram_wr_sim
 
+fpga_ep4_cpu_bus_sim:
+	make -f makefile.fpga_ep4_cpu_bus_sim
+
+fpga_7020_cpu_bus_sim:
+	make -f makefile.fpga_7020_cpu_bus_sim
+
 fpga_sram_wr_sim:
 	make -f makefile.fpga_sram_wr_sim
 
@@ -40,6 +47,9 @@ fpga_7020_sram_wr_sim:
 
 ahbmtx_gen:
 	make -f makefile.ahbmtx_gen
+
+uart_reg_gen:
+	make -f makefile.uart_reg_gen
 
 #===============================================
 # firmware build

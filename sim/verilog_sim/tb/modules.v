@@ -15,7 +15,7 @@
 `endif
 
 `ifdef CPU_BUS_SIM
-`include "ahb_apb_bus.v"
+`include "cpu_bus_wr.v"
 `endif
 
 `ifdef SRAM_WR_SIM
