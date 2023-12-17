@@ -102,8 +102,8 @@ begin
 	u_swd_model.swd_deinit;
 	u_sim_monitor.sim_monitor_deinit("APB1 async debug reg wr");
 
-	// sim will finish at 10ms
-	#25000
+	// sim will finish
+	#1000
 	$finish;
 end
 

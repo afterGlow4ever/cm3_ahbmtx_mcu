@@ -23,6 +23,12 @@ module fp_domain
 	input						apb1_root_rstn,
 	input						power_on_rstn,
 	
+	//pins
+	output 						uart0_tx,
+	output 						uart0_tx_oen,
+	input    					uart0_rx,
+	output 						uart0_rx_oen,
+
 	// Debug port swd/jlink
 	input						TDI,                  // JTAG TDI
 	input						TCK,                  // SWD Clk / JTAG TCK
@@ -506,7 +512,7 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
                                          // Must be synchronous to FCLK or tied when no alternative clock source
    .STCALIB        ({1'b1,               // No alternative clock source
                      1'b0,               // Exact multiple of 10ms from FCLK
-                     24'h003D08F}),      // Calibration value for SysTick for 25 MHz source
+                     24'h03D08F}),       // Calibration value for SysTick for 25 MHz source
 
    .AUXFAULT       ({32{1'b0}}),         // Auxiliary Fault Status Register inputs: Connect to fault status generating logic
                                          // if required. Result appears in the Auxiliary Fault Status Register at address
@@ -693,6 +699,7 @@ sram_top u_sram_top
 
 //===============================================
 // apb0 sync top
+// 0x40000000~0x4000FFFF
 //===============================================
 
 apb0_top u_apb0_sync_top 
@@ -700,6 +707,11 @@ apb0_top u_apb0_sync_top
 	.apb0_root_clk				(apb0_root_clk),
 	.apb0_root_rstn				(apb0_root_rstn),
 	
+	.uart0_tx					(uart0_tx),
+	.uart0_tx_oen				(uart0_tx_oen),
+	.uart0_rx					(uart0_rx),
+	.uart0_rx_oen				(uart0_rx_oen),
+
 	.paddr						(paddr0),  
 	.penable					(penable0),
 	.pstrb						(pstrb0),  
@@ -714,13 +726,14 @@ apb0_top u_apb0_sync_top
 
 //===============================================
 // apb1 async top
+// 0x40010000~0x4001FFFF
 //===============================================
 
 apb1_top u_apb1_async_top 
 (
 	.apb1_root_clk				(apb1_root_clk),
 	.apb1_root_rstn				(apb1_root_rstn),
-	
+
 	.paddr						(paddr1),  
 	.penable					(penable1),
 	.pstrb						(pstrb1),  

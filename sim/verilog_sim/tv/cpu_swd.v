@@ -53,28 +53,34 @@ reg		[31:0]					rdata;
 initial
 begin	
 	rdata = 32'h0;
+//	#50000
+//	u_swd_model.swd_init;
+//	u_swd_model.swd_writereg32(32'h40000000, 32'h12345678);
+//	u_swd_model.swd_writereg32(32'h40000000, 32'h22345678);
+//	u_swd_model.swd_writereg32(32'h00000100, 32'h32345678);
+//	u_swd_model.swd_readreg32(32'h00000100, rdata);
+//
+//	#25000
+//	u_swd_model.swd_deinit;
+
 	#50000
+	u_sim_monitor.sim_monitor_init("APB1 async debug reg wr");
 	u_swd_model.swd_init;
-	u_swd_model.swd_writereg32(32'h40000000, 32'h12345678);
-	u_swd_model.swd_writereg32(32'h40000000, 32'h22345678);
-	u_swd_model.swd_writereg32(32'h00000100, 32'h32345678);
-	u_swd_model.swd_readreg32(32'h00000100, rdata);
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: APB1_WR_TEST
+		u_swd_model.swd_writereg32(32'h40010000 + i, i);
+		u_swd_model.swd_readreg32(32'h40010000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h40010000 + i, rdata);
+		u_sim_monitor.sim_monitor_check(32'h40010000 + i, rdata, i);
+	end
 
 	#25000
+	u_sim_monitor.sim_monitor_result;
 	u_swd_model.swd_deinit;
+	u_sim_monitor.sim_monitor_deinit("APB1 async debug reg wr");
 
-	#50000
-	u_swd_model.swd_init;
-	u_swd_model.swd_writereg32(32'h40000000, 32'h12345678);
-	u_swd_model.swd_writereg32(32'h40000000, 32'h22345678);
-	u_swd_model.swd_writereg32(32'h00000100, 32'h32345678);
-	u_swd_model.swd_readreg32(32'h00000100, rdata);
-
-	#25000
-	u_swd_model.swd_deinit;
-
-	// sim will finish at 10ms
-	#5000000
+	// sim will finish 
+	#1000
 	$finish;
 end
 

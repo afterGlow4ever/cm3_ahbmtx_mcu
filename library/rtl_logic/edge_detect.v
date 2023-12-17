@@ -15,13 +15,14 @@
 //===============================================
 // Positive edge detect module
 //===============================================
+
 module posedge_detect
 (
 	input							clk,
 	input							rstn,
 
 	input							A,
-	output						Y
+	output							Y
 );
 
 reg									A_d;
@@ -41,13 +42,14 @@ endmodule
 //===============================================
 // Negative edge detect module
 //===============================================
+
 module negedge_detect
 (
 	input							clk,
 	input							rstn,
 
 	input							A,
-	output						Y
+	output							Y
 );
 
 reg									A_d;
@@ -80,6 +82,7 @@ assign Y = A ^ A_d;
 //===============================================
 // Both edge detect module
 //===============================================
+
 always @(posedge clk or negedge rstn)
 begin
 	if(!rstn)

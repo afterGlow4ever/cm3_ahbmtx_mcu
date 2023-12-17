@@ -1,10 +1,10 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Sun Sep 17 21:25:11 2023
+// Date        : Sun Sep 17 21:25:10 2023
 // Host        : icpc running 64-bit CentOS Linux release 7.9.2009 (Core)
-// Command     : write_verilog -force -mode funcsim
-//               /home/master/project/test3/project_1/project_1.gen/sources_1/ip/pll_50m/pll_50m_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top pll_50m -prefix
+//               pll_50m_ pll_50m_sim_netlist.v
 // Design      : pll_50m
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -34,7 +34,7 @@ module pll_50m
   wire locked;
   wire reset;
 
-  pll_50m_clk_wiz inst
+  pll_50m_pll_50m_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
         .clk_out2(clk_out2),
@@ -43,7 +43,7 @@ module pll_50m
         .reset(reset));
 endmodule
 
-module pll_50m_clk_wiz
+module pll_50m_pll_50m_clk_wiz
    (clk_out1,
     clk_out2,
     clk_out3,

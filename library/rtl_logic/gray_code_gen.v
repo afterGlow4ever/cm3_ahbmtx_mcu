@@ -12,8 +12,8 @@
 
 module gray_code_gen
 #(
-	parameter								DIR,
-	parameter								DATA_WIDTH
+	parameter								DIR = 0,
+	parameter								DATA_WIDTH = 8
 )
 (
 	input [DATA_WIDTH:0]		bin_code,

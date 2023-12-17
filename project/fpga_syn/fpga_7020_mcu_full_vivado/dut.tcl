@@ -3,7 +3,7 @@
 #read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v
 #read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v
 #read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/edge_detect.v
-#read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
@@ -14,8 +14,10 @@ read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatr
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
@@ -24,9 +26,15 @@ read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatr
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v

@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
 // Date        : Sun Sep 17 21:22:03 2023
 // Host        : icpc running 64-bit CentOS Linux release 7.9.2009 (Core)
-// Command     : write_verilog -force -mode synth_stub
-//               /home/master/project/test3/project_1/project_1.gen/sources_1/ip/ram_32k/ram_32k_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top ram_32k -prefix
+//               ram_32k_ ram_32k_stub.v
 // Design      : ram_32k
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-2

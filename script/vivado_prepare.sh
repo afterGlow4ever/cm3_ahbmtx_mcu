@@ -10,6 +10,9 @@ temp=$1
 sed -i "s!\.\.!read_verilog $temp!g" dut.list
 sed -i "s!\.\.!read_verilog $temp!g" fpga_7020_dut.list
 sed -i "s!\.\.!read_ip $temp!g" fpga_7020_ip.list
+#sed -i "s!\.\.!synth_ip [get_files $temp!g" fpga_7020_ip.list
+#sed -i "s!\.\.!generate_target all [get_files $temp!g" fpga_7020_ip.list
+#sed -i "s!xci!xci] -force!g" fpga_7020_ip.list
 mv dut.list dut.tcl
 mv fpga_7020_dut.list fpga_7020_dut.tcl
 mv fpga_7020_ip.list fpga_7020_ip.tcl

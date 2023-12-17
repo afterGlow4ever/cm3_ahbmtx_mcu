@@ -1,14 +1,13 @@
 FPGA_TARGET := fpga_7020_mcu_full_vivado
 TOP_NAME := mcu_top
-FPGA_DEFINE := "\`define+FSDB_DUMP \`define+FPGA \`define+FPGA_SRAM \`define+ZYNQ_7020"
-FPGA_PATH := ${PRJ_FPGA_DIR}/${FPGA_TARGET}
+FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ZYNQ_7020"
 DUT_LIST := dut.list
 FPGA_DUT_LIST := fpga_7020_dut.list
 FPGA_IP_LIST := fpga_7020_ip.list
 FPGA_CFG_LIST := fpga_7020_mcu_full_cfg.tcl
 PIN_LIST := fpga_7020_mcu_full_pin_assignments.xdc
 TIMING_CONSTRAIN_LIST := fpga_7020_mcu_full_timing_constrain.xdc
-FPGA_SCRIPTS_PATH := ${PRJ_FPGA_DIR}/script
+FPGA_PATH := ${PRJ_FPGA_DIR}/${FPGA_TARGET}
 
 SDK_TARGET := bootloader
 SDK_DEFINE := -D__NO_SYSTEM_INIT
@@ -42,9 +41,9 @@ prepare:
 	cp ${DUT_LIST} ${FPGA_PATH}
 	cp ${FPGA_DUT_LIST} ${FPGA_PATH}
 	cp ${FPGA_IP_LIST} ${FPGA_PATH}
-	cp ${FPGA_SCRIPTS_PATH}/${FPGA_CFG_LIST} ${FPGA_PATH}
-	cp ${FPGA_SCRIPTS_PATH}/${PIN_LIST} ${FPGA_PATH}
-	cp ${FPGA_SCRIPTS_PATH}/${TIMING_CONSTRAIN_LIST} ${FPGA_PATH}
+	cp ${PRJ_FPGA_SCR_DIR}/${FPGA_CFG_LIST} ${FPGA_PATH}
+	cp ${PRJ_FPGA_SCR_DIR}/${PIN_LIST} ${FPGA_PATH}
+	cp ${PRJ_FPGA_SCR_DIR}/${TIMING_CONSTRAIN_LIST} ${FPGA_PATH}
 	cp vivado_top.tcl ${FPGA_PATH}/${TOP_NAME}.tcl
 	source vivado_prepare.sh ${PRJ_DIR} ${FPGA_PATH} ${TOP_NAME} ${FPGA_DEFINE} ${FPGA_CFG_LIST} ${PIN_LIST} ${TIMING_CONSTRAIN_LIST}
 
@@ -62,10 +61,11 @@ build_bootloader:
 	cd ${FPGA_PATH} && rm -rf ${SDK_TARGET}.bin
 	cd ${OUTPUT_PATH} && arm-none-eabi-objdump -D ${SDK_TARGET}.elf > ${SDK_TARGET}.asm
 	source lsb2msb.sh ${FPGA_PATH} ${SDK_TARGET}.txt 
-	source txt2mif.sh ${FPGA_PATH} ${SDK_TARGET}.txt 2048 32 ${SDK_TARGET}.mif
+	cd ${FPGA_PATH} && cp ${SDK_TARGET}.txt	${SDK_TARGET}.mem
 
 vivado_compile:
 	cd ${FPGA_PATH} && vivado -mode tcl -source ${TOP_NAME}.tcl -log run.log
+#	cd ${FPGA_PATH} && cp -r ${TOP_NAME}.gen/sources_1 ${PRJ_MOD_DIR}/xilinx_ip/
 
 #clean:
 

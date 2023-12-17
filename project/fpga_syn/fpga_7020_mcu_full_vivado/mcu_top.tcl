@@ -14,6 +14,9 @@ source fpga_7020_mcu_full_cfg.tcl
 read_xdc fpga_7020_mcu_full_pin_assignments.xdc
 read_xdc fpga_7020_mcu_full_timing_constrain.xdc
 
+#generate_target
+synth_ip [get_ips]
+
 update_compile_order
 
 synth_design -top $PROJECT_NAME

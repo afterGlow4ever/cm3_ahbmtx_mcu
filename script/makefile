@@ -17,7 +17,8 @@
 #===============================================
 
 #===============================================
-# RTL & fpga simulation
+# RTL & fpga simulation 
+# system intergration
 #===============================================
 
 cpu_swd_sim:
@@ -28,6 +29,9 @@ cpu_bus_sim:
 
 sram_wr_sim:
 	make -f makefile.sram_wr_sim
+
+fpga_ep4_cpu_swd_sim:
+	make -f makefile.fpga_ep4_cpu_swd_sim
 
 fpga_ep4_cpu_bus_sim:
 	make -f makefile.fpga_ep4_cpu_bus_sim
@@ -40,6 +44,17 @@ fpga_sram_wr_sim:
 
 fpga_7020_sram_wr_sim:
 	make -f makefile.fpga_7020_sram_wr_sim
+
+#===============================================
+# RTL & fpga simulation 
+# model function
+#===============================================
+
+uart0_test:
+	make -f makefile.uart0_test
+
+uart0_testcase:
+	make -f makefile.uart0_testcase
 
 #===============================================
 # RTL auto generation
