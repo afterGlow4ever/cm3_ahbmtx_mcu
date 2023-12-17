@@ -1,0 +1,15 @@
+current_design "uart_sg"
+
+clock -name "uart_sg.apb0_root_clk" 	-domain apb0_root_clk -period 25.0 -edge 0.0 12.5
+clock -domain exclk -tag exclk -period 1000.0 -edge 0.0 500.0
+
+reset -name "uart_sg.apb0_root_rstn" 	-value 0
+
+abstract_port -module uart_sg -ports paddr[31:0]		-clock uart_sg.apb0_root_clk
+abstract_port -module uart_sg -ports penable			-clock uart_sg.apb0_root_clk
+abstract_port -module uart_sg -ports psel				-clock uart_sg.apb0_root_clk
+abstract_port -module uart_sg -ports pwrite				-clock uart_sg.apb0_root_clk
+abstract_port -module uart_sg -ports pwdata[31:0]		-clock uart_sg.apb0_root_clk
+
+abstract_port -module uart_sg -ports uart0_rx			-clock exclk
+

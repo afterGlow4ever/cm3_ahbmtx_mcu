@@ -1,0 +1,4 @@
+ASIC:
+HSI: 40MHz
+LSI: 10MHz
+
