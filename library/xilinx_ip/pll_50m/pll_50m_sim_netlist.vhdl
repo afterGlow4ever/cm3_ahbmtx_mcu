@@ -1,10 +1,10 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
--- Date        : Sun Sep 17 21:25:10 2023
+-- Date        : Sun Sep 17 21:25:11 2023
 -- Host        : icpc running 64-bit CentOS Linux release 7.9.2009 (Core)
--- Command     : write_vhdl -force -mode funcsim -rename_top pll_50m -prefix
---               pll_50m_ pll_50m_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/master/project/test3/project_1/project_1.gen/sources_1/ip/pll_50m/pll_50m_sim_netlist.vhdl
 -- Design      : pll_50m
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -14,7 +14,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity pll_50m_pll_50m_clk_wiz is
+entity pll_50m_clk_wiz is
   port (
     clk_out1 : out STD_LOGIC;
     clk_out2 : out STD_LOGIC;
@@ -23,9 +23,9 @@ entity pll_50m_pll_50m_clk_wiz is
     locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-end pll_50m_pll_50m_clk_wiz;
+end pll_50m_clk_wiz;
 
-architecture STRUCTURE of pll_50m_pll_50m_clk_wiz is
+architecture STRUCTURE of pll_50m_clk_wiz is
   signal clk_in1_pll_50m : STD_LOGIC;
   signal clk_out1_pll_50m : STD_LOGIC;
   signal clk_out2_pll_50m : STD_LOGIC;
@@ -194,7 +194,7 @@ end pll_50m;
 
 architecture STRUCTURE of pll_50m is
 begin
-inst: entity work.pll_50m_pll_50m_clk_wiz
+inst: entity work.pll_50m_clk_wiz
      port map (
       clk_in1 => clk_in1,
       clk_out1 => clk_out1,

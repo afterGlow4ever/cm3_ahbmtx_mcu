@@ -1,10 +1,9 @@
-../library/rtl_logic/gray_code_gen.v
+#../library/rtl_logic/gray_code_gen.v
 #../library/rtl_logic/ram_gen.v
-../library/rtl_logic/fifo_gen.v
-../library/rtl_logic/sync_ff.v
-../library/rtl_logic/edge_detect.v
-../library/rtl_logic/clock_gen.v
-../library/rtl_logic/interrupt_gen.v
+#../library/rtl_logic/fifo_gen.v
+#../library/rtl_logic/sync_ff.v
+#../library/rtl_logic/edge_detect.v
+#../library/rtl_logic/clock_gen.v
 ../library/cm3/cortexm3ds_logic.v
 ../library/cm3/CORTEXM3INTEGRATIONDS.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
@@ -38,11 +37,4 @@
 ../user/verilog/domain/apb0_top.v
 ../user/verilog/domain/apb1_top.v
 ../user/verilog/sram/sram_top.v
-../user/verilog/uart/uart_pe_core/uart_pe_rx.v
-../user/verilog/uart/uart_pe_core/uart_pe_tx.v
-../user/verilog/uart/uart_pe_core/uart_pe_core.v
-../user/verilog/uart/uart_apb_cfg.v
-../user/verilog/uart/uart_data_buffer.v
-../user/verilog/uart/uart_regs_wrap.v
-../user/verilog/uart/uart_top.v
 ../user/verilog/mcu_top.v

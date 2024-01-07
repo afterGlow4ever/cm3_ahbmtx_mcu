@@ -196,7 +196,7 @@ task swd_read_data32;
 	// parity 0: the number of 0 is even
 	@jlink_clk_negedge parity = tms_i;
 `ifdef JLINK_MONITOR
-	if(parity != ^rdata)
+	if(parity == ^rdata)
 		$display($time, "[JLINK MONITOR] Parity error in reading data.");
 `endif
 

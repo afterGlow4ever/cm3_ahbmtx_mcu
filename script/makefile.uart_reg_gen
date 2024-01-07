@@ -12,7 +12,7 @@ prepare:
 
 generation:
 	cd ${GEN_APB_PATH} && python ${GEN_APB_SCRIPT} ${PRJ_REGLIST_DIR}/${REGLIST_FILE} 
-	cd ${GEN_APB_PATH} && cp ${MODULE_TARGET}*.v ${MODULE_PATH}
+	cd ${GEN_APB_PATH} && mv *.v ${MODULE_PATH}
 	cd ${GEN_APB_PATH} && rm -rf *.h
 	cd ${GEN_APB_PATH} && rm -rf *.ralf
 

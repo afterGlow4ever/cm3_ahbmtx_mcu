@@ -26,11 +26,4 @@
 `include "cpu_itcm_boot.v"
 `endif
 
-`ifdef UART0_SIM
-`include "uart0_test.v"
-`endif
-
-`ifdef UART0_TESTCASE
-`include "uart0_testcase.v"
-`endif
 

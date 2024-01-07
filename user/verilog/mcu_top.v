@@ -20,8 +20,6 @@ module mcu_top
 	// debug port group
 	input  						CLK,  
 	input  						RSTN,
-	input  						RXD, 
-	output  					TXD, 
 	input  						TDI, 
 	input  						TCK, 
 	inout  						TMS, 
@@ -33,16 +31,12 @@ module mcu_top
 // rcc
 //===============================================
 
-wire							hsi;
-wire							lsi;
 wire							sys_root_clk;
 wire							apb1_root_clk;
 wire							sys_root_rstn;
 wire							apb1_root_rstn;
 wire							pll_locked;
 
-assign sys_root_clk = hsi;
-assign apb1_root_clk = lsi;
 assign sys_root_rstn = RSTN & pll_locked;
 assign apb0_root_rstn = RSTN & pll_locked;
 assign apb1_root_rstn = RSTN & pll_locked;
@@ -61,11 +55,6 @@ fp_domain u_fp_domain
 	.apb1_root_rstn				(apb1_root_rstn		),
 	.power_on_rstn				(RSTN				),
 
-
-	.uart0_tx					(TXD				),
-	.uart0_tx_oen				(					),
-	.uart0_rx					(RXD				),
-	.uart0_rx_oen				(					),
 	.TDI						(TDI				),
 	.TCK						(TCK				),
 	.TMS						(TMS				),
@@ -75,7 +64,6 @@ fp_domain u_fp_domain
 
 //===============================================
 // fpga platform
-// Logics below will be redesigned after RCC module
 //===============================================
 
 assign apb0_root_clk = sys_root_clk;;
@@ -86,19 +74,17 @@ fpga_platform u_fpga_platform
 (
 	.input_clk					(CLK				),  
 	.rstn						(RSTN				),
-	.clk_40mhz					(hsi				),
-	.clk_80mhz					(					),
-	.clk_50mhz					(					),
-	.clk_10mhz					(lsi				),
-	.pll_locked					(pll_locked			),	
-	.lsi_locked					(					)	
+	.output_clk0				(sys_root_clk		),
+	.output_clk1				(apb1_root_clk		),
+	.output_clk2				(					),
+	.pll_locked					(pll_locked			)	
 );
 
 `else
 	
-assign hsi = CLK;
-assign lsi = CLK;
 assign pll_locked = 1'b1;	
+assign sys_root_clk = CLK;
+assign apb1_root_clk = CLK;
 
 `endif
 

@@ -18,11 +18,13 @@
 (2)	使用Jlink的SWD模式可以正确地读写指定地址。
 (3)	使用Jlink的SWD模式可以正确地读写SRAM。
 (4)	当CPU开始运行时可运行在ITCM中存放的bootloader。
+(5)	CPU可以正确驱动Uart输入、输出。
 2	实验内容：
 (1)	在MCU内集成CPU、总线、存储器、外设等。
 (2)	使用Jlink的SWD模式读写指定地址。
 (3)	使用Jlink的SWD模式读写SRAM。
 (4)	ITCM中存放一个bootloader。
+(5)	使用CPU驱动Uart，完成输入、输出功能的实现。
 3	具体要求：
 (1)	CPU使用ARM Cortex-M3。
 (2)	片内总线使用AHB总线矩阵。
@@ -30,6 +32,7 @@
 (4)	使用SWD模型读写寄存器并进行仿真。
 (5)	分别使用RTL和FPGA IP实现SRAM并进行读写操作仿真。
 (6)	在ITCM中存放一个bootloader，当CPU开始运行时即运行该程序。
+(7)	根据Uart的RTL功能，编写配套的firmware驱动并实现输入、输出的功能。
 
 三	学习目标（下述内容非先后顺序）：
 1	学习MCU的基本架构。
@@ -62,17 +65,23 @@
 7	学习bootloader：
 (1)	了解什么是bootloader。
 (2)	掌握bootloader的firmware的用法。
-8	学习VCS与Verdi联合仿真环境：
+8	学习Uart：
+(1)	学习Uart及其通信协议。
+(2)	学习Uart的硬件RTL实现。
+(3)	对Uart进行功能测试和spyglass检查，修改其中的错误和问题。
+(4)	学习Uart的软件驱动编写。
+(5)	掌握如何使用Uart并实现特定的功能。
+9	学习VCS与Verdi联合仿真环境：
 (1)	掌握如何使用VCS进行仿真并使用Verdi记录波形。
-9	学习gcc-arm-none-eabi编译firmware环境：
+10	学习gcc-arm-none-eabi编译firmware环境：
 (1)	掌握如何使用gcc-arm-none-eabi编一个cpu可执行的程序。
-10	学习Quartus和Vivado的fpga综合编译环境：
+11	学习Quartus和Vivado的fpga综合编译环境：
 (1)	掌握如何使用Quartus和Vivado生成或修改IP核，包括RAM核和PLL核。
 (2)	掌握如何使用Quartus和Vivado进行fpga综合并下载bit文件。
 (3)	掌握如何使用Quartus和Vivado进行在线debug。
 (4)	掌握如何使用Quartus和Vivado编写时序约束文件并进行时序分析。
 (5)	掌握如何使用Quartus和Vivado进行ECO操作。
-11	学习spyglass环境：
+12	学习spyglass环境：
 (1)	掌握如何编写sgdc约束文件。
 (2)	掌握如何使用spyglass进行语法和cdc分析。
 (3)	了解根据spyglass的分析结果对于rtl的意义。
@@ -104,10 +113,13 @@ cdc跳转至开发环境专用脚本目录；
 cdv跳转至verilog目录；
 cdfw跳转至firmware目录；
 cdq跳转至fpga目录；
-cds跳转至仿真目录等。
+cds跳转至仿真目录；
+cdtv跳转至仿真测试激励目录；
+cdtb跳转至仿真testbench目录等。
 
 工程根目录下面的script文件夹里，即为“爱上实验室”开发工程环境专用的脚本、功能，目前包括以下种类：
 RTL功能仿真；
+带firmware程序的RTL仿真；
 AHB总线矩阵生成；
 连接APB总线的寄存器生成；
 firmware编译；

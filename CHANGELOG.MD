@@ -51,3 +51,34 @@ MODIFY:	AHB bus matrix has been updated for apb0. CPU sbus can access it.
 MODIFY:	Fall For Laboratory Script modify.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 12172023
+
+ADD:    Uart RTL, Uart model, uart testbench and uart testcase.
+ADD:		Uart SGDC constrain for spyglass.	
+ADD:		Interrupt handle RTL.
+FIX:		SWD model bug in ack bit.
+FIX:		Vivado fpga compile script error.
+MODIFY:	RTL logic lib has been modified, including async fifo, sync fifo, enable for signal sync.
+MODIFY:	AHB bus matrix has been updated for apb0 and apb1. CPU sbus can access them.
+MODIFY:	Simualtion monitor model for simulation data specify bits check and result display.
+MODIFY:	Update xilinx vivado IP cores.
+MODIFY:	Fall For Laboratory Script modify.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 01072024
+
+ADD:    Uart driver and extented driver.
+ADD:		MCU test firmware framework including FLM to itcm. FLM is storaged in dtcm.
+ADD:		Uart1. Now, this mcu has 2 uart instance.	
+ADD:		Cortex-M3 int line logic handle. A document was used to indicate.
+ADD:		Uart1 test firmware.
+FIX:		Uart reg table ports has been changed due to the error behavior in RWSC regs. 
+				However, the script for apb regs generations will not be modified.
+MODIFY:	apb0 peripherals address logic.
+MODIFY:	CPU IBUS can access DTCM.
+MODIFY:	Uart1 has been added into Startup.S.
+MODIFY:	Altera FPGA pin assinment for uart1 with the document updated.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

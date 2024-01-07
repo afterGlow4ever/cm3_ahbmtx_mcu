@@ -1,0 +1,234 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Mon Jan  1 15:58:34 2024
+# Process ID: 105396
+# Current directory: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado
+# Command line: vivado -mode tcl -source mcu_top.tcl -log run.log
+# Log file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/run.log
+# Journal file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/vivado.jou
+#-----------------------------------------------------------
+source mcu_top.tcl
+# file mkdir ./checkpoint
+# set PROJECT_NAME mcu_top 
+# if {[ catch {create_project $PROJECT_NAME -part xc7z020clg400-2} ]} {
+# 	open_project $PROJECT_NAME
+# }
+WARNING: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/mcu_top.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/export/SoftWare/Xilinx/Vivado2021.1/Vivado/2021.1/data/ip'.
+# read_verilog design_define.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/design_define.v' cannot be added to the project because it already exists in the project, skipping this file
+# source fpga_7020_ip.tcl
+## read_ip /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k.xci
+CRITICAL WARNING: [Vivado 12-1504] The IP is already part of the fileset 'sources_1'. Requested source '/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k.xci' will not be added.
+## read_ip /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k.xci
+CRITICAL WARNING: [Vivado 12-1504] The IP is already part of the fileset 'sources_1'. Requested source '/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k.xci' will not be added.
+## read_ip /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xci
+CRITICAL WARNING: [Vivado 12-1504] The IP is already part of the fileset 'sources_1'. Requested source '/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xci' will not be added.
+# source fpga_7020_dut.tcl
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v' cannot be added to the project because it already exists in the project, skipping this file
+# source dut.tcl
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/gray_code_gen.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/edge_detect.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/interrupt_gen.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_lite.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_lite.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v' cannot be added to the project because it already exists in the project, skipping this file
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_core.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_apb_cfg.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_data_buffer.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_regs_wrap.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_top.v
+## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v
+WARNING: [filemgmt 56-12] File '/home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v' cannot be added to the project because it already exists in the project, skipping this file
+# source fpga_7020_mcu_full_cfg.tcl
+## set_property file_type "Verilog Header" [ get_files design_define.v ]
+## set_property is_global_include true [ get_files design_define.v ]
+# read_xdc fpga_7020_mcu_full_pin_assignments.xdc
+WARNING: [filemgmt 56-128] File '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_pin_assignments.xdc' is already in the project and will not be added again
+# read_xdc fpga_7020_mcu_full_timing_constrain.xdc
+WARNING: [filemgmt 56-128] File '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc' is already in the project and will not be added again
+# synth_ip [get_ips]
+INFO: [Vivado 12-3435] The given sub-design is up-to-date, no action was taken.  If a regeneration is desired, use the '-force' option: /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xci
+INFO: [Vivado 12-3435] The given sub-design is up-to-date, no action was taken.  If a regeneration is desired, use the '-force' option: /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k.xci
+INFO: [Vivado 12-3435] The given sub-design is up-to-date, no action was taken.  If a regeneration is desired, use the '-force' option: /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k.xci
+INFO: [Vivado 12-3441] generate_netlist_ip - operation complete
+# update_compile_order
+# synth_design -top $PROJECT_NAME
+Command: synth_design -top mcu_top
+Starting synth_design
+Using part: xc7z020clg400-2
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 105520
+WARNING: [Synth 8-2306] macro TRN_IDLE redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:117]
+WARNING: [Synth 8-2306] macro TRN_BUSY redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:118]
+WARNING: [Synth 8-2306] macro TRN_NONSEQ redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:119]
+WARNING: [Synth 8-2306] macro TRN_SEQ redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:120]
+WARNING: [Synth 8-2306] macro BUR_SINGLE redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:123]
+WARNING: [Synth 8-2306] macro BUR_INCR redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:124]
+WARNING: [Synth 8-2306] macro BUR_WRAP4 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:125]
+WARNING: [Synth 8-2306] macro BUR_INCR4 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:126]
+WARNING: [Synth 8-2306] macro BUR_WRAP8 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:127]
+WARNING: [Synth 8-2306] macro BUR_INCR8 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:128]
+WARNING: [Synth 8-2306] macro BUR_WRAP16 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:129]
+WARNING: [Synth 8-2306] macro BUR_INCR16 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:130]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2750.227 ; gain = 0.000 ; free physical = 13141 ; free virtual = 28730
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'mcu_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v:18]
+INFO: [Synth 8-6157] synthesizing module 'fp_domain' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v:16]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v:48]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_i' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:32]
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:417]
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:433]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_i' (1#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:32]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_decoderS0' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v:36]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_default_slave' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_default_slave' (2#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_decoderS0' (3#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v:36]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_decoderS1' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_decoderS1' (4#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v:36]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_decoderS2' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_decoderS2' (5#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v:36]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM0' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM0' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM0' (6#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM0' (7#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM1' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v:35]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM1' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v:35]
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v:169]
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v:172]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM1' (8#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM1' (9#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v:35]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM5' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v:35]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM5' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v:35]
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v:169]
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v:172]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM5' (10#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM5' (11#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v:35]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM6' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM6' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM6' (12#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM6' (13#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM7' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM7' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM7' (14#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM7' (15#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix' (16#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v:48]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v:31]
+	Parameter ADDRWIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb' (17#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v:31]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v:29]
+	Parameter ADDRWIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async_h' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:27]
+	Parameter ADDRWIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:179]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_h' (18#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:27]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async_syn' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v:28]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_syn' (19#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v:28]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async_p' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v:27]
+	Parameter ADDRWIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_p' (20#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async' (21#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v:29]
+INFO: [Synth 8-6157] synthesizing module 'CORTEXM3INTEGRATIONDS' [/home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v:24]
+INFO: [Synth 8-6157] synthesizing module 'cortexm3ds_logic' [/home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'cortexm3ds_logic' (22#1) [/home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'CORTEXM3INTEGRATIONDS' (23#1) [/home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v:24]
+INFO: [Synth 8-6157] synthesizing module 'sram_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:16]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_sram' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
+	Parameter AW bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_sram' (24#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:95]
+ERROR: [Synth 8-7136] In the module 'ram_32k' declared at '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-105396-icpc/realtime/ram_32k_stub.v:6', parameter 'MIFFILE' used as named parameter override, does not exist [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:93]
+ERROR: [Synth 8-6156] failed synthesizing module 'sram_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:16]
+ERROR: [Synth 8-6156] failed synthesizing module 'fp_domain' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v:16]
+ERROR: [Synth 8-6156] failed synthesizing module 'mcu_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v:18]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 3481.957 ; gain = 731.730 ; free physical = 13256 ; free virtual = 28847
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+64 Infos, 13 Warnings, 0 Critical Warnings and 5 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+q
+INFO: [Common 17-206] Exiting Vivado at Mon Jan  1 16:02:34 2024...

@@ -15,11 +15,10 @@
 //===============================================
 // Clock shift module
 //===============================================
-
 module clk_shift
 (
-	input						inclk,
-	input						rstn,
+	input							inclk,
+	input							rstn,
 	output						outclkn,
 	output						locked
 );
@@ -32,26 +31,25 @@ endmodule
 //===============================================
 // Clock even division module
 //===============================================
-
 module clk_even_division
 #(
-	parameter					N = 2
+	parameter					N
 )
 (
-	input						inclk,
-	input						rstn,
+	input							inclk,
+	input							rstn,
 	output 						outclk,
 	output						outclkn,
 	output						locked
 );
 
-reg	[N/2-1:0]					clk_cnt;
-reg								outclk1;
+reg	[N/2-1:0]				clk_cnt;
+reg									outclk1;
 reg	[3:0]						clk_locked_cnt;
 
 assign outclk = outclk1;
 assign outclkn = ~outclk;
-assign locked = (clk_locked_cnt == 4'hf) ? 1'b1 : 1'b0;
+assign locked = (clk_locked_cnt == 4'b1010) ? 1'b1 : 1'b0;
 
 always @(posedge inclk or negedge rstn)
 begin
@@ -75,10 +73,13 @@ begin
 	if(!rstn)
 		clk_locked_cnt <= 4'b0;
 	else
-		if(clk_locked_cnt == 4'hf)
-			clk_locked_cnt <= clk_locked_cnt;
+		if(clk_cnt == N/2-1)
+			if(clk_locked_cnt == 4'b1010)
+				clk_locked_cnt <= clk_locked_cnt;
+			else
+				clk_locked_cnt <= clk_locked_cnt + 1'b1;
 		else
-			clk_locked_cnt <= clk_locked_cnt + 1'b1;
+			clk_locked_cnt <= clk_locked_cnt;
 end
 
 endmodule
@@ -86,28 +87,27 @@ endmodule
 //===============================================
 // Clock odd division module
 //===============================================
-
 module clk_odd_division
 #(
-	parameter					N = 3
+	parameter					N
 )
 (
-	input						inclk,
-	input						rstn,
+	input							inclk,
+	input							rstn,
 	output						outclk,
 	output						outclkn,
 	output						locked
 );
 
-reg	[N/2:0]						clk1_cnt;
-reg	[N/2:0]						clk2_cnt;
-reg								outclk1;
-reg								outclk2;
+reg	[N/2:0]					clk1_cnt;
+reg	[N/2:0]					clk2_cnt;
+reg									outclk1;
+reg									outclk2;
 reg	[3:0]						clk_locked_cnt;
 
 assign outclk = outclk1 | outclk2;
 assign outclkn = ~outclk;
-assign locked = (clk_locked_cnt == 4'hf) ? 1'b1 : 1'b0;
+assign locked = (clk_locked_cnt == 4'b1010) ? 1'b1 : 1'b0;
 
 always @(posedge inclk or negedge rstn)
 begin
@@ -168,11 +168,18 @@ begin
 	if(!rstn)
 		clk_locked_cnt <= 4'b0;
 	else
-		if(clk_locked_cnt == 4'hf)
-			clk_locked_cnt <= clk_locked_cnt;
+		if(clk2_cnt == N/2+1)
+			if(clk_locked_cnt == 4'b1010)
+				clk_locked_cnt <= clk_locked_cnt;
+			else
+				clk_locked_cnt <= clk_locked_cnt + 1'b1;
 		else
-			clk_locked_cnt <= clk_locked_cnt + 1'b1;
+			clk_locked_cnt <= clk_locked_cnt;
 end
 
 endmodule
+
+
+
+
 

@@ -1,0 +1,8 @@
+Dependencies for Project 'NewDevice', Target 'Cortex-M': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
+F (.\Abstract.txt)(0x5D9AD2D8)()
+F (.\FlashPrg.c)(0x5F269760)(--c99 -c --cpu Cortex-M0 --li -g -O0 --apcs=interwork --apcs /ropi/rwpi -I.\RTE\_Cortex-M-IC:\ResearchProgram\Keil_v529\ARM\PACK\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-IC:\ResearchProgram\Keil_v529\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DARMCM0-o .\objects\flashprg.o --depend .\objects\flashprg.d)
+I (FlashOS.H)(0x5D9AD2CE)
+I (C:\ResearchProgram\Keil_v529\ARM\ARMCC\include\string.h)(0x5D9AD218)
+F (.\FlashDev.c)(0x5F26954F)(--c99 -c --cpu Cortex-M0 --li -g -O0 --apcs=interwork --apcs /ropi/rwpi -I.\RTE\_Cortex-M-IC:\ResearchProgram\Keil_v529\ARM\PACK\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-IC:\ResearchProgram\Keil_v529\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DARMCM0-o .\objects\flashdev.o --depend .\objects\flashdev.d)
+I (FlashOS.H)(0x5D9AD2CE)

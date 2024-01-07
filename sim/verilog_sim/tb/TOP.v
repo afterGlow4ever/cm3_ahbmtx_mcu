@@ -15,12 +15,8 @@
 module TOP;
 
 reg								clk_50mhz;
-reg								clk_40mhz;
 reg								clk_20mhz;
-wire							clk;
 reg								rstn;
-wire							txd;
-wire							rxd;
 wire							tdi;
 wire							tdo;
 wire							tck;
@@ -39,14 +35,6 @@ begin
 	forever #(10) clk_50mhz = ~clk_50mhz;
 end
 
-// clk 40MHz
-initial
-begin
-	clk_40mhz = 1'b0;
-	#100
-	forever #(12.5) clk_40mhz = ~clk_40mhz;
-end
-
 // clk 20MHz
 initial
 begin
@@ -54,12 +42,6 @@ begin
 	#100
 	forever #(25) clk_20mhz = ~clk_20mhz;
 end
-
-`ifdef FPGA
-assign clk = clk_50mhz;
-`else
-assign clk = clk_40mhz;
-`endif
 
 //initial
 //begin
@@ -80,11 +62,9 @@ end
 
 mcu_top u_mcu_top
 (
-	.CLK						(clk				),
+	.CLK						(clk_50mhz			),
 	.RSTN						(rstn				),
 
-	.TXD						(txd				),
-	.RXD						(rxd				),
 	.TDI						(tdi				),
 	.TCK						(tck				),
 	.TMS						(tms				),

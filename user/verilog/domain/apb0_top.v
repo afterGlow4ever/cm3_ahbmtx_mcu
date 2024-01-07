@@ -17,13 +17,6 @@ module apb0_top
 	input						apb0_root_clk,
 	input						apb0_root_rstn,
 	
-	//pin
-	output 						uart0_tx,
-	output 						uart0_tx_oen,
-	input    					uart0_rx,
-	output 						uart0_rx_oen,
-
-	//apb bus interface
 	input	[31:0]				paddr,  
 	input						penable,
 	input	[ 3:0]				pstrb,  
@@ -44,15 +37,11 @@ wire						 	psel_debug;
 wire						 	pready_debug; 
 wire	[31:0]				 	prdata_debug; 
 wire						 	pslverr_debug; 
-wire						 	psel_uart0; 
-wire						 	pready_uart0; 
-wire	[31:0]				 	prdata_uart0; 
-wire						 	pslverr_uart0; 
 
 cmsdk_apb_slave_mux 
 #(
     .PORT0_ENABLE                       (1),
-    .PORT1_ENABLE                       (1),
+    .PORT1_ENABLE                       (0),
     .PORT2_ENABLE                       (0),
     .PORT3_ENABLE                       (0),
     .PORT4_ENABLE                       (0),
@@ -78,10 +67,10 @@ u_apb1_slave_mux
     .PRDATA0                            (prdata_debug),
     .PSLVERR0                           (pslverr_debug),
     
-    .PSEL1                              (psel_uart0),
-    .PREADY1                            (pready_uart0),
-    .PRDATA1                            (prdata_uart0),
-    .PSLVERR1                           (pslverr_uart0),
+    .PSEL1                              (),
+    .PREADY1                            (1'b0),
+    .PRDATA1                            (32'b0),
+    .PSLVERR1                           (1'b0),
 
     .PSEL2                              (),
     .PREADY2                            (1'b0),
@@ -182,43 +171,6 @@ debug0_apb_cfg u_debug_reg
 	.debug2						(),
 	.debug3						()
 );
-
-//===============================================
-// APB0 uart0
-// 0x40010000~0x40001FFF
-//===============================================
-
-assign pready_uart0 = 1'b1;
-assign pslverr_uart0 = 1'b0;
-
-`ifdef UART0
-uart_top u_uart0
-(
-	.module_clk					(apb0_root_clk),  
-	.module_rstn				(apb0_root_rstn),
-	
-	.uart_tx					(uart0_tx),
-	.uart_tx_oen				(uart0_tx_oen),
-	.uart_rx					(uart0_rx),
-	.uart_rx_oen				(uart0_rx_oen),
-
-	.reg_clk					(apb0_root_clk),
-	.reg_rstn					(apb0_root_rstn),
-	.pwrite						(pwrite),
-	.psel						(psel_uart0),						
-	.penable					(penable),
-	.paddr						(paddr),
-	.pwdata						(pwdata),
-	.prdata						(prdata_uart0),
-
-	.uart_int_line				()
-);
-`else
-assign uart0_tx = 1'b0;
-assign uart0_tx_oen = 1'b1;
-assign uart0_rx_oen = 1'b1;
-assign prdata_uart0 = 32'h0;
-`endif
 
 endmodule
 

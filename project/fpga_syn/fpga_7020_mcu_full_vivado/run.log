@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Tue Nov 28 19:33:25 2023
-# Process ID: 91430
+# Start of session at: Sat Sep 23 15:31:31 2023
+# Process ID: 48376
 # Current directory: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado
 # Command line: vivado -mode tcl -source mcu_top.tcl -log run.log
 # Log file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/run.log
@@ -26,7 +26,6 @@ INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/export/SoftWare/Xilinx/Viv
 # source fpga_7020_dut.tcl
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v
 # source dut.tcl
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
@@ -37,10 +36,8 @@ INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/export/SoftWare/Xilinx/Viv
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
@@ -49,16 +46,10 @@ INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/export/SoftWare/Xilinx/Viv
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v
-## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v
 ## read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v
 # source fpga_7020_mcu_full_cfg.tcl
@@ -66,11 +57,6 @@ INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/export/SoftWare/Xilinx/Viv
 ## set_property is_global_include true [ get_files design_define.v ]
 # read_xdc fpga_7020_mcu_full_pin_assignments.xdc
 # read_xdc fpga_7020_mcu_full_timing_constrain.xdc
-# synth_ip [get_ips]
-INFO: [Vivado 12-3435] The given sub-design is up-to-date, no action was taken.  If a regeneration is desired, use the '-force' option: /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xci
-INFO: [Vivado 12-3435] The given sub-design is up-to-date, no action was taken.  If a regeneration is desired, use the '-force' option: /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k.xci
-INFO: [Vivado 12-3435] The given sub-design is up-to-date, no action was taken.  If a regeneration is desired, use the '-force' option: /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k.xci
-INFO: [Vivado 12-3441] generate_netlist_ip - operation complete
 # update_compile_order
 # synth_design -top $PROJECT_NAME
 Command: synth_design -top mcu_top
@@ -81,7 +67,7 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 91475
+INFO: [Synth 8-7075] Helper process launched with PID 48414
 WARNING: [Synth 8-2306] macro TRN_IDLE redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:117]
 WARNING: [Synth 8-2306] macro TRN_BUSY redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:118]
 WARNING: [Synth 8-2306] macro TRN_NONSEQ redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:119]
@@ -95,7 +81,7 @@ WARNING: [Synth 8-2306] macro BUR_INCR8 redefined [/home/master/project/cm3_ahbm
 WARNING: [Synth 8-2306] macro BUR_WRAP16 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:129]
 WARNING: [Synth 8-2306] macro BUR_INCR16 redefined [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v:130]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2740.316 ; gain = 0.000 ; free physical = 12988 ; free virtual = 27314
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2750.223 ; gain = 0.000 ; free physical = 13638 ; free virtual = 28818
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'mcu_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v:18]
 INFO: [Synth 8-6157] synthesizing module 'fp_domain' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v:16]
@@ -128,160 +114,111 @@ INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx
 INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v:172]
 INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM5' (10#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v:35]
 INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM5' (11#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v:35]
-INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM6' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v:38]
-INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM6' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v:39]
-INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM6' (12#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v:39]
-INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM6' (13#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v:38]
 INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_oM7' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v:38]
 INFO: [Synth 8-6157] synthesizing module 'ahb_bus_matrix_arbiterM7' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v:39]
-INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM7' (14#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v:39]
-INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM7' (15#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix' (16#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v:48]
-INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v:31]
-	Parameter ADDRWIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb' (17#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_arbiterM7' (12#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix_oM7' (13#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'ahb_bus_matrix' (14#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v:48]
 INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v:29]
-	Parameter ADDRWIDTH bound to: 32 - type: integer 
+	Parameter ADDRWIDTH bound to: 15 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async_h' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:27]
-	Parameter ADDRWIDTH bound to: 32 - type: integer 
+	Parameter ADDRWIDTH bound to: 15 - type: integer 
 INFO: [Synth 8-226] default block is never used [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:179]
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_h' (18#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_h' (15#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v:27]
 INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async_syn' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v:28]
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_syn' (19#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v:28]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_syn' (16#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v:28]
 INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_apb_async_p' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v:27]
-	Parameter ADDRWIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_p' (20#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v:27]
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async' (21#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v:29]
+	Parameter ADDRWIDTH bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async_p' (17#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_apb_async' (18#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v:29]
 INFO: [Synth 8-6157] synthesizing module 'CORTEXM3INTEGRATIONDS' [/home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v:24]
 INFO: [Synth 8-6157] synthesizing module 'cortexm3ds_logic' [/home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v:27]
-INFO: [Synth 8-6155] done synthesizing module 'cortexm3ds_logic' (22#1) [/home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v:27]
-INFO: [Synth 8-6155] done synthesizing module 'CORTEXM3INTEGRATIONDS' (23#1) [/home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'cortexm3ds_logic' (19#1) [/home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'CORTEXM3INTEGRATIONDS' (20#1) [/home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v:24]
 INFO: [Synth 8-6157] synthesizing module 'sram_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:16]
 INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_sram' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
 	Parameter AW bound to: 15 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_sram' (24#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
-INFO: [Synth 8-6157] synthesizing module 'ram_32k' [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-91430-icpc/realtime/ram_32k_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'ram_32k' (25#1) [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-91430-icpc/realtime/ram_32k_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_sram' (21#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
+INFO: [Synth 8-6157] synthesizing module 'ram_32k' [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-48376-icpc/realtime/ram_32k_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ram_32k' (22#1) [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-48376-icpc/realtime/ram_32k_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_sram__parameterized0' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
 	Parameter AW bound to: 13 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_sram__parameterized0' (25#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
-INFO: [Synth 8-6157] synthesizing module 'ram_8k' [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-91430-icpc/realtime/ram_8k_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'ram_8k' (26#1) [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-91430-icpc/realtime/ram_8k_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'sram_top' (27#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:16]
-INFO: [Synth 8-6157] synthesizing module 'apb0_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v:15]
-INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_slave_mux' [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v:26]
-	Parameter PORT0_ENABLE bound to: 1 - type: integer 
-	Parameter PORT1_ENABLE bound to: 0 - type: integer 
-	Parameter PORT2_ENABLE bound to: 0 - type: integer 
-	Parameter PORT3_ENABLE bound to: 0 - type: integer 
-	Parameter PORT4_ENABLE bound to: 0 - type: integer 
-	Parameter PORT5_ENABLE bound to: 0 - type: integer 
-	Parameter PORT6_ENABLE bound to: 0 - type: integer 
-	Parameter PORT7_ENABLE bound to: 0 - type: integer 
-	Parameter PORT8_ENABLE bound to: 0 - type: integer 
-	Parameter PORT9_ENABLE bound to: 0 - type: integer 
-	Parameter PORT10_ENABLE bound to: 0 - type: integer 
-	Parameter PORT11_ENABLE bound to: 0 - type: integer 
-	Parameter PORT12_ENABLE bound to: 0 - type: integer 
-	Parameter PORT13_ENABLE bound to: 0 - type: integer 
-	Parameter PORT14_ENABLE bound to: 0 - type: integer 
-	Parameter PORT15_ENABLE bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_slave_mux' (28#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v:26]
-INFO: [Synth 8-6157] synthesizing module 'debug0_apb_cfg' [/home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'debug0_apb_cfg' (29#1) [/home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'apb0_top' (30#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v:15]
-INFO: [Synth 8-6157] synthesizing module 'apb1_top' [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v:15]
-INFO: [Synth 8-6157] synthesizing module 'debug1_apb_cfg' [/home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'debug1_apb_cfg' (31#1) [/home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'apb1_top' (32#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v:15]
-INFO: [Synth 8-6155] done synthesizing module 'fp_domain' (33#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_sram__parameterized0' (22#1) [/home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v:26]
+INFO: [Synth 8-6157] synthesizing module 'ram_8k' [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-48376-icpc/realtime/ram_8k_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ram_8k' (23#1) [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-48376-icpc/realtime/ram_8k_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sram_top' (24#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'fp_domain' (25#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v:16]
 INFO: [Synth 8-6157] synthesizing module 'fpga_platform' [/home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v:16]
-INFO: [Synth 8-6157] synthesizing module 'pll_50m' [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-91430-icpc/realtime/pll_50m_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'pll_50m' (34#1) [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-91430-icpc/realtime/pll_50m_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'clk_even_division' [/home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v:36]
-	Parameter N bound to: 8 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'clk_even_division' (35#1) [/home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v:36]
-INFO: [Synth 8-6155] done synthesizing module 'fpga_platform' (36#1) [/home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v:16]
-INFO: [Synth 8-6155] done synthesizing module 'mcu_top' (37#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v:18]
+INFO: [Synth 8-6157] synthesizing module 'pll_50m' [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-48376-icpc/realtime/pll_50m_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'pll_50m' (26#1) [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/.Xil/Vivado-48376-icpc/realtime/pll_50m_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'fpga_platform' (27#1) [/home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'mcu_top' (28#1) [/home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v:18]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:33 ; elapsed = 00:00:38 . Memory (MB): peak = 3481.055 ; gain = 740.738 ; free physical = 12976 ; free virtual = 27318
+Finished RTL Elaboration : Time (s): cpu = 00:00:33 ; elapsed = 00:00:41 . Memory (MB): peak = 3474.961 ; gain = 724.738 ; free physical = 13106 ; free virtual = 28304
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:01:02 . Memory (MB): peak = 3481.055 ; gain = 740.738 ; free physical = 13234 ; free virtual = 27576
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:01:05 . Memory (MB): peak = 3474.961 ; gain = 724.738 ; free physical = 13366 ; free virtual = 28564
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:57 ; elapsed = 00:01:02 . Memory (MB): peak = 3481.055 ; gain = 740.738 ; free physical = 13234 ; free virtual = 27576
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:57 ; elapsed = 00:01:05 . Memory (MB): peak = 3474.961 ; gain = 724.738 ; free physical = 13366 ; free virtual = 28564
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.34 ; elapsed = 00:00:00.35 . Memory (MB): peak = 3481.055 ; gain = 0.000 ; free physical = 13177 ; free virtual = 27519
+Netlist sorting complete. Time (s): cpu = 00:00:00.33 ; elapsed = 00:00:00.33 . Memory (MB): peak = 3474.961 ; gain = 0.000 ; free physical = 13311 ; free virtual = 28508
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m/pll_50m_in_context.xdc] for cell 'u_fpga_platform/u_pll0'
-Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m/pll_50m_in_context.xdc] for cell 'u_fpga_platform/u_pll0'
-Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k/blk_mem_gen_0_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_dtcm'
-Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k/blk_mem_gen_0_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_dtcm'
-Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k/ram_32k_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_itcm'
-Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k/ram_32k_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_itcm'
+Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m/pll_50m_in_context.xdc] for cell 'u_fpga_platform/u_pll0'
+Finished Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m/pll_50m_in_context.xdc] for cell 'u_fpga_platform/u_pll0'
+Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/ram_8k/ram_8k/ram_8k_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_dtcm'
+Finished Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/ram_8k/ram_8k/ram_8k_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_dtcm'
+Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/ram_32k/ram_32k/ram_32k_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_itcm'
+Finished Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/ram_32k/ram_32k/ram_32k_in_context.xdc] for cell 'u_fp_domain/u_sram_top/u_itcm'
 Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_pin_assignments.xdc]
 Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_pin_assignments.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_pin_assignments.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mcu_top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/mcu_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc]
 CRITICAL WARNING: [Constraints 18-1056] Clock 'hse' completely overrides clock 'CLK'.
-New: create_clock -period 25.000 -name hse -waveform {0.000 12.500} [get_ports CLK], [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:14]
-Previous: create_clock -period 20.000 [get_ports CLK], [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m/pll_50m_in_context.xdc:1]
+New: create_clock -period 25.000 -name hse -waveform {0.000 12.500} [get_ports CLK], [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:1]
+Previous: create_clock -period 20.000 [get_ports CLK], [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m/pll_50m_in_context.xdc:1]
 Resolution: Review the constraint files and remove the redundant clock definition(s). If the clock constraints are not saved in a file, you can first save the constraints to an XDC file and reload the design once the constraints have been corrected.
-CRITICAL WARNING: [Designutils 20-1307] Command 'derive_pll_clocks' is not supported in the xdc constraint file. [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:17]
-WARNING: [Vivado 12-507] No nets matched 'TCK_IBUF'. [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:24]
+CRITICAL WARNING: [Designutils 20-1307] Command 'derive_pll_clocks' is not supported in the xdc constraint file. [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:4]
+WARNING: [Vivado 12-507] No nets matched 'TCK_IBUF'. [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:11]
 Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc]
 WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/mcu_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3521.074 ; gain = 0.000 ; free physical = 13049 ; free virtual = 27392
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3514.980 ; gain = 0.000 ; free physical = 13169 ; free virtual = 28378
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.15 . Memory (MB): peak = 3521.074 ; gain = 0.000 ; free physical = 13048 ; free virtual = 27391
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.14 . Memory (MB): peak = 3514.980 ; gain = 0.000 ; free physical = 13169 ; free virtual = 28378
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 3521.074 ; gain = 780.758 ; free physical = 13223 ; free virtual = 27566
+Finished Constraint Validation : Time (s): cpu = 00:01:10 ; elapsed = 00:01:18 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 13337 ; free virtual = 28547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 3521.074 ; gain = 780.758 ; free physical = 13223 ; free virtual = 27566
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:10 ; elapsed = 00:01:18 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 13337 ; free virtual = 28546
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for CLK. (constraint file  /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m/pll_50m_in_context.xdc, line 5).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK. (constraint file  /home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m/pll_50m_in_context.xdc, line 6).
+Applied set_property IO_BUFFER_TYPE = NONE for CLK. (constraint file  /home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m/pll_50m_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK. (constraint file  /home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m/pll_50m_in_context.xdc, line 6).
 Applied set_property KEEP_HIERARCHY = SOFT for u_fpga_platform/u_pll0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for u_fp_domain/u_sram_top/u_dtcm. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for u_fp_domain/u_sram_top/u_itcm. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 3521.074 ; gain = 780.758 ; free physical = 13218 ; free virtual = 27561
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:10 ; elapsed = 00:01:18 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 13333 ; free virtual = 28542
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'state_reg_reg' in module 'cmsdk_ahb_to_apb'
 INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'cmsdk_ahb_to_apb_async_h'
 INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'cmsdk_ahb_to_apb_async_p'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                 ST_IDLE |                          0001000 |                              000
-             ST_APB_WAIT |                          0000100 |                              001
-             ST_APB_TRNF |                          0000010 |                              010
-            ST_APB_TRNF2 |                          1000000 |                              011
-             ST_APB_ERR1 |                          0010000 |                              101
-             ST_APB_ERR2 |                          0000001 |                              110
-            ST_APB_ENDOK |                          0100000 |                              100
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'state_reg_reg' using encoding 'one-hot' in module 'cmsdk_ahb_to_apb'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -300,7 +237,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using enco
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'one-hot' in module 'cmsdk_ahb_to_apb_async_p'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:22 ; elapsed = 00:02:31 . Memory (MB): peak = 3521.074 ; gain = 780.758 ; free physical = 9662 ; free virtual = 23909
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:22 ; elapsed = 00:02:36 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9666 ; free virtual = 24893
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -325,46 +262,44 @@ Detailed RTL Component Info :
 	   2 Input    7 Bit       Adders := 3     
 	   3 Input    6 Bit       Adders := 1     
 	   3 Input    5 Bit       Adders := 1     
-	   2 Input    4 Bit       Adders := 5     
+	   2 Input    4 Bit       Adders := 3     
 	   2 Input    2 Bit       Adders := 2     
 +---XORs : 
 	   2 Input      1 Bit         XORs := 1256  
 	   3 Input      1 Bit         XORs := 2     
 	   4 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 17    
-	               30 Bit    Registers := 2     
-	               13 Bit    Registers := 1     
+	               32 Bit    Registers := 8     
+	               13 Bit    Registers := 2     
 	               11 Bit    Registers := 1     
 	                8 Bit    Registers := 8     
-	                4 Bit    Registers := 18    
-	                3 Bit    Registers := 6     
-	                2 Bit    Registers := 20    
-	                1 Bit    Registers := 5714  
+	                4 Bit    Registers := 12    
+	                3 Bit    Registers := 9     
+	                2 Bit    Registers := 17    
+	                1 Bit    Registers := 5709  
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 44    
-	   4 Input   32 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 37    
+	   5 Input   32 Bit        Muxes := 2     
+	   4 Input   32 Bit        Muxes := 2     
+	   3 Input   32 Bit        Muxes := 2     
+	   2 Input   15 Bit        Muxes := 1     
 	   2 Input   13 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 1     
 	   2 Input    8 Bit        Muxes := 8     
-	   7 Input    7 Bit        Muxes := 1     
-	   2 Input    7 Bit        Muxes := 10    
-	   2 Input    4 Bit        Muxes := 32    
-	   4 Input    4 Bit        Muxes := 3     
-	   3 Input    4 Bit        Muxes := 3     
+	   2 Input    4 Bit        Muxes := 28    
+	   4 Input    4 Bit        Muxes := 2     
 	   5 Input    4 Bit        Muxes := 2     
 	   2 Input    3 Bit        Muxes := 26    
-	   7 Input    3 Bit        Muxes := 1     
-	   3 Input    3 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 3     
 	   2 Input    2 Bit        Muxes := 32    
-	   4 Input    2 Bit        Muxes := 2     
-	   3 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 2215  
+	   4 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 2213  
 	   4 Input    1 Bit        Muxes := 9     
-	   3 Input    1 Bit        Muxes := 8     
+	   3 Input    1 Bit        Muxes := 5     
 	   5 Input    1 Bit        Muxes := 2     
 	   9 Input    1 Bit        Muxes := 2     
-	   7 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -390,7 +325,7 @@ DSP Report: Generating DSP Glym17, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator Glym17 is absorbed into DSP Glym17.
 DSP Report: operator Glym17 is absorbed into DSP Glym17.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:51 ; elapsed = 00:04:04 . Memory (MB): peak = 3524.152 ; gain = 783.836 ; free physical = 10460 ; free virtual = 24754
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:48 ; elapsed = 00:04:08 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9521 ; free virtual = 24810
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -413,19 +348,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:57 ; elapsed = 00:04:09 . Memory (MB): peak = 3524.156 ; gain = 783.840 ; free physical = 10373 ; free virtual = 24667
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:53 ; elapsed = 00:04:13 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9426 ; free virtual = 24722
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:03:59 ; elapsed = 00:04:11 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10356 ; free virtual = 24652
+Finished Timing Optimization : Time (s): cpu = 00:03:56 ; elapsed = 00:04:16 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9410 ; free virtual = 24707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:04:08 ; elapsed = 00:04:21 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10396 ; free virtual = 24690
+Finished Technology Mapping : Time (s): cpu = 00:04:04 ; elapsed = 00:04:25 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9453 ; free virtual = 24749
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -443,37 +378,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:04:11 ; elapsed = 00:04:24 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10396 ; free virtual = 24690
+Finished IO Insertion : Time (s): cpu = 00:04:07 ; elapsed = 00:04:28 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9452 ; free virtual = 24747
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:04:11 ; elapsed = 00:04:24 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10396 ; free virtual = 24690
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:07 ; elapsed = 00:04:28 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9452 ; free virtual = 24747
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:13 ; elapsed = 00:04:26 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10394 ; free virtual = 24688
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:09 ; elapsed = 00:04:30 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9451 ; free virtual = 24746
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:04:13 ; elapsed = 00:04:26 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10395 ; free virtual = 24689
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:09 ; elapsed = 00:04:30 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9451 ; free virtual = 24747
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:14 ; elapsed = 00:04:27 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10395 ; free virtual = 24689
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:10 ; elapsed = 00:04:31 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9451 ; free virtual = 24747
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:04:14 ; elapsed = 00:04:27 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10395 ; free virtual = 24689
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:10 ; elapsed = 00:04:31 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9451 ; free virtual = 24747
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -498,33 +433,32 @@ Report Cell Usage:
 |4     |BUFG    |     1|
 |5     |CARRY4  |   293|
 |6     |DSP48E1 |     3|
-|7     |LUT1    |   264|
-|8     |LUT2    |  1133|
-|9     |LUT3    |  1559|
-|10    |LUT4    |  2699|
-|11    |LUT5    |  3565|
-|12    |LUT6    |  8392|
-|13    |MUXF7   |    25|
-|14    |MUXF8   |     1|
-|15    |FDCE    |  3549|
-|16    |FDPE    |   100|
-|17    |FDRE    |  2235|
-|18    |IBUF    |     4|
-|19    |IOBUF   |     1|
-|20    |OBUFT   |     1|
+|7     |LUT1    |   259|
+|8     |LUT2    |   992|
+|9     |LUT3    |  1468|
+|10    |LUT4    |  2606|
+|11    |LUT5    |  3753|
+|12    |LUT6    |  8173|
+|13    |MUXF7   |    21|
+|14    |FDCE    |  3101|
+|15    |FDPE    |    95|
+|16    |FDRE    |  2235|
+|17    |IBUF    |     4|
+|18    |IOBUF   |     1|
+|19    |OBUFT   |     1|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:14 ; elapsed = 00:04:27 . Memory (MB): peak = 3524.164 ; gain = 783.848 ; free physical = 10395 ; free virtual = 24689
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:10 ; elapsed = 00:04:31 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 9451 ; free virtual = 24747
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:04:10 ; elapsed = 00:04:21 . Memory (MB): peak = 3528.062 ; gain = 747.727 ; free physical = 14325 ; free virtual = 28619
-Synthesis Optimization Complete : Time (s): cpu = 00:04:18 ; elapsed = 00:04:28 . Memory (MB): peak = 3528.062 ; gain = 787.746 ; free physical = 14326 ; free virtual = 28619
+Synthesis Optimization Runtime : Time (s): cpu = 00:04:07 ; elapsed = 00:04:25 . Memory (MB): peak = 3514.980 ; gain = 724.738 ; free physical = 13376 ; free virtual = 28673
+Synthesis Optimization Complete : Time (s): cpu = 00:04:14 ; elapsed = 00:04:32 . Memory (MB): peak = 3514.980 ; gain = 764.758 ; free physical = 13376 ; free virtual = 28673
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Project 1-454] Reading design checkpoint '/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_32k/ram_32k.dcp' for cell 'u_fp_domain/u_sram_top/u_itcm'
-INFO: [Project 1-454] Reading design checkpoint '/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/ram_8k/ram_8k.dcp' for cell 'u_fp_domain/u_sram_top/u_dtcm'
-INFO: [Project 1-454] Reading design checkpoint '/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.dcp' for cell 'u_fpga_platform/u_pll0'
-Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.13 . Memory (MB): peak = 3528.062 ; gain = 0.000 ; free physical = 14316 ; free virtual = 28610
-INFO: [Netlist 29-17] Analyzing 334 Unisim elements for replacement
+INFO: [Project 1-454] Reading design checkpoint '/home/master/project/project_1.gen/sources_1/ip/ram_32k/ram_32k.dcp' for cell 'u_fp_domain/u_sram_top/u_itcm'
+INFO: [Project 1-454] Reading design checkpoint '/home/master/project/project_1.gen/sources_1/ip/ram_8k/ram_8k.dcp' for cell 'u_fp_domain/u_sram_top/u_dtcm'
+INFO: [Project 1-454] Reading design checkpoint '/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m.dcp' for cell 'u_fpga_platform/u_pll0'
+Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.12 . Memory (MB): peak = 3514.980 ; gain = 0.000 ; free physical = 13367 ; free virtual = 28664
+INFO: [Netlist 29-17] Analyzing 329 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'mcu_top' is not ideal for floorplanning, since the cellview 'cortexm3ds_logic' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-479] Netlist was created with Vivado 2021.1
@@ -533,35 +467,35 @@ INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 WARNING: [Opt 31-35] Removing redundant IBUF, u_fpga_platform/u_pll0/inst/clkin1_ibufg, from the path connected to top-level port: CLK 
 Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
 WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'u_fpga_platform/u_pll0/clk_in1' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
-Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m_board.xdc] for cell 'u_fpga_platform/u_pll0/inst'
-Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m_board.xdc] for cell 'u_fpga_platform/u_pll0/inst'
-Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xdc] for cell 'u_fpga_platform/u_pll0/inst'
-INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xdc:57]
-INFO: [Timing 38-2] Deriving generated clocks [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xdc:57]
-Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/library/xilinx_ip/pll_50m/pll_50m.xdc] for cell 'u_fpga_platform/u_pll0/inst'
+Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m_board.xdc] for cell 'u_fpga_platform/u_pll0/inst'
+Finished Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m_board.xdc] for cell 'u_fpga_platform/u_pll0/inst'
+Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m.xdc] for cell 'u_fpga_platform/u_pll0/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m.xdc:57]
+INFO: [Timing 38-2] Deriving generated clocks [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m.xdc:57]
+Finished Parsing XDC File [/home/master/project/project_1.gen/sources_1/ip/pll_50m/pll_50m.xdc] for cell 'u_fpga_platform/u_pll0/inst'
 Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_pin_assignments.xdc]
 Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_pin_assignments.xdc]
 Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc]
-CRITICAL WARNING: [Designutils 20-1307] Command 'derive_pll_clocks' is not supported in the xdc constraint file. [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:17]
+CRITICAL WARNING: [Designutils 20-1307] Command 'derive_pll_clocks' is not supported in the xdc constraint file. [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc:4]
 Finished Parsing XDC File [/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/fpga_7020_mcu_full_timing_constrain.xdc]
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3628.207 ; gain = 0.000 ; free physical = 14095 ; free virtual = 28389
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3601.012 ; gain = 0.000 ; free physical = 13133 ; free virtual = 28444
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete, checksum: 4f128933
+Synth Design complete, checksum: 6fba91e3
 INFO: [Common 17-83] Releasing license: Synthesis
-111 Infos, 17 Warnings, 3 Critical Warnings and 0 Errors encountered.
+91 Infos, 17 Warnings, 3 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:26 ; elapsed = 00:04:36 . Memory (MB): peak = 3628.207 ; gain = 888.004 ; free physical = 14297 ; free virtual = 28591
+synth_design: Time (s): cpu = 00:04:22 ; elapsed = 00:04:40 . Memory (MB): peak = 3601.012 ; gain = 850.902 ; free physical = 13342 ; free virtual = 28653
 # write_checkpoint -force ./checkpoint/synthesis
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00 . Memory (MB): peak = 3668.223 ; gain = 0.000 ; free physical = 14296 ; free virtual = 28591
+Write XDEF Complete: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3641.027 ; gain = 0.000 ; free physical = 13339 ; free virtual = 28652
 INFO: [Common 17-1381] The checkpoint '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/synthesis.dcp' has been generated.
 # report_utilization -file ./checkpoint/synthesis_util.rpt
 # report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/synthesis_hier.rpt
@@ -577,26 +511,26 @@ INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more in
 Running DRC as a precondition to command place_design
 INFO: [DRC 23-27] Running DRC with 8 threads
 WARNING: [DRC CHECK-3] Report rule limit reached: REQP-1839 rule limit reached: 20 violations have been found.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A4qoz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A63nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Aw2nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Bu4107_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Atlzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/B0lt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Cpwt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/E1fzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/E3soz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Estt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Kazt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Lpmzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/N33nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Ny2nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Oswt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Pm1u07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Tfgt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Wf5107_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Wybt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xhioz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xkioz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xvmnz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_ahb_bus_matrix/u_ahb_bus_matrix_decoders0/data_out_port_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_ahb_bus_matrix/u_ahb_bus_matrix_decoders0/data_out_port_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_ahb_bus_matrix/u_ahb_bus_matrix_decoders0/data_out_port_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Izdzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/J93g07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/K19t07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Lxuzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Mxczz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Nbtoz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Qktoz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Qvbzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Scbzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Utazz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xvht07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zuft07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zvozz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 21 Warnings
 INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
 
@@ -606,69 +540,63 @@ INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 
 Phase 1 Placer Initialization
 
 Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14269 ; free virtual = 28566
-Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 2f1efb3c
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13312 ; free virtual = 28626
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: f50b64aa
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14269 ; free virtual = 28566
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13312 ; free virtual = 28626
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14290 ; free virtual = 28587
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13331 ; free virtual = 28646
 
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
 WARNING: [Place 30-568] A LUT 'Zudoz6_reg_i_2' is driving clock pin of 2 registers. This could lead to large hold time violations. First few involved registers are:
 	u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zudoz6_reg {FDCE}
 	u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zry917_reg {FDCE}
-WARNING: [Place 30-568] A LUT 'u_fpga_platform/u_lsi/FSM_onehot_curr_state[2]_i_2' is driving clock pin of 169 registers. This could lead to large hold time violations. First few involved registers are:
-	u_fp_domain/u_apb1_async_top/u_debug_reg/debug1_reg[20] {FDCE}
-	u_fp_domain/u_apb1_async_top/u_debug_reg/debug2_reg[24] {FDCE}
-	u_fp_domain/u_apb1_async_top/u_debug_reg/debug1_reg[16] {FDCE}
-	u_fp_domain/u_apb1_async_top/u_debug_reg/debug2_reg[29] {FDCE}
-	u_fp_domain/u_apb1_async_top/u_debug_reg/debug1_reg[18] {FDCE}
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 WARNING: [Place 30-574] Poor placement for routing between an IO pin and BUFG. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	TCK_IBUF_inst (IBUF.O) is locked to IOB_X1Y92
 	TCK_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
 Resolution: Poor placement of an IO pin and a BUFG has resulted in the router using a non-dedicated path between the two.  There are several things that could trigger this DRC, each of which can cause unpredictable clock insertion delays that result in poor timing.  This DRC could be caused by any of the following: (a) a clock port was placed on a pin that is not a CCIO-pin (b)the BUFG has not been placed in the same half of the device or SLR as the CCIO-pin (c) a single ended clock has been placed on the N-Side of a differential pair CCIO-pin.
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 11ce4068b
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: c296b7f5
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14281 ; free virtual = 28577
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13317 ; free virtual = 28631
 
 Phase 1.3 Build Placer Netlist Model
-Phase 1.3 Build Placer Netlist Model | Checksum: 198245604
+Phase 1.3 Build Placer Netlist Model | Checksum: 13bcf42f6
 
-Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14269 ; free virtual = 28566
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13310 ; free virtual = 28625
 
 Phase 1.4 Constrain Clocks/Macros
-Phase 1.4 Constrain Clocks/Macros | Checksum: 198245604
+Phase 1.4 Constrain Clocks/Macros | Checksum: 13bcf42f6
 
-Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14269 ; free virtual = 28566
-Phase 1 Placer Initialization | Checksum: 198245604
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13310 ; free virtual = 28625
+Phase 1 Placer Initialization | Checksum: 13bcf42f6
 
-Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14268 ; free virtual = 28565
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13310 ; free virtual = 28624
 
 Phase 2 Global Placement
 
 Phase 2.1 Floorplanning
-Phase 2.1 Floorplanning | Checksum: 13512d2ef
+Phase 2.1 Floorplanning | Checksum: 1aea65815
 
-Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14245 ; free virtual = 28542
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13288 ; free virtual = 28603
 
 Phase 2.2 Update Timing before SLR Path Opt
-Phase 2.2 Update Timing before SLR Path Opt | Checksum: 1fb1319a5
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: eacc1302
 
-Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14243 ; free virtual = 28540
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13287 ; free virtual = 28601
 
 Phase 2.3 Post-Processing in Floorplanning
-Phase 2.3 Post-Processing in Floorplanning | Checksum: 1fb1319a5
+Phase 2.3 Post-Processing in Floorplanning | Checksum: eacc1302
 
-Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14243 ; free virtual = 28540
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13287 ; free virtual = 28601
 
 Phase 2.4 Global Placement Core
 
 Phase 2.4.1 Physical Synthesis In Placer
-INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 491 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 480 LUT instances to create LUTNM shape
 INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
-INFO: [Physopt 32-1138] End 1 Pass. Optimized 174 nets or LUTs. Breaked 0 LUT, combined 174 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 180 nets or LUTs. Breaked 0 LUT, combined 180 existing LUTs and moved 0 existing LUT
 INFO: [Physopt 32-65] No nets found for high-fanout optimization.
 INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
@@ -679,7 +607,7 @@ INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was
 INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
 INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14220 ; free virtual = 28517
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13258 ; free virtual = 28575
 
 Summary of Physical Synthesis Optimizations
 ============================================
@@ -688,7 +616,7 @@ Summary of Physical Synthesis Optimizations
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 |  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-|  LUT Combining                                    |            0  |            174  |                   174  |           0  |           1  |  00:00:01  |
+|  LUT Combining                                    |            0  |            180  |                   180  |           0  |           1  |  00:00:01  |
 |  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
@@ -697,59 +625,59 @@ Summary of Physical Synthesis Optimizations
 |  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Total                                            |            0  |            174  |                   174  |           0  |           4  |  00:00:01  |
+|  Total                                            |            0  |            180  |                   180  |           0  |           4  |  00:00:01  |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Phase 2.4.1 Physical Synthesis In Placer | Checksum: b6e5f1bd
+Phase 2.4.1 Physical Synthesis In Placer | Checksum: 1ccbad06c
 
-Time (s): cpu = 00:00:35 ; elapsed = 00:00:17 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14221 ; free virtual = 28518
-Phase 2.4 Global Placement Core | Checksum: 121e4e5dd
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:17 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13259 ; free virtual = 28576
+Phase 2.4 Global Placement Core | Checksum: 1b0ba4a7e
 
-Time (s): cpu = 00:00:37 ; elapsed = 00:00:18 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14220 ; free virtual = 28517
-Phase 2 Global Placement | Checksum: 121e4e5dd
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:18 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13258 ; free virtual = 28576
+Phase 2 Global Placement | Checksum: 1b0ba4a7e
 
-Time (s): cpu = 00:00:37 ; elapsed = 00:00:18 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14230 ; free virtual = 28527
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:18 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13268 ; free virtual = 28585
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: 17c8b2abe
+Phase 3.1 Commit Multi Column Macros | Checksum: 15ac2f5af
 
-Time (s): cpu = 00:00:40 ; elapsed = 00:00:19 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14228 ; free virtual = 28525
+Time (s): cpu = 00:00:46 ; elapsed = 00:00:19 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13265 ; free virtual = 28582
 
 Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1ba76c833
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 20f0c7061
 
-Time (s): cpu = 00:00:45 ; elapsed = 00:00:21 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14231 ; free virtual = 28528
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:21 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13268 ; free virtual = 28586
 
 Phase 3.3 Area Swap Optimization
-Phase 3.3 Area Swap Optimization | Checksum: 1bbd966c0
+Phase 3.3 Area Swap Optimization | Checksum: 1422517bf
 
-Time (s): cpu = 00:00:45 ; elapsed = 00:00:21 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14231 ; free virtual = 28528
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:21 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13269 ; free virtual = 28586
 
 Phase 3.4 Pipeline Register Optimization
-Phase 3.4 Pipeline Register Optimization | Checksum: 175e4ea32
+Phase 3.4 Pipeline Register Optimization | Checksum: 1acd47cc9
 
-Time (s): cpu = 00:00:45 ; elapsed = 00:00:21 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14231 ; free virtual = 28528
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:21 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13269 ; free virtual = 28586
 
 Phase 3.5 Small Shape Detail Placement
-Phase 3.5 Small Shape Detail Placement | Checksum: 13407c04f
+Phase 3.5 Small Shape Detail Placement | Checksum: 18fef2cfb
 
-Time (s): cpu = 00:00:52 ; elapsed = 00:00:30 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14216 ; free virtual = 28513
+Time (s): cpu = 00:00:57 ; elapsed = 00:00:29 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13256 ; free virtual = 28573
 
 Phase 3.6 Re-assign LUT pins
-Phase 3.6 Re-assign LUT pins | Checksum: 9274c57d
+Phase 3.6 Re-assign LUT pins | Checksum: 1a3f3b8b9
 
-Time (s): cpu = 00:00:53 ; elapsed = 00:00:31 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14218 ; free virtual = 28515
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:30 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13257 ; free virtual = 28575
 
 Phase 3.7 Pipeline Register Optimization
-Phase 3.7 Pipeline Register Optimization | Checksum: 128414107
+Phase 3.7 Pipeline Register Optimization | Checksum: 1fa642183
 
-Time (s): cpu = 00:00:53 ; elapsed = 00:00:31 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14218 ; free virtual = 28515
-Phase 3 Detail Placement | Checksum: 128414107
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:30 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13257 ; free virtual = 28575
+Phase 3 Detail Placement | Checksum: 1fa642183
 
-Time (s): cpu = 00:00:53 ; elapsed = 00:00:31 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14218 ; free virtual = 28515
+Time (s): cpu = 00:00:59 ; elapsed = 00:00:30 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13257 ; free virtual = 28575
 
 Phase 4 Post Placement Optimization and Clean-Up
 
@@ -757,7 +685,7 @@ Phase 4.1 Post Commit Optimization
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Phase 4.1.1 Post Placement Optimization
-Post Placement Optimization Initialization | Checksum: 113caf9da
+Post Placement Optimization Initialization | Checksum: 249ae80ea
 
 Phase 4.1.1.1 BUFG Insertion
 
@@ -765,34 +693,34 @@ Starting Physical Synthesis Task
 
 Phase 1 Physical Synthesis Initialization
 INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
-INFO: [Physopt 32-619] Estimated Timing Summary | WNS=1.079 | TNS=0.000 |
-Phase 1 Physical Synthesis Initialization | Checksum: 140fd50bc
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=1.685 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 22ec53bfc
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.29 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14206 ; free virtual = 28503
+Time (s): cpu = 00:00:00.97 ; elapsed = 00:00:00.28 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13245 ; free virtual = 28562
 INFO: [Place 46-33] Processed net u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Pzhnz6_i_2_n_0, BUFG insertion was skipped due to placement/routing conflicts.
 INFO: [Place 46-56] BUFG insertion identified 1 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 1, Skipped due to Timing Degradation: 0, Skipped due to Illegal Netlist: 0.
-Ending Physical Synthesis Task | Checksum: ccfddb56
+Ending Physical Synthesis Task | Checksum: 1bb871b12
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.49 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14206 ; free virtual = 28503
-Phase 4.1.1.1 BUFG Insertion | Checksum: 113caf9da
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.48 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13245 ; free virtual = 28562
+Phase 4.1.1.1 BUFG Insertion | Checksum: 249ae80ea
 
-Time (s): cpu = 00:01:01 ; elapsed = 00:00:34 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14206 ; free virtual = 28503
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:33 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13245 ; free virtual = 28562
 
 Phase 4.1.1.2 Post Placement Timing Optimization
-INFO: [Place 30-746] Post Placement Timing Summary WNS=1.079. For the most accurate timing information please run report_timing.
-Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 130f602bc
+INFO: [Place 30-746] Post Placement Timing Summary WNS=1.685. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 237d9548b
 
-Time (s): cpu = 00:01:01 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14206 ; free virtual = 28503
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:33 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13244 ; free virtual = 28562
 
-Time (s): cpu = 00:01:01 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14206 ; free virtual = 28503
-Phase 4.1 Post Commit Optimization | Checksum: 130f602bc
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:33 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13244 ; free virtual = 28562
+Phase 4.1 Post Commit Optimization | Checksum: 237d9548b
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14204 ; free virtual = 28501
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:33 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13244 ; free virtual = 28562
 
 Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 130f602bc
+Phase 4.2 Post Placement Cleanup | Checksum: 237d9548b
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:33 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
 
 Phase 4.3 Placer Reporting
 
@@ -802,36 +730,36 @@ INFO: [Place 30-612] Post-Placement Estimated Congestion
 |           | Global Congestion | Short Congestion  |
 | Direction | Region Size       | Region Size       |
 |___________|___________________|___________________|
-|      North|                1x1|                4x4|
+|      North|                1x1|                2x2|
 |___________|___________________|___________________|
-|      South|                1x1|                4x4|
+|      South|                1x1|                1x1|
 |___________|___________________|___________________|
-|       East|                1x1|                1x1|
+|       East|                1x1|                2x2|
 |___________|___________________|___________________|
 |       West|                1x1|                1x1|
 |___________|___________________|___________________|
 
-Phase 4.3.1 Print Estimated Congestion | Checksum: 130f602bc
+Phase 4.3.1 Print Estimated Congestion | Checksum: 237d9548b
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
-Phase 4.3 Placer Reporting | Checksum: 130f602bc
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:34 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
+Phase 4.3 Placer Reporting | Checksum: 237d9548b
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:34 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
 
 Phase 4.4 Final Placement Cleanup
-Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1727f815d
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:34 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 18df508ef
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
-Ending Placer Task | Checksum: bf74d0c4
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:34 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
+Ending Placer Task | Checksum: a1e83d93
 
-Time (s): cpu = 00:01:02 ; elapsed = 00:00:35 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14205 ; free virtual = 28502
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:34 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13247 ; free virtual = 28564
 INFO: [Common 17-83] Releasing license: Implementation
-31 Infos, 24 Warnings, 0 Critical Warnings and 0 Errors encountered.
+31 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
-place_design: Time (s): cpu = 00:01:09 ; elapsed = 00:00:37 . Memory (MB): peak = 3699.270 ; gain = 31.043 ; free physical = 14236 ; free virtual = 28533
+place_design: Time (s): cpu = 00:01:14 ; elapsed = 00:00:36 . Memory (MB): peak = 3672.074 ; gain = 31.043 ; free physical = 13284 ; free virtual = 28601
 # phys_opt_design
 Command: phys_opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
@@ -847,7 +775,7 @@ Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.86 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14181 ; free virtual = 28503
+Write XDEF Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.86 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13224 ; free virtual = 28567
 INFO: [Common 17-1381] The checkpoint '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/place.dcp' has been generated.
 # route_design
 Command: route_design
@@ -867,122 +795,122 @@ INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more in
 
 Starting Routing Task
 INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
-Checksum: PlaceDB: 21e03251 ConstDB: 0 ShapeSum: 9d949e73 RouteDB: 0
+Checksum: PlaceDB: 8aa3d6d1 ConstDB: 0 ShapeSum: 174466c2 RouteDB: 0
 
 Phase 1 Build RT Design
-Phase 1 Build RT Design | Checksum: 11c10557b
+Phase 1 Build RT Design | Checksum: 114bf1161
 
-Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14086 ; free virtual = 28389
-Post Restoration Checksum: NetGraph: 69b9e141 NumContArr: b256743a Constraints: 0 Timing: 0
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13134 ; free virtual = 28457
+Post Restoration Checksum: NetGraph: bc606301 NumContArr: 585eae60 Constraints: 0 Timing: 0
 
 Phase 2 Router Initialization
 
 Phase 2.1 Create Timer
-Phase 2.1 Create Timer | Checksum: 11c10557b
+Phase 2.1 Create Timer | Checksum: 114bf1161
 
-Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14087 ; free virtual = 28390
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13136 ; free virtual = 28459
 
 Phase 2.2 Fix Topology Constraints
-Phase 2.2 Fix Topology Constraints | Checksum: 11c10557b
+Phase 2.2 Fix Topology Constraints | Checksum: 114bf1161
 
-Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14052 ; free virtual = 28355
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:11 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13100 ; free virtual = 28424
 
 Phase 2.3 Pre Route Cleanup
-Phase 2.3 Pre Route Cleanup | Checksum: 11c10557b
+Phase 2.3 Pre Route Cleanup | Checksum: 114bf1161
 
-Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14052 ; free virtual = 28355
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:11 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13100 ; free virtual = 28424
  Number of Nodes with overlaps = 0
 
 Phase 2.4 Update Timing
-Phase 2.4 Update Timing | Checksum: 15511fc48
+Phase 2.4 Update Timing | Checksum: 10ef0935e
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:15 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28333
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.118  | TNS=0.000  | WHS=-0.198 | THS=-158.893|
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:15 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13080 ; free virtual = 28403
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.376  | TNS=0.000  | WHS=-0.172 | THS=-152.726|
 
-Phase 2 Router Initialization | Checksum: 10dba8ca1
+Phase 2 Router Initialization | Checksum: e5028bee
 
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:16 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14031 ; free virtual = 28334
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:16 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13077 ; free virtual = 28400
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 0.0112354 %
-  Global Horizontal Routing Utilization  = 0.0157201 %
+  Global Vertical Routing Utilization    = 0.0042974 %
+  Global Horizontal Routing Utilization  = 0.00676133 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
-  Number of Failed Nets               = 21352
+  Number of Failed Nets               = 20682
     (Failed Nets is the sum of unrouted and partially routed nets)
-  Number of Unrouted Nets             = 21351
-  Number of Partially Routed Nets     = 1
+  Number of Unrouted Nets             = 20682
+  Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
 
 Phase 3 Initial Routing
 
 Phase 3.1 Global Routing
-Phase 3.1 Global Routing | Checksum: 10dba8ca1
+Phase 3.1 Global Routing | Checksum: e5028bee
 
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:16 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14031 ; free virtual = 28334
-Phase 3 Initial Routing | Checksum: 23c896fa6
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:16 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13078 ; free virtual = 28401
+Phase 3 Initial Routing | Checksum: 5d6a348c
 
-Time (s): cpu = 00:00:33 ; elapsed = 00:00:18 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14023 ; free virtual = 28327
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:18 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13069 ; free virtual = 28393
 
 Phase 4 Rip-up And Reroute
 
 Phase 4.1 Global Iteration 0
- Number of Nodes with overlaps = 7103
- Number of Nodes with overlaps = 1624
- Number of Nodes with overlaps = 412
- Number of Nodes with overlaps = 132
- Number of Nodes with overlaps = 43
- Number of Nodes with overlaps = 13
- Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 7130
+ Number of Nodes with overlaps = 1720
+ Number of Nodes with overlaps = 471
+ Number of Nodes with overlaps = 129
+ Number of Nodes with overlaps = 62
+ Number of Nodes with overlaps = 21
+ Number of Nodes with overlaps = 1
  Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.501  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=1.137  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 4.1 Global Iteration 0 | Checksum: 1eabe6332
+Phase 4.1 Global Iteration 0 | Checksum: 176bf737a
 
-Time (s): cpu = 00:01:06 ; elapsed = 00:00:44 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
-Phase 4 Rip-up And Reroute | Checksum: 1eabe6332
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13077 ; free virtual = 28400
+Phase 4 Rip-up And Reroute | Checksum: 176bf737a
 
-Time (s): cpu = 00:01:06 ; elapsed = 00:00:44 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13077 ; free virtual = 28400
 
 Phase 5 Delay and Skew Optimization
 
 Phase 5.1 Delay CleanUp
-Phase 5.1 Delay CleanUp | Checksum: 1eabe6332
+Phase 5.1 Delay CleanUp | Checksum: 176bf737a
 
-Time (s): cpu = 00:01:06 ; elapsed = 00:00:44 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13077 ; free virtual = 28400
 
 Phase 5.2 Clock Skew Optimization
-Phase 5.2 Clock Skew Optimization | Checksum: 1eabe6332
+Phase 5.2 Clock Skew Optimization | Checksum: 176bf737a
 
-Time (s): cpu = 00:01:06 ; elapsed = 00:00:44 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
-Phase 5 Delay and Skew Optimization | Checksum: 1eabe6332
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13077 ; free virtual = 28400
+Phase 5 Delay and Skew Optimization | Checksum: 176bf737a
 
-Time (s): cpu = 00:01:06 ; elapsed = 00:00:44 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13077 ; free virtual = 28400
 
 Phase 6 Post Hold Fix
 
 Phase 6.1 Hold Fix Iter
 
 Phase 6.1.1 Update Timing
-Phase 6.1.1 Update Timing | Checksum: 1db47a1bd
+Phase 6.1.1 Update Timing | Checksum: 15355fa32
 
-Time (s): cpu = 00:01:08 ; elapsed = 00:00:45 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.513  | TNS=0.000  | WHS=0.054  | THS=0.000  |
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:48 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13076 ; free virtual = 28400
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=1.149  | TNS=0.000  | WHS=0.108  | THS=0.000  |
 
-Phase 6.1 Hold Fix Iter | Checksum: 1db47a1bd
+Phase 6.1 Hold Fix Iter | Checksum: 15355fa32
 
-Time (s): cpu = 00:01:08 ; elapsed = 00:00:45 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
-Phase 6 Post Hold Fix | Checksum: 1db47a1bd
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:48 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13076 ; free virtual = 28400
+Phase 6 Post Hold Fix | Checksum: 15355fa32
 
-Time (s): cpu = 00:01:08 ; elapsed = 00:00:45 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:48 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13076 ; free virtual = 28400
 
 Phase 7 Route finalize
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 6.77177 %
-  Global Horizontal Routing Utilization  = 8.69667 %
+  Global Vertical Routing Utilization    = 6.86502 %
+  Global Horizontal Routing Utilization  = 8.90898 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
@@ -992,45 +920,45 @@ Router Utilization Summary
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
-Phase 7 Route finalize | Checksum: 1d2c6430c
+Phase 7 Route finalize | Checksum: 143d824f1
 
-Time (s): cpu = 00:01:09 ; elapsed = 00:00:45 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28332
+Time (s): cpu = 00:01:14 ; elapsed = 00:00:48 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13076 ; free virtual = 28400
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 1d2c6430c
+Phase 8 Verifying routed nets | Checksum: 143d824f1
 
-Time (s): cpu = 00:01:09 ; elapsed = 00:00:45 . Memory (MB): peak = 3699.270 ; gain = 0.000 ; free physical = 14028 ; free virtual = 28332
+Time (s): cpu = 00:01:14 ; elapsed = 00:00:48 . Memory (MB): peak = 3672.074 ; gain = 0.000 ; free physical = 13076 ; free virtual = 28400
 
 Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 2624e9443
+Phase 9 Depositing Routes | Checksum: 1cf98fa67
 
-Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 3700.266 ; gain = 0.996 ; free physical = 14028 ; free virtual = 28331
+Time (s): cpu = 00:01:15 ; elapsed = 00:00:50 . Memory (MB): peak = 3673.070 ; gain = 0.996 ; free physical = 13075 ; free virtual = 28399
 
 Phase 10 Post Router Timing
-INFO: [Route 35-57] Estimated Timing Summary | WNS=2.513  | TNS=0.000  | WHS=0.054  | THS=0.000  |
+INFO: [Route 35-57] Estimated Timing Summary | WNS=1.149  | TNS=0.000  | WHS=0.108  | THS=0.000  |
 
 INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
-Phase 10 Post Router Timing | Checksum: 2624e9443
+Phase 10 Post Router Timing | Checksum: 1cf98fa67
 
-Time (s): cpu = 00:01:12 ; elapsed = 00:00:47 . Memory (MB): peak = 3700.266 ; gain = 0.996 ; free physical = 14027 ; free virtual = 28331
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:50 . Memory (MB): peak = 3673.070 ; gain = 0.996 ; free physical = 13075 ; free virtual = 28399
 INFO: [Route 35-16] Router Completed Successfully
 
-Time (s): cpu = 00:01:12 ; elapsed = 00:00:47 . Memory (MB): peak = 3700.266 ; gain = 0.996 ; free physical = 14070 ; free virtual = 28374
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:50 . Memory (MB): peak = 3673.070 ; gain = 0.996 ; free physical = 13119 ; free virtual = 28442
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
 12 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:01:22 ; elapsed = 00:00:51 . Memory (MB): peak = 3700.266 ; gain = 0.996 ; free physical = 14070 ; free virtual = 28374
+route_design: Time (s): cpu = 00:01:26 ; elapsed = 00:00:53 . Memory (MB): peak = 3673.070 ; gain = 0.996 ; free physical = 13119 ; free virtual = 28442
 # write_checkpoint -force ./checkpoint/route
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 3700.266 ; gain = 0.000 ; free physical = 14029 ; free virtual = 28365
+Write XDEF Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 3673.070 ; gain = 0.000 ; free physical = 13078 ; free virtual = 28434
 INFO: [Common 17-1381] The checkpoint '/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/route.dcp' has been generated.
 # report_timing_summary -file ./checkpoint/sta.rpt
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
@@ -1070,34 +998,31 @@ WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_fp_domain/u_CORTEXM3INTEGRAT
 WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Glym17__0 multiplier stage u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Glym17__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Glym17__1 multiplier stage u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Glym17__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 WARNING: [DRC PDRC-153] Gated clock check: Net u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/C3a7z6 is a gated clock net sourced by a combinational pin Zudoz6_reg_i_2/O, cell Zudoz6_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-WARNING: [DRC PDRC-153] Gated clock check: Net u_fpga_platform/u_lsi/outclk1_reg_0 is a gated clock net sourced by a combinational pin u_fpga_platform/u_lsi/FSM_onehot_curr_state[2]_i_2/O, cell u_fpga_platform/u_lsi/FSM_onehot_curr_state[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 WARNING: [DRC PLHOLDVIO-2] Non-Optimal connections which could lead to hold violations: A LUT Zudoz6_reg_i_2 is driving clock pin of 2 cells. This could lead to large hold time violations. Involved cells are:
 u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zry917_reg, and u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zudoz6_reg
-WARNING: [DRC PLHOLDVIO-2] Non-Optimal connections which could lead to hold violations: A LUT u_fpga_platform/u_lsi/FSM_onehot_curr_state[2]_i_2 is driving clock pin of 169 cells. This could lead to large hold time violations. Involved cells are:
-u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/FSM_onehot_curr_state_reg[0], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/FSM_onehot_curr_state_reg[1], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/FSM_onehot_curr_state_reg[2], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/last_s_req_p_reg, u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/reg_s_ack_p_reg, u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[0], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[10], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[11], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[12], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[13], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[14], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[15], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[16], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[17], u_fp_domain/u_apb1_async/u_ahb_to_apb_async_p/s_rdata_reg[18]... and (the first 15 of 169 listed)
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A4qoz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A63nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Aw2nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Bu4107_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Atlzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/B0lt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Cpwt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/E1fzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/E3soz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Estt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Kazt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Lpmzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/N33nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Ny2nz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Oswt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Pm1u07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Tfgt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Wf5107_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Wybt07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xhioz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xkioz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xvmnz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_ahb_bus_matrix/u_ahb_bus_matrix_decoders0/data_out_port_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_ahb_bus_matrix/u_ahb_bus_matrix_decoders0/data_out_port_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_ahb_bus_matrix/u_ahb_bus_matrix_decoders0/data_out_port_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-WARNING: [DRC RTSTAT-10] No routable loads: 845 net(s) have no routable loads. The problem bus(es) and/or net(s) are u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A1um17_reg_i_1_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A1um17_reg_i_1_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A1um17_reg_i_1_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A7au07_reg_i_1_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A7au07_reg_i_1_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A7au07_reg_i_1_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_7_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_7_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_7_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_8_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_8_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_8_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_15_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_15_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_15_n_3... and (the first 15 of 845 listed).
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Izdzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/J93g07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/K19t07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Lxuzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Mxczz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Nbtoz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Qktoz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Qvbzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Scbzz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Utazz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Xvht07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zuft07_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has an input control pin u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ADDRARDADDR[14] (net: u_fp_domain/u_sram_top/u_dtcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[10]) which is driven by a register (u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/Zvozz6_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC RTSTAT-10] No routable loads: 846 net(s) have no routable loads. The problem bus(es) and/or net(s) are u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A1um17_reg_i_1_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A1um17_reg_i_1_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A1um17_reg_i_1_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A7au07_reg_i_1_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A7au07_reg_i_1_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A7au07_reg_i_1_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_7_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_7_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_7_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_8_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_8_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_8_n_3, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_15_n_1, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_15_n_2, u_fp_domain/u_CORTEXM3INTEGRATION/u_cortexm3ds_logic/A8ka17_reg_i_15_n_3... and (the first 15 of 846 listed).
 WARNING: [DRC ZPS7-1] PS7 block required: The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
-INFO: [Vivado 12-3199] DRC finished with 0 Errors, 39 Warnings
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 37 Warnings
 INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
 INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
 Loading data files...
@@ -1111,8 +1036,8 @@ Writing bitstream ./bitstream.bin...
 INFO: [Vivado 12-1842] Bitgen Completed Successfully.
 INFO: [#UNDEF] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
 INFO: [Common 17-83] Releasing license: Implementation
-9 Infos, 39 Warnings, 0 Critical Warnings and 0 Errors encountered.
+9 Infos, 37 Warnings, 0 Critical Warnings and 0 Errors encountered.
 write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 3862.152 ; gain = 161.879 ; free physical = 14006 ; free virtual = 28331
+write_bitstream: Time (s): cpu = 00:00:22 ; elapsed = 00:00:11 . Memory (MB): peak = 3848.598 ; gain = 175.520 ; free physical = 13043 ; free virtual = 28394
 q
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 28 19:40:10 2023...
+INFO: [Common 17-206] Exiting Vivado at Sat Sep 23 15:38:34 2023...

@@ -17,12 +17,10 @@ module fpga_platform
 (
 	input  						input_clk,  
 	input  						rstn,
-	output 						clk_40mhz, 
-	output 						clk_50mhz, 
-	output 						clk_80mhz, 
-	output 						clk_10mhz, 
-	output reg 					pll_locked, 	
-	output	 					lsi_locked 	
+	output 						output_clk0, 
+	output 						output_clk1, 
+	output 						output_clk2, 
+	output reg 					pll_locked 	
 );
 
 //===============================================
@@ -76,7 +74,7 @@ assign pll_rstn_flag = ((pll_locked == 1'b0) & (pll_locked_d == 1'b1)) ? 1'b0 : 
 assign pll_rstn = rstn & pll_rstn_flag;
 
 //===============================================
-// hsi & pll : pll ipcores
+// pll ipcores
 //===============================================
 
 `ifdef ALTERA_EP4
@@ -84,9 +82,9 @@ pll_50m u_pll0
 (
 	.areset						(~pll_rstn),
 	.inclk0						(input_clk),
-	.c0							(clk_40mhz),//40mhz
-	.c1							(clk_50mhz),//50mhz
-	.c2							(clk_80mhz),//80mhz
+	.c0							(output_clk0),//40mhz
+	.c1							(output_clk1),//50mhz
+	.c2							(output_clk2),//80mhz
 	.locked						(pll0_locked)
 );
 `elsif ZYNQ_7020
@@ -94,29 +92,12 @@ pll_50m u_pll0
 (
 	.reset						(~pll_rstn),
 	.clk_in1					(input_clk),
-	.clk_out1					(clk_40mhz),//40mhz
-	.clk_out2					(clk_50mhz),//50mhz
-	.clk_out3					(clk_80mhz),//80mhz
+	.clk_out1					(output_clk0),//40mhz
+	.clk_out2					(output_clk1),//50mhz
+	.clk_out3					(output_clk2),//80mhz
 	.locked						(pll0_locked)
 );
 `endif
-
-//===============================================
-// lsi : clock divider
-//===============================================
-
-clk_even_division 
-#(
-	.N							(8)
-)
-u_lsi
-(
-	.inclk						(clk_80mhz),
-	.rstn						(pll0_locked),
-	.outclk						(),
-	.outclkn					(clk_10mhz),
-	.locked						(lsi_locked)
-);
 
 endmodule
 

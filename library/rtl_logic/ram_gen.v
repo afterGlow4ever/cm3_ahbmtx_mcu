@@ -17,8 +17,7 @@
 //===============================================
 module ram_1port
 #(
-	parameter										ADDR_WIDTH = 4, 
-	parameter										DATA_WIDTH = 8
+	parameter										ADDR_WIDTH, DATA_WIDTH
 )
 (
 	input												clk,
@@ -60,8 +59,7 @@ endmodule
 //===============================================
 module ram_2port_tp
 #(
-	parameter										ADDR_WIDTH = 4, 
-	parameter										DATA_WIDTH = 8
+	parameter										ADDR_WIDTH, DATA_WIDTH
 )
 (
 	input												wr_clk,
@@ -105,8 +103,7 @@ endmodule
 //===============================================
 module ram_2port_dp
 #(
-	parameter										ADDR_WIDTH = 4, 
-	parameter										DATA_WIDTH = 8
+	parameter										ADDR_WIDTH, DATA_WIDTH
 )
 (
 	input												clk_a,
