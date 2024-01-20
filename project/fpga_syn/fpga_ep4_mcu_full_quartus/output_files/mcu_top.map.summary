@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Sat Sep 23 14:22:00 2023
+Analysis & Synthesis Status : Successful - Sat Jan 20 19:03:06 2024
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : mcu_top
 Top-level Entity Name : mcu_top
 Family : Cyclone IV E
-Total logic elements : 26,242
-    Total combinational functions : 22,785
-    Dedicated logic registers : 7,078
-Total registers : 7078
-Total pins : 7
+Total logic elements : 27,494
+    Total combinational functions : 24,098
+    Dedicated logic registers : 7,201
+Total registers : 7201
+Total pins : 25
 Total virtual pins : 0
-Total memory bits : 1,671,168
+Total memory bits : 327,680
 Embedded Multiplier 9-bit elements : 6
 Total PLLs : 1

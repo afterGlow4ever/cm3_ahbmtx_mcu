@@ -15,7 +15,8 @@
 
 #include "mcu.h"
 #include "mcu_operation.h"
-
+#include "core_cm3.h"
+#include "drv_defines.h"
 
 #endif
 

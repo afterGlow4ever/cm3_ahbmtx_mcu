@@ -36,23 +36,29 @@ uint8_t exit_current_test(void);
 void mcu_testmenu(void);
 
 //===============================================
+// including test define
+//===============================================
+
+//#define SIM
+//#define UART_TEST
+//
+//===============================================
 // including bsp header files
 //===============================================
 
 #include "uart_bsp.h"
+#ifdef GPIO_DRIVER
+#include "gpio_bsp.h"
+#endif
 
 //===============================================
 // including test header files
 //===============================================
 
 #include "uart_test.h"
-
-//===============================================
-// including test define
-//===============================================
-
-//#define SIM
-//#define UART_TEST
+#ifdef GPIO_TEST
+#include "gpio_test.h"
+#endif
 
 #endif
 

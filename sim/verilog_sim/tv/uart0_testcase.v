@@ -70,8 +70,8 @@ reg								rparity;
 reg		[31:0]					uart0_r_pe_ctrl;
 reg								test_start;
 reg								test_end;
-reg								iut2lt_flag;;
-reg								lt2iut_flag;;
+reg								iut2lt_flag;
+reg								lt2iut_flag;
 
 
 initial

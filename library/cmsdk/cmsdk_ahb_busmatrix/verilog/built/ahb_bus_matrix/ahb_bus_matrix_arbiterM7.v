@@ -3,7 +3,7 @@
 // only be used by a person authorised under and to the extent permitted
 // by a subsisting licensing agreement from ARM Limited.
 //
-//            (C) COPYRIGHT 2001-2013-2023 ARM Limited.
+//            (C) COPYRIGHT 2001-2013-2024 ARM Limited.
 //                ALL RIGHTS RESERVED
 //
 // This entire notice must be reproduced on all copies of this file

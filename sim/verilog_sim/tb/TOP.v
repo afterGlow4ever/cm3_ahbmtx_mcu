@@ -15,13 +15,42 @@
 module TOP;
 
 reg								clk_50mhz;
+reg								clk_40mhz;
 reg								clk_20mhz;
+wire							clk;
 reg								rstn;
+wire							txd;
+wire							rxd;
+wire							txd1;
+wire							rxd1;
 wire							tdi;
 wire							tdo;
 wire							tck;
 wire							tms;
 wire							trstn;
+
+//===============================================
+// gpio
+//===============================================
+
+`ifdef GPIO
+wire							a15;
+wire							a14;
+wire							a13;
+wire							a12;
+wire							a11;
+wire							a10;
+wire							a9;
+wire							a8;
+wire							a7;
+wire							a6;
+wire							a5;
+wire							a4;
+wire							a3;
+wire							a2;
+wire							a1;
+wire							a0;
+`endif
 
 //===============================================
 // Clk and rst
@@ -35,6 +64,14 @@ begin
 	forever #(10) clk_50mhz = ~clk_50mhz;
 end
 
+// clk 40MHz
+initial
+begin
+	clk_40mhz = 1'b0;
+	#100
+	forever #(12.5) clk_40mhz = ~clk_40mhz;
+end
+
 // clk 20MHz
 initial
 begin
@@ -42,6 +79,12 @@ begin
 	#100
 	forever #(25) clk_20mhz = ~clk_20mhz;
 end
+
+`ifdef FPGA
+assign clk = clk_50mhz;
+`else
+assign clk = clk_40mhz;
+`endif
 
 //initial
 //begin
@@ -62,9 +105,17 @@ end
 
 mcu_top u_mcu_top
 (
-	.CLK						(clk_50mhz			),
+	.CLK						(clk				),
 	.RSTN						(rstn				),
 
+`ifdef GPIO
+	.GPIOA						({a15, a14, a13, a12, a11, a10, a9, a8, a7, a6, a5, a4, a3, a2, a1, a0}),
+`else
+	.TXD1						(txd1				),
+	.RXD1						(rxd1				),
+`endif
+	.TXD						(txd				),
+	.RXD						(rxd				),
 	.TDI						(tdi				),
 	.TCK						(tck				),
 	.TMS						(tms				),

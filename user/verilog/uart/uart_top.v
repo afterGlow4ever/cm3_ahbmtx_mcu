@@ -80,6 +80,7 @@ wire		[ 8:0]				int_en;
 wire		[ 8:0]				int_clr;
 wire		[ 8:0]				int_sta;
 wire		[ 8:0]				int_tgr;
+wire		[ 8:0]				int_pos;
 wire		[ 8:0]				int_line;
 
 //===============================================
@@ -156,7 +157,7 @@ uart_data_buffer u_uart_data_buffer
     .r_tx_fifo_watermark		(r_tx_fifo_watermark),
     .r_rx_fifo_watermark		(r_rx_fifo_watermark),
 
-	.int_status_rx_fifo_empty	(int_tgr[3]),
+	.int_status_rx_fifo_noempty	(int_tgr[3]),
 	.int_status_rx_fifo_warning	(int_tgr[2]),
 	.int_status_tx_fifo_empty	(int_tgr[1]),
 	.int_status_tx_fifo_warning	(int_tgr[0])
@@ -281,9 +282,23 @@ uart_pe_core u_uart_pe_core
 //===============================================
 // uart interrupt management
 // each uart module has 1 interrupt line
+// 'int detect' is used to avoid a same int cause 
+// more than once interrupt.
 //===============================================
 
 assign uart_int_line = |int_line;
+
+posedge_detect 
+#(
+	.WIDTH						(9)
+)
+u_int_detect 
+(
+	.clk						(module_clk),
+	.rstn						(module_rstn),
+	.A							(int_tgr),
+	.Y							(int_pos)
+);
 
 interrupt_gen 
 #(
@@ -295,7 +310,7 @@ u_interrupt_gen
 	.rstn						(module_rstn),
 
 	.int_en						(int_en),
-	.int_tgr					(int_tgr),
+	.int_tgr					(int_pos),
 	.int_clr					(int_clr),
 	.int_sta					(int_sta),
 	.int_line					(int_line)	

@@ -104,8 +104,13 @@ __isr_vector:
     .long   SysTick_Handler             /* SysTick Handler               */
 
     /* External Interrupts */
-/*    .long   UART0_Handler               /* 16+ 0: UART 0 RX and TX Handler   */
-      .size    __isr_vector, . - __isr_vector
+    .long   Uart0_Handler               /* 16+ 0: UART 0 RX and TX Handler   */
+    .long   Uart1_Handler               /* 16+ 1: UART 1 RX and TX Handler   */
+    .long   Resv0_Handler               /* 16+ 2: Reserved 0 Handler   */
+    .long   Resv1_Handler               /* 16+ 3: Reserved 1 Handler   */
+    .long   Resv2_Handler               /* 16+ 4: Reserved 2 Handler   */
+    .long   Gpioa_Handler               /* 16+ 5: Gpioa Handler   */
+    .size    __isr_vector, . - __isr_vector
 
 /* Reset Handler */
     .text
@@ -195,7 +200,12 @@ Reset_Handler:
 
 /* IRQ Handlers */
 
-/*    def_default_handler    UART0_Handler*/
+    def_default_handler    Uart0_Handler
+    def_default_handler    Uart1_Handler
+    def_default_handler    Resv0_Handler
+    def_default_handler    Resv1_Handler
+    def_default_handler    Resv2_Handler
+    def_default_handler    Gpioa_Handler
 
     /*
     def_default_handler    Default_Handler

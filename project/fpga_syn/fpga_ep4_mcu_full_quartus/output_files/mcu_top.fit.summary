@@ -1,16 +1,16 @@
-Fitter Status : Successful - Sat Sep 23 14:25:31 2023
+Fitter Status : Successful - Sat Jan 20 19:06:27 2024
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : mcu_top
 Top-level Entity Name : mcu_top
 Family : Cyclone IV E
 Device : EP4CE55F23I7
 Timing Models : Final
-Total logic elements : 24,535 / 55,856 ( 44 % )
-    Total combinational functions : 22,797 / 55,856 ( 41 % )
-    Dedicated logic registers : 7,078 / 55,856 ( 13 % )
-Total registers : 7078
-Total pins : 7 / 325 ( 2 % )
+Total logic elements : 25,364 / 55,856 ( 45 % )
+    Total combinational functions : 24,108 / 55,856 ( 43 % )
+    Dedicated logic registers : 7,201 / 55,856 ( 13 % )
+Total registers : 7201
+Total pins : 25 / 325 ( 8 % )
 Total virtual pins : 0
-Total memory bits : 1,671,168 / 2,396,160 ( 70 % )
+Total memory bits : 327,680 / 2,396,160 ( 14 % )
 Embedded Multiplier 9-bit elements : 6 / 308 ( 2 % )
 Total PLLs : 1 / 4 ( 25 % )

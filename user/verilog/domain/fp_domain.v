@@ -23,6 +23,27 @@ module fp_domain
 	input						apb1_root_rstn,
 	input						power_on_rstn,
 	
+	// pins
+	output 						uart0_tx,
+	output 						uart0_tx_oen,
+	input    					uart0_rx,
+	output 						uart0_rx_oen,
+	output 						uart1_tx,
+	output 						uart1_tx_oen,
+	input    					uart1_rx,
+	output 						uart1_rx_oen,
+
+`ifdef GPIO
+	output						psel0_gpioa,
+	output						penable0_o,
+	output	[31:0]			 	paddr0_gpioa, 
+	output	      				pwrite0_o,
+	output	[31:0]			 	pwdata0_o, 
+	input	[31:0]			 	prdata0_gpioa, 
+`endif
+
+	input      					gpioa_int,
+
 	// Debug port swd/jlink
 	input						TDI,                  // JTAG TDI
 	input						TCK,                  // SWD Clk / JTAG TCK
@@ -31,7 +52,7 @@ module fp_domain
 	input						TRST                  // SWD Clk / JTAG TCK
 );
 
-wire	[239:0] 				irq = {24'b0000_0000_0000_0000};
+wire	[239:0] 				irq;
 
 //===============================================
 // AMBA AHB bus matrix
@@ -506,7 +527,7 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
                                          // Must be synchronous to FCLK or tied when no alternative clock source
    .STCALIB        ({1'b1,               // No alternative clock source
                      1'b0,               // Exact multiple of 10ms from FCLK
-                     24'h003D08F}),      // Calibration value for SysTick for 25 MHz source
+                     24'h03D08F}),       // Calibration value for SysTick for 25 MHz source
 
    .AUXFAULT       ({32{1'b0}}),         // Auxiliary Fault Status Register inputs: Connect to fault status generating logic
                                          // if required. Result appears in the Auxiliary Fault Status Register at address
@@ -656,6 +677,21 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
 );
 
 //===============================================
+// interrupt handle
+// sync interrupt
+// async interrrupt (should sync first)
+//===============================================
+
+wire	[31:0] 				sync_irq;
+//wire	[15:0] 				async_irq;
+wire						uart0_int;// No.0
+wire						uart1_int;// No.1
+//wire						gpioa_int;// No.5
+
+assign sync_irq = {26'h0, gpioa_int, 1'b0, 1'b0, 1'b0, uart1_int, uart0_int};
+assign irq = {208'h0, sync_irq};
+
+//===============================================
 // sram top
 // ITCM 32k 0x00000000~0x00008000
 // DTCM  8k 0x00010000~0x00012000
@@ -693,6 +729,7 @@ sram_top u_sram_top
 
 //===============================================
 // apb0 sync top
+// 0x40000000~0x4000FFFF
 //===============================================
 
 apb0_top u_apb0_sync_top 
@@ -700,6 +737,15 @@ apb0_top u_apb0_sync_top
 	.apb0_root_clk				(apb0_root_clk),
 	.apb0_root_rstn				(apb0_root_rstn),
 	
+	.uart0_tx					(uart0_tx),
+	.uart0_tx_oen				(uart0_tx_oen),
+	.uart0_rx					(uart0_rx),
+	.uart0_rx_oen				(uart0_rx_oen),
+	.uart1_tx					(uart1_tx),
+	.uart1_tx_oen				(uart1_tx_oen),
+	.uart1_rx					(uart1_rx),
+	.uart1_rx_oen				(uart1_rx_oen),
+
 	.paddr						(paddr0),  
 	.penable					(penable0),
 	.pstrb						(pstrb0),  
@@ -709,18 +755,34 @@ apb0_top u_apb0_sync_top
 	.psel						(psel0),   
 	.prdata						(prdata0), 
 	.pready						(pready0),
-	.pslverr					(pslverr0)
+	.pslverr					(pslverr0),
+
+`ifdef GPIO
+	.psel_gpioa_o				(psel0_gpioa),
+	.paddr_gpioa_o				(paddr0_gpioa),
+	.prdata_gpioa_o				(prdata0_gpioa), 	
+`endif
+
+	.uart0_int					(uart0_int),
+	.uart1_int					(uart1_int)
 );
+
+`ifdef GPIO
+assign penable0_o = penable0;
+assign pwrite0_o = pwrite0;
+assign pwdata0_o = pwdata0;
+`endif
 
 //===============================================
 // apb1 async top
+// 0x40010000~0x4001FFFF
 //===============================================
 
 apb1_top u_apb1_async_top 
 (
 	.apb1_root_clk				(apb1_root_clk),
 	.apb1_root_rstn				(apb1_root_rstn),
-	
+
 	.paddr						(paddr1),  
 	.penable					(penable1),
 	.pstrb						(pstrb1),  

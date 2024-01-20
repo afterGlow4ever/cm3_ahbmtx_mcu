@@ -1,4 +1,4 @@
-PIN			FPGA			DB				COMMIT
+PIN			FPGA			DB				COMMENT
 
 CLK			T2				Y4				50MHz
 RSTN		K17				K1
@@ -7,3 +7,12 @@ TCK			C10				U2-A17
 TMS			E11				U2-A19
 TDO			E14				U2-A21
 TRST		E13				U2-A23
+
+RXD			B16				JP17			ft2232 txd0 MINI USB
+TXD			A17				JP17			ft2232 rxd0 MINI USB
+RXD1		B13				JP17			ft2232 txd1 MINI USB not used under define GPIO
+TXD1		A13				JP17			ft2232 rxd1 MINI USB not used under define GPIO
+
+GPIOA[2]	E3				U2-A11
+GPIOA[3]	E4				U2-A9
+

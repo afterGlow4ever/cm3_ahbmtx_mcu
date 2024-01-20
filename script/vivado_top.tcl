@@ -14,6 +14,9 @@ source FPGA_CFG_TEMP
 read_xdc PIN_TEMP
 read_xdc SDC_TEMP
 
+#generate_target
+synth_ip [get_ips]
+
 update_compile_order
 
 synth_design -top $PROJECT_NAME

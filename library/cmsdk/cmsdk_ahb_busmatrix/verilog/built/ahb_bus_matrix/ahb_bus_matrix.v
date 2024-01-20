@@ -3,7 +3,7 @@
 // only be used by a person authorised under and to the extent permitted
 // by a subsisting licensing agreement from ARM Limited.
 //
-//            (C) COPYRIGHT 2001-2013-2023 ARM Limited.
+//            (C) COPYRIGHT 2001-2013-2024 ARM Limited.
 //                ALL RIGHTS RESERVED
 //
 // This entire notice must be reproduced on all copies of this file
@@ -37,7 +37,7 @@
 //                         - Arbiter type 'round',
 //                         - Connectivity mapping:
 //                             S0 -> M0, M1, M5, 
-//                             S1 -> M1, M5, 
+//                             S1 -> M0, M1, M5, 
 //                             S2 -> M6, M7,
 //                         - Connectivity type 'sparse'.
 //
@@ -657,6 +657,10 @@ module ahb_bus_matrix (
     wire         i_sel0to2;         // Routing selection signal
     wire         i_active0to2;      // Active signal
 
+    // Bus-switch SI1 to MI0 signals
+    wire         i_sel1to0;         // Routing selection signal
+    wire         i_active1to0;      // Active signal
+
     // Bus-switch SI1 to MI1 signals
     wire         i_sel1to1;         // Routing selection signal
     wire         i_active1to1;      // Active signal
@@ -879,6 +883,13 @@ module ahb_bus_matrix (
     .decode_addr_dec (i_addr1[31:10]),   // HADDR[9:0] is not decoded
     .trans_dec      (i_trans1),
 
+    // Control/Response for Output Stage MI0
+    .active_dec0    (i_active1to0),
+    .readyout_dec0  (i_hready_mux_m0),
+    .resp_dec0      (HRESPM0),
+    .rdata_dec0     (HRDATAM0),
+    .ruser_dec0     (HRUSERM0),
+
     // Control/Response for Output Stage MI1
     .active_dec1    (i_active1to1),
     .readyout_dec1  (i_hready_mux_m1),
@@ -893,6 +904,7 @@ module ahb_bus_matrix (
     .rdata_dec2     (HRDATAM5),
     .ruser_dec2     (HRUSERM5),
 
+    .sel_dec0       (i_sel1to0),
     .sel_dec1       (i_sel1to1),
     .sel_dec2       (i_sel1to2),
 
@@ -966,10 +978,26 @@ module ahb_bus_matrix (
     .wuser_op0     (HWUSERS0),
     .held_tran_op0  (i_held_tran0),
 
+    // Port 1 Signals
+    .sel_op1       (i_sel1to0),
+    .addr_op1      (i_addr1),
+    .auser_op1     (i_auser1),
+    .trans_op1     (i_trans1),
+    .write_op1     (i_write1),
+    .size_op1      (i_size1),
+    .burst_op1     (i_burst1),
+    .prot_op1      (i_prot1),
+    .master_op1    (i_master1),
+    .mastlock_op1  (i_mastlock1),
+    .wdata_op1     (HWDATAS1),
+    .wuser_op1     (HWUSERS1),
+    .held_tran_op1  (i_held_tran1),
+
     // Slave read data and response
     .HREADYOUTM (HREADYOUTM0),
 
     .active_op0    (i_active0to0),
+    .active_op1    (i_active1to0),
 
     // Slave Address/Control Signals
     .HSELM      (HSELM0),

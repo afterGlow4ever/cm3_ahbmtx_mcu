@@ -1,0 +1,20 @@
+current_design "gpio_sg"
+
+clock -name "gpio_sg.apb0_root_clk" 	-domain apb0_root_clk -period 25.0 -edge 0.0 12.5
+clock -domain exclk -tag exclk -period 1000.0 -edge 0.0 500.0
+clock -domain exclk2 -tag exclk2 -period 100.0 -edge 0.0 50.0
+
+reset -name "gpio_sg.apb0_root_rstn" 	-value 0
+
+abstract_port -module gpio_sg -ports gpioa[15:0]		-clock exclk2
+
+abstract_port -module gpio_sg -ports paddr[31:0]		-clock gpio_sg.apb0_root_clk
+abstract_port -module gpio_sg -ports penable			-clock gpio_sg.apb0_root_clk
+abstract_port -module gpio_sg -ports psel				-clock gpio_sg.apb0_root_clk
+abstract_port -module gpio_sg -ports pwrite				-clock gpio_sg.apb0_root_clk
+abstract_port -module gpio_sg -ports pwdata[31:0]		-clock gpio_sg.apb0_root_clk
+
+abstract_port -module gpio_sg -ports uart1_tx			-clock exclk
+abstract_port -module gpio_sg -ports uart1_tx_oen		-clock exclk
+abstract_port -module gpio_sg -ports uart1_rx_oen		-clock exclk
+

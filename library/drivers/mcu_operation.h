@@ -14,6 +14,7 @@
 #define __MCU_OPERATION_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "mcu.h"
 
 //===============================================
@@ -52,6 +53,12 @@
 #define REG_CLEARBITS(reg, start, end)			(reg&(~BITS((uint32_t)(start),(uint32_t)(end))))
 #define REG_SETBIT(reg, x, data)				(REG_WRITE(reg,(REG_CLEARBIT(reg,(uint32_t)(x))|((uint32_t)(data)<<((uint32_t)(x))))))
 #define REG_SETBITS(reg, start, end, data)		(REG_WRITE(reg,(REG_CLEARBITS(reg,(uint32_t)(start),(uint32_t)(end))|((uint32_t)(data)<<((uint32_t)(start))))))
+
+//===============================================
+// unused 
+//===============================================
+
+#define UNUSED(x)								((void)(x))
 
 #endif
 

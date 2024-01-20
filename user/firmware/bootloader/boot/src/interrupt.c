@@ -93,12 +93,15 @@ void SysTick_Handler(void)
 
 }
 
+//===============================================
+// external interrupt handler
+//===============================================
 
+extern UART_HandleTypeDef huart0;
 
-
-
-
-
-
-
+void Uart0_Handler(void)
+{
+	NVIC_ClearPendingIRQ(Uart0_IRQn);
+	drv_uart_interrupt_handler(&huart0);
+}
 

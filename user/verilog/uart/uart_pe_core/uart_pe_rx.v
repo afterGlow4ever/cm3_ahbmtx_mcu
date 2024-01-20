@@ -27,7 +27,6 @@ module uart_pe_rx
 	// control
 	input						pe_rx_logic_clr,
 	input						pe_rx_enable,
-	input 						pe_rx_enable_r,
 	output 						pe_rx_end,
 
 	// config
@@ -300,11 +299,16 @@ begin
 	end
 	else if(rx_state_data && bit_end) // other data bit
 	begin
-		data_bit_cnt <= data_bit_cnt + 1'b1;
 		if(data_bit_cnt == r_data_bit) // data bit end
+		begin
 			data_bit_end <= 1'b1;
+			data_bit_cnt <= data_bit_cnt;
+		end
 		else
+		begin
 			data_bit_end <= 1'b0;
+			data_bit_cnt <= data_bit_cnt + 1'b1;
+		end
 	end
 	else if(rx_state_start_to_data) // (timing clk issue) first data bit
 	begin
@@ -346,11 +350,16 @@ begin
 	end
 	else if(rx_state_stop && bit_end) // other stop bit
 	begin
-		stop_bit_cnt <= stop_bit_cnt + 1'b1;
 		if(stop_bit_cnt == r_stop_bit) // stop bit end
+		begin
+			stop_bit_cnt <= stop_bit_cnt;
 			stop_bit_end <= 1'b1;
+		end
 		else
+		begin
+			stop_bit_cnt <= stop_bit_cnt + 1'b1;
 			stop_bit_end <= 1'b0;
+		end
 	end
 	else if(rx_state_parity_to_stop || rx_state_data_to_stop) // (timing clk issue) first stop bit (this must be before above)
 	begin
@@ -412,7 +421,9 @@ posedge_detect u_posedge_detect_inst0
 	.Y							(uart_rx_r)
 );
 
+wire							rx_start_bit_half_flag;
 reg								rx_start_bit_half;
+assign rx_start_bit_half_flag = rx_start_bit_half;
 
 // A start bit should be 0. If 1 was detected, a dominant pulse should be filtered.
 // noise detect operating only before the sample point of frame start bit
@@ -423,7 +434,7 @@ begin
 	else if(rx_state_start)
 		if(bit_value_sample_point_d)
 			rx_start_bit_half <= 1'b0;
-		else if(rx_start_bit_half == 1'b0)
+		else if(rx_start_bit_half_flag == 1'b0)
 			rx_start_bit_half <= 1'b0;
 		else
 			rx_start_bit_half <= 1'b1;
@@ -436,7 +447,7 @@ begin
 	if(!pe_rstn)
 		rx_noise_detect <= 1'b0;
 	else if(rx_state_start)
-		if((rx_start_bit_half == 1'b1) && uart_rx_r)
+		if((rx_start_bit_half_flag == 1'b1) && uart_rx_r)
 			rx_noise_detect <= 1'b1;
 		else
 			rx_noise_detect <= 1'b0;
@@ -471,7 +482,7 @@ begin
 		else
 		begin
 			fifo_we <= 1'b1;
-			fifo_data <= rx_data;
+			fifo_data <= rx_data[9:0];
 			rx_data_loaded <= 1'b1;// in case of rx_state last more than 1 clk unexpected and then read data more from rx fifo
 		end
 	end
@@ -497,9 +508,9 @@ begin
 		rx_data_parity <= 1'b0;
 	else if(rx_state_data_to_parity)
 		if(r_parity == 2'h0)
-			rx_data_parity <= ^rx_data; 
+			rx_data_parity <= ^rx_data[9:0]; 
 		else if(r_parity == 2'h1)
-			rx_data_parity <= ~(^rx_data); 
+			rx_data_parity <= ~(^rx_data[9:0]); 
 		else if(r_parity == 2'h2)
 			rx_data_parity <= 1'b0; 
 		else

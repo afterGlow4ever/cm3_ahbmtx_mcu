@@ -17,7 +17,8 @@
 #===============================================
 
 #===============================================
-# RTL & fpga simulation
+# RTL & fpga simulation 
+# system intergration
 #===============================================
 
 cpu_swd_sim:
@@ -28,6 +29,9 @@ cpu_bus_sim:
 
 sram_wr_sim:
 	make -f makefile.sram_wr_sim
+
+fpga_ep4_cpu_swd_sim:
+	make -f makefile.fpga_ep4_cpu_swd_sim
 
 fpga_ep4_cpu_bus_sim:
 	make -f makefile.fpga_ep4_cpu_bus_sim
@@ -42,6 +46,29 @@ fpga_7020_sram_wr_sim:
 	make -f makefile.fpga_7020_sram_wr_sim
 
 #===============================================
+# RTL & fpga simulation 
+# model function
+#===============================================
+
+uart0_test:
+	make -f makefile.uart0_test
+
+uart0_testcase:
+	make -f makefile.uart0_testcase
+
+uart_fw_sim:
+	make -f makefile.uart_fw_sim
+
+gpio_test:
+	make -f makefile.gpio_test
+
+gpio_testcase:
+	make -f makefile.gpio_testcase
+
+gpio_fw_sim:
+	make -f makefile.gpio_fw_sim
+
+#===============================================
 # RTL auto generation
 #===============================================
 
@@ -51,12 +78,21 @@ ahbmtx_gen:
 uart_reg_gen:
 	make -f makefile.uart_reg_gen
 
+gpio_reg_gen:
+	make -f makefile.gpio_reg_gen
+
 #===============================================
 # firmware build
 #===============================================
 
 bootloader:
 	make -f makefile.bootloader
+
+fw_test:
+	make -f makefile.fw_test
+
+fw_bin_test:
+	make -f makefile.fw_bin_test
 
 #===============================================
 # cpu boot simulation

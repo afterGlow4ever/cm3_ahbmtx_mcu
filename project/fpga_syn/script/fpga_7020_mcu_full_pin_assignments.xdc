@@ -19,6 +19,8 @@ set_property -dict {PACKAGE_PIN V12 IOSTANDARD LVCMOS33} [get_ports TCK]
 set_property -dict {PACKAGE_PIN T12 IOSTANDARD LVCMOS33} [get_ports TMS]
 set_property -dict {PACKAGE_PIN V15 IOSTANDARD LVCMOS33} [get_ports TDO]
 set_property -dict {PACKAGE_PIN W13 IOSTANDARD LVCMOS33} [get_ports TRST]
+set_property -dict {PACKAGE_PIN K18 IOSTANDARD LVCMOS33} [get_ports TXD]
+set_property -dict {PACKAGE_PIN J14 IOSTANDARD LVCMOS33} [get_ports RXD]
 
 
 

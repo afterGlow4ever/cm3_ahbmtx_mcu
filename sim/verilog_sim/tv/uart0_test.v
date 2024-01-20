@@ -103,7 +103,7 @@ begin
 `ifdef UART_RX_CASE
 	u_swd_model.swd_writereg32(32'h40001004, 32'hf03);
 	u_uart_model.put_char(8'h34);
-	u_uart_model.tx_data_specify_with_no_parity(4'h8, 2'h1, 10'h12, 2'h1);// 8bits data 1bit stop data 0x12 stop 0x1
+	u_uart_model.tx_data_specify_with_no_parity(4'h8, 2'h1, 4'h0, 10'h12, 2'h1);// 8bits data 1bit stop data 0x12 stop 0x1
 	#500000
 	u_swd_model.swd_readreg32(32'h4000101c, rdata);
 	u_swd_model.swd_readreg32(32'h4000101c, rdata);

@@ -138,23 +138,26 @@ bool drv_uart_rx_data(UART_HandleTypeDef *uart, uint16_t data[], uint8_t length)
 
 	while(uart->rx_ptr < length)
 	{
+		status = drv_uart_int_get(uart);
+		drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR | UART_INT_RX_STOP_ERROR);
+
+		// errors occur
+		if(status & UART_INT_RX_STOP_ERROR)
+		{
+			uart->status = UART_STATUS_STOP_ERROR;
+		}
+		if(status & UART_INT_RX_PARITY_ERROR)
+		{
+			uart->status = UART_STATUS_PARITY_ERROR;
+		}
+		if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
+		{
+			drv_uart_logic_reset(uart);
+			return TRUE;	
+		}
+
 		while(REG_GETBITS(uart->regs->fifo_sta, 0, 4) != 0)
 		{
-			status = drv_uart_int_get(uart);
-			drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR | UART_INT_RX_STOP_ERROR);
-			if(status & UART_INT_RX_STOP_ERROR)
-			{
-				uart->status = UART_STATUS_STOP_ERROR;
-			}
-			if(status & UART_INT_RX_PARITY_ERROR)
-			{
-				uart->status = UART_STATUS_PARITY_ERROR;
-			}
-			if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
-			{
-				drv_uart_logic_reset(uart);
-				return TRUE;	
-			}
 			data[uart->rx_ptr++] = uart->regs->rx_data;
 		}
 	}
@@ -173,26 +176,33 @@ bool drv_uart_getchar(UART_HandleTypeDef *uart, uint8_t *data)
 {
 	uint16_t status;
 
-	while(REG_GETBITS(uart->regs->fifo_sta, 0, 4) == 0);
-	
-	status = drv_uart_int_get(uart);
-	drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR | UART_INT_RX_STOP_ERROR);
-	if(status & UART_INT_RX_STOP_ERROR)
+	while(1)
 	{
-		uart->status = UART_STATUS_STOP_ERROR;
-	}
-	if(status & UART_INT_RX_PARITY_ERROR)
-	{
-		uart->status = UART_STATUS_PARITY_ERROR;
-	}
-	if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
-	{
-		drv_uart_logic_reset(uart);
-		return TRUE;	
-	}
-	*data = uart->regs->rx_data;
-	
+		status = drv_uart_int_get(uart);
+		drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR | UART_INT_RX_STOP_ERROR);
 
+		// errors occur
+		if(status & UART_INT_RX_STOP_ERROR)
+		{
+			uart->status = UART_STATUS_STOP_ERROR;
+		}
+		if(status & UART_INT_RX_PARITY_ERROR)
+		{
+			uart->status = UART_STATUS_PARITY_ERROR;
+		}
+		if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
+		{
+			drv_uart_logic_reset(uart);
+			*data = 0x00;// null
+			return TRUE;	
+		}
+
+		while(REG_GETBITS(uart->regs->fifo_sta, 0, 4) != 0)
+		{
+			*data = uart->regs->rx_data;
+			return FALSE;	
+		}
+	}	
 	return FALSE;	
 }
 
@@ -202,29 +212,32 @@ uint8_t drv_uart_getchar_timeout(UART_HandleTypeDef *uart, uint8_t *data, uint32
 
 	while(timeout != 0)
 	{
-		if(REG_GETBITS(uart->regs->fifo_sta, 0, 4) != 0)
+		status = drv_uart_int_get(uart);
+		drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR | UART_INT_RX_STOP_ERROR);
+	
+		// errors occur
+		if(status & UART_INT_RX_STOP_ERROR)
 		{
-			status = drv_uart_int_get(uart);
-			drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR | UART_INT_RX_STOP_ERROR);
-			if(status & UART_INT_RX_STOP_ERROR)
-			{
-				uart->status = UART_STATUS_STOP_ERROR;
-			}
-			if(status & UART_INT_RX_PARITY_ERROR)
-			{
-				uart->status = UART_STATUS_PARITY_ERROR;
-			}
-			if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
-			{
-				drv_uart_logic_reset(uart);
-				return TRUE;	
-			}
+			uart->status = UART_STATUS_STOP_ERROR;
+		}
+		if(status & UART_INT_RX_PARITY_ERROR)
+		{
+			uart->status = UART_STATUS_PARITY_ERROR;
+		}
+		if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
+		{
+			drv_uart_logic_reset(uart);
+			*data = 0x00;// null
+			return TRUE;	
+		}
+	
+		while(REG_GETBITS(uart->regs->fifo_sta, 0, 4) != 0)
+		{
 			*data = uart->regs->rx_data;
 			return FALSE;	
 		}
 		timeout--;
 	}
-
 	return 2;	
 }
 
@@ -324,12 +337,22 @@ void drv_uart_interrupt_handler(UART_HandleTypeDef *uart)
 	if(status & UART_INT_RX_STOP_ERROR)
 	{
 		uart->status = UART_STATUS_STOP_ERROR;
+		if(uart->cfg.ignore_error != UART_ERROR_IGNORE)
+		{
+			drv_uart_int_disable(uart, UART_INT_RX_STOP_ERROR | UART_INT_RX_PARITY_ERROR | UART_INT_RX_FIFO_NOEMPTY | UART_INT_RX_FIFO_THRES);
+			drv_uart_logic_reset(uart);
+		}
 		uart_int_rx_stop_callback(uart);
 		drv_uart_int_clear(uart, UART_INT_RX_STOP_ERROR);
 	}
 	if(status & UART_INT_RX_PARITY_ERROR)
 	{
 		uart->status = UART_STATUS_PARITY_ERROR;
+		if(uart->cfg.ignore_error != UART_ERROR_IGNORE)
+		{
+			drv_uart_int_disable(uart, UART_INT_RX_STOP_ERROR | UART_INT_RX_PARITY_ERROR | UART_INT_RX_FIFO_NOEMPTY | UART_INT_RX_FIFO_THRES);
+			drv_uart_logic_reset(uart);
+		}
 		uart_int_rx_parity_error_callback(uart);
 		drv_uart_int_clear(uart, UART_INT_RX_PARITY_ERROR);
 	}
@@ -359,18 +382,10 @@ void drv_uart_interrupt_handler(UART_HandleTypeDef *uart)
 		{
 			while(REG_GETBITS(uart->regs->fifo_sta, 0, 4) != 0)
 			{
-				if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
-				{
-					drv_uart_int_disable(uart, UART_INT_RX_STOP_ERROR | UART_INT_RX_PARITY_ERROR | UART_INT_RX_FIFO_NOEMPTY | UART_INT_RX_FIFO_THRES);
-					break;
-				}
-				else
-				{
-					uart->rx_data[uart->rx_ptr++] = uart->regs->rx_data;
-				}
+				uart->rx_data[uart->rx_ptr++] = uart->regs->rx_data;
 			}
 		}
-		if(uart->rx_ptr == uart->rx_num)
+		else
 		{
 			drv_uart_int_disable(uart, UART_INT_RX_FIFO_NOEMPTY | UART_INT_RX_FIFO_THRES);
 		}
@@ -383,19 +398,10 @@ void drv_uart_interrupt_handler(UART_HandleTypeDef *uart)
 		{
 			while(REG_GETBITS(uart->regs->fifo_sta, 0, 4) != 0)
 			{
-				if((uart->status != UART_STATUS_OK) && uart->cfg.ignore_error != UART_ERROR_IGNORE)
-				{
-					drv_uart_logic_reset(uart);
-					drv_uart_int_disable(uart, UART_INT_RX_STOP_ERROR | UART_INT_RX_PARITY_ERROR | UART_INT_RX_FIFO_NOEMPTY | UART_INT_RX_FIFO_THRES);
-					break;
-				}
-				else
-				{
-					uart->rx_data[uart->rx_ptr++] = uart->regs->rx_data;
-				}
+				uart->rx_data[uart->rx_ptr++] = uart->regs->rx_data;
 			}
 		}
-		if(uart->rx_ptr == uart->rx_num)
+		else
 		{
 			drv_uart_int_disable(uart, UART_INT_RX_FIFO_NOEMPTY | UART_INT_RX_FIFO_THRES);
 		}

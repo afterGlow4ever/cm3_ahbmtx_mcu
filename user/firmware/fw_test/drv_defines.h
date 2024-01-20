@@ -31,6 +31,7 @@
 
 //#define UART_DRIVER
 //#define COMMON_DRIVER
+//#define GPIO_DRIVER
 
 //===============================================
 // driver header list
@@ -44,6 +45,9 @@
 #endif
 #ifdef UART_EX_DRIVER
 #include "drv_uart_ex.h"
+#endif
+#ifdef GPIO_DRIVER
+#include "drv_gpio.h"
 #endif
 
 #endif

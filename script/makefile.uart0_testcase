@@ -1,5 +1,5 @@
 SIM_TARGET := uart0_testcase
-SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+TP_1 +define+UART0_TESTCASE +define+UART_MONITOR +define+SIMULATION +define+RAMPRELOAD_SPI 
+SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+TP_5 +define+UART0_TESTCASE +define+UART_MONITOR +define+SIMULATION +define+RAMPRELOAD_SPI 
 DUT_LIST := dut.list
 SIM_LIST := sim.list
 SIM_INC_LIST := sim_inc.list

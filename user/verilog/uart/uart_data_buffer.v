@@ -43,7 +43,7 @@ module uart_data_buffer
 	input		[ 4:0]			r_rx_fifo_watermark,
 
 	// interrupt status
-	output						int_status_rx_fifo_empty,
+	output						int_status_rx_fifo_noempty,
 	output						int_status_rx_fifo_warning,
 	output						int_status_tx_fifo_empty,
 	output						int_status_tx_fifo_warning
@@ -127,7 +127,7 @@ u_rx_fifo
 // fifo flag
 //===============================================
 
-assign int_status_rx_fifo_empty = rx_fifo_empty;
+assign int_status_rx_fifo_noempty = ~rx_fifo_empty;
 assign int_status_tx_fifo_empty = tx_fifo_empty;
 assign int_status_rx_fifo_warning = (rx_fifo_num >= r_rx_fifo_watermark) ? 1'b1 : 1'b0;
 assign int_status_tx_fifo_warning = (tx_fifo_num >= r_tx_fifo_watermark) ? 1'b1 : 1'b0;

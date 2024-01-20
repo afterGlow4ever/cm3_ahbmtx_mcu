@@ -180,9 +180,7 @@ uart_pe_rx u_uart_pe_rx
                                                 
 	.pe_rx_logic_clr			(pe_rx_logic_clr),
 	.pe_rx_enable				(pe_rx_enable),
-	.pe_rx_enable_r				(),
 	.pe_rx_end					(pe_rx_end),
-//	.rx_data_detected			(),
 
 	.r_oversampling				(r_oversampling),
 	.r_clkdiv					(r_clkdiv),

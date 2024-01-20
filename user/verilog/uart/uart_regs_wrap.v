@@ -76,16 +76,16 @@ always @(posedge reg_clk or negedge reg_rstn)
 begin
 	if(!reg_rstn)
 	begin
-		r_oversampling <= r_oversampling;
-		r_clkdiv <= r_clkdiv;
-		r_interval_bit	<= r_interval_bit;	
-		r_error_ignore <= r_error_ignore;
-		r_rts <= r_rts;			
-		r_cts <= r_cts;			
-		r_stop_bit <= r_stop_bit;		
-		r_parity_en <= r_parity_en;		
-		r_parity <= r_parity;		
-		r_data_bit <= r_data_bit;		
+		r_oversampling <= 4'hf;
+		r_clkdiv <= 12'h16;
+		r_interval_bit	<= 4'h0;	
+		r_error_ignore <= 1'b0;
+		r_rts <= 1'b0;			
+		r_cts <= 1'b0;			
+		r_stop_bit <= 1'b0;		
+		r_parity_en <= 1'b0;		
+		r_parity <= 2'h0;		
+		r_data_bit <= 2'h1;		
 	end
 	else if(r_update == 1'b1)
 	begin
@@ -225,22 +225,12 @@ uart_apb_cfg u_uart_apb_cfg
 	.r_tx_data_wr				(r_tx_data_wr),// add fifo we
     .r_tx_fifo_watermark		(r_tx_fifo_watermark),
     .r_rx_fifo_watermark		(r_rx_fifo_watermark),
-	.r_tx_fifo_clr				(1'b0),
-	.r_tx_fifo_clr_wc_clr		(r_tx_fifo_clr_wc_clr),
-	.r_tx_fifo_clr_wc_clr_val	(),
-	.r_rx_fifo_clr				(1'b0),
-	.r_rx_fifo_clr_wc_clr		(r_rx_fifo_clr_wc_clr),
-	.r_rx_fifo_clr_wc_clr_val	(),
-	.r_tx_logic_clr				(1'b0),
-	.r_tx_logic_clr_wc_clr		(r_tx_logic_clr_wc_clr),
-	.r_tx_logic_clr_wc_clr_val	(),
-	.r_rx_logic_clr				(1'b0),
-	.r_rx_logic_clr_wc_clr		(r_rx_logic_clr_wc_clr),
-	.r_rx_logic_clr_wc_clr_val	(),
+	.r_tx_fifo_clr				(r_tx_fifo_clr_wc_clr),
+	.r_rx_fifo_clr				(r_rx_fifo_clr_wc_clr),
+	.r_tx_logic_clr				(r_tx_logic_clr_wc_clr),
+	.r_rx_logic_clr				(r_rx_logic_clr_wc_clr),
 	.r_rx_enable				(r_rx_enable),
-	.r_update					(1'b0),
-	.r_update_wc_clr			(r_update),
-	.r_update_wc_clr_val		(),
+	.r_update					(r_update),
 	.r_clkdiv					(r_clkdiv_shadow),
 	.r_oversampling				(r_oversampling_shadow),
 	.r_interval_bit				(r_interval_bit_shadow),
@@ -260,33 +250,15 @@ uart_apb_cfg u_uart_apb_cfg
     .r_int2_en					(r_int_en[2]),
     .r_int1_en					(r_int_en[1]),
     .r_int0_en					(r_int_en[0]),
-    .r_int8_clr					(1'b0),
-    .r_int8_clr_wc_clr			(r_int_clr[8]),
-    .r_int8_clr_wc_clr_val		(),
-    .r_int7_clr					(1'b0),
-    .r_int7_clr_wc_clr			(r_int_clr[7]),
-    .r_int7_clr_wc_clr_val		(),
-    .r_int6_clr					(1'b0),
-    .r_int6_clr_wc_clr			(r_int_clr[6]),
-    .r_int6_clr_wc_clr_val		(),
-    .r_int5_clr					(1'b0),
-    .r_int5_clr_wc_clr			(r_int_clr[5]),
-    .r_int5_clr_wc_clr_val		(),
-    .r_int4_clr					(1'b0),
-    .r_int4_clr_wc_clr			(r_int_clr[4]),
-    .r_int4_clr_wc_clr_val		(),
-    .r_int3_clr					(1'b0),
-    .r_int3_clr_wc_clr			(r_int_clr[3]),
-    .r_int3_clr_wc_clr_val		(),
-    .r_int2_clr					(1'b0),
-    .r_int2_clr_wc_clr			(r_int_clr[2]),
-    .r_int2_clr_wc_clr_val		(),
-    .r_int1_clr					(1'b0),
-    .r_int1_clr_wc_clr			(r_int_clr[1]),
-    .r_int1_clr_wc_clr_val		(),
-    .r_int0_clr					(1'b0),
-    .r_int0_clr_wc_clr			(r_int_clr[0]),
-    .r_int0_clr_wc_clr_val		(),
+    .r_int8_clr					(r_int_clr[8]),
+    .r_int7_clr					(r_int_clr[7]),
+    .r_int6_clr					(r_int_clr[6]),
+    .r_int5_clr					(r_int_clr[5]),
+    .r_int4_clr					(r_int_clr[4]),
+    .r_int3_clr					(r_int_clr[3]),
+    .r_int2_clr					(r_int_clr[2]),
+    .r_int1_clr					(r_int_clr[1]),
+    .r_int0_clr					(r_int_clr[0]),
     .r_tx_fifo_num				(r_tx_fifo_num),
     .r_rx_fifo_num				(r_rx_fifo_num),
     .r_int8_sta					(r_int_sta[8]),

@@ -1,5 +1,6 @@
 SIM_TARGET := fw_bin_test
-SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+UART1 +define+UART_FW_TEST +define+UART_RX +define+UART_MONITOR +define+SIMULATION 
+#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+UART1 +define+UART_FW_TEST +define+UART_RX +define+UART_MONITOR +define+SIMULATION 
+SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+GPIO +define+GPIO_FW_TEST +define+SIMULATION 
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
 DUT_LIST := dut.list
 SIM_LIST := sim.list
@@ -13,8 +14,8 @@ FW_BIN := ${PRJ_SDK_DIR}/baremental.bin
 
 SHELL := /bin/bash
 
-#all: prepare convert_bin compile_rtl sim waveform
-all: waveform
+all: prepare convert_bin compile_rtl sim waveform
+#all: waveform
 
 prepare:
 	-mkdir ${SIM_PATH}

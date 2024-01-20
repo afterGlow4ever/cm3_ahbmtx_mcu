@@ -12,21 +12,11 @@ module uart_apb_cfg (
                 ,r_tx_fifo_watermark
                 ,r_rx_fifo_watermark
                 ,r_tx_fifo_clr
-                ,r_tx_fifo_clr_wc_clr
-                ,r_tx_fifo_clr_wc_clr_val
                 ,r_rx_fifo_clr
-                ,r_rx_fifo_clr_wc_clr
-                ,r_rx_fifo_clr_wc_clr_val
                 ,r_tx_logic_clr
-                ,r_tx_logic_clr_wc_clr
-                ,r_tx_logic_clr_wc_clr_val
                 ,r_rx_logic_clr
-                ,r_rx_logic_clr_wc_clr
-                ,r_rx_logic_clr_wc_clr_val
                 ,r_rx_enable
                 ,r_update
-                ,r_update_wc_clr
-                ,r_update_wc_clr_val
                 ,r_clkdiv
                 ,r_oversampling
                 ,r_interval_bit
@@ -47,32 +37,14 @@ module uart_apb_cfg (
                 ,r_int1_en
                 ,r_int0_en
                 ,r_int8_clr
-                ,r_int8_clr_wc_clr
-                ,r_int8_clr_wc_clr_val
                 ,r_int7_clr
-                ,r_int7_clr_wc_clr
-                ,r_int7_clr_wc_clr_val
                 ,r_int6_clr
-                ,r_int6_clr_wc_clr
-                ,r_int6_clr_wc_clr_val
                 ,r_int5_clr
-                ,r_int5_clr_wc_clr
-                ,r_int5_clr_wc_clr_val
                 ,r_int4_clr
-                ,r_int4_clr_wc_clr
-                ,r_int4_clr_wc_clr_val
                 ,r_int3_clr
-                ,r_int3_clr_wc_clr
-                ,r_int3_clr_wc_clr_val
                 ,r_int2_clr
-                ,r_int2_clr_wc_clr
-                ,r_int2_clr_wc_clr_val
                 ,r_int1_clr
-                ,r_int1_clr_wc_clr
-                ,r_int1_clr_wc_clr_val
                 ,r_int0_clr
-                ,r_int0_clr_wc_clr
-                ,r_int0_clr_wc_clr_val
                 ,r_tx_fifo_num
                 ,r_rx_fifo_num
                 ,r_int8_sta
@@ -99,22 +71,12 @@ output [9:0]    r_tx_data;
 output          r_tx_data_wr;
 output [4:0]    r_tx_fifo_watermark;
 output [4:0]    r_rx_fifo_watermark;
-input           r_tx_fifo_clr;
-output          r_tx_fifo_clr_wc_clr;
-output          r_tx_fifo_clr_wc_clr_val;
-input           r_rx_fifo_clr;
-output          r_rx_fifo_clr_wc_clr;
-output          r_rx_fifo_clr_wc_clr_val;
-input           r_tx_logic_clr;
-output          r_tx_logic_clr_wc_clr;
-output          r_tx_logic_clr_wc_clr_val;
-input           r_rx_logic_clr;
-output          r_rx_logic_clr_wc_clr;
-output          r_rx_logic_clr_wc_clr_val;
+output          r_tx_fifo_clr;
+output          r_rx_fifo_clr;
+output          r_tx_logic_clr;
+output          r_rx_logic_clr;
 output          r_rx_enable;
-input           r_update;
-output          r_update_wc_clr;
-output          r_update_wc_clr_val;
+output          r_update;
 output [11:0]   r_clkdiv;
 output [3:0]    r_oversampling;
 output [3:0]    r_interval_bit;
@@ -134,33 +96,15 @@ output          r_int3_en;
 output          r_int2_en;
 output          r_int1_en;
 output          r_int0_en;
-input           r_int8_clr;
-output          r_int8_clr_wc_clr;
-output          r_int8_clr_wc_clr_val;
-input           r_int7_clr;
-output          r_int7_clr_wc_clr;
-output          r_int7_clr_wc_clr_val;
-input           r_int6_clr;
-output          r_int6_clr_wc_clr;
-output          r_int6_clr_wc_clr_val;
-input           r_int5_clr;
-output          r_int5_clr_wc_clr;
-output          r_int5_clr_wc_clr_val;
-input           r_int4_clr;
-output          r_int4_clr_wc_clr;
-output          r_int4_clr_wc_clr_val;
-input           r_int3_clr;
-output          r_int3_clr_wc_clr;
-output          r_int3_clr_wc_clr_val;
-input           r_int2_clr;
-output          r_int2_clr_wc_clr;
-output          r_int2_clr_wc_clr_val;
-input           r_int1_clr;
-output          r_int1_clr_wc_clr;
-output          r_int1_clr_wc_clr_val;
-input           r_int0_clr;
-output          r_int0_clr_wc_clr;
-output          r_int0_clr_wc_clr_val;
+output          r_int8_clr;
+output          r_int7_clr;
+output          r_int6_clr;
+output          r_int5_clr;
+output          r_int4_clr;
+output          r_int3_clr;
+output          r_int2_clr;
+output          r_int1_clr;
+output          r_int0_clr;
 input  [4:0]    r_tx_fifo_num;
 input  [4:0]    r_rx_fifo_num;
 input           r_int8_sta;
@@ -185,22 +129,12 @@ reg  [31:0]     prdata;
 reg  [9:0]      r_tx_data;
 reg  [4:0]      r_tx_fifo_watermark;
 reg  [4:0]      r_rx_fifo_watermark;
-wire            r_tx_fifo_clr;
-wire            r_tx_fifo_clr_wc_clr;
-wire            r_tx_fifo_clr_wc_clr_val;
-wire            r_rx_fifo_clr;
-wire            r_rx_fifo_clr_wc_clr;
-wire            r_rx_fifo_clr_wc_clr_val;
-wire            r_tx_logic_clr;
-wire            r_tx_logic_clr_wc_clr;
-wire            r_tx_logic_clr_wc_clr_val;
-wire            r_rx_logic_clr;
-wire            r_rx_logic_clr_wc_clr;
-wire            r_rx_logic_clr_wc_clr_val;
+reg             r_tx_fifo_clr;
+reg             r_rx_fifo_clr;
+reg             r_tx_logic_clr;
+reg             r_rx_logic_clr;
 reg             r_rx_enable;
-wire            r_update;
-wire            r_update_wc_clr;
-wire            r_update_wc_clr_val;
+reg             r_update;
 reg  [11:0]     r_clkdiv;
 reg  [3:0]      r_oversampling;
 reg  [3:0]      r_interval_bit;
@@ -220,33 +154,15 @@ reg             r_int3_en;
 reg             r_int2_en;
 reg             r_int1_en;
 reg             r_int0_en;
-wire            r_int8_clr;
-wire            r_int8_clr_wc_clr;
-wire            r_int8_clr_wc_clr_val;
-wire            r_int7_clr;
-wire            r_int7_clr_wc_clr;
-wire            r_int7_clr_wc_clr_val;
-wire            r_int6_clr;
-wire            r_int6_clr_wc_clr;
-wire            r_int6_clr_wc_clr_val;
-wire            r_int5_clr;
-wire            r_int5_clr_wc_clr;
-wire            r_int5_clr_wc_clr_val;
-wire            r_int4_clr;
-wire            r_int4_clr_wc_clr;
-wire            r_int4_clr_wc_clr_val;
-wire            r_int3_clr;
-wire            r_int3_clr_wc_clr;
-wire            r_int3_clr_wc_clr_val;
-wire            r_int2_clr;
-wire            r_int2_clr_wc_clr;
-wire            r_int2_clr_wc_clr_val;
-wire            r_int1_clr;
-wire            r_int1_clr_wc_clr;
-wire            r_int1_clr_wc_clr_val;
-wire            r_int0_clr;
-wire            r_int0_clr_wc_clr;
-wire            r_int0_clr_wc_clr_val;
+reg             r_int8_clr;
+reg             r_int7_clr;
+reg             r_int6_clr;
+reg             r_int5_clr;
+reg             r_int4_clr;
+reg             r_int3_clr;
+reg             r_int2_clr;
+reg             r_int1_clr;
+reg             r_int0_clr;
 wire [4:0]      r_tx_fifo_num;
 wire [4:0]      r_rx_fifo_num;
 wire            r_int8_sta;
@@ -267,6 +183,7 @@ wire [31:0]     R_INT_CLR;
 wire [31:0]     R_FIFO_STA;
 wire [31:0]     R_INT_STA;
 wire [31:0]     R_RX_DATA;
+wire            r_tx_data_wr;
 wire            r_tx_data_rd;
 wire            r_top_ctrl_wr;
 wire            r_top_ctrl_rd;
@@ -281,6 +198,7 @@ wire            r_fifo_sta_rd;
 wire            r_int_sta_wr;
 wire            r_int_sta_rd;
 wire            r_rx_data_wr;
+wire            r_rx_data_rd;
 wire            reg_wr;
 wire            reg_rd;
 assign reg_wr = psel & pwrite & penable;
@@ -362,34 +280,6 @@ assign R_INT_STA[1] = r_int1_sta;
 assign R_INT_STA[0] = r_int0_sta;
 assign R_RX_DATA[31:10] = 22'h0;
 assign R_RX_DATA[9:0] = r_rx_data;
-assign r_tx_fifo_clr_wc_clr = r_top_ctrl_wr;
-assign r_tx_fifo_clr_wc_clr_val =1'b0;
-assign r_rx_fifo_clr_wc_clr = r_top_ctrl_wr;
-assign r_rx_fifo_clr_wc_clr_val =1'b0;
-assign r_tx_logic_clr_wc_clr = r_top_ctrl_wr;
-assign r_tx_logic_clr_wc_clr_val =1'b0;
-assign r_rx_logic_clr_wc_clr = r_top_ctrl_wr;
-assign r_rx_logic_clr_wc_clr_val =1'b0;
-assign r_update_wc_clr = r_top_ctrl_wr;
-assign r_update_wc_clr_val =1'b0;
-assign r_int8_clr_wc_clr = r_int_clr_wr;
-assign r_int8_clr_wc_clr_val =1'b0;
-assign r_int7_clr_wc_clr = r_int_clr_wr;
-assign r_int7_clr_wc_clr_val =1'b0;
-assign r_int6_clr_wc_clr = r_int_clr_wr;
-assign r_int6_clr_wc_clr_val =1'b0;
-assign r_int5_clr_wc_clr = r_int_clr_wr;
-assign r_int5_clr_wc_clr_val =1'b0;
-assign r_int4_clr_wc_clr = r_int_clr_wr;
-assign r_int4_clr_wc_clr_val =1'b0;
-assign r_int3_clr_wc_clr = r_int_clr_wr;
-assign r_int3_clr_wc_clr_val =1'b0;
-assign r_int2_clr_wc_clr = r_int_clr_wr;
-assign r_int2_clr_wc_clr_val =1'b0;
-assign r_int1_clr_wc_clr = r_int_clr_wr;
-assign r_int1_clr_wc_clr_val =1'b0;
-assign r_int0_clr_wc_clr = r_int_clr_wr;
-assign r_int0_clr_wc_clr_val =1'b0;
 always@(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         r_tx_data <= 10'h0;
@@ -416,6 +306,38 @@ always@(posedge clk or negedge rst_n) begin
 end
 always@(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
+        r_tx_fifo_clr <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r_tx_fifo_clr <= pwdata[11];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_rx_fifo_clr <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r_rx_fifo_clr <= pwdata[10];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_tx_logic_clr <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r_tx_logic_clr <= pwdata[9];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_rx_logic_clr <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r_rx_logic_clr <= pwdata[8];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
         r_rx_enable <= 1'b0;
     end
     else if(r_top_ctrl_wr) begin
@@ -424,7 +346,15 @@ always@(posedge clk or negedge rst_n) begin
 end
 always@(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
-        r_clkdiv <= 12'h15b;
+        r_update <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r_update <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_clkdiv <= 12'h16;
     end
     else if(r_pe_ctrl_wr) begin
         r_clkdiv <= pwdata[31:20];
@@ -572,6 +502,78 @@ always@(posedge clk or negedge rst_n) begin
     end
     else if(r_int_en_wr) begin
         r_int0_en <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int8_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int8_clr <= pwdata[8];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int7_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int7_clr <= pwdata[7];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int6_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int6_clr <= pwdata[6];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int5_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int5_clr <= pwdata[5];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int4_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int4_clr <= pwdata[4];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int3_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int3_clr <= pwdata[3];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int2_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int2_clr <= pwdata[2];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int1_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int1_clr <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r_int0_clr <= 1'b0;
+    end
+    else if(r_int_clr_wr) begin
+        r_int0_clr <= pwdata[0];
     end
 end
 always@(*) begin

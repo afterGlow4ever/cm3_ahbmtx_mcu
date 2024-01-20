@@ -1,0 +1,20 @@
+MODULE_TARGET := gpio
+REGLIST_FILE := gpio_reglist.xls
+MODULE_PATH := ${PRJ_RTL_DIR}/${MODULE_TARGET}
+GEN_APB_PATH := ${PRJ_LIB_DIR}/gen_apb
+GEN_APB_SCRIPT := ${GEN_APB_PATH}/gen_apb_file.py
+SHELL := /bin/bash
+
+all: prepare generation
+
+prepare:
+	-mkdir ${MODULE_PATH}
+
+generation:
+	cd ${GEN_APB_PATH} && python ${GEN_APB_SCRIPT} ${PRJ_REGLIST_DIR}/${REGLIST_FILE} 
+	cd ${GEN_APB_PATH} && cp ${MODULE_TARGET}*.v ${MODULE_PATH}
+	cd ${GEN_APB_PATH} && rm -rf *.h
+	cd ${GEN_APB_PATH} && rm -rf *.ralf
+
+#clean:
+

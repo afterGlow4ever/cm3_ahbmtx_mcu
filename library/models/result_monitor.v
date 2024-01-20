@@ -19,6 +19,7 @@ module sim_monitor;
 reg		[31:0]					total_cnt;
 reg		[31:0]					pass_cnt;
 reg		[31:0]					fail_cnt;
+reg		[ 5:0]					temp_cnt;
 
 //===============================================
 // Monitor init & deinit
@@ -56,6 +57,35 @@ task sim_monitor_check;
 	total_cnt = total_cnt + 1'b1;
 
 	if(real_data == expect_data)
+	begin
+		pass_cnt = pass_cnt + 1'b1;
+	end
+	else
+	begin
+		fail_cnt = fail_cnt + 1'b1;
+		$display($time, "[SIM MONITOR] -----------------------------------------------");
+		$display($time, "[SIM MONITOR] Error detect! Address %8h real data %8h expect data %8h.", addr, real_data, expect_data);
+		$display($time, "[SIM MONITOR] -----------------------------------------------");
+	end
+endtask
+
+task sim_monitor_check_specify_width;
+	input 	[31:0]			addr;
+	input 	[31:0]			real_data;
+	input 	[31:0]			expect_data;
+	input	[ 5:0]			width_h;
+	input	[ 5:0]			width_l;
+
+	total_cnt = total_cnt + 1'b1;
+	temp_cnt = 5'h0;
+
+	for(int i = width_l; i < width_h; i = i + 1)
+	begin: CHECK_DATA_BY_BIT
+		if(real_data[i] != expect_data[i])
+			temp_cnt = temp_cnt + 1'b1;
+	end
+
+	if(temp_cnt == 5'h0)
 	begin
 		pass_cnt = pass_cnt + 1'b1;
 	end

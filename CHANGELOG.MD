@@ -80,5 +80,20 @@ MODIFY:	apb0 peripherals address logic.
 MODIFY:	CPU IBUS can access DTCM.
 MODIFY:	Uart1 has been added into Startup.S.
 MODIFY:	Altera FPGA pin assinment for uart1 with the document updated.
+MODIFY:	Altera FPGA sof for mcu uart test.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 01202024
+
+ADD:    GPIO RTL and gpio testcase. (AF mode not sim to verify)
+ADD:    GPIO driver.
+ADD:		GPIO SGDC constrain for spyglass.	
+ADD:		GPIO af table document.
+FIX:		Uart rx driver when error occurs. If not ignoring any errors, rx driver will exit when error occurs.
+MODIFY:	Edge detection logic in lib has been modify for multiple bits.
+MODIFY:	GPIO has been added into Startup.S.
+MODIFY:	Altera FPGA pin assinment for gpio with the document updated.
+MODIFY:	Altera FPGA sof for mcu gpio test.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

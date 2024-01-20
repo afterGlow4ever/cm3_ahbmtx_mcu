@@ -336,9 +336,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>KEIL_SDK, COMMON_DRIVER, UART_DRIVER, UART_EX_DRIVER, UART_TEST</Define>
+              <Define>KEIL_SDK, COMMON_DRIVER, UART_DRIVER, UART_EX_DRIVER, GPIO_DRIVER, GPIO_TEST</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\library\cmsis\Device\ARM\CM3DS\Include;..\..\..\library\cmsis\CMSIS\Include;..\..\..\library\drivers;..\..\..\library\drivers\common\inc;..\..\..\library\drivers\uart\inc;..\..\..\user\firmware\fw_test;..\..\..\user\firmware\fw_test\uart_bsp</IncludePath>
+              <IncludePath>..\..\..\library\cmsis\Device\ARM\CM3DS\Include;..\..\..\library\cmsis\CMSIS\Include;..\..\..\library\drivers;..\..\..\library\drivers\common\inc;..\..\..\library\drivers\uart\inc;..\..\..\library\drivers\gpio\inc;..\..\..\user\firmware\fw_test;..\..\..\user\firmware\fw_test\uart_bsp;..\..\..\user\firmware\fw_test\gpio_bsp</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -397,6 +397,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\library\drivers\uart\src\drv_uart_ex.c</FilePath>
             </File>
+            <File>
+              <FileName>drv_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\library\drivers\gpio\src\drv_gpio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -436,6 +441,16 @@
               <FileName>uart_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\user\firmware\fw_test\uart_bsp\uart_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio_bsp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\user\firmware\fw_test\gpio_bsp\gpio_bsp.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\user\firmware\fw_test\gpio_bsp\gpio_test.c</FilePath>
             </File>
           </Files>
         </Group>

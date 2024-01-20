@@ -11,7 +11,7 @@
 #
 #===============================================
 
-create_clock -name {hse} -period 25.000 -waveform {0.000 12.500} [get_ports {CLK}]
+create_clock -name {hse} -period 20.000 -waveform {0.000 10.000} [get_ports {CLK}]
 create_clock -name {jtag_tck} -period 200.000 -waveform {0.000 100.000} [get_ports {TCK}]
 
 derive_pll_clocks

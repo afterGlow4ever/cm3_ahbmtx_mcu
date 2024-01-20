@@ -1,3 +1,16 @@
+#===============================================
+#
+#		File: fpga_ep4_mcu_full_cfg.tcl
+#		Author: afterGlow,4ever
+#		Group: Fall For Laboratory
+#		Date: 09102023
+#		Version: v1.0
+#
+# 	This is project config for altera fpga.
+# 	Using ep4ce55 ad9361 eval board.
+#
+#===============================================
+
 	set_global_assignment -name FAMILY "Cyclone IV E"
 	set_global_assignment -name DEVICE EP4CE55F23I7
 	set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0

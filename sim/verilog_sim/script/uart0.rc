@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_T-2022.06
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 25 1920 568 100 65
+viewPort 0 25 1920 438 100 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/uart0_testcase/TOP.fsdb"
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -18,16 +18,16 @@ signalSpacing 5
 windowTimeUnit 1us
 
 ; waveform viewport range
-zoom 0.000000 25413.094800 1u
+zoom 2278.445041 3416.679510 1u
 cursor 1733.085000
 marker 870.030000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 1
+top 11
 ; marker line index
-markerPos 21
+markerPos 26
 
 ; event list
 ; addEvent event_name event_expression
@@ -48,24 +48,24 @@ curSTATUS ByChange
 
 
 aliasmapname uart_pe_tx.current_state
-nalias TX_START		7'b0000010		NULL
-nalias TX_PARITY		7'b0001000		NULL
 nalias TX_INTERVAL		7'b0100000		NULL
-nalias TX_IDLE		7'b0000001		NULL
-nalias TX_DATA		7'b0000100		NULL
-nalias TX_STOP		7'b0010000		NULL
+nalias TX_PARITY		7'b0001000		NULL
+nalias TX_START		7'b0000010		NULL
 nalias TX_END		7'b1000000		NULL
+nalias TX_STOP		7'b0010000		NULL
+nalias TX_DATA		7'b0000100		NULL
+nalias TX_IDLE		7'b0000001		NULL
 
 aliasmapname uart_pe_rx.current_state
-nalias RX_START		6'b000010		NULL
-nalias RX_PARITY		6'b001000		NULL
 nalias RX_END		6'b100000		NULL
-nalias RX_IDLE		6'b000001		NULL
-nalias RX_DATA		6'b000100		NULL
+nalias RX_PARITY		6'b001000		NULL
+nalias RX_START		6'b000010		NULL
 nalias RX_STOP		6'b010000		NULL
+nalias RX_DATA		6'b000100		NULL
+nalias RX_IDLE		6'b000001		NULL
 
 addGroup "G1"
-activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/uart0_testcase/TOP.fsdb"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
 addSignal -h 15 /TOP/txd
 addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_uart0/u_uart_pe_core/u_uart_pe_tx/pe_clk
 aliasname uart_pe_tx.current_state
@@ -91,6 +91,11 @@ addSignal -h 15 -UNSIGNED -HEX /TOP/rdata[9:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope rstop[1:0]
 addSignal -h 15 -holdScope rparity
 addGroup "G4"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addGroup "G5"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

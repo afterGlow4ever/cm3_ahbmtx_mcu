@@ -98,7 +98,6 @@ void SysTick_Handler(void)
 //===============================================
 
 extern UART_HandleTypeDef huart0;
-extern UART_HandleTypeDef huart1;
 
 void Uart0_Handler(void)
 {
@@ -106,9 +105,28 @@ void Uart0_Handler(void)
 	drv_uart_interrupt_handler(&huart0);
 }
 
+#ifdef UART_TEST
+
+extern UART_HandleTypeDef huart1;
+
 void Uart1_Handler(void)
 {
 	NVIC_ClearPendingIRQ(Uart1_IRQn);
 	drv_uart_interrupt_handler(&huart1);
 }
+
+#endif
+
+#ifdef GPIO_TEST
+
+extern GPIO_FunctionCfg gpioa2;
+extern GPIO_FunctionCfg gpioa3;
+
+void Gpioa_Handler(void)
+{
+	NVIC_ClearPendingIRQ(Gpioa_IRQn);
+	drv_gpio_interrupt_handler(GPIOA);
+}
+
+#endif
 

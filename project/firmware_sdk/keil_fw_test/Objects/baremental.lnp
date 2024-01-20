@@ -2,11 +2,14 @@
 ".\objects\drv_common.o"
 ".\objects\drv_uart.o"
 ".\objects\drv_uart_ex.o"
+".\objects\drv_gpio.o"
 ".\objects\startup_cm3ds.o"
 ".\objects\interrupt.o"
 ".\objects\main.o"
 ".\objects\uart_bsp.o"
 ".\objects\uart_test.o"
+".\objects\gpio_bsp.o"
+".\objects\gpio_test.o"
 --strict --scatter ".\Objects\baremental.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

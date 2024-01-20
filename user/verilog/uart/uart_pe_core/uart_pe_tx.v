@@ -291,11 +291,16 @@ begin
 	end
 	else if(tx_state_data && bit_end) // other data bit
 	begin
-		data_bit_cnt <= data_bit_cnt + 1'b1;
 		if(data_bit_cnt == r_data_bit) // data bit end
+		begin
 			data_bit_end <= 1'b1;
+			data_bit_cnt <= data_bit_cnt;
+		end
 		else
+		begin
 			data_bit_end <= 1'b0;
+			data_bit_cnt <= data_bit_cnt + 1'b1;
+		end
 	end
 	else if(tx_state_start_to_data) // (timing clk issue) first data bit
 	begin
@@ -353,11 +358,16 @@ begin
 	end
 	else if(tx_state_stop && bit_end) // other stop bit
 	begin
-		stop_bit_cnt <= stop_bit_cnt + 1'b1;
 		if(stop_bit_cnt == r_stop_bit) // stop bit end
+		begin
+			stop_bit_cnt <= stop_bit_cnt;
 			stop_bit_end <= 1'b1;
+		end
 		else
+		begin
+			stop_bit_cnt <= stop_bit_cnt + 1'b1;
 			stop_bit_end <= 1'b0;
+		end
 	end
 	else if(tx_state_parity_to_stop || tx_state_data_to_stop) // (timing clk issue) first stop bit (this must be before above)
 	begin
@@ -394,11 +404,16 @@ begin
 	end
 	else if(tx_state_interval && bit_end) // other interval bit
 	begin
-		interval_bit_cnt <= interval_bit_cnt + 1'b1;
 		if(interval_bit_cnt == r_interval_bit) // interval bit end
+		begin
 			interval_bit_end <= 1'b1;
+			interval_bit_cnt <= interval_bit_cnt;
+		end
 		else
+		begin
 			interval_bit_end <= 1'b0;
+			interval_bit_cnt <= interval_bit_cnt + 1'b1;
+		end
 	end
 	else if(tx_state_stop_to_interval) // (timing clk issue) first interval bit (this must be before above)
 	begin
@@ -462,15 +477,15 @@ begin
 		fifo_re <= 1'b1;
 		case(r_data_bit)
 			4'd7:
-				tx_data <= fifo_data[6:0];
+				tx_data <= {4'h0, fifo_data[6:0]};
 			4'd8:
-				tx_data <= fifo_data[7:0];
+				tx_data <= {3'h0, fifo_data[7:0]};
 			4'd9:
-				tx_data <= fifo_data[8:0];
+				tx_data <= {2'h0, fifo_data[8:0]};
 			4'd10:
-				tx_data <= fifo_data[9:0];
+				tx_data <= {1'h0, fifo_data[9:0]};
 			default:
-				tx_data <= fifo_data[7:0];
+				tx_data <= {3'h0, fifo_data[7:0]};
 		endcase
 		tx_data_loaded <= 1'b1;// in case of tx_state last more than 1 clk unexpected and then read data more from tx fifo
 	end

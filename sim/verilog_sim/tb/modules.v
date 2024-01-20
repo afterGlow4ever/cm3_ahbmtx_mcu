@@ -26,4 +26,27 @@
 `include "cpu_itcm_boot.v"
 `endif
 
+`ifdef UART0_SIM
+`include "uart0_test.v"
+`endif
+
+`ifdef UART0_TESTCASE
+`include "uart0_testcase.v"
+`endif
+
+`ifdef UART_FW_TEST
+`include "uart_fw_test.v"
+`endif
+
+`ifdef GPIO_SIM
+`include "gpio_test.v"
+`endif
+
+`ifdef GPIO_TESTCASE
+`include "gpio_testcase.v"
+`endif
+
+`ifdef GPIO_FW_TEST
+`include "gpio_fw_test.v"
+`endif
 

@@ -17,6 +17,7 @@
 extern UART_HandleTypeDef huart1;
 uint16_t tx_data[32];
 uint16_t rx_data[32];
+uint8_t rx_callback_cnt;
 
 //===============================================
 // test prepare
@@ -55,21 +56,28 @@ void uart1_rx_test(void)
 
 void uart1_rx_it_test(void)
 {
+	writereg32(0x40000008, 0xbd1);
 	uart1_init();
+	writereg32(0x40000008, 0xbd2);
 	NVIC_SetPriority(Uart1_IRQn, 0);
 	NVIC_EnableIRQ(Uart1_IRQn);
+
+	rx_callback_cnt = 0;
 
 	drv_uart_rx_data_it(&huart1, rx_data, 32);
 	while(huart1.rx_ptr != 32);
 
 	NVIC_DisableIRQ(Uart1_IRQn);
 
-	test_printf_s("uart1 rx data:\r\n");
+	test_printf_s("uart1 rx data: \r\n");
 	for(uint8_t i = 0; i < 32; i++)
 	{
-				writereg32(0x40000000, rx_data[i]);
+		writereg32(0x40000000, rx_data[i]);
 		test_printf_ch("%x ", rx_data[i]);
 	}	
+	test_printf_s("\r\n");
+	writereg32(0x40000004, rx_callback_cnt);
+	test_printf_ch("rx callback times: %x ", rx_callback_cnt);
 	test_printf_s("\r\n");
 }
 
@@ -79,6 +87,8 @@ void uart1_rx_tx_loop_test(void)
 	NVIC_SetPriority(Uart1_IRQn, 0);
 	NVIC_EnableIRQ(Uart1_IRQn);
 
+	rx_callback_cnt = 0;
+
 	drv_uart_rx_data_it(&huart1, rx_data, 32);
 	while(huart1.rx_ptr != 32);
 
@@ -86,12 +96,26 @@ void uart1_rx_tx_loop_test(void)
 
 	drv_uart_tx_data(&huart1, rx_data, 32);
 
-	test_printf_s("uart1 rx data:\r\n");
+	test_printf_s("uart1 rx data: \r\n");
 	for(uint8_t i = 0; i < 32; i++)
 	{
 		test_printf_ch("%x ", rx_data[i]);
 	}	
 	test_printf_s("\r\n");
+
+	writereg32(0x40000004, rx_callback_cnt);
+	test_printf_ch("rx callback times: %x ", rx_callback_cnt);
+	test_printf_s("\r\n");
+}
+
+void uart_int_rx_fifo_noempty_callback(UART_HandleTypeDef *uart)
+{
+	rx_callback_cnt++;
+}
+
+void uart_int_rx_fifo_thres_callback(UART_HandleTypeDef *uart)
+{
+	rx_callback_cnt++;
 }
 
 //===============================================

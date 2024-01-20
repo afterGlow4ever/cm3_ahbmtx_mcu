@@ -26,7 +26,7 @@ if {[is_project_open]} {
 if {$make_assignments} {
 	set_global_assignment -name VERILOG_FILE design_define.v
 	source dut.tcl
-	source fpga_dut.tcl
+	source fpga_ep4_dut.tcl
 	source fpga_ep4_mcu_full_cfg.tcl
 	source fpga_ep4_mcu_full_pin_assignments.tcl
 	set_global_assignment -name SDC_FILE fpga_ep4_mcu_full_timing_constrain.sdc

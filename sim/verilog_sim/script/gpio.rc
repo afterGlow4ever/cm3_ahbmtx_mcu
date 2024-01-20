@@ -1,0 +1,59 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 204 100 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/gpio_test/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 1481771000.000000
+cursor 0.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 2
+; marker line index
+markerPos 5
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/gpio_test/TOP.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/GPIOA[15:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/rdata[31:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_gpio/u_gpioa_regs_wrap/r_od[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_id[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_int_sta[15:0]
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

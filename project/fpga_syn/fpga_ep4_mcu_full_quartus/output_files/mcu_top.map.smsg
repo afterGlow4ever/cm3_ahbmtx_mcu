@@ -1,4 +1,15 @@
-Warning (10273): Verilog HDL warning at ram_gen.v(52): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 52
-Warning (10273): Verilog HDL warning at ram_gen.v(96): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 96
-Warning (10273): Verilog HDL warning at ram_gen.v(146): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 146
-Warning (10273): Verilog HDL warning at ram_gen.v(156): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 156
+Warning (10273): Verilog HDL warning at ram_gen.v(53): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 53
+Warning (10273): Verilog HDL warning at ram_gen.v(98): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 98
+Warning (10273): Verilog HDL warning at ram_gen.v(149): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 149
+Warning (10273): Verilog HDL warning at ram_gen.v(159): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 159
+Info (10281): Verilog HDL Declaration information at uart_pe_rx.v(68): object "RX_END" differs only in case from object "rx_end" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v Line: 68
+Info (10281): Verilog HDL Declaration information at uart_pe_rx.v(65): object "RX_DATA" differs only in case from object "rx_data" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v Line: 65
+Info (10281): Verilog HDL Declaration information at uart_pe_tx.v(61): object "TX_END" differs only in case from object "tx_end" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v Line: 61
+Info (10281): Verilog HDL Declaration information at uart_pe_tx.v(57): object "TX_DATA" differs only in case from object "tx_data" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v Line: 57
+Info (10281): Verilog HDL Declaration information at uart_apb_cfg.v(70): object "r_tx_data" differs only in case from object "R_TX_DATA" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_apb_cfg.v Line: 70
+Info (10281): Verilog HDL Declaration information at uart_apb_cfg.v(119): object "r_rx_data" differs only in case from object "R_RX_DATA" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_apb_cfg.v Line: 119
+Info (10281): Verilog HDL Declaration information at gpioa_mux.v(20): object "gpio_dir" differs only in case from object "GPIO_DIR" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpioa_mux.v Line: 20
+Info (10281): Verilog HDL Declaration information at gpio_normal.v(28): object "gpio_dir" differs only in case from object "GPIO_DIR" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v Line: 28
+Info (10281): Verilog HDL Declaration information at gpio_normal.v(27): object "gpio_out" differs only in case from object "GPIO_OUT" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v Line: 27
+Info (10281): Verilog HDL Declaration information at gpio_normal.v(29): object "gpio_in" differs only in case from object "GPIO_IN" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v Line: 29
+Info (10281): Verilog HDL Declaration information at gpio_normal.v(33): object "gpio_int" differs only in case from object "GPIO_INT" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v Line: 33

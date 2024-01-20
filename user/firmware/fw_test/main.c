@@ -16,16 +16,19 @@
 
 extern UART_HandleTypeDef huart0;
 
-//uint16_t tx_data[32];
-//uint16_t rx_data[32];
-
 //===============================================
 // testlist
 //===============================================
 
 TestMenu g_mcu_menu[] =
 {
-	{'1', uart_testmenu,							"[UART] uart test menu\r\n"} 
+#ifdef UART_TEST
+	{'1', uart_testmenu,							"[UART] test menu\r\n"},
+#endif
+#ifdef GPIO_TEST
+	{'2', gpio_testmenu,							"[GPIO] test menu\r\n"},
+#endif
+	{'0', mcu_testmenu,								"[MCU] test menu\r\n"}
 };
 
 void mcu_testmenu(void)
@@ -42,65 +45,20 @@ void mcu_testmenu(void)
 
 int main(void)
 {
-//	uint8_t temp;
-
-	uint8_t ch;
 	uart0_init();
-//	temp=1;
-//	writereg32(0x40000008, 0xbd);
-//	drv_uart_printf("Hello%d\r\n", temp);
-//	drv_uart_printf("Hello\r\n");
-////
-//	for(uint8_t i = 0; i < 32; i++)
-//	{
-//		tx_data[i] = 0xc3 + (i << 2);
-//	}
-//
-////	writereg32(0x40000008, 0xbd);
-////	drv_uart_tx_data(&huart0, tx_data, 32);
-////	writereg32(0x40000008, 0xed);
-////
-////	writereg32(0x40000008, 0xbd);
-////	drv_uart_rx_data(&huart0, rx_data, 32);
-////	writereg32(0x40000008, 0xed);
-////	for(uint8_t i = 0; i < 32; i++)
-////	{
-////		writereg32(0x40000000, rx_data[i]);
-////	}
-//
-//	writereg32(0x40000008, 0xbd);
-//	NVIC_SetPriority(Uart0_IRQn, 0);
-//	NVIC_EnableIRQ(Uart0_IRQn);
-////	writereg32(0x40000000, NVIC->ISER[0]);
-//
-//	drv_uart_rx_data_it(&huart0, rx_data, 32);
-//
-//	while(huart0.rx_ptr != 32)
-//	{
-//		writereg32(0x40000000, huart0.rx_ptr);
-//	}
-//	NVIC_DisableIRQ(Uart0_IRQn);
-//	for(uint8_t i = 0; i < 32; i++)
-//	{
-//		writereg32(0x40000000, rx_data[i]);
-//	}
-//		writereg32(0x40000008, 0xed);
-//	drv_uart_tx_data(&huart0, rx_data, 32);
-
 #ifdef SIM
 	writereg32(0x40000008, 0xbd);
-	uart1_rx_it_test();
+	gpioa2_out_gpioa3_in_it_test();
+//	uart1_rx_it_test();
 	writereg32(0x40000008, 0xed);
 #else
 #endif
+
 	while(1)
 	{
 #ifdef SIM
-
 #else
 		mcu_testmenu();
-//		drv_uart_getchar(&huart0, &ch);
-//		drv_uart_putchar(&huart0, &ch);
 #endif
 	}
 }

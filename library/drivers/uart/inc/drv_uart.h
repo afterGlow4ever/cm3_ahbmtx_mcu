@@ -121,7 +121,6 @@ typedef struct
 	uint8_t rx_num;
 }UART_HandleTypeDef;
 
-
 //===============================================
 // uart inline function
 //===============================================

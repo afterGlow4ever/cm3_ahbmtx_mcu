@@ -78,7 +78,13 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     SysTick_Handler           ; SysTick Handler
 
                 ; External Interrupts
-                DCD     UART0_Handler             ; UART 0 RX and TX Handler
+                DCD     Uart0_Handler             ; UART 0 RX and TX Handler
+                DCD     Uart1_Handler             ; UART 1 RX and TX Handler
+                DCD     Resv0_Handler             ; Reserved 0 Handler
+                DCD     Resv1_Handler             ; Reserved 1 Handler
+                DCD     Resv2_Handler             ; Reserved 2 Handler
+                DCD     Gpioa_Handler             ; GPIOA Handler
+				DCD     Resv3_Handler             ; Reserved 3 Handler	
 __Vectors_End
 
 __Vectors_Size  EQU     __Vectors_End - __Vectors
@@ -90,10 +96,10 @@ __Vectors_Size  EQU     __Vectors_End - __Vectors
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-                IMPORT  SystemInit
+;                IMPORT  SystemInit
                 IMPORT  __main
-                LDR     R0, =SystemInit
-                BLX     R0
+;                LDR     R0, =SystemInit
+;                BLX     R0
                 LDR     R0, =__main
                 BX      R0
                 ENDP
@@ -146,8 +152,20 @@ SysTick_Handler\
                 ENDP
 
 Default_Handler PROC
-;                EXPORT UART0_Handler              [WEAK]
-;UART0_Handler
+                EXPORT Uart0_Handler              [WEAK]
+                EXPORT Uart1_Handler              [WEAK]
+                EXPORT Resv0_Handler			  [WEAK]
+                EXPORT Resv1_Handler			  [WEAK]
+                EXPORT Resv2_Handler			  [WEAK]
+                EXPORT Gpioa_Handler			  [WEAK]
+				EXPORT Resv3_Handler			  [WEAK]	
+Uart0_Handler
+Uart1_Handler
+Resv0_Handler
+Resv1_Handler
+Resv2_Handler
+Gpioa_Handler
+Resv3_Handler
                 B       .
 
                 ENDP
