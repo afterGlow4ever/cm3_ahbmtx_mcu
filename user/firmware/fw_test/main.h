@@ -41,7 +41,7 @@ void mcu_testmenu(void);
 
 //#define SIM
 //#define UART_TEST
-//
+
 //===============================================
 // including bsp header files
 //===============================================
@@ -49,6 +49,9 @@ void mcu_testmenu(void);
 #include "uart_bsp.h"
 #ifdef GPIO_DRIVER
 #include "gpio_bsp.h"
+#endif
+#ifdef BASTIM_DRIVER
+#include "bastim_bsp.h"
 #endif
 
 //===============================================
@@ -58,6 +61,9 @@ void mcu_testmenu(void);
 #include "uart_test.h"
 #ifdef GPIO_TEST
 #include "gpio_test.h"
+#endif
+#ifdef BASTIM_TEST
+#include "bastim_test.h"
 #endif
 
 #endif

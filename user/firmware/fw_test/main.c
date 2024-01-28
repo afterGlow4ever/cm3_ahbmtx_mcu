@@ -28,6 +28,9 @@ TestMenu g_mcu_menu[] =
 #ifdef GPIO_TEST
 	{'2', gpio_testmenu,							"[GPIO] test menu\r\n"},
 #endif
+#ifdef BASTIM_TEST
+	{'3', bastim_testmenu,							"[BASTIM] test menu\r\n"},
+#endif
 	{'0', mcu_testmenu,								"[MCU] test menu\r\n"}
 };
 
@@ -48,7 +51,9 @@ int main(void)
 	uart0_init();
 #ifdef SIM
 	writereg32(0x40000008, 0xbd);
-	gpioa2_out_gpioa3_in_it_test();
+	bastim_4ch_autoreload_int_test();
+//	bastim_4ch_test();
+//	gpioa2_out_gpioa3_in_it_test();
 //	uart1_rx_it_test();
 	writereg32(0x40000008, 0xed);
 #else

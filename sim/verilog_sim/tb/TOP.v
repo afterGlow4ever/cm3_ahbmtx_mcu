@@ -17,6 +17,7 @@ module TOP;
 reg								clk_50mhz;
 reg								clk_40mhz;
 reg								clk_20mhz;
+reg								clk_10mhz;
 wire							clk;
 reg								rstn;
 wire							txd;
@@ -80,16 +81,27 @@ begin
 	forever #(25) clk_20mhz = ~clk_20mhz;
 end
 
+// clk 10MHz
+initial
+begin
+	clk_10mhz = 1'b0;
+	#100
+	forever #(50) clk_10mhz = ~clk_10mhz;
+end
+
 `ifdef FPGA
 assign clk = clk_50mhz;
 `else
 assign clk = clk_40mhz;
 `endif
 
-//initial
-//begin
-//	force TOP.u_mcu_top.apb1_root_clk = clk_20mhz;
-//end
+initial
+begin
+`ifdef FPGA
+`else
+	force TOP.u_mcu_top.apb1_root_clk = clk_10mhz;
+`endif
+end
 
 // system reset will be release at 500ns
 initial

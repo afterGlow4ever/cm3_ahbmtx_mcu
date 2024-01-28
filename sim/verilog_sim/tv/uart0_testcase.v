@@ -124,7 +124,8 @@ begin
 				u_swd_model.swd_writereg32(32'h40001008, uart0_r_pe_ctrl);
 				
 				#100
-				u_swd_model.swd_writereg32(32'h40001004, 32'hf01);
+				u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+				u_swd_model.swd_writereg32(32'h40001004, 32'h001);
 		
 				for(int iut_j = 0; iut_j < 4; iut_j = iut_j + 1)
 				begin:TP_0_IUT1// This loop is used to put data sample into tx fifo
@@ -153,7 +154,8 @@ begin
 				u_swd_model.swd_writereg32(32'h40001008, uart0_r_pe_ctrl);
 				
 				#100
-				u_swd_model.swd_writereg32(32'h40001004, 32'hf01);
+				u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+				u_swd_model.swd_writereg32(32'h40001004, 32'h001);
 		
 				for(int iut_j = 0; iut_j < 4; iut_j = iut_j + 1)
 				begin:TP_1_IUT1// This loop is used to put data sample into tx fifo
@@ -343,7 +345,8 @@ begin
 				u_swd_model.swd_writereg32(32'h40001008, uart0_r_pe_ctrl);
 				
 				#100
-				u_swd_model.swd_writereg32(32'h40001004, 32'hf03);
+				u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+				u_swd_model.swd_writereg32(32'h40001004, 32'h003);
 //				wait(TOP.u_mcu_top.u_fp_domain.u_apb0_sync_top.u_uart0.u_uart_regs_wrap.r_update == 1'b1);	
 				wait(TOP.u_mcu_top.u_fp_domain.u_apb0_sync_top.u_uart0.pe_rx_enable == 1'b1);
 				for(int lt_j = 0; lt_j < 4; lt_j = lt_j + 1)
@@ -378,7 +381,8 @@ begin
 				u_swd_model.swd_writereg32(32'h40001008, uart0_r_pe_ctrl);
 				
 				#100
-				u_swd_model.swd_writereg32(32'h40001004, 32'hf03);
+				u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+				u_swd_model.swd_writereg32(32'h40001004, 32'h003);
 				wait(TOP.u_mcu_top.u_fp_domain.u_apb0_sync_top.u_uart0.pe_rx_enable == 1'b1);
 				for(int lt_j = 0; lt_j < 4; lt_j = lt_j + 1)
 				begin:TP_0_LT1// This loop is used to tx sample data
@@ -411,7 +415,8 @@ begin
 	u_swd_model.swd_writereg32(32'h40001010, 32'h1f0);
 	
 	#100
-	u_swd_model.swd_writereg32(32'h40001004, 32'hf03);
+	u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+	u_swd_model.swd_writereg32(32'h40001004, 32'h003);
 	wait(TOP.u_mcu_top.u_fp_domain.u_apb0_sync_top.u_uart0.pe_rx_enable == 1'b1);
 	for(int lt_j = 0; lt_j < 8; lt_j = lt_j + 1)
 	begin:TP_0_LT0// This loop is used to tx sample data
@@ -446,7 +451,8 @@ begin
 				u_swd_model.swd_writereg32(32'h40001010, 32'h1f0);
 				
 				#100
-				u_swd_model.swd_writereg32(32'h40001004, 32'hf03);
+				u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+				u_swd_model.swd_writereg32(32'h40001004, 32'h003);
 				wait(TOP.u_mcu_top.u_fp_domain.u_apb0_sync_top.u_uart0.pe_rx_enable == 1'b1);
 				for(int lt_j = 0; lt_j < 4; lt_j = lt_j + 1)
 				begin:TP_0_LT1// This loop is used to tx sample data

@@ -22,6 +22,7 @@
 (4)	当CPU开始运行时可运行在ITCM中存放的bootloader。
 (5)	CPU可以正确驱动Uart输入、输出。
 (6)	CPU可以正确驱动GPIO输入、输出。
+(7)	CPU可以正确驱动基本定时器进行计时操作。
 2	实验内容：
 (1)	在MCU内集成CPU、总线、存储器、外设等。
 (2)	使用Jlink的SWD模式读写指定地址。
@@ -29,6 +30,7 @@
 (4)	ITCM中存放一个bootloader。
 (5)	使用CPU驱动Uart，完成输入、输出功能的实现。
 (6)	使用CPU驱动GPIO，完成输入、输出功能的实现。
+(7)	使用CPU驱动基本定时器，完成定时的功能。
 3	具体要求：
 (1)	CPU使用ARM Cortex-M3。
 (2)	片内总线使用AHB总线矩阵。
@@ -38,6 +40,7 @@
 (6)	在ITCM中存放一个bootloader，当CPU开始运行时即运行该程序。
 (7)	编写Uart的RTL，编写配套的firmware驱动并实现输入、输出的功能，完成输入输出回环测试。
 (8)	编写GPIO的RTL，编写配套的firmware驱动并实现输入、输出的功能，完成输入输出回环测试。
+(9)	编写基本定时器的RTL，编写配套的firmware驱动并实现计时功能，包括中断方式定时。
 
 三	学习目标（下述内容非先后顺序）：
 1	学习MCU的基本架构。
@@ -49,6 +52,7 @@
 (2)	掌握ARM Cortex-M3为CPU如何和总线进行链接。
 (3)	掌握ARM Cortex-M3为CPU与SWD的链接方式。
 (4)	掌握ARM Cortex-M3为CPU如何连接时钟信号和复位信号。
+(5)	掌握ARM Cortex-M3为CPU如何连接各种中断线，包括同步中断和异步中断。
 3	学习AHB总线矩阵：
 (1)	了解AHB总线矩阵的基本读写时序。
 (2)	了解AHB总线矩阵的生成。
@@ -81,25 +85,30 @@
 (2)	对GPIO进行功能测试和spyglass检查，修改其中的错误和问题。
 (3)	学习GPIO的软件驱动编写。
 (4)	掌握如何使用GPIO并实现特定的功能。
-10	学习VCS与Verdi联合仿真环境：
+10	学习基本定时器：
+(1)	学习基本定时器的硬件RTL实现。
+(2)	对基本定时器进行功能测试和spyglass检查，修改其中的错误和问题。
+(3)	学习基本定时器的软件驱动编写。
+(4)	掌握如何使用基本定时器并实现特定的功能。
+11	学习VCS与Verdi联合仿真环境：
 (1)	掌握如何使用VCS进行仿真并使用Verdi记录波形。
-11	学习gcc-arm-none-eabi编译firmware环境：
+12	学习gcc-arm-none-eabi编译firmware环境：
 (1)	掌握如何使用gcc-arm-none-eabi编一个cpu可执行的程序。
-12	学习Quartus和Vivado的fpga综合编译环境：
+13	学习Quartus和Vivado的fpga综合编译环境：
 (1)	掌握如何使用Quartus和Vivado生成或修改IP核，包括RAM核和PLL核。
 (2)	掌握如何使用Quartus和Vivado进行fpga综合并下载bit文件。
 (3)	掌握如何使用Quartus和Vivado进行在线debug。
 (4)	掌握如何使用Quartus和Vivado编写时序约束文件并进行时序分析。
 (5)	掌握如何使用Quartus和Vivado进行ECO操作。
-13	学习spyglass环境：
+14	学习spyglass环境：
 (1)	掌握如何编写sgdc约束文件。
 (2)	掌握如何使用spyglass进行语法和cdc分析。
 (3)	了解根据spyglass的分析结果对于rtl的意义。
 
 四	可以重复利用的资源：
 1	工程项目目录下Library下面的内容，包括Altera及Xilinx的部分仿真库、基本功能逻辑RTL的实现、Cortex-M3的建议版本模型、CMSDK模型（包括AHB总线矩阵、APB总线）、SWD模型、仿真结果监视器模型等。
-2	工程项目目录下User\Verilog，这里是MCU的基本集成结构，另外包含Uart、GPIO外设。
-3	工程项目目录下Library\drivers和Library\cmsis，这里是MCU的基本软件环境和Uart、GPIO的RTL的配套驱动程序。
+2	工程项目目录下User\Verilog，这里是MCU的基本集成结构，另外包含Uart、GPIO、基本定时器外设。
+3	工程项目目录下Library\drivers和Library\cmsis，这里是MCU的基本软件环境和Uart、GPIO、基本定时器的RTL的配套驱动程序。
 4	便于使用者进行工作的“爱上实验室”开发工程环境，包含setenv.sh文件和Script目录下的makefile文件。
 
 五	注意事项：

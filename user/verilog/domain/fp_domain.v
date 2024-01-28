@@ -682,14 +682,32 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
 // async interrrupt (should sync first)
 //===============================================
 
-wire	[31:0] 				sync_irq;
-//wire	[15:0] 				async_irq;
+wire	[ 7:0] 				sync_irq;
+wire	[ 7:0] 				async_irq_bf;
+wire	[ 7:0] 				async_irq_af;
 wire						uart0_int;// No.0
 wire						uart1_int;// No.1
 //wire						gpioa_int;// No.5
+wire	[ 3:0]				bastim_int;// No.8~13
 
-assign sync_irq = {26'h0, gpioa_int, 1'b0, 1'b0, 1'b0, uart1_int, uart0_int};
-assign irq = {208'h0, sync_irq};
+assign sync_irq = {2'h0, gpioa_int, 1'b0, 1'b0, 1'b0, uart1_int, uart0_int};
+assign async_irq_bf = {4'h0, bastim_int};
+
+sync_ff_2d
+#(
+	.WIDTH						(8),
+	.DEFAULT_VAL				(0)
+)
+u_sync_ff_2d_inst0
+(
+	.clk						(sys_root_clk),
+	.rstn						(sys_root_rstn),	
+
+	.A							(async_irq_bf),
+	.Y							(async_irq_af)
+);
+
+assign irq = {234'h0, async_irq_af, sync_irq};
 
 //===============================================
 // sram top
@@ -792,7 +810,9 @@ apb1_top u_apb1_async_top
 	.psel						(psel1),   
 	.prdata						(prdata1), 
 	.pready						(pready1),
-	.pslverr					(pslverr1)
+	.pslverr					(pslverr1),
+
+	.bastim_int					(bastim_int)
 );
 
 endmodule

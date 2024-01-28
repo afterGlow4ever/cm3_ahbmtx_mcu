@@ -26,17 +26,20 @@ module apb1_top
 	input						psel,   
 	output	[31:0]				prdata, 
 	output						pready,
-	output						pslverr
+	output						pslverr,
+
+	output	[ 3:0]				bastim_int
 );
 
 //===============================================
 // APB1 slave mux
 //===============================================
 
-wire						 	psel_debug; 
-wire						 	pready_debug; 
-wire	[31:0]				 	prdata_debug; 
-wire						 	pslverr_debug; 
+wire						 	psel_bastim; 
+wire						 	pready_bastim; 
+wire	[31:0]				 	prdata_bastim; 
+wire						 	pslverr_bastim; 
+wire	[31:0]				 	paddr_bastim; 
 
 cmsdk_apb_slave_mux 
 #(
@@ -62,10 +65,10 @@ u_apb1_slave_mux
     .DECODE4BIT                         (paddr[15:12]),
     .PSEL                               (psel),
 
-    .PSEL0                              (psel_debug),
-    .PREADY0                            (pready_debug),
-    .PRDATA0                            (prdata_debug),
-    .PSLVERR0                           (pslverr_debug),
+    .PSEL0                              (psel_bastim),
+    .PREADY0                            (pready_bastim),
+    .PRDATA0                            (prdata_bastim),
+    .PSLVERR0                           (pslverr_bastim),
     
     .PSEL1                              (),
     .PREADY1                            (1'b0),
@@ -149,28 +152,36 @@ u_apb1_slave_mux
 );
 
 //===============================================
-// APB1 debug reg
-// 0x40000000~0x40000010
+// APB1 basic timer
+// 0x40001000~0x40001FFF
 //===============================================
 
-assign pready_debug = 1'b1;
-assign pslverr_debug = 1'b0;
+assign pready_bastim = 1'b1;
+assign pslverr_bastim = 1'b0;
 
-debug1_apb_cfg u_debug_reg
+`ifdef BASTIM
+assign paddr_bastim = paddr;// compatible with basic timer reg
+
+bastim_top u_bastim
 (
-	.clk						(apb1_root_clk),
-	.rst_n						(apb1_root_rstn),
+	.module_clk					(apb1_root_clk),  
+	.module_rstn				(apb1_root_rstn),
+
+	.reg_clk					(apb1_root_clk),
+	.reg_rstn					(apb1_root_rstn),
 	.pwrite						(pwrite),
-	.psel						(psel_debug),						
+	.psel						(psel_bastim),						
 	.penable					(penable),
-	.paddr						(paddr),
+	.paddr						(paddr_bastim),
 	.pwdata						(pwdata),
-	.prdata						(prdata_debug),
-	.debug0						(),
-	.debug1						(),
-	.debug2						(),
-	.debug3						()
+	.prdata						(prdata_bastim),
+
+	.bastim_int_line			(bastim_int)
 );
+`else
+assign prdata_bastim = 32'h0;
+assign bastim_int = 4'h0;
+`endif
 
 endmodule
 

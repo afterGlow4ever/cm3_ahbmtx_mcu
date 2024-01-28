@@ -46,7 +46,7 @@ bool drv_uart_set_config(UART_HandleTypeDef *uart)
 				(uart->cfg.parity_bit										<<  2) |
 				(uart->cfg.data_bit											<<  0) ;
 
-	return drv_check_rw_data(&(uart->regs->pe_ctrl), reg_temp, reg_temp);
+	return drv_check_rw_data((uint32_t)(&(uart->regs->pe_ctrl)), reg_temp, reg_temp);
 }
 
 bool drv_uart_init(UART_HandleTypeDef *uart)

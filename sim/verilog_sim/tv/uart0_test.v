@@ -94,7 +94,8 @@ begin
 	u_swd_model.swd_writereg32(32'h40001008, uart0_r_pe_ctrl);
 
 `ifdef UART_TX_CASE
-	u_swd_model.swd_writereg32(32'h40001004, 32'hf01);
+	u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+	u_swd_model.swd_writereg32(32'h40001004, 32'h001);
 	u_swd_model.swd_writereg32(32'h40001000, 32'ha5);
 	u_swd_model.swd_writereg32(32'h40001000, 32'h5a);
 	u_swd_model.swd_writereg32(32'h40001000, 32'hc3);

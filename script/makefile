@@ -68,6 +68,15 @@ gpio_testcase:
 gpio_fw_sim:
 	make -f makefile.gpio_fw_sim
 
+bastim_test:
+	make -f makefile.bastim_test
+
+bastim_testcase:
+	make -f makefile.bastim_testcase
+
+bastim_fw_sim:
+	make -f makefile.bastim_fw_sim
+
 #===============================================
 # RTL auto generation
 #===============================================
@@ -80,6 +89,9 @@ uart_reg_gen:
 
 gpio_reg_gen:
 	make -f makefile.gpio_reg_gen
+
+bastim_reg_gen:
+	make -f makefile.bastim_reg_gen
 
 #===============================================
 # firmware build

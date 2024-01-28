@@ -1,7 +1,8 @@
 FPGA_TARGET := fpga_ep4_mcu_full_quartus
 TOP_NAME := mcu_top
 #FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+UART1 \`define+GPIO"
-FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+GPIO"
+#FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+GPIO"
+FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+BASTIM"
 FPGA_PATH := ${PRJ_FPGA_DIR}/${FPGA_TARGET}
 DUT_LIST := dut.list
 FPGA_DUT_LIST := fpga_ep4_dut.list

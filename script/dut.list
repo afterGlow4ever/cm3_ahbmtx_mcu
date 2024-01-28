@@ -33,7 +33,6 @@
 ../library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
 ../library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
 ../library/gen_apb/debug0_apb_cfg.v
-../library/gen_apb/debug1_apb_cfg.v
 ../user/verilog/domain/fp_domain.v
 ../user/verilog/domain/apb0_top.v
 ../user/verilog/domain/apb1_top.v
@@ -52,4 +51,9 @@
 ../user/verilog/gpio/gpio_top.v
 ../user/verilog/gpio/gpio_normal.v
 ../user/verilog/gpio/gpio_pad.v
+../user/verilog/bastim/bastim_regs_wrap.v
+../user/verilog/bastim/bastim_ch_core/bastim_ch.v
+../user/verilog/bastim/bastim_ch_core/bastim_ch_core.v
+../user/verilog/bastim/bastim_top.v
+../user/verilog/bastim/bastim_apb_cfg.v
 ../user/verilog/mcu_top.v

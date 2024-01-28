@@ -1,7 +1,3 @@
-Warning (10273): Verilog HDL warning at ram_gen.v(53): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 53
-Warning (10273): Verilog HDL warning at ram_gen.v(98): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 98
-Warning (10273): Verilog HDL warning at ram_gen.v(149): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 149
-Warning (10273): Verilog HDL warning at ram_gen.v(159): extended using "x" or "z" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v Line: 159
 Info (10281): Verilog HDL Declaration information at uart_pe_rx.v(68): object "RX_END" differs only in case from object "rx_end" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v Line: 68
 Info (10281): Verilog HDL Declaration information at uart_pe_rx.v(65): object "RX_DATA" differs only in case from object "rx_data" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v Line: 65
 Info (10281): Verilog HDL Declaration information at uart_pe_tx.v(61): object "TX_END" differs only in case from object "tx_end" in the same scope File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v Line: 61

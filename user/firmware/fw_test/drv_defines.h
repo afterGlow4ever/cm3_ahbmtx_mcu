@@ -49,6 +49,9 @@
 #ifdef GPIO_DRIVER
 #include "drv_gpio.h"
 #endif
+#ifdef BASTIM_DRIVER
+#include "drv_bastim.h"
+#endif
 
 #endif
 

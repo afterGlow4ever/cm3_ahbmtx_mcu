@@ -130,3 +130,31 @@ void Gpioa_Handler(void)
 
 #endif
 
+#ifdef BASTIM_TEST
+
+void Bastim_Ch0_Handler(void)
+{
+	NVIC_ClearPendingIRQ(BastimCh0_IRQn);
+	drv_bastim_channel0_interrupt_handler(BASTIM);
+}
+
+void Bastim_Ch1_Handler(void)
+{
+	NVIC_ClearPendingIRQ(BastimCh1_IRQn);
+	drv_bastim_channel1_interrupt_handler(BASTIM);
+}
+
+void Bastim_Ch2_Handler(void)
+{
+	NVIC_ClearPendingIRQ(BastimCh2_IRQn);
+	drv_bastim_channel2_interrupt_handler(BASTIM);
+}
+
+void Bastim_Ch3_Handler(void)
+{
+	NVIC_ClearPendingIRQ(BastimCh3_IRQn);
+	drv_bastim_channel3_interrupt_handler(BASTIM);
+}
+
+#endif
+

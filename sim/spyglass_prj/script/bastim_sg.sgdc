@@ -1,0 +1,12 @@
+current_design "bastim_sg"
+
+clock -name "bastim_sg.apb1_root_clk" 	-domain apb1_root_clk -period 100.0 -edge 0.0 50.0
+
+reset -name "bastim_sg.apb1_root_rstn" 	-value 0
+
+abstract_port -module bastim_sg -ports paddr[31:0]		-clock bastim_sg.apb1_root_clk
+abstract_port -module bastim_sg -ports penable			-clock bastim_sg.apb1_root_clk
+abstract_port -module bastim_sg -ports psel				-clock bastim_sg.apb1_root_clk
+abstract_port -module bastim_sg -ports pwrite			-clock bastim_sg.apb1_root_clk
+abstract_port -module bastim_sg -ports pwdata[31:0]		-clock bastim_sg.apb1_root_clk
+

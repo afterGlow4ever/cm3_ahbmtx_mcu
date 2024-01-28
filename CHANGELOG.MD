@@ -87,13 +87,29 @@ MODIFY:	Altera FPGA sof for mcu uart test.
 Date: 01202024
 
 ADD:    GPIO RTL and gpio testcase. (AF mode not sim to verify)
-ADD:    GPIO driver.
-ADD:		GPIO SGDC constrain for spyglass.	
+ADD:    GPIO driver, armgcc env and keil env.
+ADD:		GPIO SGDC constrain and wavier for spyglass.	
 ADD:		GPIO af table document.
 FIX:		Uart rx driver when error occurs. If not ignoring any errors, rx driver will exit when error occurs.
 MODIFY:	Edge detection logic in lib has been modify for multiple bits.
+MODIFY:	CPU interrupt input logic including GPIO.
 MODIFY:	GPIO has been added into Startup.S.
 MODIFY:	Altera FPGA pin assinment for gpio with the document updated.
 MODIFY:	Altera FPGA sof for mcu gpio test.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 01272024
+
+ADD:    Basic timer RTL and basic timer testcase.
+ADD:    Basic timer driver, armgcc env and keil env.
+ADD:		Basic timer SGDC constrain and wavier for spyglass.	
+ADD:		Arch diagram for UART and Basic timer.
+ADD:		CPU & bus arch diagram.
+FIX:		Uart driver warning in init function.
+MODIFY:	RWSC reg logic.
+MODIFY:	CPU interrupt input logic including basic timer. Some interrupt line is sync and the other is async.
+MODIFY:	Basic timer has been added into Startup.S.
+MODIFY:	Altera FPGA sof for mcu basic timer test.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

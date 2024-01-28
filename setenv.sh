@@ -12,6 +12,7 @@
 #	2. Project environment variable config
 #	3. Shortcut keys for this whole project 
 #	4. shell cmd 'run' for running makefile in scripts
+#	5. cmd line configuration
 #
 #===============================================
 
@@ -105,4 +106,10 @@ function run()
 	make $1
 	cd -
 }
+
+#===============================================
+# cmd line
+#===============================================
+
+export PS1='\[\e[31;1m\][\u@\h \w]$ \e[m'
 

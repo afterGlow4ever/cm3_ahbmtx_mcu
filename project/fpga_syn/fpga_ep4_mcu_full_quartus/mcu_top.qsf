@@ -42,41 +42,6 @@ set_global_assignment -name TOP_LEVEL_ENTITY mcu_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:34:24  SEPTEMBER 05, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
-set_global_assignment -name VERILOG_FILE design_define.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/gray_code_gen.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/ram_gen.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/edge_detect.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_lite.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_32k/ram_32k.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_8k/ram_8k.v
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
@@ -87,7 +52,6 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name SDC_FILE fpga_ep4_mcu_full_timing_constrain.sdc
 set_location_assignment PIN_T2 -to CLK
 set_location_assignment PIN_K17 -to RSTN
 set_location_assignment PIN_D8 -to TDI
@@ -110,12 +74,90 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tck
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdi
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdo
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tms
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_location_assignment PIN_B16 -to RXD
+set_location_assignment PIN_A17 -to TXD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RXD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TXD
+set_location_assignment PIN_B13 -to RXD1
+set_location_assignment PIN_A13 -to TXD1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RXD1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TXD1
+set_location_assignment PIN_E3 -to GPIOA[2]
+set_location_assignment PIN_E4 -to GPIOA[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIOA[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIOA[3]
+set_global_assignment -name VERILOG_FILE design_define.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/gray_code_gen.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/edge_detect.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/interrupt_gen.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_lite.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_core.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_apb_cfg.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_data_buffer.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_regs_wrap.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_apb_cfg.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/pad.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_regs_wrap.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpioa_mux.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_pad.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_regs_wrap.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_ch_core/bastim_ch.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_ch_core/bastim_ch_core.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_apb_cfg.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_32k/ram_32k.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_8k/ram_8k.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/pll_50m/pll_50m.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v
+set_global_assignment -name SDC_FILE fpga_ep4_mcu_full_timing_constrain.sdc
 set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/gray_code_gen.v
-set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/ram_gen.v
 set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/fifo_gen.v
 set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/sync_ff.v
 set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/edge_detect.v
 set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/clock_gen.v
+set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/interrupt_gen.v
 set_global_assignment -name VERILOG_FILE ../../../library/cm3/cortexm3ds_logic.v
 set_global_assignment -name VERILOG_FILE ../../../library/cm3/CORTEXM3INTEGRATIONDS.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
@@ -126,8 +168,10 @@ set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmat
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
+set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
+set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
@@ -136,50 +180,16 @@ set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmat
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_p.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_h.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v
+set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async_syn.v
+set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
 set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
-set_global_assignment -name VERILOG_FILE ../../../user/verilog/domain/fp_domain.v
-set_global_assignment -name VERILOG_FILE ../../../user/verilog/sram/sram_top.v
-set_global_assignment -name VERILOG_FILE ../../../user/verilog/mcu_top.v
-set_global_assignment -name VERILOG_FILE ../../../library/altera_ip/ram_32k/ram_32k.v
-set_global_assignment -name VERILOG_FILE ../../../library/altera_ip/ram_8k/ram_8k.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/pll_50m/pll_50m.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v
-set_global_assignment -name VERILOG_FILE ../../../library/altera_ip/pll_50m/pll_50m.v
-set_global_assignment -name VERILOG_FILE ../../../user/fpga_verilog/fpga_platform.v
-set_global_assignment -name ENABLE_SIGNALTAP OFF
-set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
-set_global_assignment -name SIGNALTAP_FILE stp1.stp
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/interrupt_gen.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_core.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_apb_cfg.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_data_buffer.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_regs_wrap.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_top.v
-set_location_assignment PIN_B16 -to RXD
-set_location_assignment PIN_A17 -to TXD
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RXD
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TXD
-set_global_assignment -name VERILOG_FILE ../../../library/rtl_logic/interrupt_gen.v
-set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
-set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
-set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_ahb_to_apb/verilog/cmsdk_ahb_to_apb.v
-set_global_assignment -name VERILOG_FILE ../../../library/cmsdk/cmsdk_apb_slave_mux/verilog/cmsdk_apb_slave_mux.v
 set_global_assignment -name VERILOG_FILE ../../../library/gen_apb/debug0_apb_cfg.v
-set_global_assignment -name VERILOG_FILE ../../../library/gen_apb/debug1_apb_cfg.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/domain/fp_domain.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/domain/apb0_top.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/domain/apb1_top.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/sram/sram_top.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_pe_core/uart_pe_rx.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_pe_core/uart_pe_tx.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_pe_core/uart_pe_core.v
@@ -187,17 +197,6 @@ set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_apb_cfg
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_data_buffer.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_regs_wrap.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/uart/uart_top.v
-set_location_assignment PIN_B13 -to RXD1
-set_location_assignment PIN_A13 -to TXD1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RXD1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TXD1
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_apb_cfg.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/pad.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_regs_wrap.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpioa_mux.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_top.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_pad.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/gpio_apb_cfg.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/pad.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/gpio_regs_wrap.v
@@ -205,8 +204,15 @@ set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/gpioa_mux.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/gpio_top.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/gpio_normal.v
 set_global_assignment -name VERILOG_FILE ../../../user/verilog/gpio/gpio_pad.v
-set_location_assignment PIN_E3 -to GPIOA[2]
-set_location_assignment PIN_E4 -to GPIOA[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIOA[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIOA[3]
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/bastim/bastim_regs_wrap.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/bastim/bastim_ch_core/bastim_ch.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/bastim/bastim_ch_core/bastim_ch_core.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/bastim/bastim_top.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/bastim/bastim_apb_cfg.v
+set_global_assignment -name VERILOG_FILE ../../../user/verilog/mcu_top.v
+set_global_assignment -name VERILOG_FILE ../../../library/altera_ip/ram_32k/ram_32k.v
+set_global_assignment -name VERILOG_FILE ../../../library/altera_ip/ram_8k/ram_8k.v
+set_global_assignment -name VERILOG_FILE ../../../library/altera_ip/pll_50m/pll_50m.v
+set_global_assignment -name VERILOG_FILE ../../../user/fpga_verilog/fpga_platform.v
+set_global_assignment -name VERILOG_FILE ../../../library/gen_apb/debug1_apb_cfg.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

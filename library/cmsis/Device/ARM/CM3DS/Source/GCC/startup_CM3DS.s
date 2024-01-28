@@ -104,12 +104,19 @@ __isr_vector:
     .long   SysTick_Handler             /* SysTick Handler               */
 
     /* External Interrupts */
-    .long   Uart0_Handler               /* 16+ 0: UART 0 RX and TX Handler   */
-    .long   Uart1_Handler               /* 16+ 1: UART 1 RX and TX Handler   */
-    .long   Resv0_Handler               /* 16+ 2: Reserved 0 Handler   */
-    .long   Resv1_Handler               /* 16+ 3: Reserved 1 Handler   */
-    .long   Resv2_Handler               /* 16+ 4: Reserved 2 Handler   */
-    .long   Gpioa_Handler               /* 16+ 5: Gpioa Handler   */
+    .long   Uart0_Handler               /* 16+ 0: UART 0 RX and TX Handler	*/
+    .long   Uart1_Handler               /* 16+ 1: UART 1 RX and TX Handler	*/
+    .long   Resv2_Handler               /* 16+ 2: Reserved 2 Handler   		*/
+    .long   Resv3_Handler               /* 16+ 3: Reserved 3 Handler		*/
+    .long   Resv4_Handler               /* 16+ 4: Reserved 4 Handler		*/
+    .long   Gpioa_Handler               /* 16+ 5: GPIOA Handler   			*/		
+    .long   Resv6_Handler               /* 16+ 6: Reserved 6 Handler		*/
+    .long   Resv7_Handler               /* 16+ 7: Reserved 7 Handler		*/
+    .long   Bastim_Ch0_Handler 	        /* 16+ 8: BASTIM CHANNEL0 Handler   */
+    .long   Bastim_Ch1_Handler 	        /* 16+ 9: BASTIM CHANNEL1 Handler   */
+    .long   Bastim_Ch2_Handler 	        /* 16+10: BASTIM CHANNEL2 Handler   */
+    .long   Bastim_Ch3_Handler 	        /* 16+11: BASTIM CHANNEL3 Handler   */
+    .long   Resv12_Handler              /* 16+12: Reserved 12 Handler   	*/
     .size    __isr_vector, . - __isr_vector
 
 /* Reset Handler */
@@ -202,10 +209,17 @@ Reset_Handler:
 
     def_default_handler    Uart0_Handler
     def_default_handler    Uart1_Handler
-    def_default_handler    Resv0_Handler
-    def_default_handler    Resv1_Handler
     def_default_handler    Resv2_Handler
+    def_default_handler    Resv3_Handler
+    def_default_handler    Resv4_Handler
     def_default_handler    Gpioa_Handler
+    def_default_handler    Resv6_Handler
+    def_default_handler    Resv7_Handler
+    def_default_handler    Bastim_Ch0_Handler
+    def_default_handler    Bastim_Ch1_Handler
+    def_default_handler    Bastim_Ch2_Handler
+    def_default_handler    Bastim_Ch3_Handler
+    def_default_handler    Resv12_Handler
 
     /*
     def_default_handler    Default_Handler

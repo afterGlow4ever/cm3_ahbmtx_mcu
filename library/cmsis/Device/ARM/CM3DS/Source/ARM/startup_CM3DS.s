@@ -80,11 +80,17 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 ; External Interrupts
                 DCD     Uart0_Handler             ; UART 0 RX and TX Handler
                 DCD     Uart1_Handler             ; UART 1 RX and TX Handler
-                DCD     Resv0_Handler             ; Reserved 0 Handler
-                DCD     Resv1_Handler             ; Reserved 1 Handler
                 DCD     Resv2_Handler             ; Reserved 2 Handler
+                DCD     Resv3_Handler             ; Reserved 3 Handler
+                DCD     Resv4_Handler             ; Reserved 4 Handler
                 DCD     Gpioa_Handler             ; GPIOA Handler
-				DCD     Resv3_Handler             ; Reserved 3 Handler	
+				DCD     Resv6_Handler             ; Reserved 6 Handler	
+				DCD     Resv7_Handler             ; Reserved 7 Handler	
+                DCD     Bastim_Ch0_Handler        ; BASTIM CHANNEL0 Handler
+                DCD     Bastim_Ch1_Handler        ; BASTIM CHANNEL1 Handler
+                DCD     Bastim_Ch2_Handler        ; BASTIM CHANNEL2 Handler
+                DCD     Bastim_Ch3_Handler        ; BASTIM CHANNEL3 Handler
+;				DCD     Resv12_Handler            ; Reserved 12 Handler	
 __Vectors_End
 
 __Vectors_Size  EQU     __Vectors_End - __Vectors
@@ -154,18 +160,30 @@ SysTick_Handler\
 Default_Handler PROC
                 EXPORT Uart0_Handler              [WEAK]
                 EXPORT Uart1_Handler              [WEAK]
-                EXPORT Resv0_Handler			  [WEAK]
-                EXPORT Resv1_Handler			  [WEAK]
                 EXPORT Resv2_Handler			  [WEAK]
+                EXPORT Resv3_Handler			  [WEAK]
+                EXPORT Resv4_Handler			  [WEAK]
                 EXPORT Gpioa_Handler			  [WEAK]
-				EXPORT Resv3_Handler			  [WEAK]	
+				EXPORT Resv6_Handler			  [WEAK]	
+				EXPORT Resv7_Handler			  [WEAK]	
+				EXPORT Bastim_Ch0_Handler		  [WEAK]	
+				EXPORT Bastim_Ch1_Handler		  [WEAK]	
+				EXPORT Bastim_Ch2_Handler		  [WEAK]	
+				EXPORT Bastim_Ch3_Handler		  [WEAK]	
+;				EXPORT Resv12_Handler			  [WEAK]	
 Uart0_Handler
 Uart1_Handler
-Resv0_Handler
-Resv1_Handler
 Resv2_Handler
-Gpioa_Handler
 Resv3_Handler
+Resv4_Handler
+Gpioa_Handler
+Resv6_Handler
+Resv7_Handler
+Bastim_Ch0_Handler
+Bastim_Ch1_Handler
+Bastim_Ch2_Handler
+Bastim_Ch3_Handler
+;Resv12_Handler
                 B       .
 
                 ENDP

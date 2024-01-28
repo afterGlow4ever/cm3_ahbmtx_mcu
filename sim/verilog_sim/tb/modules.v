@@ -50,3 +50,15 @@
 `include "gpio_fw_test.v"
 `endif
 
+`ifdef BASTIM_SIM
+`include "bastim_test.v"
+`endif
+
+`ifdef BASTIM_TESTCASE
+`include "bastim_testcase.v"
+`endif
+
+`ifdef BASTIM_FW_TEST
+`include "bastim_fw_test.v"
+`endif
+

@@ -33,7 +33,6 @@ set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/lib
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_sram/verilog/cmsdk_ahb_to_sram.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_fpga_sram/verilog/cmsdk_fpga_sram.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v
-set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
@@ -52,4 +51,9 @@ set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/use
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_top.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_normal.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/gpio/gpio_pad.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_regs_wrap.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_ch_core/bastim_ch.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_ch_core/bastim_ch_core.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_top.v
+set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_apb_cfg.v
 set_global_assignment -name VERILOG_FILE /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v
