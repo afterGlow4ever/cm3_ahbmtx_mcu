@@ -1,0 +1,16 @@
+current_design "eth_sg"
+
+clock -name "eth_sg.apb2_root_clk" 			-domain apb2_root_clk -period 100.0 -edge 0.0 50.0
+
+reset -name "eth_sg.apb2_root_rstn" 		-value 0
+
+clock -name "eth_sg.eth_mdc"	 			-domain apb2_root_clk -period 500.0 -edge 0.0 250.0
+
+abstract_port -module eth_sg -ports paddr[31:0]		-clock eth_sg.apb2_root_clk
+abstract_port -module eth_sg -ports penable			-clock eth_sg.apb2_root_clk
+abstract_port -module eth_sg -ports psel			-clock eth_sg.apb2_root_clk
+abstract_port -module eth_sg -ports pwrite			-clock eth_sg.apb2_root_clk
+abstract_port -module eth_sg -ports pwdata[31:0]	-clock eth_sg.apb2_root_clk
+
+abstract_port -module eth_sg -ports eth_mdio_i		-clock eth_sg.eth_mdc
+

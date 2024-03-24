@@ -311,8 +311,6 @@ task swd_readreg32;
 
 	swd_write_apreg(2'b01, addr);
 	swd_read_apreg(2'b11, rdata);
-	while(jlink_ack == 3'b010)
-		swd_read_apreg(2'b11, rdata);
 `ifdef JLINK_MONITOR
 	$display($time, "[JLINK MONITOR] System register %8h read data %8h.", addr, rdata);
 `endif

@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat Mar 23 14:27:42 2024
+# Process ID: 51326
+# Current directory: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint
+# Command line: vivado place.dcp
+# Log file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/vivado.log
+# Journal file: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_checkpoint /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/checkpoint/place.dcp
+open_hw_manager
+connect_hw_server -allow_non_jtag
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+open_hw_target
+current_hw_device [get_hw_devices xc7z020_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/bitstream.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/bitstream.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_7020_mcu_full_vivado/bitstream.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+close_hw_manager

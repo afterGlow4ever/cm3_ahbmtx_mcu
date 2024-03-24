@@ -1,5 +1,5 @@
 Assembler report for mcu_top
-Sun Jan 28 11:50:49 2024
+Sat Mar 16 17:21:15 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -38,7 +38,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Jan 28 11:50:49 2024 ;
+; Assembler Status      ; Successful - Sat Mar 16 17:21:15 2024 ;
 ; Revision Name         ; mcu_top                               ;
 ; Top-level Entity Name ; mcu_top                               ;
 ; Family                ; Cyclone IV E                          ;
@@ -46,11 +46,38 @@ refer to the applicable agreement for further details.
 +-----------------------+---------------------------------------+
 
 
-+----------------------------------+
-; Assembler Settings               ;
-+--------+---------+---------------+
-; Option ; Setting ; Default Value ;
-+--------+---------+---------------+
++---------------------------------------------------------------------------------------------------------------+
+; Assembler Settings                                                                                            ;
++-----------------------------------------------------------------------------+----------------+----------------+
+; Option                                                                      ; Setting        ; Default Value  ;
++-----------------------------------------------------------------------------+----------------+----------------+
+; Use smart compilation                                                       ; On             ; Off            ;
+; Maximum processors allowed for parallel compilation                         ; All            ;                ;
+; Enable parallel Assembler and Timing Analyzer during compilation            ; On             ; On             ;
+; Enable compact report table                                                 ; Off            ; Off            ;
+; Generate compressed bitstreams                                              ; On             ; On             ;
+; Compression mode                                                            ; Off            ; Off            ;
+; Clock source for configuration device                                       ; Internal       ; Internal       ;
+; Clock frequency of the configuration device                                 ; 10 MHZ         ; 10 MHz         ;
+; Divide clock frequency by                                                   ; 1              ; 1              ;
+; Auto user code                                                              ; On             ; On             ;
+; Use configuration device                                                    ; Off            ; Off            ;
+; Configuration device                                                        ; Auto           ; Auto           ;
+; Voltage output format                                                       ; Auto discovery ; Auto discovery ;
+; Configuration device auto user code                                         ; Off            ; Off            ;
+; Generate Tabular Text File (.ttf) For Target Device                         ; Off            ; Off            ;
+; Generate Raw Binary File (.rbf) For Target Device                           ; Off            ; Off            ;
+; Generate Hexadecimal (Intel-Format) Output File (.hexout) for Target Device ; Off            ; Off            ;
+; Hexadecimal Output File start address                                       ; 0              ; 0              ;
+; Hexadecimal Output File count direction                                     ; Up             ; Up             ;
+; Release clears before tri-states                                            ; Off            ; Off            ;
+; Auto-restart configuration after error                                      ; On             ; On             ;
+; Enable OCT_DONE                                                             ; Off            ; Off            ;
+; Generate Serial Vector Format File (.svf) for Target Device                 ; Off            ; Off            ;
+; Generate a JEDEC STAPL Format File (.jam) for Target Device                 ; Off            ; Off            ;
+; Generate a compressed Jam STAPL Byte Code 2.0 File (.jbc) for Target Device ; Off            ; Off            ;
+; Generate a compressed Jam STAPL Byte Code 2.0 File (.jbc) for Target Device ; On             ; On             ;
++-----------------------------------------------------------------------------+----------------+----------------+
 
 
 +------------------------------------------------+
@@ -77,8 +104,8 @@ refer to the applicable agreement for further details.
 +----------------+----------------------+
 ; Option         ; Setting              ;
 +----------------+----------------------+
-; JTAG usercode  ; 0x014CE2E7           ;
-; Checksum       ; 0x014CE2E7           ;
+; JTAG usercode  ; 0x0166CC1F           ;
+; Checksum       ; 0x0166CC1F           ;
 +----------------+----------------------+
 
 
@@ -88,13 +115,26 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Sun Jan 28 11:50:46 2024
-Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off mcu_top -c mcu_top
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Sat Mar 16 17:21:12 2024
+Info: Command: quartus_asm mcu_top
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 992 megabytes
-    Info: Processing ended: Sun Jan 28 11:50:49 2024
+    Info: Peak virtual memory: 1008 megabytes
+    Info: Processing ended: Sat Mar 16 17:21:15 2024
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

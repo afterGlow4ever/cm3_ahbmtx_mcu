@@ -53,20 +53,16 @@
   <slave_interface name="S0">
     <sparse_connect interface="M0"/>
     <sparse_connect interface="M1"/>
-    <sparse_connect interface="M5"/>
-    <address_region interface="M0" mem_lo="00010000" mem_hi="00011FFF" remapping='none'/>
-    <address_region interface="M1" mem_lo="00000000" mem_hi="00007FFF" remapping='none'/>
-    <address_region interface="M5" mem_lo="10000000" mem_hi="10007FFF" remapping='none'/>
+    <address_region interface="M0" mem_lo="00020000" mem_hi="0003FFFF" remapping='none'/>
+    <address_region interface="M1" mem_lo="00000000" mem_hi="0001FFFF" remapping='none'/>
   </slave_interface>
 
 
   <slave_interface name="S1">
     <sparse_connect interface="M0"/>
     <sparse_connect interface="M1"/>
-    <sparse_connect interface="M5"/>
-    <address_region interface="M0" mem_lo="00010000" mem_hi="00011FFF" remapping='none'/>
-    <address_region interface="M1" mem_lo="00000000" mem_hi="00007FFF" remapping='none'/>
-    <address_region interface="M5" mem_lo="10000000" mem_hi="10007FFF" remapping='none'/>
+    <address_region interface="M0" mem_lo="00020000" mem_hi="0003FFFF" remapping='none'/>
+    <address_region interface="M1" mem_lo="00000000" mem_hi="0001FFFF" remapping='none'/>
   </slave_interface>
 
 
@@ -75,6 +71,8 @@
     <address_region interface="M6" mem_lo="40000000" mem_hi="4000FFFF" remapping='none'/>
     <sparse_connect interface="M7"/>
     <address_region interface="M7" mem_lo="40010000" mem_hi="4001FFFF" remapping='none'/>
+    <sparse_connect interface="M8"/>
+    <address_region interface="M8" mem_lo="40020000" mem_hi="4002FFFF" remapping='none'/>
   </slave_interface>
 
   <!-- Master interface definitions -->
@@ -86,11 +84,13 @@
   <!-- flash0 -->
   <!-- master_interface name="M3"/ -->
   <!-- sram0 -->
-  <master_interface name="M5"/>
+  <!-- master_interface name="M5"/ -->
   <!-- apb0 -->
   <master_interface name="M6"/>
   <!-- apb1 -->
   <master_interface name="M7"/>
+  <!-- apb2 -->
+  <master_interface name="M8"/>
 
   <!-- - - - - *** DO NOT MODIFY BELOW THIS LINE *** - - - - - - - - - - - -->
 

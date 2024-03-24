@@ -8,6 +8,20 @@
 //
 //	This is stimulus for sram wr simulation.
 //
+//	Date: 03162024
+//	Version: v2.0
+//
+//	This is stimulus for sram wr simulation.
+// 	In order to be compliant with ethernet,
+// 	this file is added by different sram version.
+//	This normal version is including:
+//	1. ITCM 32k 0x00000000~0x00007FFF
+//	2. DTCM  8k 0x00020000~0x00021FFF
+//	This 128k version is including:
+//	1. ITCM 128k 0x00000000~0x0001FFFF
+//	2. DTCM 128k 0x00020000~0x0003FFFF
+//	Using 'SRAM_128K' define to separate version.
+//
 //===============================================
 
 //===============================================
@@ -55,29 +69,107 @@ begin
 	rdata = 32'h0;
 
 	#50000
+	u_sim_monitor.sim_monitor_init("sram wr test");
 	u_swd_model.swd_init;
 
-//	for(int i = 32'h1f00; i < 32'h2000; i = i + 4)
+`ifdef PART_TEST
+`ifdef SRAM_128K
+//	for(int i = 0; i < 32'h10; i = i + 4)
+//	begin: ITCM_WR_TEST_S
+//		u_swd_model.swd_writereg32(32'h00000000 + i, i);
+//		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+//		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+//		u_sim_monitor.sim_monitor_check_with_display((32'h00000000 + i), rdata, i);
+//	end	
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: ITCM_WR_TEST_E
+		u_swd_model.swd_writereg32(32'h0001FFF0 + i, i);
+		u_swd_model.swd_readreg32(32'h0001FFF0 + i, rdata);
+		u_swd_model.swd_readreg32(32'h0001FFF0 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h0001FFF0 + i), rdata, i);
+	end	
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: DTCM_WR_TEST_S
+		u_swd_model.swd_writereg32(32'h00020000 + i, i);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00020000 + i), rdata, i);
+	end	
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: DTCM_WR_TEST_E
+		u_swd_model.swd_writereg32(32'h0003FFF0 + i, i);
+		u_swd_model.swd_readreg32(32'h0003FFF0 + i, rdata);
+		u_swd_model.swd_readreg32(32'h0003FFF0 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h0003FFF0 + i), rdata, i);
+	end	
+`else
+//	for(int i = 0; i < 32'h10; i = i + 4)
+//	begin: ITCM_WR_TEST_S
+//		u_swd_model.swd_writereg32(32'h00000000 + i, i);
+//		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+//		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+//		u_sim_monitor.sim_monitor_check_with_display((32'h00000000 + i), rdata, i);
+//	end	
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: ITCM_WR_TEST_E
+		u_swd_model.swd_writereg32(32'h00007FF0 + i, i);
+		u_swd_model.swd_readreg32(32'h00007FF0 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00007FF0 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00007FF0 + i), rdata, i);
+	end	
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: DTCM_WR_TEST_S
+		u_swd_model.swd_writereg32(32'h00020000 + i, i);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00020000 + i), rdata, i);
+	end	
+	for(int i = 0; i < 32'h10; i = i + 4)
+	begin: DTCM_WR_TEST_E
+		u_swd_model.swd_writereg32(32'h00021FF0 + i, i);
+		u_swd_model.swd_readreg32(32'h00021FF0 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00021FF0 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00021FF0 + i), rdata, i);
+	end	
+`endif
+`else
+`ifdef SRAM_128K
+	for(int i = 0; i < 32'h20000; i = i + 4)
+	begin: ITCM_WR_TEST
+		u_swd_model.swd_writereg32(32'h00000000 + i, i);
+		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00000000 + i), rdata, i);
+	end
+	for(int i = 0; i < 32'h20000; i = i + 4)
+	begin: DTCM_WR_TEST
+		u_swd_model.swd_writereg32(32'h00020000 + i, i);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00020000 + i), rdata, i);
+	end
+`else
+	for(int i = 0; i < 32'h8000; i = i + 4)
+	begin: ITCM_WR_TEST
+		u_swd_model.swd_writereg32(32'h00000000 + i, i);
+		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00000000 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00000000 + i), rdata, i);
+	end
 	for(int i = 0; i < 32'h2000; i = i + 4)
 	begin: DTCM_WR_TEST
-		u_swd_model.swd_writereg32(32'h00010000 + i, i);
-		u_swd_model.swd_readreg32(32'h00010000 + i, rdata);
-		u_swd_model.swd_readreg32(32'h00010000 + i, rdata);
-		if(rdata != i)
-		begin
-			$display($time, "[ERROR] DTCM wr test error in %32b.", i);
-		end
-		else
-		begin
-			$display($time, "[INFO] DTCM wr test pass in %32b.", i);
-		end
-	end	
+		u_swd_model.swd_writereg32(32'h00020000 + i, i);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_swd_model.swd_readreg32(32'h00020000 + i, rdata);
+		u_sim_monitor.sim_monitor_check_with_display((32'h00020000 + i), rdata, i);
+	end
+`endif
+`endif
 
 	#25000
+	u_sim_monitor.sim_monitor_result;
 	u_swd_model.swd_deinit;
-
-	// sim will finish at 10ms
-	#5000000
+	u_sim_monitor.sim_monitor_deinit("sram wr test");
 	$finish;
 end
 

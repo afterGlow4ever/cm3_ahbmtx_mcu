@@ -1,0 +1,33 @@
+SIM_TARGET := eth_sma_testcase
+SIM_DEFINE := +define+FSDB_DUMP +define+ETH +define+TP_1 +define+ETH_SMA_TESTCASE +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
+DUT_LIST := dut.list
+SIM_LIST := sim.list
+SIM_INC_LIST := sim_inc.list
+CMDFILE := ${PRJ_SIM_SCR_DIR}/vcs_sim_cmdfile.f
+WAVEFORM := TOP.fsdb
+WAVELIST := ${PRJ_SIM_SCR_DIR}/eth_sma.rc
+SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
+SHELL := /bin/bash
+
+all: prepare compile sim waveform
+#all: waveform
+
+prepare:
+	-mkdir ${SIM_PATH}
+	cp ${DUT_LIST} ${SIM_PATH}
+	cp ${SIM_LIST} ${SIM_PATH}
+	cp ${SIM_INC_LIST} ${SIM_PATH}
+	cp ${CMDFILE} ${SIM_PATH}
+	source vcs_sim_prepare.sh ${PRJ_DIR} ${SIM_PATH}
+
+compile:
+	cd ${SIM_PATH} && vcs ${SIM_DEFINE} -full64 -f ${CMDFILE} -P ${VERDI_DT} ${VERDI_DA} -f ${SIM_INC_LIST} -f ${SIM_LIST} -f ${DUT_LIST} 
+
+sim:
+	cd ${SIM_PATH} && ./simv -l sim.log
+
+waveform:
+	cd ${SIM_PATH} && verdi ${SIM_DEFINE} -f ${CMDFILE} -f ${SIM_INC_LIST} -f ${SIM_LIST} -f ${DUT_LIST} -ssf ${WAVEFORM} -sswr ${WAVELIST} &
+ 
+#clean:
+

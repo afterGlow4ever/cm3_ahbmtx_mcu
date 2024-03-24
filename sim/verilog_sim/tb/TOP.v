@@ -24,6 +24,8 @@ wire							txd;
 wire							rxd;
 wire							txd1;
 wire							rxd1;
+wire							mdc;
+wire							mdio;
 wire							tdi;
 wire							tdo;
 wire							tck;
@@ -100,6 +102,7 @@ begin
 `ifdef FPGA
 `else
 	force TOP.u_mcu_top.apb1_root_clk = clk_10mhz;
+	force TOP.u_mcu_top.apb2_root_clk = clk_50mhz;
 `endif
 end
 
@@ -125,6 +128,8 @@ mcu_top u_mcu_top
 `else
 	.TXD1						(txd1				),
 	.RXD1						(rxd1				),
+	.MDC						(mdc				),
+	.MDIO						(mdio				),
 `endif
 	.TXD						(txd				),
 	.RXD						(rxd				),

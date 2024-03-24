@@ -18,9 +18,11 @@ module fp_domain
 	input						sys_root_clk,
 	input						apb0_root_clk,
 	input						apb1_root_clk,
+	input						apb2_root_clk,
 	input						sys_root_rstn,
 	input						apb0_root_rstn,
 	input						apb1_root_rstn,
+	input						apb2_root_rstn,
 	input						power_on_rstn,
 	
 	// pins
@@ -32,6 +34,11 @@ module fp_domain
 	output 						uart1_tx_oen,
 	input    					uart1_rx,
 	output 						uart1_rx_oen,
+	output 						eth_mdc,
+	output 						eth_mdc_oen,
+	output 						eth_mdio_o,
+	input 						eth_mdio_i,
+	output 						eth_mdio_oen,
 
 `ifdef GPIO
 	output						psel0_gpioa,
@@ -141,23 +148,23 @@ wire	[ 1:0]				 	hresp_dtcm;
 wire	      					hexresp_dtcm;
 
 // sram0 
-wire							hsel_sram0;
-wire	[31:0]				 	haddr_sram0; 
-wire	[ 1:0]				 	htrans_sram0; 
-wire	[ 2:0]				 	hsize_sram0; 
-wire	      					hwrite_sram0; 
-wire	[ 2:0]					hburst_sram0; 
-wire	[ 3:0]				 	hprot_sram0; 
-wire	      					hmastlock_sram0; 
-wire	[ 1:0]					hmemattr_sram0;
-wire	[ 3:0]					hmaster_sram0;
-wire	[31:0]				 	hwdata_sram0; 
-wire	      					hexreq_sram0;
-wire	      					hready_sram0; 
-wire	[31:0]				 	hrdata_sram0; 
-wire	      					hreadyout_sram0; 
-wire	[ 1:0]				 	hresp_sram0;
-wire	      					hexresp_sram0;
+//wire							hsel_sram0;
+//wire	[31:0]				 	haddr_sram0; 
+//wire	[ 1:0]				 	htrans_sram0; 
+//wire	[ 2:0]				 	hsize_sram0; 
+//wire	      					hwrite_sram0; 
+//wire	[ 2:0]					hburst_sram0; 
+//wire	[ 3:0]				 	hprot_sram0; 
+//wire	      					hmastlock_sram0; 
+//wire	[ 1:0]					hmemattr_sram0;
+//wire	[ 3:0]					hmaster_sram0;
+//wire	[31:0]				 	hwdata_sram0; 
+//wire	      					hexreq_sram0;
+//wire	      					hready_sram0; 
+//wire	[31:0]				 	hrdata_sram0; 
+//wire	      					hreadyout_sram0; 
+//wire	[ 1:0]				 	hresp_sram0;
+//wire	      					hexresp_sram0;
 
 // apb0 sync
 wire							hsel_apb0;
@@ -196,6 +203,25 @@ wire	[31:0]				 	hrdata_apb1;
 wire	      					hreadyout_apb1; 
 wire	[ 1:0]				 	hresp_apb1;
 wire	      					hexresp_apb1;
+
+// apb2 async
+wire							hsel_apb2;
+wire	[31:0]				 	haddr_apb2; 
+wire	[ 1:0]				 	htrans_apb2; 
+wire	[ 2:0]				 	hsize_apb2; 
+wire	      					hwrite_apb2; 
+wire	[ 2:0]					hburst_apb2; 
+wire	[ 3:0]				 	hprot_apb2; 
+wire	      					hmastlock_apb2; 
+wire	[ 1:0]					hmemattr_apb2;
+wire	[ 3:0]					hmaster_apb2;
+wire	[31:0]				 	hwdata_apb2; 
+wire	      					hexreq_apb2;
+wire	      					hready_apb2; 
+wire	[31:0]				 	hrdata_apb2; 
+wire	      					hreadyout_apb2; 
+wire	[ 1:0]				 	hresp_apb2;
+wire	      					hexresp_apb2;
 
 ahb_bus_matrix u_ahb_bus_matrix 
 (
@@ -298,24 +324,24 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HRESPM1					(hresp_itcm),
 	.HRUSERM1					(32'b0),
 
-	// sram0
-	.HSELM5						(hsel_sram0),
-	.HADDRM5					(haddr_sram0),
-	.HTRANSM5					(htrans_sram0),
-	.HWRITEM5					(hwrite_sram0),
-	.HSIZEM5					(hsize_sram0),
-	.HBURSTM5					(hburst_sram0),
-	.HPROTM5					(hprot_sram0),
-	.HMASTERM5					(hmaster_sram0),
-	.HWDATAM5					(hwdata_sram0),
-	.HMASTLOCKM5				(hmastlock_sram0),
-	.HREADYMUXM5				(hready_sram0),
-	.HAUSERM5					(),
-	.HWUSERM5					(),
-	.HRDATAM5					(hrdata_sram0),
-	.HREADYOUTM5				(hreadyout_sram0),
-	.HRESPM5					(hresp_sram0),
-	.HRUSERM5					(32'b0),
+//	// sram0
+//	.HSELM5						(hsel_sram0),
+//	.HADDRM5					(haddr_sram0),
+//	.HTRANSM5					(htrans_sram0),
+//	.HWRITEM5					(hwrite_sram0),
+//	.HSIZEM5					(hsize_sram0),
+//	.HBURSTM5					(hburst_sram0),
+//	.HPROTM5					(hprot_sram0),
+//	.HMASTERM5					(hmaster_sram0),
+//	.HWDATAM5					(hwdata_sram0),
+//	.HMASTLOCKM5				(hmastlock_sram0),
+//	.HREADYMUXM5				(hready_sram0),
+//	.HAUSERM5					(),
+//	.HWUSERM5					(),
+//	.HRDATAM5					(hrdata_sram0),
+//	.HREADYOUTM5				(hreadyout_sram0),
+//	.HRESPM5					(hresp_sram0),
+//	.HRUSERM5					(32'b0),
 
 	// apb0 sync
 	.HSELM6						(hsel_apb0),
@@ -354,6 +380,25 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HREADYOUTM7				(hreadyout_apb1),
 	.HRESPM7					(hresp_apb1),
 	.HRUSERM7					(32'b0),
+
+	// apb2 async
+	.HSELM8						(hsel_apb2),
+	.HADDRM8					(haddr_apb2),
+	.HTRANSM8					(htrans_apb2),
+	.HWRITEM8					(hwrite_apb2),
+	.HSIZEM8					(hsize_apb2),
+	.HBURSTM8					(hburst_apb2),
+	.HPROTM8					(hprot_apb2),
+	.HMASTERM8					(hmaster_apb2),
+	.HWDATAM8					(hwdata_apb2),
+	.HMASTLOCKM8				(hmastlock_apb2),
+	.HREADYMUXM8				(hready_apb2),
+	.HAUSERM8					(),
+	.HWUSERM8					(),
+	.HRDATAM8					(hrdata_apb2),
+	.HREADYOUTM8				(hreadyout_apb2),
+	.HRESPM8					(hresp_apb2),
+	.HRUSERM8					(32'b0),
 
 	.SCANENABLE					(1'b0),
 	.SCANINHCLK					(1'b0),
@@ -470,6 +515,63 @@ u_apb1_async
 	.PSLVERR					(pslverr1),
 	
 	.APBACTIVE					(pactive1)
+);
+
+//===============================================
+// AMBA APB2 async
+// 0x40020000 ~ 0x4002FFFF 64k
+//===============================================
+
+wire							psel2;
+wire							penable2;
+wire	[31:0]				 	paddr2; 
+wire	      					pwrite2; 
+wire	[ 3:0]				 	pstrb2; 
+wire	[ 2:0]				 	pprot2; 
+wire	[31:0]				 	pwdata2; 
+wire	      					pready2; 
+wire	[31:0]				 	prdata2; 
+wire	      					pslverr2; 
+wire	      					pactive2; 
+
+assign hresp_apb2[1] = 1'b0;
+
+cmsdk_ahb_to_apb_async
+#(
+	.ADDRWIDTH					(32)	
+)
+u_apb2_async 
+(
+	.HCLK						(sys_root_clk),
+	.HRESETn					(sys_root_rstn),
+
+	.HSEL						(hsel_apb2),
+	.HADDR						(haddr_apb2),
+	.HTRANS						(htrans_apb2),
+	.HWRITE						(hwrite_apb2),
+	.HSIZE						(hsize_apb2),
+	.HPROT						(hprot_apb2),
+	.HWDATA						(hwdata_apb2),
+	.HREADY						(hready_apb2),
+	.HRDATA						(hrdata_apb2),
+	.HREADYOUT					(hreadyout_apb2),
+	.HRESP						(hresp_apb2[0]),
+
+	.PCLK						(apb2_root_clk),
+	.PRESETn					(apb2_root_rstn),
+	
+	.PADDR						(paddr2),  
+	.PENABLE					(penable2),
+	.PSTRB						(pstrb2),  
+	.PPROT						(pprot2),  
+	.PWRITE						(pwrite2), 
+	.PWDATA						(pwdata2), 
+	.PSEL						(psel2),   
+	.PRDATA						(prdata2), 
+	.PREADY						(pready2),
+	.PSLVERR					(pslverr2),
+	
+	.APBACTIVE					(pactive2)
 );
 
 //===============================================
@@ -688,10 +790,11 @@ wire	[ 7:0] 				async_irq_af;
 wire						uart0_int;// No.0
 wire						uart1_int;// No.1
 //wire						gpioa_int;// No.5
-wire	[ 3:0]				bastim_int;// No.8~13
+wire	[ 3:0]				bastim_int;// No.8~11
+wire						eth_sma_int;// No.12
 
 assign sync_irq = {2'h0, gpioa_int, 1'b0, 1'b0, 1'b0, uart1_int, uart0_int};
-assign async_irq_bf = {4'h0, bastim_int};
+assign async_irq_bf = {3'h0, eth_sma_int, bastim_int};
 
 sync_ff_2d
 #(
@@ -813,6 +916,36 @@ apb1_top u_apb1_async_top
 	.pslverr					(pslverr1),
 
 	.bastim_int					(bastim_int)
+);
+
+//===============================================
+// apb2 async top
+// 0x40020000~0x4002FFFF
+//===============================================
+
+apb2_top u_apb2_async_top 
+(
+	.apb2_root_clk				(apb2_root_clk),
+	.apb2_root_rstn				(apb2_root_rstn),
+
+	.eth_mdc					(eth_mdc),
+	.eth_mdc_oen				(eth_mdc_oen),
+	.eth_mdio_o					(eth_mdio_o),
+	.eth_mdio_i					(eth_mdio_i),
+	.eth_mdio_oen				(eth_mdio_oen),
+
+	.paddr						(paddr2),  
+	.penable					(penable2),
+	.pstrb						(pstrb2),  
+	.pprot						(pprot2),  
+	.pwrite						(pwrite2), 
+	.pwdata						(pwdata2), 
+	.psel						(psel2),   
+	.prdata						(prdata2), 
+	.pready						(pready2),
+	.pslverr					(pslverr2),
+
+	.eth_sma_int				(eth_sma_int)
 );
 
 endmodule

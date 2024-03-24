@@ -158,3 +158,17 @@ void Bastim_Ch3_Handler(void)
 
 #endif
 
+#ifdef ETH_TEST
+
+extern ETH_HandleTypeDef heth;
+
+void EthSma_Handler(void)
+{
+	NVIC_ClearPendingIRQ(EthSma_IRQn);
+	drv_eth_sma_interrupt_handler(&heth);
+}
+
+#endif
+
+
+

@@ -116,7 +116,8 @@ __isr_vector:
     .long   Bastim_Ch1_Handler 	        /* 16+ 9: BASTIM CHANNEL1 Handler   */
     .long   Bastim_Ch2_Handler 	        /* 16+10: BASTIM CHANNEL2 Handler   */
     .long   Bastim_Ch3_Handler 	        /* 16+11: BASTIM CHANNEL3 Handler   */
-    .long   Resv12_Handler              /* 16+12: Reserved 12 Handler   	*/
+    .long   EthSma_Handler              /* 16+12: ETH SMA Handler		   	*/
+    .long   Resv13_Handler              /* 16+12: Reserved 13 Handler   	*/
     .size    __isr_vector, . - __isr_vector
 
 /* Reset Handler */
@@ -219,7 +220,8 @@ Reset_Handler:
     def_default_handler    Bastim_Ch1_Handler
     def_default_handler    Bastim_Ch2_Handler
     def_default_handler    Bastim_Ch3_Handler
-    def_default_handler    Resv12_Handler
+    def_default_handler    EthSma_Handler
+    def_default_handler    Resv13_Handler
 
     /*
     def_default_handler    Default_Handler

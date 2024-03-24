@@ -24,6 +24,7 @@ int main(void)
 	drv_uart_default_config(&huart0);
 	drv_uart_init(&huart0);
 	drv_uart_printf("Engine is operative, hello and goodbye.\r\n");
+	writereg32(0x40000000, 0xed);
 	while(1)
 	{
 		drv_uart_getchar(&huart0, &ch);

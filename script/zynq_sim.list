@@ -1,6 +1,8 @@
 ../sim/verilog_sim/tb/TOP.v
 ../library/models/jlink/jlink_model.v
 ../library/models/result_monitor.v
+../library/models/uart_model.v
+../library/models/eth_phy_sma_model.v
 ../library/xilinx_sim/glbl.v
 ../library/xilinx_sim/retarget/BUFGMUX.v
 ../library/xilinx_sim/retarget/IBUFGDS.v
@@ -140,8 +142,9 @@
 ../library/xilinx_sim/unisims/BUF.v
 ../library/xilinx_sim/unisims/RAM32X16DR8.v
 ../library/xilinx_sim/xpm_memory.sv
+../library/xilinx_ip/ram_128k/sim/ram_128k.v
 ../library/xilinx_ip/ram_32k/sim/ram_32k.v
-../library/xilinx_ip/ram_32k/simulation/blk_mem_gen_v8_4.v
+../library/xilinx_ip/ram_128k/simulation/blk_mem_gen_v8_4.v
 ../library/xilinx_ip/ram_8k/sim/ram_8k.v
 ../library/xilinx_ip/pll_50m/pll_50m.v
 ../library/xilinx_ip/pll_50m/pll_50m_clk_wiz.v

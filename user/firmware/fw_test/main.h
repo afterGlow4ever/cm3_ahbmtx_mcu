@@ -17,6 +17,7 @@
 #include "mcu_operation.h"
 #include "core_cm3.h"
 #include "drv_defines.h"
+//#include "design_define.h"
 #include "string.h"
 
 //===============================================
@@ -41,6 +42,9 @@ void mcu_testmenu(void);
 
 //#define SIM
 //#define UART_TEST
+//#define GPIO_TEST
+//#define BASTIM_TEST
+//#define ETH_TEST
 
 //===============================================
 // including bsp header files
@@ -53,6 +57,9 @@ void mcu_testmenu(void);
 #ifdef BASTIM_DRIVER
 #include "bastim_bsp.h"
 #endif
+#ifdef ETH_DRIVER
+#include "eth_bsp.h"
+#endif
 
 //===============================================
 // including test header files
@@ -64,6 +71,9 @@ void mcu_testmenu(void);
 #endif
 #ifdef BASTIM_TEST
 #include "bastim_test.h"
+#endif
+#ifdef ETH_TEST
+#include "eth_test.h"
 #endif
 
 #endif

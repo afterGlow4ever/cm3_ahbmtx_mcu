@@ -1,3 +1,4 @@
+../library/xilinx_ip/ram_128k/ram_128k.xci
 ../library/xilinx_ip/ram_32k/ram_32k.xci
 ../library/xilinx_ip/ram_8k/ram_8k.xci
 ../library/xilinx_ip/pll_50m/pll_50m.xci

@@ -77,6 +77,15 @@ bastim_testcase:
 bastim_fw_sim:
 	make -f makefile.bastim_fw_sim
 
+eth_sma_test:
+	make -f makefile.eth_sma_test
+
+eth_sma_testcase:
+	make -f makefile.eth_sma_testcase
+
+eth_sma_fw_sim:
+	make -f makefile.eth_sma_fw_sim
+
 #===============================================
 # RTL auto generation
 #===============================================
@@ -92,6 +101,9 @@ gpio_reg_gen:
 
 bastim_reg_gen:
 	make -f makefile.bastim_reg_gen
+
+eth_reg_gen:
+	make -f makefile.eth_reg_gen
 
 #===============================================
 # firmware build
@@ -113,8 +125,8 @@ fw_bin_test:
 cpu_itcm_boot_sim:
 	make -f makefile.cpu_itcm_boot_sim
 
-fpga_cpu_itcm_boot_sim:
-	make -f makefile.fpga_cpu_itcm_boot_sim
+fpga_ep4_cpu_itcm_boot_sim:
+	make -f makefile.fpga_ep4_cpu_itcm_boot_sim
 
 fpga_7020_cpu_itcm_boot_sim:
 	make -f makefile.fpga_7020_cpu_itcm_boot_sim

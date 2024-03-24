@@ -1,0 +1,91 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 409 100 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 345758607.251858
+cursor 122110000.000000
+marker 906570000.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 6
+; marker line index
+markerPos 17
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+aliasmapname eth_sma_pe_master.current_state
+nalias MASTER_END		8'b10000000		NULL
+nalias MASTER_RX_DATA		8'b00100000		NULL
+nalias MASTER_TURN		8'b00001000		NULL
+nalias MASTER_PREAMBLE_AND_START		8'b00000010		NULL
+nalias MASTER_INTERVAL		8'b01000000		NULL
+nalias MASTER_TX_DATA		8'b00010000		NULL
+nalias MASTER_OP_AND_ADDRESS		8'b00000100		NULL
+nalias MASTER_IDLE		8'b00000001		NULL
+
+aliasmapname cmsdk_ahb_to_apb_async_p.curr_state
+nalias fsm_apb_idle		2'b00		NULL
+nalias fsm_apb_cyc1		2'b01		NULL
+nalias fsm_apb_wait		2'b11		NULL
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+addSignal -h 15 /TOP/u_mcu_top/MDC
+addSignal -h 15 -holdScope MDIO
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_sma_pe_master/eth_mdc
+addSignal -h 15 -holdScope eth_mdc_oen
+addSignal -h 15 -holdScope eth_mdio_o
+addSignal -h 15 -holdScope eth_mdio_i
+addSignal -h 15 -holdScope eth_mdio_oen
+aliasname eth_sma_pe_master.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope current_state[7:0]
+aliasname eth_sma_pe_master.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[7:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/r0_clkdiv[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r0_phyadr[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r0_interval_bit[7:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_sma_pe_master/cmd[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope frame_tx_phyad[0:4]
+addSignal -h 15 -UNSIGNED -HEX -holdScope frame_tx_data[0:15]
+addSignal -h 15 -UNSIGNED -HEX -holdScope frame_tx_regad[0:4]
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_data[15:0]
+addGroup "G2"
+addGroup "G3"
+addGroup "G4"
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

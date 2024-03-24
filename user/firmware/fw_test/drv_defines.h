@@ -18,6 +18,7 @@
 //===============================================
 
 #define UART_CLK 40000000
+#define ETH_CLK 50000000
 
 //===============================================
 // printf uart define
@@ -32,6 +33,8 @@
 //#define UART_DRIVER
 //#define COMMON_DRIVER
 //#define GPIO_DRIVER
+//#define BASTIM_DRIVER
+//#define ETH_DRIVER
 
 //===============================================
 // driver header list
@@ -51,6 +54,9 @@
 #endif
 #ifdef BASTIM_DRIVER
 #include "drv_bastim.h"
+#endif
+#ifdef ETH_DRIVER
+#include "drv_eth.h"
 #endif
 
 #endif

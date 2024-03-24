@@ -156,7 +156,7 @@ void bastim_4ch_test(void)
 			break;
 	}
 
-	test_printf_s("bastim 4ch autoreload.\r\n");
+	test_printf_s("bastim 4ch no autoreload.\r\n");
 
 	bastim_ch0_deinit();
 	bastim_ch1_deinit();
@@ -172,6 +172,11 @@ void bastim_4ch_autoreload_int_test(void)
 	bastim_ch1_init();
 	bastim_ch2_init();
 	bastim_ch3_init();
+
+	bastim_ch0_int_flag = 0;
+	bastim_ch1_int_flag = 0;
+	bastim_ch2_int_flag = 0;
+	bastim_ch3_int_flag = 0;
 
 	drv_bastim_int_enable(BASTIM, BASTIM_CHANNEL_0);
 	drv_bastim_int_enable(BASTIM, BASTIM_CHANNEL_1);
@@ -190,11 +195,6 @@ void bastim_4ch_autoreload_int_test(void)
 	drv_bastim_channel_enable(BASTIM, BASTIM_CHANNEL_1);
 	drv_bastim_channel_enable(BASTIM, BASTIM_CHANNEL_2);
 	drv_bastim_channel_enable(BASTIM, BASTIM_CHANNEL_3);
-
-	bastim_ch0_int_flag = 0;
-	bastim_ch1_int_flag = 0;
-	bastim_ch2_int_flag = 0;
-	bastim_ch3_int_flag = 0;
 
 	while(!((bastim_ch0_int_flag >= 3) && (bastim_ch1_int_flag >= 3) && (bastim_ch2_int_flag >= 3) && (bastim_ch3_int_flag >= 3)));
 

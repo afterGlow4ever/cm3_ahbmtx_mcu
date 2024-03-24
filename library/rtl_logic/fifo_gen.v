@@ -31,8 +31,8 @@ module fifo_sync
 	input								wr_req,
 	input								rd_req,
 	output reg	[ADDR_WIDTH:0]			fifo_num,
-	output reg							rd_empty,
-	output reg							wr_full,
+	output 								rd_empty,
+	output 								wr_full,
 	input		[DATA_WIDTH-1:0]		data,
 
 	output 		[DATA_WIDTH-1:0]		q
@@ -96,26 +96,31 @@ begin
 		endcase
 	end
 end
-					
-always @(*)
-begin
-	if(!rstn)
-		rd_empty = 1;
-	else if(fifo_num == 0)
-		rd_empty = 1;
-	else	
-		rd_empty = 0;
-end
 
-always @(*)
-begin
-	if(!rstn)
-		wr_full = 0;
-	else if(fifo_num == 2**ADDR_WIDTH)
-		wr_full = 1;
-	else	
-		wr_full = 0;
-end
+// STARC05-1.3.1.3 
+// Async reset should not be used in any combinational logic
+assign rd_empty = (fifo_num == 0) ? 1'b1 : 1'b0;
+assign wr_full = (fifo_num == 2**ADDR_WIDTH) ? 1'b1 : 1'b0;
+
+//always @(*)
+//begin
+//	if(!rstn)
+//		rd_empty = 1;
+//	else if(fifo_num == 0)
+//		rd_empty = 1;
+//	else	
+//		rd_empty = 0;
+//end
+
+//always @(*)
+//begin
+//	if(!rstn)
+//		wr_full = 0;
+//	else if(fifo_num == 2**ADDR_WIDTH)
+//		wr_full = 1;
+//	else	
+//		wr_full = 0;
+//end
 
 endmodule
 

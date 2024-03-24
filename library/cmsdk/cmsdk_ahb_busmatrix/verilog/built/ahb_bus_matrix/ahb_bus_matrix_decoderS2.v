@@ -45,6 +45,13 @@ module ahb_bus_matrix_decoderS2 (
     decode_addr_dec,
     trans_dec,
 
+    // Bus-switch output 2
+    active_dec2,
+    readyout_dec2,
+    resp_dec2,
+    rdata_dec2,
+    ruser_dec2,
+
     // Bus-switch output 3
     active_dec3,
     readyout_dec3,
@@ -60,6 +67,7 @@ module ahb_bus_matrix_decoderS2 (
     ruser_dec4,
 
     // Output port selection signals
+    sel_dec2,
     sel_dec3,
     sel_dec4,
 
@@ -87,6 +95,13 @@ module ahb_bus_matrix_decoderS2 (
     input [31:10] decode_addr_dec;     // HADDR decoder input
     input   [1:0] trans_dec;          // Input port HTRANS signal
 
+    // Bus-switch output MI2
+    input         active_dec2;        // Output stage MI2 active_dec signal
+    input         readyout_dec2;      // HREADYOUT input
+    input   [1:0] resp_dec2;          // HRESP input
+    input  [31:0] rdata_dec2;         // HRDATA input
+    input  [31:0] ruser_dec2;         // HRUSER input
+
     // Bus-switch output MI3
     input         active_dec3;        // Output stage MI3 active_dec signal
     input         readyout_dec3;      // HREADYOUT input
@@ -102,6 +117,7 @@ module ahb_bus_matrix_decoderS2 (
     input  [31:0] ruser_dec4;         // HRUSER input
 
     // Output port selection signals
+    output        sel_dec2;           // HSEL output
     output        sel_dec3;           // HSEL output
     output        sel_dec4;           // HSEL output
 
@@ -126,6 +142,14 @@ module ahb_bus_matrix_decoderS2 (
     wire          sel_dec;             // HSEL input
     wire  [31:10] decode_addr_dec;      // HADDR input
     wire    [1:0] trans_dec;           // Input port HTRANS signal
+
+    // Bus-switch output MI2
+    wire          active_dec2;         // active_dec signal
+    wire          readyout_dec2;       // HREADYOUT input
+    wire    [1:0] resp_dec2;           // HRESP input
+    wire   [31:0] rdata_dec2;          // HRDATA input
+    wire   [31:0] ruser_dec2;          // HRUSER input
+    reg           sel_dec2;            // HSEL output
 
     // Bus-switch output MI3
     wire          active_dec3;         // active_dec signal
@@ -205,11 +229,16 @@ module ahb_bus_matrix_decoderS2 (
     begin : p_addr_out_port_comb
       // Address region 0x40000000-0x4000FFFF
       if (((decode_addr_dec >= 22'h100000) & (decode_addr_dec <= 22'h10003f))
-                           | ((data_out_port == 4'b0011) & (trans_dec == 2'b00)))
-        addr_out_port = 4'b0011;  // Select Output port MI3
+                           | ((data_out_port == 4'b0010) & (trans_dec == 2'b00)))
+        addr_out_port = 4'b0010;  // Select Output port MI2
 
       // Address region 0x40010000-0x4001FFFF
       else if (((decode_addr_dec >= 22'h100040) & (decode_addr_dec <= 22'h10007f))
+                           | ((data_out_port == 4'b0011) & (trans_dec == 2'b00)))
+        addr_out_port = 4'b0011;  // Select Output port MI3
+
+      // Address region 0x40020000-0x4002FFFF
+      else if (((decode_addr_dec >= 22'h100080) & (decode_addr_dec <= 22'h1000bf))
                            | ((data_out_port == 4'b0100) & (trans_dec == 2'b00)))
         addr_out_port = 4'b0100;  // Select Output port MI4
 
@@ -220,16 +249,19 @@ module ahb_bus_matrix_decoderS2 (
   // Select signal decode
   always @ (sel_dec or addr_out_port)
     begin : p_sel_comb
+      sel_dec2 = 1'b0;
       sel_dec3 = 1'b0;
       sel_dec4 = 1'b0;
       sel_dft_slv = 1'b0;
 
       if (sel_dec)
         case (addr_out_port)
+          4'b0010 : sel_dec2 = 1'b1;
           4'b0011 : sel_dec3 = 1'b1;
           4'b0100 : sel_dec4 = 1'b1;
           4'b1000 : sel_dft_slv = 1'b1;    // Select the default slave
           default : begin
+            sel_dec2 = 1'bx;
             sel_dec3 = 1'bx;
             sel_dec4 = 1'bx;
             sel_dft_slv = 1'bx;
@@ -240,12 +272,14 @@ module ahb_bus_matrix_decoderS2 (
 // The decoder selects the appropriate active_dec signal depending on which
 //  output stage is required for the transfer.
   always @ (
+             active_dec2 or
              active_dec3 or
              active_dec4 or
              addr_out_port
            )
     begin : p_active_comb
       case (addr_out_port)
+        4'b0010 : active_dec = active_dec2;
         4'b0011 : active_dec = active_dec3;
         4'b0100 : active_dec = active_dec4;
         4'b1000 : active_dec = 1'b1;         // Select the default slave
@@ -276,12 +310,14 @@ module ahb_bus_matrix_decoderS2 (
   // HREADYOUTS output decode
   always @ (
              readyout_dft_slv or
+             readyout_dec2 or
              readyout_dec3 or
              readyout_dec4 or
              data_out_port
            )
   begin : p_ready_comb
     case (data_out_port)
+      4'b0010 : HREADYOUTS = readyout_dec2;
       4'b0011 : HREADYOUTS = readyout_dec3;
       4'b0100 : HREADYOUTS = readyout_dec4;
       4'b1000 : HREADYOUTS = readyout_dft_slv;    // Select the default slave
@@ -292,12 +328,14 @@ module ahb_bus_matrix_decoderS2 (
   // HRESPS output decode
   always @ (
              resp_dft_slv or
+             resp_dec2 or
              resp_dec3 or
              resp_dec4 or
              data_out_port
            )
   begin : p_resp_comb
     case (data_out_port)
+      4'b0010 : HRESPS = resp_dec2;
       4'b0011 : HRESPS = resp_dec3;
       4'b0100 : HRESPS = resp_dec4;
       4'b1000 : HRESPS = resp_dft_slv;     // Select the default slave
@@ -307,12 +345,14 @@ module ahb_bus_matrix_decoderS2 (
 
   // HRDATAS output decode
   always @ (
+             rdata_dec2 or
              rdata_dec3 or
              rdata_dec4 or
              data_out_port
            )
   begin : p_rdata_comb
     case (data_out_port)
+      4'b0010 : HRDATAS = rdata_dec2;
       4'b0011 : HRDATAS = rdata_dec3;
       4'b0100 : HRDATAS = rdata_dec4;
       4'b1000 : HRDATAS = {32{1'b0}};   // Select the default slave
@@ -322,12 +362,14 @@ module ahb_bus_matrix_decoderS2 (
 
   // HRUSERS output decode
   always @ (
+             ruser_dec2 or
              ruser_dec3 or
              ruser_dec4 or
              data_out_port
            )
   begin : p_ruser_comb
     case (data_out_port)
+      4'b0010 : HRUSERS = ruser_dec2;
       4'b0011 : HRUSERS = ruser_dec3;
       4'b0100 : HRUSERS = ruser_dec4;
       4'b1000 : HRUSERS = {32{1'b0}};   // Select the default slave

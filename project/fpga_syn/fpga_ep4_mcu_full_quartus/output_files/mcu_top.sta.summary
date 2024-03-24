@@ -3,27 +3,31 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 100C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 1.256
+Slack : 1.115
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 2.624
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 10.893
+Slack : 10.976
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Setup 'hse'
-Slack : 18.145
+Slack : 18.006
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Setup 'altera_reserved_tck'
-Slack : 44.723
+Slack : 43.080
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Setup 'lsi'
+Slack : 83.311
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Setup 'jtag_tck'
-Slack : 96.765
-TNS   : 0.000
-
-Type  : Slow 1200mV 100C Model Hold 'jtag_tck'
-Slack : 0.323
+Slack : 96.636
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
@@ -42,72 +46,96 @@ Type  : Slow 1200mV 100C Model Hold 'u_fpga_platform|u_pll0|altpll_component|aut
 Slack : 0.412
 TNS   : 0.000
 
+Type  : Slow 1200mV 100C Model Hold 'jtag_tck'
+Slack : 0.413
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Hold 'lsi'
+Slack : 0.413
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 0.413
+TNS   : 0.000
+
 Type  : Slow 1200mV 100C Model Recovery 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 18.506
+Slack : 16.263
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Recovery 'jtag_tck'
-Slack : 96.529
+Slack : 96.469
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Recovery 'altera_reserved_tck'
-Slack : 96.940
+Slack : 96.867
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Removal 'altera_reserved_tck'
-Slack : 1.226
+Slack : 1.230
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Removal 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 2.473
+Slack : 1.886
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Removal 'jtag_tck'
-Slack : 2.935
+Slack : 2.921
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 5.962
+Slack : 5.964
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'hse'
-Slack : 9.680
+Slack : 9.683
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 9.711
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 12.204
+Slack : 12.203
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.576
+Slack : 49.568
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'lsi'
+Slack : 49.775
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'jtag_tck'
-Slack : 99.599
+Slack : 99.641
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 3.787
+Slack : 2.549
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 2.914
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 11.117
+Slack : 11.176
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'hse'
-Slack : 18.392
+Slack : 18.246
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'altera_reserved_tck'
-Slack : 45.423
+Slack : 43.796
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Setup 'lsi'
+Slack : 85.004
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'jtag_tck'
-Slack : 97.096
-TNS   : 0.000
-
-Type  : Slow 1200mV -40C Model Hold 'jtag_tck'
-Slack : 0.279
+Slack : 96.910
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
@@ -115,7 +143,11 @@ Slack : 0.323
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Hold 'altera_reserved_tck'
-Slack : 0.327
+Slack : 0.328
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 0.340
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
@@ -126,72 +158,92 @@ Type  : Slow 1200mV -40C Model Hold 'hse'
 Slack : 0.341
 TNS   : 0.000
 
+Type  : Slow 1200mV -40C Model Hold 'lsi'
+Slack : 0.342
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Hold 'jtag_tck'
+Slack : 0.366
+TNS   : 0.000
+
 Type  : Slow 1200mV -40C Model Recovery 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 19.298
+Slack : 17.423
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Recovery 'jtag_tck'
-Slack : 96.927
+Slack : 96.832
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Recovery 'altera_reserved_tck'
-Slack : 97.313
+Slack : 97.259
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Removal 'altera_reserved_tck'
-Slack : 1.080
+Slack : 1.081
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Removal 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 2.095
+Slack : 1.632
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Removal 'jtag_tck'
-Slack : 2.460
+Slack : 2.466
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 5.965
+Slack : 5.964
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'hse'
-Slack : 9.691
+Slack : 9.690
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 9.714
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 12.179
+Slack : 12.178
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.449
+Slack : 49.436
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'lsi'
+Slack : 49.764
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'jtag_tck'
-Slack : 99.733
-TNS   : 0.000
-
-Type  : Fast 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 11.770
+Slack : 99.744
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 13.733
+Slack : 3.643
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 3.834
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Setup 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 11.809
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'hse'
-Slack : 19.171
+Slack : 19.086
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'altera_reserved_tck'
-Slack : 47.648
+Slack : 46.806
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Setup 'lsi'
+Slack : 91.742
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'jtag_tck'
-Slack : 99.074
-TNS   : 0.000
-
-Type  : Fast 1200mV -40C Model Hold 'jtag_tck'
-Slack : 0.142
+Slack : 98.958
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
@@ -199,7 +251,11 @@ Slack : 0.168
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'altera_reserved_tck'
-Slack : 0.172
+Slack : 0.171
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Hold 'lsi'
+Slack : 0.176
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'hse'
@@ -207,51 +263,67 @@ Slack : 0.177
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 0.177
+Slack : 0.178
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Hold 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Hold 'jtag_tck'
+Slack : 0.181
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Recovery 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 21.707
+Slack : 20.715
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Recovery 'altera_reserved_tck'
-Slack : 98.426
+Slack : 98.450
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Recovery 'jtag_tck'
-Slack : 98.822
+Slack : 98.830
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Removal 'altera_reserved_tck'
-Slack : 0.563
+Slack : 0.554
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Removal 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 1.204
+Slack : 0.866
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Removal 'jtag_tck'
-Slack : 1.412
+Slack : 1.393
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 6.032
+Slack : 6.030
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'hse'
-Slack : 9.263
+Slack : 9.262
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 9.781
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 12.242
+Slack : 12.241
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.460
+Slack : 49.459
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'lsi'
+Slack : 49.739
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'jtag_tck'
-Slack : 99.140
+Slack : 99.145
 TNS   : 0.000
 
 ------------------------------------------------------------

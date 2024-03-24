@@ -24,7 +24,6 @@ module bastim_sg
 	input 	[31:0]				pwdata, 
 	output	[31:0]				prdata,
 
-
 	// interrupt
 	output	[ 3:0]				bastim_int_line
 );

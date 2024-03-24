@@ -8,7 +8,7 @@
 //
 // 	This is top for apb1 async peripherals domain.
 //	This domain is including:
-//	1. Debug regs
+//	1. Basic timer
 //
 //===============================================
 
@@ -153,7 +153,7 @@ u_apb1_slave_mux
 
 //===============================================
 // APB1 basic timer
-// 0x40001000~0x40001FFF
+// 0x40010000~0x40010FFF
 //===============================================
 
 assign pready_bastim = 1'b1;

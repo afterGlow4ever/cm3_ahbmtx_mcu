@@ -26,14 +26,18 @@ report_utilization -file ./checkpoint/synthesis_util.rpt
 report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/synthesis_hier.rpt
 report_clocks -file ./checkpoint/synthesis_clk.rpt
 
+opt_design
+write_checkpoint -force ./checkpoint/opt
+
 place_design
-phys_opt_design
 write_checkpoint -force ./checkpoint/place
+phys_opt_design
+write_checkpoint -force ./checkpoint/phy_opt
 
 route_design
 write_checkpoint -force ./checkpoint/route
 
-report_timing_summary -file ./checkpoint/sta.rpt
+report_timing_summary -file ./checkpoint/sta_summary.rpt
 report_timing -sort_by group -max_paths 1000 -path_type summary -file ./checkpoint/sta.rpt
 report_utilization -file ./checkpoint/implementation_util.rpt
 report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/implementation_hier.rpt

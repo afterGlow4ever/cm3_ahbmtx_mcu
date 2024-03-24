@@ -90,7 +90,8 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     Bastim_Ch1_Handler        ; BASTIM CHANNEL1 Handler
                 DCD     Bastim_Ch2_Handler        ; BASTIM CHANNEL2 Handler
                 DCD     Bastim_Ch3_Handler        ; BASTIM CHANNEL3 Handler
-;				DCD     Resv12_Handler            ; Reserved 12 Handler	
+				DCD     EthSma_Handler            ; ETH SMA Handler	
+;				DCD     Resv13_Handler            ; Reserved 13 Handler	
 __Vectors_End
 
 __Vectors_Size  EQU     __Vectors_End - __Vectors
@@ -183,7 +184,8 @@ Bastim_Ch0_Handler
 Bastim_Ch1_Handler
 Bastim_Ch2_Handler
 Bastim_Ch3_Handler
-;Resv12_Handler
+EthSma_Handler
+;Resv13_Handler
                 B       .
 
                 ENDP

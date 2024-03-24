@@ -1,6 +1,6 @@
 //===============================================
 //
-//	File: cpu_swd.v
+//	File: uart0_test.v
 //	Author: afterGlow,4ever
 //	Group: Fall For Laboratory	
 //	Date: 07022023
@@ -102,7 +102,9 @@ begin
 	u_swd_model.swd_writereg32(32'h40001000, 32'h3c);
 `endif
 `ifdef UART_RX_CASE
-	u_swd_model.swd_writereg32(32'h40001004, 32'hf03);
+	u_swd_model.swd_writereg32(32'h40001004, 32'hf00);
+	u_swd_model.swd_writereg32(32'h40001004, 32'h001);
+	u_swd_model.swd_writereg32(32'h40001004, 32'h002);
 	u_uart_model.put_char(8'h34);
 	u_uart_model.tx_data_specify_with_no_parity(4'h8, 2'h1, 4'h0, 10'h12, 2'h1);// 8bits data 1bit stop data 0x12 stop 0x1
 	#500000

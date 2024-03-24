@@ -48,7 +48,8 @@ typedef enum IRQn
   BastimCh1_IRQn                =  9,     /*!< 16+9 BastimCh1 Interrupt							   */
   BastimCh2_IRQn                =  10,    /*!< 16+10 BastimCh2 Interrupt						   */
   BastimCh3_IRQn                =  11,    /*!< 16+11 BastimCh3 Interrupt						   */
-  Resv12_IRQn                 	=  12,    /*!< 16+12 Resv12 Interrupt							   */
+  EthSma_IRQn                 	=  12,    /*!< 16+12 EthSma Interrupt							   */
+  Resv13_IRQn                 	=  13,    /*!< 16+13 Resv13 Interrupt							   */
 
 /******  MCU Specific Interrupt Numbers *******************************************************/
 } IRQn_Type;
@@ -70,13 +71,14 @@ typedef enum IRQn
 //===============================================
 
 #define ITCM_BASE_ADDR							0x00000000
-#define DTCM_BASE_ADDR							0x00010000
+#define DTCM_BASE_ADDR							0x00020000
 
 #define DEBUG_BASE_ADDR							0x40000000
 #define UART0_BASE_ADDR							0x40001000
 #define UART1_BASE_ADDR							0x40002000
 #define GPIOA_BASE_ADDR							0x4000a000
 #define BASTIM_BASE_ADDR						0x40010000
+#define ETH_BASE_ADDR							0x40020000
 
 //===============================================
 // instance define
@@ -86,6 +88,7 @@ typedef enum IRQn
 #define UART1 	((UART_TypeDef *)UART1_BASE_ADDR)
 #define GPIOA 	((GPIO_TypeDef *)GPIOA_BASE_ADDR)
 #define BASTIM 	((BASTIM_TypeDef *)BASTIM_BASE_ADDR)
+#define ETH 	((ETH_TypeDef *)ETH_BASE_ADDR)
 
 //===============================================
 // variable type define

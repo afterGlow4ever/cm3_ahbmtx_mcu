@@ -12,14 +12,14 @@
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v
-../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
-../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
+../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM8.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM6.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
+../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM8.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v
@@ -36,6 +36,7 @@
 ../user/verilog/domain/fp_domain.v
 ../user/verilog/domain/apb0_top.v
 ../user/verilog/domain/apb1_top.v
+../user/verilog/domain/apb2_top.v
 ../user/verilog/sram/sram_top.v
 ../user/verilog/uart/uart_pe_core/uart_pe_rx.v
 ../user/verilog/uart/uart_pe_core/uart_pe_tx.v
@@ -56,4 +57,11 @@
 ../user/verilog/bastim/bastim_ch_core/bastim_ch_core.v
 ../user/verilog/bastim/bastim_top.v
 ../user/verilog/bastim/bastim_apb_cfg.v
+../user/verilog/eth/eth_apb_cfg.v
+../user/verilog/eth/eth_pe_core/eth_sma_pe_master.v
+../user/verilog/eth/eth_pe_core/eth_pe_core.v
+../user/verilog/eth/eth_regs_wrap.v
+../user/verilog/eth/eth_sma_data_buffer.v
+../user/verilog/eth/eth_top.v
 ../user/verilog/mcu_top.v
+

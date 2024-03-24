@@ -16,6 +16,9 @@ create_clock -name {jtag_tck} -period 200.000 -waveform {0.000 100.000} [get_por
 
 derive_pll_clocks
 
+set_clock_groups -async -group [get_clocks {clk_out1_pll_50m}]
+set_clock_groups -async -group [get_clocks {clk_out2_pll_50m}]
+set_clock_groups -async -group [get_clocks {clk_out3_pll_50m}]
 set_clock_groups -async -group [get_clocks {hse}]
 set_clock_groups -async -group [get_clocks {jtag_tck}]
 

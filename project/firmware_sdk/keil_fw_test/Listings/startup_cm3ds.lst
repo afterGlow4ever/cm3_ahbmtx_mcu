@@ -150,162 +150,165 @@ ARM Macro Assembler    Page 3
                                                             NNEL2 Handler
    92 0000006C 00000000        DCD              Bastim_Ch3_Handler ; BASTIM CHA
                                                             NNEL3 Handler
-   93 00000070         ;    DCD     Resv12_Handler            ; Reserved 12 Han
+   93 00000070 00000000        DCD              EthSma_Handler 
+                                                            ; ETH SMA Handler 
+   94 00000074         ;    DCD     Resv13_Handler            ; Reserved 13 Han
                        dler 
-   94 00000070         __Vectors_End
-   95 00000070         
-   96 00000070 00000070 
+   95 00000074         __Vectors_End
+   96 00000074         
+   97 00000074 00000074 
                        __Vectors_Size
                                EQU              __Vectors_End - __Vectors
-   97 00000070         
-   98 00000070                 AREA             |.text|, CODE, READONLY
-   99 00000000         
+   98 00000074         
+   99 00000074                 AREA             |.text|, CODE, READONLY
   100 00000000         
-  101 00000000         ; Reset Handler
-  102 00000000         
-  103 00000000         Reset_Handler
+  101 00000000         
+  102 00000000         ; Reset Handler
+  103 00000000         
+  104 00000000         Reset_Handler
                                PROC
-  104 00000000                 EXPORT           Reset_Handler             [WEAK
+  105 00000000                 EXPORT           Reset_Handler             [WEAK
 ]
-  105 00000000         ;                IMPORT  SystemInit
-  106 00000000                 IMPORT           __main
-  107 00000000         ;                LDR     R0, =SystemInit
-  108 00000000         ;                BLX     R0
-  109 00000000 4808            LDR              R0, =__main
-  110 00000002 4700            BX               R0
-  111 00000004                 ENDP
-  112 00000004         
+  106 00000000         ;                IMPORT  SystemInit
+  107 00000000                 IMPORT           __main
+  108 00000000         ;                LDR     R0, =SystemInit
+  109 00000000         ;                BLX     R0
+  110 00000000 4808            LDR              R0, =__main
+  111 00000002 4700            BX               R0
+  112 00000004                 ENDP
   113 00000004         
-  114 00000004         ; Dummy Exception Handlers (infinite loops which can be 
+  114 00000004         
+  115 00000004         ; Dummy Exception Handlers (infinite loops which can be 
                        modified)
-  115 00000004         
-  116 00000004         NMI_Handler
+  116 00000004         
+  117 00000004         NMI_Handler
                                PROC
-  117 00000004                 EXPORT           NMI_Handler               [WEAK
+  118 00000004                 EXPORT           NMI_Handler               [WEAK
 ]
-  118 00000004 E7FE            B                .
-  119 00000006                 ENDP
-  121 00000006         HardFault_Handler
+  119 00000004 E7FE            B                .
+  120 00000006                 ENDP
+  122 00000006         HardFault_Handler
                                PROC
-  122 00000006                 EXPORT           HardFault_Handler         [WEAK
+  123 00000006                 EXPORT           HardFault_Handler         [WEAK
 ]
-  123 00000006 E7FE            B                .
-  124 00000008                 ENDP
-  126 00000008         MemManage_Handler
-                               PROC
+  124 00000006 E7FE            B                .
+  125 00000008                 ENDP
 
 
 
 ARM Macro Assembler    Page 4 
 
 
-  127 00000008                 EXPORT           MemManage_Handler         [WEAK
-]
-  128 00000008 E7FE            B                .
-  129 0000000A                 ENDP
-  131 0000000A         BusFault_Handler
+  127 00000008         MemManage_Handler
                                PROC
-  132 0000000A                 EXPORT           BusFault_Handler          [WEAK
+  128 00000008                 EXPORT           MemManage_Handler         [WEAK
 ]
-  133 0000000A E7FE            B                .
-  134 0000000C                 ENDP
-  136 0000000C         UsageFault_Handler
+  129 00000008 E7FE            B                .
+  130 0000000A                 ENDP
+  132 0000000A         BusFault_Handler
                                PROC
-  137 0000000C                 EXPORT           UsageFault_Handler        [WEAK
+  133 0000000A                 EXPORT           BusFault_Handler          [WEAK
 ]
-  138 0000000C E7FE            B                .
-  139 0000000E                 ENDP
-  140 0000000E         SVC_Handler
+  134 0000000A E7FE            B                .
+  135 0000000C                 ENDP
+  137 0000000C         UsageFault_Handler
                                PROC
-  141 0000000E                 EXPORT           SVC_Handler               [WEAK
+  138 0000000C                 EXPORT           UsageFault_Handler        [WEAK
 ]
-  142 0000000E E7FE            B                .
-  143 00000010                 ENDP
-  145 00000010         DebugMon_Handler
+  139 0000000C E7FE            B                .
+  140 0000000E                 ENDP
+  141 0000000E         SVC_Handler
                                PROC
-  146 00000010                 EXPORT           DebugMon_Handler          [WEAK
+  142 0000000E                 EXPORT           SVC_Handler               [WEAK
 ]
-  147 00000010 E7FE            B                .
-  148 00000012                 ENDP
-  150 00000012         PendSV_Handler
+  143 0000000E E7FE            B                .
+  144 00000010                 ENDP
+  146 00000010         DebugMon_Handler
                                PROC
-  151 00000012                 EXPORT           PendSV_Handler            [WEAK
+  147 00000010                 EXPORT           DebugMon_Handler          [WEAK
 ]
-  152 00000012 E7FE            B                .
-  153 00000014                 ENDP
-  155 00000014         SysTick_Handler
+  148 00000010 E7FE            B                .
+  149 00000012                 ENDP
+  151 00000012         PendSV_Handler
                                PROC
-  156 00000014                 EXPORT           SysTick_Handler           [WEAK
+  152 00000012                 EXPORT           PendSV_Handler            [WEAK
 ]
-  157 00000014 E7FE            B                .
-  158 00000016                 ENDP
-  159 00000016         
-  160 00000016         Default_Handler
+  153 00000012 E7FE            B                .
+  154 00000014                 ENDP
+  156 00000014         SysTick_Handler
                                PROC
-  161 00000016                 EXPORT           Uart0_Handler              [WEA
+  157 00000014                 EXPORT           SysTick_Handler           [WEAK
+]
+  158 00000014 E7FE            B                .
+  159 00000016                 ENDP
+  160 00000016         
+  161 00000016         Default_Handler
+                               PROC
+  162 00000016                 EXPORT           Uart0_Handler              [WEA
 K]
-  162 00000016                 EXPORT           Uart1_Handler              [WEA
+  163 00000016                 EXPORT           Uart1_Handler              [WEA
 K]
-  163 00000016                 EXPORT           Resv2_Handler     [WEAK]
-  164 00000016                 EXPORT           Resv3_Handler     [WEAK]
-  165 00000016                 EXPORT           Resv4_Handler     [WEAK]
-  166 00000016                 EXPORT           Gpioa_Handler     [WEAK]
-  167 00000016                 EXPORT           Resv6_Handler     [WEAK]
-  168 00000016                 EXPORT           Resv7_Handler     [WEAK]
-  169 00000016                 EXPORT           Bastim_Ch0_Handler    [WEAK]
-  170 00000016                 EXPORT           Bastim_Ch1_Handler    [WEAK]
-  171 00000016                 EXPORT           Bastim_Ch2_Handler    [WEAK]
-  172 00000016                 EXPORT           Bastim_Ch3_Handler    [WEAK]
-  173 00000016         ;    EXPORT Resv12_Handler     [WEAK] 
-  174 00000016         Uart0_Handler
+  164 00000016                 EXPORT           Resv2_Handler     [WEAK]
+  165 00000016                 EXPORT           Resv3_Handler     [WEAK]
+  166 00000016                 EXPORT           Resv4_Handler     [WEAK]
+  167 00000016                 EXPORT           Gpioa_Handler     [WEAK]
+  168 00000016                 EXPORT           Resv6_Handler     [WEAK]
+  169 00000016                 EXPORT           Resv7_Handler     [WEAK]
+  170 00000016                 EXPORT           Bastim_Ch0_Handler    [WEAK]
+  171 00000016                 EXPORT           Bastim_Ch1_Handler    [WEAK]
+  172 00000016                 EXPORT           Bastim_Ch2_Handler    [WEAK]
+  173 00000016                 EXPORT           Bastim_Ch3_Handler    [WEAK]
 
 
 
 ARM Macro Assembler    Page 5 
 
 
-  175 00000016         Uart1_Handler
-  176 00000016         Resv2_Handler
-  177 00000016         Resv3_Handler
-  178 00000016         Resv4_Handler
-  179 00000016         Gpioa_Handler
-  180 00000016         Resv6_Handler
-  181 00000016         Resv7_Handler
-  182 00000016         Bastim_Ch0_Handler
-  183 00000016         Bastim_Ch1_Handler
-  184 00000016         Bastim_Ch2_Handler
-  185 00000016         Bastim_Ch3_Handler
-  186 00000016         ;Resv12_Handler
-  187 00000016 E7FE            B                .
-  188 00000018         
-  189 00000018                 ENDP
+  174 00000016         ;    EXPORT Resv12_Handler     [WEAK] 
+  175 00000016         Uart0_Handler
+  176 00000016         Uart1_Handler
+  177 00000016         Resv2_Handler
+  178 00000016         Resv3_Handler
+  179 00000016         Resv4_Handler
+  180 00000016         Gpioa_Handler
+  181 00000016         Resv6_Handler
+  182 00000016         Resv7_Handler
+  183 00000016         Bastim_Ch0_Handler
+  184 00000016         Bastim_Ch1_Handler
+  185 00000016         Bastim_Ch2_Handler
+  186 00000016         Bastim_Ch3_Handler
+  187 00000016         EthSma_Handler
+  188 00000016         ;Resv13_Handler
+  189 00000016 E7FE            B                .
   190 00000018         
-  191 00000018         
-  192 00000018                 ALIGN
+  191 00000018                 ENDP
+  192 00000018         
   193 00000018         
-  194 00000018         
-  195 00000018         ; User Initial Stack & Heap
+  194 00000018                 ALIGN
+  195 00000018         
   196 00000018         
-  197 00000018                 IF               :DEF:__MICROLIB
-  204 00000018         
-  205 00000018                 IMPORT           __use_two_region_memory
-  206 00000018                 EXPORT           __user_initial_stackheap
-  207 00000018         
-  208 00000018         __user_initial_stackheap
+  197 00000018         ; User Initial Stack & Heap
+  198 00000018         
+  199 00000018                 IF               :DEF:__MICROLIB
+  206 00000018         
+  207 00000018                 IMPORT           __use_two_region_memory
+  208 00000018                 EXPORT           __user_initial_stackheap
+  209 00000018         
+  210 00000018         __user_initial_stackheap
                                PROC
-  209 00000018 4803            LDR              R0, =  Heap_Mem
-  210 0000001A 4904            LDR              R1, =(Stack_Mem + Stack_Size)
-  211 0000001C 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
-  212 0000001E 4B05            LDR              R3, = Stack_Mem
-  213 00000020 4770            BX               LR
-  214 00000022                 ENDP
-  215 00000022         
-  216 00000022 00 00           ALIGN
-  217 00000024         
-  218 00000024                 ENDIF
+  211 00000018 4803            LDR              R0, =  Heap_Mem
+  212 0000001A 4904            LDR              R1, =(Stack_Mem + Stack_Size)
+  213 0000001C 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
+  214 0000001E 4B05            LDR              R3, = Stack_Mem
+  215 00000020 4770            BX               LR
+  216 00000022                 ENDP
+  217 00000022         
+  218 00000022 00 00           ALIGN
   219 00000024         
-  220 00000024         
-  221 00000024                 END
+  220 00000024                 ENDIF
+  221 00000024         
+  222 00000024         
+  223 00000024                 END
               00000000 
               00000000 
               00000400 
@@ -339,9 +342,9 @@ Symbol: Stack_Mem
       At line 36 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
    Uses
-      At line 210 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
       At line 212 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+      At line 214 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 __initial_sp 00000400
@@ -377,9 +380,9 @@ Symbol: Heap_Mem
       At line 48 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
    Uses
-      At line 209 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
       At line 211 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+      At line 213 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 __heap_base 00000000
@@ -425,19 +428,19 @@ rtup_CM3DS.s
    Uses
       At line 59 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 96 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+      At line 97 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
 
-__Vectors_End 00000070
+__Vectors_End 00000074
 
 Symbol: __Vectors_End
    Definitions
-      At line 94 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+      At line 95 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
    Uses
       At line 60 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 96 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+      At line 97 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
 
 3 symbols
@@ -451,7 +454,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 98 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+      At line 99 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
    Uses
       None
@@ -460,48 +463,48 @@ Bastim_Ch0_Handler 00000016
 
 Symbol: Bastim_Ch0_Handler
    Definitions
-      At line 182 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 183 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 89 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 169 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 170 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Bastim_Ch1_Handler 00000016
 
 Symbol: Bastim_Ch1_Handler
    Definitions
-      At line 183 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 184 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 90 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 170 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 171 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Bastim_Ch2_Handler 00000016
 
 Symbol: Bastim_Ch2_Handler
    Definitions
-      At line 184 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 185 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 91 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 171 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 172 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Bastim_Ch3_Handler 00000016
 
 Symbol: Bastim_Ch3_Handler
    Definitions
-      At line 185 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 186 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 92 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 172 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 173 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 BusFault_Handler 0000000A
@@ -514,256 +517,272 @@ Relocatable symbols
 
 Symbol: BusFault_Handler
    Definitions
-      At line 131 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 132 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 68 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 132 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 133 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 DebugMon_Handler 00000010
 
 Symbol: DebugMon_Handler
    Definitions
-      At line 145 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 146 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 75 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 146 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 147 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Default_Handler 00000016
 
 Symbol: Default_Handler
    Definitions
-      At line 160 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 161 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       None
 Comment: Default_Handler unused
+EthSma_Handler 00000016
+
+Symbol: EthSma_Handler
+   Definitions
+      At line 187 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+   Uses
+      At line 93 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+rtup_CM3DS.s
+Comment: EthSma_Handler used once
 Gpioa_Handler 00000016
 
 Symbol: Gpioa_Handler
    Definitions
-      At line 179 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 180 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 86 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 166 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 167 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 HardFault_Handler 00000006
 
 Symbol: HardFault_Handler
    Definitions
-      At line 121 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
-   Uses
-      At line 66 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
-rtup_CM3DS.s
       At line 122 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
-
-MemManage_Handler 00000008
-
-Symbol: MemManage_Handler
-   Definitions
 
 
 
 ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 126 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+   Uses
+      At line 66 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+rtup_CM3DS.s
+      At line 123 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+
+MemManage_Handler 00000008
+
+Symbol: MemManage_Handler
+   Definitions
+      At line 127 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 67 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 127 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 128 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 NMI_Handler 00000004
 
 Symbol: NMI_Handler
    Definitions
-      At line 116 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 117 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 65 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 117 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 118 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 PendSV_Handler 00000012
 
 Symbol: PendSV_Handler
    Definitions
-      At line 150 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 151 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 77 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 151 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 152 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Reset_Handler 00000000
 
 Symbol: Reset_Handler
    Definitions
-      At line 103 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 104 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 64 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 104 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 105 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Resv2_Handler 00000016
 
 Symbol: Resv2_Handler
    Definitions
-      At line 176 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
-   Uses
-      At line 83 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
-rtup_CM3DS.s
-      At line 163 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
-
-Resv3_Handler 00000016
-
-Symbol: Resv3_Handler
+      At line 177 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 
 
 
 ARM Macro Assembler    Page 4 Alphabetic symbol ordering
 Relocatable symbols
 
+artup_CM3DS.s
+   Uses
+      At line 83 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+rtup_CM3DS.s
+      At line 164 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+
+Resv3_Handler 00000016
+
+Symbol: Resv3_Handler
    Definitions
-      At line 177 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 178 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 84 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 164 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 165 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Resv4_Handler 00000016
 
 Symbol: Resv4_Handler
    Definitions
-      At line 178 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 179 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 85 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 165 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 166 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Resv6_Handler 00000016
 
 Symbol: Resv6_Handler
    Definitions
-      At line 180 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 181 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 87 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 167 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 168 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Resv7_Handler 00000016
 
 Symbol: Resv7_Handler
    Definitions
-      At line 181 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 182 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 88 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 168 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 169 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 SVC_Handler 0000000E
 
 Symbol: SVC_Handler
    Definitions
-      At line 140 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
-   Uses
-      At line 74 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
-rtup_CM3DS.s
-      At line 141 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
-artup_CM3DS.s
-
-SysTick_Handler 00000014
-
 
 
 
 ARM Macro Assembler    Page 5 Alphabetic symbol ordering
 Relocatable symbols
 
+      At line 141 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+   Uses
+      At line 74 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+rtup_CM3DS.s
+      At line 142 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+artup_CM3DS.s
+
+SysTick_Handler 00000014
+
 Symbol: SysTick_Handler
    Definitions
-      At line 155 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 156 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 78 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 156 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 157 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Uart0_Handler 00000016
 
 Symbol: Uart0_Handler
    Definitions
-      At line 174 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 175 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 81 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 161 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 162 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Uart1_Handler 00000016
 
 Symbol: Uart1_Handler
    Definitions
-      At line 175 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 176 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 82 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 162 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 163 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 UsageFault_Handler 0000000C
 
 Symbol: UsageFault_Handler
    Definitions
-      At line 136 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 137 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       At line 69 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 137 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 138 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 __user_initial_stackheap 00000018
 
 Symbol: __user_initial_stackheap
+
+
+
+ARM Macro Assembler    Page 6 Alphabetic symbol ordering
+Relocatable symbols
+
    Definitions
-      At line 208 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 210 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
-      At line 206 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 208 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 Comment: __user_initial_stackheap used once
-25 symbols
+26 symbols
 
 
 
@@ -779,7 +798,7 @@ rtup_CM3DS.s
    Uses
       At line 48 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 211 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 213 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
 Stack_Size 00000400
@@ -791,14 +810,14 @@ rtup_CM3DS.s
    Uses
       At line 36 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
-      At line 210 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 212 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 
-__Vectors_Size 00000070
+__Vectors_Size 00000074
 
 Symbol: __Vectors_Size
    Definitions
-      At line 96 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
+      At line 97 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
 rtup_CM3DS.s
    Uses
       At line 61 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\sta
@@ -815,20 +834,20 @@ __main 00000000
 
 Symbol: __main
    Definitions
-      At line 106 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 107 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
-      At line 109 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 110 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
 Comment: __main used once
 __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 205 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
+      At line 207 in file ..\..\..\library\cmsis\Device\ARM\CM3DS\Source\ARM\st
 artup_CM3DS.s
    Uses
       None
 Comment: __use_two_region_memory unused
 2 symbols
-376 symbols in table
+377 symbols in table

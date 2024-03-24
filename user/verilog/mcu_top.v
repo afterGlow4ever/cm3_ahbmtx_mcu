@@ -26,8 +26,12 @@ module mcu_top
 `else
 	input  						RXD1, 
 	output  					TXD1, 
+	output						MDC,
+	inout						MDIO,
 `endif
-
+`ifdef ETH
+	output						ETH_RST,
+`endif
 	input  						RXD, 
 	output  					TXD, 
 	input  						TDI, 
@@ -39,26 +43,42 @@ module mcu_top
 
 //===============================================
 // rcc
+// Logics below will be redesigned after RCC module
 //===============================================
 
 wire							hsi;
+wire							hsi2;
 wire							lsi;
 wire							sys_root_clk;
 wire							apb1_root_clk;
+wire							apb2_root_clk;
 wire							sys_root_rstn;
 wire							apb1_root_rstn;
+wire							apb2_root_rstn;
 wire							pll_locked;
 
 assign sys_root_clk = hsi;
 assign apb0_root_clk = sys_root_clk;
 assign apb1_root_clk = lsi;
+assign apb2_root_clk = hsi2;
 assign sys_root_rstn = RSTN & pll_locked;
 assign apb0_root_rstn = RSTN & pll_locked;
 assign apb1_root_rstn = RSTN & pll_locked;
+assign apb2_root_rstn = RSTN & pll_locked;
 
 //===============================================
 // gpio
 //===============================================
+
+wire								uart1_tx;	 
+wire								uart1_tx_oen;
+wire								uart1_rx;	 
+wire								uart1_rx_oen;
+wire								eth_mdc;	 
+wire								eth_mdc_oen; 
+wire								eth_mdio_o;	 
+wire								eth_mdio_i;	 
+wire								eth_mdio_oen;
 
 wire	      						gpioa_int; 
 
@@ -70,10 +90,6 @@ wire	[31:0]					 	paddr0_gpioa;
 wire	      						pwrite0; 
 wire	[31:0]					 	pwdata0; 
 wire	[31:0]					 	prdata0_gpioa; 
-wire								uart1_tx;	 
-wire								uart1_tx_oen;
-wire								uart1_rx;	 
-wire								uart1_rx_oen;
 
 gpio_top u_gpio
 (
@@ -100,8 +116,21 @@ gpio_top u_gpio
 );
 `else
 
+// uart1
+assign TXD1 = uart1_tx;
+assign uart1_rx = RXD1;
+
+// ethernet
+assign MDC = eth_mdc;
+assign MDIO = eth_mdio_oen ? 1'bz : eth_mdio_o;
+assign eth_mdio_i = MDIO;			
+
 assign gpioa_int = 1'b0;
 
+`endif
+
+`ifdef ETH
+assign ETH_RST = RSTN;
 `endif
 
 //===============================================
@@ -116,6 +145,8 @@ fp_domain u_fp_domain
 	.apb0_root_rstn				(apb0_root_rstn		),
 	.apb1_root_clk				(apb1_root_clk		),
 	.apb1_root_rstn				(apb1_root_rstn		),
+	.apb2_root_clk				(apb2_root_clk		),
+	.apb2_root_rstn				(apb2_root_rstn		),
 	.power_on_rstn				(RSTN				),
 
 
@@ -131,15 +162,16 @@ fp_domain u_fp_domain
 	.pwrite0_o					(pwrite0			), 
 	.pwdata0_o					(pwdata0			),
 	.prdata0_gpioa				(prdata0_gpioa		), 	
+`else
 	.uart1_tx					(uart1_tx			), 
 	.uart1_tx_oen				(uart1_tx_oen		), 
 	.uart1_rx					(uart1_rx			), 
 	.uart1_rx_oen				(uart1_rx_oen		), 
-`else
-	.uart1_tx					(TXD1				),
-	.uart1_tx_oen				(					),
-	.uart1_rx					(RXD1				),
-	.uart1_rx_oen				(					),
+	.eth_mdc					(eth_mdc			),
+	.eth_mdc_oen				(eth_mdc_oen		),
+	.eth_mdio_o					(eth_mdio_o			),
+	.eth_mdio_i					(eth_mdio_i			),
+	.eth_mdio_oen				(eth_mdio_oen		),
 `endif
 
 	.gpioa_int					(gpioa_int			),
@@ -163,8 +195,8 @@ fpga_platform u_fpga_platform
 	.input_clk					(CLK				),  
 	.rstn						(RSTN				),
 	.clk_40mhz					(hsi				),
-	.clk_80mhz					(					),
-	.clk_50mhz					(					),
+	.clk_80mhz					(hsi3				),
+	.clk_50mhz					(hsi2				),
 	.clk_10mhz					(lsi				),
 	.pll_locked					(pll_locked			),	
 	.lsi_locked					(					)	
@@ -173,6 +205,7 @@ fpga_platform u_fpga_platform
 `else
 	
 assign hsi = CLK;
+assign hsi2 = CLK;
 assign lsi = CLK;
 assign pll_locked = 1'b1;	
 

@@ -62,3 +62,15 @@
 `include "bastim_fw_test.v"
 `endif
 
+`ifdef ETH_SMA_SIM
+`include "eth_sma_test.v"
+`endif
+
+`ifdef ETH_SMA_TESTCASE
+`include "eth_sma_testcase.v"
+`endif
+
+`ifdef ETH_SMA_FW_TEST
+`include "eth_sma_fw_test.v"
+`endif
+

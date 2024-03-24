@@ -1,5 +1,5 @@
 SIM_TARGET := fpga_sram_wr_sim
-SIM_DEFINE := +define+FSDB_DUMP +define+SRAM_WR_SIM +define+FPGA_SRAM +define+ALTERA_EP4
+SIM_DEFINE := +define+FSDB_DUMP +define+SRAM_WR_SIM +define+SRAM_128K +define+PART_TEST +define+FPGA_SRAM +define+ALTERA_EP4
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
 DUT_LIST := dut.list
 SIM_LIST := sim.list

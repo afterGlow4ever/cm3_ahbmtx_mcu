@@ -31,6 +31,9 @@ TestMenu g_mcu_menu[] =
 #ifdef BASTIM_TEST
 	{'3', bastim_testmenu,							"[BASTIM] test menu\r\n"},
 #endif
+#ifdef ETH_TEST
+	{'4', eth_testmenu,								"[ETH] test menu\r\n"},
+#endif
 	{'0', mcu_testmenu,								"[MCU] test menu\r\n"}
 };
 
@@ -51,7 +54,10 @@ int main(void)
 	uart0_init();
 #ifdef SIM
 	writereg32(0x40000008, 0xbd);
-	bastim_4ch_autoreload_int_test();
+	b50610_init_test();
+	writereg32(0x40000008, 0xbd1);
+	b50610_get_reglist_test();
+//	bastim_4ch_autoreload_int_test();
 //	bastim_4ch_test();
 //	gpioa2_out_gpioa3_in_it_test();
 //	uart1_rx_it_test();

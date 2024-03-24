@@ -1,6 +1,6 @@
 FPGA_TARGET := fpga_7020_mcu_full_vivado
 TOP_NAME := mcu_top
-FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ZYNQ_7020 \`define+UART0"
+FPGA_DEFINE := "\`define+FPGA \`define+SRAM_128K \`define+FPGA_SRAM \`define+ZYNQ_7020 \`define+UART0 \`define+BASTIM \`define+ETH"
 DUT_LIST := dut.list
 FPGA_DUT_LIST := fpga_7020_dut.list
 FPGA_IP_LIST := fpga_7020_ip.list
@@ -10,7 +10,7 @@ TIMING_CONSTRAIN_LIST := fpga_7020_mcu_full_timing_constrain.xdc
 FPGA_PATH := ${PRJ_FPGA_DIR}/${FPGA_TARGET}
 
 SDK_TARGET := bootloader
-SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DCOMMON_DRIVER
+SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DCOMMON_DRIVER
 
 SDK_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}
 BUILD_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/build
@@ -32,6 +32,7 @@ FLAG := ${CFLAG} ${ARCH_FLAG}
 
 SHELL := /bin/bash
 
+#all: prepare build_driver build_bootloader
 all: prepare build_driver build_bootloader vivado_compile
 
 prepare:
@@ -51,6 +52,7 @@ prepare:
 build_driver:
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/common/src/drv_common.c -o ${BUILD_PATH}/drv_common.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/uart/src/drv_uart.c -o ${BUILD_PATH}/drv_uart.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/uart/src/drv_uart_ex.c -o ${BUILD_PATH}/drv_uart_ex.o
 
 build_bootloader:
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/boot/src/main.c -o ${BUILD_PATH}/main.o
@@ -66,6 +68,8 @@ build_bootloader:
 	cd ${FPGA_PATH} && rm -rf ${SDK_TARGET}.bin
 	cd ${OUTPUT_PATH} && arm-none-eabi-objdump -D ${SDK_TARGET}.elf > ${SDK_TARGET}.asm
 	source lsb2msb.sh ${FPGA_PATH} ${SDK_TARGET}.txt 
+	source txt2mif.sh ${FPGA_PATH} ${SDK_TARGET}.txt 2048 32 ${SDK_TARGET}.mif
+	source txt2coe.sh ${FPGA_PATH} ${SDK_TARGET}.txt ${SDK_TARGET}.coe
 	cd ${FPGA_PATH} && cp ${SDK_TARGET}.txt	${SDK_TARGET}.mem
 
 vivado_compile:

@@ -1,5 +1,5 @@
 SIM_TARGET := sram_wr_sim
-SIM_DEFINE := +define+FSDB_DUMP +define+SRAM_WR_SIM +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
+SIM_DEFINE := +define+FSDB_DUMP +define+SRAM_WR_SIM +define+SRAM_128K +define+PART_TEST +define+SIMULATION +define+RAMPRELOAD_SPI
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
 DUT_LIST := dut.list
 SIM_LIST := sim.list
