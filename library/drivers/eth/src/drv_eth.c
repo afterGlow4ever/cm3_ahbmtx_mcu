@@ -88,6 +88,7 @@ void drv_eth_sma_master_write_reglist(ETH_HandleTypeDef *eth, uint32_t data[], u
 
 	while(eth->sma_tx_ptr < length)
 	{
+		drv_eth_sma_int_clear(eth, ETH_SMA_INT_MASTER_FRAME_DONE);// fixed 04062024: avoid finishing before expected 
 		if(REG_GETBITS(eth->regs->sma_fifo_sta, 8, 10) < (ETH_SMA_FIFO_NUM >> 1))
 		{
 			eth->regs->sma_tx_data = data[eth->sma_tx_ptr++] | (ETH_SMA_CMD_WRITE << 21);
@@ -132,6 +133,7 @@ bool drv_eth_sma_master_read_reglist(ETH_HandleTypeDef *eth, uint32_t data[], ui
 
 	while(eth->sma_rx_ptr < length)
 	{
+		drv_eth_sma_int_clear(eth, ETH_SMA_INT_MASTER_FRAME_DONE);// fixed 04062024: avoid finishing before expected 
 		while(REG_GETBITS(eth->regs->sma_fifo_sta, 8, 10) != 0);// wait until tx fifo empty
 		eth->regs->sma_tx_data = data[eth->sma_rx_ptr] | (ETH_SMA_CMD_READ << 21);
 

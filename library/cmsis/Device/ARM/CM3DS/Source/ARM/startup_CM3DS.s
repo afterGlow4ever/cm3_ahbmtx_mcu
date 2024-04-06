@@ -171,7 +171,8 @@ Default_Handler PROC
 				EXPORT Bastim_Ch1_Handler		  [WEAK]	
 				EXPORT Bastim_Ch2_Handler		  [WEAK]	
 				EXPORT Bastim_Ch3_Handler		  [WEAK]	
-;				EXPORT Resv12_Handler			  [WEAK]	
+				EXPORT EthSma_Handler		  	  [WEAK]	
+;				EXPORT Resv13_Handler			  [WEAK]	
 Uart0_Handler
 Uart1_Handler
 Resv2_Handler

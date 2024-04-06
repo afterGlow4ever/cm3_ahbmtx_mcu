@@ -138,6 +138,9 @@ fpga_7020_cpu_itcm_boot_sim:
 fpga_ep4_mcu_full_quartus:
 	make -f makefile.fpga_ep4_mcu_full_quartus
 
+fpga_ep4_mcu_update_mif:
+	make -f makefile.fpga_ep4_mcu_update_mif
+
 fpga_7020_mcu_full_vivado:
 	make -f makefile.fpga_7020_mcu_full_vivado
 

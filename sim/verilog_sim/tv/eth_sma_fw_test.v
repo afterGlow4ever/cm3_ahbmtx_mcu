@@ -18,7 +18,7 @@ pullup(mdio);
 
 eth_phy_sma_model 
 #(
-	.PHY_ADDRESS				(4)
+	.PHY_ADDRESS				(5'h19)
 )
 u_eth_phy_sma_model
 (

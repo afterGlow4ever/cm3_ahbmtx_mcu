@@ -99,8 +99,12 @@ int UnInit (unsigned long fnc) {
 int EraseChip (void) {
 
   /* Add your Code */
-//	memset((unsigned char *)0, 0, 0x8000);
+// modify 04062024: 128k sram support	
+#ifdef SRAM_128K
+	for(uint32_t i = 0; i < 0x20000; i = i + 4)
+#else
 	for(uint32_t i = 0; i < 0x8000; i = i + 4)
+#endif	
 		writereg32(i, 0);
 	
   return (0);                                  // Finished without Errors
@@ -116,8 +120,12 @@ int EraseChip (void) {
 int EraseSector (unsigned long adr) {
 
   /* Add your Code */
-//	memset((unsigned char *)adr, 0, 1024);
+// modify 04062024: 128k sram support	
+#ifdef SRAM_128K
+	for(uint32_t i = 0; i < 0x20000; i = i + 4)
+#else
 	for(uint32_t i = 0; i < 0x8000; i = i + 4)
+#endif	
 		writereg32(i, 0);	
 	
   return (0);                                  // Finished without Errors

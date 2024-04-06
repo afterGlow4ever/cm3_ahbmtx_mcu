@@ -14,7 +14,7 @@ Info: Running Quartus Prime Analysis & Synthesis
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Sun Jan 28 11:27:12 2024
+    Info: Processing started: Sat Mar 16 17:15:06 2024
 Info: Command: quartus_map mcu_top
 Info (16303): Aggressive Performance optimization mode selected -- timing performance will be prioritized at the potential cost of increased logic area and compilation time
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -23,7 +23,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/m
     Info (12023): Found entity 1: gray_code_gen File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/gray_code_gen.v Line: 13
 Info (12021): Found 2 design units, including 2 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v
     Info (12023): Found entity 1: fifo_sync File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v Line: 23
-    Info (12023): Found entity 2: fifo_async File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v Line: 126
+    Info (12023): Found entity 2: fifo_async File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v Line: 131
 Info (12021): Found 6 design units, including 6 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v
     Info (12023): Found entity 1: sync_ff File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v Line: 26
     Info (12023): Found entity 2: sync_ff_en File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v Line: 49
@@ -68,12 +68,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/m
     Info (12023): Found entity 1: ahb_bus_matrix_arbiterM0 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM0.v Line: 35
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v
     Info (12023): Found entity 1: ahb_bus_matrix_oM1 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v Line: 35
-Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v
-    Info (12023): Found entity 1: ahb_bus_matrix_arbiterM5 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v Line: 35
+Warning (12019): Can't analyze file -- file ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM5.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v
     Info (12023): Found entity 1: ahb_bus_matrix_decoderS2 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS2.v Line: 36
-Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v
-    Info (12023): Found entity 1: ahb_bus_matrix_oM5 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v Line: 35
+Warning (12019): Can't analyze file -- file ../../../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v
     Info (12023): Found entity 1: ahb_bus_matrix_oM6 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v Line: 38
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v
@@ -117,7 +115,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/m
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v
     Info (12023): Found entity 1: apb1_top File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v Line: 15
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v
-    Info (12023): Found entity 1: sram_top File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 16
+    Info (12023): Found entity 1: sram_top File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 30
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v
     Info (12023): Found entity 1: uart_pe_rx File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_rx.v Line: 13
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_pe_core/uart_pe_tx.v
@@ -166,34 +164,57 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/m
     Info (12023): Found entity 1: pll_50m File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/pll_50m/pll_50m.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v
     Info (12023): Found entity 1: fpga_platform File: /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v Line: 16
-Warning (10236): Verilog HDL Implicit Net warning at mcu_top.v(53): created implicit net for "apb0_root_clk" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 53
-Warning (10236): Verilog HDL Implicit Net warning at mcu_top.v(56): created implicit net for "apb0_root_rstn" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 56
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v
+    Info (12023): Found entity 1: debug1_apb_cfg File: /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug1_apb_cfg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM8.v
+    Info (12023): Found entity 1: ahb_bus_matrix_oM8 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM8.v Line: 38
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM8.v
+    Info (12023): Found entity 1: ahb_bus_matrix_arbiterM8 File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM8.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb2_top.v
+    Info (12023): Found entity 1: apb2_top File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb2_top.v Line: 15
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_apb_cfg.v
+    Info (12023): Found entity 1: eth_apb_cfg File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_apb_cfg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_pe_core/eth_sma_pe_master.v
+    Info (12023): Found entity 1: eth_sma_pe_master File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_pe_core/eth_sma_pe_master.v Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_pe_core/eth_pe_core.v
+    Info (12023): Found entity 1: eth_pe_core File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_pe_core/eth_pe_core.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_regs_wrap.v
+    Info (12023): Found entity 1: eth_regs_wrap File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_regs_wrap.v Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_sma_data_buffer.v
+    Info (12023): Found entity 1: eth_sma_data_buffer File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_sma_data_buffer.v Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_top.v
+    Info (12023): Found entity 1: eth_top File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/eth/eth_top.v Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v
+    Info (12023): Found entity 1: ram_128k File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 39
+Warning (10236): Verilog HDL Implicit Net warning at mcu_top.v(59): created implicit net for "apb0_root_clk" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 59
+Warning (10236): Verilog HDL Implicit Net warning at mcu_top.v(63): created implicit net for "apb0_root_rstn" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 63
+Warning (10236): Verilog HDL Implicit Net warning at mcu_top.v(192): created implicit net for "hsi3" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 192
 Info (12127): Elaborating entity "mcu_top" for the top level hierarchy
-Info (12128): Elaborating entity "fp_domain" for hierarchy "fp_domain:u_fp_domain" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 152
-Warning (10230): Verilog HDL assignment warning at fp_domain.v(710): truncated value with size 250 to match size of target (240) File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 710
-Info (12128): Elaborating entity "ahb_bus_matrix" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 361
+Info (12128): Elaborating entity "fp_domain" for hierarchy "fp_domain:u_fp_domain" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 178
+Warning (10230): Verilog HDL assignment warning at fp_domain.v(813): truncated value with size 250 to match size of target (240) File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 813
+Info (12128): Elaborating entity "ahb_bus_matrix" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 406
 Warning (10034): Output port "SCANOUTHCLK" at ahb_bus_matrix.v(421) has no driver File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 421
-Info (12128): Elaborating entity "ahb_bus_matrix_i" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_i:u_ahb_bus_matrix_i_0" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 733
-Info (12128): Elaborating entity "ahb_bus_matrix_decoderS0" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS0:u_ahb_bus_matrix_decoders0" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 870
-Info (12128): Elaborating entity "ahb_bus_matrix_default_slave" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS0:u_ahb_bus_matrix_decoders0|ahb_bus_matrix_default_slave:u_ahb_bus_matrix_default_slave" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v Line: 212
-Info (12128): Elaborating entity "ahb_bus_matrix_decoderS1" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS1:u_ahb_bus_matrix_decoders1" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 917
-Info (12128): Elaborating entity "ahb_bus_matrix_decoderS2" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS2:u_ahb_bus_matrix_decoders2" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 956
-Info (12128): Elaborating entity "ahb_bus_matrix_oM0" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM0:u_ahb_bus_matrix_om0_0" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1017
+Info (12128): Elaborating entity "ahb_bus_matrix_i" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_i:u_ahb_bus_matrix_i_0" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 729
+Info (12128): Elaborating entity "ahb_bus_matrix_decoderS0" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS0:u_ahb_bus_matrix_decoders0" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 858
+Info (12128): Elaborating entity "ahb_bus_matrix_default_slave" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS0:u_ahb_bus_matrix_decoders0|ahb_bus_matrix_default_slave:u_ahb_bus_matrix_default_slave" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v Line: 188
+Info (12128): Elaborating entity "ahb_bus_matrix_decoderS1" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS1:u_ahb_bus_matrix_decoders1" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 897
+Info (12128): Elaborating entity "ahb_bus_matrix_decoderS2" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_decoderS2:u_ahb_bus_matrix_decoders2" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 944
+Info (12128): Elaborating entity "ahb_bus_matrix_oM0" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM0:u_ahb_bus_matrix_om0_0" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1005
 Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM0" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM0:u_ahb_bus_matrix_om0_0|ahb_bus_matrix_arbiterM0:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM0.v Line: 260
-Info (12128): Elaborating entity "ahb_bus_matrix_oM1" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM1:u_ahb_bus_matrix_om1_1" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1081
+Info (12128): Elaborating entity "ahb_bus_matrix_oM1" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM1:u_ahb_bus_matrix_om1_1" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1069
 Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM1" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM1:u_ahb_bus_matrix_om1_1|ahb_bus_matrix_arbiterM1:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM1.v Line: 260
-Info (12128): Elaborating entity "ahb_bus_matrix_oM5" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM5:u_ahb_bus_matrix_om5_2" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1145
-Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM5" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM5:u_ahb_bus_matrix_om5_2|ahb_bus_matrix_arbiterM5:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM5.v Line: 260
-Info (12128): Elaborating entity "ahb_bus_matrix_oM6" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM6:u_ahb_bus_matrix_om6_3" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1193
-Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM6" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM6:u_ahb_bus_matrix_om6_3|ahb_bus_matrix_arbiterM6:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v Line: 212
-Info (12128): Elaborating entity "ahb_bus_matrix_oM7" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM7:u_ahb_bus_matrix_om7_4" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1241
-Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM7" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM7:u_ahb_bus_matrix_om7_4|ahb_bus_matrix_arbiterM7:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v Line: 212
-Info (12128): Elaborating entity "cmsdk_ahb_to_apb" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb:u_apb0_sync" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 416
-Info (12128): Elaborating entity "cmsdk_ahb_to_apb_async" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 473
+Info (12128): Elaborating entity "ahb_bus_matrix_oM6" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM6:u_ahb_bus_matrix_om6_2" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1117
+Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM6" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM6:u_ahb_bus_matrix_om6_2|ahb_bus_matrix_arbiterM6:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM6.v Line: 212
+Info (12128): Elaborating entity "ahb_bus_matrix_oM7" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM7:u_ahb_bus_matrix_om7_3" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1165
+Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM7" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM7:u_ahb_bus_matrix_om7_3|ahb_bus_matrix_arbiterM7:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM7.v Line: 212
+Info (12128): Elaborating entity "ahb_bus_matrix_oM8" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM8:u_ahb_bus_matrix_om8_4" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix.v Line: 1213
+Info (12128): Elaborating entity "ahb_bus_matrix_arbiterM8" for hierarchy "fp_domain:u_fp_domain|ahb_bus_matrix:u_ahb_bus_matrix|ahb_bus_matrix_oM8:u_ahb_bus_matrix_om8_4|ahb_bus_matrix_arbiterM8:u_output_arb" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_oM8.v Line: 212
+Info (12128): Elaborating entity "cmsdk_ahb_to_apb" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb:u_apb0_sync" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 461
+Info (12128): Elaborating entity "cmsdk_ahb_to_apb_async" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 518
 Info (12128): Elaborating entity "cmsdk_ahb_to_apb_async_h" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_h:u_ahb_to_apb_async_h" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v Line: 121
 Info (12128): Elaborating entity "cmsdk_ahb_to_apb_async_syn" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_syn:u_ahb_to_apb_async_syn_1" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v Line: 134
 Info (12128): Elaborating entity "cmsdk_ahb_to_apb_async_p" for hierarchy "fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_p:u_ahb_to_apb_async_p" File: /home/master/project/cm3_ahbmtx_mcu/library/cmsdk/cmsdk_ahb_to_apb_async/verilog/cmsdk_ahb_to_apb_async.v Line: 180
-Info (12128): Elaborating entity "CORTEXM3INTEGRATIONDS" for hierarchy "fp_domain:u_fp_domain|CORTEXM3INTEGRATIONDS:u_CORTEXM3INTEGRATION" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 677
+Info (12128): Elaborating entity "CORTEXM3INTEGRATIONDS" for hierarchy "fp_domain:u_fp_domain|CORTEXM3INTEGRATIONDS:u_CORTEXM3INTEGRATION" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 779
 Info (12128): Elaborating entity "cortexm3ds_logic" for hierarchy "fp_domain:u_fp_domain|CORTEXM3INTEGRATIONDS:u_CORTEXM3INTEGRATION|cortexm3ds_logic:u_cortexm3ds_logic" File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/CORTEXM3INTEGRATIONDS.v Line: 350
 Warning (10036): Verilog HDL or VHDL warning at cortexm3ds_logic.v(6061): object "Aka7z6" assigned a value but never read File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 6061
 Warning (10036): Verilog HDL or VHDL warning at cortexm3ds_logic.v(6061): object "Xka7z6" assigned a value but never read File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 6061
@@ -255,91 +276,99 @@ Warning (10230): Verilog HDL assignment warning at cortexm3ds_logic.v(13240): tr
 Warning (10230): Verilog HDL assignment warning at cortexm3ds_logic.v(13244): truncated value with size 33 to match size of target (31) File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 13244
 Warning (10230): Verilog HDL assignment warning at cortexm3ds_logic.v(13253): truncated value with size 33 to match size of target (32) File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 13253
 Warning (10230): Verilog HDL assignment warning at cortexm3ds_logic.v(13255): truncated value with size 33 to match size of target (32) File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 13255
-Info (12128): Elaborating entity "sync_ff_2d" for hierarchy "fp_domain:u_fp_domain|sync_ff_2d:u_sync_ff_2d_inst0" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 708
+Info (12128): Elaborating entity "sync_ff_2d" for hierarchy "fp_domain:u_fp_domain|sync_ff_2d:u_sync_ff_2d_inst0" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 811
 Warning (10230): Verilog HDL assignment warning at sync_ff.v(98): truncated value with size 32 to match size of target (8) File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v Line: 98
 Warning (10230): Verilog HDL assignment warning at sync_ff.v(99): truncated value with size 32 to match size of target (8) File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v Line: 99
-Info (12128): Elaborating entity "sram_top" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 746
-Info (12128): Elaborating entity "cmsdk_ahb_to_sram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|cmsdk_ahb_to_sram:u_ahb_to_itcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 86
-Info (12128): Elaborating entity "ram_32k" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 104
-Info (12128): Elaborating entity "altsyncram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_32k/ram_32k.v Line: 94
-Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_32k/ram_32k.v Line: 94
-Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_32k/ram_32k.v Line: 94
+Info (12128): Elaborating entity "sram_top" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 849
+Info (12128): Elaborating entity "cmsdk_ahb_to_sram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|cmsdk_ahb_to_sram:u_ahb_to_itcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 102
+Info (12128): Elaborating entity "ram_128k" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 121
+Info (12128): Elaborating entity "altsyncram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
+Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
+Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
     Info (12134): Parameter "byte_size" = "8"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "bootloader.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
-    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=ram_32k"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=itcm"
     Info (12134): Parameter "lpm_type" = "altsyncram"
-    Info (12134): Parameter "numwords_a" = "8192"
+    Info (12134): Parameter "numwords_a" = "32768"
     Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
     Info (12134): Parameter "outdata_aclr_a" = "NONE"
     Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
     Info (12134): Parameter "power_up_uninitialized" = "FALSE"
-    Info (12134): Parameter "read_during_write_mode_port_a" = "OLD_DATA"
-    Info (12134): Parameter "widthad_a" = "13"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "15"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "4"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qem1.tdf
-    Info (12023): Found entity 1: altsyncram_qem1 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_qem1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_qem1" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_pic2.tdf
-    Info (12023): Found entity 1: altsyncram_pic2 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_pic2.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_pic2" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|altsyncram_pic2:altsyncram1" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_qem1.tdf Line: 38
-Critical Warning (127005): Memory depth (8192) in the design file differs from memory depth (2048) in the Memory Initialization File "/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/bootloader.mif" -- setting initial value for remaining addresses to 0 File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_32k/ram_32k.v Line: 94
-Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_qem1.tdf Line: 39
-Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_qem1.tdf Line: 39
-Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_qem1.tdf Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6hn1.tdf
+    Info (12023): Found entity 1: altsyncram_6hn1 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_6hn1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_6hn1" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_vsd2.tdf
+    Info (12023): Found entity 1: altsyncram_vsd2 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_vsd2.tdf Line: 33
+Info (12128): Elaborating entity "altsyncram_vsd2" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|altsyncram_vsd2:altsyncram1" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_6hn1.tdf Line: 38
+Critical Warning (127005): Memory depth (32768) in the design file differs from memory depth (2048) in the Memory Initialization File "/home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/bootloader.mif" -- setting initial value for remaining addresses to 0 File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_msa.tdf
+    Info (12023): Found entity 1: decode_msa File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/decode_msa.tdf Line: 22
+Info (12128): Elaborating entity "decode_msa" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|altsyncram_vsd2:altsyncram1|decode_msa:decode4" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_vsd2.tdf Line: 53
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_f8a.tdf
+    Info (12023): Found entity 1: decode_f8a File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/decode_f8a.tdf Line: 22
+Info (12128): Elaborating entity "decode_f8a" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|altsyncram_vsd2:altsyncram1|decode_f8a:rden_decode_b" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_vsd2.tdf Line: 56
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_job.tdf
+    Info (12023): Found entity 1: mux_job File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/mux_job.tdf Line: 22
+Info (12128): Elaborating entity "mux_job" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|altsyncram_vsd2:altsyncram1|mux_job:mux6" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_vsd2.tdf Line: 57
+Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_6hn1.tdf Line: 39
+Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_6hn1.tdf Line: 39
+Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_6hn1.tdf Line: 39
     Info (12134): Parameter "CVALUE" = "00000000000000000000000000000000"
     Info (12134): Parameter "IS_DATA_IN_RAM" = "1"
     Info (12134): Parameter "IS_READABLE" = "1"
-    Info (12134): Parameter "NODE_NAME" = "1918987615"
-    Info (12134): Parameter "NUMWORDS" = "8192"
+    Info (12134): Parameter "NODE_NAME" = "1769235309"
+    Info (12134): Parameter "NUMWORDS" = "32768"
     Info (12134): Parameter "SHIFT_COUNT_BITS" = "6"
     Info (12134): Parameter "WIDTH_WORD" = "32"
-    Info (12134): Parameter "WIDTHAD" = "13"
-Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 302
-Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
-Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_32k:u_itcm|altsyncram:altsyncram_component|altsyncram_qem1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 828
-Info (12128): Elaborating entity "cmsdk_ahb_to_sram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|cmsdk_ahb_to_sram:u_ahb_to_dtcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 178
-Info (12128): Elaborating entity "ram_8k" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 192
-Info (12128): Elaborating entity "altsyncram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_8k/ram_8k.v Line: 94
-Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_8k/ram_8k.v Line: 94
-Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_8k/ram_8k.v Line: 94
+    Info (12134): Parameter "WIDTHAD" = "15"
+Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 302
+Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
+Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_itcm|altsyncram:altsyncram_component|altsyncram_6hn1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 828
+Info (12128): Elaborating entity "ram_128k" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/sram/sram_top.v Line: 213
+Info (12128): Elaborating entity "altsyncram" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
+Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
+Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/ram_128k/ram_128k.v Line: 95
     Info (12134): Parameter "byte_size" = "8"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = ""
     Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
-    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=ram_8k"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=dtcm"
     Info (12134): Parameter "lpm_type" = "altsyncram"
-    Info (12134): Parameter "numwords_a" = "2048"
+    Info (12134): Parameter "numwords_a" = "32768"
     Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
     Info (12134): Parameter "outdata_aclr_a" = "NONE"
     Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
     Info (12134): Parameter "power_up_uninitialized" = "FALSE"
-    Info (12134): Parameter "read_during_write_mode_port_a" = "OLD_DATA"
-    Info (12134): Parameter "widthad_a" = "11"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "15"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "4"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_stj1.tdf
-    Info (12023): Found entity 1: altsyncram_stj1 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_stj1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_stj1" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component|altsyncram_stj1:auto_generated" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_03a2.tdf
-    Info (12023): Found entity 1: altsyncram_03a2 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_03a2.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_03a2" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component|altsyncram_stj1:auto_generated|altsyncram_03a2:altsyncram1" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_stj1.tdf Line: 38
-Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component|altsyncram_stj1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_stj1.tdf Line: 39
-Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component|altsyncram_stj1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_stj1.tdf Line: 39
-Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_8k:u_dtcm|altsyncram:altsyncram_component|altsyncram_stj1:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_stj1.tdf Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_o1l1.tdf
+    Info (12023): Found entity 1: altsyncram_o1l1 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_o1l1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_o1l1" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component|altsyncram_o1l1:auto_generated" File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_mdb2.tdf
+    Info (12023): Found entity 1: altsyncram_mdb2 File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_mdb2.tdf Line: 33
+Info (12128): Elaborating entity "altsyncram_mdb2" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component|altsyncram_o1l1:auto_generated|altsyncram_mdb2:altsyncram1" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_o1l1.tdf Line: 38
+Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component|altsyncram_o1l1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_o1l1.tdf Line: 39
+Info (12130): Elaborated megafunction instantiation "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component|altsyncram_o1l1:auto_generated|sld_mod_ram_rom:mgl_prim2" File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_o1l1.tdf Line: 39
+Info (12133): Instantiated megafunction "fp_domain:u_fp_domain|sram_top:u_sram_top|ram_128k:u_dtcm|altsyncram:altsyncram_component|altsyncram_o1l1:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/altsyncram_o1l1.tdf Line: 39
     Info (12134): Parameter "CVALUE" = "00000000000000000000000000000000"
     Info (12134): Parameter "IS_DATA_IN_RAM" = "1"
     Info (12134): Parameter "IS_READABLE" = "1"
-    Info (12134): Parameter "NODE_NAME" = "1918987615"
-    Info (12134): Parameter "NUMWORDS" = "2048"
+    Info (12134): Parameter "NODE_NAME" = "1685349229"
+    Info (12134): Parameter "NUMWORDS" = "32768"
     Info (12134): Parameter "SHIFT_COUNT_BITS" = "6"
     Info (12134): Parameter "WIDTH_WORD" = "32"
-    Info (12134): Parameter "WIDTHAD" = "11"
-Info (12128): Elaborating entity "apb0_top" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 786
+    Info (12134): Parameter "WIDTHAD" = "15"
+Info (12128): Elaborating entity "apb0_top" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 889
 Info (12128): Elaborating entity "cmsdk_apb_slave_mux" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|cmsdk_apb_slave_mux:u_apb0_slave_mux" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v Line: 184
 Info (12128): Elaborating entity "debug0_apb_cfg" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|debug0_apb_cfg:u_debug_reg" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb0_top.v Line: 208
 Warning (10036): Verilog HDL or VHDL warning at debug0_apb_cfg.v(44): object "dreg0_rd" assigned a value but never read File: /home/master/project/cm3_ahbmtx_mcu/library/gen_apb/debug0_apb_cfg.v Line: 44
@@ -388,7 +417,7 @@ Info (12128): Elaborating entity "negedge_detect" for hierarchy "fp_domain:u_fp_
 Info (12128): Elaborating entity "posedge_detect" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|posedge_detect:u_int_detect" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_top.v Line: 301
 Info (12128): Elaborating entity "interrupt_gen" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|interrupt_gen:u_interrupt_gen" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/uart/uart_top.v Line: 317
 Info (12128): Elaborating entity "interrupt_bit_gen" for hierarchy "fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|interrupt_gen:u_interrupt_gen|interrupt_bit_gen:INT_GEN[0].u_int_bit_gen" File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/interrupt_gen.v Line: 46
-Info (12128): Elaborating entity "apb1_top" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 816
+Info (12128): Elaborating entity "apb1_top" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 919
 Info (12128): Elaborating entity "cmsdk_apb_slave_mux" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top|cmsdk_apb_slave_mux:u_apb1_slave_mux" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v Line: 152
 Info (12128): Elaborating entity "bastim_top" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top|bastim_top:u_bastim" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/apb1_top.v Line: 180
 Info (12128): Elaborating entity "bastim_regs_wrap" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top|bastim_top:u_bastim|bastim_regs_wrap:u_bastim_regs_wrap" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_top.v Line: 77
@@ -426,7 +455,8 @@ Warning (10036): Verilog HDL or VHDL warning at bastim_ch.v(86): object "clkdiv_
 Warning (10036): Verilog HDL or VHDL warning at bastim_ch.v(88): object "channel_flag_start" assigned a value but never read File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_ch_core/bastim_ch.v Line: 88
 Info (12128): Elaborating entity "posedge_detect" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top|bastim_top:u_bastim|posedge_detect:u_int_detect" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_top.v Line: 159
 Info (12128): Elaborating entity "interrupt_gen" for hierarchy "fp_domain:u_fp_domain|apb1_top:u_apb1_async_top|bastim_top:u_bastim|interrupt_gen:u_interrupt_gen" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/bastim/bastim_top.v Line: 175
-Info (12128): Elaborating entity "fpga_platform" for hierarchy "fpga_platform:u_fpga_platform" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 171
+Info (12128): Elaborating entity "apb2_top" for hierarchy "fp_domain:u_fp_domain|apb2_top:u_apb2_async_top" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/domain/fp_domain.v Line: 949
+Info (12128): Elaborating entity "fpga_platform" for hierarchy "fpga_platform:u_fpga_platform" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 197
 Info (12128): Elaborating entity "pll_50m" for hierarchy "fpga_platform:u_fpga_platform|pll_50m:u_pll0" File: /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v Line: 91
 Info (12128): Elaborating entity "altpll" for hierarchy "fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/pll_50m/pll_50m.v Line: 111
 Info (12130): Elaborated megafunction instantiation "fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component" File: /home/master/project/cm3_ahbmtx_mcu/library/altera_ip/pll_50m/pll_50m.v Line: 111
@@ -500,7 +530,7 @@ Info (12128): Elaborating entity "pll_50m_altpll" for hierarchy "fpga_platform:u
 Info (12128): Elaborating entity "clk_even_division" for hierarchy "fpga_platform:u_fpga_platform|clk_even_division:u_lsi" File: /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v Line: 119
 Warning (10230): Verilog HDL assignment warning at clock_gen.v(70): truncated value with size 32 to match size of target (4) File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v Line: 70
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.01.28.11:27:27 Progress: Loading sld6ed12f1a/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2024.03.16.17:15:22 Progress: Loading sld6ed12f1a/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -557,41 +587,52 @@ Info (13000): Registers with preset signals will power-up high File: /home/maste
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "TXD1" is stuck at GND File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 28
+    Warning (13410): Pin "MDC" is stuck at GND File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 29
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (17049): 24 registers lost all their fanouts during netlist optimizations.
-Warning (15899): PLL "fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|pll1" has parameters clk1_multiply_by and clk1_divide_by specified but port CLK[1] is not connected File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 50
+Info (17049): 29 registers lost all their fanouts during netlist optimizations.
 Info (128000): Starting physical synthesis optimizations for speed
 Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
-Info (332111): Found 4 clocks
+Info (332111): Found 6 clocks
     Info (332111):   Period   Clock Name
     Info (332111): ======== ============
     Info (332111):   20.000          hse
     Info (332111):  200.000     jtag_tck
+    Info (332111):  100.000          lsi
     Info (332111):   25.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]
+    Info (332111):   20.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]
     Info (332111):   12.500 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]
 Info (128002): Starting physical synthesis algorithm register retiming
 Info (128003): Physical synthesis algorithm register retiming complete: estimated slack improvement of 0 ps
 Info (128002): Starting physical synthesis algorithm combinational resynthesis using boolean division
 Info (128003): Physical synthesis algorithm combinational resynthesis using boolean division complete: estimated slack improvement of 0 ps
-Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:07
+Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:08
+Info (13000): Registers with preset signals will power-up high File: /export/SoftWare/Altera/QuartusPrimeStd_2018/quartus/libraries/megafunctions/sld_jtag_hub.vhd Line: 386
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
+Info (128000): Starting physical synthesis optimizations for speed
+Info (128002): Starting physical synthesis algorithm register retiming
+Info (128003): Physical synthesis algorithm register retiming complete: estimated slack improvement of 0 ps
+Info (128002): Starting physical synthesis algorithm combinational resynthesis using boolean division
+Info (128003): Physical synthesis algorithm combinational resynthesis using boolean division complete: estimated slack improvement of 0 ps
+Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:00
 Info (144001): Generated suppressed messages file /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/output_files/mcu_top.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "RXD1" File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 27
-Info (21057): Implemented 28584 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 29064 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
-    Info (21059): Implemented 4 output pins
-    Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 28497 logic cells
-    Info (21064): Implemented 64 RAM segments
+    Info (21059): Implemented 5 output pins
+    Info (21060): Implemented 2 bidirectional pins
+    Info (21061): Implemented 28783 logic cells
+    Info (21064): Implemented 256 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 6 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 145 warnings
-    Info: Peak virtual memory: 1496 megabytes
-    Info: Processing ended: Sun Jan 28 11:28:56 2024
-    Info: Elapsed time: 00:01:44
-    Info: Total CPU time (on all processors): 00:02:06
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 148 warnings
+    Info: Peak virtual memory: 1524 megabytes
+    Info: Processing ended: Sat Mar 16 17:16:55 2024
+    Info: Elapsed time: 00:01:49
+    Info: Total CPU time (on all processors): 00:02:07
 Info: *******************************************************************
 Info: Running Quartus Prime Fitter
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
@@ -608,7 +649,7 @@ Info: Running Quartus Prime Fitter
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Sun Jan 28 11:28:56 2024
+    Info: Processing started: Sat Mar 16 17:16:55 2024
 Info: Command: quartus_fit mcu_top
 Info: qfit2_default_script.tcl version: #1
 Info: Project  = mcu_top
@@ -620,6 +661,7 @@ Info (21077): Low junction temperature is -40 degrees C
 Info (21077): High junction temperature is 100 degrees C
 Info (15535): Implemented PLL "fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|pll1" as Cyclone IV E PLL type File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 50
     Info (15099): Implementing clock multiplication of 4, clock division of 5, and phase shift of 0 degrees (0 ps) for fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[0] port File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 50
+    Info (15099): Implementing clock multiplication of 1, clock division of 1, and phase shift of 0 degrees (0 ps) for fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[1] port File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 50
     Info (15099): Implementing clock multiplication of 8, clock division of 5, and phase shift of 0 degrees (0 ps) for fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[2] port File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 50
 Info (171004): Fitter is performing a Standard Fit compilation using maximum Fitter effort to optimize design performance
 Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
@@ -646,6 +688,7 @@ Info (169124): Fitter converted 5 user pins into dedicated programming pins
     Info (169125): Pin ~ALTERA_nCEO~ is reserved at location K22
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
 Info (176045): Design uses memory blocks. Violating setup or hold times of memory block address registers for either read or write operations could cause memory contents to be corrupted. Make sure that all memory block address registers meet the setup and hold time requirements.
+Critical Warning (169085): No exact pin location assignment(s) for 2 pins of 13 total pins. For the list of pins please refer to the I/O Assignment Warnings table in the fitter report.
 Info (332164): Evaluating HDL-embedded SDC commands
     Info (332165): Entity sld_hub
         Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 10MHz   
@@ -653,32 +696,42 @@ Info (332164): Evaluating HDL-embedded SDC commands
 Info (332104): Reading SDC File: 'fpga_ep4_mcu_full_timing_constrain.sdc'
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 5 -multiply_by 4 -duty_cycle 50.00 -name {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]} {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]}
+    Info (332110): create_generated_clock -source {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|inclk[0]} -duty_cycle 50.00 -name {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]} {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]}
     Info (332110): create_generated_clock -source {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 5 -multiply_by 8 -duty_cycle 50.00 -name {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]} {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]}
-Warning (332060): Node: fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_p:u_ahb_to_apb_async_p|s_rdata[21] is being clocked by fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
     Critical Warning (332169): From hse (Rise) to hse (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Fall) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) (setup and hold)
 Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
-Info (332111): Found 5 clocks
+Info (332111): Found 7 clocks
     Info (332111):   Period   Clock Name
     Info (332111): ======== ============
     Info (332111):  100.000 altera_reserved_tck
     Info (332111):   20.000          hse
     Info (332111):  200.000     jtag_tck
+    Info (332111):  100.000          lsi
     Info (332111):   25.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]
+    Info (332111):   20.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]
     Info (332111):   12.500 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]
 Info (176353): Automatically promoted node CLK~input (placed in PIN T2 (CLK2, DIFFCLK_1p)) File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 21
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G1
 Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[0] (placed in counter C0 of PLL_1) File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 92
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G3
-Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[2] (placed in counter C1 of PLL_1) File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 92
+Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[1] (placed in counter C1 of PLL_1) File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 92
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G4
+Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|pll_50m:u_pll0|altpll:altpll_component|pll_50m_altpll:auto_generated|wire_pll1_clk[2] (placed in counter C2 of PLL_1) File: /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/db/pll_50m_altpll.v Line: 92
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G2
 Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1  File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/clock_gen.v Line: 49
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
@@ -687,7 +740,7 @@ Info (176353): Automatically promoted node altera_internal_jtag~TCKUTAP
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176353): Automatically promoted node fp_domain:u_fp_domain|CORTEXM3INTEGRATIONDS:u_CORTEXM3INTEGRATION|cortexm3ds_logic:u_cortexm3ds_logic|H8bdt6~0  File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 174
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
-Info (176353): Automatically promoted node sys_root_rstn  File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 48
+Info (176353): Automatically promoted node sys_root_rstn  File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 53
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176353): Automatically promoted node fp_domain:u_fp_domain|CORTEXM3INTEGRATIONDS:u_CORTEXM3INTEGRATION|cortexm3ds_logic:u_cortexm3ds_logic|Ik2nz6  File: /home/master/project/cm3_ahbmtx_mcu/library/cm3/cortexm3ds_logic.v Line: 6524
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
@@ -697,14 +750,8 @@ Info (176353): Automatically promoted node fp_domain:u_fp_domain|CORTEXM3INTEGRA
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176353): Automatically promoted node fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|uart_regs_wrap:u_uart_regs_wrap|sync_ff:u_sync_ff_inst0|Y[0]  File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v Line: 44
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
-    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|uart_data_buffer:u_uart_data_buffer|fifo_sync:u_tx_fifo|always0~0
-        Info (176357): Destination node fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|uart_data_buffer:u_uart_data_buffer|fifo_sync:u_tx_fifo|rd_empty~0 File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v Line: 34
 Info (176353): Automatically promoted node fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|uart_regs_wrap:u_uart_regs_wrap|sync_ff:u_sync_ff_inst1|Y[0]  File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/sync_ff.v Line: 44
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
-    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|uart_data_buffer:u_uart_data_buffer|fifo_sync:u_rx_fifo|rd_empty~0 File: /home/master/project/cm3_ahbmtx_mcu/library/rtl_logic/fifo_gen.v Line: 34
-        Info (176357): Destination node fp_domain:u_fp_domain|apb0_top:u_apb0_sync_top|uart_top:u_uart0|uart_data_buffer:u_uart_data_buffer|fifo_sync:u_rx_fifo|always0~0
 Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|pll_locked_cnt~2  File: /home/master/project/cm3_ahbmtx_mcu/user/fpga_verilog/fpga_platform.v Line: 34
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
@@ -716,23 +763,36 @@ Info (176353): Automatically promoted node fpga_platform:u_fpga_platform|pll_rst
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
+Info (176214): Statistics of I/O pins that need to be placed that use the same VCCIO and VREF, before I/O pin placement
+    Info (176211): Number of I/O pins in group: 2 (unused VREF, 2.5V VCCIO, 0 input, 1 output, 1 bidirectional)
+        Info (176212): I/O standards used: 2.5 V.
+Info (176215): I/O bank details before I/O pin placement
+    Info (176214): Statistics of I/O banks
+        Info (176213): I/O bank number 1 does not use VREF pins and has undetermined VCCIO pins. 8 total pin(s) used --  29 pins available
+        Info (176213): I/O bank number 2 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  40 pins available
+        Info (176213): I/O bank number 3 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  42 pins available
+        Info (176213): I/O bank number 4 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  43 pins available
+        Info (176213): I/O bank number 5 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  41 pins available
+        Info (176213): I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 2 total pin(s) used --  37 pins available
+        Info (176213): I/O bank number 7 does not use VREF pins and has 3.3V VCCIO pins. 7 total pin(s) used --  36 pins available
+        Info (176213): I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 2 total pin(s) used --  41 pins available
 Info (128000): Starting physical synthesis optimizations for speed
 Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:04
 Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "GPIOA[2]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "GPIOA[3]" is assigned to location or region, but does not exist in design
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:17
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:20
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:04
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:05
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:56
+Info (170192): Fitter placement operations ending: elapsed time is 00:01:12
 Info (170193): Fitter routing operations beginning
-Info (170195): Router estimated average interconnect usage is 20% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 55% of the available device resources in the region that extends from location X33_Y10 to location X43_Y20
-Info (170194): Fitter routing operations ending: elapsed time is 00:01:39
-Info (11888): Total time spent on timing analysis during the Fitter is 25.25 seconds.
+Info (170195): Router estimated average interconnect usage is 26% of the available device resources
+    Info (170196): Router estimated peak interconnect usage is 61% of the available device resources in the region that extends from location X55_Y21 to location X65_Y31
+Info (170194): Fitter routing operations ending: elapsed time is 00:02:15
+Info (11888): Total time spent on timing analysis during the Fitter is 31.70 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -741,20 +801,22 @@ Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:09
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169177): 9 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing Cyclone IV E Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
     Info (169178): Pin RXD1 uses I/O standard 3.3-V LVTTL at B13 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 27
-    Info (169178): Pin TDO uses I/O standard 3.3-V LVTTL at E14 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 36
-    Info (169178): Pin TMS uses I/O standard 3.3-V LVTTL at E11 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 35
+    Info (169178): Pin TDO uses I/O standard 3.3-V LVTTL at E14 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 38
+    Info (169178): Pin TMS uses I/O standard 3.3-V LVTTL at E11 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 37
     Info (169178): Pin RSTN uses I/O standard 3.3-V LVTTL at K17 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 22
     Info (169178): Pin CLK uses I/O standard 3.3-V LVTTL at T2 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 21
-    Info (169178): Pin TCK uses I/O standard 3.3-V LVTTL at C10 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 34
-    Info (169178): Pin TRST uses I/O standard 3.3-V LVTTL at E13 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 38
-    Info (169178): Pin TDI uses I/O standard 3.3-V LVTTL at D8 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 33
-    Info (169178): Pin RXD uses I/O standard 3.3-V LVTTL at B16 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 31
+    Info (169178): Pin TCK uses I/O standard 3.3-V LVTTL at C10 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 36
+    Info (169178): Pin TRST uses I/O standard 3.3-V LVTTL at E13 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 40
+    Info (169178): Pin TDI uses I/O standard 3.3-V LVTTL at D8 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 35
+    Info (169178): Pin RXD uses I/O standard 3.3-V LVTTL at B16 File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 33
+Warning (169064): Following 1 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
+    Info (169065): Pin MDIO has a permanently enabled output enable File: /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v Line: 30
 Info (144001): Generated suppressed messages file /home/master/project/cm3_ahbmtx_mcu/project/fpga_syn/fpga_ep4_mcu_full_quartus/output_files/mcu_top.fit.smsg
-Info: Quartus Prime Fitter was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 2474 megabytes
-    Info: Processing ended: Sun Jan 28 11:32:15 2024
-    Info: Elapsed time: 00:03:19
-    Info: Total CPU time (on all processors): 00:08:01
+Info: Quartus Prime Fitter was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 2498 megabytes
+    Info: Processing ended: Sat Mar 16 17:21:11 2024
+    Info: Elapsed time: 00:04:16
+    Info: Total CPU time (on all processors): 00:09:53
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
@@ -771,14 +833,14 @@ Info: Running Quartus Prime Assembler
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Sun Jan 28 11:32:16 2024
+    Info: Processing started: Sat Mar 16 17:21:12 2024
 Info: Command: quartus_asm mcu_top
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 992 megabytes
-    Info: Processing ended: Sun Jan 28 11:32:18 2024
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 1008 megabytes
+    Info: Processing ended: Sat Mar 16 17:21:15 2024
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
@@ -796,7 +858,7 @@ Info: Running Quartus Prime Timing Analyzer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Sun Jan 28 11:32:19 2024
+    Info: Processing started: Sat Mar 16 17:21:15 2024
 Info: Command: quartus_sta mcu_top
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -809,173 +871,207 @@ Info (332164): Evaluating HDL-embedded SDC commands
 Info (332104): Reading SDC File: 'fpga_ep4_mcu_full_timing_constrain.sdc'
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 5 -multiply_by 4 -duty_cycle 50.00 -name {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]} {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0]}
+    Info (332110): create_generated_clock -source {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|inclk[0]} -duty_cycle 50.00 -name {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]} {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1]}
     Info (332110): create_generated_clock -source {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 5 -multiply_by 8 -duty_cycle 50.00 -name {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]} {u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2]}
-Warning (332060): Node: fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_p:u_ahb_to_apb_async_p|s_rdata[28] is being clocked by fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
     Critical Warning (332169): From hse (Rise) to hse (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Fall) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) (setup and hold)
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 100C Model
-Info (332146): Worst-case setup slack is 1.256
+Info (332146): Worst-case setup slack is 1.115
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.256               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    10.893               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-    Info (332119):    18.145               0.000 hse 
-    Info (332119):    44.723               0.000 altera_reserved_tck 
-    Info (332119):    96.765               0.000 jtag_tck 
-Info (332146): Worst-case hold slack is 0.323
+    Info (332119):     1.115               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     2.624               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):    10.976               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):    18.006               0.000 hse 
+    Info (332119):    43.080               0.000 altera_reserved_tck 
+    Info (332119):    83.311               0.000 lsi 
+    Info (332119):    96.636               0.000 jtag_tck 
+Info (332146): Worst-case hold slack is 0.392
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.323               0.000 jtag_tck 
     Info (332119):     0.392               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
     Info (332119):     0.398               0.000 altera_reserved_tck 
     Info (332119):     0.412               0.000 hse 
     Info (332119):     0.412               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-Info (332146): Worst-case recovery slack is 18.506
+    Info (332119):     0.413               0.000 jtag_tck 
+    Info (332119):     0.413               0.000 lsi 
+    Info (332119):     0.413               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+Info (332146): Worst-case recovery slack is 16.263
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    18.506               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    96.529               0.000 jtag_tck 
-    Info (332119):    96.940               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 1.226
+    Info (332119):    16.263               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    96.469               0.000 jtag_tck 
+    Info (332119):    96.867               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 1.230
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.226               0.000 altera_reserved_tck 
-    Info (332119):     2.473               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     2.935               0.000 jtag_tck 
-Info (332146): Worst-case minimum pulse width slack is 5.962
+    Info (332119):     1.230               0.000 altera_reserved_tck 
+    Info (332119):     1.886               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     2.921               0.000 jtag_tck 
+Info (332146): Worst-case minimum pulse width slack is 5.964
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     5.962               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-    Info (332119):     9.680               0.000 hse 
-    Info (332119):    12.204               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    49.576               0.000 altera_reserved_tck 
-    Info (332119):    99.599               0.000 jtag_tck 
-Info (332114): Report Metastability: Found 17 synchronizer chains.
+    Info (332119):     5.964               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):     9.683               0.000 hse 
+    Info (332119):     9.711               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):    12.203               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    49.568               0.000 altera_reserved_tck 
+    Info (332119):    49.775               0.000 lsi 
+    Info (332119):    99.641               0.000 jtag_tck 
+Info (332114): Report Metastability: Found 18 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 17
+    Info (332114): Number of Synchronizer Chains Found: 18
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 23.970 ns
+    Info (332114): Worst Case Available Settling Time: 23.969 ns
 Info: Analyzing Slow 1200mV -40C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Warning (332060): Node: fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_p:u_ahb_to_apb_async_p|s_rdata[28] is being clocked by fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
     Critical Warning (332169): From hse (Rise) to hse (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Fall) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) (setup and hold)
-Info (332146): Worst-case setup slack is 3.787
+Info (332146): Worst-case setup slack is 2.549
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     3.787               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    11.117               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-    Info (332119):    18.392               0.000 hse 
-    Info (332119):    45.423               0.000 altera_reserved_tck 
-    Info (332119):    97.096               0.000 jtag_tck 
-Info (332146): Worst-case hold slack is 0.279
+    Info (332119):     2.549               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     2.914               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):    11.176               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):    18.246               0.000 hse 
+    Info (332119):    43.796               0.000 altera_reserved_tck 
+    Info (332119):    85.004               0.000 lsi 
+    Info (332119):    96.910               0.000 jtag_tck 
+Info (332146): Worst-case hold slack is 0.323
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.279               0.000 jtag_tck 
     Info (332119):     0.323               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.327               0.000 altera_reserved_tck 
+    Info (332119):     0.328               0.000 altera_reserved_tck 
+    Info (332119):     0.340               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
     Info (332119):     0.340               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
     Info (332119):     0.341               0.000 hse 
-Info (332146): Worst-case recovery slack is 19.298
+    Info (332119):     0.342               0.000 lsi 
+    Info (332119):     0.366               0.000 jtag_tck 
+Info (332146): Worst-case recovery slack is 17.423
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    19.298               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    96.927               0.000 jtag_tck 
-    Info (332119):    97.313               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 1.080
+    Info (332119):    17.423               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    96.832               0.000 jtag_tck 
+    Info (332119):    97.259               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 1.081
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.080               0.000 altera_reserved_tck 
-    Info (332119):     2.095               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     2.460               0.000 jtag_tck 
-Info (332146): Worst-case minimum pulse width slack is 5.965
+    Info (332119):     1.081               0.000 altera_reserved_tck 
+    Info (332119):     1.632               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     2.466               0.000 jtag_tck 
+Info (332146): Worst-case minimum pulse width slack is 5.964
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     5.965               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-    Info (332119):     9.691               0.000 hse 
-    Info (332119):    12.179               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    49.449               0.000 altera_reserved_tck 
-    Info (332119):    99.733               0.000 jtag_tck 
-Info (332114): Report Metastability: Found 17 synchronizer chains.
+    Info (332119):     5.964               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):     9.690               0.000 hse 
+    Info (332119):     9.714               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):    12.178               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    49.436               0.000 altera_reserved_tck 
+    Info (332119):    49.764               0.000 lsi 
+    Info (332119):    99.744               0.000 jtag_tck 
+Info (332114): Report Metastability: Found 18 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 17
+    Info (332114): Number of Synchronizer Chains Found: 18
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
     Info (332114): Worst Case Available Settling Time: 24.097 ns
 Info: Analyzing Fast 1200mV -40C Model
-Warning (332060): Node: fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register fp_domain:u_fp_domain|cmsdk_ahb_to_apb_async:u_apb1_async|cmsdk_ahb_to_apb_async_p:u_ahb_to_apb_async_p|s_rdata[28] is being clocked by fpga_platform:u_fpga_platform|clk_even_division:u_lsi|outclk1
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
     Critical Warning (332169): From hse (Rise) to hse (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Rise) (setup and hold)
     Critical Warning (332169): From jtag_tck (Rise) to jtag_tck (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Rise) (setup and hold)
+    Critical Warning (332169): From lsi (Rise) to lsi (Fall) (setup and hold)
+    Critical Warning (332169): From lsi (Fall) to lsi (Fall) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
+    Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] (Rise) (setup and hold)
     Critical Warning (332169): From u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) to u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] (Rise) (setup and hold)
-Info (332146): Worst-case setup slack is 11.770
+Info (332146): Worst-case setup slack is 3.643
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    11.770               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-    Info (332119):    13.733               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    19.171               0.000 hse 
-    Info (332119):    47.648               0.000 altera_reserved_tck 
-    Info (332119):    99.074               0.000 jtag_tck 
-Info (332146): Worst-case hold slack is 0.142
+    Info (332119):     3.643               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     3.834               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):    11.809               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):    19.086               0.000 hse 
+    Info (332119):    46.806               0.000 altera_reserved_tck 
+    Info (332119):    91.742               0.000 lsi 
+    Info (332119):    98.958               0.000 jtag_tck 
+Info (332146): Worst-case hold slack is 0.168
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.142               0.000 jtag_tck 
     Info (332119):     0.168               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.172               0.000 altera_reserved_tck 
+    Info (332119):     0.171               0.000 altera_reserved_tck 
+    Info (332119):     0.176               0.000 lsi 
     Info (332119):     0.177               0.000 hse 
-    Info (332119):     0.177               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-Info (332146): Worst-case recovery slack is 21.707
+    Info (332119):     0.178               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):     0.179               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):     0.181               0.000 jtag_tck 
+Info (332146): Worst-case recovery slack is 20.715
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    21.707               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    98.426               0.000 altera_reserved_tck 
-    Info (332119):    98.822               0.000 jtag_tck 
-Info (332146): Worst-case removal slack is 0.563
+    Info (332119):    20.715               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    98.450               0.000 altera_reserved_tck 
+    Info (332119):    98.830               0.000 jtag_tck 
+Info (332146): Worst-case removal slack is 0.554
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.563               0.000 altera_reserved_tck 
-    Info (332119):     1.204               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     1.412               0.000 jtag_tck 
-Info (332146): Worst-case minimum pulse width slack is 6.032
+    Info (332119):     0.554               0.000 altera_reserved_tck 
+    Info (332119):     0.866               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     1.393               0.000 jtag_tck 
+Info (332146): Worst-case minimum pulse width slack is 6.030
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     6.032               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
-    Info (332119):     9.263               0.000 hse 
-    Info (332119):    12.242               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    49.460               0.000 altera_reserved_tck 
-    Info (332119):    99.140               0.000 jtag_tck 
-Info (332114): Report Metastability: Found 17 synchronizer chains.
+    Info (332119):     6.030               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[2] 
+    Info (332119):     9.262               0.000 hse 
+    Info (332119):     9.781               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[1] 
+    Info (332119):    12.241               0.000 u_fpga_platform|u_pll0|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    49.459               0.000 altera_reserved_tck 
+    Info (332119):    49.739               0.000 lsi 
+    Info (332119):    99.145               0.000 jtag_tck 
+Info (332114): Report Metastability: Found 18 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 17
+    Info (332114): Number of Synchronizer Chains Found: 18
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 24.548 ns
+    Info (332114): Worst Case Available Settling Time: 24.547 ns
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 27 warnings
-    Info: Peak virtual memory: 1340 megabytes
-    Info: Processing ended: Sun Jan 28 11:32:27 2024
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:14
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 45 warnings
+    Info: Peak virtual memory: 1379 megabytes
+    Info: Processing ended: Sat Mar 16 17:21:26 2024
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:20

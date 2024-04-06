@@ -27,10 +27,20 @@
 
 struct FlashDevice const FlashDevice  =  {
    FLASH_DRV_VERS,             // Driver Version, do not modify!
-   "CM3_AHBMTX 32kB Memory",   // Device Name 
+// modify 04062024: 128k sram support
+#ifdef SRAM_128K
+   "CM3_AHBMTX 128kB",   			 // Device Name 
+#else
+   "CM3_AHBMTX 32kB",   			 // Device Name 
+#endif
    ONCHIP,                     // Device Type
    0x00000000,                 // Device Start Address
+// modify 04062024: 128k sram support	
+#ifdef SRAM_128K	
+   0x00020000,                 // Device Size in Bytes (128kB)	
+#else	
    0x00008000,                 // Device Size in Bytes (32kB)
+#endif	
    1024,                       // Programming Page Size
    0,                          // Reserved, must be 0
    0xFF,                       // Initial Content of Erased Memory
@@ -38,6 +48,11 @@ struct FlashDevice const FlashDevice  =  {
    6000,                       // Erase Sector Timeout 6000 mSec
 
 // Specify Size and Address of Sectors
+// modify 04062024: 128k sram support
+#ifdef SRAM_128K		
+   0x00020000, 0x00000000,         // Sector Size  128kB (1 Sectors)
+#else	
    0x00008000, 0x00000000,         // Sector Size  32kB (1 Sectors)
+#endif
    SECTOR_END
 };

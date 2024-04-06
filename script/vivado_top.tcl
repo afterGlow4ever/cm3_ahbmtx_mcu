@@ -23,25 +23,30 @@ synth_design -top $PROJECT_NAME
 write_checkpoint -force ./checkpoint/synthesis
 
 report_utilization -file ./checkpoint/synthesis_util.rpt
+get_clk_fanout ./output/synthesis_clk_fanout.rpt
 report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/synthesis_hier.rpt
 report_clocks -file ./checkpoint/synthesis_clk.rpt
 
 opt_design
 write_checkpoint -force ./checkpoint/opt
+get_clk_fanout ./output/opt_clk_fanout.rpt
 
 place_design
 write_checkpoint -force ./checkpoint/place
 phys_opt_design
+phys_opt_design - aggressive_hold_fix
 write_checkpoint -force ./checkpoint/phy_opt
+get_clk_fanout ./output/place_clk_fanout.rpt
 
 route_design
 write_checkpoint -force ./checkpoint/route
 
+report_max_clock_skew 300 ./checkpoint/implementation_clk_skew.rpt
 report_timing_summary -file ./checkpoint/sta_summary.rpt
 report_timing -sort_by group -max_paths 1000 -path_type summary -file ./checkpoint/sta.rpt
 report_utilization -file ./checkpoint/implementation_util.rpt
 report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/implementation_hier.rpt
-#report_clock_utilization -quiet -write_xdc /checkpoint/implementation_clk.xdc
+report_clock_utilization -quiet -write_xdc /checkpoint/implementation_clk.xdc
 report_clocks -file ./checkpoint/implementation_clk.rpt
 report_drc -file ./checkpoint/implementation_drc.rpt
 write_xdc -no_fixed_only -force ./checkpoint/implementation_clk.xdc

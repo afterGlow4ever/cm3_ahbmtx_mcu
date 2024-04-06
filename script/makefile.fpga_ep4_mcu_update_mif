@@ -1,0 +1,81 @@
+FPGA_TARGET := fpga_ep4_mcu_full_quartus
+TOP_NAME := mcu_top
+#FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+UART1 \`define+GPIO"
+#FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+GPIO"
+#FPGA_DEFINE := "\`define+FPGA \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+BASTIM"
+FPGA_DEFINE := "\`define+FPGA \`define+SRAM_128K \`define+FPGA_SRAM \`define+ALTERA_EP4 \`define+UART0 \`define+BASTIM"
+FPGA_PATH := ${PRJ_FPGA_DIR}/${FPGA_TARGET}
+DUT_LIST := dut.list
+FPGA_DUT_LIST := fpga_ep4_dut.list
+FPGA_CFG_LIST := fpga_ep4_mcu_full_cfg.tcl
+PIN_LIST := fpga_ep4_mcu_full_pin_assignments.tcl
+TIMING_CONSTRAIN_LIST := fpga_ep4_mcu_full_timing_constrain.sdc
+FPGA_SCRIPTS_PATH := ${PRJ_FPGA_DIR}/script
+
+SDK_TARGET := bootloader
+SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DCOMMON_DRIVER
+
+SDK_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}
+BUILD_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/build
+OUTPUT_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/output
+FW_PATH := ${PRJ_FW_DIR}/${SDK_TARGET}
+FW_INC_PATH := -I ${PRJ_FW_DIR}/${SDK_TARGET}/boot/inc
+
+CPU_INC_PATH := -I ${PRJ_LIB_DIR}/cmsis/CMSIS/Include -I ${PRJ_LIB_DIR}/cmsis/Device/ARM/CM3DS/Include
+DRV_INC_PATH := -I ${PRJ_DRV_DIR} -I ${PRJ_DRV_DIR}/common/inc -I ${PRJ_DRV_DIR}/uart/inc
+INC_PATH := ${FW_INC_PATH} ${DRV_INC_PATH} ${CPU_INC_PATH} 
+
+LDSCRIPT := ${FW_PATH}/bootloader_itcm.ld
+STARTUP_S := ${PRJ_LIB_DIR}/cmsis/Device/ARM/CM3DS/Source/GCC/startup_CM3DS.s
+
+CFLAG := -std=c99 -DPRJ=${SDK_TARGET} -D__GNUC__=9 -Og -Wall -Wextra -fdata-sections -ffunction-sections
+ARCH_FLAG := -mthumb -mthumb-interwork -mcpu=cortex-m3
+LDFLAG := -Wl,-gc-sections -Wl,-Map=${SDK_TARGET}.map,--cref -specs=nano.specs -specs=nosys.specs
+FLAG := ${CFLAG} ${ARCH_FLAG}
+
+SHELL := /bin/bash
+
+all: prepare build_driver build_bootloader quartus_setup update_mif
+
+prepare:
+	-mkdir ${SDK_PATH}
+	-mkdir ${BUILD_PATH}
+	-mkdir ${OUTPUT_PATH}
+	-mkdir ${FPGA_PATH}
+	cp ${DUT_LIST} ${FPGA_PATH}
+	cp ${FPGA_DUT_LIST} ${FPGA_PATH}
+	cp ${FPGA_SCRIPTS_PATH}/${FPGA_CFG_LIST} ${FPGA_PATH}
+	cp ${FPGA_SCRIPTS_PATH}/${PIN_LIST} ${FPGA_PATH}
+	cp ${FPGA_SCRIPTS_PATH}/${TIMING_CONSTRAIN_LIST} ${FPGA_PATH}
+	cp quartus_top.tcl ${FPGA_PATH}/${TOP_NAME}.tcl
+	source quartus_prepare.sh ${PRJ_DIR} ${FPGA_PATH} ${TOP_NAME} ${FPGA_DEFINE} ${FPGA_CFG_LIST} ${PIN_LIST} ${TIMING_CONSTRAIN_LIST}
+
+build_driver:
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/common/src/drv_common.c -o ${BUILD_PATH}/drv_common.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/uart/src/drv_uart.c -o ${BUILD_PATH}/drv_uart.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/uart/src/drv_uart_ex.c -o ${BUILD_PATH}/drv_uart_ex.o
+
+build_bootloader:
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/boot/src/main.c -o ${BUILD_PATH}/main.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/boot/src/interrupt.c -o ${BUILD_PATH}/interrupt.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${STARTUP_S} -o ${BUILD_PATH}/startup_CM3DS.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc -T ${LDSCRIPT} ${ARCH_FLAG} *.o -o ${SDK_TARGET}.elf ${LDFLAG}
+	mv ${BUILD_PATH}/${SDK_TARGET}.elf ${OUTPUT_PATH}
+	mv ${BUILD_PATH}/${SDK_TARGET}.map ${OUTPUT_PATH}
+	cd ${OUTPUT_PATH} && arm-none-eabi-objcopy -O binary -S ${SDK_TARGET}.elf ${SDK_TARGET}.bin
+	cd ${OUTPUT_PATH} && arm-none-eabi-objcopy -O ihex -S ${SDK_TARGET}.elf ${SDK_TARGET}.hex
+	cp ${OUTPUT_PATH}/${SDK_TARGET}.bin ${FPGA_PATH}
+	cd ${FPGA_PATH} && xxd -g 4 -c 4 -p ${SDK_TARGET}.bin > ${SDK_TARGET}.txt
+	cd ${FPGA_PATH} && rm -rf ${SDK_TARGET}.bin
+	cd ${OUTPUT_PATH} && arm-none-eabi-objdump -D ${SDK_TARGET}.elf > ${SDK_TARGET}.asm
+	source lsb2msb.sh ${FPGA_PATH} ${SDK_TARGET}.txt 
+	source txt2mif.sh ${FPGA_PATH} ${SDK_TARGET}.txt 2048 32 ${SDK_TARGET}.mif
+
+quartus_setup:
+	cd ${FPGA_PATH} && quartus_sh -t ${TOP_NAME}.tcl
+
+update_mif:
+	cd ${FPGA_PATH} && quartus_cdb --update_mif ${TOP_NAME} | tee -a update_mif.log
+
+#clean:
+
