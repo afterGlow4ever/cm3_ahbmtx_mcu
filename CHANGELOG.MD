@@ -143,3 +143,17 @@ MODIFY:	Keil FLM support both 128K sram and 32k sram version.
 MODIFY:	Vivado fpga script: Add aggressive hold fix operation in vivado script.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 11042024
+ADD:    Ethernet mac tx rtl section. Only simple verification.
+ADD:    Ethernet mac tx rtl testbench.
+ADD:    Ethernet mac tx rtl spyglass testbench and script.
+ADD:    CRC32D4 and CRC32D8 in rtl lib.
+ADD:    Sync fifo with different input and output width in rtl lib.
+ADD:    Univerisal ram generator in rtl lib for fpga ip and rtl. Only simple verification.
+ADD:    Ethernet mac tx driver. Only simple verification.
+MODIFY:	Ethernet sma driver name.
+MODIFY:	Changing AHB bus matrix for ethernet ip ahb master.
+MODIFY:	Changing interrupt line for ethernet ip.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

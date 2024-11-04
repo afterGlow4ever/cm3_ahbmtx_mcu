@@ -5,7 +5,7 @@ master to ahb slave
 1: cm3 i-code -> dtcm itcm flash sram
 2: cm3 system -> apb0 apb1 apb2
 3: reserve ?dma? -> dtcm flash sram apb0 apb1 apb2
-4: reserve
+4: ethernet -> dtcm
 5: reserve
 
 (normal version)

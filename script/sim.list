@@ -8,5 +8,7 @@
 ../library/altera_ip/ram_32k/ram_32k.v
 ../library/altera_ip/ram_8k/ram_8k.v
 ../library/altera_ip/pll_50m/pll_50m.v
+../library/rtl_logic/sp_sram/fpga_universal_sp_sram_gen.v
+../library/rtl_logic/sp_sram/sim_sp_sram_gen.v
 ../user/fpga_verilog/fpga_platform.v
 

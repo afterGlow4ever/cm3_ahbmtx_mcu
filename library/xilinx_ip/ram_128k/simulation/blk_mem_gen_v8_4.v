@@ -2732,14 +2732,14 @@ module blk_mem_gen_v8_4_4_mem_module
         if (init_file_str == "") begin
           $fdisplay(ERRFILE, "%0s ERROR: C_INIT_FILE_NAME is empty!",
                     C_CORENAME);
-          $finish;
+ //         $finish;
         end else begin
           initfile = $fopen(init_file_str, "r");
           if (initfile == 0) begin
             $fdisplay(ERRFILE, {"%0s, ERROR: Problem opening",
                                 "C_INIT_FILE_NAME: %0s!"},
                       C_CORENAME, init_file_str);
-            $finish;
+ //           $finish;
           end else begin
             // loop through the mif file, loading in the data
             for (i = 0; i < C_WRITE_DEPTH_A*addr_step; i = i + addr_step) begin
@@ -2760,14 +2760,14 @@ module blk_mem_gen_v8_4_4_mem_module
               if (mem_init_file_str == "") begin
                 $fdisplay(ERRFILE, "%0s ERROR: C_INIT_FILE is empty!",
                           C_CORENAME);
-                $finish;
+ //               $finish;
               end else begin
                 meminitfile = $fopen(mem_init_file_str, "r");
                 if (meminitfile == 0) begin
                   $fdisplay(ERRFILE, {"%0s, ERROR: Problem opening",
                                       "C_INIT_FILE: %0s!"},
                             C_CORENAME, mem_init_file_str);
-                  $finish;
+ //                 $finish;
                 end else begin
                   // loop through the mif file, loading in the data
                     $readmemh(mem_init_file_str, memory );

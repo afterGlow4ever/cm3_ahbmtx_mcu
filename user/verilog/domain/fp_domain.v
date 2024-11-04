@@ -19,10 +19,14 @@ module fp_domain
 	input						apb0_root_clk,
 	input						apb1_root_clk,
 	input						apb2_root_clk,
+	input  						eth_pe_tx_clk,  
+	input  						eth_pe_rx_clk,  
 	input						sys_root_rstn,
 	input						apb0_root_rstn,
 	input						apb1_root_rstn,
 	input						apb2_root_rstn,
+	input  						eth_pe_tx_rstn,
+	input  						eth_pe_rx_rstn,
 	input						power_on_rstn,
 	
 	// pins
@@ -39,6 +43,12 @@ module fp_domain
 	output 						eth_mdio_o,
 	input 						eth_mdio_i,
 	output 						eth_mdio_oen,
+	output 		[ 3:0]			eth_tx,
+	output 		[ 3:0]			eth_tx_oen,
+	output 						eth_tx_ctrl,
+	output 						eth_tx_ctrl_oen,
+	output						eth_tx_clk,	
+	output						eth_tx_clk_oen,	
 
 `ifdef GPIO
 	output						psel0_gpioa,
@@ -108,6 +118,24 @@ wire	      					hreadys;
 wire	[31:0]				 	hrdatas; 
 wire	[ 1:0]				 	hresps;
 wire	      					hexresps;
+
+// Ethernet
+wire	[31:0]				 	eth_haddr; 
+wire	[ 1:0]				 	eth_htrans; 
+wire	[ 2:0]				 	eth_hsize; 
+wire	      					eth_hwrite; 
+wire	[ 2:0]					eth_hburst; 
+wire	[ 3:0]				 	eth_hprot; 
+wire	      					eth_hsel; 
+wire	      					eth_hmastlock; 
+wire	[ 1:0]					eth_hmemattr;
+wire	[ 1:0]					eth_hmaster;
+wire	[31:0]				 	eth_hwdata; 
+wire	      					eth_hexreq;
+wire	      					eth_hready; 
+wire	[31:0]				 	eth_hrdata; 
+wire	[ 1:0]				 	eth_hresp;
+wire	      					eth_hexresp;
 
 // ITCM 
 wire							hsel_itcm;
@@ -285,6 +313,25 @@ ahb_bus_matrix u_ahb_bus_matrix
 	.HREADYOUTS2				(hreadys),
 	.HRESPS2					(hresps),
 	.HRUSERS2					(),
+
+	// Ethernet
+	.HSELS4						(eth_hsel),
+	.HADDRS4					(eth_haddr),
+	.HTRANSS4					(eth_htrans),
+	.HWRITES4					(eth_hwrite),
+	.HSIZES4					(eth_hsize),
+	.HBURSTS4					(eth_hburst),
+	.HPROTS4					(eth_hprot),
+	.HMASTERS4					(4'b0),//?
+	.HWDATAS4					(eth_hwdata),
+	.HMASTLOCKS4				(1'b0),//?
+	.HREADYS4					(eth_hready),
+	.HAUSERS4					(32'b0),
+	.HWUSERS4					(32'b0),
+	.HRDATAS4					(eth_hrdata),
+	.HREADYOUTS4				(eth_hready),
+	.HRESPS4					(eth_hresp),
+	.HRUSERS4					(),
 
 	// DTCM
 	.HSELM0						(hsel_dtcm),
@@ -789,12 +836,15 @@ wire	[ 7:0] 				async_irq_bf;
 wire	[ 7:0] 				async_irq_af;
 wire						uart0_int;// No.0
 wire						uart1_int;// No.1
+wire						eth_mac_dma_int;// No.4
 //wire						gpioa_int;// No.5
 wire	[ 3:0]				bastim_int;// No.8~11
 wire						eth_sma_int;// No.12
+wire						eth_mac_tx_int;// No.13
+wire						eth_mac_rx_int;// No.14
 
-assign sync_irq = {2'h0, gpioa_int, 1'b0, 1'b0, 1'b0, uart1_int, uart0_int};
-assign async_irq_bf = {3'h0, eth_sma_int, bastim_int};
+assign sync_irq = {2'h0, gpioa_int, eth_mac_dma_int, 1'b0, 1'b0, uart1_int, uart0_int};
+assign async_irq_bf = {1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
 
 sync_ff_2d
 #(
@@ -927,12 +977,37 @@ apb2_top u_apb2_async_top
 (
 	.apb2_root_clk				(apb2_root_clk),
 	.apb2_root_rstn				(apb2_root_rstn),
+	.eth_pe_tx_clk				(eth_pe_tx_clk),  
+	.eth_pe_tx_rstn				(eth_pe_tx_rstn),
+	.eth_pe_rx_clk				(eth_pe_rx_clk),  
+	.eth_pe_rx_rstn				(eth_pe_rx_rstn),
 
 	.eth_mdc					(eth_mdc),
 	.eth_mdc_oen				(eth_mdc_oen),
 	.eth_mdio_o					(eth_mdio_o),
 	.eth_mdio_i					(eth_mdio_i),
 	.eth_mdio_oen				(eth_mdio_oen),
+	.eth_tx						(eth_tx),
+	.eth_tx_oen					(eth_tx_oen),
+	.eth_tx_ctrl				(eth_tx_ctrl),
+	.eth_tx_ctrl_oen			(eth_tx_ctrl_oen),
+	.eth_tx_clk					(eth_tx_clk),	
+	.eth_tx_clk_oen				(eth_tx_clk_oen),	
+
+	.eth_hclk					(sys_root_clk),
+	.eth_hrstn					(sys_root_rstn),
+	.eth_hsel					(eth_hsel),
+	.eth_hreadyout				(eth_hreadyout),
+	.eth_htrans					(eth_htrans),
+	.eth_hsize					(eth_hsize),
+	.eth_hwrite					(eth_hwrite),
+	.eth_hburst					(eth_hburst),
+	.eth_haddr					(eth_haddr),
+	.eth_hprot					(eth_hprot),
+	.eth_hwdata					(eth_hwdata),
+	.eth_hready					(eth_hready),
+	.eth_hresp					(eth_hresp),
+	.eth_hrdata					(eth_hrdata),	
 
 	.paddr						(paddr2),  
 	.penable					(penable2),
@@ -945,7 +1020,10 @@ apb2_top u_apb2_async_top
 	.pready						(pready2),
 	.pslverr					(pslverr2),
 
-	.eth_sma_int				(eth_sma_int)
+	.eth_sma_int				(eth_sma_int),
+	.eth_mac_tx_int				(eth_mac_tx_int),
+	.eth_mac_rx_int				(eth_mac_rx_int),
+	.eth_mac_dma_int			(eth_mac_dma_int)
 );
 
 endmodule

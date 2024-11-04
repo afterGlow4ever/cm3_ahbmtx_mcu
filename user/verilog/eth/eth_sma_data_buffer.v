@@ -75,28 +75,6 @@ u_tx_fifo
 	.q							(tx_fifo_rdata)
 );
 
-//fifo_async 
-//#(
-//	.ADDR_WIDTH					(4), 
-//	.DATA_WIDTH					(10)
-//)          
-//u_tx_fifo
-//(                                           
-//	.wr_clk						(tx_fifo_wclk),
-//	.rd_clk						(tx_fifo_rclk),
-//	.rstn						(~tx_fifo_rst),
-//                                       
-//	.wr_req						(tx_fifo_we),
-//	.rd_req						(tx_fifo_re),
-//	.rd_empty					(tx_fifo_empty),
-//	.wr_full					(tx_fifo_full),
-//	.wr_fifo_num				(tx_fifo_num),
-//	.rd_fifo_num				(),                                
-//
-//	.data						(tx_fifo_wdata),
-//	.q							(tx_fifo_rdata)
-//);
-
 //===============================================
 // eth sma rx fifo
 // fifo write from eth sma master protocol engine

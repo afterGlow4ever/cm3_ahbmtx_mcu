@@ -161,11 +161,30 @@ void Bastim_Ch3_Handler(void)
 #ifdef ETH_TEST
 
 extern ETH_HandleTypeDef heth;
+extern ETH_MAC_HandleTypeDef hethmac;
 
 void EthSma_Handler(void)
 {
 	NVIC_ClearPendingIRQ(EthSma_IRQn);
 	drv_eth_sma_interrupt_handler(&heth);
+}
+
+void EthTx_Handler(void)
+{
+	NVIC_ClearPendingIRQ(EthTx_IRQn);
+	drv_eth_mac_tx_interrupt_handler(&hethmac);
+}
+
+void EthRx_Handler(void)
+{
+	NVIC_ClearPendingIRQ(EthRx_IRQn);
+	drv_eth_mac_rx_interrupt_handler(&hethmac);
+}
+
+void EthDma_Handler(void)
+{
+	NVIC_ClearPendingIRQ(EthDma_IRQn);
+	drv_eth_mac_dma_interrupt_handler(&hethmac);
 }
 
 #endif

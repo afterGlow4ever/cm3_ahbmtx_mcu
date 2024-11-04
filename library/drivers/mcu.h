@@ -40,7 +40,7 @@ typedef enum IRQn
   Uart1_IRQn                 	=  1,     /*!< 16+1 Uart1 Interrupt								   */
   Resv2_IRQn                 	=  2,     /*!< 16+2 Resv2 Interrupt								   */
   Resv3_IRQn                 	=  3,     /*!< 16+3 Resv3 Interrupt								   */
-  Resv4_IRQn                 	=  4,     /*!< 16+4 Resv4 Interrupt								   */
+  EthDma_IRQn                 	=  4,     /*!< 16+4 EthDma Interrupt							   */
   Gpioa_IRQn                 	=  5,     /*!< 16+5 Gpioa Interrupt								   */
   Resv6_IRQn                 	=  6,     /*!< 16+6 Resv6 Interrupt								   */
   Resv7_IRQn                 	=  7,     /*!< 16+7 Resv7 Interrupt								   */
@@ -49,7 +49,9 @@ typedef enum IRQn
   BastimCh2_IRQn                =  10,    /*!< 16+10 BastimCh2 Interrupt						   */
   BastimCh3_IRQn                =  11,    /*!< 16+11 BastimCh3 Interrupt						   */
   EthSma_IRQn                 	=  12,    /*!< 16+12 EthSma Interrupt							   */
-  Resv13_IRQn                 	=  13,    /*!< 16+13 Resv13 Interrupt							   */
+  EthTx_IRQn                 	=  13,    /*!< 16+13 EthTx Interrupt							   */
+  EthRx_IRQn                 	=  14,    /*!< 16+14 EthRx Interrupt							   */
+  Resv15_IRQn                 	=  15,    /*!< 16+15 Resv13 Interrupt							   */
 
 /******  MCU Specific Interrupt Numbers *******************************************************/
 } IRQn_Type;
@@ -79,6 +81,8 @@ typedef enum IRQn
 #define GPIOA_BASE_ADDR							0x4000a000
 #define BASTIM_BASE_ADDR						0x40010000
 #define ETH_BASE_ADDR							0x40020000
+#define ETH_SMA_BASE_ADDR						0x40020000
+#define ETH_MAC_BASE_ADDR						0x40020030
 
 //===============================================
 // instance define
@@ -89,6 +93,8 @@ typedef enum IRQn
 #define GPIOA 	((GPIO_TypeDef *)GPIOA_BASE_ADDR)
 #define BASTIM 	((BASTIM_TypeDef *)BASTIM_BASE_ADDR)
 #define ETH 	((ETH_TypeDef *)ETH_BASE_ADDR)
+#define ETH_SMA	((ETH_TypeDef *)ETH_BASE_ADDR)
+#define ETH_MAC	((ETH_MAC_TypeDef *)(ETH_BASE_ADDR+0x30))
 
 //===============================================
 // variable type define

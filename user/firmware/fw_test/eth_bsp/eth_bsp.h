@@ -22,6 +22,9 @@ void b50610_init(void);
 void b50610_set_config(void);
 void b50610_set_swrst(void);
 void b50610_get_status(void);
+void eth_mac_descriptor_sw_handle_prepare(uint32_t data_number);
+void eth_mac_descriptor_hw_handle_prepare(uint32_t data_number);
+void eth_mac_init(void);
 
 #endif
 

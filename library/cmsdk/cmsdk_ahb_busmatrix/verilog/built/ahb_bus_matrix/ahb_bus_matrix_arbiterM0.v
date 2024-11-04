@@ -41,6 +41,7 @@ module ahb_bus_matrix_arbiterM0 (
     // Input port request signals
     req_port0,
     req_port1,
+    req_port3,
 
     HREADYM,
     HSELM,
@@ -64,6 +65,7 @@ module ahb_bus_matrix_arbiterM0 (
     input        HRESETn;      // AHB system reset
     input        req_port0;     // Port 0 request signal
     input        req_port1;     // Port 1 request signal
+    input        req_port3;     // Port 3 request signal
     input        HREADYM;      // Transfer done
     input        HSELM;        // Slave select line
     input  [1:0] HTRANSM;      // Transfer type
@@ -100,6 +102,7 @@ module ahb_bus_matrix_arbiterM0 (
     wire       HRESETn;        // AHB system reset
     wire       req_port0;       // Port 0 request signal
     wire       req_port1;       // Port 1 request signal
+    wire       req_port3;       // Port 3 request signal
     wire       HREADYM;        // Transfer done
     wire       HSELM;          // Slave select line
     wire [1:0] HTRANSM;        // Transfer type
@@ -292,6 +295,7 @@ module ahb_bus_matrix_arbiterM0 (
   always @ (
              req_port0 or
              req_port1 or
+             req_port3 or
              HMASTLOCKM or next_burst_hold or HSELM or i_no_port or i_addr_in_port
            )
     begin : p_sel_port_comb
@@ -307,6 +311,8 @@ module ahb_bus_matrix_arbiterM0 (
             next_addr_in_port = 2'b00;
           else if (req_port1)
             next_addr_in_port = 2'b01;
+          else if (req_port3)
+            next_addr_in_port = 2'b11;
           else
             next_no_port = 1'b1;
         end
@@ -315,6 +321,8 @@ module ahb_bus_matrix_arbiterM0 (
           2'b00 : begin
             if (req_port1)
               next_addr_in_port = 2'b01;
+            else if (req_port3)
+              next_addr_in_port = 2'b11;
             else if (HSELM)
               next_addr_in_port = 2'b00;
             else
@@ -322,10 +330,23 @@ module ahb_bus_matrix_arbiterM0 (
           end
 
           2'b01 : begin
-            if (req_port0)
+            if (req_port3)
+              next_addr_in_port = 2'b11;
+            else if (req_port0)
               next_addr_in_port = 2'b00;
             else if (HSELM)
               next_addr_in_port = 2'b01;
+            else
+              next_no_port = 1'b1;
+          end
+
+          2'b11 : begin
+            if (req_port0)
+              next_addr_in_port = 2'b00;
+            else if (req_port1)
+              next_addr_in_port = 2'b01;
+            else if (HSELM)
+              next_addr_in_port = 2'b11;
             else
               next_no_port = 1'b1;
           end

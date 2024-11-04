@@ -1,12 +1,12 @@
 //===============================================
 //
-//	File: drv_eth.h
+//	File: drv_eth_sma.h
 //	Author: afterGlow,4ever
 //	Group: Fall For Laboratory
 //	Date: 03202024
 //	Version: v1.0
 //
-// 	This is header file for ethernet driver.
+// 	This is header file for ethernet sma driver.
 //
 //===============================================
 
@@ -30,7 +30,7 @@
 #define ETH_SMA_FIFO_NUM						4
 
 //===============================================
-// eth regs
+// eth sma regs
 //===============================================
 
 typedef struct
@@ -46,14 +46,14 @@ typedef struct
 }ETH_TypeDef;
 
 //===============================================
-// eth enum
+// eth sma enum
 //===============================================
 
 typedef enum
 {
 	ETH_SMA_RX_ACK,
 	ETH_SMA_RX_NACK,
-}eth_rx_ack;
+}eth_sma_rx_ack;
 
 typedef enum
 {
@@ -68,7 +68,7 @@ typedef enum
 }eth_sma_status_bit;
 
 //===============================================
-// eth handler
+// eth sma handler
 //===============================================
 
 typedef struct
@@ -91,7 +91,7 @@ typedef struct
 }ETH_HandleTypeDef;
 
 //===============================================
-// eth inline function
+// eth sma inline function
 //===============================================
 
 static inline void drv_eth_sma_tx_fifo_watermark_set(ETH_HandleTypeDef *eth, uint8_t fifo_threshold)

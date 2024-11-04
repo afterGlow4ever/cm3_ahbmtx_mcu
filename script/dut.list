@@ -1,10 +1,15 @@
 ../library/rtl_logic/gray_code_gen.v
-#../library/rtl_logic/ram_gen.v
 ../library/rtl_logic/fifo_gen.v
 ../library/rtl_logic/sync_ff.v
 ../library/rtl_logic/edge_detect.v
 ../library/rtl_logic/clock_gen.v
 ../library/rtl_logic/interrupt_gen.v
+../library/rtl_logic/pulse_sync.v
+../library/rtl_logic/rst_sync.v
+../library/rtl_logic/crc.v
+../library/rtl_logic/sp_sram/sp_sram_1k_256x32_wrapper.v
+../library/rtl_logic/sp_sram/sp_sram_2k_2048x8_wrapper.v
+../library/rtl_logic/sp_sram/sp_sram_2k_512x32_wrapper.v
 ../library/cm3/cortexm3ds_logic.v
 ../library/cm3/CORTEXM3INTEGRATIONDS.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_i.v
@@ -21,6 +26,7 @@
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM7.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM8.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS1.v
+../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS4.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_default_slave.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_arbiterM1.v
 ../library/cmsdk/cmsdk_ahb_busmatrix/verilog/built/ahb_bus_matrix/ahb_bus_matrix_decoderS0.v
@@ -63,5 +69,14 @@
 ../user/verilog/eth/eth_regs_wrap.v
 ../user/verilog/eth/eth_sma_data_buffer.v
 ../user/verilog/eth/eth_top.v
+../user/verilog/eth/eth_pe_core/eth_mac_pe_tx.v
+../user/verilog/eth/eth_pe_core/eth_mac_pe_tx_protocol_handle.v
+../user/verilog/eth/eth_pe_core/hw_header_checksum_without_pseudoheader.v
+../user/verilog/eth/eth_pe_core/hw_header_checksum_with_pseudoheader.v
+../user/verilog/eth/eth_mac_data_buffer/eth_mac_data_tx_buffer.v
+../user/verilog/eth/eth_mac_data_buffer/eth_ahb_master.v
+../user/verilog/eth/eth_mac_data_buffer/eth_ahb_master_arbiter.v
+../user/verilog/eth/eth_mac_data_buffer/eth_descriptor_handler.v
+../user/verilog/eth/eth_mac_data_buffer/eth_mac_data_buffer.v
 ../user/verilog/mcu_top.v
 

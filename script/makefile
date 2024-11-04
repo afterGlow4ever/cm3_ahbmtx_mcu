@@ -86,6 +86,9 @@ eth_sma_testcase:
 eth_sma_fw_sim:
 	make -f makefile.eth_sma_fw_sim
 
+eth_mac_fw_sim:
+	make -f makefile.eth_mac_fw_sim
+
 #===============================================
 # RTL auto generation
 #===============================================

@@ -29,7 +29,7 @@
 //                        Supports the following configured options:
 //
 //                         - Architecture type 'ahb2',
-//                         - 3 slave ports (connecting to masters),
+//                         - 4 slave ports (connecting to masters),
 //                         - 5 master ports (connecting to slaves),
 //                         - Routing address width of 32 bits,
 //                         - Routing data width of 32 bits,
@@ -38,7 +38,8 @@
 //                         - Connectivity mapping:
 //                             S0 -> M0, M1, 
 //                             S1 -> M0, M1, 
-//                             S2 -> M6, M7, M8,
+//                             S2 -> M6, M7, M8, 
+//                             S4 -> M0,
 //                         - Connectivity type 'sparse'.
 //
 //------------------------------------------------------------------------------
@@ -98,6 +99,21 @@ module ahb_bus_matrix (
     HREADYS2,
     HAUSERS2,
     HWUSERS2,
+
+    // Input port SI3 (inputs from master 3)
+    HSELS4,
+    HADDRS4,
+    HTRANSS4,
+    HWRITES4,
+    HSIZES4,
+    HBURSTS4,
+    HPROTS4,
+    HMASTERS4,
+    HWDATAS4,
+    HMASTLOCKS4,
+    HREADYS4,
+    HAUSERS4,
+    HWUSERS4,
 
     // Output port MI0 (inputs from slave 0)
     HRDATAM0,
@@ -227,6 +243,12 @@ module ahb_bus_matrix (
     HRESPS2,
     HRUSERS2,
 
+    // Input port SI3 (outputs to master 3)
+    HRDATAS4,
+    HREADYOUTS4,
+    HRESPS4,
+    HRUSERS4,
+
     // Scan test dummy signals; not connected until scan insertion
     SCANOUTHCLK   // Scan Chain Output
 
@@ -288,6 +310,21 @@ module ahb_bus_matrix (
     input         HREADYS2;        // Transfer done
     input  [31:0] HAUSERS2;        // Address USER signals
     input  [31:0] HWUSERS2;        // Write-data USER signals
+
+    // Input port SI3 (inputs from master 3)
+    input         HSELS4;          // Slave Select
+    input  [31:0] HADDRS4;         // Address bus
+    input   [1:0] HTRANSS4;        // Transfer type
+    input         HWRITES4;        // Transfer direction
+    input   [2:0] HSIZES4;         // Transfer size
+    input   [2:0] HBURSTS4;        // Burst type
+    input   [3:0] HPROTS4;         // Protection control
+    input   [3:0] HMASTERS4;       // Master select
+    input  [31:0] HWDATAS4;        // Write data
+    input         HMASTLOCKS4;     // Locked Sequence
+    input         HREADYS4;        // Transfer done
+    input  [31:0] HAUSERS4;        // Address USER signals
+    input  [31:0] HWUSERS4;        // Write-data USER signals
 
     // Output port MI0 (inputs from slave 0)
     input  [31:0] HRDATAM0;        // Read data bus
@@ -417,6 +454,12 @@ module ahb_bus_matrix (
     output  [1:0] HRESPS2;         // Transfer response
     output [31:0] HRUSERS2;        // Read-data USER signals
 
+    // Input port SI3 (outputs to master 3)
+    output [31:0] HRDATAS4;        // Read data bus
+    output        HREADYOUTS4;     // HREADY feedback
+    output  [1:0] HRESPS4;         // Transfer response
+    output [31:0] HRUSERS4;        // Read-data USER signals
+
     // Scan test dummy signals; not connected until scan insertion
     output        SCANOUTHCLK;     // Scan Chain Output
 
@@ -491,6 +534,26 @@ module ahb_bus_matrix (
     wire  [31:0] HAUSERS2;        // Address USER signals
     wire  [31:0] HWUSERS2;        // Write-data USER signals
     wire  [31:0] HRUSERS2;        // Read-data USER signals
+
+    // Input Port SI3
+    wire         HSELS4;          // Slave Select
+    wire  [31:0] HADDRS4;         // Address bus
+    wire   [1:0] HTRANSS4;        // Transfer type
+    wire         HWRITES4;        // Transfer direction
+    wire   [2:0] HSIZES4;         // Transfer size
+    wire   [2:0] HBURSTS4;        // Burst type
+    wire   [3:0] HPROTS4;         // Protection control
+    wire   [3:0] HMASTERS4;       // Master select
+    wire  [31:0] HWDATAS4;        // Write data
+    wire         HMASTLOCKS4;     // Locked Sequence
+    wire         HREADYS4;        // Transfer done
+
+    wire  [31:0] HRDATAS4;        // Read data bus
+    wire         HREADYOUTS4;     // HREADY feedback
+    wire   [1:0] HRESPS4;         // Transfer response
+    wire  [31:0] HAUSERS4;        // Address USER signals
+    wire  [31:0] HWUSERS4;        // Write-data USER signals
+    wire  [31:0] HRUSERS4;        // Read-data USER signals
 
     // Output Port MI0
     wire         HSELM0;          // Slave Select
@@ -645,6 +708,22 @@ module ahb_bus_matrix (
     wire   [1:0] i_resp2;           // Response signal
     wire  [31:0] i_auser2;          // HAUSER signal
 
+    // Bus-switch input SI3
+    wire         i_sel3;            // HSEL signal
+    wire  [31:0] i_addr3;           // HADDR signal
+    wire   [1:0] i_trans3;          // HTRANS signal
+    wire         i_write3;          // HWRITE signal
+    wire   [2:0] i_size3;           // HSIZE signal
+    wire   [2:0] i_burst3;          // HBURST signal
+    wire   [3:0] i_prot3;           // HPROTS signal
+    wire   [3:0] i_master3;         // HMASTER signal
+    wire         i_mastlock3;       // HMASTLOCK signal
+    wire         i_active3;         // Active signal
+    wire         i_held_tran3;       // HeldTran signal
+    wire         i_readyout3;       // Readyout signal
+    wire   [1:0] i_resp3;           // Response signal
+    wire  [31:0] i_auser3;          // HAUSER signal
+
     // Bus-switch SI0 to MI0 signals
     wire         i_sel0to0;         // Routing selection signal
     wire         i_active0to0;      // Active signal
@@ -672,6 +751,10 @@ module ahb_bus_matrix (
     // Bus-switch SI2 to MI4 signals
     wire         i_sel2to4;         // Routing selection signal
     wire         i_active2to4;      // Active signal
+
+    // Bus-switch SI3 to MI0 signals
+    wire         i_sel3to0;         // Routing selection signal
+    wire         i_active3to0;      // Active signal
 
     wire         i_hready_mux_m0;    // Internal HREADYMUXM for MI0
     wire         i_hready_mux_m1;    // Internal HREADYMUXM for MI1
@@ -819,6 +902,51 @@ module ahb_bus_matrix (
     );
 
 
+  // Input stage for SI3
+  ahb_bus_matrix_i u_ahb_bus_matrix_i_3 (
+
+    // Common AHB signals
+    .HCLK       (HCLK),
+    .HRESETn    (HRESETn),
+
+    // Input Port Address/Control Signals
+    .HSELS      (HSELS4),
+    .HADDRS     (HADDRS4),
+    .HTRANSS    (HTRANSS4),
+    .HWRITES    (HWRITES4),
+    .HSIZES     (HSIZES4),
+    .HBURSTS    (HBURSTS4),
+    .HPROTS     (HPROTS4),
+    .HMASTERS   (HMASTERS4),
+    .HMASTLOCKS (HMASTLOCKS4),
+    .HREADYS    (HREADYS4),
+    .HAUSERS    (HAUSERS4),
+
+    // Internal Response
+    .active_ip     (i_active3),
+    .readyout_ip   (i_readyout3),
+    .resp_ip       (i_resp3),
+
+    // Input Port Response
+    .HREADYOUTS (HREADYOUTS4),
+    .HRESPS     (HRESPS4),
+
+    // Internal Address/Control Signals
+    .sel_ip        (i_sel3),
+    .addr_ip       (i_addr3),
+    .auser_ip      (i_auser3),
+    .trans_ip      (i_trans3),
+    .write_ip      (i_write3),
+    .size_ip       (i_size3),
+    .burst_ip      (i_burst3),
+    .prot_ip       (i_prot3),
+    .master_ip     (i_master3),
+    .mastlock_ip   (i_mastlock3),
+    .held_tran_ip   (i_held_tran3)
+
+    );
+
+
   // Matrix decoder for SI0
   ahb_bus_matrix_decoderS0 u_ahb_bus_matrix_decoders0 (
 
@@ -944,6 +1072,37 @@ module ahb_bus_matrix (
     );
 
 
+  // Matrix decoder for SI3
+  ahb_bus_matrix_decoderS4 u_ahb_bus_matrix_decoders4 (
+
+    // Common AHB signals
+    .HCLK       (HCLK),
+    .HRESETn    (HRESETn),
+
+    // Signals from Input stage SI3
+    .HREADYS    (HREADYS4),
+    .sel_dec        (i_sel3),
+    .decode_addr_dec (i_addr3[31:10]),   // HADDR[9:0] is not decoded
+    .trans_dec      (i_trans3),
+
+    // Control/Response for Output Stage MI0
+    .active_dec0    (i_active3to0),
+    .readyout_dec0  (i_hready_mux_m0),
+    .resp_dec0      (HRESPM0),
+    .rdata_dec0     (HRDATAM0),
+    .ruser_dec0     (HRUSERM0),
+
+    .sel_dec0       (i_sel3to0),
+
+    .active_dec     (i_active3),
+    .HREADYOUTS (i_readyout3),
+    .HRESPS     (i_resp3),
+    .HRUSERS    (HRUSERS4),
+    .HRDATAS    (HRDATAS4)
+
+    );
+
+
   // Output stage for MI0
   ahb_bus_matrix_oM0 u_ahb_bus_matrix_om0_0 (
 
@@ -981,11 +1140,27 @@ module ahb_bus_matrix (
     .wuser_op1     (HWUSERS1),
     .held_tran_op1  (i_held_tran1),
 
+    // Port 3 Signals
+    .sel_op3       (i_sel3to0),
+    .addr_op3      (i_addr3),
+    .auser_op3     (i_auser3),
+    .trans_op3     (i_trans3),
+    .write_op3     (i_write3),
+    .size_op3      (i_size3),
+    .burst_op3     (i_burst3),
+    .prot_op3      (i_prot3),
+    .master_op3    (i_master3),
+    .mastlock_op3  (i_mastlock3),
+    .wdata_op3     (HWDATAS4),
+    .wuser_op3     (HWUSERS4),
+    .held_tran_op3  (i_held_tran3),
+
     // Slave read data and response
     .HREADYOUTM (HREADYOUTM0),
 
     .active_op0    (i_active0to0),
     .active_op1    (i_active1to0),
+    .active_op3    (i_active3to0),
 
     // Slave Address/Control Signals
     .HSELM      (HSELM0),

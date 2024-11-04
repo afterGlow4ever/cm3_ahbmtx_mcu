@@ -21,8 +21,10 @@ module eth_top
 	// module interface
 	input  						module_clk,  
 	input  						module_rstn,
-//	input  						bus_clk,  
-//	input  						bus_rstn,
+	input  						pe_tx_clk,  
+	input  						pe_tx_rstn,
+	input  						pe_rx_clk,  
+	input  						pe_rx_rstn,
 
 	// pin
 	output 						eth_mdc,
@@ -30,6 +32,28 @@ module eth_top
 	output 						eth_mdio_o,
 	input 						eth_mdio_i,
 	output 						eth_mdio_oen,
+	output 		[ 3:0]			eth_tx,
+	output 		[ 3:0]			eth_tx_oen,
+	output 						eth_tx_ctrl,
+	output 						eth_tx_ctrl_oen,
+	output						eth_tx_clk,	
+	output						eth_tx_clk_oen,	
+
+	// ahb master
+	input						ahb_hclk,
+	input						ahb_hrstn,
+	output						ahb_hsel,
+	output						ahb_hreadyout,
+	output	[ 1:0]				ahb_htrans,
+	output	[ 2:0]				ahb_hsize,
+	output						ahb_hwrite,
+	output	[ 2:0]				ahb_hburst,
+	output	[31:0]				ahb_haddr,
+	output	[ 3:0]				ahb_hprot,
+	output	[31:0]				ahb_hwdata,
+	input						ahb_hready,
+	input	[ 1:0]				ahb_hresp,
+	input	[31:0]				ahb_hrdata,	
 
 	// regs interface
 	input  						reg_clk,  
@@ -42,8 +66,15 @@ module eth_top
 	output	[31:0]				prdata,
 	
 	// interrupt
-	output						eth_sma_int_line
+	output						eth_sma_int_line,
+	output						eth_mac_tx_int_line,
+	output						eth_mac_rx_int_line,
+	output						eth_mac_dma_int_line
 );
+
+//===============================================
+// eth sma signal
+//===============================================
 
 wire							r0_tx_fifo_clr;
 wire							r0_rx_fifo_clr;
@@ -79,13 +110,109 @@ wire		[ 5:0]				int0_pos;
 wire		[ 5:0]				int0_line;
 
 //===============================================
+// eth mac signal
+//===============================================
+
+wire							r1_dma_clr;		
+wire							r1_tx_data_clr;		
+wire							r1_rx_data_clr;		
+wire							r1_tx_logic_clr;		
+wire							r1_rx_logic_clr;		
+wire							r1_tx_enable;		
+wire							r1_rx_enable;		
+
+wire		[ 3:0]				r1_hready_tothres;	
+wire		[ 2:0]				r1_priority_ratio;	
+wire							r1_txrx_priority;	
+wire							r1_arb_scheme;	
+wire		[31:0]				r1_sa_macaddrl;
+wire		[15:0]				r1_sa_macaddrh;
+wire							r1_arp_offload;
+wire							r1_sa_filter;	
+wire							r1_ipc_filter;	
+wire							r1_db_filter;	
+wire							r1_s2kp;	
+wire							r1_duplex;
+wire							r1_crsfd; 
+wire		[ 1:0]				r1_pre_byte;
+wire		[ 5:0]				r1_interval_byte;
+
+wire		[ 1:0]				r1_tdes_num;
+wire		[ 1:0]				r1_rdes_num;
+wire		[31:0]				r1_tdes00;
+wire		[31:0]				r1_tdes02;
+wire		[31:0]				r1_tdes03;
+wire		[31:0]				r1_tdes10;
+wire		[31:0]				r1_tdes12;
+wire		[31:0]				r1_tdes13;
+wire		[31:0]				r1_tdes20;
+wire		[31:0]				r1_tdes22;
+wire		[31:0]				r1_tdes23;
+wire		[31:0]				r1_tdes30;
+wire		[31:0]				r1_tdes32;
+wire		[31:0]				r1_tdes33;
+wire		[31:0]				r1_rdes00;
+wire		[31:0]				r1_rdes03;
+wire		[31:0]				r1_rdes10;
+wire		[31:0]				r1_rdes13;
+wire		[31:0]				r1_rdes20;
+wire		[31:0]				r1_rdes23;
+wire		[31:0]				r1_rdes30;
+wire		[31:0]				r1_rdes33;
+
+wire 		[31:0]				r1_tx_address1;
+wire 							r1_tx_ioc_int_en;
+wire 		[11:0]				r1_tx_length1;
+wire  		[27:26]				r1_tx_cpc;
+wire  		[25:24]				r1_tx_saic;
+wire  	 	[17:16]				r1_tx_cic;
+
+wire  	 	[31:0]				r1_rx_address1;
+wire			   				r1_rx_ioc_int_en;
+
+wire							eth_mac_txdb_pe2fifo_rdreq;	
+wire							eth_mac_txdb_pe2fifo_rdreq_done;	
+wire		[31:0]				eth_mac_txdb_fifo2pe_rdata;	
+wire							eth_mac_txdb_fifo2pe_empty;	
+wire							eth_mac_txdb_fifo2pe_done;	
+wire							eth_mac_txdb_fifo2pe_burst_process_done;	
+wire							eth_mac_txdb_fifo2pe_single_process_done;	
+wire							eth_mac_txdb_data_ready;
+wire							eth_mac_txdb_processing_doing;
+wire							eth_mac_dl_ahbmst_error;
+
+wire		[ 0:0]				int1_tx_en;
+wire							int1_tx_clr;
+wire							int1_tx_sta;
+wire		[ 0:0]				int1_tx_tgr;
+wire							int1_tx_pos;
+wire							int1_tx_line;
+wire							int1_rx_en;
+wire							int1_rx_clr;
+wire							int1_rx_sta;
+wire							int1_rx_tgr;
+wire							int1_rx_pos;
+wire		[ 2:0]				int1_dma_en;
+wire		[ 2:0]				int1_dma_clr;
+wire		[ 2:0]				int1_dma_sta;
+wire		[ 2:0]				int1_dma_tgr;
+wire		[ 2:0]				int1_dma_pos;
+wire		[ 2:0]				int1_dma_line;
+
+//===============================================
 // eth regs wrap
 //===============================================
 
 eth_regs_wrap u_eth_regs_wrap
 (
+	.pe_tx_clk					(pe_tx_clk),
+	.pe_tx_rstn					(pe_tx_rstn),
+	.pe_rx_clk					(pe_rx_clk),
+	.pe_rx_rstn					(pe_rx_rstn),
 	.reg_clk					(reg_clk),
 	.reg_rstn					(reg_rstn),
+	.ahb_hclk					(ahb_hclk),
+	.ahb_hrstn					(ahb_hrstn),
 	.pwrite						(pwrite),
 	.psel						(psel),
 	.penable					(penable),
@@ -111,11 +238,217 @@ eth_regs_wrap u_eth_regs_wrap
 
 	.r0_int_en					(int0_en),
 	.r0_int_clr					(int0_clr),
-	.r0_int_sta					(int0_sta)
+	.r0_int_sta					(int0_sta),
+
+	.r1_dma_clr					(r1_dma_clr),
+	.r1_tx_data_clr				(r1_tx_data_clr),
+	.r1_rx_data_clr				(r1_rx_data_clr),
+	.r1_tx_logic_clr			(r1_tx_logic_clr),
+	.r1_rx_logic_clr			(r1_rx_logic_clr),
+	.r1_tx_enable				(r1_tx_enable),
+	.r1_rx_enable				(r1_rx_enable),
+
+	.r1_hready_tothres			(r1_hready_tothres),	
+	.r1_priority_ratio			(r1_priority_ratio),	
+	.r1_txrx_priority			(r1_txrx_priority),	
+	.r1_arb_scheme				(r1_arb_scheme),	
+	.r1_sa_macaddrl				(r1_sa_macaddrl),
+	.r1_sa_macaddrh				(r1_sa_macaddrh),
+	.r1_arp_offload				(r1_arp_offload),
+	.r1_sa_filter				(r1_sa_filter),	
+	.r1_ipc_filter				(r1_ipc_filter),	
+	.r1_db_filter				(r1_db_filter),	
+	.r1_2kp_en					(r1_2kp_en),	
+	.r1_duplex					(r1_duplex),
+	.r1_crsfd					(r1_crsfd), 
+	.r1_pre_byte				(r1_pre_byte),
+	.r1_interval_byte			(r1_interval_byte),
+	
+	.r1_tdes_num				(r1_tdes_num),
+	.r1_rdes_num				(r1_rdes_num),
+	.r1_tdes00					(r1_tdes00),
+	.r1_tdes02					(r1_tdes02),
+	.r1_tdes03					(r1_tdes03),
+	.r1_tdes10					(r1_tdes10),
+	.r1_tdes12					(r1_tdes12),
+	.r1_tdes13					(r1_tdes13),
+	.r1_tdes20					(r1_tdes20),
+	.r1_tdes22					(r1_tdes22),
+	.r1_tdes23					(r1_tdes23),
+	.r1_tdes30					(r1_tdes30),
+	.r1_tdes32					(r1_tdes32),
+	.r1_tdes33					(r1_tdes33),
+	.r1_rdes00					(r1_rdes00),
+	.r1_rdes03					(r1_rdes03),
+	.r1_rdes10					(r1_rdes10),
+	.r1_rdes13					(r1_rdes13),
+	.r1_rdes20					(r1_rdes20),
+	.r1_rdes23					(r1_rdes23),
+	.r1_rdes30					(r1_rdes30),
+	.r1_rdes33					(r1_rdes33),
+
+	.r1_int0_en					(),
+	.r1_int0_clr				(int1_tx_clr),
+	.r1_int0_sta				(int1_tx_sta),
+	.r1_int1_en					(),
+	.r1_int1_clr				(int1_rx_clr),
+	//.r1_int1_sta				(int1_rx_sta)
+	.r1_int1_sta				(1'b0),//??????
+	.r1_int2_en					(int1_dma_en),
+	.r1_int2_clr				(int1_dma_clr),
+	.r1_int2_sta				(int1_dma_sta)
 );
 
 //===============================================
+// eth sma master enable control
+// master enable is generated from tx fifo data number
+// when tx disable, the remaining operation is still going on
+// until current operation ends
+// using logic clear can cease operation at once
+//===============================================
+
+reg								eth_sma_pe_master_enable;
+wire							eth_sma_pe_master_end;
+wire							eth_sma_pe_master_logic_clr;
+assign eth_sma_pe_master_logic_clr = r0_master_logic_clr;
+
+always @(posedge module_clk or negedge module_rstn)
+begin
+	if(!module_rstn)
+		eth_sma_pe_master_enable <= 1'b0;
+	else if(((eth_sma_pe_master_enable  == 1'b1) && (eth_sma_pe_master_end == 1'b1)) || eth_sma_pe_master_logic_clr)
+		eth_sma_pe_master_enable <= 1'b0;
+	else if((eth_sma_pe_master_enable == 1'b0) && (eth_sma_tx_fifo_num > 3'h0))
+		eth_sma_pe_master_enable <= 1'b1;
+	else
+		eth_sma_pe_master_enable <= eth_sma_pe_master_enable;
+end
+
+//===============================================
+// eth mac pe enable control
+//
+// Tx enable is generated from tx data buffer data ready
+// when tx disable, the remaining operation is still going on
+// until current operation ends.
+//
+// Using logic clear or ahbmst error occuring 
+// can cease operation at once.
+//===============================================
+
+reg								eth_mac_pe_tx_enable;
+wire							eth_mac_pe_tx_end;
+reg								eth_mac_pe_tx_ending;
+wire							eth_mac_pe_tx_logic_clr;
+wire							eth_mac_pe_rx_logic_clr;
+wire							eth_mac_txdb_ready_af;
+wire							eth_mac_dl_ahbmst_error_af;
+assign eth_mac_pe_tx_logic_clr = r1_tx_logic_clr || eth_mac_dl_ahbmst_error_af;
+assign eth_mac_pe_rx_logic_clr = r1_rx_logic_clr || eth_mac_dl_ahbmst_error_af;
+
+pos_step_sync2pulse u_eth_mac_txdb_ready_sync
+(
+	.src_clk						(ahb_hclk),
+	.src_rstn						(ahb_hrstn),	
+	.des_clk						(pe_tx_clk),
+	.des_rstn						(pe_tx_rstn),	
+
+	.src_A							(~eth_mac_txdb_processing_doing),
+	.des_Y							(eth_mac_txdb_ready_af)
+);
+
+pos_step_sync2pulse u_eth_mac_dl_ahbmst_error_sync
+(
+	.src_clk						(ahb_hclk),
+	.src_rstn						(ahb_hrstn),	
+	.des_clk						(pe_tx_clk),
+	.des_rstn						(pe_tx_rstn),	
+
+	.src_A							(eth_mac_dl_ahbmst_error),
+	.des_Y							(eth_mac_dl_ahbmst_error_af)
+);
+
+// Using to keep tx ending state
+always @(posedge pe_tx_clk or negedge pe_tx_rstn)
+begin
+	if(!pe_tx_rstn)
+	begin
+		eth_mac_pe_tx_ending <= 1'b0;
+	end
+	else if(eth_mac_pe_tx_end)
+	begin
+		eth_mac_pe_tx_ending <= 1'b1;
+	end
+	else if(eth_mac_txdb_ready_af)
+	begin
+		eth_mac_pe_tx_ending <= 1'b0;
+	end
+	else
+	begin
+		eth_mac_pe_tx_ending <= eth_mac_pe_tx_ending;
+	end
+end
+
+always @(posedge pe_tx_clk or negedge pe_tx_rstn)
+begin
+	if(!pe_tx_rstn)
+		eth_mac_pe_tx_enable <= 1'b0;
+	else if(((eth_mac_pe_tx_enable == 1'b1) && eth_mac_pe_tx_end) || eth_mac_pe_tx_ending || eth_mac_pe_tx_logic_clr)
+		eth_mac_pe_tx_enable <= 1'b0;
+	else if((eth_mac_pe_tx_enable == 1'b0) && (eth_mac_txdb_data_ready))// do not need sync
+		eth_mac_pe_tx_enable <= 1'b1;
+	else
+		eth_mac_pe_tx_enable <= eth_mac_pe_tx_enable;
+end
+
+//===============================================
+// eth mac datalink enable control
+//
+// Datalink enable is including tx and rx enable.
+//
+// Tx data buffer enable is generated from 
+// tx data buffer data ready when tx disable.
+//
+// Using logic clear or ahbmst error occuring 
+// can cease operation at once.
+//===============================================
+
+wire							r1_tx_enable_afsync_r;
+reg								eth_mac_txdb_enable;
+wire							eth_mac_txdb_enable_end;
+wire							eth_mac_ahbmst_clr;
+wire							eth_mac_txdb_clr;
+wire							eth_mac_rxdb_clr;
+assign eth_mac_ahbmst_clr = r1_dma_clr || eth_mac_dl_ahbmst_error;
+assign eth_mac_txdb_clr = r1_tx_data_clr || eth_mac_dl_ahbmst_error;
+assign eth_mac_rxdb_clr = r1_rx_data_clr || eth_mac_dl_ahbmst_error;
+
+pos_step_sync2pulse u_eth_mac_txdb_enable_sync
+(
+	.src_clk						(module_clk),
+	.src_rstn						(module_rstn),	
+	.des_clk						(ahb_hclk),
+	.des_rstn						(ahb_hrstn),	
+
+	.src_A							(r1_tx_enable),
+	.des_Y							(r1_tx_enable_afsync_r)
+);
+
+always @(posedge ahb_hclk or negedge ahb_hrstn)
+begin
+	if(!ahb_hrstn)
+		eth_mac_txdb_enable <= 1'b0;
+	else if(((eth_mac_txdb_enable == 1'b1) && (eth_mac_txdb_enable_end == 1'b1)) || eth_mac_txdb_clr)
+		eth_mac_txdb_enable <= 1'b0;
+	else if((eth_mac_txdb_enable == 1'b0) && (r1_tx_enable_afsync_r))
+		eth_mac_txdb_enable <= 1'b1;
+	else
+		eth_mac_txdb_enable <= eth_mac_txdb_enable;
+end
+
+//===============================================
 // eth data buffer
+// eth sma data buffer
+// eth mac datalink: tx data buffer and rx data buffer
 //===============================================
 
 eth_sma_data_buffer u_eth_sma_data_buffer
@@ -149,55 +482,89 @@ eth_sma_data_buffer u_eth_sma_data_buffer
 	.int_status_tx_fifo_warning	(int0_tgr[0])
 );
 
-//===============================================
-// eth sma master enable control
-// master enable is generated from tx fifo data number
-// when tx disable, the remaining operation is still going on
-// until current operation ends
-// using logic clear can cease operation at once
-//===============================================
+eth_mac_data_buffer u_eth_mac_data_buffer
+(
+	.pe_tx_clk							(pe_tx_clk),
+	.pe_tx_rstn							(pe_tx_rstn),
+	.pe_rx_clk							(pe_rx_clk),
+	.pe_rx_rstn							(pe_rx_rstn),
 
-reg								eth_sma_pe_master_enable;
-wire							eth_sma_pe_master_end;
-wire							eth_sma_pe_master_logic_clr;
-assign eth_sma_pe_master_logic_clr = r0_master_logic_clr;
+	.txdb_pe2fifo_rdreq					(eth_mac_txdb_pe2fifo_rdreq),	
+	.txdb_pe2fifo_rdreq_done			(eth_mac_txdb_pe2fifo_rdreq_done),	
+	.txdb_fifo2pe_rdata					(eth_mac_txdb_fifo2pe_rdata),	
+	.txdb_fifo2pe_empty					(eth_mac_txdb_fifo2pe_empty),	
+	.txdb_fifo2pe_done					(eth_mac_txdb_fifo2pe_done),	
+	.txdb_fifo2pe_burst_process_done	(eth_mac_txdb_fifo2pe_burst_process_done),	
+	.txdb_fifo2pe_single_process_done	(eth_mac_txdb_fifo2pe_single_process_done),
+	.txdb_pe_tx_end						(eth_mac_pe_tx_end),
+	.txdb_data_ready   					(eth_mac_txdb_data_ready),
+	.txdb_process_doing					(eth_mac_txdb_processing_doing),
+	.dl_ahbmst_error					(eth_mac_dl_ahbmst_error),
 
-always @(posedge module_clk or negedge module_rstn)
-begin
-	if(!module_rstn)
-		eth_sma_pe_master_enable <= 1'b0;
-	else if((eth_sma_pe_master_enable == 1'b0) && (eth_sma_tx_fifo_num > 3'h0))
-		eth_sma_pe_master_enable <= 1'b1;
-	else if((eth_sma_pe_master_enable  == 1'b1) && (eth_sma_pe_master_end == 1'b1))
-		eth_sma_pe_master_enable <= 1'b0;
-	else
-		eth_sma_pe_master_enable <= eth_sma_pe_master_enable;
-end
+	.ahb_hclk							(ahb_hclk),
+	.ahb_hrstn							(ahb_hrstn),
+	.ahb_hsel							(ahb_hsel),
+	.ahb_hreadyout						(ahb_hreadyout),
+	.ahb_htrans							(ahb_htrans),
+	.ahb_hsize							(ahb_hsize),
+	.ahb_hwrite							(ahb_hwrite),
+	.ahb_hburst							(ahb_hburst),
+	.ahb_haddr							(ahb_haddr),
+	.ahb_hprot							(ahb_hprot),
+	.ahb_hwdata							(ahb_hwdata),
+	.ahb_hready							(ahb_hready),
+	.ahb_hresp							(ahb_hresp),
+	.ahb_hrdata							(ahb_hrdata),	
 
-//===============================================
-// eth input preprocess
-//===============================================
+	.txdb_enable						(eth_mac_txdb_enable),
+	.txdb_enable_end					(eth_mac_txdb_enable_end),
+	.ahbmst_logic_clr					(eth_mac_ahbmst_clr),
+	.txdb_logic_clr						(eth_mac_txdb_clr),
+	.rxdb_logic_clr						(eth_mac_rxdb_clr),
 
-//wire							uart_rx_afsync;
-//
-//// using 3d is
-//// 1d 70% ~80%
-//// 2d 99%%
-//// 3d is used to detect negedge
-//sync_ff_3d_en
-//#(
-//	.WIDTH						(1),
-//	.DEFAULT_VAL				(1)
-//)
-//u_sync_ff_3d_en_inst0
-//(
-//	.clk						(module_clk),
-//	.rstn						(module_rstn),	
-//
-//	.en							(pe_rx_enable),
-//	.A							(uart_rx),
-//	.Y							(uart_rx_afsync)
-//);
+	.r_hready_tothres					(r1_hready_tothres),
+
+	.r_priority_ratio					(r1_priority_ratio),
+	.r_txrx_priority					(r1_txrx_priority),
+	.r_arb_scheme						(r1_arb_scheme),
+
+	.r_tdes_num							(r1_tdes_num),
+	.r_rdes_num							(r1_rdes_num),
+	.r_tdes00							(r1_tdes00),
+	.r_tdes02							(r1_tdes02),
+	.r_tdes03							(r1_tdes03),
+	.r_tdes10							(r1_tdes10),
+	.r_tdes12							(r1_tdes12),
+	.r_tdes13							(r1_tdes13),
+	.r_tdes20							(r1_tdes20),
+	.r_tdes22							(r1_tdes22),
+	.r_tdes23							(r1_tdes23),
+	.r_tdes30							(r1_tdes30),
+	.r_tdes32							(r1_tdes32),
+	.r_tdes33							(r1_tdes33),
+	.r_rdes00							(r1_rdes00),
+	.r_rdes03							(r1_rdes03),
+	.r_rdes10							(r1_rdes10),
+	.r_rdes13							(r1_rdes13),
+	.r_rdes20							(r1_rdes20),
+	.r_rdes23							(r1_rdes23),
+	.r_rdes30							(r1_rdes30),
+	.r_rdes33							(r1_rdes33),
+
+	.r_tx_address1						(r1_tx_address1),
+	.r_tx_ioc_int_en					(int1_tx_en[0]),
+	.r_tx_length1						(r1_tx_length1),
+	.r_tx_cpc							(r1_tx_cpc),	
+	.r_tx_saic							(r1_tx_saic),
+	.r_tx_cic							(r1_tx_cic),
+                            		                     
+	.r_rx_address1						(r1_rx_address1),
+	.r_rx_ioc_int_en					(r1_rx_ioc_int_en),
+
+	.int_status_dma_hready_to			(int1_dma_tgr[1]),
+	.int_status_dma_hresp_error			(int1_dma_tgr[2]), 
+	.int_status_dma_process_finish		(int1_dma_tgr[0]) 
+);
 
 //===============================================
 // eth protocol engine core
@@ -207,31 +574,77 @@ end
 
 eth_pe_core u_eth_pe_core
 (
-	.pe_clk							(module_clk),  
-	.pe_rstn						(module_rstn),
-                                	                
-	.eth_mdc						(eth_mdc),
-	.eth_mdc_oen					(eth_mdc_oen),
-	.eth_mdio_o						(eth_mdio_o),
-	.eth_mdio_i						(eth_mdio_i),
-	.eth_mdio_oen					(eth_mdio_oen),
-                                	                
-	.eth_sma_tx_fifo_re				(eth_sma_tx_fifo_re),
-	.eth_sma_tx_fifo_data			(eth_sma_tx_fifo_rdata),
-	.eth_sma_tx_fifo_num			(eth_sma_tx_fifo_num),
-	.eth_sma_rx_fifo_we				(eth_sma_rx_fifo_we),
-	.eth_sma_rx_fifo_data			(eth_sma_rx_fifo_wdata),
-	.eth_sma_rx_fifo_num			(eth_sma_rx_fifo_num),
-                                	                
-	.eth_sma_pe_master_logic_clr	(eth_sma_pe_master_logic_clr),
-	.eth_sma_pe_master_enable		(eth_sma_pe_master_enable),
-	.eth_sma_pe_master_end			(eth_sma_pe_master_end),
-	.r0_clkdiv						(r0_clkdiv),
-	.r0_phyadr						(r0_phyadr),
-	.r0_interval_bit				(r0_interval_bit),
+	.pe_clk										(module_clk),  
+	.pe_rstn									(module_rstn),
+                                				                
+	.eth_mdc									(eth_mdc),
+	.eth_mdc_oen								(eth_mdc_oen),
+	.eth_mdio_o									(eth_mdio_o),
+	.eth_mdio_i									(eth_mdio_i),
+	.eth_mdio_oen								(eth_mdio_oen),
+                                				                
+	.eth_sma_tx_fifo_re							(eth_sma_tx_fifo_re),
+	.eth_sma_tx_fifo_data						(eth_sma_tx_fifo_rdata),
+	.eth_sma_tx_fifo_num						(eth_sma_tx_fifo_num),
+	.eth_sma_rx_fifo_we							(eth_sma_rx_fifo_we),
+	.eth_sma_rx_fifo_data						(eth_sma_rx_fifo_wdata),
+	.eth_sma_rx_fifo_num						(eth_sma_rx_fifo_num),
+                                				                
+	.eth_sma_pe_master_logic_clr				(eth_sma_pe_master_logic_clr),
+	.eth_sma_pe_master_enable					(eth_sma_pe_master_enable),
+	.eth_sma_pe_master_end						(eth_sma_pe_master_end),
+	.r0_clkdiv									(r0_clkdiv),
+	.r0_phyadr									(r0_phyadr),
+	.r0_interval_bit							(r0_interval_bit),
 
-	.int0_status_rx_turn_nack		(int0_tgr[5]),
-	.int0_status_master_frame_done	(int0_tgr[4])
+	.int0_status_rx_turn_nack					(int0_tgr[5]),
+	.int0_status_master_frame_done				(int0_tgr[4]),
+
+	.pe_tx_clk									(pe_tx_clk),  
+	.pe_tx_rstn									(pe_tx_rstn),
+
+	.eth_tx										(eth_tx),
+	.eth_tx_oen									(eth_tx_oen),
+	.eth_tx_ctrl								(eth_tx_ctrl),
+	.eth_tx_ctrl_oen							(eth_tx_ctrl_oen),
+	.eth_tx_clk									(eth_tx_clk),
+	.eth_tx_clk_oen								(eth_tx_clk_oen),
+
+	.eth_mac_txdb_pe2fifo_rdreq					(eth_mac_txdb_pe2fifo_rdreq),
+	.eth_mac_txdb_pe2fifo_rdreq_done			(eth_mac_txdb_pe2fifo_rdreq_done),
+	.eth_mac_txdb_fifo2pe_rdata					(eth_mac_txdb_fifo2pe_rdata),
+	.eth_mac_txdb_fifo2pe_empty					(eth_mac_txdb_fifo2pe_empty),
+	.eth_mac_txdb_fifo2pe_done					(eth_mac_txdb_fifo2pe_done),
+	.eth_mac_txdb_fifo2pe_burst_process_done	(eth_mac_txdb_fifo2pe_burst_process_done),
+	.eth_mac_txdb_fifo2pe_single_process_done	(eth_mac_txdb_fifo2pe_single_process_done),
+	.eth_mac_txdb_data_ready					(eth_mac_txdb_data_ready),
+
+	.eth_mac_pe_tx_logic_clr					(eth_mac_pe_tx_logic_clr),
+	.eth_mac_pe_rx_logic_clr					(eth_mac_pe_rx_logic_clr),
+	.eth_mac_pe_tx_enable						(eth_mac_pe_tx_enable),
+	.eth_mac_pe_rx_enable						(1'b0),//??????
+	.eth_mac_pe_tx_end							(eth_mac_pe_tx_end),
+	.eth_mac_pe_rx_end							(),
+
+	.r1_sa_macaddrl								(r1_sa_macaddrl),
+	.r1_sa_macaddrh								(r1_sa_macaddrh),
+	.r1_arp_offload								(r1_arp_offload),
+	.r1_pre_byte								(r1_pre_byte),
+	.r1_interval_byte							(r1_interval_byte),
+
+	.r1_sa_filter								(r1_sa_filter),	
+	.r1_ipc_filter								(r1_ipc_filter),	
+	.r1_db_filter								(r1_db_filter),	
+	.r1_2kp_en									(r1_2kp_en),	
+	.r1_duplex									(r1_duplex),
+	.r1_crsfd									(r1_crsfd),	 
+                                			                    
+	.r1_tx_length1								(r1_tx_length1),
+	.r1_tx_cpc									(r1_tx_cpc),	
+	.r1_tx_saic									(r1_tx_saic),
+	.r1_tx_cic									(r1_tx_cic),
+
+	.int1_status_tx_done						(int1_tx_tgr[0])
 );
 
 //===============================================
@@ -247,7 +660,7 @@ posedge_detect
 #(
 	.WIDTH						(6)
 )
-u_int_detect 
+u_sma_int_detect 
 (
 	.clk						(module_clk),
 	.rstn						(module_rstn),
@@ -259,7 +672,7 @@ interrupt_gen
 #(
 	.WIDTH						(6)
 )
-u_interrupt_gen
+u_sma_interrupt_gen
 (
 	.clk						(module_clk),
 	.rstn						(module_rstn),
@@ -269,6 +682,68 @@ u_interrupt_gen
 	.int_clr					(int0_clr),
 	.int_sta					(int0_sta),
 	.int_line					(int0_line)	
+);
+
+assign eth_mac_tx_int_line = |int1_tx_line;
+
+posedge_detect 
+#(
+	.WIDTH						(1)
+)
+u_mac_tx_int_detect 
+(
+	.clk						(pe_tx_clk),
+	.rstn						(pe_tx_rstn),
+	.A							(int1_tx_tgr),
+	.Y							(int1_tx_pos)
+);
+
+interrupt_gen 
+#(
+	.WIDTH						(1)
+)
+u_mac_tx_interrupt_gen
+(
+	.clk						(pe_tx_clk),
+	.rstn						(pe_tx_rstn),
+
+	.int_en						(int1_tx_en),
+	.int_tgr					(int1_tx_pos),
+	.int_clr					(int1_tx_clr),
+	.int_sta					(int1_tx_sta),
+	.int_line					(int1_tx_line)	
+);
+
+assign eth_mac_rx_int_line = 1'b0;//???
+
+assign eth_mac_dma_int_line = |int1_dma_line;
+
+posedge_detect 
+#(
+	.WIDTH						(3)
+)
+u_mac_dma_int_detect 
+(
+	.clk						(ahb_hclk),
+	.rstn						(ahb_hrstn),
+	.A							(int1_dma_tgr),
+	.Y							(int1_dma_pos)
+);
+
+interrupt_gen 
+#(
+	.WIDTH						(3)
+)
+u_mac_dma_interrupt_gen
+(
+	.clk						(ahb_hclk),
+	.rstn						(ahb_hrstn),
+
+	.int_en						(int1_dma_en),
+	.int_tgr					(int1_dma_pos),
+	.int_clr					(int1_dma_clr),
+	.int_sta					(int1_dma_sta),
+	.int_line					(int1_dma_line)	
 );
 
 endmodule

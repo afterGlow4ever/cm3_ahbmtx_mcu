@@ -1,0 +1,11 @@
+verilog variable name:
+
+start: momentary verb, pulse signal
+finish: momentary verb, pulse signal
+end: momentary verb, pulse signal
+doing: durative verb, step signal
+done: durative verb, step signal
+
+valid: via flag
+enable: via control signal
+

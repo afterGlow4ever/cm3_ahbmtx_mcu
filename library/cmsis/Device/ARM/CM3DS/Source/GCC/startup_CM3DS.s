@@ -108,7 +108,7 @@ __isr_vector:
     .long   Uart1_Handler               /* 16+ 1: UART 1 RX and TX Handler	*/
     .long   Resv2_Handler               /* 16+ 2: Reserved 2 Handler   		*/
     .long   Resv3_Handler               /* 16+ 3: Reserved 3 Handler		*/
-    .long   Resv4_Handler               /* 16+ 4: Reserved 4 Handler		*/
+    .long   EthDma_Handler              /* 16+ 4: ETH DMA Handler			*/
     .long   Gpioa_Handler               /* 16+ 5: GPIOA Handler   			*/		
     .long   Resv6_Handler               /* 16+ 6: Reserved 6 Handler		*/
     .long   Resv7_Handler               /* 16+ 7: Reserved 7 Handler		*/
@@ -117,7 +117,9 @@ __isr_vector:
     .long   Bastim_Ch2_Handler 	        /* 16+10: BASTIM CHANNEL2 Handler   */
     .long   Bastim_Ch3_Handler 	        /* 16+11: BASTIM CHANNEL3 Handler   */
     .long   EthSma_Handler              /* 16+12: ETH SMA Handler		   	*/
-    .long   Resv13_Handler              /* 16+12: Reserved 13 Handler   	*/
+    .long   EthTx_Handler               /* 16+13: ETH TX Handler		   	*/
+    .long   EthRx_Handler               /* 16+14: ETH RX Handler		   	*/
+    .long   Resv15_Handler              /* 16+15: Reserved 15 Handler   	*/
     .size    __isr_vector, . - __isr_vector
 
 /* Reset Handler */
@@ -212,7 +214,7 @@ Reset_Handler:
     def_default_handler    Uart1_Handler
     def_default_handler    Resv2_Handler
     def_default_handler    Resv3_Handler
-    def_default_handler    Resv4_Handler
+    def_default_handler    EthDma_Handler
     def_default_handler    Gpioa_Handler
     def_default_handler    Resv6_Handler
     def_default_handler    Resv7_Handler
@@ -221,7 +223,9 @@ Reset_Handler:
     def_default_handler    Bastim_Ch2_Handler
     def_default_handler    Bastim_Ch3_Handler
     def_default_handler    EthSma_Handler
-    def_default_handler    Resv13_Handler
+    def_default_handler    EthTx_Handler
+    def_default_handler    EthRx_Handler
+    def_default_handler    Resv15_Handler
 
     /*
     def_default_handler    Default_Handler

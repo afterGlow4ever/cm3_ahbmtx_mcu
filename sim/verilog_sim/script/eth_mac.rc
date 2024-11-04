@@ -1,0 +1,241 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 374 158 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+windowTimeUnit 1us
+
+; waveform viewport range
+zoom 70.356388 73.379671 1u
+cursor 71.450000
+marker 71.310000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 101
+; marker line index
+markerPos 111
+
+; logical expression list
+; addExprSig expr_name expression_string
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+
+addExprSig -b 32 -n UU logical_expression_1[31:0] ~{32{"/TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data\
+_buffer/u_eth_mac_data_tx_buffer/txdb_fifo2pe_empty"}}& "/TOP/u_mcu_to\
+p/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_d\
+ata_tx_buffer/txdb_fifo2pe_rdata[31:0]"
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+aliasmapname eth_sma_pe_master.current_state
+nalias MASTER_END		8'b10000000		NULL
+nalias MASTER_RX_DATA		8'b00100000		NULL
+nalias MASTER_TURN		8'b00001000		NULL
+nalias MASTER_PREAMBLE_AND_START		8'b00000010		NULL
+nalias MASTER_INTERVAL		8'b01000000		NULL
+nalias MASTER_TX_DATA		8'b00010000		NULL
+nalias MASTER_OP_AND_ADDRESS		8'b00000100		NULL
+nalias MASTER_IDLE		8'b00000001		NULL
+
+aliasmapname cmsdk_ahb_to_apb_async_p.curr_state
+nalias fsm_apb_idle		2'b00		NULL
+nalias fsm_apb_cyc1		2'b01		NULL
+nalias fsm_apb_wait		2'b11		NULL
+
+aliasmapname eth_mac_data_buffer.current_state
+nalias DATALINK_END		6'b100000		NULL
+nalias DATALINK_TX_DATA		6'b001000		NULL
+nalias DATALINK_ARBITRATION		6'b000010		NULL
+nalias DATALINK_RX_DATA		6'b010000		NULL
+nalias DATALINK_DESCRIPTOR		6'b000100		NULL
+nalias DATALINK_IDLE		6'b000001		NULL
+
+aliasmapname eth_mac_data_tx_buffer.current_state
+nalias TXDB_WRITE_RAMN_READ_FIFOP		5'b01000		NULL
+nalias TXDB_FIRST_TRANSFER		5'b00010		NULL
+nalias TXDB_WRITE_RAMP_READ_FIFON		5'b00100		NULL
+nalias TXDB_LAST_TRANSFER		5'b10000		NULL
+nalias TXDB_IDLE		5'b00001		NULL
+
+aliasmapname eth_ahb_master.current_state
+nalias AHBMST_RX_SINGLE		5'b01000		NULL
+nalias AHBMST_TX_SINGLE		5'b00010		NULL
+nalias AHBMST_IDLE		5'b00001		NULL
+nalias AHBMST_RX_BURST		5'b10000		NULL
+nalias AHBMST_TX_BURST		5'b00100		NULL
+
+aliasmapname eth_mac_pe_tx.current_state
+nalias TX_FRAME_END		8'b10000000		NULL
+nalias TX_FRAME_CRC		8'b00100000		NULL
+nalias TX_FRAME_PAYLOAD		8'b00001000		NULL
+nalias TX_FRAME_PREPARATION		8'b00000010		NULL
+nalias TX_FRAME_INTERVAL		8'b01000000		NULL
+nalias TX_FRAME_PADDING		8'b00010000		NULL
+nalias TX_FRAME_PREAMBLE		8'b00000100		NULL
+nalias TX_FRAME_IDLE		8'b00000001		NULL
+
+aliasmapname eth_mac_pe_tx_protocol_handle.current_state
+nalias TX_HANDLE_END		6'b100000		NULL
+nalias TX_HANDLE_CACHEOUT		6'b001000		NULL
+nalias TX_HANDLE_CACHEIN		6'b000010		NULL
+nalias TX_HANDLE_CACHECS		6'b000100		NULL
+nalias TX_HANDLE_BYPASS		6'b010000		NULL
+nalias TX_HANDLE_IDLE		6'b000001		NULL
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addGroup "G2"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/eth_mac_txdb_enable
+addSignal -h 15 -holdScope eth_mac_pe_tx_enable
+aliasname eth_mac_data_buffer.current_state
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/current_state[5:0]
+aliasname eth_mac_data_buffer.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[5:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_descriptor_handler/r_tx_address1[31:0]
+addGroup "G3"
+addGroup "G4"
+aliasname eth_ahb_master.current_state
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_ahb_master/current_state[4:0]
+aliasname eth_ahb_master.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[4:0]
+addSignal -h 15 -holdScope db2ahbmst_singlereq_r
+addSignal -h 15 -holdScope db2ahbmst_burstreq_r
+addSignal -h 15 -holdScope db2ahbmst_direction
+addSignal -h 15 -UNSIGNED -HEX -holdScope ahbmst_burst_cnt[2:0]
+addSignal -h 15 -holdScope ahbmst_state_burst
+addSignal -h 15 -holdScope ahb_hready
+addSignal -h 15 -UNSIGNED -HEX -holdScope ahb_haddr[31:0]
+addSignal -h 15 -holdScope db2ahbmst_process_start
+addSignal -h 15 -UNSIGNED -HEX -holdScope ahb_hsize[2:0]
+addSignal -h 15 -holdScope ahb_hwrite
+addSignal -h 15 -holdScope db2ahbmst_burstreq_r
+addSignal -h 15 -holdScope ahbmst_readtrans_doing
+addSignal -h 15 -UNSIGNED -HEX -holdScope ahb_htrans[1:0]
+addSignal -h 15 -holdScope db2ahbmst_burst_lastdata
+addSignal -h 15 -UNSIGNED -HEX -holdScope ahb_hrdata[31:0]
+addGroup "G5"
+aliasname eth_mac_data_tx_buffer.current_state
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/current_state[4:0]
+aliasname eth_mac_data_tx_buffer.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[4:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_descriptor_handler/r_tx_length1[11:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/txdb_ahbmst2ram_once_start
+addSignal -h 15 -holdScope txdb_remaining_single
+addSignal -h 15 -holdScope txdb_db2ahbmst_singlereq
+addSignal -h 15 -holdScope txdb_ahbmst2db_singleack
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_burst_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_single_cnt[1:0]
+addSignal -h 15 -holdScope txdb_state_first_transfer_to_write_ramn_read_fifop
+addSignal -h 15 -holdScope txdb_ahbmst2ram_once_process_done
+addSignal -h 15 -holdScope txdb_once_process_done
+addSignal -h 15 -holdScope txdb_state_write_ramp_read_fifon
+addSignal -h 15 -holdScope txdb_ahbmst2ram_once_process_done
+addSignal -h 15 -holdScope txdb_ram2fifo_once_process_done
+addSignal -h 15 -holdScope txdb_write_ramp
+addSignal -h 15 -holdScope txdb_write_ramn
+addSignal -h 15 -holdScope txdb_read_ramp
+addSignal -h 15 -holdScope txdb_read_ramn
+addGroup "G6"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/txdb_ahbmst2db_data[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ahbmst2ramp_address[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ahbmst2ramp_data[31:0]
+addSignal -h 15 -holdScope txdb_ahbmst2ramp_wen
+addSignal -h 15 -holdScope txdb_ahbmst2ramp_cs
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ahbmst2ramn_address[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ahbmst2ramn_data[31:0]
+addSignal -h 15 -holdScope txdb_ahbmst2ramn_wen
+addSignal -h 15 -holdScope txdb_ahbmst2ramn_cs
+addGroup "G7"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/ramn_address[7:0]
+addSignal -h 15 -holdScope ramn_wen
+addSignal -h 15 -holdScope ramn_cs
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ahbmst2ramn_data[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ramn2fifo_q[31:0]
+addGroup "G8"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/ramp_address[7:0]
+addSignal -h 15 -holdScope ramp_wen
+addSignal -h 15 -holdScope ramp_cs
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ahbmst2ramp_data[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ramp2fifo_q[31:0]
+addSignal -h 15 -holdScope txdb_ram2fifo_once_ram_finish
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ram2fifo_cnt[2:0]
+addSignal -h 15 -holdScope txdb_ram2fifo_process_doing
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ramn2fifo_q[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ramp2fifo_q[31:0]
+addSignal -h 15 -holdScope txdb_ahbmst2ram_once_process_done
+addSignal -h 15 -holdScope txdb_pe2fifo_rdreq_done
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/precache_full
+addGroup "G9"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/u_eth_mac_tx_fifo/wr_fifo_num[3:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/txdb_ram2fifo_wrreq
+addSignal -h 15 -holdScope txdb_pe2fifo_rdreq
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_ram2fifo_wdata[31:0]
+addSignal -h 15 -holdScope txdb_fifo2pe_empty
+addSignal -h 15 -UNSIGNED -HEX -holdScope txdb_fifo2pe_rdata[31:0]
+addSignal -h 15 /logical_expression_1[31:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_mac_data_buffer/u_eth_mac_data_tx_buffer/txdb_ram2fifo_once_process_done
+addSignal -h 15 -holdScope txdb_data_ready
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/eth_mac_pe_tx_enable
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/txdb_fifo_ready
+aliasname eth_mac_pe_tx.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope current_state[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope eth_tx[3:0]
+addGroup "G10"
+aliasname eth_mac_pe_tx_protocol_handle.current_state
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/current_state[5:0]
+aliasname eth_mac_pe_tx_protocol_handle.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[5:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope precache_data_out[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope precache_data_in[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope precache_data_out[7:0]
+addSignal -h 15 -holdScope precache_full
+addSignal -h 15 -holdScope txdb_pe2fifo_re_in_cache_mode
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/u_tx_precache/wr_addr[1:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/precache_we
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/u_tx_precache/rd_addr[3:0]
+addSignal -h 15 -holdScope wr_full
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/precache_re
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/u_tx_precache/fifo[0:4]
+addSignal -h 15 -UNSIGNED -HEX -holdScope fifo_num[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope q[7:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_eth/u_eth_pe_core/u_eth_mac_pe_tx/u_eth_mac_pe_tx_protocol_handle/precache_byte_cnt[3:0]
+addSignal -h 15 -holdScope precache_4_words
+addGroup "G11"
+addGroup "G12"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

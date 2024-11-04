@@ -68,11 +68,27 @@ module ahb_bus_matrix_oM0 (
     wuser_op1,
     held_tran_op1,
 
+    // Port 3 Signals
+    sel_op3,
+    addr_op3,
+    auser_op3,
+    trans_op3,
+    write_op3,
+    size_op3,
+    burst_op3,
+    prot_op3,
+    master_op3,
+    mastlock_op3,
+    wdata_op3,
+    wuser_op3,
+    held_tran_op3,
+
     // Slave read data and response
     HREADYOUTM,
 
     active_op0,
     active_op1,
+    active_op3,
 
     // Slave Address/Control Signals
     HSELM,
@@ -130,10 +146,26 @@ module ahb_bus_matrix_oM0 (
     input [31:0]  wuser_op1;     // Port 1 HWUSER signal
     input         held_tran_op1;  // Port 1 HeldTran signal
 
+    // Bus-switch input 3
+    input         sel_op3;       // Port 3 HSEL signal
+    input [31:0]  addr_op3;      // Port 3 HADDR signal
+    input [31:0]  auser_op3;     // Port 3 HAUSER signal
+    input  [1:0]  trans_op3;     // Port 3 HTRANS signal
+    input         write_op3;     // Port 3 HWRITE signal
+    input  [2:0]  size_op3;      // Port 3 HSIZE signal
+    input  [2:0]  burst_op3;     // Port 3 HBURST signal
+    input  [3:0]  prot_op3;      // Port 3 HPROT signal
+    input  [3:0]  master_op3;    // Port 3 HMASTER signal
+    input         mastlock_op3;  // Port 3 HMASTLOCK signal
+    input [31:0]  wdata_op3;     // Port 3 HWDATA signal
+    input [31:0]  wuser_op3;     // Port 3 HWUSER signal
+    input         held_tran_op3;  // Port 3 HeldTran signal
+
     input         HREADYOUTM; // HREADY feedback
 
     output        active_op0;    // Port 0 Active signal
     output        active_op1;    // Port 1 Active signal
+    output        active_op3;    // Port 3 Active signal
 
     // Slave Address/Control Signals
     output        HSELM;      // Slave select line
@@ -189,6 +221,22 @@ module ahb_bus_matrix_oM0 (
     wire        held_tran_op1;  // Port 1 HeldTran signal
     reg         active_op1;    // Port 1 Active signal
 
+    // Bus-switch input 3
+    wire        sel_op3;       // Port 3 HSEL signal
+    wire [31:0] addr_op3;      // Port 3 HADDR signal
+    wire [31:0] auser_op3;     // Port 3 HAUSER signal
+    wire  [1:0] trans_op3;     // Port 3 HTRANS signal
+    wire        write_op3;     // Port 3 HWRITE signal
+    wire  [2:0] size_op3;      // Port 3 HSIZE signal
+    wire  [2:0] burst_op3;     // Port 3 HBURST signal
+    wire  [3:0] prot_op3;      // Port 3 HPROT signal
+    wire  [3:0] master_op3;    // Port 3 HMASTER signal
+    wire        mastlock_op3;  // Port 3 HMASTLOCK signal
+    wire [31:0] wdata_op3;     // Port 3 HWDATA signal
+    wire [31:0] wuser_op3;     // Port 3 HWUSER signal
+    wire        held_tran_op3;  // Port 3 HeldTran signal
+    reg         active_op3;    // Port 3 Active signal
+
     // Slave Address/Control Signals
     wire        HSELM;      // Slave select line
     reg  [31:0] HADDRM;     // Address
@@ -211,6 +259,7 @@ module ahb_bus_matrix_oM0 (
 // -----------------------------------------------------------------------------
     wire        req_port0;     // Port 0 request signal
     wire        req_port1;     // Port 1 request signal
+    wire        req_port3;     // Port 3 request signal
 
     wire  [1:0] addr_in_port;   // Address input port
     reg   [1:0] data_in_port;   // Data input port
@@ -238,6 +287,7 @@ module ahb_bus_matrix_oM0 (
 
   assign req_port0 = held_tran_op0 & sel_op0;
   assign req_port1 = held_tran_op1 & sel_op1;
+  assign req_port3 = held_tran_op3 & sel_op3;
 
   // Arbiter instance for resolving requests to this output stage
   ahb_bus_matrix_arbiterM0 u_output_arb (
@@ -247,6 +297,7 @@ module ahb_bus_matrix_oM0 (
 
     .req_port0   (req_port0),
     .req_port1   (req_port1),
+    .req_port3   (req_port3),
 
     .HREADYM    (i_hreadymuxm),
     .HSELM      (i_hselm),
@@ -266,15 +317,18 @@ module ahb_bus_matrix_oM0 (
       // Default value(s)
       active_op0 = 1'b0;
       active_op1 = 1'b0;
+      active_op3 = 1'b0;
 
       // Decode selection when enabled
       if (~no_port)
         case (addr_in_port)
           2'b00 : active_op0 = 1'b1;
           2'b01 : active_op1 = 1'b1;
+          2'b11 : active_op3 = 1'b1;
           default : begin
             active_op0 = 1'bx;
             active_op1 = 1'bx;
+            active_op3 = 1'bx;
           end
         endcase // case(addr_in_port)
     end // block: p_active_comb
@@ -290,6 +344,10 @@ module ahb_bus_matrix_oM0 (
              size_op1 or burst_op1 or prot_op1 or
              auser_op1 or
              master_op1 or mastlock_op1 or
+             sel_op3 or addr_op3 or trans_op3 or write_op3 or
+             size_op3 or burst_op3 or prot_op3 or
+             auser_op3 or
+             master_op3 or mastlock_op3 or
              addr_in_port or no_port
            )
     begin : p_addr_mux
@@ -337,6 +395,21 @@ module ahb_bus_matrix_oM0 (
               HMASTERM    = master_op1;
               i_hmastlockm= mastlock_op1;
             end // case: 4'b01
+
+          // Bus-switch input 3
+          2'b11 :
+            begin
+              i_hselm     = sel_op3;
+              HADDRM      = addr_op3;
+              HAUSERM     = auser_op3;
+              i_htransm   = trans_op3;
+              HWRITEM     = write_op3;
+              HSIZEM      = size_op3;
+              i_hburstm   = burst_op3;
+              HPROTM      = prot_op3;
+              HMASTERM    = master_op3;
+              i_hmastlockm= mastlock_op3;
+            end // case: 4'b11
 
           default :
             begin
@@ -397,6 +470,7 @@ module ahb_bus_matrix_oM0 (
   always @ (
              wdata_op0 or
              wdata_op1 or
+             wdata_op3 or
              data_in_port
            )
     begin : p_data_mux
@@ -407,6 +481,7 @@ module ahb_bus_matrix_oM0 (
       case (data_in_port)
         2'b00 : HWDATAM  = wdata_op0;
         2'b01 : HWDATAM  = wdata_op1;
+        2'b11 : HWDATAM  = wdata_op3;
         default : HWDATAM = {32{1'bx}};
       endcase // case(data_in_port)
     end // block: p_data_mux
@@ -415,6 +490,7 @@ module ahb_bus_matrix_oM0 (
   always @ (
              wuser_op0 or
              wuser_op1 or
+             wuser_op3 or
              data_in_port
            )
     begin : p_wuser_mux
@@ -425,6 +501,7 @@ module ahb_bus_matrix_oM0 (
       case (data_in_port)
         2'b00 : HWUSERM  = wuser_op0;
         2'b01 : HWUSERM  = wuser_op1;
+        2'b11 : HWUSERM  = wuser_op3;
         default : HWUSERM  = {32{1'bx}};
       endcase // case(data_in_port)
     end // block: p_wuser_mux

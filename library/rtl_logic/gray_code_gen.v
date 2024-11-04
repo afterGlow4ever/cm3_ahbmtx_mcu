@@ -10,32 +10,39 @@
 // 	
 //===============================================
 
-module gray_code_gen
+module gray_to_bin_gen
 #(
-	parameter								DIR = 0,
-	parameter								DATA_WIDTH = 8
+	parameter					DATA_WIDTH = 8
+)
+(
+	input [DATA_WIDTH:0]		gray_code,
+	output reg [DATA_WIDTH:0]	bin_code
+);
+
+integer							i;
+
+always @(*)
+begin
+	for(i = 0; i <= DATA_WIDTH; i = i + 1)
+	begin
+		bin_code[i] = ^ (gray_code >> i);
+	end
+end
+
+endmodule
+
+module bin_to_gray_gen
+#(
+	parameter					DATA_WIDTH = 8
 )
 (
 	input [DATA_WIDTH:0]		bin_code,
-	input [DATA_WIDTH:0]		gray_code,
-	output [DATA_WIDTH:0]		q
+	output [DATA_WIDTH:0]		gray_code
 );
 
-// Dir = 1, bin to gray
-// Dir = 0, gray to bin
-assign q = DIR ? B2G(bin_code) : G2B(gray_code);
-
-function [DATA_WIDTH:0] B2G;
-input	[DATA_WIDTH:0] B;
-	B2G = B ^ (B >> 1);
-endfunction
-
-function [DATA_WIDTH:0] G2B;
-input	[DATA_WIDTH:0] G;
-integer										i;
-	for(i = 0; i <= DATA_WIDTH; i = i + 1)
-		G2B[i] = ^ (G >> i);
-endfunction
+assign gray_code = bin_code ^ (bin_code >> 1);
 
 endmodule
+
+
 

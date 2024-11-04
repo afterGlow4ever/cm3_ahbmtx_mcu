@@ -35,6 +35,7 @@
 //#define GPIO_DRIVER
 //#define BASTIM_DRIVER
 //#define ETH_DRIVER
+//#define ETH_MAC_DRIVER
 
 //===============================================
 // driver header list
@@ -57,6 +58,9 @@
 #endif
 #ifdef ETH_DRIVER
 #include "drv_eth.h"
+#endif
+#ifdef ETH_MAC_DRIVER
+#include "drv_eth_mac.h"
 #endif
 
 #endif

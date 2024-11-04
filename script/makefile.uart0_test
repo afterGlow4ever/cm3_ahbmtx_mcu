@@ -1,6 +1,6 @@
 SIM_TARGET := uart0_test
-#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+UART_CASE_CONTINOUOS_TX +define+UART_TX_CASE +define+UART0_SIM +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
-SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+UART_CASE_CONTINOUOS_RX +define+UART_RX_CASE +define+UART0_SIM +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
+SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+UART_CASE_CONTINOUOS_TX +define+UART_TX_CASE +define+UART0_SIM +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
+#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+UART_CASE_CONTINOUOS_RX +define+UART_RX_CASE +define+UART0_SIM +define+SIMULATION +define+RAMPRELOAD_SPI +define+JLINK_MONITOR
 DUT_LIST := dut.list
 SIM_LIST := sim.list
 SIM_INC_LIST := sim_inc.list

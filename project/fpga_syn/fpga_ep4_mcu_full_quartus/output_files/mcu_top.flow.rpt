@@ -1,5 +1,5 @@
 Flow report for mcu_top
-Sat Mar 16 17:21:26 2024
+Sat Apr  6 21:01:05 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Sat Mar 16 17:21:15 2024           ;
+; Flow Status                        ; Successful - Sat Apr  6 21:01:05 2024           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; mcu_top                                         ;
 ; Top-level Entity Name              ; mcu_top                                         ;
@@ -108,7 +108,8 @@ refer to the applicable agreement for further details.
 ; Fitter               ; 00:04:13     ; 1.2                     ; 2498 MB             ; 00:09:49                           ;
 ; Assembler            ; 00:00:03     ; 1.0                     ; 1008 MB             ; 00:00:03                           ;
 ; Timing Analyzer      ; 00:00:11     ; 2.3                     ; 1379 MB             ; 00:00:19                           ;
-; Total                ; 00:06:13     ; --                      ; --                  ; 00:12:15                           ;
+; MIF/HEX Update       ; 00:00:02     ; 1.0                     ; 1366 MB             ; 00:00:02                           ;
+; Total                ; 00:06:15     ; --                      ; --                  ; 00:12:17                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -121,6 +122,7 @@ refer to the applicable agreement for further details.
 ; Fitter               ; icpc             ; CentOS Linux ; CentOS Linux ; x86_64         ;
 ; Assembler            ; icpc             ; CentOS Linux ; CentOS Linux ; x86_64         ;
 ; Timing Analyzer      ; icpc             ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; MIF/HEX Update       ; icpc             ; CentOS Linux ; CentOS Linux ; x86_64         ;
 +----------------------+------------------+--------------+--------------+----------------+
 
 
@@ -131,6 +133,7 @@ quartus_map mcu_top
 quartus_fit mcu_top
 quartus_asm mcu_top
 quartus_sta mcu_top
+quartus_cdb --update_mif mcu_top
 
 
 

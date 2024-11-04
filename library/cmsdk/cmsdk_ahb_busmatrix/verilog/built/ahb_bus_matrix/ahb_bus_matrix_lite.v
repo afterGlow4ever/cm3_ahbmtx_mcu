@@ -75,6 +75,18 @@ module ahb_bus_matrix_lite (
     HAUSERS2,
     HWUSERS2,
 
+    // Input port SI3 (inputs from master 3)
+    HADDRS4,
+    HTRANSS4,
+    HWRITES4,
+    HSIZES4,
+    HBURSTS4,
+    HPROTS4,
+    HWDATAS4,
+    HMASTLOCKS4,
+    HAUSERS4,
+    HWUSERS4,
+
     // Output port MI0 (inputs from slave 0)
     HRDATAM0,
     HREADYOUTM0,
@@ -198,6 +210,12 @@ module ahb_bus_matrix_lite (
     HRESPS2,
     HRUSERS2,
 
+    // Input port SI3 (outputs to master 3)
+    HRDATAS4,
+    HREADYS4,
+    HRESPS4,
+    HRUSERS4,
+
     // Scan test dummy signals; not connected until scan insertion
     SCANOUTHCLK   // Scan Chain Output
 
@@ -249,6 +267,18 @@ module ahb_bus_matrix_lite (
     input         HMASTLOCKS2;     // Locked Sequence
     input  [31:0] HAUSERS2;        // Address USER signals
     input  [31:0] HWUSERS2;        // Write-data USER signals
+
+    // Input port SI3 (inputs from master 3)
+    input  [31:0] HADDRS4;         // Address bus
+    input   [1:0] HTRANSS4;        // Transfer type
+    input         HWRITES4;        // Transfer direction
+    input   [2:0] HSIZES4;         // Transfer size
+    input   [2:0] HBURSTS4;        // Burst type
+    input   [3:0] HPROTS4;         // Protection control
+    input  [31:0] HWDATAS4;        // Write data
+    input         HMASTLOCKS4;     // Locked Sequence
+    input  [31:0] HAUSERS4;        // Address USER signals
+    input  [31:0] HWUSERS4;        // Write-data USER signals
 
     // Output port MI0 (inputs from slave 0)
     input  [31:0] HRDATAM0;        // Read data bus
@@ -373,6 +403,12 @@ module ahb_bus_matrix_lite (
     output        HRESPS2;         // Transfer response
     output [31:0] HRUSERS2;        // Read-data USER signals
 
+    // Input port SI3 (outputs to master 3)
+    output [31:0] HRDATAS4;        // Read data bus
+    output        HREADYS4;     // HREADY feedback
+    output        HRESPS4;         // Transfer response
+    output [31:0] HRUSERS4;        // Read-data USER signals
+
     // Scan test dummy signals; not connected until scan insertion
     output        SCANOUTHCLK;     // Scan Chain Output
 
@@ -437,6 +473,23 @@ module ahb_bus_matrix_lite (
     wire  [31:0] HAUSERS2;        // Address USER signals
     wire  [31:0] HWUSERS2;        // Write-data USER signals
     wire  [31:0] HRUSERS2;        // Read-data USER signals
+
+    // Input Port SI3
+    wire  [31:0] HADDRS4;         // Address bus
+    wire   [1:0] HTRANSS4;        // Transfer type
+    wire         HWRITES4;        // Transfer direction
+    wire   [2:0] HSIZES4;         // Transfer size
+    wire   [2:0] HBURSTS4;        // Burst type
+    wire   [3:0] HPROTS4;         // Protection control
+    wire  [31:0] HWDATAS4;        // Write data
+    wire         HMASTLOCKS4;     // Locked Sequence
+
+    wire  [31:0] HRDATAS4;        // Read data bus
+    wire         HREADYS4;     // HREADY feedback
+    wire         HRESPS4;         // Transfer response
+    wire  [31:0] HAUSERS4;        // Address USER signals
+    wire  [31:0] HWUSERS4;        // Write-data USER signals
+    wire  [31:0] HRUSERS4;        // Read-data USER signals
 
     // Output Port MI0
     wire         HSELM0;          // Slave Select
@@ -543,6 +596,7 @@ module ahb_bus_matrix_lite (
     wire   [1:0] i_hrespS0;
     wire   [1:0] i_hrespS1;
     wire   [1:0] i_hrespS2;
+    wire   [1:0] i_hrespS4;
 
     wire   [3:0]        i_hmasterM0;
     wire   [1:0] i_hrespM0;
@@ -569,6 +623,8 @@ module ahb_bus_matrix_lite (
     assign HRESPS1  = i_hrespS1[0];
 
     assign HRESPS2  = i_hrespS2[0];
+
+    assign HRESPS4  = i_hrespS4[0];
 
     assign i_hrespM0 = {tie_low, HRESPM0};
     assign i_hrespM1 = {tie_low, HRESPM1};
@@ -638,6 +694,25 @@ module ahb_bus_matrix_lite (
     .HREADYOUTS2  (HREADYS2),
     .HRESPS2      (i_hrespS2),
     .HRUSERS2     (HRUSERS2),
+
+    // Input port SI3 signals
+    .HSELS4       (tie_hi),
+    .HADDRS4      (HADDRS4),
+    .HTRANSS4     (HTRANSS4),
+    .HWRITES4     (HWRITES4),
+    .HSIZES4      (HSIZES4),
+    .HBURSTS4     (HBURSTS4),
+    .HPROTS4      (HPROTS4),
+    .HWDATAS4     (HWDATAS4),
+    .HMASTLOCKS4  (HMASTLOCKS4),
+    .HMASTERS4    (tie_hi_4),
+    .HREADYS4     (HREADYS4),
+    .HAUSERS4     (HAUSERS4),
+    .HWUSERS4     (HWUSERS4),
+    .HRDATAS4     (HRDATAS4),
+    .HREADYOUTS4  (HREADYS4),
+    .HRESPS4      (i_hrespS4),
+    .HRUSERS4     (HRUSERS4),
 
 
     // Output port MI0 signals

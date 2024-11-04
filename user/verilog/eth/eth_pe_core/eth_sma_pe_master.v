@@ -632,7 +632,7 @@ assign frame_tx_op[0:1] = cmd;// cmd
 assign frame_tx_op[2] = 1'b0;// park bit for pointer 
 assign frame_tx_phyad[0:4] = r_phyadr;// phy address
 assign frame_tx_phyad[5] = 1'b0;// park bit for pointer
-assign frame_tx_op_and_address[0:11] = {frame_tx_op[0:1], frame_tx_phyad[0:4], frame_tx_regad[0:4]};
+assign frame_tx_op_and_address[0:12] = {frame_tx_op[0:1], frame_tx_phyad[0:4], frame_tx_regad[0:4], 1'b0};
 // turn bit
 // spyglass lint check: z should not used here
 // z should used in the port control section

@@ -16,6 +16,10 @@ module apb2_top
 (
 	input						apb2_root_clk,
 	input						apb2_root_rstn,
+	input  						eth_pe_tx_clk,  
+	input  						eth_pe_tx_rstn,
+	input  						eth_pe_rx_clk,  
+	input  						eth_pe_rx_rstn,
 	
 	// pin
 	output 						eth_mdc,
@@ -23,6 +27,27 @@ module apb2_top
 	output 						eth_mdio_o,
 	input 						eth_mdio_i,
 	output 						eth_mdio_oen,
+	output 		[ 3:0]			eth_tx,
+	output 		[ 3:0]			eth_tx_oen,
+	output 						eth_tx_ctrl,
+	output 						eth_tx_ctrl_oen,
+	output						eth_tx_clk,	
+	output						eth_tx_clk_oen,	
+
+	input						eth_hclk,
+	input						eth_hrstn,
+	output						eth_hsel,
+	output						eth_hreadyout,
+	output	[ 1:0]				eth_htrans,
+	output	[ 2:0]				eth_hsize,
+	output						eth_hwrite,
+	output	[ 2:0]				eth_hburst,
+	output	[31:0]				eth_haddr,
+	output	[ 3:0]				eth_hprot,
+	output	[31:0]				eth_hwdata,
+	input						eth_hready,
+	input	[ 1:0]				eth_hresp,
+	input	[31:0]				eth_hrdata,	
 
 	input	[31:0]				paddr,  
 	input						penable,
@@ -35,7 +60,10 @@ module apb2_top
 	output						pready,
 	output						pslverr,
 
-	output						eth_sma_int
+	output						eth_sma_int,
+	output						eth_mac_tx_int,
+	output						eth_mac_rx_int,
+	output						eth_mac_dma_int
 );
 
 //===============================================
@@ -173,12 +201,37 @@ eth_top u_eth
 (
 	.module_clk					(apb2_root_clk),  
 	.module_rstn				(apb2_root_rstn),
+	.pe_tx_clk					(eth_pe_tx_clk),  
+	.pe_tx_rstn					(eth_pe_tx_rstn),
+	.pe_rx_clk					(eth_pe_rx_clk),  
+	.pe_rx_rstn					(eth_pe_rx_rstn),
 
 	.eth_mdc					(eth_mdc),
 	.eth_mdc_oen				(eth_mdc_oen),
 	.eth_mdio_o					(eth_mdio_o),
 	.eth_mdio_i					(eth_mdio_i),
 	.eth_mdio_oen				(eth_mdio_oen),
+	.eth_tx						(eth_tx),
+	.eth_tx_oen					(eth_tx_oen),
+	.eth_tx_ctrl				(eth_tx_ctrl),
+	.eth_tx_ctrl_oen			(eth_tx_ctrl_oen),
+	.eth_tx_clk					(eth_tx_clk),	
+	.eth_tx_clk_oen				(eth_tx_clk_oen),	
+
+	.ahb_hclk					(eth_hclk),
+	.ahb_hrstn					(eth_hrstn),
+	.ahb_hsel					(eth_hsel),
+	.ahb_hreadyout				(eth_hreadyout),
+	.ahb_htrans					(eth_htrans),
+	.ahb_hsize					(eth_hsize),
+	.ahb_hwrite					(eth_hwrite),
+	.ahb_hburst					(eth_hburst),
+	.ahb_haddr					(eth_haddr),
+	.ahb_hprot					(eth_hprot),
+	.ahb_hwdata					(eth_hwdata),
+	.ahb_hready					(eth_hready),
+	.ahb_hresp					(eth_hresp),
+	.ahb_hrdata					(eth_hrdata),	
 
 	.reg_clk					(apb2_root_clk),
 	.reg_rstn					(apb2_root_rstn),
@@ -189,15 +242,33 @@ eth_top u_eth
 	.pwdata						(pwdata),
 	.prdata						(prdata_eth),
 
-	.eth_sma_int_line			(eth_sma_int)
+	.eth_sma_int_line			(eth_sma_int),
+	.eth_mac_tx_int_line		(eth_mac_tx_int),
+	.eth_mac_rx_int_line		(eth_mac_rx_int),
+	.eth_mac_dma_int_line		(eth_mac_dma_int)
 );
 `else
 assign eth_mdc = 1'b0;
 assign eth_mdc_oen = 1'b0;
 assign eth_mdio_o = 1'b0;
 assign eth_mdio_oen = 1'b0;
+assign eth_tx = 4'h0;
+assign eth_tx_oen = 4'h0;
+assign eth_tx_ctrl = 1'b0;	
+assign eth_tx_ctrl_oen = 1'b0;
+assign eth_tx_clk = 1'b0;		
+assign eth_tx_clk_oen = 1'b0;	
+assign eth_haddr = 32'h0;
+assign eth_htrans = 2'h0;
+assign eth_hsize = 3'h0;
+assign eth_hwrite = 1'b0;
+assign eth_hwdata = 32'h0;
+assign eth_hreadyout = 1'b1;
 assign prdata_eth = 32'h0;
 assign eth_sma_int = 1'b0;
+assign eth_mac_tx_int = 1'b0;
+assign eth_mac_rx_int = 1'b0;
+assign eth_mac_dma_int = 1'b0;
 `endif
 
 endmodule

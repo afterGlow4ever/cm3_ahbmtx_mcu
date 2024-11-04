@@ -74,3 +74,7 @@
 `include "eth_sma_fw_test.v"
 `endif
 
+`ifdef ETH_MAC_FW_TEST
+`include "eth_mac_fw_test.v"
+`endif
+

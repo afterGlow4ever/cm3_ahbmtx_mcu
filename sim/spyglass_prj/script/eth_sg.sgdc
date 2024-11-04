@@ -1,10 +1,20 @@
 current_design "eth_sg"
 
 clock -name "eth_sg.apb2_root_clk" 			-domain apb2_root_clk -period 100.0 -edge 0.0 50.0
+clock -name "eth_sg.tx_clk" 				-domain tx_clk -period 20.0 -edge 0.0 10.0
+clock -name "eth_sg.rx_clk" 				-domain tx_clk -period 20.0 -edge 0.0 10.0
+clock -name "eth_sg.ahb_hclk" 				-domain ahb_hclk -period 25.0 -edge 0.0 12.5
 
 reset -name "eth_sg.apb2_root_rstn" 		-value 0
+reset -name "eth_sg.tx_rstn" 				-value 0
+reset -name "eth_sg.rx_rstn" 				-value 0
+reset -name "eth_sg.ahb_hrstn" 				-value 0
 
 clock -name "eth_sg.eth_mdc"	 			-domain apb2_root_clk -period 500.0 -edge 0.0 250.0
+
+abstract_port -module eth_sg -ports ahb_hrdata[31:0]	-clock eth_sg.ahb_hclk
+abstract_port -module eth_sg -ports ahb_hresp			-clock eth_sg.ahb_hclk
+abstract_port -module eth_sg -ports ahb_hready			-clock eth_sg.ahb_hclk
 
 abstract_port -module eth_sg -ports paddr[31:0]		-clock eth_sg.apb2_root_clk
 abstract_port -module eth_sg -ports penable			-clock eth_sg.apb2_root_clk
@@ -13,4 +23,61 @@ abstract_port -module eth_sg -ports pwrite			-clock eth_sg.apb2_root_clk
 abstract_port -module eth_sg -ports pwdata[31:0]	-clock eth_sg.apb2_root_clk
 
 abstract_port -module eth_sg -ports eth_mdio_i		-clock eth_sg.eth_mdc
+
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r0_clkdiv
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r0_phyadr
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r0_interval_bit
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_priority_ratio
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_txrx_priority
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_arb_scheme
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_sa_macaddrl
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_sa_macaddrh
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_arp_offload
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_sa_filter	
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_ipc_filter	
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_db_filter	
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_2kp_en	
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_duplex
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_crsfd 
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_pre_byte
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_interval_byte
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes_num
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes_num
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes00
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes02
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes03
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes10
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes12
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes13
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes20
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes22
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes23
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes30
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes32
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_tdes33
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes00
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes03
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes10
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes13
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes20
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes23
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes30
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_rdes33
+
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r0_int_en
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_int0_en
+quasi_static -name eth_sg.u_eth0.u_eth_regs_wrap.r1_int1_en
+
+quasi_static -name eth_sg.u_eth0.int0_sta
+quasi_static -name eth_sg.u_eth0.int1_tx_sta
+#quasi_static -name eth_sg.u_eth0.int1_rx_sta
+
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_tx_address1
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_tx_ioc_int_en
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_tx_length1
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_tx_cpc	
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_tx_saic
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_tx_cic
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_rx_address1
+quasi_static -name eth_sg.u_eth0.u_eth_mac_data_buffer.u_eth_descriptor_handler.r_rx_ioc_int_en
 

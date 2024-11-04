@@ -10,7 +10,7 @@
 //
 //===============================================
 
-`timescale 1ns/1ns
+`timescale 1ns/10ps
 
 module TOP;
 
@@ -26,6 +26,9 @@ wire							txd1;
 wire							rxd1;
 wire							mdc;
 wire							mdio;
+wire		[3:0]				eth_txd;
+wire							eth_txc;
+wire							eth_txen;
 wire							tdi;
 wire							tdo;
 wire							tck;
@@ -102,6 +105,8 @@ begin
 `ifdef FPGA
 `else
 	force TOP.u_mcu_top.apb1_root_clk = clk_10mhz;
+	force TOP.u_mcu_top.eth_pe_tx_clk = clk_50mhz;
+	force TOP.u_mcu_top.eth_pe_rx_clk = clk_50mhz;
 	force TOP.u_mcu_top.apb2_root_clk = clk_50mhz;
 `endif
 end
@@ -130,6 +135,9 @@ mcu_top u_mcu_top
 	.RXD1						(rxd1				),
 	.MDC						(mdc				),
 	.MDIO						(mdio				),
+	.ETH_TXD					(eth_txd			),
+	.ETH_TXC					(eth_txc			),
+	.ETH_TXEN					(eth_txen			),
 `endif
 	.TXD						(txd				),
 	.RXD						(rxd				),

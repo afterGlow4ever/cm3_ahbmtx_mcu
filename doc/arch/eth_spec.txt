@@ -1,0 +1,17 @@
+ETH MAC Feature:
+
+
+
+
+ETH MAC TX HANDLE FEATURE:
+
+This module will only handle data in eth frame excluding padding or crc.
+
+1. All data will be pushed into cache for hardware checksum in headers and then be poped to transmit.(Using hardware checksum)
+State: cache in-> cache checksum -> cache out
+2. All data will be pushed into cache for cache and may be used in auto-retransmission.(Using software checksum)
+State: bypass(normal trasmission)
+State: cacheout(auto-retransmission)
+
+Note: Auto-retransmission will be reserved for future.
+

@@ -28,6 +28,9 @@ module mcu_top
 	output  					TXD1, 
 	output						MDC,
 	inout						MDIO,
+	output	[ 3:0]				ETH_TXD,
+	output						ETH_TXC,
+	output						ETH_TXEN,
 `endif
 `ifdef ETH
 	output						ETH_RST,
@@ -52,19 +55,27 @@ wire							lsi;
 wire							sys_root_clk;
 wire							apb1_root_clk;
 wire							apb2_root_clk;
+wire							eth_pe_tx_clk;
+wire							eth_pe_rx_clk;
 wire							sys_root_rstn;
 wire							apb1_root_rstn;
 wire							apb2_root_rstn;
+wire							eth_pe_tx_rstn;
+wire							eth_pe_rx_rstn;
 wire							pll_locked;
 
 assign sys_root_clk = hsi;
 assign apb0_root_clk = sys_root_clk;
 assign apb1_root_clk = lsi;
 assign apb2_root_clk = hsi2;
+assign eth_pe_tx_clk = hsi2;
+assign eth_pe_rx_clk = hsi2;
 assign sys_root_rstn = RSTN & pll_locked;
 assign apb0_root_rstn = RSTN & pll_locked;
 assign apb1_root_rstn = RSTN & pll_locked;
 assign apb2_root_rstn = RSTN & pll_locked;
+assign eth_pe_tx_rstn = RSTN & pll_locked;
+assign eth_pe_rx_rstn = RSTN & pll_locked;
 
 //===============================================
 // gpio
@@ -79,6 +90,12 @@ wire								eth_mdc_oen;
 wire								eth_mdio_o;	 
 wire								eth_mdio_i;	 
 wire								eth_mdio_oen;
+wire	[ 3:0]						eth_tx;
+wire								eth_tx_oen;
+wire								eth_tx_ctrl;
+wire								eth_tx_ctrl_oen;
+wire								eth_tx_clk;	
+wire								eth_tx_clk_oen;
 
 wire	      						gpioa_int; 
 
@@ -124,6 +141,9 @@ assign uart1_rx = RXD1;
 assign MDC = eth_mdc;
 assign MDIO = eth_mdio_oen ? 1'bz : eth_mdio_o;
 assign eth_mdio_i = MDIO;			
+assign ETH_TXD = eth_tx;
+assign ETH_TXC = eth_tx_clk;
+assign ETH_TXEN = eth_tx_ctrl;
 
 assign gpioa_int = 1'b0;
 
@@ -147,6 +167,10 @@ fp_domain u_fp_domain
 	.apb1_root_rstn				(apb1_root_rstn		),
 	.apb2_root_clk				(apb2_root_clk		),
 	.apb2_root_rstn				(apb2_root_rstn		),
+	.eth_pe_tx_clk				(eth_pe_tx_clk		),  
+	.eth_pe_tx_rstn				(eth_pe_tx_rstn		),
+	.eth_pe_rx_clk				(eth_pe_rx_clk		),  
+	.eth_pe_rx_rstn				(eth_pe_rx_rstn		),
 	.power_on_rstn				(RSTN				),
 
 
@@ -172,6 +196,12 @@ fp_domain u_fp_domain
 	.eth_mdio_o					(eth_mdio_o			),
 	.eth_mdio_i					(eth_mdio_i			),
 	.eth_mdio_oen				(eth_mdio_oen		),
+	.eth_tx						(eth_tx				),
+	.eth_tx_oen					(eth_tx_oen			),
+	.eth_tx_ctrl				(eth_tx_ctrl		),
+	.eth_tx_ctrl_oen			(eth_tx_ctrl_oen	),
+	.eth_tx_clk					(eth_tx_clk			),	
+	.eth_tx_clk_oen				(eth_tx_clk_oen		),	
 `endif
 
 	.gpioa_int					(gpioa_int			),

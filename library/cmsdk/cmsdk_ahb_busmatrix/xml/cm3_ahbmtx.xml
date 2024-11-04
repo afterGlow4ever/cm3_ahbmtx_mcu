@@ -75,6 +75,11 @@
     <address_region interface="M8" mem_lo="40020000" mem_hi="4002FFFF" remapping='none'/>
   </slave_interface>
 
+  <slave_interface name="S4">
+    <sparse_connect interface="M0"/>
+    <address_region interface="M0" mem_lo="00020000" mem_hi="0003FFFF" remapping='none'/>
+  </slave_interface>
+
   <!-- Master interface definitions -->
 
   <!-- dtcm -->

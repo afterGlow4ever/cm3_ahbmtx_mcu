@@ -15,7 +15,7 @@
 #ifdef ETH_DRIVER
 
 //===============================================
-// eth init & deinit function
+// eth sma init & deinit function
 // reutrn value:
 // FALSE 0: DONE
 // TRUE 1: FAILED
