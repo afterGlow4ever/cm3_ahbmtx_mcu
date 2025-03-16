@@ -1,13 +1,13 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
--------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Sat Mar 23 20:43:40 2024
+| Date         : Sun Mar 16 11:11:38 2025
 | Host         : icpc running 64-bit CentOS Linux release 7.9.2009 (Core)
-| Command      : report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/implementation_hier.rpt
+| Command      : report_utilization -hierarchical -hierarchical_depth 3 -file implementation_hier.rpt
 | Design       : mcu_top
 | Device       : 7z020clg400-2
 | Design State : Routed
--------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 
 Utilization Design Information
 
@@ -18,56 +18,51 @@ Table of Contents
 1. Utilization by Hierarchy
 ---------------------------
 
-+----------------------------------+-------------------------------+------------+------------+---------+------+------+--------+--------+------------+
-|             Instance             |             Module            | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
-+----------------------------------+-------------------------------+------------+------------+---------+------+------+--------+--------+------------+
-| mcu_top                          |                         (top) |      16689 |      16689 |       0 |    0 | 7465 |     64 |      0 |          3 |
-|   (mcu_top)                      |                         (top) |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
-|   u_fp_domain                    |                     fp_domain |      16679 |      16679 |       0 |    0 | 7454 |     64 |      0 |          3 |
-|     u_CORTEXM3INTEGRATION        |         CORTEXM3INTEGRATIONDS |      14714 |      14714 |       0 |    0 | 5198 |      0 |      0 |          3 |
-|       u_cortexm3ds_logic         |              cortexm3ds_logic |      14714 |      14714 |       0 |    0 | 5198 |      0 |      0 |          3 |
-|     u_ahb_bus_matrix             |                ahb_bus_matrix |        312 |        312 |       0 |    0 |  147 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_decoders0 |      ahb_bus_matrix_decoderS0 |          7 |          7 |       0 |    0 |    4 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_decoders1 |      ahb_bus_matrix_decoderS1 |          1 |          1 |       0 |    0 |    4 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_decoders2 |      ahb_bus_matrix_decoderS2 |         46 |         46 |       0 |    0 |    6 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_i_0       |              ahb_bus_matrix_i |         77 |         77 |       0 |    0 |   38 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_i_1       |           ahb_bus_matrix_i_42 |         28 |         28 |       0 |    0 |   30 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_i_2       |           ahb_bus_matrix_i_43 |         62 |         62 |       0 |    0 |   34 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_om0_0     |            ahb_bus_matrix_oM0 |         20 |         20 |       0 |    0 |    8 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_om1_1     |            ahb_bus_matrix_oM1 |         46 |         46 |       0 |    0 |    8 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_om6_2     |            ahb_bus_matrix_oM6 |          5 |          5 |       0 |    0 |    5 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_om7_3     |            ahb_bus_matrix_oM7 |          3 |          3 |       0 |    0 |    5 |      0 |      0 |          0 |
-|       u_ahb_bus_matrix_om8_4     |            ahb_bus_matrix_oM8 |         20 |         20 |       0 |    0 |    5 |      0 |      0 |          0 |
-|     u_apb0_sync                  |              cmsdk_ahb_to_apb |         41 |         41 |       0 |    0 |   67 |      0 |      0 |          0 |
-|     u_apb0_sync_top              |                      apb0_top |        435 |        435 |       0 |    0 |  735 |      0 |      0 |          0 |
-|       u_debug_reg                |                debug0_apb_cfg |         33 |         33 |       0 |    0 |  128 |      0 |      0 |          0 |
-|       u_uart0                    |                      uart_top |        402 |        402 |       0 |    0 |  607 |      0 |      0 |          0 |
-|     u_apb1_async                 |        cmsdk_ahb_to_apb_async |        182 |        182 |       0 |    0 |  110 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_h       |   cmsdk_ahb_to_apb_async_h_22 |        152 |        152 |       0 |    0 |   67 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_p       |   cmsdk_ahb_to_apb_async_p_23 |         31 |         31 |       0 |    0 |   39 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_syn_1   | cmsdk_ahb_to_apb_async_syn_24 |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_syn_2   | cmsdk_ahb_to_apb_async_syn_25 |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
-|     u_apb1_async_top             |                      apb1_top |        298 |        298 |       0 |    0 |  556 |      0 |      0 |          0 |
-|       u_bastim                   |                    bastim_top |        298 |        298 |       0 |    0 |  556 |      0 |      0 |          0 |
-|     u_apb2_async                 |      cmsdk_ahb_to_apb_async_0 |         78 |         78 |       0 |    0 |  106 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_h       |      cmsdk_ahb_to_apb_async_h |         46 |         46 |       0 |    0 |   66 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_p       |      cmsdk_ahb_to_apb_async_p |         33 |         33 |       0 |    0 |   36 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_syn_1   |    cmsdk_ahb_to_apb_async_syn |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
-|       u_ahb_to_apb_async_syn_2   |  cmsdk_ahb_to_apb_async_syn_9 |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
-|     u_apb2_async_top             |                      apb2_top |        310 |        310 |       0 |    0 |  411 |      0 |      0 |          0 |
-|       u_eth                      |                       eth_top |        310 |        310 |       0 |    0 |  411 |      0 |      0 |          0 |
-|     u_sram_top                   |                      sram_top |        310 |        310 |       0 |    0 |  114 |     64 |      0 |          0 |
-|       u_ahb_to_dtcm              |             cmsdk_ahb_to_sram |         68 |         68 |       0 |    0 |   54 |      0 |      0 |          0 |
-|       u_ahb_to_itcm              |           cmsdk_ahb_to_sram_1 |        102 |        102 |       0 |    0 |   54 |      0 |      0 |          0 |
-|       u_dtcm                     |                 ram_128k_HD50 |         70 |         70 |       0 |    0 |    3 |     32 |      0 |          0 |
-|       u_itcm                     |                      ram_128k |         70 |         70 |       0 |    0 |    3 |     32 |      0 |          0 |
-|     u_sync_ff_2d_inst0           |                    sync_ff_2d |          1 |          1 |       0 |    0 |   10 |      0 |      0 |          0 |
-|   u_fpga_platform                |                 fpga_platform |         10 |         10 |       0 |    0 |   11 |      0 |      0 |          0 |
-|     (u_fpga_platform)            |                 fpga_platform |          6 |          6 |       0 |    0 |    6 |      0 |      0 |          0 |
-|     u_lsi                        |             clk_even_division |          4 |          4 |       0 |    0 |    5 |      0 |      0 |          0 |
-|     u_pll0                       |                       pll_50m |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
-|       inst                       |               pll_50m_clk_wiz |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
-+----------------------------------+-------------------------------+------------+------------+---------+------+------+--------+--------+------------+
++----------------------------------+------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+|             Instance             |            Module            | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------------------------+------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+| mcu_top                          |                        (top) |      15665 |      15665 |       0 |    0 | 6295 |     64 |      0 |          3 |
+|   (mcu_top)                      |                        (top) |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|   u_fp_domain                    |                    fp_domain |      15655 |      15655 |       0 |    0 | 6284 |     64 |      0 |          3 |
+|     u_CORTEXM3INTEGRATION        |        CORTEXM3INTEGRATIONDS |      14561 |      14561 |       0 |    0 | 5193 |      0 |      0 |          3 |
+|       u_cortexm3ds_logic         |             cortexm3ds_logic |      14561 |      14561 |       0 |    0 | 5193 |      0 |      0 |          3 |
+|     u_ahb_bus_matrix             |               ahb_bus_matrix |        291 |        291 |       0 |    0 |  147 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_decoders0 |     ahb_bus_matrix_decoderS0 |          7 |          7 |       0 |    0 |    4 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_decoders1 |     ahb_bus_matrix_decoderS1 |          1 |          1 |       0 |    0 |    4 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_decoders2 |     ahb_bus_matrix_decoderS2 |         22 |         22 |       0 |    0 |    6 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_i_0       |             ahb_bus_matrix_i |         77 |         77 |       0 |    0 |   38 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_i_1       |          ahb_bus_matrix_i_20 |         27 |         27 |       0 |    0 |   30 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_i_2       |          ahb_bus_matrix_i_21 |         58 |         58 |       0 |    0 |   34 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_om0_0     |           ahb_bus_matrix_oM0 |         23 |         23 |       0 |    0 |    9 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_om1_1     |           ahb_bus_matrix_oM1 |         48 |         48 |       0 |    0 |    9 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_om6_2     |           ahb_bus_matrix_oM6 |         20 |         20 |       0 |    0 |    5 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_om7_3     |           ahb_bus_matrix_oM7 |          8 |          8 |       0 |    0 |    4 |      0 |      0 |          0 |
+|       u_ahb_bus_matrix_om8_4     |           ahb_bus_matrix_oM8 |          1 |          1 |       0 |    0 |    4 |      0 |      0 |          0 |
+|     u_apb0_sync                  |             cmsdk_ahb_to_apb |         71 |         71 |       0 |    0 |   67 |      0 |      0 |          0 |
+|     u_apb0_sync_top              |                     apb0_top |        413 |        413 |       0 |    0 |  735 |      0 |      0 |          0 |
+|       u_debug_reg                |               debug0_apb_cfg |         32 |         32 |       0 |    0 |  128 |      0 |      0 |          0 |
+|       u_uart0                    |                     uart_top |        381 |        381 |       0 |    0 |  607 |      0 |      0 |          0 |
+|     u_apb1_async                 |       cmsdk_ahb_to_apb_async |          6 |          6 |       0 |    0 |   14 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_h       |   cmsdk_ahb_to_apb_async_h_3 |          3 |          3 |       0 |    0 |    4 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_p       |   cmsdk_ahb_to_apb_async_p_4 |          3 |          3 |       0 |    0 |    6 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_syn_1   | cmsdk_ahb_to_apb_async_syn_5 |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_syn_2   | cmsdk_ahb_to_apb_async_syn_6 |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
+|     u_apb2_async                 |     cmsdk_ahb_to_apb_async_0 |          6 |          6 |       0 |    0 |   14 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_h       |     cmsdk_ahb_to_apb_async_h |          3 |          3 |       0 |    0 |    4 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_p       |     cmsdk_ahb_to_apb_async_p |          3 |          3 |       0 |    0 |    6 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_syn_1   |   cmsdk_ahb_to_apb_async_syn |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
+|       u_ahb_to_apb_async_syn_2   | cmsdk_ahb_to_apb_async_syn_2 |          0 |          0 |       0 |    0 |    2 |      0 |      0 |          0 |
+|     u_sram_top                   |                     sram_top |        310 |        310 |       0 |    0 |  114 |     64 |      0 |          0 |
+|       u_ahb_to_dtcm              |            cmsdk_ahb_to_sram |         68 |         68 |       0 |    0 |   54 |      0 |      0 |          0 |
+|       u_ahb_to_itcm              |          cmsdk_ahb_to_sram_1 |        102 |        102 |       0 |    0 |   54 |      0 |      0 |          0 |
+|       u_dtcm                     |                ram_128k_HD29 |         70 |         70 |       0 |    0 |    3 |     32 |      0 |          0 |
+|       u_itcm                     |                     ram_128k |         70 |         70 |       0 |    0 |    3 |     32 |      0 |          0 |
+|   u_fpga_platform                |                fpga_platform |         10 |         10 |       0 |    0 |   11 |      0 |      0 |          0 |
+|     (u_fpga_platform)            |                fpga_platform |          6 |          6 |       0 |    0 |    6 |      0 |      0 |          0 |
+|     u_lsi                        |            clk_even_division |          4 |          4 |       0 |    0 |    5 |      0 |      0 |          0 |
+|     u_pll0                       |                      pll_50m |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       inst                       |              pll_50m_clk_wiz |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
++----------------------------------+------------------------------+------------+------------+---------+------+------+--------+--------+------------+
 * Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
 
 

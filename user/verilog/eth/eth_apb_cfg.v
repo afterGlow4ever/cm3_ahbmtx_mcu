@@ -47,6 +47,8 @@ module eth_apb_cfg (
                 ,r1_rx_logic_clr
                 ,r1_tx_enable
                 ,r1_rx_enable
+                ,r1_tx_trans_enable
+                ,r1_rx_trans_enable
                 ,r1_pe_update
                 ,r1_dma_update
                 ,r1_hready_tothres
@@ -168,6 +170,8 @@ output          r1_tx_logic_clr;
 output          r1_rx_logic_clr;
 output          r1_tx_enable;
 output          r1_rx_enable;
+output          r1_tx_trans_enable;
+output          r1_rx_trans_enable;
 output          r1_pe_update;
 output          r1_dma_update;
 output [3:0]    r1_hready_tothres;
@@ -286,6 +290,8 @@ reg             r1_tx_logic_clr;
 reg             r1_rx_logic_clr;
 reg             r1_tx_enable;
 reg             r1_rx_enable;
+reg             r1_tx_trans_enable;
+reg             r1_rx_trans_enable;
 reg             r1_pe_update;
 reg             r1_dma_update;
 reg  [3:0]      r1_hready_tothres;
@@ -718,9 +724,11 @@ assign R1_TOP_CTRL[11] = r1_tx_data_clr;
 assign R1_TOP_CTRL[10] = r1_rx_data_clr;
 assign R1_TOP_CTRL[9] = r1_tx_logic_clr;
 assign R1_TOP_CTRL[8] = r1_rx_logic_clr;
-assign R1_TOP_CTRL[7:4] = 4'h0;
-assign R1_TOP_CTRL[3] = r1_tx_enable;
-assign R1_TOP_CTRL[2] = r1_rx_enable;
+assign R1_TOP_CTRL[7:6] = 2'h0;
+assign R1_TOP_CTRL[5] = r1_tx_enable;
+assign R1_TOP_CTRL[4] = r1_rx_enable;
+assign R1_TOP_CTRL[3] = r1_tx_trans_enable;
+assign R1_TOP_CTRL[2] = r1_rx_trans_enable;
 assign R1_TOP_CTRL[1] = r1_pe_update;
 assign R1_TOP_CTRL[0] = r1_dma_update;
 assign R1_DMA_CTRL0[31:28] = r1_hready_tothres;
@@ -1038,7 +1046,7 @@ always@(posedge clk or negedge rst_n) begin
         r1_tx_enable <= 1'b0;
     end
     else if(r1_top_ctrl_wr) begin
-        r1_tx_enable <= pwdata[3];
+        r1_tx_enable <= pwdata[5];
     end
 end
 always@(posedge clk or negedge rst_n) begin
@@ -1046,7 +1054,23 @@ always@(posedge clk or negedge rst_n) begin
         r1_rx_enable <= 1'b0;
     end
     else if(r1_top_ctrl_wr) begin
-        r1_rx_enable <= pwdata[2];
+        r1_rx_enable <= pwdata[4];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_tx_trans_enable <= 1'b0;
+    end
+    else if(r1_top_ctrl_wr) begin
+        r1_tx_trans_enable <= pwdata[3];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_rx_trans_enable <= 1'b0;
+    end
+    else if(r1_top_ctrl_wr) begin
+        r1_rx_trans_enable <= pwdata[2];
     end
 end
 always@(posedge clk or negedge rst_n) begin

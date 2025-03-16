@@ -1,0 +1,15 @@
+Advance timer Feature:
+
+ADVANCE TIMER OVERALL FEATURE:
+1. 16bit counter for timing base.
+2. Hardware shadow regs and software updating regs for psc, arr, mode, dir configs.
+3. Supporting pwm output and input capture in one advance timer.
+
+ADVANCE TIMER PWM OUTPUT FEATURE:
+1. Supporting up to 6 pwm channel output.
+2. Each pwm channel's polarity is configurable. This can only be set when advtimer is idle and only updated by software. 
+3. Supporting logic operation between channel 1 and 2, 3 and 4, 5 and 6.
+4. Supporting logic operation between channel 1 and 5, 2 and 5, 3 and 5.
+5. Supporting complementary pwm output in channel 1, 2, 3.
+6. Supporting deadzone in comlementary pwm output.
+

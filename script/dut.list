@@ -78,5 +78,13 @@
 ../user/verilog/eth/eth_mac_data_buffer/eth_ahb_master_arbiter.v
 ../user/verilog/eth/eth_mac_data_buffer/eth_descriptor_handler.v
 ../user/verilog/eth/eth_mac_data_buffer/eth_mac_data_buffer.v
+../user/verilog/advtim/advtim_regs_wrap.v
+../user/verilog/advtim/advtim_pe_core/advtim_cnt_gen.v
+../user/verilog/advtim/advtim_pe_core/advtim_pe_core.v
+../user/verilog/advtim/advtim_pe_core/channel_output_compare.v
+../user/verilog/advtim/advtim_pe_core/channel_ctrl.v
+../user/verilog/advtim/advtim_pe_core/deadzone.v
+../user/verilog/advtim/advtim_top.v
+../user/verilog/advtim/advtim_apb_cfg.v
 ../user/verilog/mcu_top.v
 

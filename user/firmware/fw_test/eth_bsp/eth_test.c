@@ -301,6 +301,22 @@ const uint8_t eth_igmp_hw_crc_replacement_frame[] =
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
+const uint8_t eth_igmp_hw_padding_crc_insertion_frame[] = 
+{
+	// des mac
+	0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+	// src mac
+	0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
+	//type
+	0x08, 0x00,
+	//ip
+	0x45, 0x00, 0x00, 0x24, 0x00, 0x01, 0x00, 0x00, 0x01, 0x02,
+	0x00, 0x00, 0xc0, 0xa8, 0x02, 0x02, 0xe0, 0x00, 0x00, 0x16,// 0,1 cs1717
+	//igmp
+	0x22, 0x00, 0xea, 0xfd, 0x00, 0x00, 0x00, 0x01, 0x04, 0x00,	
+	0x00, 0x00, 0xef, 0x00, 0x00, 0x00
+};
+
 const uint8_t eth_igmp_sw_padding_crc_frame[] = 
 {
 	// des mac
@@ -587,6 +603,17 @@ void eth_mac_tx_ip_igmp_frame_by_hw_crc_insertion(void)
 	eth_mac_init();
 	writereg32(0x40000000, 0x02);
 	eth_mac_descriptor_ip_igmp_frame_crc_insertion_hw_handle_prepare();
+	writereg32(0x40000000, 0x03);
+	drv_eth_mac_set_tx_descriptor_and_tx_enable(&hethmac, EthDmaTxDesc);
+}
+
+void eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion(void)
+{
+	eth_mac_tx_frame_data_prepare(0x00030000, eth_igmp_hw_padding_crc_insertion_frame, sizeof(eth_igmp_hw_padding_crc_insertion_frame) / sizeof(uint8_t));
+	writereg32(0x40000000, 0x01);
+	eth_mac_init();
+	writereg32(0x40000000, 0x02);
+	eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare();
 	writereg32(0x40000000, 0x03);
 	drv_eth_mac_set_tx_descriptor_and_tx_enable(&hethmac, EthDmaTxDesc);
 }

@@ -92,6 +92,8 @@ bool drv_eth_mac_init(ETH_MAC_HandleTypeDef *eth)
 	drv_eth_mac_rx_int_allclear(eth);
 	drv_eth_mac_dma_config_update(eth);
 	drv_eth_mac_pe_config_update(eth);
+	drv_eth_mac_tx_enable(eth);// enable tx clk pin
+	drv_eth_mac_rx_enable(eth);// enable rx clk pin
 
 	return status;
 }
@@ -101,6 +103,8 @@ void drv_eth_mac_deinit(ETH_MAC_HandleTypeDef *eth)
 	drv_eth_mac_logic_reset(eth);
 	drv_eth_mac_tx_int_allclear(eth);
 	drv_eth_mac_rx_int_allclear(eth);
+	drv_eth_mac_tx_disable(eth);// disable tx clk pin
+	drv_eth_mac_rx_disable(eth);// disable rx clk pin
 }
 
 //===============================================
@@ -246,14 +250,14 @@ void drv_eth_mac_set_tx_descriptor_and_tx_enable(ETH_MAC_HandleTypeDef *eth, ETH
 {
 //	drv_eth_mac_tx_descriptor_clear(eth);
 	drv_eth_mac_set_tx_descriptor_config(eth, eth_tx_descriptor);
-	drv_eth_mac_tx_enable(eth);
+	drv_eth_mac_tx_trans_enable(eth);
 }
 
 void drv_eth_mac_set_rx_descriptor_and_rx_enable(ETH_MAC_HandleTypeDef *eth, ETH_MAC_DmaDescriptorHandleTypeDef *eth_rx_descriptor)
 {
 //	drv_eth_mac_rx_descriptor_clear(eth);
 	drv_eth_mac_set_rx_descriptor_config(eth, eth_rx_descriptor);
-	drv_eth_mac_rx_enable(eth);
+	drv_eth_mac_rx_trans_enable(eth);
 }
 
 //===============================================

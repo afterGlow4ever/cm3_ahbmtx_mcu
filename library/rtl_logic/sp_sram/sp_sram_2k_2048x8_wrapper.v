@@ -9,9 +9,9 @@
 // 	altera sp ram;
 // 	xilinx sp ram;
 // 	asic ram;
-// 	data width: 32bit=4bytes
-// 	data depth: 2k bytes (4*2^9 = 1024)
-// 	address width: 9 (4*2^9 = 1024)
+// 	data width: 8bit=1bytes
+// 	data depth: 2k bytes (1*2^11 = 2048)
+// 	address width: 11 (1*2^11 = 2048)
 //
 //===============================================
 
@@ -25,7 +25,7 @@ module sp_sram_2k_2048x8_wrapper
 	input									rstn,
 	input									wen,
 	input									cs,
-	input 	[11:0]							addr,
+	input 	[10:0]							addr,
 	input	[ 7:0]							data,
 	output	[ 7:0]							q
 );

@@ -101,7 +101,7 @@ extern UART_HandleTypeDef huart0;
 
 void Uart0_Handler(void)
 {
-	NVIC_ClearPendingIRQ(Uart0_IRQn);
+	NVIC_ClearPendingIRQ(Uart0_IRQn);// 01052025 cody, nvic clearpending not necessary
 	drv_uart_interrupt_handler(&huart0);
 }
 
@@ -189,5 +189,21 @@ void EthDma_Handler(void)
 
 #endif
 
+#ifdef ADVTIM_TEST
 
+extern ADVTIM_HandleTypeDef hadvtim;
+
+void AdvtimGen_Handler(void)
+{
+	NVIC_ClearPendingIRQ(AdvtimGen_IRQn);
+	drv_advtim_gen_interrupt_handler(&hadvtim);
+}
+
+void AdvtimCap_Handler(void)
+{
+	NVIC_ClearPendingIRQ(AdvtimCap_IRQn);
+//	drv_advtim_cap_interrupt_handler(&hadvtim);
+}
+
+#endif
 

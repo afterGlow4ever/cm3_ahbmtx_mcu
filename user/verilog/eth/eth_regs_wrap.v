@@ -63,6 +63,8 @@ module eth_regs_wrap
     output						r1_rx_logic_clr,
     output						r1_tx_enable,
     output						r1_rx_enable,
+    output						r1_tx_trans_enable,
+    output						r1_rx_trans_enable,
 
 	// configs
 	output reg	[ 3:0]			r1_hready_tothres,	
@@ -493,6 +495,8 @@ eth_apb_cfg u_eth_apb_cfg
     .r1_rx_logic_clr			(r1_rx_logic_clr_wc_clr),
     .r1_tx_enable				(r1_tx_enable),
     .r1_rx_enable				(r1_rx_enable),
+    .r1_tx_trans_enable			(r1_tx_trans_enable),
+    .r1_rx_trans_enable			(r1_rx_trans_enable),
     .r1_pe_update				(r1_pe_update),
     .r1_dma_update				(r1_dma_update),
     .r1_hready_tothres			(r1_hready_tothres_shadow),

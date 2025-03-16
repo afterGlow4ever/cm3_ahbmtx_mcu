@@ -335,6 +335,11 @@ wire							precache_full;
 wire							precache_empty;
 wire			[ 4:0]			precache_num;
 
+
+//===============================================
+// tx handle pre-cache
+//===============================================
+
 fifo_sync_w2n 
 #(
 	.ADDR_WIDTH					(2), 

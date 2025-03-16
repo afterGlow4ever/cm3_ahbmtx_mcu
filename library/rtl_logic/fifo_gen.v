@@ -446,6 +446,106 @@ assign wr_full = (fifo_num > (2**ADDR_WIDTH-1)*(DATA_IN_WIDTH/DATA_OUT_WIDTH)) ?
 
 endmodule
 
+//===============================================
+// Sync fifo module 
+// Narrow input to wide output.
+// Only pure divided.
+// wr_addr width: rd_addr width + log(rd/wr) width
+//===============================================
+
+module fifo_sync_n2w
+#(
+	parameter							ADDR_WIDTH = 2,
+	parameter							DATA_IN_WIDTH = 8,
+	parameter							DATA_OUT_WIDTH = 32
+)
+(
+	input								clk,
+	input								rstn,
+	input								wr_req,
+	input								rd_req,
+	output reg	[ADDR_WIDTH*($clog2(DATA_OUT_WIDTH/DATA_IN_WIDTH)):0]			fifo_num,
+	output 								rd_empty,
+	output 								wr_full,
+	input		[DATA_IN_WIDTH-1:0]		data,
+
+	output 		[DATA_OUT_WIDTH-1:0]	q
+);
+
+reg				[ADDR_WIDTH-1:0]		rd_addr;
+reg				[ADDR_WIDTH+($clog2(DATA_OUT_WIDTH/DATA_IN_WIDTH))-1:0]		wr_addr;// for not power of 2
+reg			 	[DATA_OUT_WIDTH-1:0]	fifo [ 0:2**ADDR_WIDTH];
+integer									i;
+
+wire [ADDR_WIDTH+($clog2(DATA_IN_WIDTH/DATA_OUT_WIDTH)):0] xaddr;
+wire [ADDR_WIDTH+($clog2(DATA_IN_WIDTH/DATA_OUT_WIDTH)):0] yaddr;
+assign xaddr = wr_addr[(ADDR_WIDTH-1+($clog2(DATA_OUT_WIDTH/DATA_IN_WIDTH))):($clog2(DATA_OUT_WIDTH/DATA_IN_WIDTH))];
+assign yaddr = wr_addr[($clog2(DATA_OUT_WIDTH/DATA_IN_WIDTH))-1:0]<<($clog2(DATA_IN_WIDTH)); 
+
+always @(posedge clk or negedge rstn)
+begin
+	if(!rstn)
+		for(i=0;i<=2**ADDR_WIDTH;i=i+1)
+			fifo[i] <= 0;
+	else if(wr_req && !wr_full)
+	begin
+		fifo[xaddr][yaddr+:(DATA_IN_WIDTH)] <= data;
+	end
+end
+
+assign q = fifo[rd_addr];
+
+always @(posedge clk or negedge rstn)
+begin
+	if(!rstn)
+		rd_addr <= 0;
+	else if(!rd_empty && rd_req)
+		rd_addr <= rd_addr + 1'b1;
+	else
+		rd_addr <= rd_addr;
+end
+
+always @(posedge clk or negedge rstn)
+begin
+	if(!rstn)
+		wr_addr <= 0;
+	else if(!wr_full && wr_req)
+		wr_addr <= wr_addr + 1'b1;
+	else
+		wr_addr <= wr_addr;
+end
+
+always @(posedge clk or negedge rstn)
+begin
+	if(!rstn)
+		fifo_num <= 0;
+	else 
+	begin
+		case({wr_req, rd_req})
+			2'b00: 
+				fifo_num <= fifo_num;
+			2'b01:
+				if(fifo_num >= (DATA_OUT_WIDTH/DATA_IN_WIDTH))
+					fifo_num <= fifo_num - (DATA_OUT_WIDTH/DATA_IN_WIDTH);
+				else
+					fifo_num <= 0;// avoid negative number
+			2'b10:
+				if(fifo_num < (2**ADDR_WIDTH)*(DATA_OUT_WIDTH/DATA_IN_WIDTH))
+					fifo_num <= fifo_num + 1'b1;
+			2'b11: 
+				fifo_num <= fifo_num + ((DATA_OUT_WIDTH/DATA_IN_WIDTH)-1);
+			default: 
+				fifo_num <= fifo_num;
+		endcase
+	end
+end
+
+// STARC05-1.3.1.3 
+// Async reset should not be used in any combinational logic
+assign rd_empty = (fifo_num < (DATA_OUT_WIDTH/DATA_IN_WIDTH)) ? 1'b1 : 1'b0;
+assign wr_full = (fifo_num >= (2**ADDR_WIDTH)*(DATA_OUT_WIDTH/DATA_IN_WIDTH)) ? 1'b1 : 1'b0;
+
+endmodule
 
 
 

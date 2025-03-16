@@ -32,19 +32,25 @@ write_checkpoint -force ./checkpoint/opt
 place_design
 write_checkpoint -force ./checkpoint/place
 phys_opt_design
+phys_opt_design -aggressive_hold_fix
 write_checkpoint -force ./checkpoint/phy_opt
 
 route_design
 write_checkpoint -force ./checkpoint/route
 
+set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
+set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
+write_bitstream -bin_file -force ./bitstream
+
+write_xdc -no_fixed_only -force ./checkpoint/implementation_clk.xdc
+
+
+report_max_clock_skew 300 ./checkpoint/implementation_clk_skew.rpt
 report_timing_summary -file ./checkpoint/sta_summary.rpt
 report_timing -sort_by group -max_paths 1000 -path_type summary -file ./checkpoint/sta.rpt
 report_utilization -file ./checkpoint/implementation_util.rpt
 report_utilization -hierarchical -hierarchical_depth 3 -file ./checkpoint/implementation_hier.rpt
-#report_clock_utilization -quiet -write_xdc /checkpoint/implementation_clk.xdc
+report_clock_utilization -quiet -write_xdc /checkpoint/implementation_clk.xdc
 report_clocks -file ./checkpoint/implementation_clk.rpt
 report_drc -file ./checkpoint/implementation_drc.rpt
-write_xdc -no_fixed_only -force ./checkpoint/implementation_clk.xdc
-
-write_bitstream -bin_file -force ./bitstream
 

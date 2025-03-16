@@ -60,6 +60,9 @@ void mcu_testmenu(void);
 #ifdef ETH_DRIVER
 #include "eth_bsp.h"
 #endif
+#ifdef ADVTIM_DRIVER
+#include "advtim_bsp.h"
+#endif
 
 //===============================================
 // including test header files
@@ -74,6 +77,9 @@ void mcu_testmenu(void);
 #endif
 #ifdef ETH_TEST
 #include "eth_test.h"
+#endif
+#ifdef ADVTIM_TEST
+#include "advtim_test.h"
 #endif
 
 #endif

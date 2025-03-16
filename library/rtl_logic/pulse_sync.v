@@ -35,7 +35,7 @@ module pos_step_sync2pulse
 	output  	[WIDTH-1:0]					des_Y
 );
 
-reg				[WIDTH-1:0]					src_detect;
+wire			[WIDTH-1:0]					src_detect;
 wire			[WIDTH-1:0]					des_detect;
 reg				[WIDTH-1:0]					src_step;
 wire			[WIDTH-1:0]					des_step;
@@ -117,7 +117,7 @@ module pos_step_sync2step
 	output  	[WIDTH-1:0]					des_Y
 );
 
-reg				[WIDTH-1:0]					src_detect;
+wire			[WIDTH-1:0]					src_detect;
 reg				[WIDTH-1:0]					src_step;
 wire			[WIDTH-1:0]					des_step;
 
@@ -190,9 +190,9 @@ module neg_step_sync2pulse
 	output  	[WIDTH-1:0]					des_Y
 );
 
-reg				[WIDTH-1:0]					src_detect;
+wire			[WIDTH-1:0]					src_detect;
 wire			[WIDTH-1:0]					des_detect;
-wire			[WIDTH-1:0]					src_step;
+reg				[WIDTH-1:0]					src_step;
 wire			[WIDTH-1:0]					des_step;
 
 negedge_detect 
@@ -272,8 +272,8 @@ module neg_step_sync2step
 	output  	[WIDTH-1:0]					des_Y
 );
 
-reg				[WIDTH-1:0]					src_detect;
-wire			[WIDTH-1:0]					src_step;
+wire			[WIDTH-1:0]					src_detect;
+reg				[WIDTH-1:0]					src_step;
 wire			[WIDTH-1:0]					des_step;
 
 negedge_detect 

@@ -94,8 +94,8 @@ task swd_init;
 	swd_read_dpreg(2'b00, cpu_idr);
 	swd_write_dpreg(2'b01, 32'h10000000);// power up request
 	swd_write_apreg(2'b00, 32'h23000042);// csw: data size 32bit
-	swd_read_apreg(2'b00, cpu_idr);
-	swd_read_apreg(2'b00, cpu_idr);
+//	swd_read_apreg(2'b00, cpu_idr);
+//	swd_read_apreg(2'b00, cpu_idr);
 endtask
 
 task jlink2swd;
@@ -310,6 +310,7 @@ task swd_readreg32;
 	output	[31:0]			rdata;
 
 	swd_write_apreg(2'b01, addr);
+	swd_read_apreg(2'b11, rdata);
 	swd_read_apreg(2'b11, rdata);
 `ifdef JLINK_MONITOR
 	$display($time, "[JLINK MONITOR] System register %8h read data %8h.", addr, rdata);

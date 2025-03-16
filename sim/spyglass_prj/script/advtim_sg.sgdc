@@ -1,0 +1,26 @@
+current_design "advtim_sg"
+
+clock -name "advtim_sg.apb2_root_clk" 	-domain apb2_root_clk -period 100.0 -edge 0.0 50.0
+clock -name "advtim_sg.advtim_clk" 	-domain advtim_clk -period 20.0 -edge 0.0 10.0
+
+reset -name "advtim_sg.apb2_root_rstn" 	-value 0
+reset -name "advtim_sg.advtim_rstn" 	-value 0
+
+abstract_port -module advtim_sg -ports paddr[31:0]		-clock advtim_sg.apb2_root_clk
+abstract_port -module advtim_sg -ports penable			-clock advtim_sg.apb2_root_clk
+abstract_port -module advtim_sg -ports psel				-clock advtim_sg.apb2_root_clk
+abstract_port -module advtim_sg -ports pwrite			-clock advtim_sg.apb2_root_clk
+abstract_port -module advtim_sg -ports pwdata[31:0]		-clock advtim_sg.apb2_root_clk
+
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_hw_update_en
+
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_psc
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_arr
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_rcr
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cms
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_dir
+
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_int_en[1:0]
+
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_int_sta[1:0]
+

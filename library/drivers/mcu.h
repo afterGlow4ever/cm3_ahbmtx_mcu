@@ -51,7 +51,9 @@ typedef enum IRQn
   EthSma_IRQn                 	=  12,    /*!< 16+12 EthSma Interrupt							   */
   EthTx_IRQn                 	=  13,    /*!< 16+13 EthTx Interrupt							   */
   EthRx_IRQn                 	=  14,    /*!< 16+14 EthRx Interrupt							   */
-  Resv15_IRQn                 	=  15,    /*!< 16+15 Resv13 Interrupt							   */
+  Resv15_IRQn                 	=  15,    /*!< 16+15 Resv15 Interrupt							   */
+  AdvtimGen_IRQn                =  16,    /*!< 16+16 AdvtimGen Interrupt						   */
+  AdvtimCap_IRQn                =  17,    /*!< 16+17 AdvtimCap Interrupt						   */
 
 /******  MCU Specific Interrupt Numbers *******************************************************/
 } IRQn_Type;
@@ -83,6 +85,8 @@ typedef enum IRQn
 #define ETH_BASE_ADDR							0x40020000
 #define ETH_SMA_BASE_ADDR						0x40020000
 #define ETH_MAC_BASE_ADDR						0x40020030
+#define ADVTIM_BASE_ADDR						0x40021000
+#define ADVTIM_GEN_BASE_ADDR					0x40021000
 
 //===============================================
 // instance define
@@ -95,6 +99,7 @@ typedef enum IRQn
 #define ETH 	((ETH_TypeDef *)ETH_BASE_ADDR)
 #define ETH_SMA	((ETH_TypeDef *)ETH_BASE_ADDR)
 #define ETH_MAC	((ETH_MAC_TypeDef *)(ETH_BASE_ADDR+0x30))
+#define ADVTIM 	((ADVTIM_TypeDef *)ADVTIM_BASE_ADDR)
 
 //===============================================
 // variable type define

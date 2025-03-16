@@ -120,6 +120,8 @@ wire							r1_tx_logic_clr;
 wire							r1_rx_logic_clr;		
 wire							r1_tx_enable;		
 wire							r1_rx_enable;		
+wire							r1_tx_trans_enable;		
+wire							r1_rx_trans_enable;		
 
 wire		[ 3:0]				r1_hready_tothres;	
 wire		[ 2:0]				r1_priority_ratio;	
@@ -247,6 +249,8 @@ eth_regs_wrap u_eth_regs_wrap
 	.r1_rx_logic_clr			(r1_rx_logic_clr),
 	.r1_tx_enable				(r1_tx_enable),
 	.r1_rx_enable				(r1_rx_enable),
+	.r1_tx_trans_enable			(r1_tx_trans_enable),
+	.r1_rx_trans_enable			(r1_rx_trans_enable),
 
 	.r1_hready_tothres			(r1_hready_tothres),	
 	.r1_priority_ratio			(r1_priority_ratio),	
@@ -325,36 +329,17 @@ begin
 end
 
 //===============================================
-// eth mac pe enable control
-//
-// Tx enable is generated from tx data buffer data ready
-// when tx disable, the remaining operation is still going on
-// until current operation ends.
+// eth mac pe logic clear control
 //
 // Using logic clear or ahbmst error occuring 
 // can cease operation at once.
 //===============================================
 
-reg								eth_mac_pe_tx_enable;
-wire							eth_mac_pe_tx_end;
-reg								eth_mac_pe_tx_ending;
 wire							eth_mac_pe_tx_logic_clr;
 wire							eth_mac_pe_rx_logic_clr;
-wire							eth_mac_txdb_ready_af;
 wire							eth_mac_dl_ahbmst_error_af;
 assign eth_mac_pe_tx_logic_clr = r1_tx_logic_clr || eth_mac_dl_ahbmst_error_af;
 assign eth_mac_pe_rx_logic_clr = r1_rx_logic_clr || eth_mac_dl_ahbmst_error_af;
-
-pos_step_sync2pulse u_eth_mac_txdb_ready_sync
-(
-	.src_clk						(ahb_hclk),
-	.src_rstn						(ahb_hrstn),	
-	.des_clk						(pe_tx_clk),
-	.des_rstn						(pe_tx_rstn),	
-
-	.src_A							(~eth_mac_txdb_processing_doing),
-	.des_Y							(eth_mac_txdb_ready_af)
-);
 
 pos_step_sync2pulse u_eth_mac_dl_ahbmst_error_sync
 (
@@ -367,38 +352,48 @@ pos_step_sync2pulse u_eth_mac_dl_ahbmst_error_sync
 	.des_Y							(eth_mac_dl_ahbmst_error_af)
 );
 
-// Using to keep tx ending state
-always @(posedge pe_tx_clk or negedge pe_tx_rstn)
-begin
-	if(!pe_tx_rstn)
-	begin
-		eth_mac_pe_tx_ending <= 1'b0;
-	end
-	else if(eth_mac_pe_tx_end)
-	begin
-		eth_mac_pe_tx_ending <= 1'b1;
-	end
-	else if(eth_mac_txdb_ready_af)
-	begin
-		eth_mac_pe_tx_ending <= 1'b0;
-	end
-	else
-	begin
-		eth_mac_pe_tx_ending <= eth_mac_pe_tx_ending;
-	end
-end
+//===============================================
+// eth mac datalink logic clear control
+//
+// Using logic clear or ahbmst error occuring 
+// can cease operation at once.
+//===============================================
 
-always @(posedge pe_tx_clk or negedge pe_tx_rstn)
-begin
-	if(!pe_tx_rstn)
-		eth_mac_pe_tx_enable <= 1'b0;
-	else if(((eth_mac_pe_tx_enable == 1'b1) && eth_mac_pe_tx_end) || eth_mac_pe_tx_ending || eth_mac_pe_tx_logic_clr)
-		eth_mac_pe_tx_enable <= 1'b0;
-	else if((eth_mac_pe_tx_enable == 1'b0) && (eth_mac_txdb_data_ready))// do not need sync
-		eth_mac_pe_tx_enable <= 1'b1;
-	else
-		eth_mac_pe_tx_enable <= eth_mac_pe_tx_enable;
-end
+wire							eth_mac_ahbmst_clr;
+wire							eth_mac_txdb_clr;
+wire							eth_mac_rxdb_clr;
+assign eth_mac_ahbmst_clr = r1_dma_clr || eth_mac_dl_ahbmst_error;
+assign eth_mac_txdb_clr = r1_tx_data_clr || eth_mac_dl_ahbmst_error;
+assign eth_mac_rxdb_clr = r1_rx_data_clr || eth_mac_dl_ahbmst_error;
+
+//===============================================
+// eth mac tx enable control
+//===============================================
+
+wire							eth_mac_pe_tx_enable;
+wire							eth_mac_pe_tx_enable_af_r;
+
+pos_step_sync2step u_eth_mac_txdb_enable_sync
+(
+	.src_clk						(module_clk),
+	.src_rstn						(module_rstn),	
+	.des_clk						(pe_tx_clk),
+	.des_rstn						(pe_tx_rstn),	
+
+	.src_A							(r1_tx_enable),
+	.des_Y							(eth_mac_pe_tx_enable)
+);
+
+pos_step_sync2pulse u_eth_mac_txdb_enable_sync_pulse
+(
+	.src_clk						(module_clk),
+	.src_rstn						(module_rstn),	
+	.des_clk						(ahb_hclk),
+	.des_rstn						(ahb_hrstn),	
+
+	.src_A							(r1_tx_trans_enable),
+	.des_Y							(eth_mac_pe_tx_enable_af_r)
+);
 
 //===============================================
 // eth mac datalink enable control
@@ -407,30 +402,21 @@ end
 //
 // Tx data buffer enable is generated from 
 // tx data buffer data ready when tx disable.
-//
-// Using logic clear or ahbmst error occuring 
-// can cease operation at once.
 //===============================================
 
-wire							r1_tx_enable_afsync_r;
 reg								eth_mac_txdb_enable;
 wire							eth_mac_txdb_enable_end;
-wire							eth_mac_ahbmst_clr;
-wire							eth_mac_txdb_clr;
-wire							eth_mac_rxdb_clr;
-assign eth_mac_ahbmst_clr = r1_dma_clr || eth_mac_dl_ahbmst_error;
-assign eth_mac_txdb_clr = r1_tx_data_clr || eth_mac_dl_ahbmst_error;
-assign eth_mac_rxdb_clr = r1_rx_data_clr || eth_mac_dl_ahbmst_error;
+wire							eth_mac_txdb_ready_af;
 
-pos_step_sync2pulse u_eth_mac_txdb_enable_sync
+pos_step_sync2pulse u_eth_mac_txdb_ready_sync
 (
-	.src_clk						(module_clk),
-	.src_rstn						(module_rstn),	
-	.des_clk						(ahb_hclk),
-	.des_rstn						(ahb_hrstn),	
+	.src_clk						(ahb_hclk),
+	.src_rstn						(ahb_hrstn),	
+	.des_clk						(pe_tx_clk),
+	.des_rstn						(pe_tx_rstn),	
 
-	.src_A							(r1_tx_enable),
-	.des_Y							(r1_tx_enable_afsync_r)
+	.src_A							(~eth_mac_txdb_processing_doing),
+	.des_Y							(eth_mac_txdb_ready_af)
 );
 
 always @(posedge ahb_hclk or negedge ahb_hrstn)
@@ -439,11 +425,166 @@ begin
 		eth_mac_txdb_enable <= 1'b0;
 	else if(((eth_mac_txdb_enable == 1'b1) && (eth_mac_txdb_enable_end == 1'b1)) || eth_mac_txdb_clr)
 		eth_mac_txdb_enable <= 1'b0;
-	else if((eth_mac_txdb_enable == 1'b0) && (r1_tx_enable_afsync_r))
+	else if((eth_mac_txdb_enable == 1'b0) && (eth_mac_pe_tx_enable_af_r))
 		eth_mac_txdb_enable <= 1'b1;
 	else
 		eth_mac_txdb_enable <= eth_mac_txdb_enable;
 end
+
+//===============================================
+// eth mac pe tx enable control
+//
+// Tx enable is generated from tx data buffer data ready
+// when tx disable, the remaining operation is still going on
+// until current operation ends.
+//===============================================
+
+reg								eth_mac_pe_tx_trans_enable;
+wire							eth_mac_pe_tx_trans_end;
+reg								eth_mac_pe_tx_trans_ending;
+
+// Using to keep tx ending state
+always @(posedge pe_tx_clk or negedge pe_tx_rstn)
+begin
+	if(!pe_tx_rstn)
+	begin
+		eth_mac_pe_tx_trans_ending <= 1'b0;
+	end
+	else if(eth_mac_pe_tx_trans_end)
+	begin
+		eth_mac_pe_tx_trans_ending <= 1'b1;
+	end
+	else if(eth_mac_txdb_ready_af)
+	begin
+		eth_mac_pe_tx_trans_ending <= 1'b0;
+	end
+	else
+	begin
+		eth_mac_pe_tx_trans_ending <= eth_mac_pe_tx_trans_ending;
+	end
+end
+
+always @(posedge pe_tx_clk or negedge pe_tx_rstn)
+begin
+	if(!pe_tx_rstn)
+		eth_mac_pe_tx_trans_enable <= 1'b0;
+	else if(((eth_mac_pe_tx_trans_enable == 1'b1) && eth_mac_pe_tx_trans_end) || eth_mac_pe_tx_trans_ending || eth_mac_pe_tx_logic_clr)
+		eth_mac_pe_tx_trans_enable <= 1'b0;
+	else if((eth_mac_pe_tx_trans_enable == 1'b0) && (eth_mac_txdb_data_ready))// do not need sync
+		eth_mac_pe_tx_trans_enable <= 1'b1;
+	else
+		eth_mac_pe_tx_trans_enable <= eth_mac_pe_tx_trans_enable;
+end
+
+//===============================================
+// eth mac rx enable control
+//===============================================
+
+wire							eth_mac_pe_rx_enable;
+wire							eth_mac_pe_rx_enable_af_r;
+
+pos_step_sync2step u_eth_mac_rxdb_enable_sync
+(
+	.src_clk						(module_clk),
+	.src_rstn						(module_rstn),	
+	.des_clk						(pe_rx_clk),
+	.des_rstn						(pe_rx_rstn),	
+
+	.src_A							(r1_rx_enable),
+	.des_Y							(eth_mac_pe_rx_enable)
+);
+
+pos_step_sync2pulse u_eth_mac_rxdb_enable_sync_pulse
+(
+	.src_clk						(module_clk),
+	.src_rstn						(module_rstn),	
+	.des_clk						(ahb_hclk),
+	.des_rstn						(ahb_hrstn),	
+
+	.src_A							(r1_rx_trans_enable),
+	.des_Y							(eth_mac_pe_rx_enable_af_r)
+);
+
+//===============================================
+// eth mac datalink enable control
+//
+// Datalink rx enable.
+//
+// Rx data buffer enable is generated from 
+// rx data buffer data ready when rx disable.
+//===============================================
+
+reg								eth_mac_rxdb_enable;
+wire							eth_mac_rxdb_enable_end;
+wire							eth_mac_rxdb_ready_af;
+
+pos_step_sync2pulse u_eth_mac_rxdb_ready_sync
+(
+	.src_clk						(ahb_hclk),
+	.src_rstn						(ahb_hrstn),	
+	.des_clk						(pe_rx_clk),
+	.des_rstn						(pe_rx_rstn),	
+
+	.src_A							(~eth_mac_rxdb_processing_doing),
+	.des_Y							(eth_mac_rxdb_ready_af)
+);
+
+always @(posedge ahb_hclk or negedge ahb_hrstn)
+begin
+	if(!ahb_hrstn)
+		eth_mac_rxdb_enable <= 1'b0;
+	else if(((eth_mac_rxdb_enable == 1'b1) && (eth_mac_rxdb_enable_end == 1'b1)) || eth_mac_rxdb_clr)
+		eth_mac_rxdb_enable <= 1'b0;
+	else if((eth_mac_rxdb_enable == 1'b0) && (eth_mac_pe_rx_enable_af_r))
+		eth_mac_rxdb_enable <= 1'b1;
+	else
+		eth_mac_rxdb_enable <= eth_mac_rxdb_enable;
+end
+
+//===============================================
+// eth mac pe rx enable control
+//
+// Rx enable is generated from tx data buffer data ready
+// when tx disable, the remaining operation is still going on
+// until current operation ends.
+//===============================================
+
+reg								eth_mac_pe_rx_trans_enable;
+wire							eth_mac_pe_rx_trans_end;
+reg								eth_mac_pe_rx_trans_ending;
+
+//// Using to keep rx ending state
+//always @(posedge pe_rx_clk or negedge pe_rx_rstn)
+//begin
+//	if(!pe_rx_rstn)
+//	begin
+//		eth_mac_pe_rx_trans_ending <= 1'b0;
+//	end
+//	else if(eth_mac_pe_rx_trans_end)
+//	begin
+//		eth_mac_pe_rx_trans_ending <= 1'b1;
+//	end
+//	else if(eth_mac_rxdb_ready_af)
+//	begin
+//		eth_mac_pe_rx_trans_ending <= 1'b0;
+//	end
+//	else
+//	begin
+//		eth_mac_pe_tx_trans_ending <= eth_mac_pe_tx_trans_ending;
+//	end
+//end
+//
+//always @(posedge pe_tx_clk or negedge pe_tx_rstn)
+//begin
+//	if(!pe_tx_rstn)
+//		eth_mac_pe_tx_trans_enable <= 1'b0;
+//	else if(((eth_mac_pe_tx_trans_enable == 1'b1) && eth_mac_pe_tx_trans_end) || eth_mac_pe_tx_trans_ending || eth_mac_pe_tx_logic_clr)
+//		eth_mac_pe_tx_trans_enable <= 1'b0;
+//	else if((eth_mac_pe_tx_trans_enable == 1'b0) && (eth_mac_txdb_data_ready))// do not need sync
+//		eth_mac_pe_tx_trans_enable <= 1'b1;
+//	else
+//		eth_mac_pe_tx_trans_enable <= eth_mac_pe_tx_trans_enable;
+//end
 
 //===============================================
 // eth data buffer
@@ -496,7 +637,7 @@ eth_mac_data_buffer u_eth_mac_data_buffer
 	.txdb_fifo2pe_done					(eth_mac_txdb_fifo2pe_done),	
 	.txdb_fifo2pe_burst_process_done	(eth_mac_txdb_fifo2pe_burst_process_done),	
 	.txdb_fifo2pe_single_process_done	(eth_mac_txdb_fifo2pe_single_process_done),
-	.txdb_pe_tx_end						(eth_mac_pe_tx_end),
+	.txdb_pe_tx_end						(eth_mac_pe_tx_trans_end),
 	.txdb_data_ready   					(eth_mac_txdb_data_ready),
 	.txdb_process_doing					(eth_mac_txdb_processing_doing),
 	.dl_ahbmst_error					(eth_mac_dl_ahbmst_error),
@@ -621,9 +762,11 @@ eth_pe_core u_eth_pe_core
 
 	.eth_mac_pe_tx_logic_clr					(eth_mac_pe_tx_logic_clr),
 	.eth_mac_pe_rx_logic_clr					(eth_mac_pe_rx_logic_clr),
-	.eth_mac_pe_tx_enable						(eth_mac_pe_tx_enable),
-	.eth_mac_pe_rx_enable						(1'b0),//??????
-	.eth_mac_pe_tx_end							(eth_mac_pe_tx_end),
+	.eth_mac_pe_tx_clk_enable					(eth_mac_pe_tx_enable),
+	.eth_mac_pe_tx_data_enable					(eth_mac_pe_tx_trans_enable),
+	.eth_mac_pe_rx_clk_enable					(eth_mac_pe_rx_enable),
+	.eth_mac_pe_rx_data_enable					(eth_mac_pe_rx_trans_enable),
+	.eth_mac_pe_tx_data_end						(eth_mac_pe_tx_trans_end),
 	.eth_mac_pe_rx_end							(),
 
 	.r1_sa_macaddrl								(r1_sa_macaddrl),

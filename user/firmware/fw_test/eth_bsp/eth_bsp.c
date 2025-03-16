@@ -387,6 +387,27 @@ void eth_mac_descriptor_ip_igmp_frame_crc_insertion_hw_handle_prepare(void)
 	drv_eth_mac_pe_config_update(&hethmac);
 }
 
+void eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare(void)
+{
+	uint8_t i;
+	uint8_t mac_address[6] = {0x00, 0x50, 0xba, 0x85, 0x84, 0xb3};
+
+	hethmac.tx_descriptor_num = 1;
+	drv_eth_mac_tx_descriptor_default_config(&hethmac_desccfg);
+//	hethmac_desccfg.buffer1_address = 0x00030000;
+	hethmac_desccfg.buffer1_length = 50;
+	hethmac_desccfg.cic = ETH_MAC_TXDESC_CHECKSUM_REPLACED_BY_HW;
+	hethmac_desccfg.cpc = ETH_MAC_TXDESC_CRC_AND_PAD_INSERTED_BY_HW;
+	hethmac_desccfg.saic = ETH_MAC_TXDESC_SA_MACADDRESS_REPLACED_BY_HW;
+	for(i = 0; i < hethmac.tx_descriptor_num; i++)
+	{
+		hethmac_desccfg.buffer1_address = 0x00030000+i*0x0800;
+		drv_eth_mac_tx_descriptor_config(&hethmac_desccfg, &EthDmaTxDesc[i]);
+	}
+	drv_eth_mac_address_set(&hethmac, mac_address);
+	drv_eth_mac_pe_config_update(&hethmac);
+}
+
 void eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare(void)
 {
 	uint8_t i;

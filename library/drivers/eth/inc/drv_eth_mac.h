@@ -311,17 +311,42 @@ static inline void drv_eth_mac_logic_reset(ETH_MAC_HandleTypeDef *eth)
 
 static inline void drv_eth_mac_tx_enable(ETH_MAC_HandleTypeDef *eth)
 {
+	REG_SETBIT(eth->regs->mac_top_ctrl, 5, 1);
+}
+
+static inline void drv_eth_mac_tx_disable(ETH_MAC_HandleTypeDef *eth)
+{
+	REG_SETBIT(eth->regs->mac_top_ctrl, 5, 0);
+}
+
+static inline void drv_eth_mac_rx_enable(ETH_MAC_HandleTypeDef *eth)
+{
+	REG_SETBIT(eth->regs->mac_top_ctrl, 4, 1);
+}
+
+static inline void drv_eth_mac_rx_disable(ETH_MAC_HandleTypeDef *eth)
+{
+	REG_SETBIT(eth->regs->mac_top_ctrl, 4, 0);
+}
+
+static inline void drv_eth_mac_tx_trans_enable(ETH_MAC_HandleTypeDef *eth)
+{
 	REG_SETBIT(eth->regs->mac_top_ctrl, 3, 0);
 	REG_SETBIT(eth->regs->mac_top_ctrl, 3, 1);
 	REG_SETBIT(eth->regs->mac_top_ctrl, 3, 0);
 }
 
-static inline void drv_eth_mac_rx_enable(ETH_MAC_HandleTypeDef *eth)
+static inline void drv_eth_mac_tx_trans_disable(ETH_MAC_HandleTypeDef *eth)
+{
+	REG_SETBIT(eth->regs->mac_top_ctrl, 3, 0);
+}
+
+static inline void drv_eth_mac_rx_trans_enable(ETH_MAC_HandleTypeDef *eth)
 {
 	REG_SETBIT(eth->regs->mac_top_ctrl, 2, 1);
 }
 
-static inline void drv_eth_mac_rx_disable(ETH_MAC_HandleTypeDef *eth)
+static inline void drv_eth_mac_rx_trans_disable(ETH_MAC_HandleTypeDef *eth)
 {
 	REG_SETBIT(eth->regs->mac_top_ctrl, 2, 0);
 }

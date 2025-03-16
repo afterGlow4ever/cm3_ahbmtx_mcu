@@ -157,3 +157,11 @@ MODIFY:	Changing AHB bus matrix for ethernet ip ahb master.
 MODIFY:	Changing interrupt line for ethernet ip.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 03162025
+ADD:    Advance timer pwm generation rtl section. Only simple verification.
+MODIFY:	RTL logic lib.
+MODIFY:	Vivado fpga script.
+DELETE:	Vivado 32k ram ip.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

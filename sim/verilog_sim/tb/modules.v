@@ -78,3 +78,7 @@
 `include "eth_mac_fw_test.v"
 `endif
 
+`ifdef ADVTIM_FW_TEST
+`include "advtim_fw_test.v"
+`endif
+

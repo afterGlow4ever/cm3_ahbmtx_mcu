@@ -69,3 +69,15 @@ begin
 	u_eth_phy_sma_model.init;
 end
 
+//===============================================
+// eth mac lt case
+//===============================================
+
+initial
+begin
+	wait(TOP.u_mcu_top.u_fp_domain.u_apb2_async_top.u_eth.u_eth_mac_data_buffer.u_eth_ahb_master.ahb_haddr[31:0] == 32'h30020);
+//	force TOP.u_mcu_top.u_fp_domain.u_ahb_bus_matrix.u_ahb_bus_matrix_i_3.HREADYOUTS = 1'b0;
+end
+
+
+

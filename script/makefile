@@ -89,6 +89,9 @@ eth_sma_fw_sim:
 eth_mac_fw_sim:
 	make -f makefile.eth_mac_fw_sim
 
+advtim_fw_sim:
+	make -f makefile.advtim_fw_sim
+
 #===============================================
 # RTL auto generation
 #===============================================
@@ -104,6 +107,9 @@ gpio_reg_gen:
 
 bastim_reg_gen:
 	make -f makefile.bastim_reg_gen
+
+advtim_reg_gen:
+	make -f makefile.advtim_reg_gen
 
 eth_reg_gen:
 	make -f makefile.eth_reg_gen

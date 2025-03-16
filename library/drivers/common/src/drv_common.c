@@ -45,7 +45,7 @@ bool drv_check_data(uint32_t address, uint32_t data)
 bool drv_check_rw_data(uint32_t address, uint32_t wdata, uint32_t rdata)
 {
 	writereg32(address, wdata);
-	if(readreg32(address) == rdata)
+	if(readreg32(address) == rdata)// 01052025 cody, rdata can be instead of wdata
 	{
 		writereg32(DEBUG_BASE_ADDR, 0);
 		return FALSE;

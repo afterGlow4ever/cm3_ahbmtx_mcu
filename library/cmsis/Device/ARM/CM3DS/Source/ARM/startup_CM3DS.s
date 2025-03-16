@@ -94,6 +94,8 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
 				DCD     EthTx_Handler       	  ; ETH TX Handler	
 				DCD     EthRx_Handler     	      ; ETH RX Handler	
 				DCD     Resv15_Handler            ; Reserved 15 Handler	
+				DCD     AdvtimGen_Handler		  ; ADVTIM GEN Handler	
+				DCD     AdvtimCap_Handler		  ; ADVTIM CAP Handler	
 __Vectors_End
 
 __Vectors_Size  EQU     __Vectors_End - __Vectors
@@ -177,6 +179,8 @@ Default_Handler PROC
 				EXPORT EthTx_Handler		  	  [WEAK]	
 				EXPORT EthRx_Handler		  	  [WEAK]	
 				EXPORT Resv15_Handler			  [WEAK]	
+				EXPORT AdvtimGen_Handler		  [WEAK]	
+				EXPORT AdvtimCap_Handler		  [WEAK]	
 Uart0_Handler
 Uart1_Handler
 Resv2_Handler
@@ -193,6 +197,8 @@ EthSma_Handler
 EthTx_Handler
 EthRx_Handler
 Resv15_Handler
+AdvtimGen_Handler
+AdvtimCap_Handler
                 B       .
 
                 ENDP

@@ -5,1517 +5,1745 @@ fw_test.elf:     file format elf32-littlearm
 Disassembly of section .text:
 
 00000000 <__isr_vector>:
-   0:	00022000 	andeq	r2, r2, r0
-   4:	00000c7d 	andeq	r0, r0, sp, ror ip
-   8:	00000bb9 			; <UNDEFINED> instruction: 0x00000bb9
-   c:	00000bbb 			; <UNDEFINED> instruction: 0x00000bbb
-  10:	00000bbd 			; <UNDEFINED> instruction: 0x00000bbd
-  14:	00000bbf 			; <UNDEFINED> instruction: 0x00000bbf
-  18:	00000bc1 	andeq	r0, r0, r1, asr #23
+       0:	00022000 	andeq	r2, r2, r0
+       4:	00000e19 	andeq	r0, r0, r9, lsl lr
+       8:	00000d51 	andeq	r0, r0, r1, asr sp
+       c:	00000d53 	andeq	r0, r0, r3, asr sp
+      10:	00000d55 	andeq	r0, r0, r5, asr sp
+      14:	00000d57 	andeq	r0, r0, r7, asr sp
+      18:	00000d59 	andeq	r0, r0, r9, asr sp
 	...
-  2c:	00000bc3 	andeq	r0, r0, r3, asr #23
-  30:	00000bc5 	andeq	r0, r0, r5, asr #23
-  34:	00000000 	andeq	r0, r0, r0
-  38:	00000bc7 	andeq	r0, r0, r7, asr #23
-  3c:	00000bc9 	andeq	r0, r0, r9, asr #23
-  40:	00000bcd 	andeq	r0, r0, sp, asr #23
-  44:	00000cd1 	ldrdeq	r0, [r0], -r1
-  48:	00000cd3 	ldrdeq	r0, [r0], -r3
-  4c:	00000cd5 	ldrdeq	r0, [r0], -r5
-  50:	00000c3d 	andeq	r0, r0, sp, lsr ip
-  54:	00000cd9 	ldrdeq	r0, [r0], -r9
-  58:	00000cdb 	ldrdeq	r0, [r0], -fp
-  5c:	00000cdd 	ldrdeq	r0, [r0], -sp
-  60:	00000cdf 	ldrdeq	r0, [r0], -pc	; <UNPREDICTABLE>
-  64:	00000ce1 	andeq	r0, r0, r1, ror #25
-  68:	00000ce3 	andeq	r0, r0, r3, ror #25
-  6c:	00000ce5 	andeq	r0, r0, r5, ror #25
-  70:	00000be9 	andeq	r0, r0, r9, ror #23
-  74:	00000c05 	andeq	r0, r0, r5, lsl #24
-  78:	00000c21 	andeq	r0, r0, r1, lsr #24
-  7c:	00000ced 	andeq	r0, r0, sp, ror #25
+      2c:	00000d5b 	andeq	r0, r0, fp, asr sp
+      30:	00000d5d 	andeq	r0, r0, sp, asr sp
+      34:	00000000 	andeq	r0, r0, r0
+      38:	00000d5f 	andeq	r0, r0, pc, asr sp
+      3c:	00000d61 	andeq	r0, r0, r1, ror #26
+      40:	00000d65 	andeq	r0, r0, r5, ror #26
+      44:	00000e6d 	andeq	r0, r0, sp, ror #28
+      48:	00000e6f 	andeq	r0, r0, pc, ror #28
+      4c:	00000e71 	andeq	r0, r0, r1, ror lr
+      50:	00000dd5 	ldrdeq	r0, [r0], -r5
+      54:	00000e75 	andeq	r0, r0, r5, ror lr
+      58:	00000e77 	andeq	r0, r0, r7, ror lr
+      5c:	00000e79 	andeq	r0, r0, r9, ror lr
+      60:	00000e7b 	andeq	r0, r0, fp, ror lr
+      64:	00000e7d 	andeq	r0, r0, sp, ror lr
+      68:	00000e7f 	andeq	r0, r0, pc, ror lr
+      6c:	00000e81 	andeq	r0, r0, r1, lsl #29
+      70:	00000d81 	andeq	r0, r0, r1, lsl #27
+      74:	00000d9d 	muleq	r0, sp, sp
+      78:	00000db9 			; <UNDEFINED> instruction: 0x00000db9
+      7c:	00000e89 	andeq	r0, r0, r9, lsl #29
+      80:	00000e8b 	andeq	r0, r0, fp, lsl #29
+      84:	00000e8d 	andeq	r0, r0, sp, lsl #29
 
-00000080 <__do_global_dtors_aux>:
-  80:	b510      	push	{r4, lr}
-  82:	4c05      	ldr	r4, [pc, #20]	; (98 <__do_global_dtors_aux+0x18>)
-  84:	7823      	ldrb	r3, [r4, #0]
-  86:	b933      	cbnz	r3, 96 <__do_global_dtors_aux+0x16>
-  88:	4b04      	ldr	r3, [pc, #16]	; (9c <__do_global_dtors_aux+0x1c>)
-  8a:	b113      	cbz	r3, 92 <__do_global_dtors_aux+0x12>
-  8c:	4804      	ldr	r0, [pc, #16]	; (a0 <__do_global_dtors_aux+0x20>)
-  8e:	f3af 8000 	nop.w
-  92:	2301      	movs	r3, #1
-  94:	7023      	strb	r3, [r4, #0]
-  96:	bd10      	pop	{r4, pc}
-  98:	00020068 	andeq	r0, r2, r8, rrx
-  9c:	00000000 	andeq	r0, r0, r0
-  a0:	00000dc8 	andeq	r0, r0, r8, asr #27
+00000088 <__do_global_dtors_aux>:
+      88:	b510      	push	{r4, lr}
+      8a:	4c05      	ldr	r4, [pc, #20]	; (a0 <__do_global_dtors_aux+0x18>)
+      8c:	7823      	ldrb	r3, [r4, #0]
+      8e:	b933      	cbnz	r3, 9e <__do_global_dtors_aux+0x16>
+      90:	4b04      	ldr	r3, [pc, #16]	; (a4 <__do_global_dtors_aux+0x1c>)
+      92:	b113      	cbz	r3, 9a <__do_global_dtors_aux+0x12>
+      94:	4804      	ldr	r0, [pc, #16]	; (a8 <__do_global_dtors_aux+0x20>)
+      96:	f3af 8000 	nop.w
+      9a:	2301      	movs	r3, #1
+      9c:	7023      	strb	r3, [r4, #0]
+      9e:	bd10      	pop	{r4, pc}
+      a0:	00020068 	andeq	r0, r2, r8, rrx
+      a4:	00000000 	andeq	r0, r0, r0
+      a8:	00001058 	andeq	r1, r0, r8, asr r0
 
-000000a4 <frame_dummy>:
-  a4:	b508      	push	{r3, lr}
-  a6:	4b03      	ldr	r3, [pc, #12]	; (b4 <frame_dummy+0x10>)
-  a8:	b11b      	cbz	r3, b2 <frame_dummy+0xe>
-  aa:	4903      	ldr	r1, [pc, #12]	; (b8 <frame_dummy+0x14>)
-  ac:	4803      	ldr	r0, [pc, #12]	; (bc <frame_dummy+0x18>)
-  ae:	f3af 8000 	nop.w
-  b2:	bd08      	pop	{r3, pc}
-  b4:	00000000 	andeq	r0, r0, r0
-  b8:	0002006c 	andeq	r0, r2, ip, rrx
-  bc:	00000dc8 	andeq	r0, r0, r8, asr #27
+000000ac <frame_dummy>:
+      ac:	b508      	push	{r3, lr}
+      ae:	4b03      	ldr	r3, [pc, #12]	; (bc <frame_dummy+0x10>)
+      b0:	b11b      	cbz	r3, ba <frame_dummy+0xe>
+      b2:	4903      	ldr	r1, [pc, #12]	; (c0 <frame_dummy+0x14>)
+      b4:	4803      	ldr	r0, [pc, #12]	; (c4 <frame_dummy+0x18>)
+      b6:	f3af 8000 	nop.w
+      ba:	bd08      	pop	{r3, pc}
+      bc:	00000000 	andeq	r0, r0, r0
+      c0:	0002006c 	andeq	r0, r2, ip, rrx
+      c4:	00001058 	andeq	r1, r0, r8, asr r0
 
-000000c0 <drv_check_rw_data>:
-  c0:	6001      	str	r1, [r0, #0]
-  c2:	6803      	ldr	r3, [r0, #0]
-  c4:	4293      	cmp	r3, r2
-  c6:	d007      	beq.n	d8 <drv_check_rw_data+0x18>
-  c8:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
-  cc:	2001      	movs	r0, #1
-  ce:	6018      	str	r0, [r3, #0]
-  d0:	685a      	ldr	r2, [r3, #4]
-  d2:	4402      	add	r2, r0
-  d4:	601a      	str	r2, [r3, #0]
-  d6:	4770      	bx	lr
-  d8:	2000      	movs	r0, #0
-  da:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
-  de:	6018      	str	r0, [r3, #0]
-  e0:	4770      	bx	lr
+000000c8 <drv_check_rw_data>:
+      c8:	6001      	str	r1, [r0, #0]
+      ca:	6803      	ldr	r3, [r0, #0]
+      cc:	4293      	cmp	r3, r2
+      ce:	d007      	beq.n	e0 <drv_check_rw_data+0x18>
+      d0:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
+      d4:	2001      	movs	r0, #1
+      d6:	6018      	str	r0, [r3, #0]
+      d8:	685a      	ldr	r2, [r3, #4]
+      da:	4402      	add	r2, r0
+      dc:	601a      	str	r2, [r3, #0]
+      de:	4770      	bx	lr
+      e0:	2000      	movs	r0, #0
+      e2:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
+      e6:	6018      	str	r0, [r3, #0]
+      e8:	4770      	bx	lr
 
-000000e2 <eth_sma_int_rx_turn_nack_callback>:
-  e2:	4770      	bx	lr
+000000ea <eth_sma_int_rx_turn_nack_callback>:
+      ea:	4770      	bx	lr
 
-000000e4 <eth_sma_int_master_frame_done_callback>:
-  e4:	4770      	bx	lr
+000000ec <eth_sma_int_master_frame_done_callback>:
+      ec:	4770      	bx	lr
 
-000000e6 <eth_sma_int_tx_fifo_empty_callback>:
-  e6:	4770      	bx	lr
+000000ee <eth_sma_int_tx_fifo_empty_callback>:
+      ee:	4770      	bx	lr
 
-000000e8 <eth_sma_int_tx_fifo_thres_callback>:
-  e8:	4770      	bx	lr
+000000f0 <eth_sma_int_tx_fifo_thres_callback>:
+      f0:	4770      	bx	lr
 
-000000ea <eth_sma_int_rx_fifo_noempty_callback>:
-  ea:	4770      	bx	lr
+000000f2 <eth_sma_int_rx_fifo_noempty_callback>:
+      f2:	4770      	bx	lr
 
-000000ec <eth_sma_int_rx_fifo_thres_callback>:
-  ec:	4770      	bx	lr
+000000f4 <eth_sma_int_rx_fifo_thres_callback>:
+      f4:	4770      	bx	lr
 
-000000ee <drv_eth_sma_interrupt_handler>:
-  ee:	b538      	push	{r3, r4, r5, lr}
-  f0:	4604      	mov	r4, r0
-  f2:	6803      	ldr	r3, [r0, #0]
-  f4:	699d      	ldr	r5, [r3, #24]
-  f6:	68db      	ldr	r3, [r3, #12]
-  f8:	b2db      	uxtb	r3, r3
-  fa:	401d      	ands	r5, r3
-  fc:	f015 0f20 	tst.w	r5, #32
- 100:	d10f      	bne.n	122 <drv_eth_sma_interrupt_handler+0x34>
- 102:	f015 0f10 	tst.w	r5, #16
- 106:	d119      	bne.n	13c <drv_eth_sma_interrupt_handler+0x4e>
- 108:	f015 0f01 	tst.w	r5, #1
- 10c:	d122      	bne.n	154 <drv_eth_sma_interrupt_handler+0x66>
- 10e:	f015 0f02 	tst.w	r5, #2
- 112:	d12b      	bne.n	16c <drv_eth_sma_interrupt_handler+0x7e>
- 114:	f015 0f04 	tst.w	r5, #4
- 118:	d134      	bne.n	184 <drv_eth_sma_interrupt_handler+0x96>
- 11a:	f015 0f08 	tst.w	r5, #8
- 11e:	d13d      	bne.n	19c <drv_eth_sma_interrupt_handler+0xae>
- 120:	bd38      	pop	{r3, r4, r5, pc}
- 122:	2302      	movs	r3, #2
- 124:	71c3      	strb	r3, [r0, #7]
- 126:	f7ff ffdc 	bl	e2 <eth_sma_int_rx_turn_nack_callback>
- 12a:	6822      	ldr	r2, [r4, #0]
- 12c:	6913      	ldr	r3, [r2, #16]
- 12e:	f043 0320 	orr.w	r3, r3, #32
- 132:	6113      	str	r3, [r2, #16]
- 134:	6823      	ldr	r3, [r4, #0]
- 136:	2200      	movs	r2, #0
- 138:	611a      	str	r2, [r3, #16]
- 13a:	e7e2      	b.n	102 <drv_eth_sma_interrupt_handler+0x14>
- 13c:	4620      	mov	r0, r4
- 13e:	f7ff ffd1 	bl	e4 <eth_sma_int_master_frame_done_callback>
- 142:	6822      	ldr	r2, [r4, #0]
- 144:	6913      	ldr	r3, [r2, #16]
- 146:	f043 0310 	orr.w	r3, r3, #16
- 14a:	6113      	str	r3, [r2, #16]
- 14c:	6823      	ldr	r3, [r4, #0]
- 14e:	2200      	movs	r2, #0
- 150:	611a      	str	r2, [r3, #16]
- 152:	e7d9      	b.n	108 <drv_eth_sma_interrupt_handler+0x1a>
- 154:	4620      	mov	r0, r4
- 156:	f7ff ffc7 	bl	e8 <eth_sma_int_tx_fifo_thres_callback>
- 15a:	6822      	ldr	r2, [r4, #0]
- 15c:	6913      	ldr	r3, [r2, #16]
- 15e:	f043 0301 	orr.w	r3, r3, #1
- 162:	6113      	str	r3, [r2, #16]
- 164:	6823      	ldr	r3, [r4, #0]
- 166:	2200      	movs	r2, #0
- 168:	611a      	str	r2, [r3, #16]
- 16a:	e7d0      	b.n	10e <drv_eth_sma_interrupt_handler+0x20>
- 16c:	4620      	mov	r0, r4
- 16e:	f7ff ffba 	bl	e6 <eth_sma_int_tx_fifo_empty_callback>
- 172:	6822      	ldr	r2, [r4, #0]
- 174:	6913      	ldr	r3, [r2, #16]
- 176:	f043 0302 	orr.w	r3, r3, #2
- 17a:	6113      	str	r3, [r2, #16]
- 17c:	6823      	ldr	r3, [r4, #0]
- 17e:	2200      	movs	r2, #0
- 180:	611a      	str	r2, [r3, #16]
- 182:	e7c7      	b.n	114 <drv_eth_sma_interrupt_handler+0x26>
- 184:	4620      	mov	r0, r4
- 186:	f7ff ffb1 	bl	ec <eth_sma_int_rx_fifo_thres_callback>
- 18a:	6822      	ldr	r2, [r4, #0]
- 18c:	6913      	ldr	r3, [r2, #16]
- 18e:	f043 0304 	orr.w	r3, r3, #4
- 192:	6113      	str	r3, [r2, #16]
- 194:	6823      	ldr	r3, [r4, #0]
- 196:	2200      	movs	r2, #0
- 198:	611a      	str	r2, [r3, #16]
- 19a:	e7be      	b.n	11a <drv_eth_sma_interrupt_handler+0x2c>
- 19c:	4620      	mov	r0, r4
- 19e:	f7ff ffa4 	bl	ea <eth_sma_int_rx_fifo_noempty_callback>
- 1a2:	6822      	ldr	r2, [r4, #0]
- 1a4:	6913      	ldr	r3, [r2, #16]
- 1a6:	f043 0308 	orr.w	r3, r3, #8
- 1aa:	6113      	str	r3, [r2, #16]
- 1ac:	6823      	ldr	r3, [r4, #0]
- 1ae:	2200      	movs	r2, #0
- 1b0:	611a      	str	r2, [r3, #16]
- 1b2:	e7b5      	b.n	120 <drv_eth_sma_interrupt_handler+0x32>
+000000f6 <drv_eth_sma_interrupt_handler>:
+      f6:	b538      	push	{r3, r4, r5, lr}
+      f8:	4604      	mov	r4, r0
+      fa:	6803      	ldr	r3, [r0, #0]
+      fc:	699d      	ldr	r5, [r3, #24]
+      fe:	68db      	ldr	r3, [r3, #12]
+     100:	b2db      	uxtb	r3, r3
+     102:	401d      	ands	r5, r3
+     104:	f015 0f20 	tst.w	r5, #32
+     108:	d10f      	bne.n	12a <drv_eth_sma_interrupt_handler+0x34>
+     10a:	f015 0f10 	tst.w	r5, #16
+     10e:	d119      	bne.n	144 <drv_eth_sma_interrupt_handler+0x4e>
+     110:	f015 0f01 	tst.w	r5, #1
+     114:	d122      	bne.n	15c <drv_eth_sma_interrupt_handler+0x66>
+     116:	f015 0f02 	tst.w	r5, #2
+     11a:	d12b      	bne.n	174 <drv_eth_sma_interrupt_handler+0x7e>
+     11c:	f015 0f04 	tst.w	r5, #4
+     120:	d134      	bne.n	18c <drv_eth_sma_interrupt_handler+0x96>
+     122:	f015 0f08 	tst.w	r5, #8
+     126:	d13d      	bne.n	1a4 <drv_eth_sma_interrupt_handler+0xae>
+     128:	bd38      	pop	{r3, r4, r5, pc}
+     12a:	2302      	movs	r3, #2
+     12c:	71c3      	strb	r3, [r0, #7]
+     12e:	f7ff ffdc 	bl	ea <eth_sma_int_rx_turn_nack_callback>
+     132:	6822      	ldr	r2, [r4, #0]
+     134:	6913      	ldr	r3, [r2, #16]
+     136:	f043 0320 	orr.w	r3, r3, #32
+     13a:	6113      	str	r3, [r2, #16]
+     13c:	6823      	ldr	r3, [r4, #0]
+     13e:	2200      	movs	r2, #0
+     140:	611a      	str	r2, [r3, #16]
+     142:	e7e2      	b.n	10a <drv_eth_sma_interrupt_handler+0x14>
+     144:	4620      	mov	r0, r4
+     146:	f7ff ffd1 	bl	ec <eth_sma_int_master_frame_done_callback>
+     14a:	6822      	ldr	r2, [r4, #0]
+     14c:	6913      	ldr	r3, [r2, #16]
+     14e:	f043 0310 	orr.w	r3, r3, #16
+     152:	6113      	str	r3, [r2, #16]
+     154:	6823      	ldr	r3, [r4, #0]
+     156:	2200      	movs	r2, #0
+     158:	611a      	str	r2, [r3, #16]
+     15a:	e7d9      	b.n	110 <drv_eth_sma_interrupt_handler+0x1a>
+     15c:	4620      	mov	r0, r4
+     15e:	f7ff ffc7 	bl	f0 <eth_sma_int_tx_fifo_thres_callback>
+     162:	6822      	ldr	r2, [r4, #0]
+     164:	6913      	ldr	r3, [r2, #16]
+     166:	f043 0301 	orr.w	r3, r3, #1
+     16a:	6113      	str	r3, [r2, #16]
+     16c:	6823      	ldr	r3, [r4, #0]
+     16e:	2200      	movs	r2, #0
+     170:	611a      	str	r2, [r3, #16]
+     172:	e7d0      	b.n	116 <drv_eth_sma_interrupt_handler+0x20>
+     174:	4620      	mov	r0, r4
+     176:	f7ff ffba 	bl	ee <eth_sma_int_tx_fifo_empty_callback>
+     17a:	6822      	ldr	r2, [r4, #0]
+     17c:	6913      	ldr	r3, [r2, #16]
+     17e:	f043 0302 	orr.w	r3, r3, #2
+     182:	6113      	str	r3, [r2, #16]
+     184:	6823      	ldr	r3, [r4, #0]
+     186:	2200      	movs	r2, #0
+     188:	611a      	str	r2, [r3, #16]
+     18a:	e7c7      	b.n	11c <drv_eth_sma_interrupt_handler+0x26>
+     18c:	4620      	mov	r0, r4
+     18e:	f7ff ffb1 	bl	f4 <eth_sma_int_rx_fifo_thres_callback>
+     192:	6822      	ldr	r2, [r4, #0]
+     194:	6913      	ldr	r3, [r2, #16]
+     196:	f043 0304 	orr.w	r3, r3, #4
+     19a:	6113      	str	r3, [r2, #16]
+     19c:	6823      	ldr	r3, [r4, #0]
+     19e:	2200      	movs	r2, #0
+     1a0:	611a      	str	r2, [r3, #16]
+     1a2:	e7be      	b.n	122 <drv_eth_sma_interrupt_handler+0x2c>
+     1a4:	4620      	mov	r0, r4
+     1a6:	f7ff ffa4 	bl	f2 <eth_sma_int_rx_fifo_noempty_callback>
+     1aa:	6822      	ldr	r2, [r4, #0]
+     1ac:	6913      	ldr	r3, [r2, #16]
+     1ae:	f043 0308 	orr.w	r3, r3, #8
+     1b2:	6113      	str	r3, [r2, #16]
+     1b4:	6823      	ldr	r3, [r4, #0]
+     1b6:	2200      	movs	r2, #0
+     1b8:	611a      	str	r2, [r3, #16]
+     1ba:	e7b5      	b.n	128 <drv_eth_sma_interrupt_handler+0x32>
 
-000001b4 <drv_eth_mac_dma_default_config>:
- 1b4:	2308      	movs	r3, #8
- 1b6:	7103      	strb	r3, [r0, #4]
- 1b8:	2300      	movs	r3, #0
- 1ba:	7143      	strb	r3, [r0, #5]
- 1bc:	7183      	strb	r3, [r0, #6]
- 1be:	71c3      	strb	r3, [r0, #7]
- 1c0:	4770      	bx	lr
-	...
-
-000001c4 <drv_eth_mac_pe_default_config>:
- 1c4:	4b07      	ldr	r3, [pc, #28]	; (1e4 <drv_eth_mac_pe_default_config+0x20>)
- 1c6:	60c3      	str	r3, [r0, #12]
- 1c8:	f240 6305 	movw	r3, #1541	; 0x605
- 1cc:	8203      	strh	r3, [r0, #16]
- 1ce:	2300      	movs	r3, #0
- 1d0:	7483      	strb	r3, [r0, #18]
- 1d2:	74c3      	strb	r3, [r0, #19]
- 1d4:	7503      	strb	r3, [r0, #20]
- 1d6:	2201      	movs	r2, #1
- 1d8:	7542      	strb	r2, [r0, #21]
- 1da:	7582      	strb	r2, [r0, #22]
- 1dc:	75c3      	strb	r3, [r0, #23]
- 1de:	2360      	movs	r3, #96	; 0x60
- 1e0:	7603      	strb	r3, [r0, #24]
- 1e2:	4770      	bx	lr
- 1e4:	04030201 	streq	r0, [r3], #-513	; 0xfffffdff
-
-000001e8 <drv_eth_mac_set_dma_config>:
- 1e8:	b508      	push	{r3, lr}
- 1ea:	7903      	ldrb	r3, [r0, #4]
- 1ec:	7941      	ldrb	r1, [r0, #5]
- 1ee:	0089      	lsls	r1, r1, #2
- 1f0:	ea41 7103 	orr.w	r1, r1, r3, lsl #28
- 1f4:	7982      	ldrb	r2, [r0, #6]
- 1f6:	ea41 0142 	orr.w	r1, r1, r2, lsl #1
- 1fa:	79c2      	ldrb	r2, [r0, #7]
- 1fc:	4311      	orrs	r1, r2
- 1fe:	6800      	ldr	r0, [r0, #0]
- 200:	460a      	mov	r2, r1
- 202:	3004      	adds	r0, #4
- 204:	f7ff ff5c 	bl	c0 <drv_check_rw_data>
- 208:	bd08      	pop	{r3, pc}
-
-0000020a <drv_eth_mac_set_pe_config>:
- 20a:	b510      	push	{r4, lr}
- 20c:	4604      	mov	r4, r0
- 20e:	68c1      	ldr	r1, [r0, #12]
- 210:	6800      	ldr	r0, [r0, #0]
- 212:	460a      	mov	r2, r1
- 214:	30d0      	adds	r0, #208	; 0xd0
- 216:	f7ff ff53 	bl	c0 <drv_check_rw_data>
- 21a:	8a21      	ldrh	r1, [r4, #16]
- 21c:	6820      	ldr	r0, [r4, #0]
- 21e:	460a      	mov	r2, r1
- 220:	30d4      	adds	r0, #212	; 0xd4
- 222:	f7ff ff4d 	bl	c0 <drv_check_rw_data>
- 226:	7ca3      	ldrb	r3, [r4, #18]
- 228:	7ce1      	ldrb	r1, [r4, #19]
- 22a:	0709      	lsls	r1, r1, #28
- 22c:	ea41 71c3 	orr.w	r1, r1, r3, lsl #31
- 230:	7d23      	ldrb	r3, [r4, #20]
- 232:	ea41 6143 	orr.w	r1, r1, r3, lsl #25
- 236:	7d63      	ldrb	r3, [r4, #21]
- 238:	ea41 5183 	orr.w	r1, r1, r3, lsl #22
- 23c:	7da2      	ldrb	r2, [r4, #22]
- 23e:	ea41 3142 	orr.w	r1, r1, r2, lsl #13
- 242:	7de2      	ldrb	r2, [r4, #23]
- 244:	ea41 0182 	orr.w	r1, r1, r2, lsl #2
- 248:	6820      	ldr	r0, [r4, #0]
- 24a:	460a      	mov	r2, r1
- 24c:	30d8      	adds	r0, #216	; 0xd8
- 24e:	f7ff ff37 	bl	c0 <drv_check_rw_data>
- 252:	7e21      	ldrb	r1, [r4, #24]
- 254:	08c9      	lsrs	r1, r1, #3
- 256:	3905      	subs	r1, #5
- 258:	0609      	lsls	r1, r1, #24
- 25a:	6820      	ldr	r0, [r4, #0]
- 25c:	460a      	mov	r2, r1
- 25e:	30dc      	adds	r0, #220	; 0xdc
- 260:	f7ff ff2e 	bl	c0 <drv_check_rw_data>
- 264:	bd10      	pop	{r4, pc}
-
-00000266 <drv_eth_mac_init>:
- 266:	b538      	push	{r3, r4, r5, lr}
- 268:	4604      	mov	r4, r0
- 26a:	f7ff ffbd 	bl	1e8 <drv_eth_mac_set_dma_config>
- 26e:	4605      	mov	r5, r0
- 270:	4620      	mov	r0, r4
- 272:	f7ff ffca 	bl	20a <drv_eth_mac_set_pe_config>
- 276:	4328      	orrs	r0, r5
- 278:	2300      	movs	r3, #0
- 27a:	f884 3028 	strb.w	r3, [r4, #40]	; 0x28
- 27e:	61e3      	str	r3, [r4, #28]
- 280:	6223      	str	r3, [r4, #32]
- 282:	2204      	movs	r2, #4
- 284:	f884 2024 	strb.w	r2, [r4, #36]	; 0x24
- 288:	f884 2025 	strb.w	r2, [r4, #37]	; 0x25
- 28c:	f884 3026 	strb.w	r3, [r4, #38]	; 0x26
- 290:	f884 3027 	strb.w	r3, [r4, #39]	; 0x27
- 294:	6821      	ldr	r1, [r4, #0]
- 296:	680a      	ldr	r2, [r1, #0]
- 298:	f442 7280 	orr.w	r2, r2, #256	; 0x100
- 29c:	600a      	str	r2, [r1, #0]
- 29e:	6821      	ldr	r1, [r4, #0]
- 2a0:	680a      	ldr	r2, [r1, #0]
- 2a2:	f422 7280 	bic.w	r2, r2, #256	; 0x100
- 2a6:	600a      	str	r2, [r1, #0]
- 2a8:	6821      	ldr	r1, [r4, #0]
- 2aa:	680a      	ldr	r2, [r1, #0]
- 2ac:	f442 7200 	orr.w	r2, r2, #512	; 0x200
- 2b0:	600a      	str	r2, [r1, #0]
- 2b2:	6821      	ldr	r1, [r4, #0]
- 2b4:	680a      	ldr	r2, [r1, #0]
- 2b6:	f422 7200 	bic.w	r2, r2, #512	; 0x200
- 2ba:	600a      	str	r2, [r1, #0]
- 2bc:	6821      	ldr	r1, [r4, #0]
- 2be:	680a      	ldr	r2, [r1, #0]
- 2c0:	f442 6280 	orr.w	r2, r2, #1024	; 0x400
- 2c4:	600a      	str	r2, [r1, #0]
- 2c6:	6821      	ldr	r1, [r4, #0]
- 2c8:	680a      	ldr	r2, [r1, #0]
- 2ca:	f422 6280 	bic.w	r2, r2, #1024	; 0x400
- 2ce:	600a      	str	r2, [r1, #0]
- 2d0:	6821      	ldr	r1, [r4, #0]
- 2d2:	680a      	ldr	r2, [r1, #0]
- 2d4:	f442 6200 	orr.w	r2, r2, #2048	; 0x800
- 2d8:	600a      	str	r2, [r1, #0]
- 2da:	6821      	ldr	r1, [r4, #0]
- 2dc:	680a      	ldr	r2, [r1, #0]
- 2de:	f422 6200 	bic.w	r2, r2, #2048	; 0x800
- 2e2:	600a      	str	r2, [r1, #0]
- 2e4:	6821      	ldr	r1, [r4, #0]
- 2e6:	680a      	ldr	r2, [r1, #0]
- 2e8:	f442 5280 	orr.w	r2, r2, #4096	; 0x1000
- 2ec:	600a      	str	r2, [r1, #0]
- 2ee:	6821      	ldr	r1, [r4, #0]
- 2f0:	680a      	ldr	r2, [r1, #0]
- 2f2:	f422 5280 	bic.w	r2, r2, #4096	; 0x1000
- 2f6:	600a      	str	r2, [r1, #0]
- 2f8:	6821      	ldr	r1, [r4, #0]
- 2fa:	2201      	movs	r2, #1
- 2fc:	f8c1 2100 	str.w	r2, [r1, #256]	; 0x100
- 300:	6821      	ldr	r1, [r4, #0]
- 302:	f8c1 3100 	str.w	r3, [r1, #256]	; 0x100
- 306:	6821      	ldr	r1, [r4, #0]
- 308:	f8c1 2104 	str.w	r2, [r1, #260]	; 0x104
- 30c:	6822      	ldr	r2, [r4, #0]
- 30e:	f8c2 3104 	str.w	r3, [r2, #260]	; 0x104
- 312:	6822      	ldr	r2, [r4, #0]
- 314:	6813      	ldr	r3, [r2, #0]
- 316:	f043 0301 	orr.w	r3, r3, #1
- 31a:	6013      	str	r3, [r2, #0]
- 31c:	6822      	ldr	r2, [r4, #0]
- 31e:	6813      	ldr	r3, [r2, #0]
- 320:	f023 0301 	bic.w	r3, r3, #1
- 324:	6013      	str	r3, [r2, #0]
- 326:	6822      	ldr	r2, [r4, #0]
- 328:	6813      	ldr	r3, [r2, #0]
- 32a:	f043 0302 	orr.w	r3, r3, #2
- 32e:	6013      	str	r3, [r2, #0]
- 330:	6822      	ldr	r2, [r4, #0]
- 332:	6813      	ldr	r3, [r2, #0]
- 334:	f023 0302 	bic.w	r3, r3, #2
- 338:	6013      	str	r3, [r2, #0]
- 33a:	b2c0      	uxtb	r0, r0
- 33c:	bd38      	pop	{r3, r4, r5, pc}
-
-0000033e <drv_eth_mac_address_set>:
- 33e:	78ca      	ldrb	r2, [r1, #3]
- 340:	788b      	ldrb	r3, [r1, #2]
- 342:	041b      	lsls	r3, r3, #16
- 344:	ea43 6302 	orr.w	r3, r3, r2, lsl #24
- 348:	784a      	ldrb	r2, [r1, #1]
- 34a:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
- 34e:	780a      	ldrb	r2, [r1, #0]
- 350:	4313      	orrs	r3, r2
- 352:	60c3      	str	r3, [r0, #12]
- 354:	f891 c005 	ldrb.w	ip, [r1, #5]
- 358:	790a      	ldrb	r2, [r1, #4]
- 35a:	ea42 220c 	orr.w	r2, r2, ip, lsl #8
- 35e:	8202      	strh	r2, [r0, #16]
- 360:	6802      	ldr	r2, [r0, #0]
- 362:	f8d2 10d0 	ldr.w	r1, [r2, #208]	; 0xd0
- 366:	f8c2 30d0 	str.w	r3, [r2, #208]	; 0xd0
- 36a:	6802      	ldr	r2, [r0, #0]
- 36c:	f8d2 30d4 	ldr.w	r3, [r2, #212]	; 0xd4
- 370:	0c1b      	lsrs	r3, r3, #16
- 372:	041b      	lsls	r3, r3, #16
- 374:	8a01      	ldrh	r1, [r0, #16]
- 376:	430b      	orrs	r3, r1
- 378:	f8c2 30d4 	str.w	r3, [r2, #212]	; 0xd4
- 37c:	4770      	bx	lr
-
-0000037e <drv_eth_mac_tx_descriptor_default_config>:
- 37e:	2300      	movs	r3, #0
- 380:	6003      	str	r3, [r0, #0]
- 382:	7103      	strb	r3, [r0, #4]
- 384:	80c3      	strh	r3, [r0, #6]
- 386:	7203      	strb	r3, [r0, #8]
- 388:	7243      	strb	r3, [r0, #9]
- 38a:	2301      	movs	r3, #1
- 38c:	7283      	strb	r3, [r0, #10]
- 38e:	4770      	bx	lr
-
-00000390 <drv_eth_mac_tx_descriptor_config>:
- 390:	6803      	ldr	r3, [r0, #0]
- 392:	600b      	str	r3, [r1, #0]
- 394:	2300      	movs	r3, #0
- 396:	604b      	str	r3, [r1, #4]
- 398:	7902      	ldrb	r2, [r0, #4]
- 39a:	88c3      	ldrh	r3, [r0, #6]
- 39c:	ea43 73c2 	orr.w	r3, r3, r2, lsl #31
- 3a0:	608b      	str	r3, [r1, #8]
- 3a2:	7a02      	ldrb	r2, [r0, #8]
- 3a4:	7a43      	ldrb	r3, [r0, #9]
- 3a6:	061b      	lsls	r3, r3, #24
- 3a8:	ea43 6382 	orr.w	r3, r3, r2, lsl #26
- 3ac:	7a82      	ldrb	r2, [r0, #10]
- 3ae:	ea43 4302 	orr.w	r3, r3, r2, lsl #16
- 3b2:	60cb      	str	r3, [r1, #12]
- 3b4:	4770      	bx	lr
-
-000003b6 <drv_eth_mac_set_tx_descriptor_config>:
- 3b6:	61c1      	str	r1, [r0, #28]
- 3b8:	6801      	ldr	r1, [r0, #0]
- 3ba:	690b      	ldr	r3, [r1, #16]
- 3bc:	f023 0303 	bic.w	r3, r3, #3
- 3c0:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
- 3c4:	3a01      	subs	r2, #1
- 3c6:	4313      	orrs	r3, r2
- 3c8:	610b      	str	r3, [r1, #16]
- 3ca:	2300      	movs	r3, #0
- 3cc:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 3d0:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
- 3d4:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
- 3d8:	4293      	cmp	r3, r2
- 3da:	d223      	bcs.n	424 <drv_eth_mac_set_tx_descriptor_config+0x6e>
- 3dc:	b410      	push	{r4}
- 3de:	6802      	ldr	r2, [r0, #0]
- 3e0:	3250      	adds	r2, #80	; 0x50
- 3e2:	ea4f 1c03 	mov.w	ip, r3, lsl #4
- 3e6:	eb02 1103 	add.w	r1, r2, r3, lsl #4
- 3ea:	69c4      	ldr	r4, [r0, #28]
- 3ec:	eb04 1303 	add.w	r3, r4, r3, lsl #4
- 3f0:	f854 400c 	ldr.w	r4, [r4, ip]
- 3f4:	f842 400c 	str.w	r4, [r2, ip]
- 3f8:	685a      	ldr	r2, [r3, #4]
- 3fa:	604a      	str	r2, [r1, #4]
- 3fc:	689a      	ldr	r2, [r3, #8]
- 3fe:	608a      	str	r2, [r1, #8]
- 400:	68db      	ldr	r3, [r3, #12]
- 402:	60cb      	str	r3, [r1, #12]
- 404:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
- 408:	3301      	adds	r3, #1
- 40a:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 40e:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
- 412:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
- 416:	4293      	cmp	r3, r2
- 418:	d3e1      	bcc.n	3de <drv_eth_mac_set_tx_descriptor_config+0x28>
- 41a:	2300      	movs	r3, #0
- 41c:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 420:	bc10      	pop	{r4}
- 422:	4770      	bx	lr
- 424:	2300      	movs	r3, #0
- 426:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 42a:	4770      	bx	lr
-
-0000042c <drv_eth_mac_tx_descriptor_clear>:
- 42c:	2300      	movs	r3, #0
- 42e:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 432:	e00f      	b.n	454 <drv_eth_mac_tx_descriptor_clear+0x28>
- 434:	69c1      	ldr	r1, [r0, #28]
- 436:	ea4f 1c03 	mov.w	ip, r3, lsl #4
- 43a:	eb01 1303 	add.w	r3, r1, r3, lsl #4
- 43e:	2200      	movs	r2, #0
- 440:	f841 200c 	str.w	r2, [r1, ip]
- 444:	605a      	str	r2, [r3, #4]
- 446:	609a      	str	r2, [r3, #8]
- 448:	60da      	str	r2, [r3, #12]
- 44a:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
- 44e:	3301      	adds	r3, #1
- 450:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 454:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
- 458:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
- 45c:	4293      	cmp	r3, r2
- 45e:	d3e9      	bcc.n	434 <drv_eth_mac_tx_descriptor_clear+0x8>
- 460:	2300      	movs	r3, #0
- 462:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
- 466:	4770      	bx	lr
-
-00000468 <drv_eth_mac_set_tx_descriptor_and_tx_enable>:
- 468:	b510      	push	{r4, lr}
- 46a:	4604      	mov	r4, r0
- 46c:	f7ff ffa3 	bl	3b6 <drv_eth_mac_set_tx_descriptor_config>
- 470:	6822      	ldr	r2, [r4, #0]
- 472:	6813      	ldr	r3, [r2, #0]
- 474:	f023 0308 	bic.w	r3, r3, #8
- 478:	6013      	str	r3, [r2, #0]
- 47a:	6822      	ldr	r2, [r4, #0]
- 47c:	6813      	ldr	r3, [r2, #0]
- 47e:	f043 0308 	orr.w	r3, r3, #8
- 482:	6013      	str	r3, [r2, #0]
- 484:	6822      	ldr	r2, [r4, #0]
- 486:	6813      	ldr	r3, [r2, #0]
- 488:	f023 0308 	bic.w	r3, r3, #8
- 48c:	6013      	str	r3, [r2, #0]
- 48e:	bd10      	pop	{r4, pc}
-
-00000490 <eth_mac_tx_int_tx_frame_done_callback>:
- 490:	4770      	bx	lr
-
-00000492 <eth_mac_rx_int_rx_frame_done_callback>:
- 492:	4770      	bx	lr
-
-00000494 <eth_mac_dma_int_once_process_done_callback>:
- 494:	4770      	bx	lr
-
-00000496 <eth_mac_dma_int_hready_to_callback>:
- 496:	4770      	bx	lr
-
-00000498 <eth_mac_dma_int_bus_error_callback>:
- 498:	4770      	bx	lr
-
-0000049a <drv_eth_mac_tx_interrupt_handler>:
- 49a:	6802      	ldr	r2, [r0, #0]
- 49c:	f8d2 3110 	ldr.w	r3, [r2, #272]	; 0x110
- 4a0:	f8d2 20f0 	ldr.w	r2, [r2, #240]	; 0xf0
- 4a4:	b2d2      	uxtb	r2, r2
- 4a6:	4013      	ands	r3, r2
- 4a8:	f013 0f01 	tst.w	r3, #1
- 4ac:	d100      	bne.n	4b0 <drv_eth_mac_tx_interrupt_handler+0x16>
- 4ae:	4770      	bx	lr
- 4b0:	b510      	push	{r4, lr}
- 4b2:	4604      	mov	r4, r0
- 4b4:	2302      	movs	r3, #2
- 4b6:	f880 3028 	strb.w	r3, [r0, #40]	; 0x28
- 4ba:	f7ff ffe9 	bl	490 <eth_mac_tx_int_tx_frame_done_callback>
- 4be:	6822      	ldr	r2, [r4, #0]
- 4c0:	f8d2 3100 	ldr.w	r3, [r2, #256]	; 0x100
- 4c4:	f043 0301 	orr.w	r3, r3, #1
- 4c8:	f8c2 3100 	str.w	r3, [r2, #256]	; 0x100
- 4cc:	6823      	ldr	r3, [r4, #0]
- 4ce:	2200      	movs	r2, #0
- 4d0:	f8c3 2100 	str.w	r2, [r3, #256]	; 0x100
- 4d4:	bd10      	pop	{r4, pc}
-
-000004d6 <drv_eth_mac_rx_interrupt_handler>:
- 4d6:	6802      	ldr	r2, [r0, #0]
- 4d8:	f8d2 3114 	ldr.w	r3, [r2, #276]	; 0x114
- 4dc:	f8d2 20f4 	ldr.w	r2, [r2, #244]	; 0xf4
- 4e0:	b2d2      	uxtb	r2, r2
- 4e2:	4013      	ands	r3, r2
- 4e4:	f013 0f01 	tst.w	r3, #1
- 4e8:	d100      	bne.n	4ec <drv_eth_mac_rx_interrupt_handler+0x16>
- 4ea:	4770      	bx	lr
- 4ec:	b510      	push	{r4, lr}
- 4ee:	4604      	mov	r4, r0
- 4f0:	2302      	movs	r3, #2
- 4f2:	f880 3028 	strb.w	r3, [r0, #40]	; 0x28
- 4f6:	f7ff ffcc 	bl	492 <eth_mac_rx_int_rx_frame_done_callback>
- 4fa:	6822      	ldr	r2, [r4, #0]
- 4fc:	f8d2 3104 	ldr.w	r3, [r2, #260]	; 0x104
- 500:	f043 0301 	orr.w	r3, r3, #1
- 504:	f8c2 3104 	str.w	r3, [r2, #260]	; 0x104
- 508:	6823      	ldr	r3, [r4, #0]
- 50a:	2200      	movs	r2, #0
- 50c:	f8c3 2104 	str.w	r2, [r3, #260]	; 0x104
- 510:	bd10      	pop	{r4, pc}
-
-00000512 <drv_eth_mac_dma_interrupt_handler>:
- 512:	b538      	push	{r3, r4, r5, lr}
- 514:	4604      	mov	r4, r0
- 516:	6803      	ldr	r3, [r0, #0]
- 518:	f8d3 5118 	ldr.w	r5, [r3, #280]	; 0x118
- 51c:	f8d3 30f8 	ldr.w	r3, [r3, #248]	; 0xf8
- 520:	b2db      	uxtb	r3, r3
- 522:	401d      	ands	r5, r3
- 524:	f015 0f01 	tst.w	r5, #1
- 528:	d106      	bne.n	538 <drv_eth_mac_dma_interrupt_handler+0x26>
- 52a:	f015 0f02 	tst.w	r5, #2
- 52e:	d114      	bne.n	55a <drv_eth_mac_dma_interrupt_handler+0x48>
- 530:	f015 0f04 	tst.w	r5, #4
- 534:	d123      	bne.n	57e <drv_eth_mac_dma_interrupt_handler+0x6c>
- 536:	bd38      	pop	{r3, r4, r5, pc}
- 538:	2302      	movs	r3, #2
- 53a:	f880 3028 	strb.w	r3, [r0, #40]	; 0x28
- 53e:	f7ff ffa9 	bl	494 <eth_mac_dma_int_once_process_done_callback>
- 542:	6822      	ldr	r2, [r4, #0]
- 544:	f8d2 3108 	ldr.w	r3, [r2, #264]	; 0x108
- 548:	f043 0301 	orr.w	r3, r3, #1
- 54c:	f8c2 3108 	str.w	r3, [r2, #264]	; 0x108
- 550:	6823      	ldr	r3, [r4, #0]
- 552:	2200      	movs	r2, #0
- 554:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- 558:	e7e7      	b.n	52a <drv_eth_mac_dma_interrupt_handler+0x18>
- 55a:	2304      	movs	r3, #4
- 55c:	f884 3028 	strb.w	r3, [r4, #40]	; 0x28
- 560:	4620      	mov	r0, r4
- 562:	f7ff ff98 	bl	496 <eth_mac_dma_int_hready_to_callback>
- 566:	6822      	ldr	r2, [r4, #0]
- 568:	f8d2 3108 	ldr.w	r3, [r2, #264]	; 0x108
- 56c:	f043 0302 	orr.w	r3, r3, #2
- 570:	f8c2 3108 	str.w	r3, [r2, #264]	; 0x108
- 574:	6823      	ldr	r3, [r4, #0]
- 576:	2200      	movs	r2, #0
- 578:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- 57c:	e7d8      	b.n	530 <drv_eth_mac_dma_interrupt_handler+0x1e>
- 57e:	2310      	movs	r3, #16
- 580:	f884 3028 	strb.w	r3, [r4, #40]	; 0x28
- 584:	4620      	mov	r0, r4
- 586:	f7ff ff87 	bl	498 <eth_mac_dma_int_bus_error_callback>
- 58a:	6822      	ldr	r2, [r4, #0]
- 58c:	f8d2 3108 	ldr.w	r3, [r2, #264]	; 0x108
- 590:	f043 0304 	orr.w	r3, r3, #4
- 594:	f8c2 3108 	str.w	r3, [r2, #264]	; 0x108
- 598:	6823      	ldr	r3, [r4, #0]
- 59a:	2200      	movs	r2, #0
- 59c:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- 5a0:	e7c9      	b.n	536 <drv_eth_mac_dma_interrupt_handler+0x24>
-
-000005a2 <drv_uart_default_config>:
- 5a2:	f44f 33e1 	mov.w	r3, #115200	; 0x1c200
- 5a6:	6043      	str	r3, [r0, #4]
- 5a8:	230f      	movs	r3, #15
- 5aa:	7203      	strb	r3, [r0, #8]
- 5ac:	2300      	movs	r3, #0
- 5ae:	7243      	strb	r3, [r0, #9]
- 5b0:	7283      	strb	r3, [r0, #10]
- 5b2:	72c3      	strb	r3, [r0, #11]
- 5b4:	7303      	strb	r3, [r0, #12]
- 5b6:	7343      	strb	r3, [r0, #13]
- 5b8:	2301      	movs	r3, #1
- 5ba:	7383      	strb	r3, [r0, #14]
- 5bc:	4770      	bx	lr
+000001bc <drv_eth_mac_dma_default_config>:
+     1bc:	2308      	movs	r3, #8
+     1be:	7103      	strb	r3, [r0, #4]
+     1c0:	2300      	movs	r3, #0
+     1c2:	7143      	strb	r3, [r0, #5]
+     1c4:	7183      	strb	r3, [r0, #6]
+     1c6:	71c3      	strb	r3, [r0, #7]
+     1c8:	4770      	bx	lr
 	...
 
-000005c0 <drv_uart_set_config>:
- 5c0:	b508      	push	{r3, lr}
- 5c2:	6841      	ldr	r1, [r0, #4]
- 5c4:	7a03      	ldrb	r3, [r0, #8]
- 5c6:	fb03 f201 	mul.w	r2, r3, r1
- 5ca:	490e      	ldr	r1, [pc, #56]	; (604 <drv_uart_set_config+0x44>)
- 5cc:	fbb1 f2f2 	udiv	r2, r1, r2
- 5d0:	0419      	lsls	r1, r3, #16
- 5d2:	ea41 5102 	orr.w	r1, r1, r2, lsl #20
- 5d6:	7a43      	ldrb	r3, [r0, #9]
- 5d8:	ea41 3103 	orr.w	r1, r1, r3, lsl #12
- 5dc:	7a83      	ldrb	r3, [r0, #10]
- 5de:	ea41 21c3 	orr.w	r1, r1, r3, lsl #11
- 5e2:	7ac3      	ldrb	r3, [r0, #11]
- 5e4:	ea41 1143 	orr.w	r1, r1, r3, lsl #5
- 5e8:	7b03      	ldrb	r3, [r0, #12]
- 5ea:	ea41 1103 	orr.w	r1, r1, r3, lsl #4
- 5ee:	7b42      	ldrb	r2, [r0, #13]
- 5f0:	ea41 0182 	orr.w	r1, r1, r2, lsl #2
- 5f4:	7b82      	ldrb	r2, [r0, #14]
- 5f6:	4311      	orrs	r1, r2
- 5f8:	6800      	ldr	r0, [r0, #0]
- 5fa:	460a      	mov	r2, r1
- 5fc:	3008      	adds	r0, #8
- 5fe:	f7ff fd5f 	bl	c0 <drv_check_rw_data>
- 602:	bd08      	pop	{r3, pc}
- 604:	02625a00 	rsbeq	r5, r2, #0, 20
+000001cc <drv_eth_mac_pe_default_config>:
+     1cc:	4b07      	ldr	r3, [pc, #28]	; (1ec <drv_eth_mac_pe_default_config+0x20>)
+     1ce:	60c3      	str	r3, [r0, #12]
+     1d0:	f240 6305 	movw	r3, #1541	; 0x605
+     1d4:	8203      	strh	r3, [r0, #16]
+     1d6:	2300      	movs	r3, #0
+     1d8:	7483      	strb	r3, [r0, #18]
+     1da:	74c3      	strb	r3, [r0, #19]
+     1dc:	7503      	strb	r3, [r0, #20]
+     1de:	2201      	movs	r2, #1
+     1e0:	7542      	strb	r2, [r0, #21]
+     1e2:	7582      	strb	r2, [r0, #22]
+     1e4:	75c3      	strb	r3, [r0, #23]
+     1e6:	2360      	movs	r3, #96	; 0x60
+     1e8:	7603      	strb	r3, [r0, #24]
+     1ea:	4770      	bx	lr
+     1ec:	04030201 	streq	r0, [r3], #-513	; 0xfffffdff
 
-00000608 <drv_uart_init>:
- 608:	b538      	push	{r3, r4, r5, lr}
- 60a:	4604      	mov	r4, r0
- 60c:	2500      	movs	r5, #0
- 60e:	7485      	strb	r5, [r0, #18]
- 610:	74c5      	strb	r5, [r0, #19]
- 612:	f7ff ffd5 	bl	5c0 <drv_uart_set_config>
- 616:	7425      	strb	r5, [r4, #16]
- 618:	74a5      	strb	r5, [r4, #18]
- 61a:	74e5      	strb	r5, [r4, #19]
- 61c:	6822      	ldr	r2, [r4, #0]
- 61e:	6853      	ldr	r3, [r2, #4]
- 620:	f443 7380 	orr.w	r3, r3, #256	; 0x100
- 624:	6053      	str	r3, [r2, #4]
- 626:	6822      	ldr	r2, [r4, #0]
- 628:	6853      	ldr	r3, [r2, #4]
- 62a:	f423 7380 	bic.w	r3, r3, #256	; 0x100
- 62e:	6053      	str	r3, [r2, #4]
- 630:	6822      	ldr	r2, [r4, #0]
- 632:	6853      	ldr	r3, [r2, #4]
- 634:	f443 7300 	orr.w	r3, r3, #512	; 0x200
- 638:	6053      	str	r3, [r2, #4]
- 63a:	6822      	ldr	r2, [r4, #0]
- 63c:	6853      	ldr	r3, [r2, #4]
- 63e:	f423 7300 	bic.w	r3, r3, #512	; 0x200
- 642:	6053      	str	r3, [r2, #4]
- 644:	6822      	ldr	r2, [r4, #0]
- 646:	6853      	ldr	r3, [r2, #4]
- 648:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
- 64c:	6053      	str	r3, [r2, #4]
- 64e:	6822      	ldr	r2, [r4, #0]
- 650:	6853      	ldr	r3, [r2, #4]
- 652:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
- 656:	6053      	str	r3, [r2, #4]
- 658:	6822      	ldr	r2, [r4, #0]
- 65a:	6853      	ldr	r3, [r2, #4]
- 65c:	f443 6300 	orr.w	r3, r3, #2048	; 0x800
- 660:	6053      	str	r3, [r2, #4]
- 662:	6822      	ldr	r2, [r4, #0]
- 664:	6853      	ldr	r3, [r2, #4]
- 666:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
- 66a:	6053      	str	r3, [r2, #4]
- 66c:	6823      	ldr	r3, [r4, #0]
- 66e:	f240 12ff 	movw	r2, #511	; 0x1ff
- 672:	611a      	str	r2, [r3, #16]
- 674:	6823      	ldr	r3, [r4, #0]
- 676:	611d      	str	r5, [r3, #16]
- 678:	6822      	ldr	r2, [r4, #0]
- 67a:	6853      	ldr	r3, [r2, #4]
- 67c:	f043 0301 	orr.w	r3, r3, #1
- 680:	6053      	str	r3, [r2, #4]
- 682:	6822      	ldr	r2, [r4, #0]
- 684:	6853      	ldr	r3, [r2, #4]
- 686:	f023 0301 	bic.w	r3, r3, #1
- 68a:	6053      	str	r3, [r2, #4]
- 68c:	6822      	ldr	r2, [r4, #0]
- 68e:	6853      	ldr	r3, [r2, #4]
- 690:	f043 0302 	orr.w	r3, r3, #2
- 694:	6053      	str	r3, [r2, #4]
- 696:	bd38      	pop	{r3, r4, r5, pc}
+000001f0 <drv_eth_mac_set_dma_config>:
+     1f0:	b508      	push	{r3, lr}
+     1f2:	7903      	ldrb	r3, [r0, #4]
+     1f4:	7941      	ldrb	r1, [r0, #5]
+     1f6:	0089      	lsls	r1, r1, #2
+     1f8:	ea41 7103 	orr.w	r1, r1, r3, lsl #28
+     1fc:	7982      	ldrb	r2, [r0, #6]
+     1fe:	ea41 0142 	orr.w	r1, r1, r2, lsl #1
+     202:	79c2      	ldrb	r2, [r0, #7]
+     204:	4311      	orrs	r1, r2
+     206:	6800      	ldr	r0, [r0, #0]
+     208:	460a      	mov	r2, r1
+     20a:	3004      	adds	r0, #4
+     20c:	f7ff ff5c 	bl	c8 <drv_check_rw_data>
+     210:	bd08      	pop	{r3, pc}
 
-00000698 <uart_int_tx_done_callback>:
- 698:	4770      	bx	lr
+00000212 <drv_eth_mac_set_pe_config>:
+     212:	b510      	push	{r4, lr}
+     214:	4604      	mov	r4, r0
+     216:	68c1      	ldr	r1, [r0, #12]
+     218:	6800      	ldr	r0, [r0, #0]
+     21a:	460a      	mov	r2, r1
+     21c:	30d0      	adds	r0, #208	; 0xd0
+     21e:	f7ff ff53 	bl	c8 <drv_check_rw_data>
+     222:	8a21      	ldrh	r1, [r4, #16]
+     224:	6820      	ldr	r0, [r4, #0]
+     226:	460a      	mov	r2, r1
+     228:	30d4      	adds	r0, #212	; 0xd4
+     22a:	f7ff ff4d 	bl	c8 <drv_check_rw_data>
+     22e:	7ca3      	ldrb	r3, [r4, #18]
+     230:	7ce1      	ldrb	r1, [r4, #19]
+     232:	0709      	lsls	r1, r1, #28
+     234:	ea41 71c3 	orr.w	r1, r1, r3, lsl #31
+     238:	7d23      	ldrb	r3, [r4, #20]
+     23a:	ea41 6143 	orr.w	r1, r1, r3, lsl #25
+     23e:	7d63      	ldrb	r3, [r4, #21]
+     240:	ea41 5183 	orr.w	r1, r1, r3, lsl #22
+     244:	7da2      	ldrb	r2, [r4, #22]
+     246:	ea41 3142 	orr.w	r1, r1, r2, lsl #13
+     24a:	7de2      	ldrb	r2, [r4, #23]
+     24c:	ea41 0182 	orr.w	r1, r1, r2, lsl #2
+     250:	6820      	ldr	r0, [r4, #0]
+     252:	460a      	mov	r2, r1
+     254:	30d8      	adds	r0, #216	; 0xd8
+     256:	f7ff ff37 	bl	c8 <drv_check_rw_data>
+     25a:	7e21      	ldrb	r1, [r4, #24]
+     25c:	08c9      	lsrs	r1, r1, #3
+     25e:	3905      	subs	r1, #5
+     260:	0609      	lsls	r1, r1, #24
+     262:	6820      	ldr	r0, [r4, #0]
+     264:	460a      	mov	r2, r1
+     266:	30dc      	adds	r0, #220	; 0xdc
+     268:	f7ff ff2e 	bl	c8 <drv_check_rw_data>
+     26c:	bd10      	pop	{r4, pc}
 
-0000069a <uart_int_rx_stop_callback>:
- 69a:	4770      	bx	lr
+0000026e <drv_eth_mac_init>:
+     26e:	b538      	push	{r3, r4, r5, lr}
+     270:	4604      	mov	r4, r0
+     272:	f7ff ffbd 	bl	1f0 <drv_eth_mac_set_dma_config>
+     276:	4605      	mov	r5, r0
+     278:	4620      	mov	r0, r4
+     27a:	f7ff ffca 	bl	212 <drv_eth_mac_set_pe_config>
+     27e:	4328      	orrs	r0, r5
+     280:	2300      	movs	r3, #0
+     282:	f884 3028 	strb.w	r3, [r4, #40]	; 0x28
+     286:	61e3      	str	r3, [r4, #28]
+     288:	6223      	str	r3, [r4, #32]
+     28a:	2204      	movs	r2, #4
+     28c:	f884 2024 	strb.w	r2, [r4, #36]	; 0x24
+     290:	f884 2025 	strb.w	r2, [r4, #37]	; 0x25
+     294:	f884 3026 	strb.w	r3, [r4, #38]	; 0x26
+     298:	f884 3027 	strb.w	r3, [r4, #39]	; 0x27
+     29c:	6821      	ldr	r1, [r4, #0]
+     29e:	680a      	ldr	r2, [r1, #0]
+     2a0:	f442 7280 	orr.w	r2, r2, #256	; 0x100
+     2a4:	600a      	str	r2, [r1, #0]
+     2a6:	6821      	ldr	r1, [r4, #0]
+     2a8:	680a      	ldr	r2, [r1, #0]
+     2aa:	f422 7280 	bic.w	r2, r2, #256	; 0x100
+     2ae:	600a      	str	r2, [r1, #0]
+     2b0:	6821      	ldr	r1, [r4, #0]
+     2b2:	680a      	ldr	r2, [r1, #0]
+     2b4:	f442 7200 	orr.w	r2, r2, #512	; 0x200
+     2b8:	600a      	str	r2, [r1, #0]
+     2ba:	6821      	ldr	r1, [r4, #0]
+     2bc:	680a      	ldr	r2, [r1, #0]
+     2be:	f422 7200 	bic.w	r2, r2, #512	; 0x200
+     2c2:	600a      	str	r2, [r1, #0]
+     2c4:	6821      	ldr	r1, [r4, #0]
+     2c6:	680a      	ldr	r2, [r1, #0]
+     2c8:	f442 6280 	orr.w	r2, r2, #1024	; 0x400
+     2cc:	600a      	str	r2, [r1, #0]
+     2ce:	6821      	ldr	r1, [r4, #0]
+     2d0:	680a      	ldr	r2, [r1, #0]
+     2d2:	f422 6280 	bic.w	r2, r2, #1024	; 0x400
+     2d6:	600a      	str	r2, [r1, #0]
+     2d8:	6821      	ldr	r1, [r4, #0]
+     2da:	680a      	ldr	r2, [r1, #0]
+     2dc:	f442 6200 	orr.w	r2, r2, #2048	; 0x800
+     2e0:	600a      	str	r2, [r1, #0]
+     2e2:	6821      	ldr	r1, [r4, #0]
+     2e4:	680a      	ldr	r2, [r1, #0]
+     2e6:	f422 6200 	bic.w	r2, r2, #2048	; 0x800
+     2ea:	600a      	str	r2, [r1, #0]
+     2ec:	6821      	ldr	r1, [r4, #0]
+     2ee:	680a      	ldr	r2, [r1, #0]
+     2f0:	f442 5280 	orr.w	r2, r2, #4096	; 0x1000
+     2f4:	600a      	str	r2, [r1, #0]
+     2f6:	6821      	ldr	r1, [r4, #0]
+     2f8:	680a      	ldr	r2, [r1, #0]
+     2fa:	f422 5280 	bic.w	r2, r2, #4096	; 0x1000
+     2fe:	600a      	str	r2, [r1, #0]
+     300:	6821      	ldr	r1, [r4, #0]
+     302:	2201      	movs	r2, #1
+     304:	f8c1 2100 	str.w	r2, [r1, #256]	; 0x100
+     308:	6821      	ldr	r1, [r4, #0]
+     30a:	f8c1 3100 	str.w	r3, [r1, #256]	; 0x100
+     30e:	6821      	ldr	r1, [r4, #0]
+     310:	f8c1 2104 	str.w	r2, [r1, #260]	; 0x104
+     314:	6822      	ldr	r2, [r4, #0]
+     316:	f8c2 3104 	str.w	r3, [r2, #260]	; 0x104
+     31a:	6822      	ldr	r2, [r4, #0]
+     31c:	6813      	ldr	r3, [r2, #0]
+     31e:	f043 0301 	orr.w	r3, r3, #1
+     322:	6013      	str	r3, [r2, #0]
+     324:	6822      	ldr	r2, [r4, #0]
+     326:	6813      	ldr	r3, [r2, #0]
+     328:	f023 0301 	bic.w	r3, r3, #1
+     32c:	6013      	str	r3, [r2, #0]
+     32e:	6822      	ldr	r2, [r4, #0]
+     330:	6813      	ldr	r3, [r2, #0]
+     332:	f043 0302 	orr.w	r3, r3, #2
+     336:	6013      	str	r3, [r2, #0]
+     338:	6822      	ldr	r2, [r4, #0]
+     33a:	6813      	ldr	r3, [r2, #0]
+     33c:	f023 0302 	bic.w	r3, r3, #2
+     340:	6013      	str	r3, [r2, #0]
+     342:	6822      	ldr	r2, [r4, #0]
+     344:	6813      	ldr	r3, [r2, #0]
+     346:	f043 0320 	orr.w	r3, r3, #32
+     34a:	6013      	str	r3, [r2, #0]
+     34c:	6822      	ldr	r2, [r4, #0]
+     34e:	6813      	ldr	r3, [r2, #0]
+     350:	f043 0310 	orr.w	r3, r3, #16
+     354:	6013      	str	r3, [r2, #0]
+     356:	b2c0      	uxtb	r0, r0
+     358:	bd38      	pop	{r3, r4, r5, pc}
 
-0000069c <uart_int_rx_parity_error_callback>:
- 69c:	4770      	bx	lr
+0000035a <drv_eth_mac_address_set>:
+     35a:	78ca      	ldrb	r2, [r1, #3]
+     35c:	788b      	ldrb	r3, [r1, #2]
+     35e:	041b      	lsls	r3, r3, #16
+     360:	ea43 6302 	orr.w	r3, r3, r2, lsl #24
+     364:	784a      	ldrb	r2, [r1, #1]
+     366:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
+     36a:	780a      	ldrb	r2, [r1, #0]
+     36c:	4313      	orrs	r3, r2
+     36e:	60c3      	str	r3, [r0, #12]
+     370:	f891 c005 	ldrb.w	ip, [r1, #5]
+     374:	790a      	ldrb	r2, [r1, #4]
+     376:	ea42 220c 	orr.w	r2, r2, ip, lsl #8
+     37a:	8202      	strh	r2, [r0, #16]
+     37c:	6802      	ldr	r2, [r0, #0]
+     37e:	f8d2 10d0 	ldr.w	r1, [r2, #208]	; 0xd0
+     382:	f8c2 30d0 	str.w	r3, [r2, #208]	; 0xd0
+     386:	6802      	ldr	r2, [r0, #0]
+     388:	f8d2 30d4 	ldr.w	r3, [r2, #212]	; 0xd4
+     38c:	0c1b      	lsrs	r3, r3, #16
+     38e:	041b      	lsls	r3, r3, #16
+     390:	8a01      	ldrh	r1, [r0, #16]
+     392:	430b      	orrs	r3, r1
+     394:	f8c2 30d4 	str.w	r3, [r2, #212]	; 0xd4
+     398:	4770      	bx	lr
 
-0000069e <uart_int_rx_noise_detect_callback>:
- 69e:	4770      	bx	lr
+0000039a <drv_eth_mac_tx_descriptor_default_config>:
+     39a:	2300      	movs	r3, #0
+     39c:	6003      	str	r3, [r0, #0]
+     39e:	7103      	strb	r3, [r0, #4]
+     3a0:	80c3      	strh	r3, [r0, #6]
+     3a2:	7203      	strb	r3, [r0, #8]
+     3a4:	7243      	strb	r3, [r0, #9]
+     3a6:	2301      	movs	r3, #1
+     3a8:	7283      	strb	r3, [r0, #10]
+     3aa:	4770      	bx	lr
 
-000006a0 <uart_int_rx_stop_detect_callback>:
- 6a0:	4770      	bx	lr
+000003ac <drv_eth_mac_tx_descriptor_config>:
+     3ac:	6803      	ldr	r3, [r0, #0]
+     3ae:	600b      	str	r3, [r1, #0]
+     3b0:	2300      	movs	r3, #0
+     3b2:	604b      	str	r3, [r1, #4]
+     3b4:	7902      	ldrb	r2, [r0, #4]
+     3b6:	88c3      	ldrh	r3, [r0, #6]
+     3b8:	ea43 73c2 	orr.w	r3, r3, r2, lsl #31
+     3bc:	608b      	str	r3, [r1, #8]
+     3be:	7a02      	ldrb	r2, [r0, #8]
+     3c0:	7a43      	ldrb	r3, [r0, #9]
+     3c2:	061b      	lsls	r3, r3, #24
+     3c4:	ea43 6382 	orr.w	r3, r3, r2, lsl #26
+     3c8:	7a82      	ldrb	r2, [r0, #10]
+     3ca:	ea43 4302 	orr.w	r3, r3, r2, lsl #16
+     3ce:	60cb      	str	r3, [r1, #12]
+     3d0:	4770      	bx	lr
 
-000006a2 <uart_int_tx_fifo_empty_callback>:
- 6a2:	4770      	bx	lr
+000003d2 <drv_eth_mac_set_tx_descriptor_config>:
+     3d2:	61c1      	str	r1, [r0, #28]
+     3d4:	6801      	ldr	r1, [r0, #0]
+     3d6:	690b      	ldr	r3, [r1, #16]
+     3d8:	f023 0303 	bic.w	r3, r3, #3
+     3dc:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
+     3e0:	3a01      	subs	r2, #1
+     3e2:	4313      	orrs	r3, r2
+     3e4:	610b      	str	r3, [r1, #16]
+     3e6:	2300      	movs	r3, #0
+     3e8:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     3ec:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
+     3f0:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
+     3f4:	4293      	cmp	r3, r2
+     3f6:	d223      	bcs.n	440 <drv_eth_mac_set_tx_descriptor_config+0x6e>
+     3f8:	b410      	push	{r4}
+     3fa:	6802      	ldr	r2, [r0, #0]
+     3fc:	3250      	adds	r2, #80	; 0x50
+     3fe:	ea4f 1c03 	mov.w	ip, r3, lsl #4
+     402:	eb02 1103 	add.w	r1, r2, r3, lsl #4
+     406:	69c4      	ldr	r4, [r0, #28]
+     408:	eb04 1303 	add.w	r3, r4, r3, lsl #4
+     40c:	f854 400c 	ldr.w	r4, [r4, ip]
+     410:	f842 400c 	str.w	r4, [r2, ip]
+     414:	685a      	ldr	r2, [r3, #4]
+     416:	604a      	str	r2, [r1, #4]
+     418:	689a      	ldr	r2, [r3, #8]
+     41a:	608a      	str	r2, [r1, #8]
+     41c:	68db      	ldr	r3, [r3, #12]
+     41e:	60cb      	str	r3, [r1, #12]
+     420:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
+     424:	3301      	adds	r3, #1
+     426:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     42a:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
+     42e:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
+     432:	4293      	cmp	r3, r2
+     434:	d3e1      	bcc.n	3fa <drv_eth_mac_set_tx_descriptor_config+0x28>
+     436:	2300      	movs	r3, #0
+     438:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     43c:	bc10      	pop	{r4}
+     43e:	4770      	bx	lr
+     440:	2300      	movs	r3, #0
+     442:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     446:	4770      	bx	lr
 
-000006a4 <uart_int_tx_fifo_thres_callback>:
- 6a4:	4770      	bx	lr
+00000448 <drv_eth_mac_tx_descriptor_clear>:
+     448:	2300      	movs	r3, #0
+     44a:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     44e:	e00f      	b.n	470 <drv_eth_mac_tx_descriptor_clear+0x28>
+     450:	69c1      	ldr	r1, [r0, #28]
+     452:	ea4f 1c03 	mov.w	ip, r3, lsl #4
+     456:	eb01 1303 	add.w	r3, r1, r3, lsl #4
+     45a:	2200      	movs	r2, #0
+     45c:	f841 200c 	str.w	r2, [r1, ip]
+     460:	605a      	str	r2, [r3, #4]
+     462:	609a      	str	r2, [r3, #8]
+     464:	60da      	str	r2, [r3, #12]
+     466:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
+     46a:	3301      	adds	r3, #1
+     46c:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     470:	f890 3026 	ldrb.w	r3, [r0, #38]	; 0x26
+     474:	f890 2024 	ldrb.w	r2, [r0, #36]	; 0x24
+     478:	4293      	cmp	r3, r2
+     47a:	d3e9      	bcc.n	450 <drv_eth_mac_tx_descriptor_clear+0x8>
+     47c:	2300      	movs	r3, #0
+     47e:	f880 3026 	strb.w	r3, [r0, #38]	; 0x26
+     482:	4770      	bx	lr
 
-000006a6 <uart_int_rx_fifo_noempty_callback>:
- 6a6:	4770      	bx	lr
+00000484 <drv_eth_mac_set_tx_descriptor_and_tx_enable>:
+     484:	b510      	push	{r4, lr}
+     486:	4604      	mov	r4, r0
+     488:	f7ff ffa3 	bl	3d2 <drv_eth_mac_set_tx_descriptor_config>
+     48c:	6822      	ldr	r2, [r4, #0]
+     48e:	6813      	ldr	r3, [r2, #0]
+     490:	f023 0308 	bic.w	r3, r3, #8
+     494:	6013      	str	r3, [r2, #0]
+     496:	6822      	ldr	r2, [r4, #0]
+     498:	6813      	ldr	r3, [r2, #0]
+     49a:	f043 0308 	orr.w	r3, r3, #8
+     49e:	6013      	str	r3, [r2, #0]
+     4a0:	6822      	ldr	r2, [r4, #0]
+     4a2:	6813      	ldr	r3, [r2, #0]
+     4a4:	f023 0308 	bic.w	r3, r3, #8
+     4a8:	6013      	str	r3, [r2, #0]
+     4aa:	bd10      	pop	{r4, pc}
 
-000006a8 <uart_int_rx_fifo_thres_callback>:
- 6a8:	4770      	bx	lr
+000004ac <eth_mac_tx_int_tx_frame_done_callback>:
+     4ac:	4770      	bx	lr
 
-000006aa <drv_uart_interrupt_handler>:
- 6aa:	b538      	push	{r3, r4, r5, lr}
- 6ac:	4604      	mov	r4, r0
- 6ae:	6803      	ldr	r3, [r0, #0]
- 6b0:	699d      	ldr	r5, [r3, #24]
- 6b2:	68db      	ldr	r3, [r3, #12]
- 6b4:	b29b      	uxth	r3, r3
- 6b6:	401d      	ands	r5, r3
- 6b8:	f415 7f80 	tst.w	r5, #256	; 0x100
- 6bc:	d144      	bne.n	748 <drv_uart_interrupt_handler+0x9e>
- 6be:	f015 0f40 	tst.w	r5, #64	; 0x40
- 6c2:	d00f      	beq.n	6e4 <drv_uart_interrupt_handler+0x3a>
- 6c4:	2301      	movs	r3, #1
- 6c6:	7423      	strb	r3, [r4, #16]
- 6c8:	7aa3      	ldrb	r3, [r4, #10]
- 6ca:	2b01      	cmp	r3, #1
- 6cc:	d147      	bne.n	75e <drv_uart_interrupt_handler+0xb4>
- 6ce:	4620      	mov	r0, r4
- 6d0:	f7ff ffe3 	bl	69a <uart_int_rx_stop_callback>
- 6d4:	6822      	ldr	r2, [r4, #0]
- 6d6:	6913      	ldr	r3, [r2, #16]
- 6d8:	f043 0340 	orr.w	r3, r3, #64	; 0x40
- 6dc:	6113      	str	r3, [r2, #16]
- 6de:	6823      	ldr	r3, [r4, #0]
- 6e0:	2200      	movs	r2, #0
- 6e2:	611a      	str	r2, [r3, #16]
- 6e4:	f015 0f80 	tst.w	r5, #128	; 0x80
- 6e8:	d00f      	beq.n	70a <drv_uart_interrupt_handler+0x60>
- 6ea:	2302      	movs	r3, #2
- 6ec:	7423      	strb	r3, [r4, #16]
- 6ee:	7aa3      	ldrb	r3, [r4, #10]
- 6f0:	2b01      	cmp	r3, #1
- 6f2:	d166      	bne.n	7c2 <drv_uart_interrupt_handler+0x118>
- 6f4:	4620      	mov	r0, r4
- 6f6:	f7ff ffd1 	bl	69c <uart_int_rx_parity_error_callback>
- 6fa:	6822      	ldr	r2, [r4, #0]
- 6fc:	6913      	ldr	r3, [r2, #16]
- 6fe:	f043 0380 	orr.w	r3, r3, #128	; 0x80
- 702:	6113      	str	r3, [r2, #16]
- 704:	6823      	ldr	r3, [r4, #0]
- 706:	2200      	movs	r2, #0
- 708:	611a      	str	r2, [r3, #16]
- 70a:	f015 0f20 	tst.w	r5, #32
- 70e:	f040 808a 	bne.w	826 <drv_uart_interrupt_handler+0x17c>
- 712:	f015 0f10 	tst.w	r5, #16
- 716:	f040 8092 	bne.w	83e <drv_uart_interrupt_handler+0x194>
- 71a:	f015 0f01 	tst.w	r5, #1
- 71e:	f040 809a 	bne.w	856 <drv_uart_interrupt_handler+0x1ac>
- 722:	f015 0f02 	tst.w	r5, #2
- 726:	f040 80a2 	bne.w	86e <drv_uart_interrupt_handler+0x1c4>
- 72a:	f015 0f04 	tst.w	r5, #4
- 72e:	f000 80c1 	beq.w	8b4 <drv_uart_interrupt_handler+0x20a>
- 732:	7ce2      	ldrb	r2, [r4, #19]
- 734:	7e23      	ldrb	r3, [r4, #24]
- 736:	429a      	cmp	r2, r3
- 738:	f0c0 80ac 	bcc.w	894 <drv_uart_interrupt_handler+0x1ea>
- 73c:	6822      	ldr	r2, [r4, #0]
- 73e:	68d3      	ldr	r3, [r2, #12]
- 740:	f023 030c 	bic.w	r3, r3, #12
- 744:	60d3      	str	r3, [r2, #12]
- 746:	e0aa      	b.n	89e <drv_uart_interrupt_handler+0x1f4>
- 748:	f7ff ffa6 	bl	698 <uart_int_tx_done_callback>
- 74c:	6822      	ldr	r2, [r4, #0]
- 74e:	6913      	ldr	r3, [r2, #16]
- 750:	f443 7380 	orr.w	r3, r3, #256	; 0x100
- 754:	6113      	str	r3, [r2, #16]
- 756:	6823      	ldr	r3, [r4, #0]
- 758:	2200      	movs	r2, #0
- 75a:	611a      	str	r2, [r3, #16]
- 75c:	e7af      	b.n	6be <drv_uart_interrupt_handler+0x14>
- 75e:	6822      	ldr	r2, [r4, #0]
- 760:	68d3      	ldr	r3, [r2, #12]
- 762:	f023 03cc 	bic.w	r3, r3, #204	; 0xcc
- 766:	60d3      	str	r3, [r2, #12]
- 768:	2300      	movs	r3, #0
- 76a:	7423      	strb	r3, [r4, #16]
- 76c:	74a3      	strb	r3, [r4, #18]
- 76e:	74e3      	strb	r3, [r4, #19]
- 770:	6822      	ldr	r2, [r4, #0]
- 772:	6853      	ldr	r3, [r2, #4]
- 774:	f443 7380 	orr.w	r3, r3, #256	; 0x100
- 778:	6053      	str	r3, [r2, #4]
- 77a:	6822      	ldr	r2, [r4, #0]
- 77c:	6853      	ldr	r3, [r2, #4]
- 77e:	f423 7380 	bic.w	r3, r3, #256	; 0x100
- 782:	6053      	str	r3, [r2, #4]
- 784:	6822      	ldr	r2, [r4, #0]
- 786:	6853      	ldr	r3, [r2, #4]
- 788:	f443 7300 	orr.w	r3, r3, #512	; 0x200
- 78c:	6053      	str	r3, [r2, #4]
- 78e:	6822      	ldr	r2, [r4, #0]
- 790:	6853      	ldr	r3, [r2, #4]
- 792:	f423 7300 	bic.w	r3, r3, #512	; 0x200
- 796:	6053      	str	r3, [r2, #4]
- 798:	6822      	ldr	r2, [r4, #0]
- 79a:	6853      	ldr	r3, [r2, #4]
- 79c:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
- 7a0:	6053      	str	r3, [r2, #4]
- 7a2:	6822      	ldr	r2, [r4, #0]
- 7a4:	6853      	ldr	r3, [r2, #4]
- 7a6:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
- 7aa:	6053      	str	r3, [r2, #4]
- 7ac:	6822      	ldr	r2, [r4, #0]
- 7ae:	6853      	ldr	r3, [r2, #4]
- 7b0:	f443 6300 	orr.w	r3, r3, #2048	; 0x800
- 7b4:	6053      	str	r3, [r2, #4]
- 7b6:	6822      	ldr	r2, [r4, #0]
- 7b8:	6853      	ldr	r3, [r2, #4]
- 7ba:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
- 7be:	6053      	str	r3, [r2, #4]
- 7c0:	e785      	b.n	6ce <drv_uart_interrupt_handler+0x24>
- 7c2:	6822      	ldr	r2, [r4, #0]
- 7c4:	68d3      	ldr	r3, [r2, #12]
- 7c6:	f023 03cc 	bic.w	r3, r3, #204	; 0xcc
- 7ca:	60d3      	str	r3, [r2, #12]
- 7cc:	2300      	movs	r3, #0
- 7ce:	7423      	strb	r3, [r4, #16]
- 7d0:	74a3      	strb	r3, [r4, #18]
- 7d2:	74e3      	strb	r3, [r4, #19]
- 7d4:	6822      	ldr	r2, [r4, #0]
- 7d6:	6853      	ldr	r3, [r2, #4]
- 7d8:	f443 7380 	orr.w	r3, r3, #256	; 0x100
- 7dc:	6053      	str	r3, [r2, #4]
- 7de:	6822      	ldr	r2, [r4, #0]
- 7e0:	6853      	ldr	r3, [r2, #4]
- 7e2:	f423 7380 	bic.w	r3, r3, #256	; 0x100
- 7e6:	6053      	str	r3, [r2, #4]
- 7e8:	6822      	ldr	r2, [r4, #0]
- 7ea:	6853      	ldr	r3, [r2, #4]
- 7ec:	f443 7300 	orr.w	r3, r3, #512	; 0x200
- 7f0:	6053      	str	r3, [r2, #4]
- 7f2:	6822      	ldr	r2, [r4, #0]
- 7f4:	6853      	ldr	r3, [r2, #4]
- 7f6:	f423 7300 	bic.w	r3, r3, #512	; 0x200
- 7fa:	6053      	str	r3, [r2, #4]
- 7fc:	6822      	ldr	r2, [r4, #0]
- 7fe:	6853      	ldr	r3, [r2, #4]
- 800:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
- 804:	6053      	str	r3, [r2, #4]
- 806:	6822      	ldr	r2, [r4, #0]
- 808:	6853      	ldr	r3, [r2, #4]
- 80a:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
- 80e:	6053      	str	r3, [r2, #4]
- 810:	6822      	ldr	r2, [r4, #0]
- 812:	6853      	ldr	r3, [r2, #4]
- 814:	f443 6300 	orr.w	r3, r3, #2048	; 0x800
- 818:	6053      	str	r3, [r2, #4]
- 81a:	6822      	ldr	r2, [r4, #0]
- 81c:	6853      	ldr	r3, [r2, #4]
- 81e:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
- 822:	6053      	str	r3, [r2, #4]
- 824:	e766      	b.n	6f4 <drv_uart_interrupt_handler+0x4a>
- 826:	4620      	mov	r0, r4
- 828:	f7ff ff39 	bl	69e <uart_int_rx_noise_detect_callback>
- 82c:	6822      	ldr	r2, [r4, #0]
- 82e:	6913      	ldr	r3, [r2, #16]
- 830:	f043 0320 	orr.w	r3, r3, #32
- 834:	6113      	str	r3, [r2, #16]
- 836:	6823      	ldr	r3, [r4, #0]
- 838:	2200      	movs	r2, #0
- 83a:	611a      	str	r2, [r3, #16]
- 83c:	e769      	b.n	712 <drv_uart_interrupt_handler+0x68>
- 83e:	4620      	mov	r0, r4
- 840:	f7ff ff2e 	bl	6a0 <uart_int_rx_stop_detect_callback>
- 844:	6822      	ldr	r2, [r4, #0]
- 846:	6913      	ldr	r3, [r2, #16]
- 848:	f043 0310 	orr.w	r3, r3, #16
- 84c:	6113      	str	r3, [r2, #16]
- 84e:	6823      	ldr	r3, [r4, #0]
- 850:	2200      	movs	r2, #0
- 852:	611a      	str	r2, [r3, #16]
- 854:	e761      	b.n	71a <drv_uart_interrupt_handler+0x70>
- 856:	4620      	mov	r0, r4
- 858:	f7ff ff24 	bl	6a4 <uart_int_tx_fifo_thres_callback>
- 85c:	6822      	ldr	r2, [r4, #0]
- 85e:	6913      	ldr	r3, [r2, #16]
- 860:	f043 0301 	orr.w	r3, r3, #1
- 864:	6113      	str	r3, [r2, #16]
- 866:	6823      	ldr	r3, [r4, #0]
- 868:	2200      	movs	r2, #0
- 86a:	611a      	str	r2, [r3, #16]
- 86c:	e759      	b.n	722 <drv_uart_interrupt_handler+0x78>
- 86e:	4620      	mov	r0, r4
- 870:	f7ff ff17 	bl	6a2 <uart_int_tx_fifo_empty_callback>
- 874:	6822      	ldr	r2, [r4, #0]
- 876:	6913      	ldr	r3, [r2, #16]
- 878:	f043 0302 	orr.w	r3, r3, #2
- 87c:	6113      	str	r3, [r2, #16]
- 87e:	6823      	ldr	r3, [r4, #0]
- 880:	2200      	movs	r2, #0
- 882:	611a      	str	r2, [r3, #16]
- 884:	e751      	b.n	72a <drv_uart_interrupt_handler+0x80>
- 886:	69d9      	ldr	r1, [r3, #28]
- 888:	6962      	ldr	r2, [r4, #20]
- 88a:	7ce3      	ldrb	r3, [r4, #19]
- 88c:	1c58      	adds	r0, r3, #1
- 88e:	74e0      	strb	r0, [r4, #19]
- 890:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
- 894:	6823      	ldr	r3, [r4, #0]
- 896:	695a      	ldr	r2, [r3, #20]
- 898:	f012 0f1f 	tst.w	r2, #31
- 89c:	d1f3      	bne.n	886 <drv_uart_interrupt_handler+0x1dc>
- 89e:	4620      	mov	r0, r4
- 8a0:	f7ff ff02 	bl	6a8 <uart_int_rx_fifo_thres_callback>
- 8a4:	6822      	ldr	r2, [r4, #0]
- 8a6:	6913      	ldr	r3, [r2, #16]
- 8a8:	f043 0304 	orr.w	r3, r3, #4
- 8ac:	6113      	str	r3, [r2, #16]
- 8ae:	6823      	ldr	r3, [r4, #0]
- 8b0:	2200      	movs	r2, #0
- 8b2:	611a      	str	r2, [r3, #16]
- 8b4:	f015 0f08 	tst.w	r5, #8
- 8b8:	d020      	beq.n	8fc <drv_uart_interrupt_handler+0x252>
- 8ba:	7ce2      	ldrb	r2, [r4, #19]
- 8bc:	7e23      	ldrb	r3, [r4, #24]
- 8be:	429a      	cmp	r2, r3
- 8c0:	d30c      	bcc.n	8dc <drv_uart_interrupt_handler+0x232>
- 8c2:	6822      	ldr	r2, [r4, #0]
- 8c4:	68d3      	ldr	r3, [r2, #12]
- 8c6:	f023 030c 	bic.w	r3, r3, #12
- 8ca:	60d3      	str	r3, [r2, #12]
- 8cc:	e00b      	b.n	8e6 <drv_uart_interrupt_handler+0x23c>
- 8ce:	69d9      	ldr	r1, [r3, #28]
- 8d0:	6962      	ldr	r2, [r4, #20]
- 8d2:	7ce3      	ldrb	r3, [r4, #19]
- 8d4:	1c58      	adds	r0, r3, #1
- 8d6:	74e0      	strb	r0, [r4, #19]
- 8d8:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
- 8dc:	6823      	ldr	r3, [r4, #0]
- 8de:	695a      	ldr	r2, [r3, #20]
- 8e0:	f012 0f1f 	tst.w	r2, #31
- 8e4:	d1f3      	bne.n	8ce <drv_uart_interrupt_handler+0x224>
- 8e6:	4620      	mov	r0, r4
- 8e8:	f7ff fedd 	bl	6a6 <uart_int_rx_fifo_noempty_callback>
- 8ec:	6822      	ldr	r2, [r4, #0]
- 8ee:	6913      	ldr	r3, [r2, #16]
- 8f0:	f043 0308 	orr.w	r3, r3, #8
- 8f4:	6113      	str	r3, [r2, #16]
- 8f6:	6823      	ldr	r3, [r4, #0]
- 8f8:	2200      	movs	r2, #0
- 8fa:	611a      	str	r2, [r3, #16]
- 8fc:	bd38      	pop	{r3, r4, r5, pc}
+000004ae <eth_mac_rx_int_rx_frame_done_callback>:
+     4ae:	4770      	bx	lr
+
+000004b0 <eth_mac_dma_int_once_process_done_callback>:
+     4b0:	4770      	bx	lr
+
+000004b2 <eth_mac_dma_int_hready_to_callback>:
+     4b2:	4770      	bx	lr
+
+000004b4 <eth_mac_dma_int_bus_error_callback>:
+     4b4:	4770      	bx	lr
+
+000004b6 <drv_eth_mac_tx_interrupt_handler>:
+     4b6:	6802      	ldr	r2, [r0, #0]
+     4b8:	f8d2 3110 	ldr.w	r3, [r2, #272]	; 0x110
+     4bc:	f8d2 20f0 	ldr.w	r2, [r2, #240]	; 0xf0
+     4c0:	b2d2      	uxtb	r2, r2
+     4c2:	4013      	ands	r3, r2
+     4c4:	f013 0f01 	tst.w	r3, #1
+     4c8:	d100      	bne.n	4cc <drv_eth_mac_tx_interrupt_handler+0x16>
+     4ca:	4770      	bx	lr
+     4cc:	b510      	push	{r4, lr}
+     4ce:	4604      	mov	r4, r0
+     4d0:	2302      	movs	r3, #2
+     4d2:	f880 3028 	strb.w	r3, [r0, #40]	; 0x28
+     4d6:	f7ff ffe9 	bl	4ac <eth_mac_tx_int_tx_frame_done_callback>
+     4da:	6822      	ldr	r2, [r4, #0]
+     4dc:	f8d2 3100 	ldr.w	r3, [r2, #256]	; 0x100
+     4e0:	f043 0301 	orr.w	r3, r3, #1
+     4e4:	f8c2 3100 	str.w	r3, [r2, #256]	; 0x100
+     4e8:	6823      	ldr	r3, [r4, #0]
+     4ea:	2200      	movs	r2, #0
+     4ec:	f8c3 2100 	str.w	r2, [r3, #256]	; 0x100
+     4f0:	bd10      	pop	{r4, pc}
+
+000004f2 <drv_eth_mac_rx_interrupt_handler>:
+     4f2:	6802      	ldr	r2, [r0, #0]
+     4f4:	f8d2 3114 	ldr.w	r3, [r2, #276]	; 0x114
+     4f8:	f8d2 20f4 	ldr.w	r2, [r2, #244]	; 0xf4
+     4fc:	b2d2      	uxtb	r2, r2
+     4fe:	4013      	ands	r3, r2
+     500:	f013 0f01 	tst.w	r3, #1
+     504:	d100      	bne.n	508 <drv_eth_mac_rx_interrupt_handler+0x16>
+     506:	4770      	bx	lr
+     508:	b510      	push	{r4, lr}
+     50a:	4604      	mov	r4, r0
+     50c:	2302      	movs	r3, #2
+     50e:	f880 3028 	strb.w	r3, [r0, #40]	; 0x28
+     512:	f7ff ffcc 	bl	4ae <eth_mac_rx_int_rx_frame_done_callback>
+     516:	6822      	ldr	r2, [r4, #0]
+     518:	f8d2 3104 	ldr.w	r3, [r2, #260]	; 0x104
+     51c:	f043 0301 	orr.w	r3, r3, #1
+     520:	f8c2 3104 	str.w	r3, [r2, #260]	; 0x104
+     524:	6823      	ldr	r3, [r4, #0]
+     526:	2200      	movs	r2, #0
+     528:	f8c3 2104 	str.w	r2, [r3, #260]	; 0x104
+     52c:	bd10      	pop	{r4, pc}
+
+0000052e <drv_eth_mac_dma_interrupt_handler>:
+     52e:	b538      	push	{r3, r4, r5, lr}
+     530:	4604      	mov	r4, r0
+     532:	6803      	ldr	r3, [r0, #0]
+     534:	f8d3 5118 	ldr.w	r5, [r3, #280]	; 0x118
+     538:	f8d3 30f8 	ldr.w	r3, [r3, #248]	; 0xf8
+     53c:	b2db      	uxtb	r3, r3
+     53e:	401d      	ands	r5, r3
+     540:	f015 0f01 	tst.w	r5, #1
+     544:	d106      	bne.n	554 <drv_eth_mac_dma_interrupt_handler+0x26>
+     546:	f015 0f02 	tst.w	r5, #2
+     54a:	d114      	bne.n	576 <drv_eth_mac_dma_interrupt_handler+0x48>
+     54c:	f015 0f04 	tst.w	r5, #4
+     550:	d123      	bne.n	59a <drv_eth_mac_dma_interrupt_handler+0x6c>
+     552:	bd38      	pop	{r3, r4, r5, pc}
+     554:	2302      	movs	r3, #2
+     556:	f880 3028 	strb.w	r3, [r0, #40]	; 0x28
+     55a:	f7ff ffa9 	bl	4b0 <eth_mac_dma_int_once_process_done_callback>
+     55e:	6822      	ldr	r2, [r4, #0]
+     560:	f8d2 3108 	ldr.w	r3, [r2, #264]	; 0x108
+     564:	f043 0301 	orr.w	r3, r3, #1
+     568:	f8c2 3108 	str.w	r3, [r2, #264]	; 0x108
+     56c:	6823      	ldr	r3, [r4, #0]
+     56e:	2200      	movs	r2, #0
+     570:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
+     574:	e7e7      	b.n	546 <drv_eth_mac_dma_interrupt_handler+0x18>
+     576:	2304      	movs	r3, #4
+     578:	f884 3028 	strb.w	r3, [r4, #40]	; 0x28
+     57c:	4620      	mov	r0, r4
+     57e:	f7ff ff98 	bl	4b2 <eth_mac_dma_int_hready_to_callback>
+     582:	6822      	ldr	r2, [r4, #0]
+     584:	f8d2 3108 	ldr.w	r3, [r2, #264]	; 0x108
+     588:	f043 0302 	orr.w	r3, r3, #2
+     58c:	f8c2 3108 	str.w	r3, [r2, #264]	; 0x108
+     590:	6823      	ldr	r3, [r4, #0]
+     592:	2200      	movs	r2, #0
+     594:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
+     598:	e7d8      	b.n	54c <drv_eth_mac_dma_interrupt_handler+0x1e>
+     59a:	2310      	movs	r3, #16
+     59c:	f884 3028 	strb.w	r3, [r4, #40]	; 0x28
+     5a0:	4620      	mov	r0, r4
+     5a2:	f7ff ff87 	bl	4b4 <eth_mac_dma_int_bus_error_callback>
+     5a6:	6822      	ldr	r2, [r4, #0]
+     5a8:	f8d2 3108 	ldr.w	r3, [r2, #264]	; 0x108
+     5ac:	f043 0304 	orr.w	r3, r3, #4
+     5b0:	f8c2 3108 	str.w	r3, [r2, #264]	; 0x108
+     5b4:	6823      	ldr	r3, [r4, #0]
+     5b6:	2200      	movs	r2, #0
+     5b8:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
+     5bc:	e7c9      	b.n	552 <drv_eth_mac_dma_interrupt_handler+0x24>
+
+000005be <drv_uart_default_config>:
+     5be:	f44f 33e1 	mov.w	r3, #115200	; 0x1c200
+     5c2:	6043      	str	r3, [r0, #4]
+     5c4:	230f      	movs	r3, #15
+     5c6:	7203      	strb	r3, [r0, #8]
+     5c8:	2300      	movs	r3, #0
+     5ca:	7243      	strb	r3, [r0, #9]
+     5cc:	7283      	strb	r3, [r0, #10]
+     5ce:	72c3      	strb	r3, [r0, #11]
+     5d0:	7303      	strb	r3, [r0, #12]
+     5d2:	7343      	strb	r3, [r0, #13]
+     5d4:	2301      	movs	r3, #1
+     5d6:	7383      	strb	r3, [r0, #14]
+     5d8:	4770      	bx	lr
 	...
 
-00000900 <eth_mac_descriptor_hw_handle_prepare>:
- 900:	b570      	push	{r4, r5, r6, lr}
- 902:	4604      	mov	r4, r0
- 904:	2601      	movs	r6, #1
- 906:	4b0f      	ldr	r3, [pc, #60]	; (944 <eth_mac_descriptor_hw_handle_prepare+0x44>)
- 908:	f883 6024 	strb.w	r6, [r3, #36]	; 0x24
- 90c:	4d0e      	ldr	r5, [pc, #56]	; (948 <eth_mac_descriptor_hw_handle_prepare+0x48>)
- 90e:	4628      	mov	r0, r5
- 910:	f7ff fd35 	bl	37e <drv_eth_mac_tx_descriptor_default_config>
- 914:	80ec      	strh	r4, [r5, #6]
- 916:	72ae      	strb	r6, [r5, #10]
- 918:	2400      	movs	r4, #0
- 91a:	722c      	strb	r4, [r5, #8]
- 91c:	726c      	strb	r4, [r5, #9]
- 91e:	e00b      	b.n	938 <eth_mac_descriptor_hw_handle_prepare+0x38>
- 920:	f104 0360 	add.w	r3, r4, #96	; 0x60
- 924:	02db      	lsls	r3, r3, #11
- 926:	4808      	ldr	r0, [pc, #32]	; (948 <eth_mac_descriptor_hw_handle_prepare+0x48>)
- 928:	6003      	str	r3, [r0, #0]
- 92a:	4908      	ldr	r1, [pc, #32]	; (94c <eth_mac_descriptor_hw_handle_prepare+0x4c>)
- 92c:	eb01 1104 	add.w	r1, r1, r4, lsl #4
- 930:	f7ff fd2e 	bl	390 <drv_eth_mac_tx_descriptor_config>
- 934:	3401      	adds	r4, #1
- 936:	b2e4      	uxtb	r4, r4
- 938:	4b02      	ldr	r3, [pc, #8]	; (944 <eth_mac_descriptor_hw_handle_prepare+0x44>)
- 93a:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
- 93e:	42a3      	cmp	r3, r4
- 940:	d8ee      	bhi.n	920 <eth_mac_descriptor_hw_handle_prepare+0x20>
- 942:	bd70      	pop	{r4, r5, r6, pc}
- 944:	000200d8 	ldrdeq	r0, [r2], -r8
- 948:	00020104 	andeq	r0, r2, r4, lsl #2
- 94c:	00020084 	andeq	r0, r2, r4, lsl #1
+000005dc <drv_uart_set_config>:
+     5dc:	b508      	push	{r3, lr}
+     5de:	6841      	ldr	r1, [r0, #4]
+     5e0:	7a03      	ldrb	r3, [r0, #8]
+     5e2:	fb03 f201 	mul.w	r2, r3, r1
+     5e6:	490e      	ldr	r1, [pc, #56]	; (620 <drv_uart_set_config+0x44>)
+     5e8:	fbb1 f2f2 	udiv	r2, r1, r2
+     5ec:	0419      	lsls	r1, r3, #16
+     5ee:	ea41 5102 	orr.w	r1, r1, r2, lsl #20
+     5f2:	7a43      	ldrb	r3, [r0, #9]
+     5f4:	ea41 3103 	orr.w	r1, r1, r3, lsl #12
+     5f8:	7a83      	ldrb	r3, [r0, #10]
+     5fa:	ea41 21c3 	orr.w	r1, r1, r3, lsl #11
+     5fe:	7ac3      	ldrb	r3, [r0, #11]
+     600:	ea41 1143 	orr.w	r1, r1, r3, lsl #5
+     604:	7b03      	ldrb	r3, [r0, #12]
+     606:	ea41 1103 	orr.w	r1, r1, r3, lsl #4
+     60a:	7b42      	ldrb	r2, [r0, #13]
+     60c:	ea41 0182 	orr.w	r1, r1, r2, lsl #2
+     610:	7b82      	ldrb	r2, [r0, #14]
+     612:	4311      	orrs	r1, r2
+     614:	6800      	ldr	r0, [r0, #0]
+     616:	460a      	mov	r2, r1
+     618:	3008      	adds	r0, #8
+     61a:	f7ff fd55 	bl	c8 <drv_check_rw_data>
+     61e:	bd08      	pop	{r3, pc}
+     620:	02625a00 	rsbeq	r5, r2, #0, 20
 
-00000950 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare>:
- 950:	b530      	push	{r4, r5, lr}
- 952:	b083      	sub	sp, #12
- 954:	4b1b      	ldr	r3, [pc, #108]	; (9c4 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x74>)
- 956:	e893 0003 	ldmia.w	r3, {r0, r1}
- 95a:	9000      	str	r0, [sp, #0]
- 95c:	f8ad 1004 	strh.w	r1, [sp, #4]
- 960:	4b19      	ldr	r3, [pc, #100]	; (9c8 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x78>)
- 962:	2201      	movs	r2, #1
- 964:	f883 2024 	strb.w	r2, [r3, #36]	; 0x24
- 968:	4d18      	ldr	r5, [pc, #96]	; (9cc <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x7c>)
- 96a:	4628      	mov	r0, r5
- 96c:	f7ff fd07 	bl	37e <drv_eth_mac_tx_descriptor_default_config>
- 970:	2332      	movs	r3, #50	; 0x32
- 972:	80eb      	strh	r3, [r5, #6]
- 974:	2302      	movs	r3, #2
- 976:	72ab      	strb	r3, [r5, #10]
- 978:	2400      	movs	r4, #0
- 97a:	722c      	strb	r4, [r5, #8]
- 97c:	726b      	strb	r3, [r5, #9]
- 97e:	e00b      	b.n	998 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x48>
- 980:	f104 0360 	add.w	r3, r4, #96	; 0x60
- 984:	02db      	lsls	r3, r3, #11
- 986:	4811      	ldr	r0, [pc, #68]	; (9cc <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x7c>)
- 988:	6003      	str	r3, [r0, #0]
- 98a:	4911      	ldr	r1, [pc, #68]	; (9d0 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x80>)
- 98c:	eb01 1104 	add.w	r1, r1, r4, lsl #4
- 990:	f7ff fcfe 	bl	390 <drv_eth_mac_tx_descriptor_config>
- 994:	3401      	adds	r4, #1
- 996:	b2e4      	uxtb	r4, r4
- 998:	4b0b      	ldr	r3, [pc, #44]	; (9c8 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x78>)
- 99a:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
- 99e:	42a3      	cmp	r3, r4
- 9a0:	d8ee      	bhi.n	980 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x30>
- 9a2:	4c09      	ldr	r4, [pc, #36]	; (9c8 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare+0x78>)
- 9a4:	4669      	mov	r1, sp
- 9a6:	4620      	mov	r0, r4
- 9a8:	f7ff fcc9 	bl	33e <drv_eth_mac_address_set>
- 9ac:	6822      	ldr	r2, [r4, #0]
- 9ae:	6813      	ldr	r3, [r2, #0]
- 9b0:	f043 0302 	orr.w	r3, r3, #2
- 9b4:	6013      	str	r3, [r2, #0]
- 9b6:	6822      	ldr	r2, [r4, #0]
- 9b8:	6813      	ldr	r3, [r2, #0]
- 9ba:	f023 0302 	bic.w	r3, r3, #2
- 9be:	6013      	str	r3, [r2, #0]
- 9c0:	b003      	add	sp, #12
- 9c2:	bd30      	pop	{r4, r5, pc}
- 9c4:	00000d5c 	andeq	r0, r0, ip, asr sp
- 9c8:	000200d8 	ldrdeq	r0, [r2], -r8
- 9cc:	00020104 	andeq	r0, r2, r4, lsl #2
- 9d0:	00020084 	andeq	r0, r2, r4, lsl #1
+00000624 <drv_uart_init>:
+     624:	b538      	push	{r3, r4, r5, lr}
+     626:	4604      	mov	r4, r0
+     628:	2500      	movs	r5, #0
+     62a:	7485      	strb	r5, [r0, #18]
+     62c:	74c5      	strb	r5, [r0, #19]
+     62e:	f7ff ffd5 	bl	5dc <drv_uart_set_config>
+     632:	7425      	strb	r5, [r4, #16]
+     634:	74a5      	strb	r5, [r4, #18]
+     636:	74e5      	strb	r5, [r4, #19]
+     638:	6822      	ldr	r2, [r4, #0]
+     63a:	6853      	ldr	r3, [r2, #4]
+     63c:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+     640:	6053      	str	r3, [r2, #4]
+     642:	6822      	ldr	r2, [r4, #0]
+     644:	6853      	ldr	r3, [r2, #4]
+     646:	f423 7380 	bic.w	r3, r3, #256	; 0x100
+     64a:	6053      	str	r3, [r2, #4]
+     64c:	6822      	ldr	r2, [r4, #0]
+     64e:	6853      	ldr	r3, [r2, #4]
+     650:	f443 7300 	orr.w	r3, r3, #512	; 0x200
+     654:	6053      	str	r3, [r2, #4]
+     656:	6822      	ldr	r2, [r4, #0]
+     658:	6853      	ldr	r3, [r2, #4]
+     65a:	f423 7300 	bic.w	r3, r3, #512	; 0x200
+     65e:	6053      	str	r3, [r2, #4]
+     660:	6822      	ldr	r2, [r4, #0]
+     662:	6853      	ldr	r3, [r2, #4]
+     664:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
+     668:	6053      	str	r3, [r2, #4]
+     66a:	6822      	ldr	r2, [r4, #0]
+     66c:	6853      	ldr	r3, [r2, #4]
+     66e:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
+     672:	6053      	str	r3, [r2, #4]
+     674:	6822      	ldr	r2, [r4, #0]
+     676:	6853      	ldr	r3, [r2, #4]
+     678:	f443 6300 	orr.w	r3, r3, #2048	; 0x800
+     67c:	6053      	str	r3, [r2, #4]
+     67e:	6822      	ldr	r2, [r4, #0]
+     680:	6853      	ldr	r3, [r2, #4]
+     682:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
+     686:	6053      	str	r3, [r2, #4]
+     688:	6823      	ldr	r3, [r4, #0]
+     68a:	f240 12ff 	movw	r2, #511	; 0x1ff
+     68e:	611a      	str	r2, [r3, #16]
+     690:	6823      	ldr	r3, [r4, #0]
+     692:	611d      	str	r5, [r3, #16]
+     694:	6822      	ldr	r2, [r4, #0]
+     696:	6853      	ldr	r3, [r2, #4]
+     698:	f043 0301 	orr.w	r3, r3, #1
+     69c:	6053      	str	r3, [r2, #4]
+     69e:	6822      	ldr	r2, [r4, #0]
+     6a0:	6853      	ldr	r3, [r2, #4]
+     6a2:	f023 0301 	bic.w	r3, r3, #1
+     6a6:	6053      	str	r3, [r2, #4]
+     6a8:	6822      	ldr	r2, [r4, #0]
+     6aa:	6853      	ldr	r3, [r2, #4]
+     6ac:	f043 0302 	orr.w	r3, r3, #2
+     6b0:	6053      	str	r3, [r2, #4]
+     6b2:	bd38      	pop	{r3, r4, r5, pc}
 
-000009d4 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare>:
- 9d4:	b570      	push	{r4, r5, r6, lr}
- 9d6:	b082      	sub	sp, #8
- 9d8:	4b1b      	ldr	r3, [pc, #108]	; (a48 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x74>)
- 9da:	e893 0003 	ldmia.w	r3, {r0, r1}
- 9de:	9000      	str	r0, [sp, #0]
- 9e0:	f8ad 1004 	strh.w	r1, [sp, #4]
- 9e4:	2601      	movs	r6, #1
- 9e6:	4b19      	ldr	r3, [pc, #100]	; (a4c <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x78>)
- 9e8:	f883 6024 	strb.w	r6, [r3, #36]	; 0x24
- 9ec:	4d18      	ldr	r5, [pc, #96]	; (a50 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x7c>)
- 9ee:	4628      	mov	r0, r5
- 9f0:	f7ff fcc5 	bl	37e <drv_eth_mac_tx_descriptor_default_config>
- 9f4:	232a      	movs	r3, #42	; 0x2a
- 9f6:	80eb      	strh	r3, [r5, #6]
- 9f8:	72ae      	strb	r6, [r5, #10]
- 9fa:	2400      	movs	r4, #0
- 9fc:	722c      	strb	r4, [r5, #8]
- 9fe:	726e      	strb	r6, [r5, #9]
- a00:	e00b      	b.n	a1a <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x46>
- a02:	f104 0360 	add.w	r3, r4, #96	; 0x60
- a06:	02db      	lsls	r3, r3, #11
- a08:	4811      	ldr	r0, [pc, #68]	; (a50 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x7c>)
- a0a:	6003      	str	r3, [r0, #0]
- a0c:	4911      	ldr	r1, [pc, #68]	; (a54 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x80>)
- a0e:	eb01 1104 	add.w	r1, r1, r4, lsl #4
- a12:	f7ff fcbd 	bl	390 <drv_eth_mac_tx_descriptor_config>
- a16:	3401      	adds	r4, #1
- a18:	b2e4      	uxtb	r4, r4
- a1a:	4b0c      	ldr	r3, [pc, #48]	; (a4c <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x78>)
- a1c:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
- a20:	42a3      	cmp	r3, r4
- a22:	d8ee      	bhi.n	a02 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x2e>
- a24:	4c09      	ldr	r4, [pc, #36]	; (a4c <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare+0x78>)
- a26:	4669      	mov	r1, sp
- a28:	4620      	mov	r0, r4
- a2a:	f7ff fc88 	bl	33e <drv_eth_mac_address_set>
- a2e:	6822      	ldr	r2, [r4, #0]
- a30:	6813      	ldr	r3, [r2, #0]
- a32:	f043 0302 	orr.w	r3, r3, #2
- a36:	6013      	str	r3, [r2, #0]
- a38:	6822      	ldr	r2, [r4, #0]
- a3a:	6813      	ldr	r3, [r2, #0]
- a3c:	f023 0302 	bic.w	r3, r3, #2
- a40:	6013      	str	r3, [r2, #0]
- a42:	b002      	add	sp, #8
- a44:	bd70      	pop	{r4, r5, r6, pc}
- a46:	bf00      	nop
- a48:	00000d5c 	andeq	r0, r0, ip, asr sp
- a4c:	000200d8 	ldrdeq	r0, [r2], -r8
- a50:	00020104 	andeq	r0, r2, r4, lsl #2
- a54:	00020084 	andeq	r0, r2, r4, lsl #1
+000006b4 <uart_int_tx_done_callback>:
+     6b4:	4770      	bx	lr
 
-00000a58 <eth_mac_init>:
- a58:	b510      	push	{r4, lr}
- a5a:	4c08      	ldr	r4, [pc, #32]	; (a7c <eth_mac_init+0x24>)
- a5c:	4b08      	ldr	r3, [pc, #32]	; (a80 <eth_mac_init+0x28>)
- a5e:	6023      	str	r3, [r4, #0]
- a60:	4620      	mov	r0, r4
- a62:	f7ff fba7 	bl	1b4 <drv_eth_mac_dma_default_config>
- a66:	4620      	mov	r0, r4
- a68:	f7ff fbac 	bl	1c4 <drv_eth_mac_pe_default_config>
- a6c:	4620      	mov	r0, r4
- a6e:	f7ff fbfa 	bl	266 <drv_eth_mac_init>
- a72:	4620      	mov	r0, r4
- a74:	f7ff fcda 	bl	42c <drv_eth_mac_tx_descriptor_clear>
- a78:	bd10      	pop	{r4, pc}
- a7a:	bf00      	nop
- a7c:	000200d8 	ldrdeq	r0, [r2], -r8
- a80:	40020030 	andmi	r0, r2, r0, lsr r0
+000006b6 <uart_int_rx_stop_callback>:
+     6b6:	4770      	bx	lr
 
-00000a84 <eth_mac_tx_normal_frame_data_prepare>:
- a84:	f010 0303 	ands.w	r3, r0, #3
- a88:	d001      	beq.n	a8e <eth_mac_tx_normal_frame_data_prepare+0xa>
- a8a:	1ac0      	subs	r0, r0, r3
- a8c:	3004      	adds	r0, #4
- a8e:	2300      	movs	r3, #0
- a90:	e011      	b.n	ab6 <eth_mac_tx_normal_frame_data_prepare+0x32>
- a92:	f503 3240 	add.w	r2, r3, #196608	; 0x30000
- a96:	b2d9      	uxtb	r1, r3
- a98:	7011      	strb	r1, [r2, #0]
- a9a:	f503 3c42 	add.w	ip, r3, #198656	; 0x30800
- a9e:	004a      	lsls	r2, r1, #1
- aa0:	b2d2      	uxtb	r2, r2
- aa2:	f88c 2000 	strb.w	r2, [ip]
- aa6:	f503 3c44 	add.w	ip, r3, #200704	; 0x31000
- aaa:	f88c 1000 	strb.w	r1, [ip]
- aae:	f503 3146 	add.w	r1, r3, #202752	; 0x31800
- ab2:	700a      	strb	r2, [r1, #0]
- ab4:	3301      	adds	r3, #1
- ab6:	4298      	cmp	r0, r3
- ab8:	d8eb      	bhi.n	a92 <eth_mac_tx_normal_frame_data_prepare+0xe>
- aba:	4770      	bx	lr
+000006b8 <uart_int_rx_parity_error_callback>:
+     6b8:	4770      	bx	lr
 
-00000abc <eth_mac_tx_frame_data_prepare>:
- abc:	b500      	push	{lr}
- abe:	f012 0e03 	ands.w	lr, r2, #3
- ac2:	d008      	beq.n	ad6 <eth_mac_tx_frame_data_prepare+0x1a>
- ac4:	b2d3      	uxtb	r3, r2
- ac6:	eba3 0e0e 	sub.w	lr, r3, lr
- aca:	fa5f fe8e 	uxtb.w	lr, lr
- ace:	f10e 0e04 	add.w	lr, lr, #4
- ad2:	fa5f fe8e 	uxtb.w	lr, lr
- ad6:	f04f 0c00 	mov.w	ip, #0
- ada:	e005      	b.n	ae8 <eth_mac_tx_frame_data_prepare+0x2c>
- adc:	f811 300c 	ldrb.w	r3, [r1, ip]
- ae0:	f80c 3000 	strb.w	r3, [ip, r0]
- ae4:	f10c 0c01 	add.w	ip, ip, #1
- ae8:	4613      	mov	r3, r2
- aea:	4562      	cmp	r2, ip
- aec:	d8f6      	bhi.n	adc <eth_mac_tx_frame_data_prepare+0x20>
- aee:	e002      	b.n	af6 <eth_mac_tx_frame_data_prepare+0x3a>
- af0:	2200      	movs	r2, #0
- af2:	541a      	strb	r2, [r3, r0]
- af4:	3301      	adds	r3, #1
- af6:	459e      	cmp	lr, r3
- af8:	d8fa      	bhi.n	af0 <eth_mac_tx_frame_data_prepare+0x34>
- afa:	f85d fb04 	ldr.w	pc, [sp], #4
+000006ba <uart_int_rx_noise_detect_callback>:
+     6ba:	4770      	bx	lr
+
+000006bc <uart_int_rx_stop_detect_callback>:
+     6bc:	4770      	bx	lr
+
+000006be <uart_int_tx_fifo_empty_callback>:
+     6be:	4770      	bx	lr
+
+000006c0 <uart_int_tx_fifo_thres_callback>:
+     6c0:	4770      	bx	lr
+
+000006c2 <uart_int_rx_fifo_noempty_callback>:
+     6c2:	4770      	bx	lr
+
+000006c4 <uart_int_rx_fifo_thres_callback>:
+     6c4:	4770      	bx	lr
+
+000006c6 <drv_uart_interrupt_handler>:
+     6c6:	b538      	push	{r3, r4, r5, lr}
+     6c8:	4604      	mov	r4, r0
+     6ca:	6803      	ldr	r3, [r0, #0]
+     6cc:	699d      	ldr	r5, [r3, #24]
+     6ce:	68db      	ldr	r3, [r3, #12]
+     6d0:	b29b      	uxth	r3, r3
+     6d2:	401d      	ands	r5, r3
+     6d4:	f415 7f80 	tst.w	r5, #256	; 0x100
+     6d8:	d144      	bne.n	764 <drv_uart_interrupt_handler+0x9e>
+     6da:	f015 0f40 	tst.w	r5, #64	; 0x40
+     6de:	d00f      	beq.n	700 <drv_uart_interrupt_handler+0x3a>
+     6e0:	2301      	movs	r3, #1
+     6e2:	7423      	strb	r3, [r4, #16]
+     6e4:	7aa3      	ldrb	r3, [r4, #10]
+     6e6:	2b01      	cmp	r3, #1
+     6e8:	d147      	bne.n	77a <drv_uart_interrupt_handler+0xb4>
+     6ea:	4620      	mov	r0, r4
+     6ec:	f7ff ffe3 	bl	6b6 <uart_int_rx_stop_callback>
+     6f0:	6822      	ldr	r2, [r4, #0]
+     6f2:	6913      	ldr	r3, [r2, #16]
+     6f4:	f043 0340 	orr.w	r3, r3, #64	; 0x40
+     6f8:	6113      	str	r3, [r2, #16]
+     6fa:	6823      	ldr	r3, [r4, #0]
+     6fc:	2200      	movs	r2, #0
+     6fe:	611a      	str	r2, [r3, #16]
+     700:	f015 0f80 	tst.w	r5, #128	; 0x80
+     704:	d00f      	beq.n	726 <drv_uart_interrupt_handler+0x60>
+     706:	2302      	movs	r3, #2
+     708:	7423      	strb	r3, [r4, #16]
+     70a:	7aa3      	ldrb	r3, [r4, #10]
+     70c:	2b01      	cmp	r3, #1
+     70e:	d166      	bne.n	7de <drv_uart_interrupt_handler+0x118>
+     710:	4620      	mov	r0, r4
+     712:	f7ff ffd1 	bl	6b8 <uart_int_rx_parity_error_callback>
+     716:	6822      	ldr	r2, [r4, #0]
+     718:	6913      	ldr	r3, [r2, #16]
+     71a:	f043 0380 	orr.w	r3, r3, #128	; 0x80
+     71e:	6113      	str	r3, [r2, #16]
+     720:	6823      	ldr	r3, [r4, #0]
+     722:	2200      	movs	r2, #0
+     724:	611a      	str	r2, [r3, #16]
+     726:	f015 0f20 	tst.w	r5, #32
+     72a:	f040 808a 	bne.w	842 <drv_uart_interrupt_handler+0x17c>
+     72e:	f015 0f10 	tst.w	r5, #16
+     732:	f040 8092 	bne.w	85a <drv_uart_interrupt_handler+0x194>
+     736:	f015 0f01 	tst.w	r5, #1
+     73a:	f040 809a 	bne.w	872 <drv_uart_interrupt_handler+0x1ac>
+     73e:	f015 0f02 	tst.w	r5, #2
+     742:	f040 80a2 	bne.w	88a <drv_uart_interrupt_handler+0x1c4>
+     746:	f015 0f04 	tst.w	r5, #4
+     74a:	f000 80c1 	beq.w	8d0 <drv_uart_interrupt_handler+0x20a>
+     74e:	7ce2      	ldrb	r2, [r4, #19]
+     750:	7e23      	ldrb	r3, [r4, #24]
+     752:	429a      	cmp	r2, r3
+     754:	f0c0 80ac 	bcc.w	8b0 <drv_uart_interrupt_handler+0x1ea>
+     758:	6822      	ldr	r2, [r4, #0]
+     75a:	68d3      	ldr	r3, [r2, #12]
+     75c:	f023 030c 	bic.w	r3, r3, #12
+     760:	60d3      	str	r3, [r2, #12]
+     762:	e0aa      	b.n	8ba <drv_uart_interrupt_handler+0x1f4>
+     764:	f7ff ffa6 	bl	6b4 <uart_int_tx_done_callback>
+     768:	6822      	ldr	r2, [r4, #0]
+     76a:	6913      	ldr	r3, [r2, #16]
+     76c:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+     770:	6113      	str	r3, [r2, #16]
+     772:	6823      	ldr	r3, [r4, #0]
+     774:	2200      	movs	r2, #0
+     776:	611a      	str	r2, [r3, #16]
+     778:	e7af      	b.n	6da <drv_uart_interrupt_handler+0x14>
+     77a:	6822      	ldr	r2, [r4, #0]
+     77c:	68d3      	ldr	r3, [r2, #12]
+     77e:	f023 03cc 	bic.w	r3, r3, #204	; 0xcc
+     782:	60d3      	str	r3, [r2, #12]
+     784:	2300      	movs	r3, #0
+     786:	7423      	strb	r3, [r4, #16]
+     788:	74a3      	strb	r3, [r4, #18]
+     78a:	74e3      	strb	r3, [r4, #19]
+     78c:	6822      	ldr	r2, [r4, #0]
+     78e:	6853      	ldr	r3, [r2, #4]
+     790:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+     794:	6053      	str	r3, [r2, #4]
+     796:	6822      	ldr	r2, [r4, #0]
+     798:	6853      	ldr	r3, [r2, #4]
+     79a:	f423 7380 	bic.w	r3, r3, #256	; 0x100
+     79e:	6053      	str	r3, [r2, #4]
+     7a0:	6822      	ldr	r2, [r4, #0]
+     7a2:	6853      	ldr	r3, [r2, #4]
+     7a4:	f443 7300 	orr.w	r3, r3, #512	; 0x200
+     7a8:	6053      	str	r3, [r2, #4]
+     7aa:	6822      	ldr	r2, [r4, #0]
+     7ac:	6853      	ldr	r3, [r2, #4]
+     7ae:	f423 7300 	bic.w	r3, r3, #512	; 0x200
+     7b2:	6053      	str	r3, [r2, #4]
+     7b4:	6822      	ldr	r2, [r4, #0]
+     7b6:	6853      	ldr	r3, [r2, #4]
+     7b8:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
+     7bc:	6053      	str	r3, [r2, #4]
+     7be:	6822      	ldr	r2, [r4, #0]
+     7c0:	6853      	ldr	r3, [r2, #4]
+     7c2:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
+     7c6:	6053      	str	r3, [r2, #4]
+     7c8:	6822      	ldr	r2, [r4, #0]
+     7ca:	6853      	ldr	r3, [r2, #4]
+     7cc:	f443 6300 	orr.w	r3, r3, #2048	; 0x800
+     7d0:	6053      	str	r3, [r2, #4]
+     7d2:	6822      	ldr	r2, [r4, #0]
+     7d4:	6853      	ldr	r3, [r2, #4]
+     7d6:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
+     7da:	6053      	str	r3, [r2, #4]
+     7dc:	e785      	b.n	6ea <drv_uart_interrupt_handler+0x24>
+     7de:	6822      	ldr	r2, [r4, #0]
+     7e0:	68d3      	ldr	r3, [r2, #12]
+     7e2:	f023 03cc 	bic.w	r3, r3, #204	; 0xcc
+     7e6:	60d3      	str	r3, [r2, #12]
+     7e8:	2300      	movs	r3, #0
+     7ea:	7423      	strb	r3, [r4, #16]
+     7ec:	74a3      	strb	r3, [r4, #18]
+     7ee:	74e3      	strb	r3, [r4, #19]
+     7f0:	6822      	ldr	r2, [r4, #0]
+     7f2:	6853      	ldr	r3, [r2, #4]
+     7f4:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+     7f8:	6053      	str	r3, [r2, #4]
+     7fa:	6822      	ldr	r2, [r4, #0]
+     7fc:	6853      	ldr	r3, [r2, #4]
+     7fe:	f423 7380 	bic.w	r3, r3, #256	; 0x100
+     802:	6053      	str	r3, [r2, #4]
+     804:	6822      	ldr	r2, [r4, #0]
+     806:	6853      	ldr	r3, [r2, #4]
+     808:	f443 7300 	orr.w	r3, r3, #512	; 0x200
+     80c:	6053      	str	r3, [r2, #4]
+     80e:	6822      	ldr	r2, [r4, #0]
+     810:	6853      	ldr	r3, [r2, #4]
+     812:	f423 7300 	bic.w	r3, r3, #512	; 0x200
+     816:	6053      	str	r3, [r2, #4]
+     818:	6822      	ldr	r2, [r4, #0]
+     81a:	6853      	ldr	r3, [r2, #4]
+     81c:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
+     820:	6053      	str	r3, [r2, #4]
+     822:	6822      	ldr	r2, [r4, #0]
+     824:	6853      	ldr	r3, [r2, #4]
+     826:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
+     82a:	6053      	str	r3, [r2, #4]
+     82c:	6822      	ldr	r2, [r4, #0]
+     82e:	6853      	ldr	r3, [r2, #4]
+     830:	f443 6300 	orr.w	r3, r3, #2048	; 0x800
+     834:	6053      	str	r3, [r2, #4]
+     836:	6822      	ldr	r2, [r4, #0]
+     838:	6853      	ldr	r3, [r2, #4]
+     83a:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
+     83e:	6053      	str	r3, [r2, #4]
+     840:	e766      	b.n	710 <drv_uart_interrupt_handler+0x4a>
+     842:	4620      	mov	r0, r4
+     844:	f7ff ff39 	bl	6ba <uart_int_rx_noise_detect_callback>
+     848:	6822      	ldr	r2, [r4, #0]
+     84a:	6913      	ldr	r3, [r2, #16]
+     84c:	f043 0320 	orr.w	r3, r3, #32
+     850:	6113      	str	r3, [r2, #16]
+     852:	6823      	ldr	r3, [r4, #0]
+     854:	2200      	movs	r2, #0
+     856:	611a      	str	r2, [r3, #16]
+     858:	e769      	b.n	72e <drv_uart_interrupt_handler+0x68>
+     85a:	4620      	mov	r0, r4
+     85c:	f7ff ff2e 	bl	6bc <uart_int_rx_stop_detect_callback>
+     860:	6822      	ldr	r2, [r4, #0]
+     862:	6913      	ldr	r3, [r2, #16]
+     864:	f043 0310 	orr.w	r3, r3, #16
+     868:	6113      	str	r3, [r2, #16]
+     86a:	6823      	ldr	r3, [r4, #0]
+     86c:	2200      	movs	r2, #0
+     86e:	611a      	str	r2, [r3, #16]
+     870:	e761      	b.n	736 <drv_uart_interrupt_handler+0x70>
+     872:	4620      	mov	r0, r4
+     874:	f7ff ff24 	bl	6c0 <uart_int_tx_fifo_thres_callback>
+     878:	6822      	ldr	r2, [r4, #0]
+     87a:	6913      	ldr	r3, [r2, #16]
+     87c:	f043 0301 	orr.w	r3, r3, #1
+     880:	6113      	str	r3, [r2, #16]
+     882:	6823      	ldr	r3, [r4, #0]
+     884:	2200      	movs	r2, #0
+     886:	611a      	str	r2, [r3, #16]
+     888:	e759      	b.n	73e <drv_uart_interrupt_handler+0x78>
+     88a:	4620      	mov	r0, r4
+     88c:	f7ff ff17 	bl	6be <uart_int_tx_fifo_empty_callback>
+     890:	6822      	ldr	r2, [r4, #0]
+     892:	6913      	ldr	r3, [r2, #16]
+     894:	f043 0302 	orr.w	r3, r3, #2
+     898:	6113      	str	r3, [r2, #16]
+     89a:	6823      	ldr	r3, [r4, #0]
+     89c:	2200      	movs	r2, #0
+     89e:	611a      	str	r2, [r3, #16]
+     8a0:	e751      	b.n	746 <drv_uart_interrupt_handler+0x80>
+     8a2:	69d9      	ldr	r1, [r3, #28]
+     8a4:	6962      	ldr	r2, [r4, #20]
+     8a6:	7ce3      	ldrb	r3, [r4, #19]
+     8a8:	1c58      	adds	r0, r3, #1
+     8aa:	74e0      	strb	r0, [r4, #19]
+     8ac:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+     8b0:	6823      	ldr	r3, [r4, #0]
+     8b2:	695a      	ldr	r2, [r3, #20]
+     8b4:	f012 0f1f 	tst.w	r2, #31
+     8b8:	d1f3      	bne.n	8a2 <drv_uart_interrupt_handler+0x1dc>
+     8ba:	4620      	mov	r0, r4
+     8bc:	f7ff ff02 	bl	6c4 <uart_int_rx_fifo_thres_callback>
+     8c0:	6822      	ldr	r2, [r4, #0]
+     8c2:	6913      	ldr	r3, [r2, #16]
+     8c4:	f043 0304 	orr.w	r3, r3, #4
+     8c8:	6113      	str	r3, [r2, #16]
+     8ca:	6823      	ldr	r3, [r4, #0]
+     8cc:	2200      	movs	r2, #0
+     8ce:	611a      	str	r2, [r3, #16]
+     8d0:	f015 0f08 	tst.w	r5, #8
+     8d4:	d020      	beq.n	918 <drv_uart_interrupt_handler+0x252>
+     8d6:	7ce2      	ldrb	r2, [r4, #19]
+     8d8:	7e23      	ldrb	r3, [r4, #24]
+     8da:	429a      	cmp	r2, r3
+     8dc:	d30c      	bcc.n	8f8 <drv_uart_interrupt_handler+0x232>
+     8de:	6822      	ldr	r2, [r4, #0]
+     8e0:	68d3      	ldr	r3, [r2, #12]
+     8e2:	f023 030c 	bic.w	r3, r3, #12
+     8e6:	60d3      	str	r3, [r2, #12]
+     8e8:	e00b      	b.n	902 <drv_uart_interrupt_handler+0x23c>
+     8ea:	69d9      	ldr	r1, [r3, #28]
+     8ec:	6962      	ldr	r2, [r4, #20]
+     8ee:	7ce3      	ldrb	r3, [r4, #19]
+     8f0:	1c58      	adds	r0, r3, #1
+     8f2:	74e0      	strb	r0, [r4, #19]
+     8f4:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+     8f8:	6823      	ldr	r3, [r4, #0]
+     8fa:	695a      	ldr	r2, [r3, #20]
+     8fc:	f012 0f1f 	tst.w	r2, #31
+     900:	d1f3      	bne.n	8ea <drv_uart_interrupt_handler+0x224>
+     902:	4620      	mov	r0, r4
+     904:	f7ff fedd 	bl	6c2 <uart_int_rx_fifo_noempty_callback>
+     908:	6822      	ldr	r2, [r4, #0]
+     90a:	6913      	ldr	r3, [r2, #16]
+     90c:	f043 0308 	orr.w	r3, r3, #8
+     910:	6113      	str	r3, [r2, #16]
+     912:	6823      	ldr	r3, [r4, #0]
+     914:	2200      	movs	r2, #0
+     916:	611a      	str	r2, [r3, #16]
+     918:	bd38      	pop	{r3, r4, r5, pc}
 	...
 
-00000b00 <eth_mac_tx_data_by_hw>:
- b00:	b510      	push	{r4, lr}
- b02:	4604      	mov	r4, r0
- b04:	f7ff ffbe 	bl	a84 <eth_mac_tx_normal_frame_data_prepare>
- b08:	f7ff ffa6 	bl	a58 <eth_mac_init>
- b0c:	4620      	mov	r0, r4
- b0e:	f7ff fef7 	bl	900 <eth_mac_descriptor_hw_handle_prepare>
- b12:	4909      	ldr	r1, [pc, #36]	; (b38 <eth_mac_tx_data_by_hw+0x38>)
- b14:	4809      	ldr	r0, [pc, #36]	; (b3c <eth_mac_tx_data_by_hw+0x3c>)
- b16:	f7ff fca7 	bl	468 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
- b1a:	4b08      	ldr	r3, [pc, #32]	; (b3c <eth_mac_tx_data_by_hw+0x3c>)
- b1c:	681b      	ldr	r3, [r3, #0]
- b1e:	f8d3 2118 	ldr.w	r2, [r3, #280]	; 0x118
- b22:	f012 0f01 	tst.w	r2, #1
- b26:	d0f8      	beq.n	b1a <eth_mac_tx_data_by_hw+0x1a>
- b28:	2207      	movs	r2, #7
- b2a:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- b2e:	2200      	movs	r2, #0
- b30:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- b34:	bd10      	pop	{r4, pc}
- b36:	bf00      	nop
- b38:	00020084 	andeq	r0, r2, r4, lsl #1
- b3c:	000200d8 	ldrdeq	r0, [r2], -r8
+0000091c <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare>:
+     91c:	b510      	push	{r4, lr}
+     91e:	b082      	sub	sp, #8
+     920:	4b1c      	ldr	r3, [pc, #112]	; (994 <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x78>)
+     922:	e893 0003 	ldmia.w	r3, {r0, r1}
+     926:	9000      	str	r0, [sp, #0]
+     928:	f8ad 1004 	strh.w	r1, [sp, #4]
+     92c:	4b1a      	ldr	r3, [pc, #104]	; (998 <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x7c>)
+     92e:	2201      	movs	r2, #1
+     930:	f883 2024 	strb.w	r2, [r3, #36]	; 0x24
+     934:	4c19      	ldr	r4, [pc, #100]	; (99c <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x80>)
+     936:	4620      	mov	r0, r4
+     938:	f7ff fd2f 	bl	39a <drv_eth_mac_tx_descriptor_default_config>
+     93c:	2340      	movs	r3, #64	; 0x40
+     93e:	80e3      	strh	r3, [r4, #6]
+     940:	2302      	movs	r3, #2
+     942:	72a3      	strb	r3, [r4, #10]
+     944:	2203      	movs	r2, #3
+     946:	7222      	strb	r2, [r4, #8]
+     948:	7263      	strb	r3, [r4, #9]
+     94a:	2400      	movs	r4, #0
+     94c:	e00b      	b.n	966 <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x4a>
+     94e:	f104 0360 	add.w	r3, r4, #96	; 0x60
+     952:	02db      	lsls	r3, r3, #11
+     954:	4811      	ldr	r0, [pc, #68]	; (99c <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x80>)
+     956:	6003      	str	r3, [r0, #0]
+     958:	4911      	ldr	r1, [pc, #68]	; (9a0 <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x84>)
+     95a:	eb01 1104 	add.w	r1, r1, r4, lsl #4
+     95e:	f7ff fd25 	bl	3ac <drv_eth_mac_tx_descriptor_config>
+     962:	3401      	adds	r4, #1
+     964:	b2e4      	uxtb	r4, r4
+     966:	4b0c      	ldr	r3, [pc, #48]	; (998 <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x7c>)
+     968:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
+     96c:	42a3      	cmp	r3, r4
+     96e:	d8ee      	bhi.n	94e <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x32>
+     970:	4c09      	ldr	r4, [pc, #36]	; (998 <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare+0x7c>)
+     972:	4669      	mov	r1, sp
+     974:	4620      	mov	r0, r4
+     976:	f7ff fcf0 	bl	35a <drv_eth_mac_address_set>
+     97a:	6822      	ldr	r2, [r4, #0]
+     97c:	6813      	ldr	r3, [r2, #0]
+     97e:	f043 0302 	orr.w	r3, r3, #2
+     982:	6013      	str	r3, [r2, #0]
+     984:	6822      	ldr	r2, [r4, #0]
+     986:	6813      	ldr	r3, [r2, #0]
+     988:	f023 0302 	bic.w	r3, r3, #2
+     98c:	6013      	str	r3, [r2, #0]
+     98e:	b002      	add	sp, #8
+     990:	bd10      	pop	{r4, pc}
+     992:	bf00      	nop
+     994:	00000f04 	andeq	r0, r0, r4, lsl #30
+     998:	000200d8 	ldrdeq	r0, [r2], -r8
+     99c:	00020104 	andeq	r0, r2, r4, lsl #2
+     9a0:	00020084 	andeq	r0, r2, r4, lsl #1
 
-00000b40 <eth_mac_tx_ip_igmp_frame_by_hw_replacement>:
- b40:	b510      	push	{r4, lr}
- b42:	2232      	movs	r2, #50	; 0x32
- b44:	490a      	ldr	r1, [pc, #40]	; (b70 <eth_mac_tx_ip_igmp_frame_by_hw_replacement+0x30>)
- b46:	f44f 3040 	mov.w	r0, #196608	; 0x30000
- b4a:	f7ff ffb7 	bl	abc <eth_mac_tx_frame_data_prepare>
- b4e:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
- b52:	2301      	movs	r3, #1
- b54:	6023      	str	r3, [r4, #0]
- b56:	f7ff ff7f 	bl	a58 <eth_mac_init>
- b5a:	2302      	movs	r3, #2
- b5c:	6023      	str	r3, [r4, #0]
- b5e:	f7ff fef7 	bl	950 <eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare>
- b62:	2303      	movs	r3, #3
- b64:	6023      	str	r3, [r4, #0]
- b66:	4903      	ldr	r1, [pc, #12]	; (b74 <eth_mac_tx_ip_igmp_frame_by_hw_replacement+0x34>)
- b68:	4803      	ldr	r0, [pc, #12]	; (b78 <eth_mac_tx_ip_igmp_frame_by_hw_replacement+0x38>)
- b6a:	f7ff fc7d 	bl	468 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
- b6e:	bd10      	pop	{r4, pc}
- b70:	00000d90 	muleq	r0, r0, sp
- b74:	00020084 	andeq	r0, r2, r4, lsl #1
- b78:	000200d8 	ldrdeq	r0, [r2], -r8
+000009a4 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare>:
+     9a4:	b530      	push	{r4, r5, lr}
+     9a6:	b083      	sub	sp, #12
+     9a8:	4b1b      	ldr	r3, [pc, #108]	; (a18 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x74>)
+     9aa:	e893 0003 	ldmia.w	r3, {r0, r1}
+     9ae:	9000      	str	r0, [sp, #0]
+     9b0:	f8ad 1004 	strh.w	r1, [sp, #4]
+     9b4:	4b19      	ldr	r3, [pc, #100]	; (a1c <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x78>)
+     9b6:	2201      	movs	r2, #1
+     9b8:	f883 2024 	strb.w	r2, [r3, #36]	; 0x24
+     9bc:	4d18      	ldr	r5, [pc, #96]	; (a20 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x7c>)
+     9be:	4628      	mov	r0, r5
+     9c0:	f7ff fceb 	bl	39a <drv_eth_mac_tx_descriptor_default_config>
+     9c4:	2332      	movs	r3, #50	; 0x32
+     9c6:	80eb      	strh	r3, [r5, #6]
+     9c8:	2302      	movs	r3, #2
+     9ca:	72ab      	strb	r3, [r5, #10]
+     9cc:	2400      	movs	r4, #0
+     9ce:	722c      	strb	r4, [r5, #8]
+     9d0:	726b      	strb	r3, [r5, #9]
+     9d2:	e00b      	b.n	9ec <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x48>
+     9d4:	f104 0360 	add.w	r3, r4, #96	; 0x60
+     9d8:	02db      	lsls	r3, r3, #11
+     9da:	4811      	ldr	r0, [pc, #68]	; (a20 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x7c>)
+     9dc:	6003      	str	r3, [r0, #0]
+     9de:	4911      	ldr	r1, [pc, #68]	; (a24 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x80>)
+     9e0:	eb01 1104 	add.w	r1, r1, r4, lsl #4
+     9e4:	f7ff fce2 	bl	3ac <drv_eth_mac_tx_descriptor_config>
+     9e8:	3401      	adds	r4, #1
+     9ea:	b2e4      	uxtb	r4, r4
+     9ec:	4b0b      	ldr	r3, [pc, #44]	; (a1c <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x78>)
+     9ee:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
+     9f2:	42a3      	cmp	r3, r4
+     9f4:	d8ee      	bhi.n	9d4 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x30>
+     9f6:	4c09      	ldr	r4, [pc, #36]	; (a1c <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare+0x78>)
+     9f8:	4669      	mov	r1, sp
+     9fa:	4620      	mov	r0, r4
+     9fc:	f7ff fcad 	bl	35a <drv_eth_mac_address_set>
+     a00:	6822      	ldr	r2, [r4, #0]
+     a02:	6813      	ldr	r3, [r2, #0]
+     a04:	f043 0302 	orr.w	r3, r3, #2
+     a08:	6013      	str	r3, [r2, #0]
+     a0a:	6822      	ldr	r2, [r4, #0]
+     a0c:	6813      	ldr	r3, [r2, #0]
+     a0e:	f023 0302 	bic.w	r3, r3, #2
+     a12:	6013      	str	r3, [r2, #0]
+     a14:	b003      	add	sp, #12
+     a16:	bd30      	pop	{r4, r5, pc}
+     a18:	00000f04 	andeq	r0, r0, r4, lsl #30
+     a1c:	000200d8 	ldrdeq	r0, [r2], -r8
+     a20:	00020104 	andeq	r0, r2, r4, lsl #2
+     a24:	00020084 	andeq	r0, r2, r4, lsl #1
 
-00000b7c <eth_mac_tx_ip_igmp_frame_by_hw_insertion>:
- b7c:	b510      	push	{r4, lr}
- b7e:	222a      	movs	r2, #42	; 0x2a
- b80:	490a      	ldr	r1, [pc, #40]	; (bac <eth_mac_tx_ip_igmp_frame_by_hw_insertion+0x30>)
- b82:	f44f 3040 	mov.w	r0, #196608	; 0x30000
- b86:	f7ff ff99 	bl	abc <eth_mac_tx_frame_data_prepare>
- b8a:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
- b8e:	2301      	movs	r3, #1
- b90:	6023      	str	r3, [r4, #0]
- b92:	f7ff ff61 	bl	a58 <eth_mac_init>
- b96:	2302      	movs	r3, #2
- b98:	6023      	str	r3, [r4, #0]
- b9a:	f7ff ff1b 	bl	9d4 <eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare>
- b9e:	2303      	movs	r3, #3
- ba0:	6023      	str	r3, [r4, #0]
- ba2:	4903      	ldr	r1, [pc, #12]	; (bb0 <eth_mac_tx_ip_igmp_frame_by_hw_insertion+0x34>)
- ba4:	4803      	ldr	r0, [pc, #12]	; (bb4 <eth_mac_tx_ip_igmp_frame_by_hw_insertion+0x38>)
- ba6:	f7ff fc5f 	bl	468 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
- baa:	bd10      	pop	{r4, pc}
- bac:	00000d64 	andeq	r0, r0, r4, ror #26
- bb0:	00020084 	andeq	r0, r2, r4, lsl #1
- bb4:	000200d8 	ldrdeq	r0, [r2], -r8
+00000a28 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare>:
+     a28:	b510      	push	{r4, lr}
+     a2a:	b082      	sub	sp, #8
+     a2c:	4b1b      	ldr	r3, [pc, #108]	; (a9c <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x74>)
+     a2e:	e893 0003 	ldmia.w	r3, {r0, r1}
+     a32:	9000      	str	r0, [sp, #0]
+     a34:	f8ad 1004 	strh.w	r1, [sp, #4]
+     a38:	4b19      	ldr	r3, [pc, #100]	; (aa0 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x78>)
+     a3a:	2201      	movs	r2, #1
+     a3c:	f883 2024 	strb.w	r2, [r3, #36]	; 0x24
+     a40:	4c18      	ldr	r4, [pc, #96]	; (aa4 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x7c>)
+     a42:	4620      	mov	r0, r4
+     a44:	f7ff fca9 	bl	39a <drv_eth_mac_tx_descriptor_default_config>
+     a48:	2340      	movs	r3, #64	; 0x40
+     a4a:	80e3      	strh	r3, [r4, #6]
+     a4c:	2302      	movs	r3, #2
+     a4e:	72a3      	strb	r3, [r4, #10]
+     a50:	7223      	strb	r3, [r4, #8]
+     a52:	7263      	strb	r3, [r4, #9]
+     a54:	2400      	movs	r4, #0
+     a56:	e00b      	b.n	a70 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x48>
+     a58:	f104 0360 	add.w	r3, r4, #96	; 0x60
+     a5c:	02db      	lsls	r3, r3, #11
+     a5e:	4811      	ldr	r0, [pc, #68]	; (aa4 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x7c>)
+     a60:	6003      	str	r3, [r0, #0]
+     a62:	4911      	ldr	r1, [pc, #68]	; (aa8 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x80>)
+     a64:	eb01 1104 	add.w	r1, r1, r4, lsl #4
+     a68:	f7ff fca0 	bl	3ac <drv_eth_mac_tx_descriptor_config>
+     a6c:	3401      	adds	r4, #1
+     a6e:	b2e4      	uxtb	r4, r4
+     a70:	4b0b      	ldr	r3, [pc, #44]	; (aa0 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x78>)
+     a72:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
+     a76:	42a3      	cmp	r3, r4
+     a78:	d8ee      	bhi.n	a58 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x30>
+     a7a:	4c09      	ldr	r4, [pc, #36]	; (aa0 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare+0x78>)
+     a7c:	4669      	mov	r1, sp
+     a7e:	4620      	mov	r0, r4
+     a80:	f7ff fc6b 	bl	35a <drv_eth_mac_address_set>
+     a84:	6822      	ldr	r2, [r4, #0]
+     a86:	6813      	ldr	r3, [r2, #0]
+     a88:	f043 0302 	orr.w	r3, r3, #2
+     a8c:	6013      	str	r3, [r2, #0]
+     a8e:	6822      	ldr	r2, [r4, #0]
+     a90:	6813      	ldr	r3, [r2, #0]
+     a92:	f023 0302 	bic.w	r3, r3, #2
+     a96:	6013      	str	r3, [r2, #0]
+     a98:	b002      	add	sp, #8
+     a9a:	bd10      	pop	{r4, pc}
+     a9c:	00000f04 	andeq	r0, r0, r4, lsl #30
+     aa0:	000200d8 	ldrdeq	r0, [r2], -r8
+     aa4:	00020104 	andeq	r0, r2, r4, lsl #2
+     aa8:	00020084 	andeq	r0, r2, r4, lsl #1
 
-00000bb8 <NMI_Handler>:
- bb8:	4770      	bx	lr
+00000aac <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare>:
+     aac:	b530      	push	{r4, r5, lr}
+     aae:	b083      	sub	sp, #12
+     ab0:	4b1b      	ldr	r3, [pc, #108]	; (b20 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x74>)
+     ab2:	e893 0003 	ldmia.w	r3, {r0, r1}
+     ab6:	9000      	str	r0, [sp, #0]
+     ab8:	f8ad 1004 	strh.w	r1, [sp, #4]
+     abc:	4b19      	ldr	r3, [pc, #100]	; (b24 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x78>)
+     abe:	2201      	movs	r2, #1
+     ac0:	f883 2024 	strb.w	r2, [r3, #36]	; 0x24
+     ac4:	4d18      	ldr	r5, [pc, #96]	; (b28 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x7c>)
+     ac6:	4628      	mov	r0, r5
+     ac8:	f7ff fc67 	bl	39a <drv_eth_mac_tx_descriptor_default_config>
+     acc:	236d      	movs	r3, #109	; 0x6d
+     ace:	80eb      	strh	r3, [r5, #6]
+     ad0:	2302      	movs	r3, #2
+     ad2:	72ab      	strb	r3, [r5, #10]
+     ad4:	2400      	movs	r4, #0
+     ad6:	722c      	strb	r4, [r5, #8]
+     ad8:	726b      	strb	r3, [r5, #9]
+     ada:	e00b      	b.n	af4 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x48>
+     adc:	f104 0360 	add.w	r3, r4, #96	; 0x60
+     ae0:	02db      	lsls	r3, r3, #11
+     ae2:	4811      	ldr	r0, [pc, #68]	; (b28 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x7c>)
+     ae4:	6003      	str	r3, [r0, #0]
+     ae6:	4911      	ldr	r1, [pc, #68]	; (b2c <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x80>)
+     ae8:	eb01 1104 	add.w	r1, r1, r4, lsl #4
+     aec:	f7ff fc5e 	bl	3ac <drv_eth_mac_tx_descriptor_config>
+     af0:	3401      	adds	r4, #1
+     af2:	b2e4      	uxtb	r4, r4
+     af4:	4b0b      	ldr	r3, [pc, #44]	; (b24 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x78>)
+     af6:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
+     afa:	42a3      	cmp	r3, r4
+     afc:	d8ee      	bhi.n	adc <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x30>
+     afe:	4c09      	ldr	r4, [pc, #36]	; (b24 <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare+0x78>)
+     b00:	4669      	mov	r1, sp
+     b02:	4620      	mov	r0, r4
+     b04:	f7ff fc29 	bl	35a <drv_eth_mac_address_set>
+     b08:	6822      	ldr	r2, [r4, #0]
+     b0a:	6813      	ldr	r3, [r2, #0]
+     b0c:	f043 0302 	orr.w	r3, r3, #2
+     b10:	6013      	str	r3, [r2, #0]
+     b12:	6822      	ldr	r2, [r4, #0]
+     b14:	6813      	ldr	r3, [r2, #0]
+     b16:	f023 0302 	bic.w	r3, r3, #2
+     b1a:	6013      	str	r3, [r2, #0]
+     b1c:	b003      	add	sp, #12
+     b1e:	bd30      	pop	{r4, r5, pc}
+     b20:	00000ef4 	strdeq	r0, [r0], -r4
+     b24:	000200d8 	ldrdeq	r0, [r2], -r8
+     b28:	00020104 	andeq	r0, r2, r4, lsl #2
+     b2c:	00020084 	andeq	r0, r2, r4, lsl #1
 
-00000bba <HardFault_Handler>:
- bba:	e7fe      	b.n	bba <HardFault_Handler>
+00000b30 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare>:
+     b30:	b570      	push	{r4, r5, r6, lr}
+     b32:	b082      	sub	sp, #8
+     b34:	4b1b      	ldr	r3, [pc, #108]	; (ba4 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x74>)
+     b36:	e893 0003 	ldmia.w	r3, {r0, r1}
+     b3a:	9000      	str	r0, [sp, #0]
+     b3c:	f8ad 1004 	strh.w	r1, [sp, #4]
+     b40:	2601      	movs	r6, #1
+     b42:	4b19      	ldr	r3, [pc, #100]	; (ba8 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x78>)
+     b44:	f883 6024 	strb.w	r6, [r3, #36]	; 0x24
+     b48:	4d18      	ldr	r5, [pc, #96]	; (bac <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x7c>)
+     b4a:	4628      	mov	r0, r5
+     b4c:	f7ff fc25 	bl	39a <drv_eth_mac_tx_descriptor_default_config>
+     b50:	2363      	movs	r3, #99	; 0x63
+     b52:	80eb      	strh	r3, [r5, #6]
+     b54:	72ae      	strb	r6, [r5, #10]
+     b56:	2400      	movs	r4, #0
+     b58:	722c      	strb	r4, [r5, #8]
+     b5a:	726e      	strb	r6, [r5, #9]
+     b5c:	e00b      	b.n	b76 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x46>
+     b5e:	f104 0360 	add.w	r3, r4, #96	; 0x60
+     b62:	02db      	lsls	r3, r3, #11
+     b64:	4811      	ldr	r0, [pc, #68]	; (bac <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x7c>)
+     b66:	6003      	str	r3, [r0, #0]
+     b68:	4911      	ldr	r1, [pc, #68]	; (bb0 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x80>)
+     b6a:	eb01 1104 	add.w	r1, r1, r4, lsl #4
+     b6e:	f7ff fc1d 	bl	3ac <drv_eth_mac_tx_descriptor_config>
+     b72:	3401      	adds	r4, #1
+     b74:	b2e4      	uxtb	r4, r4
+     b76:	4b0c      	ldr	r3, [pc, #48]	; (ba8 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x78>)
+     b78:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
+     b7c:	42a3      	cmp	r3, r4
+     b7e:	d8ee      	bhi.n	b5e <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x2e>
+     b80:	4c09      	ldr	r4, [pc, #36]	; (ba8 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare+0x78>)
+     b82:	4669      	mov	r1, sp
+     b84:	4620      	mov	r0, r4
+     b86:	f7ff fbe8 	bl	35a <drv_eth_mac_address_set>
+     b8a:	6822      	ldr	r2, [r4, #0]
+     b8c:	6813      	ldr	r3, [r2, #0]
+     b8e:	f043 0302 	orr.w	r3, r3, #2
+     b92:	6013      	str	r3, [r2, #0]
+     b94:	6822      	ldr	r2, [r4, #0]
+     b96:	6813      	ldr	r3, [r2, #0]
+     b98:	f023 0302 	bic.w	r3, r3, #2
+     b9c:	6013      	str	r3, [r2, #0]
+     b9e:	b002      	add	sp, #8
+     ba0:	bd70      	pop	{r4, r5, r6, pc}
+     ba2:	bf00      	nop
+     ba4:	00000ef4 	strdeq	r0, [r0], -r4
+     ba8:	000200d8 	ldrdeq	r0, [r2], -r8
+     bac:	00020104 	andeq	r0, r2, r4, lsl #2
+     bb0:	00020084 	andeq	r0, r2, r4, lsl #1
 
-00000bbc <MemManage_Handler>:
- bbc:	e7fe      	b.n	bbc <MemManage_Handler>
+00000bb4 <eth_mac_init>:
+     bb4:	b510      	push	{r4, lr}
+     bb6:	4c08      	ldr	r4, [pc, #32]	; (bd8 <eth_mac_init+0x24>)
+     bb8:	4b08      	ldr	r3, [pc, #32]	; (bdc <eth_mac_init+0x28>)
+     bba:	6023      	str	r3, [r4, #0]
+     bbc:	4620      	mov	r0, r4
+     bbe:	f7ff fafd 	bl	1bc <drv_eth_mac_dma_default_config>
+     bc2:	4620      	mov	r0, r4
+     bc4:	f7ff fb02 	bl	1cc <drv_eth_mac_pe_default_config>
+     bc8:	4620      	mov	r0, r4
+     bca:	f7ff fb50 	bl	26e <drv_eth_mac_init>
+     bce:	4620      	mov	r0, r4
+     bd0:	f7ff fc3a 	bl	448 <drv_eth_mac_tx_descriptor_clear>
+     bd4:	bd10      	pop	{r4, pc}
+     bd6:	bf00      	nop
+     bd8:	000200d8 	ldrdeq	r0, [r2], -r8
+     bdc:	40020030 	andmi	r0, r2, r0, lsr r0
 
-00000bbe <BusFault_Handler>:
- bbe:	e7fe      	b.n	bbe <BusFault_Handler>
-
-00000bc0 <UsageFault_Handler>:
- bc0:	e7fe      	b.n	bc0 <UsageFault_Handler>
-
-00000bc2 <SVC_Handler>:
- bc2:	4770      	bx	lr
-
-00000bc4 <DebugMon_Handler>:
- bc4:	4770      	bx	lr
-
-00000bc6 <PendSV_Handler>:
- bc6:	4770      	bx	lr
-
-00000bc8 <SysTick_Handler>:
- bc8:	4770      	bx	lr
+00000be0 <eth_mac_tx_frame_data_prepare>:
+     be0:	b500      	push	{lr}
+     be2:	f012 0e03 	ands.w	lr, r2, #3
+     be6:	d008      	beq.n	bfa <eth_mac_tx_frame_data_prepare+0x1a>
+     be8:	b2d3      	uxtb	r3, r2
+     bea:	eba3 0e0e 	sub.w	lr, r3, lr
+     bee:	fa5f fe8e 	uxtb.w	lr, lr
+     bf2:	f10e 0e04 	add.w	lr, lr, #4
+     bf6:	fa5f fe8e 	uxtb.w	lr, lr
+     bfa:	f04f 0c00 	mov.w	ip, #0
+     bfe:	e005      	b.n	c0c <eth_mac_tx_frame_data_prepare+0x2c>
+     c00:	f811 300c 	ldrb.w	r3, [r1, ip]
+     c04:	f80c 3000 	strb.w	r3, [ip, r0]
+     c08:	f10c 0c01 	add.w	ip, ip, #1
+     c0c:	4613      	mov	r3, r2
+     c0e:	4562      	cmp	r2, ip
+     c10:	d8f6      	bhi.n	c00 <eth_mac_tx_frame_data_prepare+0x20>
+     c12:	e002      	b.n	c1a <eth_mac_tx_frame_data_prepare+0x3a>
+     c14:	2200      	movs	r2, #0
+     c16:	541a      	strb	r2, [r3, r0]
+     c18:	3301      	adds	r3, #1
+     c1a:	459e      	cmp	lr, r3
+     c1c:	d8fa      	bhi.n	c14 <eth_mac_tx_frame_data_prepare+0x34>
+     c1e:	f85d fb04 	ldr.w	pc, [sp], #4
 	...
 
-00000bcc <Uart0_Handler>:
- bcc:	b508      	push	{r3, lr}
- bce:	4b04      	ldr	r3, [pc, #16]	; (be0 <Uart0_Handler+0x14>)
- bd0:	2201      	movs	r2, #1
- bd2:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
- bd6:	4803      	ldr	r0, [pc, #12]	; (be4 <Uart0_Handler+0x18>)
- bd8:	f7ff fd67 	bl	6aa <drv_uart_interrupt_handler>
- bdc:	bd08      	pop	{r3, pc}
- bde:	bf00      	nop
- be0:	e000e100 	and	lr, r0, r0, lsl #2
- be4:	00020110 	andeq	r0, r2, r0, lsl r1
+00000c24 <eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement>:
+     c24:	b510      	push	{r4, lr}
+     c26:	2240      	movs	r2, #64	; 0x40
+     c28:	490a      	ldr	r1, [pc, #40]	; (c54 <eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement+0x30>)
+     c2a:	f44f 3040 	mov.w	r0, #196608	; 0x30000
+     c2e:	f7ff ffd7 	bl	be0 <eth_mac_tx_frame_data_prepare>
+     c32:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
+     c36:	2301      	movs	r3, #1
+     c38:	6023      	str	r3, [r4, #0]
+     c3a:	f7ff ffbb 	bl	bb4 <eth_mac_init>
+     c3e:	2302      	movs	r3, #2
+     c40:	6023      	str	r3, [r4, #0]
+     c42:	f7ff fe6b 	bl	91c <eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare>
+     c46:	2303      	movs	r3, #3
+     c48:	6023      	str	r3, [r4, #0]
+     c4a:	4903      	ldr	r1, [pc, #12]	; (c58 <eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement+0x34>)
+     c4c:	4803      	ldr	r0, [pc, #12]	; (c5c <eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement+0x38>)
+     c4e:	f7ff fc19 	bl	484 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
+     c52:	bd10      	pop	{r4, pc}
+     c54:	00000f40 	andeq	r0, r0, r0, asr #30
+     c58:	00020084 	andeq	r0, r2, r4, lsl #1
+     c5c:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000be8 <EthSma_Handler>:
- be8:	b508      	push	{r3, lr}
- bea:	4b04      	ldr	r3, [pc, #16]	; (bfc <EthSma_Handler+0x14>)
- bec:	f44f 5280 	mov.w	r2, #4096	; 0x1000
- bf0:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
- bf4:	4802      	ldr	r0, [pc, #8]	; (c00 <EthSma_Handler+0x18>)
- bf6:	f7ff fa7a 	bl	ee <drv_eth_sma_interrupt_handler>
- bfa:	bd08      	pop	{r3, pc}
- bfc:	e000e100 	and	lr, r0, r0, lsl #2
- c00:	000200c4 	andeq	r0, r2, r4, asr #1
+00000c60 <eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion>:
+     c60:	b510      	push	{r4, lr}
+     c62:	2232      	movs	r2, #50	; 0x32
+     c64:	490a      	ldr	r1, [pc, #40]	; (c90 <eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion+0x30>)
+     c66:	f44f 3040 	mov.w	r0, #196608	; 0x30000
+     c6a:	f7ff ffb9 	bl	be0 <eth_mac_tx_frame_data_prepare>
+     c6e:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
+     c72:	2301      	movs	r3, #1
+     c74:	6023      	str	r3, [r4, #0]
+     c76:	f7ff ff9d 	bl	bb4 <eth_mac_init>
+     c7a:	2302      	movs	r3, #2
+     c7c:	6023      	str	r3, [r4, #0]
+     c7e:	f7ff fe91 	bl	9a4 <eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare>
+     c82:	2303      	movs	r3, #3
+     c84:	6023      	str	r3, [r4, #0]
+     c86:	4903      	ldr	r1, [pc, #12]	; (c94 <eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion+0x34>)
+     c88:	4803      	ldr	r0, [pc, #12]	; (c98 <eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion+0x38>)
+     c8a:	f7ff fbfb 	bl	484 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
+     c8e:	bd10      	pop	{r4, pc}
+     c90:	00000f0c 	andeq	r0, r0, ip, lsl #30
+     c94:	00020084 	andeq	r0, r2, r4, lsl #1
+     c98:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000c04 <EthTx_Handler>:
- c04:	b508      	push	{r3, lr}
- c06:	4b04      	ldr	r3, [pc, #16]	; (c18 <EthTx_Handler+0x14>)
- c08:	f44f 5200 	mov.w	r2, #8192	; 0x2000
- c0c:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
- c10:	4802      	ldr	r0, [pc, #8]	; (c1c <EthTx_Handler+0x18>)
- c12:	f7ff fc42 	bl	49a <drv_eth_mac_tx_interrupt_handler>
- c16:	bd08      	pop	{r3, pc}
- c18:	e000e100 	and	lr, r0, r0, lsl #2
- c1c:	000200d8 	ldrdeq	r0, [r2], -r8
+00000c9c <eth_mac_tx_ip_igmp_frame_by_sw_padding_crc>:
+     c9c:	b510      	push	{r4, lr}
+     c9e:	2240      	movs	r2, #64	; 0x40
+     ca0:	490a      	ldr	r1, [pc, #40]	; (ccc <eth_mac_tx_ip_igmp_frame_by_sw_padding_crc+0x30>)
+     ca2:	f44f 3040 	mov.w	r0, #196608	; 0x30000
+     ca6:	f7ff ff9b 	bl	be0 <eth_mac_tx_frame_data_prepare>
+     caa:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
+     cae:	2301      	movs	r3, #1
+     cb0:	6023      	str	r3, [r4, #0]
+     cb2:	f7ff ff7f 	bl	bb4 <eth_mac_init>
+     cb6:	2302      	movs	r3, #2
+     cb8:	6023      	str	r3, [r4, #0]
+     cba:	f7ff feb5 	bl	a28 <eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare>
+     cbe:	2303      	movs	r3, #3
+     cc0:	6023      	str	r3, [r4, #0]
+     cc2:	4903      	ldr	r1, [pc, #12]	; (cd0 <eth_mac_tx_ip_igmp_frame_by_sw_padding_crc+0x34>)
+     cc4:	4803      	ldr	r0, [pc, #12]	; (cd4 <eth_mac_tx_ip_igmp_frame_by_sw_padding_crc+0x38>)
+     cc6:	f7ff fbdd 	bl	484 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
+     cca:	bd10      	pop	{r4, pc}
+     ccc:	00000f40 	andeq	r0, r0, r0, asr #30
+     cd0:	00020084 	andeq	r0, r2, r4, lsl #1
+     cd4:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000c20 <EthRx_Handler>:
- c20:	b508      	push	{r3, lr}
- c22:	4b04      	ldr	r3, [pc, #16]	; (c34 <EthRx_Handler+0x14>)
- c24:	f44f 4280 	mov.w	r2, #16384	; 0x4000
- c28:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
- c2c:	4802      	ldr	r0, [pc, #8]	; (c38 <EthRx_Handler+0x18>)
- c2e:	f7ff fc52 	bl	4d6 <drv_eth_mac_rx_interrupt_handler>
- c32:	bd08      	pop	{r3, pc}
- c34:	e000e100 	and	lr, r0, r0, lsl #2
- c38:	000200d8 	ldrdeq	r0, [r2], -r8
+00000cd8 <eth_mac_tx_ip_udp_frame2_by_hw_replacement>:
+     cd8:	b510      	push	{r4, lr}
+     cda:	226d      	movs	r2, #109	; 0x6d
+     cdc:	490a      	ldr	r1, [pc, #40]	; (d08 <eth_mac_tx_ip_udp_frame2_by_hw_replacement+0x30>)
+     cde:	f44f 3040 	mov.w	r0, #196608	; 0x30000
+     ce2:	f7ff ff7d 	bl	be0 <eth_mac_tx_frame_data_prepare>
+     ce6:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
+     cea:	2301      	movs	r3, #1
+     cec:	6023      	str	r3, [r4, #0]
+     cee:	f7ff ff61 	bl	bb4 <eth_mac_init>
+     cf2:	2302      	movs	r3, #2
+     cf4:	6023      	str	r3, [r4, #0]
+     cf6:	f7ff fed9 	bl	aac <eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare>
+     cfa:	2303      	movs	r3, #3
+     cfc:	6023      	str	r3, [r4, #0]
+     cfe:	4903      	ldr	r1, [pc, #12]	; (d0c <eth_mac_tx_ip_udp_frame2_by_hw_replacement+0x34>)
+     d00:	4803      	ldr	r0, [pc, #12]	; (d10 <eth_mac_tx_ip_udp_frame2_by_hw_replacement+0x38>)
+     d02:	f7ff fbbf 	bl	484 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
+     d06:	bd10      	pop	{r4, pc}
+     d08:	00000fe4 	andeq	r0, r0, r4, ror #31
+     d0c:	00020084 	andeq	r0, r2, r4, lsl #1
+     d10:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000c3c <EthDma_Handler>:
- c3c:	b508      	push	{r3, lr}
- c3e:	4b04      	ldr	r3, [pc, #16]	; (c50 <EthDma_Handler+0x14>)
- c40:	2210      	movs	r2, #16
- c42:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
- c46:	4803      	ldr	r0, [pc, #12]	; (c54 <EthDma_Handler+0x18>)
- c48:	f7ff fc63 	bl	512 <drv_eth_mac_dma_interrupt_handler>
- c4c:	bd08      	pop	{r3, pc}
- c4e:	bf00      	nop
- c50:	e000e100 	and	lr, r0, r0, lsl #2
- c54:	000200d8 	ldrdeq	r0, [r2], -r8
+00000d14 <eth_mac_tx_ip_udp_frame2_by_hw_insertion>:
+     d14:	b510      	push	{r4, lr}
+     d16:	2263      	movs	r2, #99	; 0x63
+     d18:	490a      	ldr	r1, [pc, #40]	; (d44 <eth_mac_tx_ip_udp_frame2_by_hw_insertion+0x30>)
+     d1a:	f44f 3040 	mov.w	r0, #196608	; 0x30000
+     d1e:	f7ff ff5f 	bl	be0 <eth_mac_tx_frame_data_prepare>
+     d22:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
+     d26:	2301      	movs	r3, #1
+     d28:	6023      	str	r3, [r4, #0]
+     d2a:	f7ff ff43 	bl	bb4 <eth_mac_init>
+     d2e:	2302      	movs	r3, #2
+     d30:	6023      	str	r3, [r4, #0]
+     d32:	f7ff fefd 	bl	b30 <eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare>
+     d36:	2303      	movs	r3, #3
+     d38:	6023      	str	r3, [r4, #0]
+     d3a:	4903      	ldr	r1, [pc, #12]	; (d48 <eth_mac_tx_ip_udp_frame2_by_hw_insertion+0x34>)
+     d3c:	4803      	ldr	r0, [pc, #12]	; (d4c <eth_mac_tx_ip_udp_frame2_by_hw_insertion+0x38>)
+     d3e:	f7ff fba1 	bl	484 <drv_eth_mac_set_tx_descriptor_and_tx_enable>
+     d42:	bd10      	pop	{r4, pc}
+     d44:	00000f80 	andeq	r0, r0, r0, lsl #31
+     d48:	00020084 	andeq	r0, r2, r4, lsl #1
+     d4c:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000c58 <main>:
- c58:	b508      	push	{r3, lr}
- c5a:	f000 f849 	bl	cf0 <uart0_init>
- c5e:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
- c62:	23bd      	movs	r3, #189	; 0xbd
- c64:	60a3      	str	r3, [r4, #8]
- c66:	2050      	movs	r0, #80	; 0x50
- c68:	f7ff ff4a 	bl	b00 <eth_mac_tx_data_by_hw>
- c6c:	f7ff ff68 	bl	b40 <eth_mac_tx_ip_igmp_frame_by_hw_replacement>
- c70:	f7ff ff84 	bl	b7c <eth_mac_tx_ip_igmp_frame_by_hw_insertion>
- c74:	23ed      	movs	r3, #237	; 0xed
- c76:	60a3      	str	r3, [r4, #8]
- c78:	e7fe      	b.n	c78 <main+0x20>
+00000d50 <NMI_Handler>:
+     d50:	4770      	bx	lr
+
+00000d52 <HardFault_Handler>:
+     d52:	e7fe      	b.n	d52 <HardFault_Handler>
+
+00000d54 <MemManage_Handler>:
+     d54:	e7fe      	b.n	d54 <MemManage_Handler>
+
+00000d56 <BusFault_Handler>:
+     d56:	e7fe      	b.n	d56 <BusFault_Handler>
+
+00000d58 <UsageFault_Handler>:
+     d58:	e7fe      	b.n	d58 <UsageFault_Handler>
+
+00000d5a <SVC_Handler>:
+     d5a:	4770      	bx	lr
+
+00000d5c <DebugMon_Handler>:
+     d5c:	4770      	bx	lr
+
+00000d5e <PendSV_Handler>:
+     d5e:	4770      	bx	lr
+
+00000d60 <SysTick_Handler>:
+     d60:	4770      	bx	lr
 	...
 
-00000c7c <Reset_Handler>:
- c7c:	490a      	ldr	r1, [pc, #40]	; (ca8 <Reset_Handler+0x2c>)
- c7e:	4a0b      	ldr	r2, [pc, #44]	; (cac <Reset_Handler+0x30>)
- c80:	4b0b      	ldr	r3, [pc, #44]	; (cb0 <Reset_Handler+0x34>)
- c82:	1a9b      	subs	r3, r3, r2
- c84:	dd03      	ble.n	c8e <Reset_Handler+0x12>
- c86:	3b04      	subs	r3, #4
- c88:	58c8      	ldr	r0, [r1, r3]
- c8a:	50d0      	str	r0, [r2, r3]
- c8c:	dcfb      	bgt.n	c86 <Reset_Handler+0xa>
- c8e:	4909      	ldr	r1, [pc, #36]	; (cb4 <Reset_Handler+0x38>)
- c90:	4a09      	ldr	r2, [pc, #36]	; (cb8 <Reset_Handler+0x3c>)
- c92:	2000      	movs	r0, #0
- c94:	4291      	cmp	r1, r2
- c96:	bfbc      	itt	lt
- c98:	f841 0b04 	strlt.w	r0, [r1], #4
- c9c:	e7fa      	blt.n	c94 <Reset_Handler+0x18>
- c9e:	f7ff ffdb 	bl	c58 <main>
- ca2:	f000 f835 	bl	d10 <exit>
- ca6:	0dcc0000 	stcleq	0, cr0, [ip]
- caa:	00000000 	andeq	r0, r0, r0
- cae:	00680002 	rsbeq	r0, r8, r2
- cb2:	00680002 	rsbeq	r0, r8, r2
- cb6:	012c0002 			; <UNDEFINED> instruction: 0x012c0002
- cba:	e7fe0002 	ldrb	r0, [lr, r2]!
- cbe:	e7fe      	b.n	cbe <Reset_Handler+0x42>
- cc0:	e7fe      	b.n	cc0 <Reset_Handler+0x44>
- cc2:	e7fe      	b.n	cc2 <Reset_Handler+0x46>
- cc4:	e7fe      	b.n	cc4 <Reset_Handler+0x48>
- cc6:	e7fe      	b.n	cc6 <Reset_Handler+0x4a>
- cc8:	e7fe      	b.n	cc8 <Reset_Handler+0x4c>
- cca:	e7fe      	b.n	cca <Reset_Handler+0x4e>
- ccc:	e7fe      	b.n	ccc <Reset_Handler+0x50>
- cce:	e7fe      	b.n	cce <Reset_Handler+0x52>
+00000d64 <Uart0_Handler>:
+     d64:	b508      	push	{r3, lr}
+     d66:	4b04      	ldr	r3, [pc, #16]	; (d78 <Uart0_Handler+0x14>)
+     d68:	2201      	movs	r2, #1
+     d6a:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
+     d6e:	4803      	ldr	r0, [pc, #12]	; (d7c <Uart0_Handler+0x18>)
+     d70:	f7ff fca9 	bl	6c6 <drv_uart_interrupt_handler>
+     d74:	bd08      	pop	{r3, pc}
+     d76:	bf00      	nop
+     d78:	e000e100 	and	lr, r0, r0, lsl #2
+     d7c:	00020110 	andeq	r0, r2, r0, lsl r1
 
-00000cd0 <Uart1_Handler>:
- cd0:	e7fe      	b.n	cd0 <Uart1_Handler>
+00000d80 <EthSma_Handler>:
+     d80:	b508      	push	{r3, lr}
+     d82:	4b04      	ldr	r3, [pc, #16]	; (d94 <EthSma_Handler+0x14>)
+     d84:	f44f 5280 	mov.w	r2, #4096	; 0x1000
+     d88:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
+     d8c:	4802      	ldr	r0, [pc, #8]	; (d98 <EthSma_Handler+0x18>)
+     d8e:	f7ff f9b2 	bl	f6 <drv_eth_sma_interrupt_handler>
+     d92:	bd08      	pop	{r3, pc}
+     d94:	e000e100 	and	lr, r0, r0, lsl #2
+     d98:	000200c4 	andeq	r0, r2, r4, asr #1
 
-00000cd2 <Resv2_Handler>:
- cd2:	e7fe      	b.n	cd2 <Resv2_Handler>
+00000d9c <EthTx_Handler>:
+     d9c:	b508      	push	{r3, lr}
+     d9e:	4b04      	ldr	r3, [pc, #16]	; (db0 <EthTx_Handler+0x14>)
+     da0:	f44f 5200 	mov.w	r2, #8192	; 0x2000
+     da4:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
+     da8:	4802      	ldr	r0, [pc, #8]	; (db4 <EthTx_Handler+0x18>)
+     daa:	f7ff fb84 	bl	4b6 <drv_eth_mac_tx_interrupt_handler>
+     dae:	bd08      	pop	{r3, pc}
+     db0:	e000e100 	and	lr, r0, r0, lsl #2
+     db4:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000cd4 <Resv3_Handler>:
- cd4:	e7fe      	b.n	cd4 <Resv3_Handler>
- cd6:	e7fe      	b.n	cd6 <Resv3_Handler+0x2>
+00000db8 <EthRx_Handler>:
+     db8:	b508      	push	{r3, lr}
+     dba:	4b04      	ldr	r3, [pc, #16]	; (dcc <EthRx_Handler+0x14>)
+     dbc:	f44f 4280 	mov.w	r2, #16384	; 0x4000
+     dc0:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
+     dc4:	4802      	ldr	r0, [pc, #8]	; (dd0 <EthRx_Handler+0x18>)
+     dc6:	f7ff fb94 	bl	4f2 <drv_eth_mac_rx_interrupt_handler>
+     dca:	bd08      	pop	{r3, pc}
+     dcc:	e000e100 	and	lr, r0, r0, lsl #2
+     dd0:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000cd8 <Gpioa_Handler>:
- cd8:	e7fe      	b.n	cd8 <Gpioa_Handler>
+00000dd4 <EthDma_Handler>:
+     dd4:	b508      	push	{r3, lr}
+     dd6:	4b04      	ldr	r3, [pc, #16]	; (de8 <EthDma_Handler+0x14>)
+     dd8:	2210      	movs	r2, #16
+     dda:	f8c3 2180 	str.w	r2, [r3, #384]	; 0x180
+     dde:	4803      	ldr	r0, [pc, #12]	; (dec <EthDma_Handler+0x18>)
+     de0:	f7ff fba5 	bl	52e <drv_eth_mac_dma_interrupt_handler>
+     de4:	bd08      	pop	{r3, pc}
+     de6:	bf00      	nop
+     de8:	e000e100 	and	lr, r0, r0, lsl #2
+     dec:	000200d8 	ldrdeq	r0, [r2], -r8
 
-00000cda <Resv6_Handler>:
- cda:	e7fe      	b.n	cda <Resv6_Handler>
+00000df0 <main>:
+     df0:	b508      	push	{r3, lr}
+     df2:	f000 f84d 	bl	e90 <uart0_init>
+     df6:	f04f 4480 	mov.w	r4, #1073741824	; 0x40000000
+     dfa:	23bd      	movs	r3, #189	; 0xbd
+     dfc:	60a3      	str	r3, [r4, #8]
+     dfe:	f7ff ff11 	bl	c24 <eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement>
+     e02:	f7ff ff2d 	bl	c60 <eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion>
+     e06:	f7ff ff49 	bl	c9c <eth_mac_tx_ip_igmp_frame_by_sw_padding_crc>
+     e0a:	f7ff ff65 	bl	cd8 <eth_mac_tx_ip_udp_frame2_by_hw_replacement>
+     e0e:	f7ff ff81 	bl	d14 <eth_mac_tx_ip_udp_frame2_by_hw_insertion>
+     e12:	23ed      	movs	r3, #237	; 0xed
+     e14:	60a3      	str	r3, [r4, #8]
+     e16:	e7fe      	b.n	e16 <main+0x26>
 
-00000cdc <Resv7_Handler>:
- cdc:	e7fe      	b.n	cdc <Resv7_Handler>
+00000e18 <Reset_Handler>:
+     e18:	490a      	ldr	r1, [pc, #40]	; (e44 <Reset_Handler+0x2c>)
+     e1a:	4a0b      	ldr	r2, [pc, #44]	; (e48 <Reset_Handler+0x30>)
+     e1c:	4b0b      	ldr	r3, [pc, #44]	; (e4c <Reset_Handler+0x34>)
+     e1e:	1a9b      	subs	r3, r3, r2
+     e20:	dd03      	ble.n	e2a <Reset_Handler+0x12>
+     e22:	3b04      	subs	r3, #4
+     e24:	58c8      	ldr	r0, [r1, r3]
+     e26:	50d0      	str	r0, [r2, r3]
+     e28:	dcfb      	bgt.n	e22 <Reset_Handler+0xa>
+     e2a:	4909      	ldr	r1, [pc, #36]	; (e50 <Reset_Handler+0x38>)
+     e2c:	4a09      	ldr	r2, [pc, #36]	; (e54 <Reset_Handler+0x3c>)
+     e2e:	2000      	movs	r0, #0
+     e30:	4291      	cmp	r1, r2
+     e32:	bfbc      	itt	lt
+     e34:	f841 0b04 	strlt.w	r0, [r1], #4
+     e38:	e7fa      	blt.n	e30 <Reset_Handler+0x18>
+     e3a:	f7ff ffd9 	bl	df0 <main>
+     e3e:	f000 f837 	bl	eb0 <exit>
+     e42:	105c0000 	subsne	r0, ip, r0
+     e46:	00000000 	andeq	r0, r0, r0
+     e4a:	00680002 	rsbeq	r0, r8, r2
+     e4e:	00680002 	rsbeq	r0, r8, r2
+     e52:	012c0002 			; <UNDEFINED> instruction: 0x012c0002
+     e56:	e7fe0002 	ldrb	r0, [lr, r2]!
+     e5a:	e7fe      	b.n	e5a <Reset_Handler+0x42>
+     e5c:	e7fe      	b.n	e5c <Reset_Handler+0x44>
+     e5e:	e7fe      	b.n	e5e <Reset_Handler+0x46>
+     e60:	e7fe      	b.n	e60 <Reset_Handler+0x48>
+     e62:	e7fe      	b.n	e62 <Reset_Handler+0x4a>
+     e64:	e7fe      	b.n	e64 <Reset_Handler+0x4c>
+     e66:	e7fe      	b.n	e66 <Reset_Handler+0x4e>
+     e68:	e7fe      	b.n	e68 <Reset_Handler+0x50>
+     e6a:	e7fe      	b.n	e6a <Reset_Handler+0x52>
 
-00000cde <Bastim_Ch0_Handler>:
- cde:	e7fe      	b.n	cde <Bastim_Ch0_Handler>
+00000e6c <Uart1_Handler>:
+     e6c:	e7fe      	b.n	e6c <Uart1_Handler>
 
-00000ce0 <Bastim_Ch1_Handler>:
- ce0:	e7fe      	b.n	ce0 <Bastim_Ch1_Handler>
+00000e6e <Resv2_Handler>:
+     e6e:	e7fe      	b.n	e6e <Resv2_Handler>
 
-00000ce2 <Bastim_Ch2_Handler>:
- ce2:	e7fe      	b.n	ce2 <Bastim_Ch2_Handler>
+00000e70 <Resv3_Handler>:
+     e70:	e7fe      	b.n	e70 <Resv3_Handler>
+     e72:	e7fe      	b.n	e72 <Resv3_Handler+0x2>
 
-00000ce4 <Bastim_Ch3_Handler>:
- ce4:	e7fe      	b.n	ce4 <Bastim_Ch3_Handler>
- ce6:	e7fe      	b.n	ce6 <Bastim_Ch3_Handler+0x2>
- ce8:	e7fe      	b.n	ce8 <Bastim_Ch3_Handler+0x4>
- cea:	e7fe      	b.n	cea <Bastim_Ch3_Handler+0x6>
+00000e74 <Gpioa_Handler>:
+     e74:	e7fe      	b.n	e74 <Gpioa_Handler>
 
-00000cec <Resv15_Handler>:
- cec:	e7fe      	b.n	cec <Resv15_Handler>
- cee:	bf00      	nop
+00000e76 <Resv6_Handler>:
+     e76:	e7fe      	b.n	e76 <Resv6_Handler>
 
-00000cf0 <uart0_init>:
- cf0:	b510      	push	{r4, lr}
- cf2:	4c05      	ldr	r4, [pc, #20]	; (d08 <uart0_init+0x18>)
- cf4:	4b05      	ldr	r3, [pc, #20]	; (d0c <uart0_init+0x1c>)
- cf6:	6023      	str	r3, [r4, #0]
- cf8:	4620      	mov	r0, r4
- cfa:	f7ff fc52 	bl	5a2 <drv_uart_default_config>
- cfe:	4620      	mov	r0, r4
- d00:	f7ff fc82 	bl	608 <drv_uart_init>
- d04:	bd10      	pop	{r4, pc}
- d06:	bf00      	nop
- d08:	00020110 	andeq	r0, r2, r0, lsl r1
- d0c:	40001000 	andmi	r1, r0, r0
+00000e78 <Resv7_Handler>:
+     e78:	e7fe      	b.n	e78 <Resv7_Handler>
 
-00000d10 <exit>:
- d10:	b508      	push	{r3, lr}
- d12:	4b07      	ldr	r3, [pc, #28]	; (d30 <exit+0x20>)
- d14:	4604      	mov	r4, r0
- d16:	b113      	cbz	r3, d1e <exit+0xe>
- d18:	2100      	movs	r1, #0
- d1a:	f3af 8000 	nop.w
- d1e:	4b05      	ldr	r3, [pc, #20]	; (d34 <exit+0x24>)
- d20:	6818      	ldr	r0, [r3, #0]
- d22:	6a83      	ldr	r3, [r0, #40]	; 0x28
- d24:	b103      	cbz	r3, d28 <exit+0x18>
- d26:	4798      	blx	r3
- d28:	4620      	mov	r0, r4
- d2a:	f000 f805 	bl	d38 <_exit>
- d2e:	bf00      	nop
- d30:	00000000 	andeq	r0, r0, r0
- d34:	00000dc4 	andeq	r0, r0, r4, asr #27
+00000e7a <Bastim_Ch0_Handler>:
+     e7a:	e7fe      	b.n	e7a <Bastim_Ch0_Handler>
 
-00000d38 <_exit>:
- d38:	e7fe      	b.n	d38 <_exit>
- d3a:	bf00      	nop
+00000e7c <Bastim_Ch1_Handler>:
+     e7c:	e7fe      	b.n	e7c <Bastim_Ch1_Handler>
 
-00000d3c <_init>:
- d3c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- d3e:	bf00      	nop
- d40:	bcf8      	pop	{r3, r4, r5, r6, r7}
- d42:	bc08      	pop	{r3}
- d44:	469e      	mov	lr, r3
- d46:	4770      	bx	lr
+00000e7e <Bastim_Ch2_Handler>:
+     e7e:	e7fe      	b.n	e7e <Bastim_Ch2_Handler>
 
-00000d48 <_fini>:
- d48:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- d4a:	bf00      	nop
- d4c:	bcf8      	pop	{r3, r4, r5, r6, r7}
- d4e:	bc08      	pop	{r3}
- d50:	469e      	mov	lr, r3
- d52:	4770      	bx	lr
- d54:	d6290c00 	strtle	r0, [r9], -r0, lsl #24
- d58:	00009722 	andeq	r9, r0, r2, lsr #14
- d5c:	85ba5000 	ldrhi	r5, [sl, #0]!
- d60:	0000b384 	andeq	fp, r0, r4, lsl #7
+00000e80 <Bastim_Ch3_Handler>:
+     e80:	e7fe      	b.n	e80 <Bastim_Ch3_Handler>
+     e82:	e7fe      	b.n	e82 <Bastim_Ch3_Handler+0x2>
+     e84:	e7fe      	b.n	e84 <Bastim_Ch3_Handler+0x4>
+     e86:	e7fe      	b.n	e86 <Bastim_Ch3_Handler+0x6>
 
-00000d64 <eth_igmp_hw_insertion_frame>:
- d64:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
- d68:	0008ffff 	strdeq	pc, [r8], -pc	; <UNPREDICTABLE>
- d6c:	24000045 	strcs	r0, [r0], #-69	; 0xffffffbb
- d70:	00000100 	andeq	r0, r0, r0, lsl #2
- d74:	a8c00201 	stmiage	r0, {r0, r9}^
- d78:	00e00202 	rsceq	r0, r0, r2, lsl #4
- d7c:	00221600 	eoreq	r1, r2, r0, lsl #12
- d80:	0000fdea 	andeq	pc, r0, sl, ror #27
- d84:	00040100 	andeq	r0, r4, r0, lsl #2
- d88:	00ef0000 	rsceq	r0, pc, r0
- d8c:	00000000 	andeq	r0, r0, r0
+00000e88 <Resv15_Handler>:
+     e88:	e7fe      	b.n	e88 <Resv15_Handler>
 
-00000d90 <eth_igmp_hw_replacement_frame>:
- d90:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
- d94:	0201ffff 	andeq	pc, r1, #1020	; 0x3fc
- d98:	06050403 	streq	r0, [r5], -r3, lsl #8
- d9c:	00450008 	subeq	r0, r5, r8
- da0:	01002400 	tsteq	r0, r0, lsl #8
- da4:	02010000 	andeq	r0, r1, #0
- da8:	a8c00000 	stmiage	r0, {}^	; <UNPREDICTABLE>
- dac:	00e00202 	rsceq	r0, r0, r2, lsl #4
- db0:	00221600 	eoreq	r1, r2, r0, lsl #12
- db4:	0000fdea 	andeq	pc, r0, sl, ror #27
- db8:	00040100 	andeq	r0, r4, r0, lsl #2
- dbc:	00ef0000 	rsceq	r0, pc, r0
- dc0:	00000000 	andeq	r0, r0, r0
+00000e8a <AdvtimGen_Handler>:
+     e8a:	e7fe      	b.n	e8a <AdvtimGen_Handler>
 
-00000dc4 <_global_impure_ptr>:
- dc4:	00020000 	andeq	r0, r2, r0
+00000e8c <AdvtimCap_Handler>:
+     e8c:	e7fe      	b.n	e8c <AdvtimCap_Handler>
+     e8e:	bf00      	nop
 
-00000dc8 <__EH_FRAME_BEGIN__>:
- dc8:	00000000 	andeq	r0, r0, r0
+00000e90 <uart0_init>:
+     e90:	b510      	push	{r4, lr}
+     e92:	4c05      	ldr	r4, [pc, #20]	; (ea8 <uart0_init+0x18>)
+     e94:	4b05      	ldr	r3, [pc, #20]	; (eac <uart0_init+0x1c>)
+     e96:	6023      	str	r3, [r4, #0]
+     e98:	4620      	mov	r0, r4
+     e9a:	f7ff fb90 	bl	5be <drv_uart_default_config>
+     e9e:	4620      	mov	r0, r4
+     ea0:	f7ff fbc0 	bl	624 <drv_uart_init>
+     ea4:	bd10      	pop	{r4, pc}
+     ea6:	bf00      	nop
+     ea8:	00020110 	andeq	r0, r2, r0, lsl r1
+     eac:	40001000 	andmi	r1, r0, r0
+
+00000eb0 <exit>:
+     eb0:	b508      	push	{r3, lr}
+     eb2:	4b07      	ldr	r3, [pc, #28]	; (ed0 <exit+0x20>)
+     eb4:	4604      	mov	r4, r0
+     eb6:	b113      	cbz	r3, ebe <exit+0xe>
+     eb8:	2100      	movs	r1, #0
+     eba:	f3af 8000 	nop.w
+     ebe:	4b05      	ldr	r3, [pc, #20]	; (ed4 <exit+0x24>)
+     ec0:	6818      	ldr	r0, [r3, #0]
+     ec2:	6a83      	ldr	r3, [r0, #40]	; 0x28
+     ec4:	b103      	cbz	r3, ec8 <exit+0x18>
+     ec6:	4798      	blx	r3
+     ec8:	4620      	mov	r0, r4
+     eca:	f000 f805 	bl	ed8 <_exit>
+     ece:	bf00      	nop
+     ed0:	00000000 	andeq	r0, r0, r0
+     ed4:	00001054 	andeq	r1, r0, r4, asr r0
+
+00000ed8 <_exit>:
+     ed8:	e7fe      	b.n	ed8 <_exit>
+     eda:	bf00      	nop
+
+00000edc <_init>:
+     edc:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+     ede:	bf00      	nop
+     ee0:	bcf8      	pop	{r3, r4, r5, r6, r7}
+     ee2:	bc08      	pop	{r3}
+     ee4:	469e      	mov	lr, r3
+     ee6:	4770      	bx	lr
+
+00000ee8 <_fini>:
+     ee8:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+     eea:	bf00      	nop
+     eec:	bcf8      	pop	{r3, r4, r5, r6, r7}
+     eee:	bc08      	pop	{r3}
+     ef0:	469e      	mov	lr, r3
+     ef2:	4770      	bx	lr
+     ef4:	c94ecbe0 	stmdbgt	lr, {r5, r6, r7, r8, r9, fp, lr, pc}^
+     ef8:	0000cedf 	ldrdeq	ip, [r0], -pc	; <UNPREDICTABLE>
+     efc:	d6290c00 	strtle	r0, [r9], -r0, lsl #24
+     f00:	00009722 	andeq	r9, r0, r2, lsr #14
+     f04:	85ba5000 	ldrhi	r5, [sl, #0]!
+     f08:	0000b384 	andeq	fp, r0, r4, lsl #7
+
+00000f0c <eth_igmp_hw_padding_crc_insertion_frame>:
+     f0c:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+     f10:	0201ffff 	andeq	pc, r1, #1020	; 0x3fc
+     f14:	06050403 	streq	r0, [r5], -r3, lsl #8
+     f18:	00450008 	subeq	r0, r5, r8
+     f1c:	01002400 	tsteq	r0, r0, lsl #8
+     f20:	02010000 	andeq	r0, r1, #0
+     f24:	a8c00000 	stmiage	r0, {}^	; <UNPREDICTABLE>
+     f28:	00e00202 	rsceq	r0, r0, r2, lsl #4
+     f2c:	00221600 	eoreq	r1, r2, r0, lsl #12
+     f30:	0000fdea 	andeq	pc, r0, sl, ror #27
+     f34:	00040100 	andeq	r0, r4, r0, lsl #2
+     f38:	00ef0000 	rsceq	r0, pc, r0
+     f3c:	00000000 	andeq	r0, r0, r0
+
+00000f40 <eth_igmp_sw_padding_crc_frame>:
+     f40:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+     f44:	0201ffff 	andeq	pc, r1, #1020	; 0x3fc
+     f48:	06050403 	streq	r0, [r5], -r3, lsl #8
+     f4c:	00450008 	subeq	r0, r5, r8
+     f50:	01002400 	tsteq	r0, r0, lsl #8
+     f54:	02010000 	andeq	r0, r1, #0
+     f58:	a8c00000 	stmiage	r0, {}^	; <UNPREDICTABLE>
+     f5c:	00e00202 	rsceq	r0, r0, r2, lsl #4
+     f60:	00221600 	eoreq	r1, r2, r0, lsl #12
+     f64:	0000fdea 	andeq	pc, r0, sl, ror #27
+     f68:	00040100 	andeq	r0, r4, r0, lsl #2
+     f6c:	00ef0000 	rsceq	r0, pc, r0
+	...
+     f7c:	a3a2a1a0 			; <UNDEFINED> instruction: 0xa3a2a1a0
+
+00000f80 <eth_udp_hw_insertion_frame2>:
+     f80:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+     f84:	0008ffff 	strdeq	pc, [r8], -pc	; <UNPREDICTABLE>
+     f88:	5f000045 	svcpl	0x00000045
+     f8c:	00001322 	andeq	r1, r0, r2, lsr #6
+     f90:	45d31180 	ldrbmi	r1, [r3, #384]	; 0x180
+     f94:	ffff87c6 			; <UNDEFINED> instruction: 0xffff87c6
+     f98:	7909ffff 	stmdbvc	r9, {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp, ip, sp, lr, pc}
+     f9c:	4b007909 	blmi	1f3c8 <__FLASH_SIZE+0x173c8>
+     fa0:	626c5f31 	rsbvs	r5, ip, #49, 30	; 0xc4
+     fa4:	305f3274 	subscc	r3, pc, r4, ror r2	; <UNPREDICTABLE>
+     fa8:	38323123 	ldmdacc	r2!, {r0, r1, r5, r8, ip, sp}
+     fac:	30303023 	eorscc	r3, r0, r3, lsr #32
+     fb0:	30303030 	eorscc	r3, r0, r0, lsr r0
+     fb4:	30303030 	eorscc	r3, r0, r0, lsr r0
+     fb8:	23302330 	teqcs	r0, #48, 6	; 0xc0000000
+     fbc:	3a302330 	bcc	c09c84 <__StackTop+0xbe7c84>
+     fc0:	32383231 	eorscc	r3, r8, #268435459	; 0x10000003
+     fc4:	32323132 	eorscc	r3, r2, #-2147483636	; 0x8000000c
+     fc8:	6c3a3639 	ldcvs	6, cr3, [sl], #-228	; 0xffffff1c
+     fcc:	68737569 	ldmdavs	r3!, {r0, r3, r5, r6, r8, sl, ip, sp, lr}^
+     fd0:	3a697875 	bcc	1a5f1ac <__StackTop+0x1a3d1ac>
+     fd4:	5355494c 	cmppl	r5, #76, 18	; 0x130000
+     fd8:	49585548 	ldmdbmi	r8, {r3, r6, r8, sl, ip, lr}^
+     fdc:	3a43502d 	bcc	10d5098 <__StackTop+0x10b3098>
+     fe0:	00003a30 	andeq	r3, r0, r0, lsr sl
+
+00000fe4 <eth_udp_hw_replacement_frame2>:
+     fe4:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+     fe8:	cbe0ffff 	blgt	ff840fec <__StackTop+0xff81efec>
+     fec:	cedfc94e 	vfnmagt.f16	s25, s30, s28	; <UNPREDICTABLE>
+     ff0:	00450008 	subeq	r0, r5, r8
+     ff4:	13225f00 			; <UNDEFINED> instruction: 0x13225f00
+     ff8:	11800000 	orrne	r0, r0, r0
+     ffc:	45d30000 	ldrbmi	r0, [r3]
+    1000:	ffff87c6 			; <UNDEFINED> instruction: 0xffff87c6
+    1004:	7909ffff 	stmdbvc	r9, {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp, ip, sp, lr, pc}
+    1008:	4b007909 	blmi	1f434 <__FLASH_SIZE+0x17434>
+    100c:	5f310000 	svcpl	0x00310000
+    1010:	3274626c 	rsbscc	r6, r4, #108, 4	; 0xc0000006
+    1014:	3123305f 	qsubcc	r3, pc, r3	; <UNPREDICTABLE>
+    1018:	30233832 	eorcc	r3, r3, r2, lsr r8
+    101c:	30303030 	eorscc	r3, r0, r0, lsr r0
+    1020:	30303030 	eorscc	r3, r0, r0, lsr r0
+    1024:	23303030 	teqcs	r0, #48	; 0x30
+    1028:	23302330 	teqcs	r0, #48, 6	; 0xc0000000
+    102c:	32313a30 	eorscc	r3, r1, #48, 20	; 0x30000
+    1030:	31323238 	teqcc	r2, r8, lsr r2
+    1034:	36393232 			; <UNDEFINED> instruction: 0x36393232
+    1038:	75696c3a 	strbvc	r6, [r9, #-3130]!	; 0xfffff3c6
+    103c:	78756873 	ldmdavc	r5!, {r0, r1, r4, r5, r6, fp, sp, lr}^
+    1040:	494c3a69 	stmdbmi	ip, {r0, r3, r5, r6, r9, fp, ip, sp}^
+    1044:	55485355 	strbpl	r5, [r8, #-853]	; 0xfffffcab
+    1048:	502d4958 	eorpl	r4, sp, r8, asr r9
+    104c:	3a303a43 	bcc	c0f960 <__StackTop+0xbed960>
+    1050:	00000000 	andeq	r0, r0, r0
+
+00001054 <_global_impure_ptr>:
+    1054:	00020000 	andeq	r0, r2, r0
+
+00001058 <__EH_FRAME_BEGIN__>:
+    1058:	00000000 	andeq	r0, r0, r0
 
 Disassembly of section .data:
 
@@ -1523,10 +1751,10 @@ Disassembly of section .data:
 	...
 
 00020060 <__frame_dummy_init_array_entry>:
-   20060:	000000a5 	andeq	r0, r0, r5, lsr #1
+   20060:	000000ad 	andeq	r0, r0, sp, lsr #1
 
 00020064 <__do_global_dtors_aux_fini_array_entry>:
-   20064:	00000081 	andeq	r0, r0, r1, lsl #1
+   20064:	00000089 	andeq	r0, r0, r9, lsl #1
 
 Disassembly of section .bss:
 
@@ -1604,7 +1832,7 @@ Disassembly of section .debug_frame:
    c:	000d0c0e 	andeq	r0, sp, lr, lsl #24
   10:	00000014 	andeq	r0, r0, r4, lsl r0
   14:	00000000 	andeq	r0, r0, r0
-  18:	00000d10 	andeq	r0, r0, r0, lsl sp
+  18:	00000eb0 			; <UNDEFINED> instruction: 0x00000eb0
   1c:	00000028 	andeq	r0, r0, r8, lsr #32
   20:	83080e41 	movwhi	r0, #36417	; 0x8e41
   24:	00018e02 	andeq	r8, r1, r2, lsl #28
@@ -1614,5 +1842,5 @@ Disassembly of section .debug_frame:
   34:	000d0c0e 	andeq	r0, sp, lr, lsl #24
   38:	0000000c 	andeq	r0, r0, ip
   3c:	00000028 	andeq	r0, r0, r8, lsr #32
-  40:	00000d38 	andeq	r0, r0, r8, lsr sp
+  40:	00000ed8 	ldrdeq	r0, [r0], -r8
   44:	00000002 	andeq	r0, r0, r2

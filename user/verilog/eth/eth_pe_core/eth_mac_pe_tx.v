@@ -35,9 +35,10 @@ module eth_mac_pe_tx
 
 	// control
 	input						pe_tx_logic_clr,
-	input						pe_tx_enable,
-	input						pe_tx_enable_r,
-	output 						pe_tx_end,
+	input						pe_tx_clk_enable,
+	input						pe_tx_data_enable,
+	input						pe_tx_data_enable_r,
+	output 						pe_tx_data_end,
 
 	// config from regs
 	input		[47:0]			r_sa_macaddr,
@@ -244,8 +245,9 @@ reg								clk_gen;// 50% duty cycle clock
 wire							bit_value_sample_point;// indicate bit value sampling time point
 wire							half_byte_end;// half byte end
 wire							byte_end;// entire byte end
-reg				[1:0]			byte_partial_cnt;
-assign timing_base_enable = |current_state[6:1];
+reg								double_byte_gen;
+assign timing_base_enable = pe_tx_clk_enable;
+//assign timing_base_enable = |current_state[6:1];
 assign clkdiv_flag_start = (clkdiv_cnt == 2'h0) ? 1'b1 : 1'b0;
 assign clkdiv_flag_end = (clkdiv_cnt == 2'h1) ? 1'b1 : 1'b0;
 assign byte_partial_end = clkdiv_flag_end; // only sustaining 1 clock
@@ -314,38 +316,45 @@ always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
 	if(!pe_tx_rstn)
 	begin
-		byte_partial_cnt <= 2'h0;
+		double_byte_gen <= 1'b0;
 	end
 	else if(timing_base_enable)
 	begin
-		if(clkdiv_flag_end == 2'h1)
+		if((clkdiv_flag_end == 2'h1) && byte_end)
 		begin
-			if(byte_end == 1'b1)
-			begin
-				byte_partial_cnt <= 2'h0;
-			end
-			else	
-			begin
-				byte_partial_cnt <= byte_partial_cnt + 2'h1;
-			end
+  			double_byte_gen <= ~double_byte_gen;
 		end
 		else
 		begin
-			byte_partial_cnt <= byte_partial_cnt;
+  			double_byte_gen <= double_byte_gen;
 		end
 	end
 	else
 	begin
-		byte_partial_cnt <= byte_partial_cnt;
+		double_byte_gen <= 1'b0;
 	end
 end		
+
+wire							rgmii_1000m_first_half_byte;
+wire							rgmii_1000m_second_half_byte;
+wire							rgmii_100m_first_half_byte;
+wire							rgmii_100m_second_half_byte;
+wire							first_half_byte;
+wire							second_half_byte;
+
+assign rgmii_1000m_first_half_byte = byte_end; 
+assign rgmii_1000m_second_half_byte = half_byte_end; 
+assign rgmii_100m_first_half_byte = ~double_byte_gen && byte_end;
+assign rgmii_100m_second_half_byte = double_byte_gen && byte_end;
+assign first_half_byte = rgmii_100m_first_half_byte;
+assign second_half_byte = rgmii_100m_second_half_byte;
 
 //===============================================
 // eth mac tx frame state initial
 //===============================================
 
-assign tx_frame_state_idle_to_preparation = pe_tx_enable_r && (r_hw_cs_en || r_hw_cs_replace_en || r_hw_sa_mac_en || r_hw_sa_mac_replace_en);
-assign tx_frame_state_idle_to_preamble = pe_tx_enable_r && ~r_hw_cs_en && ~r_hw_cs_replace_en && ~r_hw_sa_mac_en && ~r_hw_sa_mac_replace_en;
+assign tx_frame_state_idle_to_preparation = pe_tx_data_enable_r && (r_hw_cs_en || r_hw_cs_replace_en || r_hw_sa_mac_en || r_hw_sa_mac_replace_en);
+assign tx_frame_state_idle_to_preamble = pe_tx_data_enable_r && ~r_hw_cs_en && ~r_hw_cs_replace_en && ~r_hw_sa_mac_en && ~r_hw_sa_mac_replace_en;
 
 //===============================================
 // eth mac tx frame state: TX_FRAME_PREPARATION
@@ -366,9 +375,9 @@ wire							preamble_byte_cnt_pre2_end;
 assign preamble_byte_cnt_end = (preamble_byte_cnt == r_pre_byte) ? 1'b1 : 1'b0;
 assign preamble_byte_cnt_pre_end = (preamble_byte_cnt == r_pre_byte - 1'b1) ? 1'b1 : 1'b0;
 assign preamble_byte_cnt_pre2_end = (preamble_byte_cnt == r_pre_byte - 2'd2) ? 1'b1 : 1'b0;
-assign tx_frame_state_preamble_to_payload = byte_end && tx_frame_state_preamble && preamble_byte_cnt_end;
-assign tx_frame_state_pre_preamble_to_payload = byte_end && tx_frame_state_preamble && preamble_byte_cnt_pre_end;
-assign tx_frame_state_pre2_preamble_to_payload = byte_end && tx_frame_state_preamble && preamble_byte_cnt_pre2_end;
+assign tx_frame_state_preamble_to_payload = first_half_byte && tx_frame_state_preamble && preamble_byte_cnt_end;
+assign tx_frame_state_pre_preamble_to_payload = first_half_byte && tx_frame_state_preamble && preamble_byte_cnt_pre_end;
+assign tx_frame_state_pre2_preamble_to_payload = first_half_byte && tx_frame_state_preamble && preamble_byte_cnt_pre2_end;
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
@@ -377,7 +386,7 @@ begin
 		preamble_byte_cnt <= 4'd1;
 		preamble_byte_end <= 1'b0;
 	end
-	else if(tx_frame_state_preamble && byte_end) // other preamble byte
+	else if(tx_frame_state_preamble && first_half_byte) // other preamble byte
 	begin
 		if(preamble_byte_cnt_end) // preamble byte end
 		begin
@@ -390,7 +399,7 @@ begin
 			preamble_byte_cnt <= preamble_byte_cnt + 1'b1;
 		end
 	end
-	else if(pe_tx_enable_r) // (timing clk issue) first preamble bit
+	else if(pe_tx_data_enable_r) // (timing clk issue) first preamble bit
 	begin
 		preamble_byte_end <= 1'b0;
 		preamble_byte_cnt <= preamble_byte_cnt + 1'b1;
@@ -415,9 +424,9 @@ reg				[11:0]			payload_byte_cnt;
 reg								payload_byte_end;// last data byte
 wire							payload_byte_cnt_end;
 assign payload_byte_cnt_end = (payload_byte_cnt == r_tx_frame_byte_real_length) ? 1'b1 : 1'b0;
-assign tx_frame_state_payload_to_padding = byte_end && tx_frame_state_payload && payload_byte_cnt_end && r_hw_padding_real_en;
-assign tx_frame_state_payload_to_crc = byte_end && tx_frame_state_payload && payload_byte_cnt_end && (r_hw_crc_en || r_hw_crc_replace_en) && ~r_hw_padding_real_en;
-assign tx_frame_state_payload_to_interval = byte_end && tx_frame_state_payload && payload_byte_cnt_end && ~r_hw_crc_en && ~r_hw_crc_replace_en;//hw padding enable must be with hw crc enable
+assign tx_frame_state_payload_to_padding = first_half_byte && tx_frame_state_payload && payload_byte_cnt_end && r_hw_padding_real_en;
+assign tx_frame_state_payload_to_crc = first_half_byte && tx_frame_state_payload && payload_byte_cnt_end && (r_hw_crc_en || r_hw_crc_replace_en) && ~r_hw_padding_real_en;
+assign tx_frame_state_payload_to_interval = first_half_byte && tx_frame_state_payload && payload_byte_cnt_end && ~r_hw_crc_en && ~r_hw_crc_replace_en;//hw padding enable must be with hw crc enable
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
@@ -426,7 +435,7 @@ begin
 		payload_byte_cnt <= 12'b0;
 		payload_byte_end <= 1'b0;
 	end
-	else if(tx_frame_state_payload && byte_end) // other data bit
+	else if(tx_frame_state_payload && first_half_byte) // other data bit
 	begin
 		if(payload_byte_cnt_end) // payload byte end
 		begin
@@ -464,7 +473,7 @@ reg				[ 5:0]			padding_byte_cnt;
 reg								padding_byte_end;// last data byte
 wire							padding_byte_cnt_end;
 assign padding_byte_cnt_end = (padding_byte_cnt == r_tx_padding_length) ? 1'b1 : 1'b0;
-assign tx_frame_state_padding_to_crc = byte_end && tx_frame_state_padding && padding_byte_cnt_end;
+assign tx_frame_state_padding_to_crc = first_half_byte && tx_frame_state_padding && padding_byte_cnt_end;
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
@@ -473,7 +482,7 @@ begin
 		padding_byte_cnt <= 6'b0;
 		padding_byte_end <= 1'b0;
 	end
-	else if(tx_frame_state_padding && byte_end) // other data bit
+	else if(tx_frame_state_padding && first_half_byte) // other data bit
 	begin
 		if(padding_byte_cnt_end) // padding byte end
 		begin
@@ -511,7 +520,7 @@ reg				[ 2:0]			crc_byte_cnt;
 reg								crc_byte_end;// last data byte
 wire							crc_byte_cnt_end;
 assign crc_byte_cnt_end = (crc_byte_cnt == 3'd4) ? 1'b1 : 1'b0;
-assign tx_frame_state_crc_to_interval = byte_end && tx_frame_state_crc && crc_byte_cnt_end;
+assign tx_frame_state_crc_to_interval = first_half_byte && tx_frame_state_crc && crc_byte_cnt_end;
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
@@ -520,7 +529,7 @@ begin
 		crc_byte_cnt <= 3'h0;
 		crc_byte_end <= 1'b0;
 	end
-	else if(tx_frame_state_crc && byte_end) // other data bit
+	else if(tx_frame_state_crc && first_half_byte) // other data bit
 	begin
 		if(crc_byte_cnt_end) // crc byte end
 		begin
@@ -558,8 +567,8 @@ reg				[ 6:0]			interval_byte_cnt;
 reg								interval_byte_end;// last interval byte
 wire							interval_byte_cnt_end;
 assign interval_byte_cnt_end = (interval_byte_cnt == (7'd5 + r_interval_byte)) ? 1'b1 : 1'b0;
-//assign tx_frame_state_interval_to_preamble = byte_end && tx_frame_state_interval && interval_byte_cnt_end && tx_enable;// tx still enable 
-assign tx_frame_state_interval_to_end = byte_end && tx_frame_state_interval &&  interval_byte_cnt_end;
+//assign tx_frame_state_interval_to_preamble = first_half_byte && tx_frame_state_interval && interval_byte_cnt_end && tx_enable;// tx still enable 
+assign tx_frame_state_interval_to_end = first_half_byte && tx_frame_state_interval &&  interval_byte_cnt_end;
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
@@ -568,7 +577,7 @@ begin
 		interval_byte_cnt <= 7'b0;
 		interval_byte_end <= 1'b0;
 	end
-	else if(tx_frame_state_interval && byte_end) // other interval byte
+	else if(tx_frame_state_interval && first_half_byte) // other interval byte
 	begin
 		if(interval_byte_cnt_end) // interval byte end
 		begin
@@ -605,7 +614,7 @@ end
 
 //reg								tx_end;
 //assign tx_frame_state_end_to_idle = tx_end;
-assign pe_tx_end = tx_frame_state_end;
+assign pe_tx_data_end = tx_frame_state_end;
 //
 //always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 //begin
@@ -671,7 +680,7 @@ eth_mac_pe_tx_protocol_handle u_eth_mac_pe_tx_protocol_handle
 	.tx_data_mode						(tx_frame_state_idle_to_preparation || tx_data_mode),	
 	.tx_handle_enable					(tx_frame_state_idle_to_preparation || tx_frame_state_idle_to_preamble),
 	.tx_handle_done						(tx_frame_preparation_done),	
-	.tx_done							(pe_tx_end),
+	.tx_done							(pe_tx_data_end),
 
 	.r_sa_macaddr						(r_sa_macaddr),
 	.r_interval_byte					(r_interval_byte),
@@ -699,12 +708,13 @@ begin
 		tx_frame_data_re <= 1'b0;
 	end
 	// bypass mode from precache (no need wait)
-	else if(~tx_data_mode && tx_frame_state_preamble_to_payload || (tx_frame_state_payload && byte_end))
+	else if(~tx_data_mode && tx_frame_state_preamble_to_payload || (tx_frame_state_payload && first_half_byte))
 	begin
 		tx_frame_data_re <= 1'b1;
 	end
 	// cache mode from tx cache ram (need another 2 clks to wait)
-	else if(tx_data_mode && (tx_frame_state_pre2_preamble_to_payload || tx_frame_state_pre_preamble_to_payload || tx_frame_state_preamble_to_payload || (tx_frame_state_payload && byte_end)))
+//	else if(tx_data_mode && (tx_frame_state_pre2_preamble_to_payload || tx_frame_state_pre_preamble_to_payload || tx_frame_state_preamble_to_payload || (tx_frame_state_payload && first_half_byte)))//????DDR
+	else if(tx_data_mode && (tx_frame_state_pre_preamble_to_payload || tx_frame_state_preamble_to_payload || (tx_frame_state_payload && first_half_byte)))
 	begin
 		tx_frame_data_re <= 1'b1;
 	end
@@ -716,7 +726,8 @@ end
 
 // Crx calculation only performs when hardware crc is enable and tx fsm is at
 // data payload state or padding state.
-assign tx_frame_crc_en = ((tx_frame_data_re && tx_frame_state_payload) || (half_byte_end && tx_frame_state_padding)) && (r_hw_crc_en || r_hw_crc_replace_en);
+//assign tx_frame_crc_en = ((tx_frame_data_re && tx_frame_state_payload) || (half_byte_end && tx_frame_state_padding)) && (r_hw_crc_en || r_hw_crc_replace_en);//DDR???
+assign tx_frame_crc_en = ((tx_frame_data_re && tx_frame_state_payload) || (second_half_byte && tx_frame_state_padding)) && (r_hw_crc_en || r_hw_crc_replace_en);
 assign tx_frame_crc_data = tx_frame_state_payload ? tx_frame_data : 8'h0;// timing ok???
 
 crc32d8 u_eth_mac_pe_tx_crc
@@ -739,6 +750,7 @@ crc32d8 u_eth_mac_pe_tx_crc
 
 assign eth_tx_clk = clk_gen; 
 assign eth_tx_clk_oen = timing_base_enable;
+//assign eth_tx_clk_oen = 1'b0;// tie to 0?
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)
 begin
@@ -754,11 +766,11 @@ begin
 		eth_tx_oen <= 4'hf;
 	end
 	// current state inside: DATA PARITY STOP INTERVAL
-	else if(byte_end == 1'b1)
+	else if(first_half_byte)
 	begin
 		// the order is critical, cannot be changed randomly
 		// some conditions cannot reach when half_byte_end = 1
-		// those will reach when byte_end = 1 !!!
+		// those will reach when first_half_byte = 1 !!!
 	//	if(tx_frame_state_interval_to_end)
 	//	begin
 	//		eth_tx <= 4'hf;
@@ -803,8 +815,8 @@ begin
 			eth_tx_oen <= 4'hf;
 		end
 	end
-	else
-//	else if(byte_end == 1'b1)
+//	else
+	else if(second_half_byte)
 	begin
 		// the order is critical, cannot be changed randomly
 		if(tx_frame_state_interval_to_end)
@@ -851,11 +863,11 @@ begin
 			eth_tx_oen <= 4'hf;
 		end
 	end
-//	else
-//	begin
-//		eth_tx <= eth_tx;
-//		eth_tx_oen <= eth_tx_oen;
-//	end
+	else
+	begin
+		eth_tx <= eth_tx;
+		eth_tx_oen <= eth_tx_oen;
+	end
 end
 
 always @(posedge pe_tx_clk or negedge pe_tx_rstn)

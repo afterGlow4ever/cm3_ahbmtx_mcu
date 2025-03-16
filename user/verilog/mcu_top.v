@@ -51,6 +51,7 @@ module mcu_top
 
 wire							hsi;
 wire							hsi2;
+wire							hsi3;
 wire							lsi;
 wire							sys_root_clk;
 wire							apb1_root_clk;
@@ -70,12 +71,14 @@ assign apb1_root_clk = lsi;
 assign apb2_root_clk = hsi2;
 assign eth_pe_tx_clk = hsi2;
 assign eth_pe_rx_clk = hsi2;
+assign advtim_pe_clk = hsi3;
 assign sys_root_rstn = RSTN & pll_locked;
 assign apb0_root_rstn = RSTN & pll_locked;
 assign apb1_root_rstn = RSTN & pll_locked;
 assign apb2_root_rstn = RSTN & pll_locked;
 assign eth_pe_tx_rstn = RSTN & pll_locked;
 assign eth_pe_rx_rstn = RSTN & pll_locked;
+assign advtim_pe_rstn = RSTN & pll_locked;
 
 //===============================================
 // gpio
@@ -91,7 +94,7 @@ wire								eth_mdio_o;
 wire								eth_mdio_i;	 
 wire								eth_mdio_oen;
 wire	[ 3:0]						eth_tx;
-wire								eth_tx_oen;
+wire	[ 3:0]						eth_tx_oen;
 wire								eth_tx_ctrl;
 wire								eth_tx_ctrl_oen;
 wire								eth_tx_clk;	
@@ -171,6 +174,8 @@ fp_domain u_fp_domain
 	.eth_pe_tx_rstn				(eth_pe_tx_rstn		),
 	.eth_pe_rx_clk				(eth_pe_rx_clk		),  
 	.eth_pe_rx_rstn				(eth_pe_rx_rstn		),
+	.advtim_pe_clk				(advtim_pe_clk),  
+	.advtim_pe_rstn				(advtim_pe_rstn),
 	.power_on_rstn				(RSTN				),
 
 
@@ -236,6 +241,7 @@ fpga_platform u_fpga_platform
 	
 assign hsi = CLK;
 assign hsi2 = CLK;
+assign hsi3 = CLK;
 assign lsi = CLK;
 assign pll_locked = 1'b1;	
 

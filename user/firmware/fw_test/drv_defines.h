@@ -19,6 +19,7 @@
 
 #define UART_CLK 40000000
 #define ETH_CLK 50000000
+#define ADVTIM_CLK 60000000
 
 //===============================================
 // printf uart define
@@ -36,6 +37,7 @@
 //#define BASTIM_DRIVER
 //#define ETH_DRIVER
 //#define ETH_MAC_DRIVER
+//#define ADVTIM_DRIVER
 
 //===============================================
 // driver header list
@@ -61,6 +63,9 @@
 #endif
 #ifdef ETH_MAC_DRIVER
 #include "drv_eth_mac.h"
+#endif
+#ifdef ADVTIM_DRIVER
+#include "drv_advtim.h"
 #endif
 
 #endif

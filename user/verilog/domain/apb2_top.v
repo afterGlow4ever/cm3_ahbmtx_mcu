@@ -20,6 +20,8 @@ module apb2_top
 	input  						eth_pe_tx_rstn,
 	input  						eth_pe_rx_clk,  
 	input  						eth_pe_rx_rstn,
+	input  						advtim_pe_clk,  
+	input  						advtim_pe_rstn,
 	
 	// pin
 	output 						eth_mdc,
@@ -63,7 +65,9 @@ module apb2_top
 	output						eth_sma_int,
 	output						eth_mac_tx_int,
 	output						eth_mac_rx_int,
-	output						eth_mac_dma_int
+	output						eth_mac_dma_int,
+	output						advtim_gen_int,
+	output						advtim_cap_int
 );
 
 //===============================================
@@ -75,11 +79,16 @@ wire						 	pready_eth;
 wire	[31:0]				 	prdata_eth; 
 wire						 	pslverr_eth; 
 wire	[31:0]				 	paddr_eth; 
+wire						 	psel_advtim; 
+wire						 	pready_advtim; 
+wire	[31:0]				 	prdata_advtim; 
+wire						 	pslverr_advtim; 
+wire	[31:0]				 	paddr_advtim; 
 
 cmsdk_apb_slave_mux 
 #(
     .PORT0_ENABLE                       (1),
-    .PORT1_ENABLE                       (0),
+    .PORT1_ENABLE                       (1),
     .PORT2_ENABLE                       (0),
     .PORT3_ENABLE                       (0),
     .PORT4_ENABLE                       (0),
@@ -105,10 +114,10 @@ u_apb2_slave_mux
     .PRDATA0                            (prdata_eth),
     .PSLVERR0                           (pslverr_eth),
     
-    .PSEL1                              (),
-    .PREADY1                            (1'b0),
-    .PRDATA1                            (32'b0),
-    .PSLVERR1                           (1'b0),
+    .PSEL1                              (psel_advtim),
+    .PREADY1                            (pready_advtim),
+    .PRDATA1                            (prdata_advtim),
+    .PSLVERR1                           (pslverr_advtim),
 
     .PSEL2                              (),
     .PREADY2                            (1'b0),
@@ -269,6 +278,38 @@ assign eth_sma_int = 1'b0;
 assign eth_mac_tx_int = 1'b0;
 assign eth_mac_rx_int = 1'b0;
 assign eth_mac_dma_int = 1'b0;
+`endif
+
+//===============================================
+// APB2 advance timer
+// 0x40021000~0x40021FFF 
+//===============================================
+
+assign pready_advtim = 1'b1;
+assign pslverr_advtim = 1'b0;
+
+`ifdef ADVTIM
+assign paddr_advtim = paddr;// compatible with advanve timer reg
+
+advtim_top u_advtim
+(
+	.module_clk					(advtim_pe_clk),  
+	.module_rstn				(advtim_pe_rstn),
+
+	.reg_clk					(apb2_root_clk),
+	.reg_rstn					(apb2_root_rstn),
+	.pwrite						(pwrite),
+	.psel						(psel_advtim),						
+	.penable					(penable),
+	.paddr						(paddr_advtim),
+	.pwdata						(pwdata),
+	.prdata						(prdata_advtim),
+
+	.advtim_gen_int_line		(advtim_gen_int),
+	.advtim_cap_int_line		(advtim_cap_int)
+);
+`else
+assign prdata_advtim = 32'h0;
 `endif
 
 endmodule

@@ -59,6 +59,12 @@ module eth_pe_core
 	output 						eth_tx_ctrl_oen,
 	output						eth_tx_clk,	
 	output						eth_tx_clk_oen,	
+	input 		[ 3:0]			eth_rx,
+	output 		[ 3:0]			eth_rx_oen,
+	input 						eth_rx_ctrl,
+	output 						eth_rx_ctrl_oen,
+	input						eth_rx_clk,
+	output						eth_rx_clk_oen,
 
 	// data
 	output 						eth_mac_txdb_pe2fifo_rdreq,		
@@ -69,13 +75,25 @@ module eth_pe_core
 	input 						eth_mac_txdb_fifo2pe_burst_process_done,	
 	input 						eth_mac_txdb_fifo2pe_single_process_done,	
 	input 						eth_mac_txdb_data_ready,  	
+	input 						eth_mac_rxdb_pe2fifo_wrreq,
+	output 						eth_mac_rxdb_pe2fifo_we_done,
+	output		[31:0]			eth_mac_rxdb_pe2fifo_wdata,
+//	input						eth_mac_rxdb_fifo_full,
+	input						eth_mac_rxdb_fifo_done,
+//	input						eth_mac_rxdb_fifo2pe_burst_process_done,
+//	input						eth_mac_rxdb_fifo_ready,	
+
+
+
 
 	// control
 	input						eth_mac_pe_tx_logic_clr,
 	input						eth_mac_pe_rx_logic_clr,
-	input						eth_mac_pe_tx_enable,
-	input						eth_mac_pe_rx_enable,
-	output						eth_mac_pe_tx_end,
+	input						eth_mac_pe_tx_clk_enable,
+	input						eth_mac_pe_tx_data_enable,
+	input						eth_mac_pe_rx_clk_enable,
+	input						eth_mac_pe_rx_data_enable,
+	output						eth_mac_pe_tx_data_end,
 	output						eth_mac_pe_rx_end,
 
 	// config from regs
@@ -90,9 +108,12 @@ module eth_pe_core
 	input						r1_crsfd, 
 	input		[ 1:0]			r1_pre_byte,
 	input		[ 5:0]			r1_interval_byte,
+	input						r1_cs_rm,
+	input						r1_pc_rm,
 
 	// config from descriptors
 	input		[11:0]			r1_tx_length1,
+	output		[11:0]			r1_rx_length1,
 	input		[ 1:0]			r1_tx_cpc,	
 	input		[ 1:0]			r1_tx_saic,
 	input		[ 1:0]			r1_tx_cic,
@@ -208,14 +229,14 @@ assign r1_sa_macaddr = {r1_sa_macaddrh, r1_sa_macaddrl};
 // eth mac status control
 //===============================================
 
-wire							eth_mac_pe_tx_enable_r;
+wire							eth_mac_pe_tx_data_enable_r;
 
 posedge_detect u_mac_pe_tx_enable_detect 
 (
 	.clk						(pe_tx_clk),
 	.rstn						(pe_tx_rstn),
-	.A							(eth_mac_pe_tx_enable),
-	.Y							(eth_mac_pe_tx_enable_r)
+	.A							(eth_mac_pe_tx_data_enable),
+	.Y							(eth_mac_pe_tx_data_enable_r)
 );
 
 //===============================================
@@ -244,9 +265,10 @@ eth_mac_pe_tx u_eth_mac_pe_tx
 	.eth_tx_clk_oen						(eth_tx_clk_oen),
 
 	.pe_tx_logic_clr					(eth_mac_pe_tx_logic_clr),
-	.pe_tx_enable						(eth_mac_pe_tx_enable),
-	.pe_tx_enable_r						(eth_mac_pe_tx_enable_r),
-	.pe_tx_end							(eth_mac_pe_tx_end),
+	.pe_tx_clk_enable					(eth_mac_pe_tx_clk_enable),
+	.pe_tx_data_enable					(eth_mac_pe_tx_data_enable),
+	.pe_tx_data_enable_r				(eth_mac_pe_tx_data_enable_r),
+	.pe_tx_data_end						(eth_mac_pe_tx_data_end),
 
 	.r_sa_macaddr						(r1_sa_macaddr),
 	.r_pre_byte							(r1_pre_byte_real),
@@ -264,7 +286,51 @@ eth_mac_pe_tx u_eth_mac_pe_tx
 	.int_status_tx_done					(int1_status_tx_done)
 );
 
+//===============================================
+// eth mac rx protocol engine
+//===============================================
+
+//eth_mac_pe_rx u_eth_mac_pe_rx 
+//(
+//	.pe_rx_clk							(pe_rx_clk),  
+//	.pe_rx_rstn							(pe_rx_rstn),
+//
+//	.rxdb_pe2fifo_we					(eth_mac_rxdb_pe2fifo_wrreq),
+//	.rxdb_pe2fifo_we_done				(eth_mac_rxdb_pe2fifo_we_done),
+//	.rxdb_pe2fifo_wdata					(eth_mac_rxdb_pe2fifo_wdata),
+////	.rxdb_fifo_full						(eth_mac_rxdb_fifo_full),
+//	.rxdb_fifo_done						(eth_mac_rxdb_fifo_done),
+////	.rxdb_fifo2pe_burst_process_done	(eth_mac_rxdb_fifo2pe_burst_process_done),
+////	.rxdb_fifo_ready					(eth_mac_rxdb_fifo_ready),
+//
+//	.eth_rx								(eth_rx),
+//	.eth_rx_oen							(eth_rx_oen),
+//	.eth_rx_ctrl						(eth_rx_ctrl),
+//	.eth_rx_ctrl_oen					(eth_rx_ctrl_oen),
+//	.eth_rx_clk							(eth_rx_clk),
+//	.eth_rx_clk_oen						(eth_rx_clk_oen),
+//
+//	.pe_rx_logic_clr					(eth_mac_pe_rx_logic_clr),
+//	.pe_rx_clk_enable					(pe_rx_clk_enable),
+//	.pe_rx_data_enable					(),
+//	.pe_rx_data_enable_r				(),
+//	.pe_rx_data_end						(),
+//
+//	.r_sa_macaddr						(r_sa_macaddr),
+//	.r_cs_rm							(r_cs_rm),
+//	.r_pc_rm							(r_pc_rm),
+//
+//	.r_rx_payload_byte_length			(r_rx_payload_byte_length),
+//
+//	.int_status_rx_done					(int_status_rx_done)
+//);
+
 assign eth_mac_pe_rx_end = 1'b0;//?????
+
+
+
+
+
 
 endmodule
 

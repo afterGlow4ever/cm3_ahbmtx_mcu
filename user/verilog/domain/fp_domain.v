@@ -21,12 +21,14 @@ module fp_domain
 	input						apb2_root_clk,
 	input  						eth_pe_tx_clk,  
 	input  						eth_pe_rx_clk,  
+	input  						advtim_pe_clk,  
 	input						sys_root_rstn,
 	input						apb0_root_rstn,
 	input						apb1_root_rstn,
 	input						apb2_root_rstn,
 	input  						eth_pe_tx_rstn,
 	input  						eth_pe_rx_rstn,
+	input  						advtim_pe_rstn,
 	input						power_on_rstn,
 	
 	// pins
@@ -832,8 +834,8 @@ CORTEXM3INTEGRATIONDS u_CORTEXM3INTEGRATION
 //===============================================
 
 wire	[ 7:0] 				sync_irq;
-wire	[ 7:0] 				async_irq_bf;
-wire	[ 7:0] 				async_irq_af;
+wire	[15:0] 				async_irq_bf;
+wire	[15:0] 				async_irq_af;
 wire						uart0_int;// No.0
 wire						uart1_int;// No.1
 wire						eth_mac_dma_int;// No.4
@@ -842,13 +844,15 @@ wire	[ 3:0]				bastim_int;// No.8~11
 wire						eth_sma_int;// No.12
 wire						eth_mac_tx_int;// No.13
 wire						eth_mac_rx_int;// No.14
+wire						advtim_gen_int;// No.16
+wire						advtim_cap_int;// No.17
 
 assign sync_irq = {2'h0, gpioa_int, eth_mac_dma_int, 1'b0, 1'b0, uart1_int, uart0_int};
-assign async_irq_bf = {1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
+assign async_irq_bf = {6'b0, advtim_cap_int, advtim_gen_int, 1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
 
 sync_ff_2d
 #(
-	.WIDTH						(8),
+	.WIDTH						(16),
 	.DEFAULT_VAL				(0)
 )
 u_sync_ff_2d_inst0
@@ -860,7 +864,7 @@ u_sync_ff_2d_inst0
 	.Y							(async_irq_af)
 );
 
-assign irq = {234'h0, async_irq_af, sync_irq};
+assign irq = {226'h0, async_irq_af, sync_irq};
 
 //===============================================
 // sram top
@@ -981,6 +985,8 @@ apb2_top u_apb2_async_top
 	.eth_pe_tx_rstn				(eth_pe_tx_rstn),
 	.eth_pe_rx_clk				(eth_pe_rx_clk),  
 	.eth_pe_rx_rstn				(eth_pe_rx_rstn),
+	.advtim_pe_clk				(advtim_pe_clk),  
+	.advtim_pe_rstn				(advtim_pe_rstn),
 
 	.eth_mdc					(eth_mdc),
 	.eth_mdc_oen				(eth_mdc_oen),
@@ -1023,7 +1029,9 @@ apb2_top u_apb2_async_top
 	.eth_sma_int				(eth_sma_int),
 	.eth_mac_tx_int				(eth_mac_tx_int),
 	.eth_mac_rx_int				(eth_mac_rx_int),
-	.eth_mac_dma_int			(eth_mac_dma_int)
+	.eth_mac_dma_int			(eth_mac_dma_int),
+	.advtim_gen_int				(advtim_gen_int),
+	.advtim_cap_int				(advtim_cap_int)
 );
 
 endmodule

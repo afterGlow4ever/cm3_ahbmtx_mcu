@@ -70,7 +70,7 @@ begin
 	begin: APB1_WR_TEST
 		u_swd_model.swd_writereg32(32'h40000000 + i, i);
 		u_swd_model.swd_readreg32(32'h40000000 + i, rdata);
-		u_swd_model.swd_readreg32(32'h40000000 + i, rdata);
+//		u_swd_model.swd_readreg32(32'h40000000 + i, rdata);
 		u_sim_monitor.sim_monitor_check(32'h40000000 + i, rdata, i);
 	end
 

@@ -1,0 +1,294 @@
+//===============================================
+//
+//	File: channel_ctrl.v
+//	Author: afterGlow,4ever
+//	Group: Fall For Laboratory
+//	Date: 12082024
+//	Version: v1.0
+//
+// 	This is channel control for advance timer.
+// 	channel 1pn
+// 	channel 2pn
+// 	channel 3pn
+// 	channel 4
+// 	channel 5
+// 	channel 6
+//
+//===============================================
+
+module channel_ctrl
+(
+	input  						pe_gen_clk,  
+	input  						pe_gen_rstn,
+
+	// configs
+	input						r_dze1,
+	input						r_cc1p,
+	input						r_cc1np,
+	input						r_cc1e,
+	input						r_cc1ne,
+	input 		[ 9:0]			r_dtg,
+
+	// control
+	input						channel_output_enable,
+
+	// pwm output
+	input						oc1refc,
+	input						oc2refc,
+	input						oc3refc,
+	input						oc4refc,
+	input						oc5refc,
+	input						oc6refc,
+	input	  					oc5c1refc,
+	input	  					oc5c2refc,
+	input	  					oc5c3refc,
+
+	// output
+	output reg					channel1p,
+	output reg					channel1n
+);
+
+wire							channel1p_deadzone;
+wire							channel1n_deadzone;
+deadzone u_channel1_deadzone 
+(
+	.pe_gen_clk					(pe_gen_clk),  
+	.pe_gen_rstn				(pe_gen_rstn),
+
+	.r_dze						(r_dze1),
+	.r_ccp						(r_cc1p),
+	.r_ccnp						(r_cc1np),
+	.r_dtg						(r_dtg),
+
+	.ocrefc						(oc5c1refc),
+
+	.channelp_deadzone			(channel1p_deadzone),
+	.channeln_deadzone			(channel1n_deadzone)
+);
+
+always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+begin
+	if(!pe_gen_rstn)
+	begin
+		channel1p <= 1'b0;
+	end
+	else if(~(channel_output_enable && r_cc1e))
+	begin
+		channel1p <= 1'b0;
+	end
+	else
+	begin
+		if(r_cc1p)
+		begin
+			channel1p <= ~oc5c1refc && ~channel1p_deadzone;
+		end
+		else if(~r_cc1p)
+		begin
+			channel1p <= oc5c1refc && ~channel1p_deadzone;
+		end
+		else
+		begin
+			channel1p <= 1'b0;
+		end
+	end
+end
+
+always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+begin
+	if(!pe_gen_rstn)
+	begin
+		channel1n <= 1'b0;
+	end
+	else if(~(channel_output_enable && r_cc1ne))
+	begin
+		channel1n <= 1'b0;
+	end
+	else
+	begin
+		if(r_cc1np)
+		begin
+			channel1n <= oc5c1refc && ~channel1n_deadzone;
+		end
+		else if(~r_cc1np)
+		begin
+			channel1n <= ~oc5c1refc && ~channel1n_deadzone;
+		end
+		else
+		begin
+			channel1n <= 1'b0;
+		end
+	end
+end
+
+//===============================================
+// channel 1pn
+//===============================================
+
+//wire							oc5c1refc_r;
+//wire							oc5c1refc_f;
+//reg 			[ 9:0]			dtg1_cnt;
+//reg 							dtg1_cnt_valid_for_posedge;
+//reg 							dtg1_cnt_valid_for_negedge;
+//
+//wire							channel1p_deadzone;
+//wire							channel1n_deadzone;
+//
+//assign channel1n_deadzone = r_dze1 && (r_cc1np ? (oc5c1refc_f || (dtg1_cnt_valid_for_negedge && |dtg1_cnt)) : (oc5c1refc_r || (dtg1_cnt_valid_for_posedge && |dtg1_cnt)));
+//assign channel1p_deadzone = r_dze1 && (r_cc1p ? (oc5c1refc_r || (dtg1_cnt_valid_for_posedge && |dtg1_cnt)) : (oc5c1refc_f || (dtg1_cnt_valid_for_negedge && |dtg1_cnt)));
+//
+//posedge_detect u_channel1_posedge_detect 
+//(
+//	.clk						(pe_gen_clk),
+//	.rstn						(pe_gen_rstn),
+//	.A							(oc5c1refc),
+//	.Y							(oc5c1refc_r)
+//);
+//
+//negedge_detect u_channel1_negedge_detect 
+//(
+//	.clk						(pe_gen_clk),
+//	.rstn						(pe_gen_rstn),
+//	.A							(oc5c1refc),
+//	.Y							(oc5c1refc_f)
+//);
+//
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		dtg1_cnt_valid_for_posedge <= 1'b0;
+//	end
+//	else if(oc5c1refc_r || ~r_dze1)
+//	begin
+//		dtg1_cnt_valid_for_posedge <= 1'b1;
+//	end
+////	else if(~(|dtg1_cnt))
+//	else if(oc5c1refc_f)
+//	begin
+//		dtg1_cnt_valid_for_posedge <= 1'b0;
+//	end
+//	else
+//	begin
+//		dtg1_cnt_valid_for_posedge <= dtg1_cnt_valid_for_posedge;
+//	end
+//end
+//
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		dtg1_cnt_valid_for_negedge <= 1'b0;
+//	end
+//	else if(oc5c1refc_f || ~r_dze1)
+//	begin
+//		dtg1_cnt_valid_for_negedge <= 1'b1;
+//	end
+////	else if(~(|dtg1_cnt))
+//	else if(oc5c1refc_r)
+//	begin
+//		dtg1_cnt_valid_for_negedge <= 1'b0;
+//	end
+//	else
+//	begin
+//		dtg1_cnt_valid_for_negedge <= dtg1_cnt_valid_for_negedge;
+//	end
+//end
+//
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		dtg1_cnt <= r_dtg;
+//	end
+//	else if(oc5c1refc_f || oc5c1refc_r)
+//	begin
+//		dtg1_cnt <= r_dtg;
+//	end
+//	else if(~(|dtg1_cnt))
+//	begin
+//		dtg1_cnt <= dtg1_cnt;
+//	end
+//	else if(dtg1_cnt_valid_for_posedge || dtg1_cnt_valid_for_negedge)
+//	begin
+//		dtg1_cnt <= dtg1_cnt - 1'b1;
+//	end
+//	else
+//	begin
+//		dtg1_cnt <= r_dtg;
+//	end
+//end
+//
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		channel1p <= 1'b0;
+//	end
+//	else if(~(channel_output_enable && r_cc1e) || (|dtg1_cnt && r_dze1))
+//	begin
+//		channel1p <= 1'b0;
+//	end
+////	else if(r_cc1e && ~(|dtg1_cnt) && (dtg1_cnt_valid_for_posedge || dtg1_cnt_valid_for_negedge))
+////	else if(~(|dtg1_cnt) || ~r_dze1)
+//	else
+//	begin
+//		if(r_cc1p && dtg1_cnt_valid_for_negedge)
+//		begin
+//			channel1p <= ~oc5c1refc;
+//		end
+//		else if(~r_cc1p && dtg1_cnt_valid_for_posedge)
+//		begin
+//			channel1p <= oc5c1refc;
+//		end
+//		else
+//		begin
+//			channel1p <= 1'b0;
+//		end
+//	end
+////	else
+////	begin
+////		channel1p <= 1'b0;
+////	end
+//end
+//
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		channel1n <= 1'b0;
+//	end
+////	else if(~(channel_output_enable && r_cc1ne))
+//	else if(~(channel_output_enable && r_cc1ne) || (|dtg1_cnt && r_dze1))
+//	begin
+//		channel1n <= 1'b0;
+//	end
+//	else
+////	else if(~(|dtg1_cnt))
+////	else if(r_cc1ne && ~(|dtg1_cnt) && (dtg1_cnt_valid_for_posedge || dtg1_cnt_valid_for_negedge))
+//	begin
+//		if(r_cc1np && dtg1_cnt_valid_for_posedge)
+//		begin
+//			channel1n <= oc5c1refc;
+//		end
+//		else if(~r_cc1np && dtg1_cnt_valid_for_negedge)
+//		begin
+//			channel1n <= ~oc5c1refc;
+//		end
+//		else
+//		begin
+//			channel1n <= 1'b0;
+//		end
+//	end
+////	else
+////	begin
+////		channel1n <= 1'b0;
+////	end
+//end
+
+
+
+
+
+
+endmodule
+

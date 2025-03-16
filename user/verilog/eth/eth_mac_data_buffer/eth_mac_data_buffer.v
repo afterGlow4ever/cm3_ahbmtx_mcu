@@ -30,6 +30,10 @@ module eth_mac_data_buffer
 	output						txdb_data_ready,
 	output						txdb_process_doing,
 	output						dl_ahbmst_error,
+	input						rxdb_pe2fifo_wrreq,//rx frame start
+	input						rxdb_pe2fifo_wrreq_done,//rx frame done
+	output						rxdb_process_doing,
+	output						rxdb_data_ready,
 
 	// ahb master interface
 	input						ahb_hclk,
@@ -50,6 +54,7 @@ module eth_mac_data_buffer
 	// datalink control
 	input						txdb_enable,
 	output 						txdb_enable_end,
+	input						rxdb_enable,// receiving preambles
 	input						ahbmst_logic_clr,
 	input						txdb_logic_clr,
 	input						rxdb_logic_clr,
@@ -106,7 +111,6 @@ module eth_mac_data_buffer
 // interactive singnal
 //===============================================
 
-reg								eth_dma_rx_req;// a request in rx progress request
 wire							dl_ahbmst2db_burstack;// dma once acknowledge to tx or rx
 wire							dl_ahbmst2db_singleack;// dma once acknowledge to tx or tx
 wire							dl_txdb2ahbmst_singlereq;// tx data is less than 16 bytes
@@ -135,6 +139,8 @@ wire							dl_txdb_process_finish;// a whole tx process is done
 reg								dl_rxdb_process_req;// a new rx progress request
 wire							dl_rxdb_process_grant;// rx process winning arbitration
 wire							dl_rxdb_process_doing;// a new dma ahb master transder doing
+wire							dl_rxdb_process_pingpong_doing;// a new dma ahb master transder doing
+wire							dl_rxdb_process_cache_doing;// a new dma ahb master transder doing
 wire							dl_rxdb_process_start;// a new dma ahb master transder start 
 wire							dl_rxdb_process_finish;// a whole rx process is done
 wire							dl_process_doing;// a new dma ahb master transder doing
@@ -541,30 +547,21 @@ eth_mac_data_tx_buffer u_eth_mac_data_tx_buffer
 // rx process request
 // rx once request
 //
-// In rx process, data will be received by pingpong
-// operation. However, if bus rx request is granted, 
-// data ram and data fifo will work simultaneously.
-// If bus rx request is not granted, data fifo will 
-// work only and data ram wait for bus granted.
+// In rx process, rx data will be received by pingpong
+// operation. 
+// In tx process, rx data will be stored in ram first.
+//
+// rxdb_data_ready means rx data buffer is ready to
+// receive data from pe rx.
+// rxdb_data_start means pe rx is ready to provide data.
 //===============================================
 
+assign dl_rxdb_process_pingpong_doing = datalink_state_rx_data;
+assign dl_rxdb_process_cache_doing = datalink_state_tx_data;
+assign dl_rxdb_process_doing = dl_rxdb_process_pingpong_doing || dl_rxdb_process_cache_doing;
 assign dl_rxdb_process_finish = 1'b0;//???? temp
-assign rx_fifo_empty = 1'b1;//?????? temp
-assign datalink_state_rx_data_to_end = dl_rxdb_process_finish;
-wire							rx_fifo_empty_d;
-
-// eth dma rx req is from rx fifo empty
-negedge_detect 
-#(
-	.WIDTH						(1)
-)
-u_rx_fifo_data_detect 
-(
-	.clk						(ahb_hclk),
-	.rstn						(ahb_hrstn),
-	.A							(rx_fifo_empty),
-	.Y							(rx_fifo_empty_d)
-);
+assign datalink_state_rx_data_to_end = dl_rxdb_process_finish && rx_last_descriptor;
+assign rxdb_data_ready = dl_rxdb_process_doing;
 
 always @(posedge ahb_hclk or negedge ahb_hrstn)
 begin
@@ -572,9 +569,13 @@ begin
 	begin
 		dl_rxdb_process_req <= 1'b0;
 	end
+	else if(rxdb_logic_clr)
+	begin
+		dl_rxdb_process_req <= 1'b0;
+	end
 	// dma rx process request when rx fifo not empty
 	// edge detect
-	else if(rx_fifo_empty_d && !dl_rxdb_process_req)
+	else if(rxdb_enable && !dl_rxdb_process_req)
 	begin
 		dl_rxdb_process_req <= 1'b1;
 	end
@@ -588,31 +589,6 @@ begin
 		dl_rxdb_process_req <= dl_rxdb_process_req;
 	end
 end
-
-always @(posedge ahb_hclk or negedge ahb_hrstn)
-begin
-	if(!ahb_hrstn)
-	begin
-		eth_dma_rx_req <= 1'b0;
-	end
-	// dma rx process request when rx enable from regs
-	// enable use edge!!!
-	else if(rx_fifo_empty_d)
-	begin
-		eth_dma_rx_req <= 1'b1;
-	end
-	// once request done and prepare for next request
-//	else if(eth_dma_ack)
-	else if(dl_txdb_process_finish)// ????????? temp replace
-	begin
-		eth_dma_rx_req <= 1'b0;
-	end
-	else
-	begin
-		eth_dma_rx_req <= eth_dma_rx_req;
-	end
-end
-
 
 //===============================================
 // eth mac rx fifo
@@ -628,6 +604,8 @@ end
 // ram 2k(1+1)
 // ahb clk
 //===============================================
+
+
 assign dl_rxdb2ahbmst_singlereq = 1'b0;
 assign dl_rxdb2ahbmst_busrtreq = 1'b0;
 
