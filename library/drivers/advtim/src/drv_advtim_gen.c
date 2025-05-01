@@ -86,6 +86,11 @@ void drv_advtim_gen_default_config(ADVTIM_HandleTypeDef *advtim)
 	advtim->gen_cfg.channel1_output_deadzone_enable = ADVTIM_GEN_OUTPUT_CHANNEL_DEADZONE_ENABLE;
 	advtim->gen_cfg.channel2_output_deadzone_enable = ADVTIM_GEN_OUTPUT_CHANNEL_DEADZONE_ENABLE;
 	advtim->gen_cfg.channel3_output_deadzone_enable = ADVTIM_GEN_OUTPUT_CHANNEL_DEADZONE_ENABLE;
+	advtim->gen_cfg.fault_detection_delay_time = 6;
+	advtim->gen_cfg.break_channel1_enable = ADVTIM_BREAK_CHANNEL_DISABLE;
+	advtim->gen_cfg.break_channel2_enable = ADVTIM_BREAK_CHANNEL_DISABLE;
+	advtim->gen_cfg.break_channel1_polarity = ADVTIM_BREAK_CHANNEL_POLARITY_LOW_LEVEL_ACTIVE;
+	advtim->gen_cfg.break_channel2_polarity = ADVTIM_BREAK_CHANNEL_POLARITY_HIGH_LEVEL_ACTIVE;
 }
 
 bool drv_advtim_gen_set_config(ADVTIM_HandleTypeDef *advtim)
@@ -173,7 +178,12 @@ bool drv_advtim_gen_set_config(ADVTIM_HandleTypeDef *advtim)
 				(advtim->gen_cfg.channel6_output_compare_mode 				<<  0) ;
 	reg_check |= drv_check_rw_data((uint32_t)(&(advtim->regs->gen_pe8)), reg_temp, reg_temp);
 	
-	reg_temp = 	(advtim->gen_cfg.deadzone_time 				<<  0) ;
+	reg_temp = 	(advtim->gen_cfg.fault_detection_delay_time << 16) |
+				(advtim->gen_cfg.break_channel2_polarity	<< 13) |
+				(advtim->gen_cfg.break_channel2_enable 		<< 12) |
+				(advtim->gen_cfg.break_channel1_polarity	<< 11) |
+				(advtim->gen_cfg.break_channel1_enable 		<< 10) |
+				(advtim->gen_cfg.deadzone_time 				<<  0) ;
 	reg_check |= drv_check_rw_data((uint32_t)(&(advtim->regs->gen_pe9)), reg_temp, reg_temp);
 
 	return reg_check;
@@ -194,6 +204,7 @@ bool drv_advtim_gen_init(ADVTIM_HandleTypeDef *advtim)
 void drv_advtim_gen_deinit(ADVTIM_HandleTypeDef *advtim)
 {
 	drv_advtim_gen_logic_reset(advtim);
+	drv_advtim_gen_int_disable_all(advtim);
 	drv_advtim_gen_int_allclear(advtim);
 }
 
@@ -201,13 +212,19 @@ void drv_advtim_gen_deinit(ADVTIM_HandleTypeDef *advtim)
 // advtim gen weak function
 //===============================================
 
-void __attribute__((weak)) advtim_gen_int_reload_callback(ADVTIM_HandleTypeDef *advtim)
+void __attribute__((weak)) advtim_gen_int_fault_detected_callback(ADVTIM_HandleTypeDef *advtim)
 {
 	UNUSED(advtim);
 	return;
 }
 
-void __attribute__((weak)) advtim_gen_int_reload_reaching_rcr_callback(ADVTIM_HandleTypeDef *advtim)
+void __attribute__((weak)) advtim_gen_int_reloaded_callback(ADVTIM_HandleTypeDef *advtim)
+{
+	UNUSED(advtim);
+	return;
+}
+
+void __attribute__((weak)) advtim_gen_int_reloading_reaching_rcr_callback(ADVTIM_HandleTypeDef *advtim)
 {
 	UNUSED(advtim);
 	return;
@@ -224,15 +241,20 @@ void drv_advtim_gen_interrupt_handler(ADVTIM_HandleTypeDef *advtim)
 	uint8_t status;
 	status = drv_advtim_gen_int_get(advtim) & advtim->regs->gen_int_en;
 
-	if(status & ADVTIM_GEN_INT_RELOADING)
+	if(status & ADVTIM_GEN_INT_FAULT_DETECTED)
 	{
-		advtim_gen_int_reload_callback(advtim);
-		drv_advtim_gen_int_clear(advtim, ADVTIM_GEN_INT_RELOADING);
+		advtim_gen_int_fault_detected_callback(advtim);
+		drv_advtim_gen_int_clear(advtim, ADVTIM_GEN_INT_FAULT_DETECTED);
 	}
-	if(status & ADVTIM_GEN_INT_RELOADING_REACH_RCR)
+	if(status & ADVTIM_GEN_INT_RELOADED)
 	{
-		advtim_gen_int_reload_reaching_rcr_callback(advtim);
-		drv_advtim_gen_int_clear(advtim, ADVTIM_GEN_INT_RELOADING_REACH_RCR);
+		advtim_gen_int_reloaded_callback(advtim);
+		drv_advtim_gen_int_clear(advtim, ADVTIM_GEN_INT_RELOADED);
+	}
+	if(status & ADVTIM_GEN_INT_RELOADING_REACHING_RCR)
+	{
+		advtim_gen_int_reloading_reaching_rcr_callback(advtim);
+		drv_advtim_gen_int_clear(advtim, ADVTIM_GEN_INT_RELOADING_REACHING_RCR);
 	}
 }
 

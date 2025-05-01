@@ -2,6 +2,7 @@
 ../library/rtl_logic/fifo_gen.v
 ../library/rtl_logic/sync_ff.v
 ../library/rtl_logic/edge_detect.v
+../library/rtl_logic/delay_detect.v
 ../library/rtl_logic/clock_gen.v
 ../library/rtl_logic/interrupt_gen.v
 ../library/rtl_logic/pulse_sync.v
@@ -80,10 +81,15 @@
 ../user/verilog/eth/eth_mac_data_buffer/eth_mac_data_buffer.v
 ../user/verilog/advtim/advtim_regs_wrap.v
 ../user/verilog/advtim/advtim_pe_core/advtim_cnt_gen.v
+../user/verilog/advtim/advtim_pe_core/advtim_cnt_cap.v
+../user/verilog/advtim/advtim_pe_core/advtim_cnt_enc.v
 ../user/verilog/advtim/advtim_pe_core/advtim_pe_core.v
 ../user/verilog/advtim/advtim_pe_core/channel_output_compare.v
+../user/verilog/advtim/advtim_pe_core/channel_input_capture.v
+../user/verilog/advtim/advtim_pe_core/channel_encoder_input.v
 ../user/verilog/advtim/advtim_pe_core/channel_ctrl.v
 ../user/verilog/advtim/advtim_pe_core/deadzone.v
+../user/verilog/advtim/advtim_pe_core/fault_detection.v
 ../user/verilog/advtim/advtim_top.v
 ../user/verilog/advtim/advtim_apb_cfg.v
 ../user/verilog/mcu_top.v

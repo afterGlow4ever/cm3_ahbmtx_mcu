@@ -114,7 +114,7 @@ MODIFY:	Altera FPGA sof for mcu basic timer test.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Date: 03242024
+Date: 03242024 (release)
 
 ADD:    Hyper peripherals APB2 with async APB. This is connected AHB by S8.
 ADD:		Ethernet sma, which is connected on APB2, has been added into.
@@ -163,5 +163,25 @@ ADD:    Advance timer pwm generation rtl section. Only simple verification.
 MODIFY:	RTL logic lib.
 MODIFY:	Vivado fpga script.
 DELETE:	Vivado 32k ram ip.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 05012025 (release)
+ADD:    Advance timer pwm generation rtl, driver, spyglass and simualtion.
+ADD:    PWM and encoder models.
+ADD:	Input detection related module in RTL logic lib.
+ADD:	Spyglass project file has been added from now on.
+FIX:	Bit width issue in pulse_sync.v and sync_ff.v.
+MODIFY:	Documents modified about design spec, interrupt line, bus arch.
+MODIFY:	UART printf array space in drv_uart_ex.c.
+MODIFY:	Redundant M5 port in AHB bus has been removed.
+MODIFY:	CPU interrupt connection.
+MODIFY:	TOP testbench,
+MODIFY:	Vivado fpga script has been updated for more reports generated automatically.
+MODIFY:	Vivado fpga pin assignments.
+MODIFY:	7020 fpga bitstream.
+MODIFY:	FPGA platform connection in verilog file. 80MHz clk can be used.
+MODIFY:	Firmware test.
+DELETE:	Redundant .o files has been deleted.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

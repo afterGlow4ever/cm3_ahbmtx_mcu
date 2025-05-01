@@ -20,8 +20,15 @@
 // macro defines
 //===============================================
 
-#define ADVTIM_GEN_INT_RELOADING				(1<<0)
-#define ADVTIM_GEN_INT_RELOADING_REACH_RCR		(1<<1)
+#define ADVTIM_GEN_INT_RELOADED					(1<<0)
+#define ADVTIM_GEN_INT_RELOADING_REACHING_RCR	(1<<1)
+#define ADVTIM_GEN_INT_FAULT_DETECTED			(1<<2)
+
+#define ADVTIM_CAP_INT_RELOADED					(1<<0)
+#define ADVTIM_CAP_INT_RELOADING_REACHING_RCR	(1<<1)
+
+#define ADVTIM_ENC_INT_RELOADED					(1<<0)
+#define ADVTIM_ENC_INT_DETECTED					(1<<1)
 
 //===============================================
 // advance timer regs
@@ -48,6 +55,22 @@ typedef struct
 	volatile uint32_t gen_int_en;
 	volatile uint32_t gen_int_clr;
 	volatile uint32_t gen_int_sta;
+	volatile uint32_t rsv4c;
+	volatile uint32_t rsv50;
+	volatile uint32_t cap_pe0;
+	volatile uint32_t cap_pe1;
+	volatile uint32_t cap_int_en;
+	volatile uint32_t cap_int_clr;
+	volatile uint32_t cap_ir;
+	volatile uint32_t cap_ic;
+	volatile uint32_t cap_int_sta;
+	volatile uint32_t enc_pe0;
+	volatile uint32_t enc_pe1;
+	volatile uint32_t rsv78;
+	volatile uint32_t enc_int_en;
+	volatile uint32_t enc_int_clr;
+	volatile uint32_t enc_eo;
+	volatile uint32_t enc_int_sta;
 }ADVTIM_TypeDef;
 
 //===============================================
@@ -124,12 +147,59 @@ typedef enum
 	ADVTIM_GEN_OUTPUT_CHANNEL_PWM_POLARITY_REVERSE,
 }advtim_gen_output_channel_pwm_polarity;
 
-
 typedef enum
 {
 	ADVTIM_GEN_OUTPUT_CHANNEL_DEADZONE_DISABLE,
 	ADVTIM_GEN_OUTPUT_CHANNEL_DEADZONE_ENABLE,
 }advtim_gen_output_channel_deadzone_enable;
+
+typedef enum
+{
+	ADVTIM_BREAK_CHANNEL_POLARITY_LOW_LEVEL_ACTIVE,
+	ADVTIM_BREAK_CHANNEL_POLARITY_HIGH_LEVEL_ACTIVE,
+}advtim_break_channel_polarity;
+
+typedef enum
+{
+	ADVTIM_BREAK_CHANNEL_DISABLE,
+	ADVTIM_BREAK_CHANNEL_ENABLE,
+}advtim_break_channel_enable;
+
+typedef enum
+{
+	ADVTIM_CAP_INPUT_CHANNEL_DISABLE,
+	ADVTIM_CAP_INPUT_CHANNEL_ENABLE,
+}advtim_cap_input_channel_enable;
+
+typedef enum
+{
+	ADVTIM_CAP_INPUT_CHANNEL_POLARITY_REVERSE,
+	ADVTIM_CAP_INPUT_CHANNEL_POLARITY_FORWARD,
+}advtim_cap_input_channel_polarity;
+
+typedef enum
+{
+	ADVTIM_CAP_INPUT_CAPTURE_STEP_MODE,
+	ADVTIM_CAP_INPUT_CAPTURE_PWM_MODE,
+}advtim_cap_input_capture_mode;
+
+typedef enum
+{
+	ADVTIM_ENC_INPUT_CHANNEL_DISABLE,
+	ADVTIM_ENC_INPUT_CHANNEL_ENABLE,
+}advtim_enc_input_channel_enable;
+
+typedef enum
+{
+	ADVTIM_ENC_INPUT_CHANNEL_POLARITY_REVERSE,
+	ADVTIM_ENC_INPUT_CHANNEL_POLARITY_FORWARD,
+}advtim_enc_input_channel_polarity;
+
+typedef enum
+{
+	ADVTIM_ENC_INPUT_FIRST_EDGE_MODE,
+	ADVTIM_ENC_INPUT_BOTH_EDGE_MODE,
+}advtim_enc_input_mode;
 
 //===============================================
 // advance timer handler
@@ -151,6 +221,7 @@ typedef struct
 	advtim_gen_output_channel_mode channel1_output_negative_mode; 
 	advtim_gen_output_channel_value_in_gpio_mode channel1_output_positive_value_in_gpio_mode;
 	advtim_gen_output_channel_value_in_gpio_mode channel1_output_negative_value_in_gpio_mode;
+	advtim_gen_output_channel_deadzone_enable channel1_output_deadzone_enable;
 	advtim_gen_output_channel_pwm_enable channel1_output_positive_enable;
 	advtim_gen_output_channel_pwm_enable channel1_output_negative_enable;
 	advtim_gen_output_channel_pwm_polarity channel1_output_positive_polarity;
@@ -164,6 +235,7 @@ typedef struct
 	advtim_gen_output_channel_mode channel2_output_negative_mode; 
 	advtim_gen_output_channel_value_in_gpio_mode channel2_output_positive_value_in_gpio_mode;
 	advtim_gen_output_channel_value_in_gpio_mode channel2_output_negative_value_in_gpio_mode;
+	advtim_gen_output_channel_deadzone_enable channel2_output_deadzone_enable;
 	advtim_gen_output_channel_pwm_enable channel2_output_positive_enable;
 	advtim_gen_output_channel_pwm_enable channel2_output_negative_enable;
 	advtim_gen_output_channel_pwm_polarity channel2_output_positive_polarity;
@@ -177,6 +249,7 @@ typedef struct
 	advtim_gen_output_channel_mode channel3_output_negative_mode; 
 	advtim_gen_output_channel_value_in_gpio_mode channel3_output_positive_value_in_gpio_mode;
 	advtim_gen_output_channel_value_in_gpio_mode channel3_output_negative_value_in_gpio_mode;
+	advtim_gen_output_channel_deadzone_enable channel3_output_deadzone_enable;
 	advtim_gen_output_channel_pwm_enable channel3_output_positive_enable;
 	advtim_gen_output_channel_pwm_enable channel3_output_negative_enable;
 	advtim_gen_output_channel_pwm_polarity channel3_output_positive_polarity;
@@ -197,15 +270,43 @@ typedef struct
 	advtim_gen_output_channel_pwm_enable channel6_output_enable;
 	advtim_gen_output_channel_pwm_polarity channel6_output_polarity;
 	uint16_t deadzone_time;
-	advtim_gen_output_channel_deadzone_enable channel1_output_deadzone_enable;
-	advtim_gen_output_channel_deadzone_enable channel2_output_deadzone_enable;
-	advtim_gen_output_channel_deadzone_enable channel3_output_deadzone_enable;
+	uint8_t fault_detection_delay_time;
+	advtim_break_channel_enable break_channel1_enable;
+	advtim_break_channel_enable break_channel2_enable;
+	advtim_break_channel_polarity break_channel1_polarity;
+	advtim_break_channel_polarity break_channel2_polarity;
 }ADVTIM_GEN_FunctionCfg;
+
+typedef struct
+{
+	uint16_t psc;
+	uint16_t arr;
+	uint16_t rcr;
+	uint8_t capture_delay_time;
+	advtim_cap_input_capture_mode channel1_input_mode;
+	advtim_cap_input_channel_enable channel1_input_positive_enable;
+	advtim_cap_input_channel_enable channel1_input_negative_enable;
+	advtim_cap_input_channel_polarity channel1_input_positive_polarity;
+	advtim_cap_input_channel_polarity channel1_input_negative_polarity;
+}ADVTIM_CAP_FunctionCfg;
+
+typedef struct
+{
+	uint32_t arr;
+	uint8_t encoder_delay_time;
+	advtim_enc_input_mode channel1_input_mode;
+	advtim_enc_input_channel_enable channel1_input_direct_enable;
+	advtim_enc_input_channel_enable channel1_input_quadrature_enable;
+	advtim_enc_input_channel_polarity channel1_input_direct_polarity;
+	advtim_enc_input_channel_polarity channel1_input_quadrature_polarity;
+}ADVTIM_ENC_FunctionCfg;
 
 typedef struct
 {
 	ADVTIM_TypeDef *regs;
 	ADVTIM_GEN_FunctionCfg gen_cfg;
+	ADVTIM_CAP_FunctionCfg cap_cfg;
+	ADVTIM_ENC_FunctionCfg enc_cfg;
 }ADVTIM_HandleTypeDef;
 
 //===============================================
@@ -216,12 +317,6 @@ static inline void drv_advtim_gen_logic_reset(ADVTIM_HandleTypeDef *advtim)
 {
 	REG_SETBIT(advtim->regs->top_ctrl, 8, 1);//pwm generator logic clear
 	REG_SETBIT(advtim->regs->top_ctrl, 8, 0);//pwm generator logic clear
-}
-
-static inline void drv_advtim_cap_logic_reset(ADVTIM_HandleTypeDef *advtim)
-{
-	REG_SETBIT(advtim->regs->top_ctrl, 9, 1);//input capture logic clear
-	REG_SETBIT(advtim->regs->top_ctrl, 9, 0);//input capture logic clear
 }
 
 static inline void drv_advtim_config_hw_update_enable(ADVTIM_HandleTypeDef *advtim)
@@ -551,6 +646,11 @@ static inline void drv_advtim_gen_int_disable(ADVTIM_HandleTypeDef *advtim, uint
 	advtim->regs->gen_int_en &= ~advtim_gen_int;
 }
 
+static inline void drv_advtim_gen_int_disable_all(ADVTIM_HandleTypeDef *advtim)
+{
+	advtim->regs->gen_int_en = 0;
+}
+
 static inline void drv_advtim_gen_int_clear(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_gen_int)
 {
 	advtim->regs->gen_int_clr |= advtim_gen_int;
@@ -559,13 +659,205 @@ static inline void drv_advtim_gen_int_clear(ADVTIM_HandleTypeDef *advtim, uint32
 
 static inline void drv_advtim_gen_int_allclear(ADVTIM_HandleTypeDef *advtim)
 {
-	advtim->regs->gen_int_clr = 0x3;
+	advtim->regs->gen_int_clr = 0x7;
 	advtim->regs->gen_int_clr = 0;
 }
 
 static inline uint32_t drv_advtim_gen_int_get(ADVTIM_HandleTypeDef *advtim)
 {
 	return advtim->regs->gen_int_sta;
+}
+
+static inline void drv_advtim_cap_logic_reset(ADVTIM_HandleTypeDef *advtim)
+{
+	REG_SETBIT(advtim->regs->top_ctrl, 9, 1);//input capture logic clear
+	REG_SETBIT(advtim->regs->top_ctrl, 9, 0);//input capture logic clear
+}
+
+static inline void drv_advtim_cap_enable(ADVTIM_HandleTypeDef *advtim)
+{
+	REG_SETBIT(advtim->regs->top_ctrl, 3, 1);
+	REG_SETBIT(advtim->regs->top_ctrl, 3, 0);
+}
+
+static inline void drv_advtim_cap_set_arr(ADVTIM_HandleTypeDef *advtim, uint16_t arr)
+{
+	REG_SETBITS(advtim->regs->cap_pe0, 0, 15, arr);
+}
+
+static inline void drv_advtim_cap_set_psc(ADVTIM_HandleTypeDef *advtim, uint16_t psc)
+{
+	REG_SETBITS(advtim->regs->cap_pe0, 16, 31, psc);
+}
+
+static inline void drv_advtim_cap_set_rcr(ADVTIM_HandleTypeDef *advtim, uint16_t rcr)
+{
+	REG_SETBITS(advtim->regs->cap_pe1, 16, 31, rcr);
+}
+
+static inline void drv_advtim_cap_set_channel1_input_capture_mode(ADVTIM_HandleTypeDef *advtim, advtim_cap_input_capture_mode input_capture_mode)
+{
+	REG_SETBIT(advtim->regs->cap_pe1, 8, input_capture_mode);
+}
+
+static inline void drv_advtim_cap_set_channel1_input_positive_polarity(ADVTIM_HandleTypeDef *advtim, advtim_cap_input_channel_polarity channel1_input_positive_polarity)
+{
+	REG_SETBIT(advtim->regs->cap_pe1, 3, channel1_input_positive_polarity);
+}
+
+static inline void drv_advtim_cap_set_channel1_input_negative_polarity(ADVTIM_HandleTypeDef *advtim, advtim_cap_input_channel_polarity channel1_input_negative_polarity)
+{
+	REG_SETBIT(advtim->regs->cap_pe1, 2, channel1_input_negative_polarity);
+}
+
+static inline void drv_advtim_cap_set_channel1_input_positive_enable(ADVTIM_HandleTypeDef *advtim, advtim_cap_input_channel_enable channel1_input_positive_enable)
+{
+	REG_SETBIT(advtim->regs->cap_pe1, 1, channel1_input_positive_enable);
+}
+
+static inline void drv_advtim_cap_set_channel1_input_negative_enable(ADVTIM_HandleTypeDef *advtim, advtim_cap_input_channel_enable channel1_input_negative_enable)
+{
+	REG_SETBIT(advtim->regs->cap_pe1, 0, channel1_input_negative_enable);
+}
+
+static inline uint16_t drv_advtim_cap_get_channel1_input_capture_first_polarity_reload_value(ADVTIM_HandleTypeDef *advtim)
+{
+	return REG_GETBITS(advtim->regs->cap_ir, 16, 31);
+}
+
+static inline uint16_t drv_advtim_cap_get_channel1_input_capture_last_polarity_reload_value(ADVTIM_HandleTypeDef *advtim)
+{
+	return REG_GETBITS(advtim->regs->cap_ir, 0, 15);
+}
+
+static inline uint16_t drv_advtim_cap_get_channel1_input_capture_first_polarity_counter_value(ADVTIM_HandleTypeDef *advtim)
+{
+	return REG_GETBITS(advtim->regs->cap_ic, 16, 31);
+}
+
+static inline uint16_t drv_advtim_cap_get_channel1_input_capture_last_polarity_counter_value(ADVTIM_HandleTypeDef *advtim)
+{
+	return REG_GETBITS(advtim->regs->cap_ic, 0, 15);
+}
+
+static inline void drv_advtim_cap_int_enable(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_cap_int)
+{
+	advtim->regs->cap_int_en |= advtim_cap_int;
+}
+
+static inline void drv_advtim_cap_int_disable(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_cap_int)
+{
+	advtim->regs->cap_int_en &= ~advtim_cap_int;
+}
+
+static inline void drv_advtim_cap_int_disable_all(ADVTIM_HandleTypeDef *advtim)
+{
+	advtim->regs->cap_int_en = 0;
+}
+
+static inline void drv_advtim_cap_int_clear(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_cap_int)
+{
+	advtim->regs->cap_int_clr |= advtim_cap_int;
+	advtim->regs->cap_int_clr = 0;
+}
+
+static inline void drv_advtim_cap_int_allclear(ADVTIM_HandleTypeDef *advtim)
+{
+	advtim->regs->cap_int_clr = 0x3;
+	advtim->regs->cap_int_clr = 0;
+}
+
+static inline uint32_t drv_advtim_cap_int_get(ADVTIM_HandleTypeDef *advtim)
+{
+	return advtim->regs->cap_int_sta;
+}
+
+static inline void drv_advtim_enc_logic_reset(ADVTIM_HandleTypeDef *advtim)
+{
+	REG_SETBIT(advtim->regs->top_ctrl, 10, 1);// encoder input logic clear
+	REG_SETBIT(advtim->regs->top_ctrl, 10, 0);// encoder input logic clear
+}
+
+static inline void drv_advtim_enc_enable(ADVTIM_HandleTypeDef *advtim)
+{
+	REG_SETBIT(advtim->regs->top_ctrl, 4, 1);// step signal
+}
+
+static inline void drv_advtim_enc_disable(ADVTIM_HandleTypeDef *advtim)
+{
+	REG_SETBIT(advtim->regs->top_ctrl, 4, 0);// step signal
+}
+
+static inline void drv_advtim_enc_set_arr(ADVTIM_HandleTypeDef *advtim, uint32_t arr)
+{
+	REG_SETBITS(advtim->regs->enc_pe0, 0, 23, arr);
+}
+
+static inline void drv_advtim_enc_set_channel1_encoder_input_mode(ADVTIM_HandleTypeDef *advtim, advtim_enc_input_mode encoder_input_mode)
+{
+	REG_SETBIT(advtim->regs->enc_pe1, 16, encoder_input_mode);
+}
+
+static inline void drv_advtim_enc_set_channel1_encoder_input_direct_polarity(ADVTIM_HandleTypeDef *advtim, advtim_enc_input_channel_polarity channel1_input_direct_polarity)
+{
+	REG_SETBIT(advtim->regs->enc_pe1, 3, channel1_input_direct_polarity);
+}
+
+static inline void drv_advtim_enc_set_channel1_encoder_input_quadrature_polarity(ADVTIM_HandleTypeDef *advtim, advtim_enc_input_channel_polarity channel1_input_quadrature_polarity)
+{
+	REG_SETBIT(advtim->regs->enc_pe1, 2, channel1_input_quadrature_polarity);
+}
+
+static inline void drv_advtim_enc_set_channel1_encoder_input_direct_enable(ADVTIM_HandleTypeDef *advtim, advtim_enc_input_channel_enable channel1_input_direct_enable)
+{
+	REG_SETBIT(advtim->regs->enc_pe1, 1, channel1_input_direct_enable);
+}
+
+static inline void drv_advtim_enc_set_channel1_encoder_input_quadrature_enable(ADVTIM_HandleTypeDef *advtim, advtim_enc_input_channel_enable channel1_input_quadrature_enable)
+{
+	REG_SETBIT(advtim->regs->enc_pe1, 0, channel1_input_quadrature_enable);
+}
+
+static inline uint8_t drv_advtim_enc_get_channel1_encoder_direction(ADVTIM_HandleTypeDef *advtim)
+{
+	return REG_GETBIT(advtim->regs->enc_eo, 16);
+}
+
+static inline uint16_t drv_advtim_enc_get_channel1_encoder_counter(ADVTIM_HandleTypeDef *advtim)
+{
+	return REG_GETBITS(advtim->regs->enc_eo, 0, 15);
+}
+
+static inline void drv_advtim_enc_int_enable(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_enc_int)
+{
+	advtim->regs->enc_int_en |= advtim_enc_int;
+}
+
+static inline void drv_advtim_enc_int_disable(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_enc_int)
+{
+	advtim->regs->enc_int_en &= ~advtim_enc_int;
+}
+
+static inline void drv_advtim_enc_int_disable_all(ADVTIM_HandleTypeDef *advtim)
+{
+	advtim->regs->enc_int_en = 0;
+}
+
+static inline void drv_advtim_enc_int_clear(ADVTIM_HandleTypeDef *advtim, uint32_t advtim_enc_int)
+{
+	advtim->regs->enc_int_clr |= advtim_enc_int;
+	advtim->regs->enc_int_clr = 0;
+}
+
+static inline void drv_advtim_enc_int_allclear(ADVTIM_HandleTypeDef *advtim)
+{
+	advtim->regs->enc_int_clr = 0x3;
+	advtim->regs->enc_int_clr = 0;
+}
+
+static inline uint32_t drv_advtim_enc_int_get(ADVTIM_HandleTypeDef *advtim)
+{
+	return advtim->regs->enc_int_sta;
 }
 
 //===============================================
@@ -577,6 +869,18 @@ bool drv_advtim_gen_set_config(ADVTIM_HandleTypeDef *advtim);
 bool drv_advtim_gen_init(ADVTIM_HandleTypeDef *advtim);
 void drv_advtim_gen_deinit(ADVTIM_HandleTypeDef *advtim);
 void drv_advtim_gen_interrupt_handler(ADVTIM_HandleTypeDef *advtim);
+
+void drv_advtim_cap_default_config(ADVTIM_HandleTypeDef *advtim);
+bool drv_advtim_cap_set_config(ADVTIM_HandleTypeDef *advtim);
+bool drv_advtim_cap_init(ADVTIM_HandleTypeDef *advtim);
+void drv_advtim_cap_deinit(ADVTIM_HandleTypeDef *advtim);
+void drv_advtim_cap_interrupt_handler(ADVTIM_HandleTypeDef *advtim);
+
+void drv_advtim_enc_default_config(ADVTIM_HandleTypeDef *advtim);
+bool drv_advtim_enc_set_config(ADVTIM_HandleTypeDef *advtim);
+bool drv_advtim_enc_init(ADVTIM_HandleTypeDef *advtim);
+void drv_advtim_enc_deinit(ADVTIM_HandleTypeDef *advtim);
+void drv_advtim_enc_interrupt_handler(ADVTIM_HandleTypeDef *advtim);
 
 #endif
 

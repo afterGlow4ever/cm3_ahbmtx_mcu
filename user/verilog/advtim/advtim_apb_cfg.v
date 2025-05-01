@@ -7,8 +7,13 @@ module advtim_apb_cfg (
                 ,paddr
                 ,pwdata
                 ,prdata
+                ,r3_logic_clr
+                ,r2_logic_clr
                 ,r1_logic_clr
                 ,r0_logic_clr
+                ,r3_hall_enable
+                ,r2_enc_enable
+                ,r1_cap_enable
                 ,r0_gen_enable
                 ,r0_hw_update_en
                 ,r0_sw_update
@@ -80,12 +85,49 @@ module advtim_apb_cfg (
                 ,r0_bk1p
                 ,r0_bk1e
                 ,r0_dtg
+                ,r0_int2_en
                 ,r0_int1_en
                 ,r0_int0_en
+                ,r0_int2_clr
                 ,r0_int1_clr
                 ,r0_int0_clr
+                ,r0_int2_sta
                 ,r0_int1_sta
                 ,r0_int0_sta
+                ,r1_psc
+                ,r1_arr
+                ,r1_rcr
+                ,r1_bt
+                ,r1_ic1m
+                ,r1_cc1p
+                ,r1_cc1np
+                ,r1_cc1e
+                ,r1_cc1ne
+                ,r1_int1_en
+                ,r1_int0_en
+                ,r1_int1_clr
+                ,r1_int0_clr
+                ,r1_ifr
+                ,r1_ilr
+                ,r1_ifc
+                ,r1_ilc
+                ,r1_int1_sta
+                ,r1_int0_sta
+                ,r2_arr
+                ,r2_bt
+                ,r2_ec1m
+                ,r2_ec1p
+                ,r2_ec1np
+                ,r2_ec1e
+                ,r2_ec1ne
+                ,r2_int1_en
+                ,r2_int0_en
+                ,r2_int1_clr
+                ,r2_int0_clr
+                ,r2_ed
+                ,r2_ec
+                ,r2_int1_sta
+                ,r2_int0_sta
                 );
 input           clk;
 input           rst_n;
@@ -95,8 +137,13 @@ input           penable;
 input  [31:0]   paddr;
 input  [31:0]   pwdata;
 output [31:0]   prdata;
+output          r3_logic_clr;
+output          r2_logic_clr;
 output          r1_logic_clr;
 output          r0_logic_clr;
+output          r3_hall_enable;
+output          r2_enc_enable;
+output          r1_cap_enable;
 output          r0_gen_enable;
 output          r0_hw_update_en;
 output          r0_sw_update;
@@ -168,12 +215,49 @@ output          r0_bk2e;
 output          r0_bk1p;
 output          r0_bk1e;
 output [9:0]    r0_dtg;
+output          r0_int2_en;
 output          r0_int1_en;
 output          r0_int0_en;
+output          r0_int2_clr;
 output          r0_int1_clr;
 output          r0_int0_clr;
+input           r0_int2_sta;
 input           r0_int1_sta;
 input           r0_int0_sta;
+output [15:0]   r1_psc;
+output [15:0]   r1_arr;
+output [15:0]   r1_rcr;
+output [3:0]    r1_bt;
+output          r1_ic1m;
+output          r1_cc1p;
+output          r1_cc1np;
+output          r1_cc1e;
+output          r1_cc1ne;
+output          r1_int1_en;
+output          r1_int0_en;
+output          r1_int1_clr;
+output          r1_int0_clr;
+input  [15:0]   r1_ifr;
+input  [15:0]   r1_ilr;
+input  [15:0]   r1_ifc;
+input  [15:0]   r1_ilc;
+input           r1_int1_sta;
+input           r1_int0_sta;
+output [23:0]   r2_arr;
+output [3:0]    r2_bt;
+output          r2_ec1m;
+output          r2_ec1p;
+output          r2_ec1np;
+output          r2_ec1e;
+output          r2_ec1ne;
+output          r2_int1_en;
+output          r2_int0_en;
+output          r2_int1_clr;
+output          r2_int0_clr;
+input           r2_ed;
+input  [15:0]   r2_ec;
+input           r2_int1_sta;
+input           r2_int0_sta;
 wire            clk;
 wire            rst_n;
 wire            pwrite;
@@ -182,8 +266,13 @@ wire            penable;
 wire [31:0]     paddr;
 wire [31:0]     pwdata;
 reg  [31:0]     prdata;
+reg             r3_logic_clr;
+reg             r2_logic_clr;
 reg             r1_logic_clr;
 reg             r0_logic_clr;
+reg             r3_hall_enable;
+reg             r2_enc_enable;
+reg             r1_cap_enable;
 reg             r0_gen_enable;
 reg             r0_hw_update_en;
 reg             r0_sw_update;
@@ -255,12 +344,49 @@ reg             r0_bk2e;
 reg             r0_bk1p;
 reg             r0_bk1e;
 reg  [9:0]      r0_dtg;
+reg             r0_int2_en;
 reg             r0_int1_en;
 reg             r0_int0_en;
+reg             r0_int2_clr;
 reg             r0_int1_clr;
 reg             r0_int0_clr;
+wire            r0_int2_sta;
 wire            r0_int1_sta;
 wire            r0_int0_sta;
+reg  [15:0]     r1_psc;
+reg  [15:0]     r1_arr;
+reg  [15:0]     r1_rcr;
+reg  [3:0]      r1_bt;
+reg             r1_ic1m;
+reg             r1_cc1p;
+reg             r1_cc1np;
+reg             r1_cc1e;
+reg             r1_cc1ne;
+reg             r1_int1_en;
+reg             r1_int0_en;
+reg             r1_int1_clr;
+reg             r1_int0_clr;
+wire [15:0]     r1_ifr;
+wire [15:0]     r1_ilr;
+wire [15:0]     r1_ifc;
+wire [15:0]     r1_ilc;
+wire            r1_int1_sta;
+wire            r1_int0_sta;
+reg  [23:0]     r2_arr;
+reg  [3:0]      r2_bt;
+reg             r2_ec1m;
+reg             r2_ec1p;
+reg             r2_ec1np;
+reg             r2_ec1e;
+reg             r2_ec1ne;
+reg             r2_int1_en;
+reg             r2_int0_en;
+reg             r2_int1_clr;
+reg             r2_int0_clr;
+wire            r2_ed;
+wire [15:0]     r2_ec;
+wire            r2_int1_sta;
+wire            r2_int0_sta;
 wire [31:0]     R_TOP_CTRL;
 wire [31:0]     R0_PE_CTRL;
 wire [31:0]     R0_PE_CTRL1;
@@ -275,6 +401,19 @@ wire [31:0]     R0_PE_CTRL9;
 wire [31:0]     R0_INT_EN;
 wire [31:0]     R0_INT_CLR;
 wire [31:0]     R0_INT_STA;
+wire [31:0]     R1_PE_CTRL;
+wire [31:0]     R1_PE_CTRL1;
+wire [31:0]     R1_INT_EN;
+wire [31:0]     R1_INT_CLR;
+wire [31:0]     R1_IR;
+wire [31:0]     R1_IC;
+wire [31:0]     R1_INT_STA;
+wire [31:0]     R2_PE_CTRL0;
+wire [31:0]     R2_PE_CTRL1;
+wire [31:0]     R2_INT_EN;
+wire [31:0]     R2_INT_CLR;
+wire [31:0]     R2_EO;
+wire [31:0]     R2_INT_STA;
 wire            r_top_ctrl_wr;
 wire            r_top_ctrl_rd;
 wire            r0_pe_ctrl_wr;
@@ -303,6 +442,32 @@ wire            r0_int_clr_wr;
 wire            r0_int_clr_rd;
 wire            r0_int_sta_wr;
 wire            r0_int_sta_rd;
+wire            r1_pe_ctrl_wr;
+wire            r1_pe_ctrl_rd;
+wire            r1_pe_ctrl1_wr;
+wire            r1_pe_ctrl1_rd;
+wire            r1_int_en_wr;
+wire            r1_int_en_rd;
+wire            r1_int_clr_wr;
+wire            r1_int_clr_rd;
+wire            r1_ir_wr;
+wire            r1_ir_rd;
+wire            r1_ic_wr;
+wire            r1_ic_rd;
+wire            r1_int_sta_wr;
+wire            r1_int_sta_rd;
+wire            r2_pe_ctrl0_wr;
+wire            r2_pe_ctrl0_rd;
+wire            r2_pe_ctrl1_wr;
+wire            r2_pe_ctrl1_rd;
+wire            r2_int_en_wr;
+wire            r2_int_en_rd;
+wire            r2_int_clr_wr;
+wire            r2_int_clr_rd;
+wire            r2_eo_wr;
+wire            r2_eo_rd;
+wire            r2_int_sta_wr;
+wire            r2_int_sta_rd;
 wire            reg_wr;
 wire            reg_rd;
 assign reg_wr = psel & pwrite & penable;
@@ -335,10 +500,41 @@ assign r0_int_clr_wr = (paddr == 32'h40021000 + 8'h44) & reg_wr;
 assign r0_int_clr_rd = (paddr == 32'h40021000 + 8'h44) & reg_rd;
 assign r0_int_sta_wr = (paddr == 32'h40021000 + 8'h48) & reg_wr;
 assign r0_int_sta_rd = (paddr == 32'h40021000 + 8'h48) & reg_rd;
-assign R_TOP_CTRL[31:10] = 22'h0;
+assign r1_pe_ctrl_wr = (paddr == 32'h40021000 + 8'h54) & reg_wr;
+assign r1_pe_ctrl_rd = (paddr == 32'h40021000 + 8'h54) & reg_rd;
+assign r1_pe_ctrl1_wr = (paddr == 32'h40021000 + 8'h58) & reg_wr;
+assign r1_pe_ctrl1_rd = (paddr == 32'h40021000 + 8'h58) & reg_rd;
+assign r1_int_en_wr = (paddr == 32'h40021000 + 8'h5c) & reg_wr;
+assign r1_int_en_rd = (paddr == 32'h40021000 + 8'h5c) & reg_rd;
+assign r1_int_clr_wr = (paddr == 32'h40021000 + 8'h60) & reg_wr;
+assign r1_int_clr_rd = (paddr == 32'h40021000 + 8'h60) & reg_rd;
+assign r1_ir_wr = (paddr == 32'h40021000 + 8'h64) & reg_wr;
+assign r1_ir_rd = (paddr == 32'h40021000 + 8'h64) & reg_rd;
+assign r1_ic_wr = (paddr == 32'h40021000 + 8'h68) & reg_wr;
+assign r1_ic_rd = (paddr == 32'h40021000 + 8'h68) & reg_rd;
+assign r1_int_sta_wr = (paddr == 32'h40021000 + 8'h6c) & reg_wr;
+assign r1_int_sta_rd = (paddr == 32'h40021000 + 8'h6c) & reg_rd;
+assign r2_pe_ctrl0_wr = (paddr == 32'h40021000 + 8'h70) & reg_wr;
+assign r2_pe_ctrl0_rd = (paddr == 32'h40021000 + 8'h70) & reg_rd;
+assign r2_pe_ctrl1_wr = (paddr == 32'h40021000 + 8'h74) & reg_wr;
+assign r2_pe_ctrl1_rd = (paddr == 32'h40021000 + 8'h74) & reg_rd;
+assign r2_int_en_wr = (paddr == 32'h40021000 + 8'h7c) & reg_wr;
+assign r2_int_en_rd = (paddr == 32'h40021000 + 8'h7c) & reg_rd;
+assign r2_int_clr_wr = (paddr == 32'h40021000 + 8'h80) & reg_wr;
+assign r2_int_clr_rd = (paddr == 32'h40021000 + 8'h80) & reg_rd;
+assign r2_eo_wr = (paddr == 32'h40021000 + 8'h84) & reg_wr;
+assign r2_eo_rd = (paddr == 32'h40021000 + 8'h84) & reg_rd;
+assign r2_int_sta_wr = (paddr == 32'h40021000 + 8'h88) & reg_wr;
+assign r2_int_sta_rd = (paddr == 32'h40021000 + 8'h88) & reg_rd;
+assign R_TOP_CTRL[31:12] = 20'h0;
+assign R_TOP_CTRL[11] = r3_logic_clr;
+assign R_TOP_CTRL[10] = r2_logic_clr;
 assign R_TOP_CTRL[9] = r1_logic_clr;
 assign R_TOP_CTRL[8] = r0_logic_clr;
-assign R_TOP_CTRL[7:3] = 5'h0;
+assign R_TOP_CTRL[7:6] = 2'h0;
+assign R_TOP_CTRL[5] = r3_hall_enable;
+assign R_TOP_CTRL[4] = r2_enc_enable;
+assign R_TOP_CTRL[3] = r1_cap_enable;
 assign R_TOP_CTRL[2] = r0_gen_enable;
 assign R_TOP_CTRL[1] = r0_hw_update_en;
 assign R_TOP_CTRL[0] = r0_sw_update;
@@ -428,15 +624,80 @@ assign R0_PE_CTRL9[12] = r0_bk2e;
 assign R0_PE_CTRL9[11] = r0_bk1p;
 assign R0_PE_CTRL9[10] = r0_bk1e;
 assign R0_PE_CTRL9[9:0] = r0_dtg;
-assign R0_INT_EN[31:2] = 30'h0;
+assign R0_INT_EN[31:3] = 29'h0;
+assign R0_INT_EN[2] = r0_int2_en;
 assign R0_INT_EN[1] = r0_int1_en;
 assign R0_INT_EN[0] = r0_int0_en;
-assign R0_INT_CLR[31:2] = 30'h0;
+assign R0_INT_CLR[31:3] = 29'h0;
+assign R0_INT_CLR[2] = r0_int2_clr;
 assign R0_INT_CLR[1] = r0_int1_clr;
 assign R0_INT_CLR[0] = r0_int0_clr;
-assign R0_INT_STA[31:2] = 30'h0;
+assign R0_INT_STA[31:3] = 29'h0;
+assign R0_INT_STA[2] = r0_int2_sta;
 assign R0_INT_STA[1] = r0_int1_sta;
 assign R0_INT_STA[0] = r0_int0_sta;
+assign R1_PE_CTRL[31:16] = r1_psc;
+assign R1_PE_CTRL[15:0] = r1_arr;
+assign R1_PE_CTRL1[31:16] = r1_rcr;
+assign R1_PE_CTRL1[15:12] = r1_bt;
+assign R1_PE_CTRL1[11:9] = 3'h0;
+assign R1_PE_CTRL1[8] = r1_ic1m;
+assign R1_PE_CTRL1[7:4] = 4'h0;
+assign R1_PE_CTRL1[3] = r1_cc1p;
+assign R1_PE_CTRL1[2] = r1_cc1np;
+assign R1_PE_CTRL1[1] = r1_cc1e;
+assign R1_PE_CTRL1[0] = r1_cc1ne;
+assign R1_INT_EN[31:2] = 30'h0;
+assign R1_INT_EN[1] = r1_int1_en;
+assign R1_INT_EN[0] = r1_int0_en;
+assign R1_INT_CLR[31:2] = 30'h0;
+assign R1_INT_CLR[1] = r1_int1_clr;
+assign R1_INT_CLR[0] = r1_int0_clr;
+assign R1_IR[31:16] = r1_ifr;
+assign R1_IR[15:0] = r1_ilr;
+assign R1_IC[31:16] = r1_ifc;
+assign R1_IC[15:0] = r1_ilc;
+assign R1_INT_STA[31:2] = 30'h0;
+assign R1_INT_STA[1] = r1_int1_sta;
+assign R1_INT_STA[0] = r1_int0_sta;
+assign R2_PE_CTRL0[31:24] = 8'h0;
+assign R2_PE_CTRL0[23:0] = r2_arr;
+assign R2_PE_CTRL1[31:28] = r2_bt;
+assign R2_PE_CTRL1[27:17] = 11'h0;
+assign R2_PE_CTRL1[16] = r2_ec1m;
+assign R2_PE_CTRL1[15:4] = 12'h0;
+assign R2_PE_CTRL1[3] = r2_ec1p;
+assign R2_PE_CTRL1[2] = r2_ec1np;
+assign R2_PE_CTRL1[1] = r2_ec1e;
+assign R2_PE_CTRL1[0] = r2_ec1ne;
+assign R2_INT_EN[31:2] = 30'h0;
+assign R2_INT_EN[1] = r2_int1_en;
+assign R2_INT_EN[0] = r2_int0_en;
+assign R2_INT_CLR[31:2] = 30'h0;
+assign R2_INT_CLR[1] = r2_int1_clr;
+assign R2_INT_CLR[0] = r2_int0_clr;
+assign R2_EO[31:17] = 15'h0;
+assign R2_EO[16] = r2_ed;
+assign R2_EO[15:0] = r2_ec;
+assign R2_INT_STA[31:2] = 30'h0;
+assign R2_INT_STA[1] = r2_int1_sta;
+assign R2_INT_STA[0] = r2_int0_sta;
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r3_logic_clr <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r3_logic_clr <= pwdata[11];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_logic_clr <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r2_logic_clr <= pwdata[10];
+    end
+end
 always@(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         r1_logic_clr <= 1'b0;
@@ -451,6 +712,30 @@ always@(posedge clk or negedge rst_n) begin
     end
     else if(r_top_ctrl_wr) begin
         r0_logic_clr <= pwdata[8];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r3_hall_enable <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r3_hall_enable <= pwdata[5];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_enc_enable <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r2_enc_enable <= pwdata[4];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_cap_enable <= 1'b0;
+    end
+    else if(r_top_ctrl_wr) begin
+        r1_cap_enable <= pwdata[3];
     end
 end
 always@(posedge clk or negedge rst_n) begin
@@ -1023,6 +1308,14 @@ always@(posedge clk or negedge rst_n) begin
 end
 always@(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
+        r0_int2_en <= 1'b0;
+    end
+    else if(r0_int_en_wr) begin
+        r0_int2_en <= pwdata[2];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
         r0_int1_en <= 1'b0;
     end
     else if(r0_int_en_wr) begin
@@ -1035,6 +1328,14 @@ always@(posedge clk or negedge rst_n) begin
     end
     else if(r0_int_en_wr) begin
         r0_int0_en <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r0_int2_clr <= 1'b0;
+    end
+    else if(r0_int_clr_wr) begin
+        r0_int2_clr <= pwdata[2];
     end
 end
 always@(posedge clk or negedge rst_n) begin
@@ -1053,6 +1354,198 @@ always@(posedge clk or negedge rst_n) begin
         r0_int0_clr <= pwdata[0];
     end
 end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_psc <= 16'h2;
+    end
+    else if(r1_pe_ctrl_wr) begin
+        r1_psc <= pwdata[31:16];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_arr <= 16'h32;
+    end
+    else if(r1_pe_ctrl_wr) begin
+        r1_arr <= pwdata[15:0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_rcr <= 16'h0;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_rcr <= pwdata[31:16];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_bt <= 4'h0;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_bt <= pwdata[15:12];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_ic1m <= 1'b0;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_ic1m <= pwdata[8];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_cc1p <= 1'b1;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_cc1p <= pwdata[3];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_cc1np <= 1'b1;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_cc1np <= pwdata[2];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_cc1e <= 1'b0;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_cc1e <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_cc1ne <= 1'b0;
+    end
+    else if(r1_pe_ctrl1_wr) begin
+        r1_cc1ne <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_int1_en <= 1'b0;
+    end
+    else if(r1_int_en_wr) begin
+        r1_int1_en <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_int0_en <= 1'b0;
+    end
+    else if(r1_int_en_wr) begin
+        r1_int0_en <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_int1_clr <= 1'b0;
+    end
+    else if(r1_int_clr_wr) begin
+        r1_int1_clr <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r1_int0_clr <= 1'b0;
+    end
+    else if(r1_int_clr_wr) begin
+        r1_int0_clr <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_arr <= 24'h8000;
+    end
+    else if(r2_pe_ctrl0_wr) begin
+        r2_arr <= pwdata[23:0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_bt <= 4'h0;
+    end
+    else if(r2_pe_ctrl1_wr) begin
+        r2_bt <= pwdata[31:28];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_ec1m <= 1'b0;
+    end
+    else if(r2_pe_ctrl1_wr) begin
+        r2_ec1m <= pwdata[16];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_ec1p <= 1'b1;
+    end
+    else if(r2_pe_ctrl1_wr) begin
+        r2_ec1p <= pwdata[3];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_ec1np <= 1'b1;
+    end
+    else if(r2_pe_ctrl1_wr) begin
+        r2_ec1np <= pwdata[2];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_ec1e <= 1'b0;
+    end
+    else if(r2_pe_ctrl1_wr) begin
+        r2_ec1e <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_ec1ne <= 1'b0;
+    end
+    else if(r2_pe_ctrl1_wr) begin
+        r2_ec1ne <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_int1_en <= 1'b0;
+    end
+    else if(r2_int_en_wr) begin
+        r2_int1_en <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_int0_en <= 1'b0;
+    end
+    else if(r2_int_en_wr) begin
+        r2_int0_en <= pwdata[0];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_int1_clr <= 1'b0;
+    end
+    else if(r2_int_clr_wr) begin
+        r2_int1_clr <= pwdata[1];
+    end
+end
+always@(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        r2_int0_clr <= 1'b0;
+    end
+    else if(r2_int_clr_wr) begin
+        r2_int0_clr <= pwdata[0];
+    end
+end
 always@(*) begin
     case(paddr)
         32'h40021000 + 8'h00 : prdata = R_TOP_CTRL;
@@ -1069,6 +1562,19 @@ always@(*) begin
         32'h40021000 + 8'h40 : prdata = R0_INT_EN ;
         32'h40021000 + 8'h44 : prdata = R0_INT_CLR;
         32'h40021000 + 8'h48 : prdata = R0_INT_STA;
+        32'h40021000 + 8'h54 : prdata = R1_PE_CTRL;
+        32'h40021000 + 8'h58 : prdata = R1_PE_CTRL1;
+        32'h40021000 + 8'h5c : prdata = R1_INT_EN ;
+        32'h40021000 + 8'h60 : prdata = R1_INT_CLR;
+        32'h40021000 + 8'h64 : prdata = R1_IR     ;
+        32'h40021000 + 8'h68 : prdata = R1_IC     ;
+        32'h40021000 + 8'h6c : prdata = R1_INT_STA;
+        32'h40021000 + 8'h70 : prdata = R2_PE_CTRL0;
+        32'h40021000 + 8'h74 : prdata = R2_PE_CTRL1;
+        32'h40021000 + 8'h7c : prdata = R2_INT_EN ;
+        32'h40021000 + 8'h80 : prdata = R2_INT_CLR;
+        32'h40021000 + 8'h84 : prdata = R2_EO     ;
+        32'h40021000 + 8'h88 : prdata = R2_INT_STA;
         default:prdata = 32'b0;
     endcase
 end

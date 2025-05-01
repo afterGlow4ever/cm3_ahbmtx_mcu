@@ -5,6 +5,10 @@
 ".\objects\drv_gpio.o"
 ".\objects\drv_bastim.o"
 ".\objects\drv_eth.o"
+".\objects\drv_eth_mac.o"
+".\objects\drv_advtim_cap.o"
+".\objects\drv_advtim_enc.o"
+".\objects\drv_advtim_gen.o"
 ".\objects\startup_cm3ds.o"
 ".\objects\interrupt.o"
 ".\objects\main.o"
@@ -16,6 +20,8 @@
 ".\objects\bastim_test.o"
 ".\objects\eth_bsp.o"
 ".\objects\eth_test.o"
+".\objects\advtim_bsp.o"
+".\objects\advtim_test.o"
 --strict --scatter ".\Objects\baremental.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

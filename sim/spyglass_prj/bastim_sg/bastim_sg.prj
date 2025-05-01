@@ -1,0 +1,60 @@
+#!SPYGLASS_PROJECT_FILE
+#!VERSION 3.0
+#  -------------------------------------------------------------------
+#  This is a software generated project file. Manual edits to this file could be lost during the next save operation
+#  Copyright Synopsys Inc.
+#  Last Updated By: SpyGlass SpyGlass_vT-2022.06-1
+#  Last Updated On Sat Jan 27 11:37:57 2024
+#
+#  -------------------------------------------------------------------
+
+##Data Import Section
+
+read_file -type verilog ../../../user/verilog/bastim/bastim_apb_cfg.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../user/verilog/bastim/bastim_regs_wrap.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../user/verilog/bastim/bastim_top.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../user/verilog/bastim/bastim_ch_core/bastim_ch.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../user/verilog/bastim/bastim_ch_core/bastim_ch_core.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type sgdc ../script/bastim_sg.sgdc
+read_file -type awl ../script/bastim_top.awl
+read_file -type verilog ../tb/bastim_sg.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../library/rtl_logic/edge_detect.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../library/rtl_logic/sync_ff.v
+#BackRefFile:N.A. #LineNumber:1
+read_file -type verilog ../../../library/rtl_logic/interrupt_gen.v
+#BackRefFile:N.A. #LineNumber:1
+
+##Common Options Section
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis no
+set_option designread_disable_flatten no
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option top bastim_sg
+set_option enableSV yes
+
+
+##Goal Setup Section
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+current_goal lint/lint_rtl -top bastim_sg
+set_goal_option default_waiver_file ../script/bastim_top.awl
+
+
+current_goal lint/lint_rtl_enhanced -top bastim_sg
+set_goal_option default_waiver_file ../script/bastim_top.awl
+
+
+current_goal lint/lint_turbo_rtl -top bastim_sg
+set_goal_option default_waiver_file ../script/bastim_top.awl
+

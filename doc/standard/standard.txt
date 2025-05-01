@@ -9,3 +9,17 @@ done: durative verb, step signal
 valid: via flag
 enable: via control signal
 
+about detect:
+detect: capture valid data edge
+valid: capture valid data
+
+
+
+
+
+
+
+
+
+
+

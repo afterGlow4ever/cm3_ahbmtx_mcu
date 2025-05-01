@@ -13,124 +13,145 @@
 //
 // 	When any fault detected, output pwm channels
 // 	will be shut down soon and this advance timer
-// 	will also be disabled soon.
+// 	will also be disabled in pwm section soon.
 //
 //===============================================
 
 module fault_detection
 (
-	input  						pe_fault_clk,  
-	input  						pe_fault_rstn,
+	input  						pe_gen_clk,  
+	input  						pe_gen_rstn,
 
 	// configs
+	input 		[ 3:0]			r_bt,
 	input						r_bk2p,
 	input						r_bk2e,
 	input						r_bk1p,
 	input 						r_bk1e,
 
 	// pin
-	input						advtmr_bk2,
 	input						advtmr_bk1,
+	input						advtmr_bk2,
+	output						advtmr_bk1_oen,
+	output						advtmr_bk2_oen,
 	input						system_failure,
 
-	output						fault_detected
+	output reg					fault_detected,
+	output 						int_status_gen_fault_detected
 );
 
+//===============================================
+// break detection pin direction
+//===============================================
 
+assign advtmr_bk1_oen = r_bk1e ? 1'b1 : 1'b0;
+assign advtmr_bk2_oen = r_bk1e ? 1'b1 : 1'b0;
 
+//===============================================
+// break input filter
+// channel1 : external
+// channel2 : external & internal system failure
+//===============================================
 
+wire							break1_valid;
+wire							break2_valid;
 
-
-
-
-wire							ocrefc_r;
-wire							ocrefc_f;
-reg 			[ 9:0]			dtg_cnt;
-reg 							dtg_cnt_valid_for_posedge;
-reg 							dtg_cnt_valid_for_negedge;
-
-assign channelp_deadzone = r_dze && (r_ccp ? (ocrefc_f || (dtg_cnt_valid_for_negedge && |dtg_cnt)) : (ocrefc_r || (dtg_cnt_valid_for_posedge && |dtg_cnt)));
-assign channeln_deadzone = r_dze && (r_ccnp ? (ocrefc_r || (dtg_cnt_valid_for_posedge && |dtg_cnt)) : (ocrefc_f || (dtg_cnt_valid_for_negedge && |dtg_cnt)));
-
-posedge_detect u_channelref_posedge_detect 
+edge_delay_hold_detect u_break1_detection
 (
 	.clk						(pe_gen_clk),
 	.rstn						(pe_gen_rstn),
-	.A							(ocrefc),
-	.Y							(ocrefc_r)
+
+	.enable						(r_bk1e),
+	.delay_value				(r_bt),
+	.input_value				(advtmr_bk1),
+	.expected_value				(r_bk1p),
+	.input_detected				(),
+	.input_valid				(break1_valid)
 );
 
-negedge_detect u_channelref_negedge_detect 
+edge_delay_hold_detect u_break2_detection
 (
 	.clk						(pe_gen_clk),
 	.rstn						(pe_gen_rstn),
-	.A							(ocrefc),
-	.Y							(ocrefc_f)
+
+	.enable						(r_bk2e),
+	.delay_value				(r_bt),
+	.input_value				(advtmr_bk2),
+	.expected_value				(r_bk2p),// only 1
+	.input_detected				(),
+	.input_valid				(break2_valid)
 );
 
-always @(posedge pe_gen_clk or negedge pe_gen_rstn)
-begin
-	if(!pe_gen_rstn)
-	begin
-		dtg_cnt_valid_for_posedge <= 1'b0;
-	end
-	else if(ocrefc_r || ~r_dze)
-	begin
-		dtg_cnt_valid_for_posedge <= 1'b1;
-	end
-	else if(ocrefc_f)
-	begin
-		dtg_cnt_valid_for_posedge <= 1'b0;
-	end
-	else
-	begin
-		dtg_cnt_valid_for_posedge <= dtg_cnt_valid_for_posedge;
-	end
-end
+//reg				[ 3:0]			break1_cnt;
+//reg				[ 3:0]			break2_cnt;
+//assign break1_valid = (break1_cnt == r_bt);
+//assign break2_valid = (break2_cnt == r_bt);
+
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		break1_cnt <= 4'h0;
+//	end
+//	else if(break1_valid)
+//	begin
+//		break1_cnt <= 4'h0;
+//	end
+//	else if(advtmr_bk1 == r_bk1p)
+//	begin
+//		break1_cnt <= break1_cnt + 1'b1;
+//	end
+//	else
+//	begin
+//		break1_cnt <= 4'h0;
+//	end
+//end
+//
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		break2_cnt <= 4'h0;
+//	end
+//	else if(break2_valid)
+//	begin
+//		break2_cnt <= 4'h0;
+//	end
+//	else if((advtmr_bk2 == r_bk2p) || system_failure)
+//	begin
+//		break2_cnt <= break2_cnt + 1'b1;
+//	end
+//	else
+//	begin
+//		break2_cnt <= 4'h0;
+//	end
+//end
+
+//===============================================
+// fault detect
+//===============================================
 
 always @(posedge pe_gen_clk or negedge pe_gen_rstn)
 begin
 	if(!pe_gen_rstn)
 	begin
-		dtg_cnt_valid_for_negedge <= 1'b0;
+		fault_detected <= 1'b0;
 	end
-	else if(ocrefc_f || ~r_dze)
+	else if((break1_valid && r_bk1e) || ((system_failure || break2_valid) && r_bk2e))
 	begin
-		dtg_cnt_valid_for_negedge <= 1'b1;
-	end
-	else if(ocrefc_r)
-	begin
-		dtg_cnt_valid_for_negedge <= 1'b0;
+		fault_detected <= 1'b1;
 	end
 	else
 	begin
-		dtg_cnt_valid_for_negedge <= dtg_cnt_valid_for_negedge;
+		fault_detected <= 1'b0;
 	end
 end
 
-always @(posedge pe_gen_clk or negedge pe_gen_rstn)
-begin
-	if(!pe_gen_rstn)
-	begin
-		dtg_cnt <= r_dtg;
-	end
-	else if(ocrefc_f || ocrefc_r)
-	begin
-		dtg_cnt <= r_dtg;
-	end
-	else if(~(|dtg_cnt))
-	begin
-		dtg_cnt <= dtg_cnt;
-	end
-	else if(dtg_cnt_valid_for_posedge || dtg_cnt_valid_for_negedge)
-	begin
-		dtg_cnt <= dtg_cnt - 1'b1;
-	end
-	else
-	begin
-		dtg_cnt <= r_dtg;
-	end
-end
+//===============================================
+// interrupt status detect
+//===============================================
+
+assign int_status_gen_fault_detected = fault_detected;
 
 endmodule
 

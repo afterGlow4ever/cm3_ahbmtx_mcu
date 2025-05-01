@@ -54,17 +54,15 @@ module advtim_cnt_gen
 	output 						oc5c2refc,
 	output 						oc5c3refc,
 
-	output						oc1po,
-	output						oc1no,
-
 	// interactive
 	output reg					gen_cnt_dir,
 	output						gen_cnt_pre_end,
 	output						gen_cnt_enable,
+	input						fault_detected,
 
 	// interrupt status
 	output						int_status_gen_end,
-	output						int_status_gen_reload
+	output						int_status_gen_reloaded
 );
 
 //===============================================
@@ -124,7 +122,7 @@ begin
 	begin
 		rcr_counter <= 16'h0;
 	end
-	else if(pe_gen_logic_clr || gen_reload_finish)
+	else if(pe_gen_logic_clr || gen_reload_finish || fault_detected)
 	begin
 		rcr_counter <= 16'h0;
 	end
@@ -160,7 +158,7 @@ begin
 	// If disabled, the counter will stop immediately.
 	// If reload occuring,  the counter will continue 
 	// only when reloading is not finish.
-	else if(pe_gen_logic_clr || gen_reload_finish)
+	else if(pe_gen_logic_clr || gen_reload_finish || fault_detected)
 	begin
 		timing_base_enable <= 1'b0;
 	end
@@ -190,6 +188,7 @@ begin
 		gen_cnt_dir <= 1'b0;
 	end
 	//edge align mode
+//	else if(pe_gen_logic_clr || (|r_cms == 1'b0) || gen_reload_finish || fault_detected)
 	else if(pe_gen_logic_clr || (|r_cms == 1'b0) || ~timing_base_real_enable)
 	begin
 		gen_cnt_dir <= r_dir;
@@ -326,15 +325,24 @@ always @(posedge pe_gen_clk or negedge pe_gen_rstn)
 begin
 	if(!pe_gen_rstn)
 	begin
-		r_psc_last <= r_psc;
-		r_arr_last <= r_arr;
-		r_cms_last <= r_cms;
-		r_cc1_last <= r_cc1;
-		r_cc2_last <= r_cc2;
-		r_cc3_last <= r_cc3;
-		r_cc4_last <= r_cc4;
-		r_cc5_last <= r_cc5;
-		r_cc6_last <= r_cc6;
+//		r_psc_last <= r_psc;
+//		r_arr_last <= r_arr;
+//		r_cms_last <= r_cms;
+//		r_cc1_last <= r_cc1;
+//		r_cc2_last <= r_cc2;
+//		r_cc3_last <= r_cc3;
+//		r_cc4_last <= r_cc4;
+//		r_cc5_last <= r_cc5;
+//		r_cc6_last <= r_cc6;
+		r_psc_last <= 16'h0002;
+		r_arr_last <= 16'h0032;
+		r_cms_last <= 2'h0;
+		r_cc1_last <= 16'h0;
+		r_cc2_last <= 16'h0;
+		r_cc3_last <= 16'h0;
+		r_cc4_last <= 16'h0;
+		r_cc5_last <= 16'h0;
+		r_cc6_last <= 16'h0;
 	end
 	else if(timing_base_real_enable == 1'b1)
 	begin
@@ -474,7 +482,7 @@ channel_output_compare u_channel_output_compare
 //===============================================
 
 assign int_status_gen_end = gen_reload_finish; 
-assign int_status_gen_reload = gen_reload_flag; 
+assign int_status_gen_reloaded = gen_reload_flag; 
 
 endmodule
 

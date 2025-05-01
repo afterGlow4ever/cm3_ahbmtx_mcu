@@ -28,10 +28,17 @@ module advtim_regs_wrap
 
 	//control
 	output						r0_logic_clr,
-	output						r1_logic_clr,
 	output						r0_gen_enable,
 	input						advtim_pe_gen_hw_update,
 	input						advtim_pe_gen_running,
+	output						r1_logic_clr,
+	output						r1_cap_enable,
+	input						advtim_pe_cap_hw_update,
+	input						advtim_pe_cap_running,
+	output						r2_logic_clr,
+	output						r2_enc_enable,
+	input						advtim_pe_enc_hw_update,
+	input						advtim_pe_enc_running,
 
 	//configs
 	output reg	[15:0]			r0_psc,
@@ -104,9 +111,45 @@ module advtim_regs_wrap
 	output reg	[ 9:0]			r0_dtg,
 
 	// interrupt control & status
-	output		[ 1:0]			r0_int_en,
-	output		[ 1:0]			r0_int_clr,
-	input		[ 1:0]			r0_int_sta
+	output		[ 2:0]			r0_int_en,
+	output		[ 2:0]			r0_int_clr,
+	input		[ 2:0]			r0_int_sta,
+
+	//configs
+	output reg	[15:0]			r1_psc,
+	output reg	[15:0]			r1_arr,
+	output reg	[15:0]			r1_rcr,
+	output reg	[ 3:0]			r1_bt,
+	output reg					r1_ic1m,
+	output reg					r1_cc1p,
+	output reg					r1_cc1np,
+	output reg					r1_cc1e,
+	output reg					r1_cc1ne,
+	input		[15:0]			r1_ifr,
+	input		[15:0]			r1_ilr,
+	input		[15:0]			r1_ifc,
+	input		[15:0]			r1_ilc,
+
+	// interrupt control & status
+	output		[ 1:0]			r1_int_en,
+	output		[ 1:0]			r1_int_clr,
+	input		[ 1:0]			r1_int_sta,
+
+	//configs
+	output reg	[23:0]			r2_arr,
+	output reg	[ 3:0]			r2_bt,
+	output reg					r2_ec1m,
+	output reg					r2_ec1p,
+	output reg					r2_ec1np,
+	output reg					r2_ec1e,
+	output reg					r2_ec1ne,
+	input		[15:0]			r2_ec,
+	input						r2_ed,
+
+	// interrupt control & status
+	output		[ 1:0]			r2_int_en,
+	output		[ 1:0]			r2_int_clr,
+	input		[ 1:0]			r2_int_sta
 );
 
 wire							r0_sw_update;
@@ -182,6 +225,32 @@ wire							r0_bk1p_shadow;
 wire							r0_bk1e_shadow;
 wire			[ 9:0]			r0_dtg_shadow;
 
+wire							r1_sw_update;
+wire							r1_hw_update_en;
+wire							r1_update;
+wire							r1_update_by_lock;
+wire			[15:0]			r1_psc_shadow;
+wire			[15:0]			r1_arr_shadow;
+wire			[15:0]			r1_rcr_shadow;
+wire			[ 3:0]			r1_bt_shadow;
+wire							r1_ic1m_shadow;
+wire							r1_cc1p_shadow;
+wire							r1_cc1np_shadow;
+wire							r1_cc1e_shadow;
+wire							r1_cc1ne_shadow;
+
+wire							r2_sw_update;
+wire							r2_hw_update_en;
+wire							r2_update;
+wire							r2_update_by_lock;
+wire			[23:0]			r2_arr_shadow;
+wire			[ 3:0]			r2_bt_shadow;
+wire							r2_ec1m_shadow;
+wire							r2_ec1p_shadow;
+wire							r2_ec1np_shadow;
+wire							r2_ec1e_shadow;
+wire							r2_ec1ne_shadow;
+
 //===============================================
 // advtim regs shadow update
 // some static config update only by update bit 
@@ -191,7 +260,7 @@ wire			[ 9:0]			r0_dtg_shadow;
 wire							r0_sw_update_af;
 assign r0_update = r0_sw_update_af || (advtim_pe_gen_hw_update && r0_hw_update_en);
 
-pos_step_sync2pulse u_sw_update_sync
+pos_step_sync2pulse u_gen_sw_update_sync
 (
 	.src_clk					(reg_clk),
 	.src_rstn					(reg_rstn),
@@ -233,6 +302,7 @@ begin
 		r0_oc5m <= 4'h0;
 		r0_cc6 <= 16'h0;
 		r0_oc6m <= 4'h0;
+		r0_bt <= 4'h0;
 	end
 	else if(r0_update)
 	begin
@@ -262,6 +332,7 @@ begin
 		r0_oc5m <= r0_oc5m_shadow; 
 		r0_cc6 <= r0_cc6_shadow;
 		r0_oc6m <= r0_oc6m_shadow; 
+		r0_bt <= r0_bt_shadow;
 	end
 	else
 	begin
@@ -291,6 +362,109 @@ begin
 		r0_oc5m <= r0_oc5m;
 		r0_cc6 <= r0_cc6;
 		r0_oc6m <= r0_oc6m;
+		r0_bt <= r0_bt;
+	end
+end
+
+wire							r1_sw_update_af;
+assign r1_update = r1_sw_update_af || (advtim_pe_cap_hw_update && r0_hw_update_en);
+
+pos_step_sync2pulse u_cap_sw_update_sync
+(
+	.src_clk					(reg_clk),
+	.src_rstn					(reg_rstn),
+	.des_clk 					(pe_clk),
+	.des_rstn					(pe_rstn),
+
+	.src_A	 					(r0_sw_update),
+	.des_Y	 					(r1_sw_update_af)
+);
+
+always @(posedge pe_clk or negedge pe_rstn)
+begin
+	if(!pe_rstn)
+	begin
+		r1_psc <= 16'h0002;
+		r1_arr <= 16'h0032;
+		r1_rcr <= 16'h0;
+		r1_bt <= 4'h0;
+		r1_ic1m <= 1'b0;
+		r1_cc1p <= 1'b0;
+		r1_cc1np <= 1'b0;
+		r1_cc1e <= 1'b0;
+		r1_cc1ne <= 1'b0;
+	end
+	else if(r1_update)
+	begin
+		r1_psc <= r1_psc_shadow;
+		r1_arr <= r1_arr_shadow;
+		r1_rcr <= r1_rcr_shadow;
+		r1_bt <= r1_bt_shadow;
+		r1_ic1m <= r1_ic1m_shadow;
+		r1_cc1p <= r1_cc1p_shadow;
+		r1_cc1np <= r1_cc1np_shadow;
+		r1_cc1e <= r1_cc1e_shadow;
+		r1_cc1ne <= r1_cc1ne_shadow;
+	end
+	else
+	begin
+		r1_psc <= r1_psc;
+		r1_arr <= r1_arr;
+		r1_rcr <= r1_rcr;
+		r1_bt <= r1_bt;
+		r1_ic1m <= r1_ic1m;
+		r1_cc1p <= r1_cc1p;
+		r1_cc1np <= r1_cc1np;
+		r1_cc1e <= r1_cc1e;
+		r1_cc1ne <= r1_cc1ne;
+	end
+end
+
+wire							r2_sw_update_af;
+assign r2_update = r2_sw_update_af || (advtim_pe_enc_hw_update && r0_hw_update_en);
+
+pos_step_sync2pulse u_enc_sw_update_sync
+(
+	.src_clk					(reg_clk),
+	.src_rstn					(reg_rstn),
+	.des_clk 					(pe_clk),
+	.des_rstn					(pe_rstn),
+
+	.src_A	 					(r0_sw_update),
+	.des_Y	 					(r2_sw_update_af)
+);
+
+always @(posedge pe_clk or negedge pe_rstn)
+begin
+	if(!pe_rstn)
+	begin
+		r2_arr <= 24'h8000;
+		r2_bt <= 4'h0;
+		r2_ec1m <= 1'b0;
+		r2_ec1p <= 1'b1;
+		r2_ec1np <= 1'b1;
+		r2_ec1e <= 1'b0;
+		r2_ec1ne <= 1'b0;
+	end
+	else if(r2_update)
+	begin
+		r2_arr <= r2_arr_shadow;
+		r2_bt <= r2_bt_shadow;
+		r2_ec1m <= r2_ec1m_shadow;
+		r2_ec1p <= r2_ec1p_shadow;
+		r2_ec1np <= r2_ec1np_shadow;
+		r2_ec1e <= r2_ec1e_shadow;
+		r2_ec1ne <= r2_ec1ne_shadow;
+	end
+	else
+	begin
+		r2_arr <= r2_arr;
+		r2_bt <= r2_bt;
+		r2_ec1m <= r2_ec1m;
+		r2_ec1p <= r2_ec1p;
+		r2_ec1np <= r2_ec1np;
+		r2_ec1e <= r2_ec1e;
+		r2_ec1ne <= r2_ec1ne;
 	end
 end
 
@@ -469,22 +643,17 @@ posedge_pulse_sync u_cap_logic_clr_sync
 	.des_Y	 					(r1_logic_clr)
 );
 
-wire			[ 1:0]			r0_int_clr_wc_clr;
+wire							r2_logic_clr_wc_clr;		
 
-posedge_pulse_sync 
-#(
-	.WIDTH						(2),
-	.DEFAULT_VAL				(0)
-)
-u_gen_int_clr_sync
+posedge_pulse_sync u_enc_logic_clr_sync
 (
 	.src_clk					(reg_clk),
 	.src_rstn					(reg_rstn),
 	.des_clk 					(pe_clk),
 	.des_rstn					(pe_rstn),
 
-	.src_A	 					(r0_int_clr_wc_clr),
-	.des_Y	 					(r0_int_clr)
+	.src_A	 					(r2_logic_clr_wc_clr),
+	.des_Y	 					(r2_logic_clr)
 );
 
 //===============================================
@@ -501,8 +670,13 @@ advtim_apb_cfg u_advtim_apb_cfg
 	.paddr						(paddr),
 	.pwdata						(pwdata),
 	.prdata						(prdata),
+	.r3_logic_clr				(r3_logic_clr_wc_clr),
+	.r2_logic_clr				(r2_logic_clr_wc_clr),
 	.r1_logic_clr				(r1_logic_clr_wc_clr),
 	.r0_logic_clr				(r0_logic_clr_wc_clr),
+	.r3_hall_enable				(r3_hall_enable),
+	.r2_enc_enable				(r2_enc_enable),
+	.r1_cap_enable				(r1_cap_enable),
 	.r0_gen_enable				(r0_gen_enable),
 	.r0_hw_update_en			(r0_hw_update_en),
 	.r0_sw_update				(r0_sw_update),
@@ -574,12 +748,49 @@ advtim_apb_cfg u_advtim_apb_cfg
 	.r0_bk1p					(r0_bk1p_shadow),
 	.r0_bk1e					(r0_bk1e_shadow),
 	.r0_dtg						(r0_dtg_shadow),
+	.r0_int2_en					(r0_int_en[2]),
 	.r0_int1_en					(r0_int_en[1]),
 	.r0_int0_en					(r0_int_en[0]),
-	.r0_int1_clr				(r0_int_clr_wc_clr[1]),
-	.r0_int0_clr				(r0_int_clr_wc_clr[0]),
+	.r0_int2_clr				(r0_int_clr[2]),
+	.r0_int1_clr				(r0_int_clr[1]),
+	.r0_int0_clr				(r0_int_clr[0]),
+	.r0_int2_sta				(r0_int_sta[2]),
 	.r0_int1_sta				(r0_int_sta[1]),
-	.r0_int0_sta				(r0_int_sta[0])
+	.r0_int0_sta				(r0_int_sta[0]),
+	.r1_psc						(r1_psc_shadow),
+	.r1_arr						(r1_arr_shadow),
+	.r1_rcr						(r1_rcr_shadow),
+	.r1_bt						(r1_bt_shadow),
+	.r1_ic1m					(r1_ic1m_shadow),
+	.r1_cc1p					(r1_cc1p_shadow),
+	.r1_cc1np					(r1_cc1np_shadow),
+	.r1_cc1e					(r1_cc1e_shadow),
+	.r1_cc1ne					(r1_cc1ne_shadow),
+	.r1_ifr						(r1_ifr),
+	.r1_ilr						(r1_ilr),
+	.r1_ifc						(r1_ifc),
+	.r1_ilc						(r1_ilc),
+	.r1_int1_en					(r1_int_en[1]),
+	.r1_int0_en					(r1_int_en[0]),
+	.r1_int1_clr				(r1_int_clr[1]),
+	.r1_int0_clr				(r1_int_clr[0]),
+	.r1_int1_sta				(r1_int_sta[1]),
+	.r1_int0_sta				(r1_int_sta[0]),
+	.r2_arr						(r2_arr_shadow),
+	.r2_bt						(r2_bt_shadow),
+	.r2_ec1m					(r2_ec1m_shadow),
+	.r2_ec1p					(r2_ec1p_shadow),
+	.r2_ec1np					(r2_ec1np_shadow),
+	.r2_ec1e					(r2_ec1e_shadow),
+	.r2_ec1ne					(r2_ec1ne_shadow),
+	.r2_ec						(r2_ec),
+	.r2_ed						(r2_ed),
+	.r2_int1_en					(r2_int_en[1]),
+	.r2_int0_en					(r2_int_en[0]),
+	.r2_int1_clr				(r2_int_clr[1]),
+	.r2_int0_clr				(r2_int_clr[0]),
+	.r2_int1_sta				(r2_int_sta[1]),
+	.r2_int0_sta				(r2_int_sta[0])
 );
 
 endmodule

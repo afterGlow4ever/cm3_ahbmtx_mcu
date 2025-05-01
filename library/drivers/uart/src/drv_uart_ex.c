@@ -23,7 +23,7 @@ extern UART_HandleTypeDef PRINTF_HUART;
 
 int vprintf(const char *fmt, va_list argp)
 {
-	char string[64];
+	char string[128];// modified at 04262025, in case of hardfault owing to array overflow
 	if(vsprintf(string, fmt, argp) > 0)
 	{
 		drv_uart_putchars(&PRINTF_HUART, (uint8_t *)string, strlen(string));

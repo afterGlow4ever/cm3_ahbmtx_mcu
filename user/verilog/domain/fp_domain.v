@@ -51,6 +51,36 @@ module fp_domain
 	output 						eth_tx_ctrl_oen,
 	output						eth_tx_clk,	
 	output						eth_tx_clk_oen,	
+	output						advtmr0_pwm_ch1p,
+	output						advtmr0_pwm_ch1n,
+	output						advtmr0_pwm_ch2p,
+	output						advtmr0_pwm_ch2n,
+	output						advtmr0_pwm_ch3p,
+	output						advtmr0_pwm_ch3n,
+	output						advtmr0_pwm_ch4,
+	output						advtmr0_pwm_ch5,
+	output						advtmr0_pwm_ch6,
+	output						advtmr0_pwm_ch1p_oen,
+	output						advtmr0_pwm_ch1n_oen,
+	output						advtmr0_pwm_ch2p_oen,
+	output						advtmr0_pwm_ch2n_oen,
+	output						advtmr0_pwm_ch3p_oen,
+	output						advtmr0_pwm_ch3n_oen,
+	output						advtmr0_pwm_ch4_oen,
+	output						advtmr0_pwm_ch5_oen,
+	output						advtmr0_pwm_ch6_oen,
+	input						advtmr0_bk1,
+	input						advtmr0_bk2,
+	output						advtmr0_bk1_oen,
+	output						advtmr0_bk2_oen,
+	input						advtmr0_cap_ch1p,
+	input						advtmr0_cap_ch1n,
+	output						advtmr0_cap_ch1p_oen,
+	output						advtmr0_cap_ch1n_oen,
+	input						advtmr0_enc_ch1p,
+	input						advtmr0_enc_ch1n,
+	output						advtmr0_enc_ch1p_oen,
+	output						advtmr0_enc_ch1n_oen,
 
 `ifdef GPIO
 	output						psel0_gpioa,
@@ -628,7 +658,7 @@ u_apb2_async
 //===============================================
 
 // CPU status
-wire							lockup;											// Lockup signal from CPU
+wire							lockup;						// Lockup signal from CPU
 wire							sys_reset_req;              // System reset request from CPU or debug host
 
 // Debug signals (TDO pin is used for SWV unless JTAG mode is active)
@@ -846,9 +876,10 @@ wire						eth_mac_tx_int;// No.13
 wire						eth_mac_rx_int;// No.14
 wire						advtim_gen_int;// No.16
 wire						advtim_cap_int;// No.17
+wire						advtim_enc_int;// No.18
 
 assign sync_irq = {2'h0, gpioa_int, eth_mac_dma_int, 1'b0, 1'b0, uart1_int, uart0_int};
-assign async_irq_bf = {6'b0, advtim_cap_int, advtim_gen_int, 1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
+assign async_irq_bf = {5'b0, advtim_enc_int, advtim_cap_int, advtim_gen_int, 1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
 
 sync_ff_2d
 #(
@@ -865,6 +896,13 @@ u_sync_ff_2d_inst0
 );
 
 assign irq = {226'h0, async_irq_af, sync_irq};
+
+//===============================================
+// system failure handle
+//===============================================
+
+wire							system_failure;
+assign system_failure = lockup;
 
 //===============================================
 // sram top
@@ -1000,6 +1038,39 @@ apb2_top u_apb2_async_top
 	.eth_tx_clk					(eth_tx_clk),	
 	.eth_tx_clk_oen				(eth_tx_clk_oen),	
 
+	.advtmr0_pwm_ch1p			(advtmr0_pwm_ch1p),
+	.advtmr0_pwm_ch1n			(advtmr0_pwm_ch1n),
+	.advtmr0_pwm_ch2p			(advtmr0_pwm_ch2p),
+	.advtmr0_pwm_ch2n			(advtmr0_pwm_ch2n),
+	.advtmr0_pwm_ch3p			(advtmr0_pwm_ch3p),
+	.advtmr0_pwm_ch3n			(advtmr0_pwm_ch3n),
+	.advtmr0_pwm_ch4			(advtmr0_pwm_ch4),
+	.advtmr0_pwm_ch5			(advtmr0_pwm_ch5),
+	.advtmr0_pwm_ch6			(advtmr0_pwm_ch6),
+	.advtmr0_pwm_ch1p_oen		(advtmr0_pwm_ch1p_oen),
+	.advtmr0_pwm_ch1n_oen		(advtmr0_pwm_ch1n_oen),
+	.advtmr0_pwm_ch2p_oen		(advtmr0_pwm_ch2p_oen),
+	.advtmr0_pwm_ch2n_oen		(advtmr0_pwm_ch2n_oen),
+	.advtmr0_pwm_ch3p_oen		(advtmr0_pwm_ch3p_oen),
+	.advtmr0_pwm_ch3n_oen		(advtmr0_pwm_ch3n_oen),
+	.advtmr0_pwm_ch4_oen		(advtmr0_pwm_ch4_oen),
+	.advtmr0_pwm_ch5_oen		(advtmr0_pwm_ch5_oen),
+	.advtmr0_pwm_ch6_oen		(advtmr0_pwm_ch6_oen),
+	.advtmr0_bk1				(advtmr0_bk1),
+	.advtmr0_bk2				(advtmr0_bk2),
+	.advtmr0_bk1_oen			(advtmr0_bk1_oen),
+	.advtmr0_bk2_oen			(advtmr0_bk2_oen),
+	.advtmr0_cap_ch1p			(advtmr0_cap_ch1p),
+	.advtmr0_cap_ch1n			(advtmr0_cap_ch1n),
+	.advtmr0_cap_ch1p_oen		(advtmr0_cap_ch1p_oen),
+	.advtmr0_cap_ch1n_oen		(advtmr0_cap_ch1n_oen),
+	.advtmr0_enc_ch1p			(advtmr0_enc_ch1p),
+	.advtmr0_enc_ch1n			(advtmr0_enc_ch1n),
+	.advtmr0_enc_ch1p_oen		(advtmr0_enc_ch1p_oen),
+	.advtmr0_enc_ch1n_oen		(advtmr0_enc_ch1n_oen),
+
+	.system_failure				(system_failure),
+
 	.eth_hclk					(sys_root_clk),
 	.eth_hrstn					(sys_root_rstn),
 	.eth_hsel					(eth_hsel),
@@ -1031,7 +1102,8 @@ apb2_top u_apb2_async_top
 	.eth_mac_rx_int				(eth_mac_rx_int),
 	.eth_mac_dma_int			(eth_mac_dma_int),
 	.advtim_gen_int				(advtim_gen_int),
-	.advtim_cap_int				(advtim_cap_int)
+	.advtim_cap_int				(advtim_cap_int),
+	.advtim_enc_int				(advtim_enc_int)
 );
 
 endmodule

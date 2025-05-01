@@ -2,9 +2,23 @@ current_design "advtim_sg"
 
 clock -name "advtim_sg.apb2_root_clk" 	-domain apb2_root_clk -period 100.0 -edge 0.0 50.0
 clock -name "advtim_sg.advtim_clk" 	-domain advtim_clk -period 20.0 -edge 0.0 10.0
+clock -tag sys_root_clk	-domain sys_root_clk -period 25.0 -edge 0.0 12.5
+clock -tag ext_cap_clk1	-domain ext_cap_clk1 -period 1000.0 -edge 0.0 500
+clock -tag ext_cap_clk2	-domain ext_cap_clk2 -period 1000.0 -edge 0.0 500
+clock -tag ext_enc_clk	-domain ext_enc_clk -period 1000.0 -edge 0.0 500
+clock -tag ext_bk_clk1 -domain ext_bk_clk1 -period 1000.0 -edge 0.0 500
+clock -tag ext_bk_clk2 -domain ext_bk_clk2 -period 1000.0 -edge 0.0 500
 
 reset -name "advtim_sg.apb2_root_rstn" 	-value 0
 reset -name "advtim_sg.advtim_rstn" 	-value 0
+
+abstract_port -module advtim_sg -ports advtmr_bk1 		-clock advtim_sg.ext_bk_clk1
+abstract_port -module advtim_sg -ports advtmr_bk2 		-clock advtim_sg.ext_bk_clk2
+abstract_port -module advtim_sg -ports system_failure	-clock advtim_sg.sys_root_clk
+abstract_port -module advtim_sg -ports advtmr_cap_ch1p 	-clock advtim_sg.ext_cap_clk1
+abstract_port -module advtim_sg -ports advtmr_cap_ch1n 	-clock advtim_sg.ext_cap_clk2
+abstract_port -module advtim_sg -ports advtmr_enc_ch1p 	-clock advtim_sg.ext_enc_clk
+abstract_port -module advtim_sg -ports advtmr_enc_ch1n 	-clock advtim_sg.ext_enc_clk
 
 abstract_port -module advtim_sg -ports paddr[31:0]		-clock advtim_sg.apb2_root_clk
 abstract_port -module advtim_sg -ports penable			-clock advtim_sg.apb2_root_clk
@@ -12,15 +26,116 @@ abstract_port -module advtim_sg -ports psel				-clock advtim_sg.apb2_root_clk
 abstract_port -module advtim_sg -ports pwrite			-clock advtim_sg.apb2_root_clk
 abstract_port -module advtim_sg -ports pwdata[31:0]		-clock advtim_sg.apb2_root_clk
 
+#sync_cell -name advtim_sg.u_advtim.u_int1_detect -from_clk advtim_sg.apb2_root_clk -to_clk advtim_sg.apb2_root_clk
+#sync_cell -name advtim_sg.u_advtim.u_int2_detect -from_clk advtim_sg.apb2_root_clk -to_clk advtim_sg.apb2_root_clk
+#sync_cell -name pos_step_sync2pulse -from_clk advtim_sg.apb2_root_clk -to_clk advtim_sg.apb2_root_clk
+
 quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_hw_update_en
 
-quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_psc
-quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_arr
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_psc_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_arr_shadow
 quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_rcr
-quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cms
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cms_shadow
 quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_dir
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc1_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_go1	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_go1n 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss1	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss1n 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_moe1 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_moe1n
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_dze1
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc1p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc1np
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc1e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc1ne
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_oc1m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc2_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_go2	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_go2n 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss2 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss2n 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_moe2 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_moe2n
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_dze2
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc2p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc2np
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc2e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc2ne
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_oc2m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc3_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_go3	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_go3n 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss3 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss3n 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_moe3 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_moe3n
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_dze3
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc3p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc3np
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc3e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc3ne
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_oc3m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc4_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss4	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc4p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc4e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_oc4m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc5_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc5c3
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc5c2
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc5c1
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss5	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc5p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc5e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_oc5m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc6_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_ss6	 
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc6p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_cc6e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_oc6m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_bt
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_bk2p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_bk2e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_bk1p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_bk1e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_dtg
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_psc_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_arr_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_rcr
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_bt
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_ic1m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1np
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1ne
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_rcr_shadow
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_bt_shadow
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_ic1m_shadow
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1p_shadow
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1np_shadow
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1e_shadow
+#quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_cc1ne_shadow
 
-quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_int_en[1:0]
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_arr_shadow
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_bt
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ec1m
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ec1p
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ec1np
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ec1e
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ec1ne
 
-quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_int_sta[1:0]
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_ifr
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_ifc
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_ilr
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_ilc
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ec
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_ed
+
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_int_en
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r0_int_sta
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_int_en
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r1_int_sta
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_int_en
+quasi_static -name advtim_sg.u_advtim.u_advtim_regs_wrap.r2_int_sta
 

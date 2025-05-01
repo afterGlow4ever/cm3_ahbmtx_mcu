@@ -1,14 +1,14 @@
 SDK_TARGET := fw_test
-SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DCOMMON_DRIVER -DUART_TEST
+SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DADVTIM_DRIVER -DCOMMON_DRIVER -DADVTIM_TEST 
 
 SDK_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}
 BUILD_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/build
 OUTPUT_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/output
 FW_PATH := ${PRJ_FW_DIR}/${SDK_TARGET}
-FW_INC_PATH := -I ${PRJ_FW_DIR}/${SDK_TARGET} -I ${PRJ_FW_DIR}/${SDK_TARGET}/uart_bsp
+FW_INC_PATH := -I ${PRJ_FW_DIR}/${SDK_TARGET} -I ${PRJ_FW_DIR}/${SDK_TARGET}/uart_bsp -I ${PRJ_FW_DIR}/${SDK_TARGET}/advtim_bsp
 
 CPU_INC_PATH := -I ${PRJ_LIB_DIR}/cmsis/CMSIS/Include -I ${PRJ_LIB_DIR}/cmsis/Device/ARM/CM3DS/Include
-DRV_INC_PATH := -I ${PRJ_DRV_DIR} -I ${PRJ_DRV_DIR}/common/inc -I ${PRJ_DRV_DIR}/uart/inc
+DRV_INC_PATH := -I ${PRJ_DRV_DIR} -I ${PRJ_DRV_DIR}/common/inc -I ${PRJ_DRV_DIR}/uart/inc -I ${PRJ_DRV_DIR}/advtim/inc
 INC_PATH := ${FW_INC_PATH} ${DRV_INC_PATH} ${CPU_INC_PATH} 
 
 LDSCRIPT := ${FW_PATH}/itcm.ld
@@ -32,10 +32,15 @@ build_driver:
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/common/src/drv_common.c -o ${BUILD_PATH}/drv_common.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/uart/src/drv_uart.c -o ${BUILD_PATH}/drv_uart.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/uart/src/drv_uart_ex.c -o ${BUILD_PATH}/drv_uart_ex.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/advtim/src/drv_advtim_gen.c -o ${BUILD_PATH}/drv_advtim_gen.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/advtim/src/drv_advtim_cap.c -o ${BUILD_PATH}/drv_advtim_cap.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${PRJ_DRV_DIR}/advtim/src/drv_advtim_enc.c -o ${BUILD_PATH}/drv_advtim_enc.o
 
 build_fw:
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/uart_bsp/uart_bsp.c -o ${BUILD_PATH}/uart_bsp.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/uart_bsp/uart_test.c -o ${BUILD_PATH}/uart_test.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/advtim_bsp/advtim_bsp.c -o ${BUILD_PATH}/advtim_bsp.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/advtim_bsp/advtim_test.c -o ${BUILD_PATH}/advtim_test.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/main.c -o ${BUILD_PATH}/main.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/interrupt.c -o ${BUILD_PATH}/interrupt.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${STARTUP_S} -o ${BUILD_PATH}/startup_CM3DS.o

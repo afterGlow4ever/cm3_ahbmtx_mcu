@@ -1,0 +1,78 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
+| Date         : Mon Sep 29 16:39:19 2025
+| Host         : icpc running 64-bit CentOS Linux release 7.9.2009 (Core)
+| Command      : report_clocks -file ./checkpoint/synthesis_clk.rpt
+| Design       : mcu_top
+| Device       : 7z020-clg400
+| Speed File   : -2  PRODUCTION 1.12 2019-11-22
+------------------------------------------------------------------------------------
+
+Clock Report
+
+
+Attributes
+  P: Propagated
+  G: Generated
+  A: Auto-derived
+  R: Renamed
+  V: Virtual
+  I: Inverted
+  S: Pin phase-shifted with Latency mode
+
+Clock                                Period(ns)  Waveform(ns)     Attributes  Sources
+hse                                  25.000      {0.000 12.500}   P           {CLK}
+jtag_tck                             200.000     {0.000 100.000}  P           {TCK}
+u_fpga_platform/u_pll0/inst/clk_in1  20.000      {0.000 10.000}   P           {u_fpga_platform/u_pll0/inst/clk_in1}
+clk_out1_pll_50m                     25.000      {0.000 12.500}   P,G,A       {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKOUT0}
+clk_out2_pll_50m                     20.000      {0.000 10.000}   P,G,A       {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKOUT1}
+clk_out3_pll_50m                     12.500      {0.000 6.250}    P,G,A       {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKOUT2}
+clkfbout_pll_50m                     20.000      {0.000 10.000}   P,G,A       {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKFBOUT}
+
+
+====================================================
+Generated Clocks
+====================================================
+
+Generated Clock     : clk_out1_pll_50m
+Master Source       : u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKIN1
+Master Clock        : u_fpga_platform/u_pll0/inst/clk_in1
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {0.000 2.500 5.000}
+Generated Sources   : {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKOUT0}
+
+Generated Clock     : clk_out2_pll_50m
+Master Source       : u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKIN1
+Master Clock        : u_fpga_platform/u_pll0/inst/clk_in1
+Multiply By         : 1
+Generated Sources   : {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKOUT1}
+
+Generated Clock     : clk_out3_pll_50m
+Master Source       : u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKIN1
+Master Clock        : u_fpga_platform/u_pll0/inst/clk_in1
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {0.000 -3.750 -7.500}
+Generated Sources   : {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKOUT2}
+
+Generated Clock     : clkfbout_pll_50m
+Master Source       : u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKIN1
+Master Clock        : u_fpga_platform/u_pll0/inst/clk_in1
+Multiply By         : 1
+Generated Sources   : {u_fpga_platform/u_pll0/inst/mmcm_adv_inst/CLKFBOUT}
+
+
+
+====================================================
+User Uncertainty
+====================================================
+
+
+
+====================================================
+User Jitter
+====================================================
+
+Clock                                Jitter(ns)
+u_fpga_platform/u_pll0/inst/clk_in1  0.200
+

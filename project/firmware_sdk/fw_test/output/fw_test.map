@@ -80,23 +80,37 @@ Discarded input sections
                 0x0000000000000000       0x5c advtim_bsp.o
  .text.advtim_ch_all_pwm_and_gpio_with_deadzone_init
                 0x0000000000000000       0xac advtim_bsp.o
- .text.advtim_deinit
-                0x0000000000000000       0x10 advtim_bsp.o
- .bss.hadvtim   0x0000000000000000       0x50 advtim_bsp.o
- .comment       0x0000000000000000       0x4a advtim_bsp.o
- .ARM.attributes
-                0x0000000000000000       0x2d advtim_bsp.o
+ .text.advtim_ch1_once_cap_int_init
+                0x0000000000000000       0x60 advtim_bsp.o
+ .text.advtim_ch1_cap_int_init
+                0x0000000000000000       0x64 advtim_bsp.o
+ .text.advtim_ch1_cap_pwm_int_init
+                0x0000000000000000       0x64 advtim_bsp.o
+ .text.advtim_ch1_enc_direct_first_edge_int_init
+                0x0000000000000000       0x58 advtim_bsp.o
+ .text.advtim_ch1_enc_quadrature_first_edge_int_init
+                0x0000000000000000       0x58 advtim_bsp.o
+ .text.advtim_ch1_enc_direct_both_edge_int_init
+                0x0000000000000000       0x58 advtim_bsp.o
+ .text.advtim_ch1_enc_quadrature_both_edge_int_init
+                0x0000000000000000       0x58 advtim_bsp.o
+ .text.advtim_ch1_enc_direct_quadrature_forward_int_init
+                0x0000000000000000       0x54 advtim_bsp.o
+ .text.advtim_ch1_enc_direct_quadrature_reverse_int_init
+                0x0000000000000000       0x58 advtim_bsp.o
+ .text.advtim_ch_all_pwm_with_deadzone_with_break_init
+                0x0000000000000000       0xd0 advtim_bsp.o
  .text          0x0000000000000000        0x0 advtim_test.o
  .data          0x0000000000000000        0x0 advtim_test.o
  .bss           0x0000000000000000        0x0 advtim_test.o
  .rodata.advtim_autoreload_test.str1.4
                 0x0000000000000000       0x15 advtim_test.o
  .text.advtim_autoreload_test
-                0x0000000000000000       0x64 advtim_test.o
+                0x0000000000000000       0x68 advtim_test.o
  .rodata.advtim_mix_count_test.str1.4
                 0x0000000000000000       0x14 advtim_test.o
  .text.advtim_mix_count_test
-                0x0000000000000000       0xac advtim_test.o
+                0x0000000000000000       0xb0 advtim_test.o
  .rodata.advtim_mix_mode_test.str1.4
                 0x0000000000000000       0x13 advtim_test.o
  .text.advtim_mix_mode_test
@@ -108,209 +122,97 @@ Discarded input sections
  .rodata.advtim_ch1_pwm_test.str1.4
                 0x0000000000000000       0x12 advtim_test.o
  .text.advtim_ch1_pwm_test
-                0x0000000000000000       0xe8 advtim_test.o
+                0x0000000000000000       0xe4 advtim_test.o
  .rodata.advtim_ch1_ch2_pwm_test.str1.4
                 0x0000000000000000       0x16 advtim_test.o
  .text.advtim_ch1_ch2_pwm_test
-                0x0000000000000000       0xf0 advtim_test.o
+                0x0000000000000000       0xec advtim_test.o
  .text.advtim_ch_all_pwm_test
-                0x0000000000000000      0x158 advtim_test.o
+                0x0000000000000000      0x154 advtim_test.o
  .rodata.advtim_ch_all_pwm_with_channel5_test.str1.4
                 0x0000000000000000       0x1b advtim_test.o
  .text.advtim_ch_all_pwm_with_channel5_test
-                0x0000000000000000      0x170 advtim_test.o
+                0x0000000000000000      0x16c advtim_test.o
  .rodata.advtim_ch1_pwm_with_deadzone_test.str1.4
                 0x0000000000000000       0x1b advtim_test.o
  .text.advtim_ch1_pwm_with_deadzone_test
-                0x0000000000000000       0xf8 advtim_test.o
+                0x0000000000000000       0xf4 advtim_test.o
  .rodata.advtim_ch123_pwm_with_deadzone_test.str1.4
                 0x0000000000000000       0x1d advtim_test.o
  .text.advtim_ch123_pwm_with_deadzone_test
-                0x0000000000000000      0x158 advtim_test.o
+                0x0000000000000000      0x154 advtim_test.o
  .rodata.advtim_ch_all_pwm_with_deadzone_test.str1.4
                 0x0000000000000000       0x1e advtim_test.o
  .text.advtim_ch_all_pwm_with_deadzone_test
-                0x0000000000000000      0x14c advtim_test.o
+                0x0000000000000000      0x148 advtim_test.o
  .text.advtim_ch1_mode_with_deadzone_test
-                0x0000000000000000      0x100 advtim_test.o
+                0x0000000000000000       0xfc advtim_test.o
  .text.advtim_ch_all_pwm_and_gpio_with_deadzone_test
-                0x0000000000000000      0x194 advtim_test.o
- .text.advtim_gen_int_reload_callback
-                0x0000000000000000       0x10 advtim_test.o
- .text.advtim_gen_int_reload_reaching_rcr_callback
-                0x0000000000000000       0x10 advtim_test.o
- .text.advtim_testmenu
-                0x0000000000000000       0x1c advtim_test.o
- .bss.advtim_int_flag
-                0x0000000000000000        0x1 advtim_test.o
- .bss.advtim_int_flag1
-                0x0000000000000000        0x1 advtim_test.o
- .data.g_advtim_menu
-                0x0000000000000000       0x48 advtim_test.o
- .comment       0x0000000000000000       0x4a advtim_test.o
- .ARM.attributes
-                0x0000000000000000       0x2d advtim_test.o
- .text          0x0000000000000000        0x0 bastim_bsp.o
- .data          0x0000000000000000        0x0 bastim_bsp.o
- .bss           0x0000000000000000        0x0 bastim_bsp.o
- .text.bastim_ch0_init
-                0x0000000000000000       0x28 bastim_bsp.o
- .text.bastim_ch1_init
-                0x0000000000000000       0x28 bastim_bsp.o
- .text.bastim_ch2_init
-                0x0000000000000000       0x28 bastim_bsp.o
- .text.bastim_ch3_init
-                0x0000000000000000       0x28 bastim_bsp.o
- .text.bastim_ch0_int_init
-                0x0000000000000000       0x30 bastim_bsp.o
- .text.bastim_ch1_int_init
-                0x0000000000000000       0x30 bastim_bsp.o
- .text.bastim_ch2_int_init
-                0x0000000000000000       0x34 bastim_bsp.o
- .text.bastim_ch3_int_init
-                0x0000000000000000       0x30 bastim_bsp.o
- .text.bastim_ch0_deinit
-                0x0000000000000000       0x14 bastim_bsp.o
- .text.bastim_ch1_deinit
-                0x0000000000000000       0x14 bastim_bsp.o
- .text.bastim_ch2_deinit
-                0x0000000000000000       0x14 bastim_bsp.o
- .text.bastim_ch3_deinit
-                0x0000000000000000       0x14 bastim_bsp.o
- .bss.bastim_ch0
-                0x0000000000000000        0x8 bastim_bsp.o
- .bss.bastim_ch1
-                0x0000000000000000        0x8 bastim_bsp.o
- .bss.bastim_ch2
-                0x0000000000000000        0x8 bastim_bsp.o
- .bss.bastim_ch3
-                0x0000000000000000        0x8 bastim_bsp.o
- .comment       0x0000000000000000       0x4a bastim_bsp.o
- .ARM.attributes
-                0x0000000000000000       0x2d bastim_bsp.o
- .text          0x0000000000000000        0x0 bastim_test.o
- .data          0x0000000000000000        0x0 bastim_test.o
- .bss           0x0000000000000000        0x0 bastim_test.o
- .rodata.bastim_4ch_autoreload_test.str1.4
-                0x0000000000000000       0x19 bastim_test.o
- .text.bastim_4ch_autoreload_test
-                0x0000000000000000      0x138 bastim_test.o
- .rodata.bastim_4ch_autoreload_int_test.str1.4
-                0x0000000000000000       0x1d bastim_test.o
- .text.bastim_4ch_autoreload_int_test
-                0x0000000000000000      0x150 bastim_test.o
- .text.bastim_4ch_test
-                0x0000000000000000      0x29c bastim_test.o
- .text.bastim_channel0_int_callback
-                0x0000000000000000       0x10 bastim_test.o
- .text.bastim_channel1_int_callback
-                0x0000000000000000       0x10 bastim_test.o
- .text.bastim_channel2_int_callback
-                0x0000000000000000       0x10 bastim_test.o
- .text.bastim_channel3_int_callback
-                0x0000000000000000       0x10 bastim_test.o
- .text.bastim_testmenu
-                0x0000000000000000       0x1c bastim_test.o
- .bss.bastim_ch0_int_flag
-                0x0000000000000000        0x1 bastim_test.o
- .bss.bastim_ch1_int_flag
-                0x0000000000000000        0x1 bastim_test.o
- .bss.bastim_ch2_int_flag
-                0x0000000000000000        0x1 bastim_test.o
- .bss.bastim_ch3_int_flag
-                0x0000000000000000        0x1 bastim_test.o
- .data.g_bastim_menu
-                0x0000000000000000       0xd8 bastim_test.o
- .comment       0x0000000000000000       0x4a bastim_test.o
- .ARM.attributes
-                0x0000000000000000       0x2d bastim_test.o
+                0x0000000000000000      0x190 advtim_test.o
+ .rodata.advtim_ch1_step_once_input_test.str1.4
+                0x0000000000000000       0x1e advtim_test.o
+ .text.advtim_ch1_step_once_input_test
+                0x0000000000000000      0x238 advtim_test.o
+ .rodata.advtim_ch1_step_input_test.str1.4
+                0x0000000000000000       0x19 advtim_test.o
+ .text.advtim_ch1_step_input_test
+                0x0000000000000000      0x238 advtim_test.o
+ .rodata.advtim_ch1_pwm_input_test.str1.4
+                0x0000000000000000       0x18 advtim_test.o
+ .text.advtim_ch1_pwm_input_test
+                0x0000000000000000      0x238 advtim_test.o
+ .rodata.advtim_ch1_encoder_input_test.str1.4
+                0x0000000000000000       0x1e advtim_test.o
+ .text.advtim_ch1_encoder_input_test
+                0x0000000000000000      0x258 advtim_test.o
+ .rodata.advtim_ch1_encoder_both_edge_input_test.str1.4
+                0x0000000000000000       0x28 advtim_test.o
+ .text.advtim_ch1_encoder_both_edge_input_test
+                0x0000000000000000      0x254 advtim_test.o
+ .rodata.advtim_ch1_encoder_dq_input_test.str1.4
+                0x0000000000000000       0x29 advtim_test.o
+ .text.advtim_ch1_encoder_dq_input_test
+                0x0000000000000000      0x130 advtim_test.o
+ .rodata.advtim_ch_all_pwm_with_deadzone_with_break_test.str1.4
+                0x0000000000000000       0x29 advtim_test.o
+ .text.advtim_ch_all_pwm_with_deadzone_with_break_test
+                0x0000000000000000      0x204 advtim_test.o
+ .text.advtim_ch_all_pwm_and_gpio_with_deadzone_with_break_test
+                0x0000000000000000      0x188 advtim_test.o
+ .text          0x0000000000000000        0x0 drv_advtim_cap.o
+ .data          0x0000000000000000        0x0 drv_advtim_cap.o
+ .bss           0x0000000000000000        0x0 drv_advtim_cap.o
+ .text.drv_advtim_cap_default_config
+                0x0000000000000000       0x2e drv_advtim_cap.o
+ .text.advtim_cap_int_reloaded_callback
+                0x0000000000000000        0x2 drv_advtim_cap.o
+ .text.advtim_cap_int_reloading_reaching_rcr_callback
+                0x0000000000000000        0x2 drv_advtim_cap.o
+ .text          0x0000000000000000        0x0 drv_advtim_enc.o
+ .data          0x0000000000000000        0x0 drv_advtim_enc.o
+ .bss           0x0000000000000000        0x0 drv_advtim_enc.o
+ .text.drv_advtim_enc_default_config
+                0x0000000000000000       0x26 drv_advtim_enc.o
+ .text.advtim_enc_int_reloaded_callback
+                0x0000000000000000        0x2 drv_advtim_enc.o
+ .text.advtim_enc_int_detected_callback
+                0x0000000000000000        0x2 drv_advtim_enc.o
  .text          0x0000000000000000        0x0 drv_advtim_gen.o
  .data          0x0000000000000000        0x0 drv_advtim_gen.o
  .bss           0x0000000000000000        0x0 drv_advtim_gen.o
  .text.drv_advtim_gen_default_config
-                0x0000000000000000       0xd4 drv_advtim_gen.o
- .text.drv_advtim_gen_set_config
-                0x0000000000000000      0x22e drv_advtim_gen.o
- .text.drv_advtim_gen_init
-                0x0000000000000000       0x3e drv_advtim_gen.o
- .text.drv_advtim_gen_deinit
-                0x0000000000000000       0x22 drv_advtim_gen.o
- .text.advtim_gen_int_reload_callback
+                0x0000000000000000       0xee drv_advtim_gen.o
+ .text.advtim_gen_int_fault_detected_callback
                 0x0000000000000000        0x2 drv_advtim_gen.o
- .text.advtim_gen_int_reload_reaching_rcr_callback
+ .text.advtim_gen_int_reloaded_callback
                 0x0000000000000000        0x2 drv_advtim_gen.o
- .text.drv_advtim_gen_interrupt_handler
-                0x0000000000000000       0x4a drv_advtim_gen.o
- .comment       0x0000000000000000       0x4a drv_advtim_gen.o
- .ARM.attributes
-                0x0000000000000000       0x2d drv_advtim_gen.o
- .text          0x0000000000000000        0x0 drv_bastim.o
- .data          0x0000000000000000        0x0 drv_bastim.o
- .bss           0x0000000000000000        0x0 drv_bastim.o
- .text.drv_bastim_set_config
-                0x0000000000000000      0x11a drv_bastim.o
- .text.drv_bastim_init
-                0x0000000000000000       0x82 drv_bastim.o
- .text.drv_bastim_deinit
-                0x0000000000000000       0x50 drv_bastim.o
- .text.bastim_channel0_int_callback
-                0x0000000000000000        0x2 drv_bastim.o
- .text.bastim_channel1_int_callback
-                0x0000000000000000        0x2 drv_bastim.o
- .text.bastim_channel2_int_callback
-                0x0000000000000000        0x2 drv_bastim.o
- .text.bastim_channel3_int_callback
-                0x0000000000000000        0x2 drv_bastim.o
- .text.drv_bastim_channel0_interrupt_handler
-                0x0000000000000000       0x24 drv_bastim.o
- .text.drv_bastim_channel1_interrupt_handler
-                0x0000000000000000       0x24 drv_bastim.o
- .text.drv_bastim_channel2_interrupt_handler
-                0x0000000000000000       0x24 drv_bastim.o
- .text.drv_bastim_channel3_interrupt_handler
-                0x0000000000000000       0x24 drv_bastim.o
- .comment       0x0000000000000000       0x4a drv_bastim.o
- .ARM.attributes
-                0x0000000000000000       0x2d drv_bastim.o
+ .text.advtim_gen_int_reloading_reaching_rcr_callback
+                0x0000000000000000        0x2 drv_advtim_gen.o
  .text          0x0000000000000000        0x0 drv_common.o
  .data          0x0000000000000000        0x0 drv_common.o
  .bss           0x0000000000000000        0x0 drv_common.o
  .text.drv_check_data
                 0x0000000000000000       0x20 drv_common.o
- .text          0x0000000000000000        0x0 drv_eth.o
- .data          0x0000000000000000        0x0 drv_eth.o
- .bss           0x0000000000000000        0x0 drv_eth.o
- .text.drv_eth_sma_default_config
-                0x0000000000000000        0xa drv_eth.o
- .text.drv_eth_sma_set_config
-                0x0000000000000000       0x1e drv_eth.o
- .text.drv_eth_sma_init
-                0x0000000000000000       0x70 drv_eth.o
- .text.drv_eth_sma_deinit
-                0x0000000000000000       0x50 drv_eth.o
- .text.drv_eth_sma_master_write_reg
-                0x0000000000000000       0x36 drv_eth.o
- .text.drv_eth_sma_master_write_reglist
-                0x0000000000000000       0x5a drv_eth.o
- .text.drv_eth_sma_master_read_reg
-                0x0000000000000000       0x90 drv_eth.o
- .text.drv_eth_sma_master_read_reglist
-                0x0000000000000000       0xd4 drv_eth.o
- .text          0x0000000000000000        0x0 drv_eth_mac.o
- .data          0x0000000000000000        0x0 drv_eth_mac.o
- .bss           0x0000000000000000        0x0 drv_eth_mac.o
- .text.drv_eth_mac_deinit
-                0x0000000000000000       0xb0 drv_eth_mac.o
- .text.drv_eth_mac_rx_descriptor_default_config
-                0x0000000000000000        0x8 drv_eth_mac.o
- .text.drv_eth_mac_rx_descriptor_config
-                0x0000000000000000       0x12 drv_eth_mac.o
- .text.drv_eth_mac_set_rx_descriptor_config
-                0x0000000000000000       0x78 drv_eth_mac.o
- .text.drv_eth_mac_rx_descriptor_clear
-                0x0000000000000000       0x3c drv_eth_mac.o
- .text.drv_eth_mac_set_rx_descriptor_and_rx_enable
-                0x0000000000000000       0x14 drv_eth_mac.o
  .text          0x0000000000000000        0x0 drv_uart.o
  .data          0x0000000000000000        0x0 drv_uart.o
  .bss           0x0000000000000000        0x0 drv_uart.o
@@ -318,16 +220,12 @@ Discarded input sections
                 0x0000000000000000       0x70 drv_uart.o
  .text.drv_uart_tx_data
                 0x0000000000000000       0x44 drv_uart.o
- .text.drv_uart_putchars
-                0x0000000000000000       0x44 drv_uart.o
  .text.drv_uart_putchar
                 0x0000000000000000       0x2a drv_uart.o
  .text.drv_uart_rx_data
                 0x0000000000000000       0xbe drv_uart.o
  .text.drv_uart_getchar
                 0x0000000000000000       0xaa drv_uart.o
- .text.drv_uart_getchar_timeout
-                0x0000000000000000       0xbc drv_uart.o
  .text.drv_uart_rx_data_it
                 0x0000000000000000       0x14 drv_uart.o
  .text.uart_int_rx_stop_error_callback
@@ -335,152 +233,14 @@ Discarded input sections
  .text          0x0000000000000000        0x0 drv_uart_ex.o
  .data          0x0000000000000000        0x0 drv_uart_ex.o
  .bss           0x0000000000000000        0x0 drv_uart_ex.o
- .text.vprintf  0x0000000000000000       0x34 drv_uart_ex.o
- .text.drv_uart_printf
-                0x0000000000000000       0x1c drv_uart_ex.o
- .comment       0x0000000000000000       0x4a drv_uart_ex.o
- .ARM.attributes
-                0x0000000000000000       0x2d drv_uart_ex.o
- .text          0x0000000000000000        0x0 eth_bsp.o
- .data          0x0000000000000000        0x0 eth_bsp.o
- .bss           0x0000000000000000        0x0 eth_bsp.o
- .text.eth_sma_init
-                0x0000000000000000       0x20 eth_bsp.o
- .text.b50610_init
-                0x0000000000000000       0x34 eth_bsp.o
- .text.b50610_set_config
-                0x0000000000000000       0x14 eth_bsp.o
- .text.b50610_set_swrst
-                0x0000000000000000       0x14 eth_bsp.o
- .rodata.b50610_get_status.str1.4
-                0x0000000000000000       0x24 eth_bsp.o
- .text.b50610_get_status
-                0x0000000000000000       0x4c eth_bsp.o
- .text.eth_mac_descriptor_sw_handle_prepare
-                0x0000000000000000       0x54 eth_bsp.o
- .text.eth_mac_descriptor_hw_handle_prepare
-                0x0000000000000000       0x50 eth_bsp.o
- .rodata.eth_mac_descriptor_arp_frame_replacement_hw_handle_prepare.str1.4
-                0x0000000000000000        0x7 eth_bsp.o
- .text.eth_mac_descriptor_arp_frame_replacement_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_arp_frame_insertion_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .rodata.eth_mac_descriptor_ip_tcp_frame_replacement_hw_handle_prepare.str1.4
-                0x0000000000000000        0x7 eth_bsp.o
- .text.eth_mac_descriptor_ip_tcp_frame_replacement_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_tcp_frame_insertion_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .rodata.eth_mac_descriptor_ip_icmp_frame_replacement_hw_handle_prepare.str1.4
-                0x0000000000000000        0x7 eth_bsp.o
- .text.eth_mac_descriptor_ip_icmp_frame_replacement_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_icmp_frame_insertion_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_udp_frame_replacement_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_udp_frame_insertion_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .text.eth_mac_descriptor_ip_igmp_frame_crc_insertion_hw_handle_prepare
-                0x0000000000000000       0x84 eth_bsp.o
- .data.b50610_init_conifg
-                0x0000000000000000        0x8 eth_bsp.o
- .data.b50610_reglist
-                0x0000000000000000       0x20 eth_bsp.o
- .text          0x0000000000000000        0x0 eth_test.o
- .data          0x0000000000000000        0x0 eth_test.o
- .bss           0x0000000000000000        0x0 eth_test.o
- .text.eth_mac_tx_normal_frame_data_prepare
-                0x0000000000000000       0x38 eth_test.o
- .text.b50610_init_test
-                0x0000000000000000        0xc eth_test.o
- .rodata.b50610_get_reglist_test.str1.4
-                0x0000000000000000       0x27 eth_test.o
- .text.b50610_get_reglist_test
-                0x0000000000000000       0x68 eth_test.o
- .text.eth_mac_testcase
-                0x0000000000000000        0x2 eth_test.o
- .text.eth_mac_tx_data_by_sw
-                0x0000000000000000       0x40 eth_test.o
- .text.eth_mac_tx_data_by_hw
-                0x0000000000000000       0x40 eth_test.o
- .text.eth_mac_tx_arp_frame_by_hw_replacement
-                0x0000000000000000       0x48 eth_test.o
- .text.eth_mac_tx_arp_frame_by_hw_insertion
-                0x0000000000000000       0x48 eth_test.o
- .text.eth_mac_tx_ip_tcp_frame_by_hw_replacement
-                0x0000000000000000       0x58 eth_test.o
- .text.eth_mac_tx_ip_tcp_frame_by_hw_insertion
-                0x0000000000000000       0x58 eth_test.o
- .text.eth_mac_tx_ip_icmp_frame_by_hw_replacement
-                0x0000000000000000       0x58 eth_test.o
- .text.eth_mac_tx_ip_icmp_frame_by_hw_insertion
-                0x0000000000000000       0x58 eth_test.o
- .text.eth_mac_tx_ip_udp_frame_by_hw_replacement
-                0x0000000000000000       0x58 eth_test.o
- .text.eth_mac_tx_ip_udp_frame_by_hw_insertion
-                0x0000000000000000       0x58 eth_test.o
- .text.eth_mac_tx_ip_igmp_frame_by_hw_replacement
-                0x0000000000000000       0x3c eth_test.o
- .text.eth_mac_tx_ip_igmp_frame_by_hw_insertion
-                0x0000000000000000       0x3c eth_test.o
- .text.eth_mac_tx_ip_igmp_frame_by_hw_crc_insertion
-                0x0000000000000000       0x3c eth_test.o
- .text.eth_testmenu
-                0x0000000000000000       0x1c eth_test.o
- .bss.rx_data   0x0000000000000000       0x40 eth_test.o
- .bss.sma_callback_cnt
-                0x0000000000000000        0x1 eth_test.o
- .bss.tx_data   0x0000000000000000       0x80 eth_test.o
- .data.g_eth_menu
-                0x0000000000000000      0x168 eth_test.o
- .rodata.eth_arp_hw_insertion_frame
-                0x0000000000000000       0x24 eth_test.o
- .rodata.eth_arp_hw_replacement_frame
-                0x0000000000000000       0x2a eth_test.o
- .rodata.eth_icmp_hw_insertion_frame
-                0x0000000000000000       0x58 eth_test.o
- .rodata.eth_icmp_hw_replacement_frame
-                0x0000000000000000       0x62 eth_test.o
- .rodata.eth_igmp_hw_crc_replacement_frame
-                0x0000000000000000       0x3c eth_test.o
- .rodata.eth_igmp_hw_insertion_frame
-                0x0000000000000000       0x2a eth_test.o
- .rodata.eth_igmp_hw_replacement_frame
-                0x0000000000000000       0x32 eth_test.o
- .rodata.eth_tcp_hw_insertion_frame
-                0x0000000000000000       0x38 eth_test.o
- .rodata.eth_tcp_hw_replacement_frame
-                0x0000000000000000       0x42 eth_test.o
- .rodata.eth_udp_hw_insertion_frame
-                0x0000000000000000       0x50 eth_test.o
- .rodata.eth_udp_hw_replacement_frame
-                0x0000000000000000       0x5a eth_test.o
  .text          0x0000000000000000        0x0 interrupt.o
  .data          0x0000000000000000        0x0 interrupt.o
  .bss           0x0000000000000000        0x0 interrupt.o
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
- .rodata.show_testmenu.str1.4
-                0x0000000000000000       0x54 main.o
- .text.show_testmenu
-                0x0000000000000000       0x40 main.o
- .rodata.test_execute.str1.4
-                0x0000000000000000       0x59 main.o
- .text.test_execute
-                0x0000000000000000       0x94 main.o
- .text.mcu_testmenu
-                0x0000000000000000       0x1c main.o
- .text.exit_current_test
-                0x0000000000000000        0x4 main.o
- .data.g_mcu_menu
-                0x0000000000000000       0x90 main.o
+ .text.exit_current_test_detection
+                0x0000000000000000       0x30 main.o
  .data          0x0000000000000000        0x0 startup_CM3DS.o
  .bss           0x0000000000000000        0x0 startup_CM3DS.o
  .text          0x0000000000000000        0x0 uart_bsp.o
@@ -488,10 +248,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 uart_bsp.o
  .text.uart1_init
                 0x0000000000000000       0x20 uart_bsp.o
- .text.test_printf_s
-                0x0000000000000000        0x2 uart_bsp.o
  .text.test_printf_ch
-                0x0000000000000000        0x2 uart_bsp.o
+                0x0000000000000000        0x8 uart_bsp.o
  .bss.huart1    0x0000000000000000       0x1c uart_bsp.o
  .text          0x0000000000000000        0x0 uart_test.o
  .data          0x0000000000000000        0x0 uart_test.o
@@ -505,8 +263,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
- .data._impure_ptr
-                0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-init.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-init.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-init.o)
@@ -522,122 +278,46 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memset.o)
  .ARM.attributes
                 0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memset.o)
- .text          0x0000000000000000       0x10 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
- .ARM.attributes
-                0x0000000000000000       0x17 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
- .text._vsprintf_r
-                0x0000000000000000       0x2c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
- .text.vsprintf
-                0x0000000000000000       0x14 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
- .debug_frame   0x0000000000000000       0x3c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .text.__ssputs_r
-                0x0000000000000000       0xb6 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
  .text.__ssprint_r
                 0x0000000000000000       0xf6 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .rodata._svfprintf_r.str1.1
-                0x0000000000000000       0x11 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .text._svfprintf_r
-                0x0000000000000000      0x200 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x0000000000000000       0x90 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .text._printf_common
-                0x0000000000000000       0xde /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .rodata._printf_i.str1.1
-                0x0000000000000000       0x22 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .text._printf_i
-                0x0000000000000000      0x24c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x0000000000000000       0x60 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
- .text.memchr   0x0000000000000000       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x0000000000000000       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
- .text.memcpy   0x0000000000000000       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x0000000000000000       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
- .text.memmove  0x0000000000000000       0x34 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
- .debug_frame   0x0000000000000000       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
- .text._free_r  0x0000000000000000       0x90 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x0000000000000000       0x38 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .text.sbrk_aligned
-                0x0000000000000000       0x40 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .text._malloc_r
-                0x0000000000000000       0xe8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .bss.__malloc_free_list
-                0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .bss.__malloc_sbrk_start
-                0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x0000000000000000       0x4c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
- .text._realloc_r
-                0x0000000000000000       0x5e /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x0000000000000000       0x3c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
- .text._sbrk_r  0x0000000000000000       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x0000000000000000       0x2c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
- .text.__malloc_lock
-                0x0000000000000000        0xc /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
- .text.__malloc_unlock
-                0x0000000000000000        0xc /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
- .debug_frame   0x0000000000000000       0x30 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
- .text._malloc_usable_size_r
-                0x0000000000000000       0x10 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
- .debug_frame   0x0000000000000000       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
@@ -645,10 +325,6 @@ Discarded input sections
                 0x0000000000000000       0x1a /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
  .text._reclaim_reent
                 0x0000000000000000       0xb8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
- .bss.errno     0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
- .debug_frame   0x0000000000000000       0x5c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
@@ -662,15 +338,11 @@ Discarded input sections
                 0x0000000000000000        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .text.__retarget_lock_acquire
                 0x0000000000000000        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
- .text.__retarget_lock_acquire_recursive
-                0x0000000000000000        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .text.__retarget_lock_try_acquire
                 0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .text.__retarget_lock_try_acquire_recursive
                 0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .text.__retarget_lock_release
-                0x0000000000000000        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
- .text.__retarget_lock_release_recursive
                 0x0000000000000000        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .bss.__lock___arc4random_mutex
                 0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
@@ -682,26 +354,15 @@ Discarded input sections
                 0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .bss.__lock___env_recursive_mutex
                 0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
- .bss.__lock___malloc_recursive_mutex
-                0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .bss.__lock___sfp_recursive_mutex
                 0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .bss.__lock___sinit_recursive_mutex
                 0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .bss.__lock___tz_mutex
                 0x0000000000000000        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
- .debug_frame   0x0000000000000000       0xb0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
- .text._sbrk    0x0000000000000000       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
- .bss.heap_end.0
-                0x0000000000000000        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
- .debug_frame   0x0000000000000000       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
  .text          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
  .data          0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
  .bss           0x0000000000000000        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
@@ -727,17 +388,12 @@ LOAD /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none
 LOAD /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 LOAD advtim_bsp.o
 LOAD advtim_test.o
-LOAD bastim_bsp.o
-LOAD bastim_test.o
+LOAD drv_advtim_cap.o
+LOAD drv_advtim_enc.o
 LOAD drv_advtim_gen.o
-LOAD drv_bastim.o
 LOAD drv_common.o
-LOAD drv_eth.o
-LOAD drv_eth_mac.o
 LOAD drv_uart.o
 LOAD drv_uart_ex.o
-LOAD eth_bsp.o
-LOAD eth_test.o
 LOAD interrupt.o
 LOAD main.o
 LOAD startup_CM3DS.o
@@ -764,246 +420,317 @@ LOAD /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none
                 0x0000000000020000                __RAM_BASE = 0x20000
                 0x0000000000002000                __RAM_SIZE = 0x2000
 
-.text           0x0000000000000000     0x105c
+.text           0x0000000000000000     0x2194
  *(.isr_vector)
- .isr_vector    0x0000000000000000       0x88 startup_CM3DS.o
+ .isr_vector    0x0000000000000000       0x8c startup_CM3DS.o
                 0x0000000000000000                __isr_vector
  *(.text*)
- .text          0x0000000000000088       0x40 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .text          0x000000000000008c       0x40 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .text.advtim_ch_all_pwm_with_deadzone_with_break_on_init
+                0x00000000000000cc      0x114 advtim_bsp.o
+                0x00000000000000cc                advtim_ch_all_pwm_with_deadzone_with_break_on_init
+ .text.advtim_ch_up_all_pwm_with_deadzone_with_break_on_init
+                0x00000000000001e0      0x114 advtim_bsp.o
+                0x00000000000001e0                advtim_ch_up_all_pwm_with_deadzone_with_break_on_init
+ .text.advtim_ch_all_pwm_logic_with_deadzone_with_break_on_init
+                0x00000000000002f4      0x118 advtim_bsp.o
+                0x00000000000002f4                advtim_ch_all_pwm_logic_with_deadzone_with_break_on_init
+ .text.advtim_ch1_cap_step_on_init
+                0x000000000000040c       0x60 advtim_bsp.o
+                0x000000000000040c                advtim_ch1_cap_step_on_init
+ .text.advtim_ch1_cap_pwm_on_init
+                0x000000000000046c       0x60 advtim_bsp.o
+                0x000000000000046c                advtim_ch1_cap_pwm_on_init
+ .text.advtim_ch1_enc_direct_both_edge_on_init
+                0x00000000000004cc       0x58 advtim_bsp.o
+                0x00000000000004cc                advtim_ch1_enc_direct_both_edge_on_init
+ .text.advtim_deinit
+                0x0000000000000524       0x1c advtim_bsp.o
+                0x0000000000000524                advtim_deinit
+ .text.advtim_ch_all_pwm_with_deadzone_with_break_on_test
+                0x0000000000000540       0x80 advtim_test.o
+                0x0000000000000540                advtim_ch_all_pwm_with_deadzone_with_break_on_test
+ .text.advtim_ch_all_pwm_gpio_with_deadzone_with_break_on_test
+                0x00000000000005c0       0xb0 advtim_test.o
+                0x00000000000005c0                advtim_ch_all_pwm_gpio_with_deadzone_with_break_on_test
+ .text.advtim_ch_up_all_pwm_gpio_with_deadzone_with_break_on_test
+                0x0000000000000670       0xb0 advtim_test.o
+                0x0000000000000670                advtim_ch_up_all_pwm_gpio_with_deadzone_with_break_on_test
+ .text.advtim_ch_all_pwm_logic_with_deadzone_with_break_on_test
+                0x0000000000000720       0x90 advtim_test.o
+                0x0000000000000720                advtim_ch_all_pwm_logic_with_deadzone_with_break_on_test
+ .text.advtim_ch1_step_input_on_test
+                0x00000000000007b0       0x80 advtim_test.o
+                0x00000000000007b0                advtim_ch1_step_input_on_test
+ .text.advtim_ch1_pwm_input_on_test
+                0x0000000000000830       0x80 advtim_test.o
+                0x0000000000000830                advtim_ch1_pwm_input_on_test
+ .text.advtim_ch1_encoder_direct_both_edge_on_test
+                0x00000000000008b0       0x68 advtim_test.o
+                0x00000000000008b0                advtim_ch1_encoder_direct_both_edge_on_test
+ .text.advtim_gen_int_reloaded_callback
+                0x0000000000000918       0x88 advtim_test.o
+                0x0000000000000918                advtim_gen_int_reloaded_callback
+ .text.advtim_gen_int_reloading_reaching_rcr_callback
+                0x00000000000009a0       0x14 advtim_test.o
+                0x00000000000009a0                advtim_gen_int_reloading_reaching_rcr_callback
+ .text.advtim_gen_int_fault_detected_callback
+                0x00000000000009b4       0x2c advtim_test.o
+                0x00000000000009b4                advtim_gen_int_fault_detected_callback
+ .text.advtim_cap_int_reloaded_callback
+                0x00000000000009e0       0x58 advtim_test.o
+                0x00000000000009e0                advtim_cap_int_reloaded_callback
+ .text.advtim_cap_int_reloading_reaching_rcr_callback
+                0x0000000000000a38       0x14 advtim_test.o
+                0x0000000000000a38                advtim_cap_int_reloading_reaching_rcr_callback
+ .text.advtim_enc_int_reloaded_callback
+                0x0000000000000a4c       0x34 advtim_test.o
+                0x0000000000000a4c                advtim_enc_int_reloaded_callback
+ .text.advtim_enc_int_detected_callback
+                0x0000000000000a80       0x10 advtim_test.o
+                0x0000000000000a80                advtim_enc_int_detected_callback
+ .text.advtim_testmenu
+                0x0000000000000a90       0x1c advtim_test.o
+                0x0000000000000a90                advtim_testmenu
+ .text.drv_advtim_cap_set_config
+                0x0000000000000aac       0x60 drv_advtim_cap.o
+                0x0000000000000aac                drv_advtim_cap_set_config
+ .text.drv_advtim_cap_init
+                0x0000000000000b0c       0x3e drv_advtim_cap.o
+                0x0000000000000b0c                drv_advtim_cap_init
+ .text.drv_advtim_cap_deinit
+                0x0000000000000b4a       0x26 drv_advtim_cap.o
+                0x0000000000000b4a                drv_advtim_cap_deinit
+ .text.drv_advtim_cap_interrupt_handler
+                0x0000000000000b70       0x4a drv_advtim_cap.o
+                0x0000000000000b70                drv_advtim_cap_interrupt_handler
+ .text.drv_advtim_enc_set_config
+                0x0000000000000bba       0x4e drv_advtim_enc.o
+                0x0000000000000bba                drv_advtim_enc_set_config
+ .text.drv_advtim_enc_init
+                0x0000000000000c08       0x42 drv_advtim_enc.o
+                0x0000000000000c08                drv_advtim_enc_init
+ .text.drv_advtim_enc_deinit
+                0x0000000000000c4a       0x2a drv_advtim_enc.o
+                0x0000000000000c4a                drv_advtim_enc_deinit
+ .text.drv_advtim_enc_interrupt_handler
+                0x0000000000000c74       0x58 drv_advtim_enc.o
+                0x0000000000000c74                drv_advtim_enc_interrupt_handler
+ .text.drv_advtim_gen_set_config
+                0x0000000000000ccc      0x25a drv_advtim_gen.o
+                0x0000000000000ccc                drv_advtim_gen_set_config
+ .text.drv_advtim_gen_init
+                0x0000000000000f26       0x3e drv_advtim_gen.o
+                0x0000000000000f26                drv_advtim_gen_init
+ .text.drv_advtim_gen_deinit
+                0x0000000000000f64       0x26 drv_advtim_gen.o
+                0x0000000000000f64                drv_advtim_gen_deinit
+ .text.drv_advtim_gen_interrupt_handler
+                0x0000000000000f8a       0x68 drv_advtim_gen.o
+                0x0000000000000f8a                drv_advtim_gen_interrupt_handler
  .text.drv_check_rw_data
-                0x00000000000000c8       0x22 drv_common.o
-                0x00000000000000c8                drv_check_rw_data
- .text.eth_sma_int_rx_turn_nack_callback
-                0x00000000000000ea        0x2 drv_eth.o
-                0x00000000000000ea                eth_sma_int_rx_turn_nack_callback
- .text.eth_sma_int_master_frame_done_callback
-                0x00000000000000ec        0x2 drv_eth.o
-                0x00000000000000ec                eth_sma_int_master_frame_done_callback
- .text.eth_sma_int_tx_fifo_empty_callback
-                0x00000000000000ee        0x2 drv_eth.o
-                0x00000000000000ee                eth_sma_int_tx_fifo_empty_callback
- .text.eth_sma_int_tx_fifo_thres_callback
-                0x00000000000000f0        0x2 drv_eth.o
-                0x00000000000000f0                eth_sma_int_tx_fifo_thres_callback
- .text.eth_sma_int_rx_fifo_noempty_callback
-                0x00000000000000f2        0x2 drv_eth.o
-                0x00000000000000f2                eth_sma_int_rx_fifo_noempty_callback
- .text.eth_sma_int_rx_fifo_thres_callback
-                0x00000000000000f4        0x2 drv_eth.o
-                0x00000000000000f4                eth_sma_int_rx_fifo_thres_callback
- .text.drv_eth_sma_interrupt_handler
-                0x00000000000000f6       0xc6 drv_eth.o
-                0x00000000000000f6                drv_eth_sma_interrupt_handler
- .text.drv_eth_mac_dma_default_config
-                0x00000000000001bc        0xe drv_eth_mac.o
-                0x00000000000001bc                drv_eth_mac_dma_default_config
- *fill*         0x00000000000001ca        0x2 
- .text.drv_eth_mac_pe_default_config
-                0x00000000000001cc       0x24 drv_eth_mac.o
-                0x00000000000001cc                drv_eth_mac_pe_default_config
- .text.drv_eth_mac_set_dma_config
-                0x00000000000001f0       0x22 drv_eth_mac.o
-                0x00000000000001f0                drv_eth_mac_set_dma_config
- .text.drv_eth_mac_set_pe_config
-                0x0000000000000212       0x5c drv_eth_mac.o
-                0x0000000000000212                drv_eth_mac_set_pe_config
- .text.drv_eth_mac_init
-                0x000000000000026e       0xec drv_eth_mac.o
-                0x000000000000026e                drv_eth_mac_init
- .text.drv_eth_mac_address_set
-                0x000000000000035a       0x40 drv_eth_mac.o
-                0x000000000000035a                drv_eth_mac_address_set
- .text.drv_eth_mac_tx_descriptor_default_config
-                0x000000000000039a       0x12 drv_eth_mac.o
-                0x000000000000039a                drv_eth_mac_tx_descriptor_default_config
- .text.drv_eth_mac_tx_descriptor_config
-                0x00000000000003ac       0x26 drv_eth_mac.o
-                0x00000000000003ac                drv_eth_mac_tx_descriptor_config
- .text.drv_eth_mac_set_tx_descriptor_config
-                0x00000000000003d2       0x76 drv_eth_mac.o
-                0x00000000000003d2                drv_eth_mac_set_tx_descriptor_config
- .text.drv_eth_mac_tx_descriptor_clear
-                0x0000000000000448       0x3c drv_eth_mac.o
-                0x0000000000000448                drv_eth_mac_tx_descriptor_clear
- .text.drv_eth_mac_set_tx_descriptor_and_tx_enable
-                0x0000000000000484       0x28 drv_eth_mac.o
-                0x0000000000000484                drv_eth_mac_set_tx_descriptor_and_tx_enable
- .text.eth_mac_tx_int_tx_frame_done_callback
-                0x00000000000004ac        0x2 drv_eth_mac.o
-                0x00000000000004ac                eth_mac_tx_int_tx_frame_done_callback
- .text.eth_mac_rx_int_rx_frame_done_callback
-                0x00000000000004ae        0x2 drv_eth_mac.o
-                0x00000000000004ae                eth_mac_rx_int_rx_frame_done_callback
- .text.eth_mac_dma_int_once_process_done_callback
-                0x00000000000004b0        0x2 drv_eth_mac.o
-                0x00000000000004b0                eth_mac_dma_int_once_process_done_callback
- .text.eth_mac_dma_int_hready_to_callback
-                0x00000000000004b2        0x2 drv_eth_mac.o
-                0x00000000000004b2                eth_mac_dma_int_hready_to_callback
- .text.eth_mac_dma_int_bus_error_callback
-                0x00000000000004b4        0x2 drv_eth_mac.o
-                0x00000000000004b4                eth_mac_dma_int_bus_error_callback
- .text.drv_eth_mac_tx_interrupt_handler
-                0x00000000000004b6       0x3c drv_eth_mac.o
-                0x00000000000004b6                drv_eth_mac_tx_interrupt_handler
- .text.drv_eth_mac_rx_interrupt_handler
-                0x00000000000004f2       0x3c drv_eth_mac.o
-                0x00000000000004f2                drv_eth_mac_rx_interrupt_handler
- .text.drv_eth_mac_dma_interrupt_handler
-                0x000000000000052e       0x90 drv_eth_mac.o
-                0x000000000000052e                drv_eth_mac_dma_interrupt_handler
+                0x0000000000000ff2       0x22 drv_common.o
+                0x0000000000000ff2                drv_check_rw_data
  .text.drv_uart_default_config
-                0x00000000000005be       0x1c drv_uart.o
-                0x00000000000005be                drv_uart_default_config
- *fill*         0x00000000000005da        0x2 
+                0x0000000000001014       0x1c drv_uart.o
+                0x0000000000001014                drv_uart_default_config
  .text.drv_uart_set_config
-                0x00000000000005dc       0x48 drv_uart.o
-                0x00000000000005dc                drv_uart_set_config
+                0x0000000000001030       0x48 drv_uart.o
+                0x0000000000001030                drv_uart_set_config
  .text.drv_uart_init
-                0x0000000000000624       0x90 drv_uart.o
-                0x0000000000000624                drv_uart_init
+                0x0000000000001078       0x90 drv_uart.o
+                0x0000000000001078                drv_uart_init
+ .text.drv_uart_putchars
+                0x0000000000001108       0x44 drv_uart.o
+                0x0000000000001108                drv_uart_putchars
+ .text.drv_uart_getchar_timeout
+                0x000000000000114c       0xbc drv_uart.o
+                0x000000000000114c                drv_uart_getchar_timeout
  .text.uart_int_tx_done_callback
-                0x00000000000006b4        0x2 drv_uart.o
-                0x00000000000006b4                uart_int_tx_done_callback
+                0x0000000000001208        0x2 drv_uart.o
+                0x0000000000001208                uart_int_tx_done_callback
  .text.uart_int_rx_stop_callback
-                0x00000000000006b6        0x2 drv_uart.o
-                0x00000000000006b6                uart_int_rx_stop_callback
+                0x000000000000120a        0x2 drv_uart.o
+                0x000000000000120a                uart_int_rx_stop_callback
  .text.uart_int_rx_parity_error_callback
-                0x00000000000006b8        0x2 drv_uart.o
-                0x00000000000006b8                uart_int_rx_parity_error_callback
+                0x000000000000120c        0x2 drv_uart.o
+                0x000000000000120c                uart_int_rx_parity_error_callback
  .text.uart_int_rx_noise_detect_callback
-                0x00000000000006ba        0x2 drv_uart.o
-                0x00000000000006ba                uart_int_rx_noise_detect_callback
+                0x000000000000120e        0x2 drv_uart.o
+                0x000000000000120e                uart_int_rx_noise_detect_callback
  .text.uart_int_rx_stop_detect_callback
-                0x00000000000006bc        0x2 drv_uart.o
-                0x00000000000006bc                uart_int_rx_stop_detect_callback
+                0x0000000000001210        0x2 drv_uart.o
+                0x0000000000001210                uart_int_rx_stop_detect_callback
  .text.uart_int_tx_fifo_empty_callback
-                0x00000000000006be        0x2 drv_uart.o
-                0x00000000000006be                uart_int_tx_fifo_empty_callback
+                0x0000000000001212        0x2 drv_uart.o
+                0x0000000000001212                uart_int_tx_fifo_empty_callback
  .text.uart_int_tx_fifo_thres_callback
-                0x00000000000006c0        0x2 drv_uart.o
-                0x00000000000006c0                uart_int_tx_fifo_thres_callback
+                0x0000000000001214        0x2 drv_uart.o
+                0x0000000000001214                uart_int_tx_fifo_thres_callback
  .text.uart_int_rx_fifo_noempty_callback
-                0x00000000000006c2        0x2 drv_uart.o
-                0x00000000000006c2                uart_int_rx_fifo_noempty_callback
+                0x0000000000001216        0x2 drv_uart.o
+                0x0000000000001216                uart_int_rx_fifo_noempty_callback
  .text.uart_int_rx_fifo_thres_callback
-                0x00000000000006c4        0x2 drv_uart.o
-                0x00000000000006c4                uart_int_rx_fifo_thres_callback
+                0x0000000000001218        0x2 drv_uart.o
+                0x0000000000001218                uart_int_rx_fifo_thres_callback
  .text.drv_uart_interrupt_handler
-                0x00000000000006c6      0x254 drv_uart.o
-                0x00000000000006c6                drv_uart_interrupt_handler
- *fill*         0x000000000000091a        0x2 
- .text.eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare
-                0x000000000000091c       0x88 eth_bsp.o
-                0x000000000000091c                eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare
- .text.eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare
-                0x00000000000009a4       0x84 eth_bsp.o
-                0x00000000000009a4                eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare
- .text.eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare
-                0x0000000000000a28       0x84 eth_bsp.o
-                0x0000000000000a28                eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare
- .text.eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare
-                0x0000000000000aac       0x84 eth_bsp.o
-                0x0000000000000aac                eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare
- .text.eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare
-                0x0000000000000b30       0x84 eth_bsp.o
-                0x0000000000000b30                eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare
- .text.eth_mac_init
-                0x0000000000000bb4       0x2c eth_bsp.o
-                0x0000000000000bb4                eth_mac_init
- .text.eth_mac_tx_frame_data_prepare
-                0x0000000000000be0       0x42 eth_test.o
- *fill*         0x0000000000000c22        0x2 
- .text.eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement
-                0x0000000000000c24       0x3c eth_test.o
-                0x0000000000000c24                eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement
- .text.eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion
-                0x0000000000000c60       0x3c eth_test.o
-                0x0000000000000c60                eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion
- .text.eth_mac_tx_ip_igmp_frame_by_sw_padding_crc
-                0x0000000000000c9c       0x3c eth_test.o
-                0x0000000000000c9c                eth_mac_tx_ip_igmp_frame_by_sw_padding_crc
- .text.eth_mac_tx_ip_udp_frame2_by_hw_replacement
-                0x0000000000000cd8       0x3c eth_test.o
-                0x0000000000000cd8                eth_mac_tx_ip_udp_frame2_by_hw_replacement
- .text.eth_mac_tx_ip_udp_frame2_by_hw_insertion
-                0x0000000000000d14       0x3c eth_test.o
-                0x0000000000000d14                eth_mac_tx_ip_udp_frame2_by_hw_insertion
+                0x000000000000121a      0x254 drv_uart.o
+                0x000000000000121a                drv_uart_interrupt_handler
+ *fill*         0x000000000000146e        0x2 
+ .text.vprintf  0x0000000000001470       0x34 drv_uart_ex.o
+                0x0000000000001470                vprintf
+ .text.drv_uart_printf
+                0x00000000000014a4       0x1c drv_uart_ex.o
+                0x00000000000014a4                drv_uart_printf
  .text.NMI_Handler
-                0x0000000000000d50        0x2 interrupt.o
-                0x0000000000000d50                NMI_Handler
+                0x00000000000014c0       0x10 interrupt.o
+                0x00000000000014c0                NMI_Handler
  .text.HardFault_Handler
-                0x0000000000000d52        0x2 interrupt.o
-                0x0000000000000d52                HardFault_Handler
+                0x00000000000014d0        0x2 interrupt.o
+                0x00000000000014d0                HardFault_Handler
  .text.MemManage_Handler
-                0x0000000000000d54        0x2 interrupt.o
-                0x0000000000000d54                MemManage_Handler
+                0x00000000000014d2        0x2 interrupt.o
+                0x00000000000014d2                MemManage_Handler
  .text.BusFault_Handler
-                0x0000000000000d56        0x2 interrupt.o
-                0x0000000000000d56                BusFault_Handler
+                0x00000000000014d4        0x2 interrupt.o
+                0x00000000000014d4                BusFault_Handler
  .text.UsageFault_Handler
-                0x0000000000000d58        0x2 interrupt.o
-                0x0000000000000d58                UsageFault_Handler
+                0x00000000000014d6        0x2 interrupt.o
+                0x00000000000014d6                UsageFault_Handler
  .text.SVC_Handler
-                0x0000000000000d5a        0x2 interrupt.o
-                0x0000000000000d5a                SVC_Handler
+                0x00000000000014d8        0x2 interrupt.o
+                0x00000000000014d8                SVC_Handler
  .text.DebugMon_Handler
-                0x0000000000000d5c        0x2 interrupt.o
-                0x0000000000000d5c                DebugMon_Handler
+                0x00000000000014da        0x2 interrupt.o
+                0x00000000000014da                DebugMon_Handler
  .text.PendSV_Handler
-                0x0000000000000d5e        0x2 interrupt.o
-                0x0000000000000d5e                PendSV_Handler
+                0x00000000000014dc        0x2 interrupt.o
+                0x00000000000014dc                PendSV_Handler
  .text.SysTick_Handler
-                0x0000000000000d60        0x2 interrupt.o
-                0x0000000000000d60                SysTick_Handler
- *fill*         0x0000000000000d62        0x2 
+                0x00000000000014de        0x2 interrupt.o
+                0x00000000000014de                SysTick_Handler
  .text.Uart0_Handler
-                0x0000000000000d64       0x1c interrupt.o
-                0x0000000000000d64                Uart0_Handler
- .text.EthSma_Handler
-                0x0000000000000d80       0x1c interrupt.o
-                0x0000000000000d80                EthSma_Handler
- .text.EthTx_Handler
-                0x0000000000000d9c       0x1c interrupt.o
-                0x0000000000000d9c                EthTx_Handler
- .text.EthRx_Handler
-                0x0000000000000db8       0x1c interrupt.o
-                0x0000000000000db8                EthRx_Handler
- .text.EthDma_Handler
-                0x0000000000000dd4       0x1c interrupt.o
-                0x0000000000000dd4                EthDma_Handler
- .text.main     0x0000000000000df0       0x28 main.o
-                0x0000000000000df0                main
- .text          0x0000000000000e18       0x78 startup_CM3DS.o
-                0x0000000000000e18                Reset_Handler
-                0x0000000000000e6c                Uart1_Handler
-                0x0000000000000e6e                Resv2_Handler
-                0x0000000000000e70                Resv3_Handler
-                0x0000000000000e74                Gpioa_Handler
-                0x0000000000000e76                Resv6_Handler
-                0x0000000000000e78                Resv7_Handler
-                0x0000000000000e7a                Bastim_Ch0_Handler
-                0x0000000000000e7c                Bastim_Ch1_Handler
-                0x0000000000000e7e                Bastim_Ch2_Handler
-                0x0000000000000e80                Bastim_Ch3_Handler
-                0x0000000000000e88                Resv15_Handler
-                0x0000000000000e8a                AdvtimGen_Handler
-                0x0000000000000e8c                AdvtimCap_Handler
+                0x00000000000014e0       0x1c interrupt.o
+                0x00000000000014e0                Uart0_Handler
+ .text.AdvtimGen_Handler
+                0x00000000000014fc       0x1c interrupt.o
+                0x00000000000014fc                AdvtimGen_Handler
+ .text.AdvtimCap_Handler
+                0x0000000000001518       0x1c interrupt.o
+                0x0000000000001518                AdvtimCap_Handler
+ .text.AdvtimEnc_Handler
+                0x0000000000001534       0x1c interrupt.o
+                0x0000000000001534                AdvtimEnc_Handler
+ .text.show_testmenu
+                0x0000000000001550       0x40 main.o
+                0x0000000000001550                show_testmenu
+ .text.test_execute
+                0x0000000000001590       0x94 main.o
+                0x0000000000001590                test_execute
+ .text.mcu_testmenu
+                0x0000000000001624       0x1c main.o
+                0x0000000000001624                mcu_testmenu
+ .text.main     0x0000000000001640        0xc main.o
+                0x0000000000001640                main
+ .text.exit_current_test_loop
+                0x000000000000164c       0x2c main.o
+                0x000000000000164c                exit_current_test_loop
+ .text          0x0000000000001678       0x78 startup_CM3DS.o
+                0x0000000000001678                Reset_Handler
+                0x00000000000016cc                Uart1_Handler
+                0x00000000000016ce                Resv2_Handler
+                0x00000000000016d0                Resv3_Handler
+                0x00000000000016d2                EthDma_Handler
+                0x00000000000016d4                Gpioa_Handler
+                0x00000000000016d6                Resv6_Handler
+                0x00000000000016d8                Resv7_Handler
+                0x00000000000016da                Bastim_Ch0_Handler
+                0x00000000000016dc                Bastim_Ch1_Handler
+                0x00000000000016de                Bastim_Ch2_Handler
+                0x00000000000016e0                Bastim_Ch3_Handler
+                0x00000000000016e2                EthSma_Handler
+                0x00000000000016e4                EthTx_Handler
+                0x00000000000016e6                EthRx_Handler
+                0x00000000000016e8                Resv15_Handler
  .text.uart0_init
-                0x0000000000000e90       0x20 uart_bsp.o
-                0x0000000000000e90                uart0_init
- .text.exit     0x0000000000000eb0       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-exit.o)
-                0x0000000000000eb0                exit
- .text._exit    0x0000000000000ed8        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
-                0x0000000000000ed8                _exit
+                0x00000000000016f0       0x20 uart_bsp.o
+                0x00000000000016f0                uart0_init
+ .text.test_printf_s
+                0x0000000000001710        0x8 uart_bsp.o
+                0x0000000000001710                test_printf_s
+ .text.exit     0x0000000000001718       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-exit.o)
+                0x0000000000001718                exit
+ .text          0x0000000000001740       0x10 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
+                0x0000000000001740                strlen
+ .text._vsprintf_r
+                0x0000000000001750       0x2c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
+                0x0000000000001750                _vsiprintf_r
+                0x0000000000001750                _vsprintf_r
+ .text.vsprintf
+                0x000000000000177c       0x14 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
+                0x000000000000177c                vsprintf
+                0x000000000000177c                vsiprintf
+ .text.__ssputs_r
+                0x0000000000001790       0xb6 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x0000000000001790                __ssputs_r
+ *fill*         0x0000000000001846        0x2 
+ .text._svfprintf_r
+                0x0000000000001848      0x200 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x0000000000001848                _svfprintf_r
+                0x0000000000001848                _svfiprintf_r
+ .text._printf_common
+                0x0000000000001a48       0xde /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000000001a48                _printf_common
+ *fill*         0x0000000000001b26        0x2 
+ .text._printf_i
+                0x0000000000001b28      0x24c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000000001b28                _printf_i
+ .text.memchr   0x0000000000001d74       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
+                0x0000000000001d74                memchr
+ .text.memcpy   0x0000000000001d90       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+                0x0000000000001d90                memcpy
+ .text.memmove  0x0000000000001dac       0x34 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+                0x0000000000001dac                memmove
+ .text._free_r  0x0000000000001de0       0x90 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+                0x0000000000001de0                _free_r
+ .text.sbrk_aligned
+                0x0000000000001e70       0x40 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .text._malloc_r
+                0x0000000000001eb0       0xe8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000000001eb0                _malloc_r
+ .text._realloc_r
+                0x0000000000001f98       0x5e /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
+                0x0000000000001f98                _realloc_r
+ *fill*         0x0000000000001ff6        0x2 
+ .text._sbrk_r  0x0000000000001ff8       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+                0x0000000000001ff8                _sbrk_r
+ .text.__malloc_lock
+                0x0000000000002018        0xc /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+                0x0000000000002018                __malloc_lock
+ .text.__malloc_unlock
+                0x0000000000002024        0xc /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+                0x0000000000002024                __malloc_unlock
+ .text._malloc_usable_size_r
+                0x0000000000002030       0x10 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+                0x0000000000002030                _malloc_usable_size_r
+ .text.__retarget_lock_acquire_recursive
+                0x0000000000002040        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x0000000000002040                __retarget_lock_acquire_recursive
+ .text.__retarget_lock_release_recursive
+                0x0000000000002042        0x2 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x0000000000002042                __retarget_lock_release_recursive
+ .text._sbrk    0x0000000000002044       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
+                0x0000000000002044                _sbrk
+ .text._exit    0x0000000000002060        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
+                0x0000000000002060                _exit
  *(.init)
- .init          0x0000000000000edc        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
-                0x0000000000000edc                _init
- .init          0x0000000000000ee0        0x8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+ .init          0x0000000000002064        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x0000000000002064                _init
+ .init          0x0000000000002068        0x8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x0000000000000ee8        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
-                0x0000000000000ee8                _fini
- .fini          0x0000000000000eec        0x8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+ .fini          0x0000000000002070        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x0000000000002070                _fini
+ .fini          0x0000000000002074        0x8 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -1015,120 +742,152 @@ LOAD /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata.eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare.str1.4
-                0x0000000000000ef4        0x7 eth_bsp.o
- *fill*         0x0000000000000efb        0x1 
- .rodata        0x0000000000000efc        0xe eth_bsp.o
- *fill*         0x0000000000000f0a        0x2 
- .rodata.eth_igmp_hw_padding_crc_insertion_frame
-                0x0000000000000f0c       0x32 eth_test.o
-                0x0000000000000f0c                eth_igmp_hw_padding_crc_insertion_frame
- *fill*         0x0000000000000f3e        0x2 
- .rodata.eth_igmp_sw_padding_crc_frame
-                0x0000000000000f40       0x40 eth_test.o
-                0x0000000000000f40                eth_igmp_sw_padding_crc_frame
- .rodata.eth_udp_hw_insertion_frame2
-                0x0000000000000f80       0x63 eth_test.o
-                0x0000000000000f80                eth_udp_hw_insertion_frame2
- *fill*         0x0000000000000fe3        0x1 
- .rodata.eth_udp_hw_replacement_frame2
-                0x0000000000000fe4       0x6d eth_test.o
-                0x0000000000000fe4                eth_udp_hw_replacement_frame2
- *fill*         0x0000000000001051        0x3 
+ .rodata.advtim_ch_all_pwm_with_deadzone_with_break_on_test.str1.4
+                0x000000000000207c       0x13 advtim_test.o
+ *fill*         0x000000000000208f        0x1 
+ .rodata.advtim_gen_int_fault_detected_callback.str1.4
+                0x0000000000002090       0x12 advtim_test.o
+ *fill*         0x00000000000020a2        0x2 
+ .rodata.NMI_Handler.str1.4
+                0x00000000000020a4        0x4 interrupt.o
+ .rodata.show_testmenu.str1.4
+                0x00000000000020a8       0x54 main.o
+ .rodata.test_execute.str1.4
+                0x00000000000020fc       0x59 main.o
+ *fill*         0x0000000000002155        0x3 
  .rodata._global_impure_ptr
-                0x0000000000001054        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
-                0x0000000000001054                _global_impure_ptr
+                0x0000000000002158        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
+                0x0000000000002158                _global_impure_ptr
+ .rodata._svfprintf_r.str1.1
+                0x000000000000215c       0x11 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+ .rodata._printf_i.str1.1
+                0x000000000000216d       0x22 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
  *(.eh_frame*)
- .eh_frame      0x0000000000001058        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
- .eh_frame      0x0000000000001058        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ *fill*         0x000000000000218f        0x1 
+ .eh_frame      0x0000000000002190        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x0000000000002190        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
 
-.glue_7         0x000000000000105c        0x0
- .glue_7        0x000000000000105c        0x0 linker stubs
+.glue_7         0x0000000000002194        0x0
+ .glue_7        0x0000000000002194        0x0 linker stubs
 
-.glue_7t        0x000000000000105c        0x0
- .glue_7t       0x000000000000105c        0x0 linker stubs
+.glue_7t        0x0000000000002194        0x0
+ .glue_7t       0x0000000000002194        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000105c        0x0
- .vfp11_veneer  0x000000000000105c        0x0 linker stubs
+.vfp11_veneer   0x0000000000002194        0x0
+ .vfp11_veneer  0x0000000000002194        0x0 linker stubs
 
-.v4_bx          0x000000000000105c        0x0
- .v4_bx         0x000000000000105c        0x0 linker stubs
+.v4_bx          0x0000000000002194        0x0
+ .v4_bx         0x0000000000002194        0x0 linker stubs
 
-.iplt           0x000000000000105c        0x0
- .iplt          0x000000000000105c        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x0000000000002194        0x0
+ .iplt          0x0000000000002194        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.rel.dyn        0x000000000000105c        0x0
- .rel.iplt      0x000000000000105c        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x0000000000002194        0x0
+ .rel.iplt      0x0000000000002194        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000000105c                __exidx_start = .
+                0x0000000000002194                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000000000000105c                __exidx_end = .
-                0x000000000000105c                __etext = .
+                0x0000000000002194                __exidx_end = .
+                0x0000000000002194                __etext = .
 
-.data           0x0000000000020000       0x68 load address 0x000000000000105c
+.data           0x0000000000020000      0x534 load address 0x0000000000002194
                 0x0000000000020000                __data_start__ = .
  *(vtable)
  *(.data*)
+ .data.g_advtim_menu
+                0x0000000000020000      0x3b8 advtim_test.o
+                0x0000000000020000                g_advtim_menu
+ .data.g_mcu_menu
+                0x00000000000203b8      0x110 main.o
+                0x00000000000203b8                g_mcu_menu
+ .data._impure_ptr
+                0x00000000000204c8        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
+                0x00000000000204c8                _impure_ptr
  .data.impure_data
-                0x0000000000020000       0x60 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
-                0x0000000000020060                . = ALIGN (0x4)
-                0x0000000000020060                PROVIDE (__preinit_array_start = .)
+                0x00000000000204cc       0x60 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
+                0x000000000002052c                . = ALIGN (0x4)
+                0x000000000002052c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
-                0x0000000000020060                PROVIDE (__preinit_array_end = .)
-                0x0000000000020060                . = ALIGN (0x4)
-                0x0000000000020060                PROVIDE (__init_array_start = .)
+                0x000000000002052c                PROVIDE (__preinit_array_end = .)
+                0x000000000002052c                . = ALIGN (0x4)
+                0x000000000002052c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
- .init_array    0x0000000000020060        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x0000000000020064                PROVIDE (__init_array_end = .)
-                0x0000000000020064                . = ALIGN (0x4)
+ .init_array    0x000000000002052c        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x0000000000020530                PROVIDE (__init_array_end = .)
+                0x0000000000020530                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
- .fini_array    0x0000000000020064        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .fini_array    0x0000000000020530        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
  *(.jcr*)
-                0x0000000000020068                . = ALIGN (0x4)
-                0x0000000000020068                __data_end__ = .
+                0x0000000000020534                . = ALIGN (0x4)
+                0x0000000000020534                __data_end__ = .
 
-.igot.plt       0x0000000000020068        0x0 load address 0x00000000000010c4
- .igot.plt      0x0000000000020068        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.igot.plt       0x0000000000020534        0x0 load address 0x00000000000026c8
+ .igot.plt      0x0000000000020534        0x0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.bss            0x0000000000020068       0xc4 load address 0x00000000000010c4
-                0x0000000000020068                . = ALIGN (0x4)
-                0x0000000000020068                __bss_start__ = .
+.bss            0x0000000000020534       0xc4 load address 0x00000000000026c8
+                0x0000000000020534                . = ALIGN (0x4)
+                0x0000000000020534                __bss_start__ = .
  *(.bss*)
- .bss           0x0000000000020068       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
- .bss.EthDmaTxDesc
-                0x0000000000020084       0x40 eth_bsp.o
-                0x0000000000020084                EthDmaTxDesc
- .bss.heth      0x00000000000200c4       0x14 eth_bsp.o
-                0x00000000000200c4                heth
- .bss.hethmac   0x00000000000200d8       0x2c eth_bsp.o
-                0x00000000000200d8                hethmac
- .bss.hethmac_desccfg
-                0x0000000000020104        0xc eth_bsp.o
-                0x0000000000020104                hethmac_desccfg
- .bss.huart0    0x0000000000020110       0x1c uart_bsp.o
-                0x0000000000020110                huart0
+ .bss           0x0000000000020534       0x1c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .bss.hadvtim   0x0000000000020550       0x70 advtim_bsp.o
+                0x0000000000020550                hadvtim
+ .bss.advtim_case_flag
+                0x00000000000205c0        0x1 advtim_test.o
+                0x00000000000205c0                advtim_case_flag
+ *fill*         0x00000000000205c1        0x1 
+ .bss.advtim_int_flag
+                0x00000000000205c2        0x2 advtim_test.o
+                0x00000000000205c2                advtim_int_flag
+ .bss.advtim_int_flag1
+                0x00000000000205c4        0x1 advtim_test.o
+                0x00000000000205c4                advtim_int_flag1
+ .bss.advtim_int_flag2
+                0x00000000000205c5        0x1 advtim_test.o
+                0x00000000000205c5                advtim_int_flag2
+ .bss.advtim_int_flag3
+                0x00000000000205c6        0x1 advtim_test.o
+                0x00000000000205c6                advtim_int_flag3
+ .bss.advtim_temp
+                0x00000000000205c7        0x1 advtim_test.o
+                0x00000000000205c7                advtim_temp
+ .bss.huart0    0x00000000000205c8       0x1c uart_bsp.o
+                0x00000000000205c8                huart0
+ .bss.__malloc_free_list
+                0x00000000000205e4        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000000205e4                __malloc_free_list
+ .bss.__malloc_sbrk_start
+                0x00000000000205e8        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000000205e8                __malloc_sbrk_start
+ .bss.errno     0x00000000000205ec        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
+                0x00000000000205ec                errno
+ .bss.__lock___malloc_recursive_mutex
+                0x00000000000205f0        0x1 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x00000000000205f0                __lock___malloc_recursive_mutex
+ *fill*         0x00000000000205f1        0x3 
+ .bss.heap_end.0
+                0x00000000000205f4        0x4 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
  *(COMMON)
-                0x000000000002012c                . = ALIGN (0x4)
-                0x000000000002012c                __bss_end__ = .
+                0x00000000000205f8                . = ALIGN (0x4)
+                0x00000000000205f8                __bss_end__ = .
 
-.heap           0x0000000000020130        0x0
-                0x0000000000020130                __end__ = .
-                0x0000000000020130                end = __end__
+.heap           0x00000000000205f8        0x0
+                0x00000000000205f8                __end__ = .
+                0x00000000000205f8                end = __end__
  *(.heap*)
- .heap          0x0000000000020130        0x0 startup_CM3DS.o
-                0x0000000000020130                __HeapLimit = .
+ .heap          0x00000000000205f8        0x0 startup_CM3DS.o
+                0x00000000000205f8                __HeapLimit = .
 
-.stack_dummy    0x0000000000020130      0x200
+.stack_dummy    0x00000000000205f8      0x200
  *(.stack*)
- .stack         0x0000000000020130      0x200 startup_CM3DS.o
+ .stack         0x00000000000205f8      0x200 startup_CM3DS.o
                 0x0000000000022000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
                 0x0000000000021e00                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
                 0x0000000000022000                PROVIDE (__stack = __StackTop)
@@ -1143,69 +902,121 @@ LOAD linker stubs
  .ARM.attributes
                 0x000000000000001d       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
  .ARM.attributes
-                0x000000000000004a       0x2d drv_common.o
+                0x000000000000004a       0x2d advtim_bsp.o
  .ARM.attributes
-                0x0000000000000077       0x2d drv_eth.o
+                0x0000000000000077       0x2d advtim_test.o
  .ARM.attributes
-                0x00000000000000a4       0x2d drv_eth_mac.o
+                0x00000000000000a4       0x2d drv_advtim_cap.o
  .ARM.attributes
-                0x00000000000000d1       0x2d drv_uart.o
+                0x00000000000000d1       0x2d drv_advtim_enc.o
  .ARM.attributes
-                0x00000000000000fe       0x2d eth_bsp.o
+                0x00000000000000fe       0x2d drv_advtim_gen.o
  .ARM.attributes
-                0x000000000000012b       0x2d eth_test.o
+                0x000000000000012b       0x2d drv_common.o
  .ARM.attributes
-                0x0000000000000158       0x2d interrupt.o
+                0x0000000000000158       0x2d drv_uart.o
  .ARM.attributes
-                0x0000000000000185       0x2d main.o
+                0x0000000000000185       0x2d drv_uart_ex.o
  .ARM.attributes
-                0x00000000000001b2       0x1b startup_CM3DS.o
+                0x00000000000001b2       0x2d interrupt.o
  .ARM.attributes
-                0x00000000000001cd       0x2d uart_bsp.o
+                0x00000000000001df       0x2d main.o
  .ARM.attributes
-                0x00000000000001fa       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-exit.o)
+                0x000000000000020c       0x1b startup_CM3DS.o
  .ARM.attributes
-                0x0000000000000227       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
+                0x0000000000000227       0x2d uart_bsp.o
  .ARM.attributes
-                0x0000000000000254       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
+                0x0000000000000254       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x0000000000000281       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+                0x0000000000000281       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000000000002ae       0x1d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+                0x00000000000002ae       0x17 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x00000000000002c5       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
+ .ARM.attributes
+                0x00000000000002f2       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+ .ARM.attributes
+                0x000000000000031f       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .ARM.attributes
+                0x000000000000034c       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
+ .ARM.attributes
+                0x0000000000000379       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000000000003a6       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x00000000000003d3       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .ARM.attributes
+                0x0000000000000400       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .ARM.attributes
+                0x000000000000042d       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
+ .ARM.attributes
+                0x000000000000045a       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x0000000000000487       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x00000000000004b4       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .ARM.attributes
+                0x00000000000004e1       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
+ .ARM.attributes
+                0x000000000000050e       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+ .ARM.attributes
+                0x000000000000053b       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
+ .ARM.attributes
+                0x0000000000000568       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
+ .ARM.attributes
+                0x0000000000000595       0x2d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ .ARM.attributes
+                0x00000000000005c2       0x1d /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
 
 .comment        0x0000000000000000       0x49
- .comment       0x0000000000000000       0x49 drv_common.o
+ .comment       0x0000000000000000       0x49 advtim_bsp.o
                                          0x4a (size before relaxing)
- .comment       0x0000000000000049       0x4a drv_eth.o
- .comment       0x0000000000000049       0x4a drv_eth_mac.o
+ .comment       0x0000000000000049       0x4a advtim_test.o
+ .comment       0x0000000000000049       0x4a drv_advtim_cap.o
+ .comment       0x0000000000000049       0x4a drv_advtim_enc.o
+ .comment       0x0000000000000049       0x4a drv_advtim_gen.o
+ .comment       0x0000000000000049       0x4a drv_common.o
  .comment       0x0000000000000049       0x4a drv_uart.o
- .comment       0x0000000000000049       0x4a eth_bsp.o
- .comment       0x0000000000000049       0x4a eth_test.o
+ .comment       0x0000000000000049       0x4a drv_uart_ex.o
  .comment       0x0000000000000049       0x4a interrupt.o
  .comment       0x0000000000000049       0x4a main.o
  .comment       0x0000000000000049       0x4a uart_bsp.o
 
-.debug_frame    0x0000000000000000       0x48
+.debug_frame    0x0000000000000000      0x454
  .debug_frame   0x0000000000000000       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-exit.o)
- .debug_frame   0x0000000000000028       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
+ .debug_frame   0x0000000000000028       0x3c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
+ .debug_frame   0x0000000000000064       0x90 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00000000000000f4       0x60 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x0000000000000154       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x000000000000017c       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00000000000001a4       0x28 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+ .debug_frame   0x00000000000001cc       0x38 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x0000000000000204       0x4c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x0000000000000250       0x3c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x000000000000028c       0x2c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000000002b8       0x30 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000000000002e8       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x0000000000000308       0x5c /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
+ .debug_frame   0x0000000000000364       0xb0 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+ .debug_frame   0x0000000000000414       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
+ .debug_frame   0x0000000000000434       0x20 /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(_exit.o)
 
 Cross Reference Table
 
 Symbol                                            File
-AdvtimCap_Handler                                 startup_CM3DS.o
-AdvtimGen_Handler                                 startup_CM3DS.o
+AdvtimCap_Handler                                 interrupt.o
+AdvtimEnc_Handler                                 interrupt.o
+AdvtimGen_Handler                                 interrupt.o
 Bastim_Ch0_Handler                                startup_CM3DS.o
 Bastim_Ch1_Handler                                startup_CM3DS.o
 Bastim_Ch2_Handler                                startup_CM3DS.o
 Bastim_Ch3_Handler                                startup_CM3DS.o
 BusFault_Handler                                  interrupt.o
 DebugMon_Handler                                  interrupt.o
-EthDmaTxDesc                                      eth_bsp.o
-                                                  eth_test.o
-EthDma_Handler                                    interrupt.o
-EthRx_Handler                                     interrupt.o
-EthSma_Handler                                    interrupt.o
-EthTx_Handler                                     interrupt.o
+EthDma_Handler                                    startup_CM3DS.o
+EthRx_Handler                                     startup_CM3DS.o
+EthSma_Handler                                    startup_CM3DS.o
+EthTx_Handler                                     startup_CM3DS.o
 Gpioa_Handler                                     startup_CM3DS.o
 HardFault_Handler                                 interrupt.o
 MemManage_Handler                                 interrupt.o
@@ -1323,170 +1134,133 @@ _svfprintf_r                                      /export/SoftWare/ARM/gcc-arm-n
 _vsiprintf_r                                      /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
 _vsprintf_r                                       /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-vsprintf.o)
 advtim_autoreload_test                            advtim_test.o
+advtim_cap_int_reloaded_callback                  advtim_test.o
+advtim_cap_int_reloading_reaching_rcr_callback    advtim_test.o
+advtim_case_flag                                  advtim_test.o
 advtim_ch123_pwm_with_deadzone_init               advtim_bsp.o
                                                   advtim_test.o
 advtim_ch123_pwm_with_deadzone_test               advtim_test.o
+advtim_ch1_cap_int_init                           advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_cap_pwm_int_init                       advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_cap_pwm_on_init                        advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_cap_step_on_init                       advtim_bsp.o
+                                                  advtim_test.o
 advtim_ch1_ch2_pwm_int_init                       advtim_bsp.o
 advtim_ch1_ch2_pwm_test                           advtim_test.o
+advtim_ch1_enc_direct_both_edge_int_init          advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_enc_direct_both_edge_on_init           advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_enc_direct_first_edge_int_init         advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_enc_direct_quadrature_forward_int_init advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_enc_direct_quadrature_reverse_int_init advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_enc_quadrature_both_edge_int_init      advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_enc_quadrature_first_edge_int_init     advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_encoder_both_edge_input_test           advtim_test.o
+advtim_ch1_encoder_direct_both_edge_on_test       advtim_test.o
+advtim_ch1_encoder_dq_input_test                  advtim_test.o
+advtim_ch1_encoder_input_test                     advtim_test.o
 advtim_ch1_mode_with_deadzone_init                advtim_bsp.o
                                                   advtim_test.o
 advtim_ch1_mode_with_deadzone_test                advtim_test.o
+advtim_ch1_once_cap_int_init                      advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch1_pwm_input_on_test                      advtim_test.o
+advtim_ch1_pwm_input_test                         advtim_test.o
 advtim_ch1_pwm_int_init                           advtim_bsp.o
                                                   advtim_test.o
 advtim_ch1_pwm_test                               advtim_test.o
 advtim_ch1_pwm_with_deadzone_init                 advtim_bsp.o
                                                   advtim_test.o
 advtim_ch1_pwm_with_deadzone_test                 advtim_test.o
+advtim_ch1_step_input_on_test                     advtim_test.o
+advtim_ch1_step_input_test                        advtim_test.o
+advtim_ch1_step_once_input_test                   advtim_test.o
 advtim_ch_all_pwm_and_gpio_with_deadzone_init     advtim_bsp.o
                                                   advtim_test.o
 advtim_ch_all_pwm_and_gpio_with_deadzone_test     advtim_test.o
+advtim_ch_all_pwm_and_gpio_with_deadzone_with_break_test advtim_test.o
+advtim_ch_all_pwm_gpio_with_deadzone_with_break_on_test advtim_test.o
 advtim_ch_all_pwm_int_init                        advtim_bsp.o
                                                   advtim_test.o
+advtim_ch_all_pwm_logic_with_deadzone_with_break_on_init advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch_all_pwm_logic_with_deadzone_with_break_on_test advtim_test.o
 advtim_ch_all_pwm_test                            advtim_test.o
 advtim_ch_all_pwm_with_channel5_test              advtim_test.o
 advtim_ch_all_pwm_with_deadzone_init              advtim_bsp.o
                                                   advtim_test.o
 advtim_ch_all_pwm_with_deadzone_test              advtim_test.o
+advtim_ch_all_pwm_with_deadzone_with_break_init   advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch_all_pwm_with_deadzone_with_break_on_init advtim_bsp.o
+                                                  advtim_test.o
+advtim_ch_all_pwm_with_deadzone_with_break_on_test advtim_test.o
+advtim_ch_all_pwm_with_deadzone_with_break_test   advtim_test.o
+advtim_ch_up_all_pwm_gpio_with_deadzone_with_break_on_test advtim_test.o
+advtim_ch_up_all_pwm_with_deadzone_with_break_on_init advtim_bsp.o
+                                                  advtim_test.o
 advtim_count_int_init                             advtim_bsp.o
                                                   advtim_test.o
 advtim_deinit                                     advtim_bsp.o
                                                   advtim_test.o
-advtim_gen_int_reload_callback                    advtim_test.o
-advtim_gen_int_reload_reaching_rcr_callback       advtim_test.o
+advtim_enc_int_detected_callback                  advtim_test.o
+advtim_enc_int_reloaded_callback                  advtim_test.o
+advtim_gen_int_fault_detected_callback            advtim_test.o
+advtim_gen_int_reloaded_callback                  advtim_test.o
+advtim_gen_int_reloading_reaching_rcr_callback    advtim_test.o
 advtim_int_flag                                   advtim_test.o
 advtim_int_flag1                                  advtim_test.o
+advtim_int_flag2                                  advtim_test.o
+advtim_int_flag3                                  advtim_test.o
 advtim_mix_cm_test                                advtim_test.o
 advtim_mix_count_test                             advtim_test.o
 advtim_mix_int_init                               advtim_bsp.o
                                                   advtim_test.o
 advtim_mix_mode_test                              advtim_test.o
+advtim_temp                                       advtim_test.o
 advtim_testmenu                                   advtim_test.o
+                                                  main.o
 atexit                                            /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
-b50610_get_reglist_test                           eth_test.o
-b50610_get_status                                 eth_bsp.o
-                                                  eth_test.o
-b50610_init                                       eth_bsp.o
-                                                  eth_test.o
-b50610_init_conifg                                eth_bsp.o
-b50610_init_test                                  eth_test.o
-b50610_reglist                                    eth_bsp.o
-                                                  eth_test.o
-b50610_set_config                                 eth_bsp.o
-                                                  eth_test.o
-b50610_set_swrst                                  eth_bsp.o
-                                                  eth_test.o
-bastim_4ch_autoreload_int_test                    bastim_test.o
-bastim_4ch_autoreload_test                        bastim_test.o
-bastim_4ch_test                                   bastim_test.o
-bastim_ch0                                        bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch0_deinit                                 bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch0_init                                   bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch0_int_flag                               bastim_test.o
-bastim_ch0_int_init                               bastim_bsp.o
-bastim_ch1                                        bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch1_deinit                                 bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch1_init                                   bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch1_int_flag                               bastim_test.o
-bastim_ch1_int_init                               bastim_bsp.o
-bastim_ch2                                        bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch2_deinit                                 bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch2_init                                   bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch2_int_flag                               bastim_test.o
-bastim_ch2_int_init                               bastim_bsp.o
-bastim_ch3                                        bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch3_deinit                                 bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch3_init                                   bastim_bsp.o
-                                                  bastim_test.o
-bastim_ch3_int_flag                               bastim_test.o
-bastim_ch3_int_init                               bastim_bsp.o
-bastim_channel0_int_callback                      bastim_test.o
-bastim_channel1_int_callback                      bastim_test.o
-bastim_channel2_int_callback                      bastim_test.o
-bastim_channel3_int_callback                      bastim_test.o
-bastim_testmenu                                   bastim_test.o
 cleanup_glue                                      /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
+drv_advtim_cap_default_config                     drv_advtim_cap.o
+drv_advtim_cap_deinit                             drv_advtim_cap.o
+                                                  advtim_bsp.o
+drv_advtim_cap_init                               drv_advtim_cap.o
+                                                  advtim_bsp.o
+drv_advtim_cap_interrupt_handler                  drv_advtim_cap.o
+                                                  interrupt.o
+drv_advtim_cap_set_config                         drv_advtim_cap.o
+drv_advtim_enc_default_config                     drv_advtim_enc.o
+drv_advtim_enc_deinit                             drv_advtim_enc.o
+                                                  advtim_bsp.o
+drv_advtim_enc_init                               drv_advtim_enc.o
+                                                  advtim_bsp.o
+drv_advtim_enc_interrupt_handler                  drv_advtim_enc.o
+                                                  interrupt.o
+drv_advtim_enc_set_config                         drv_advtim_enc.o
 drv_advtim_gen_default_config                     drv_advtim_gen.o
 drv_advtim_gen_deinit                             drv_advtim_gen.o
                                                   advtim_bsp.o
 drv_advtim_gen_init                               drv_advtim_gen.o
                                                   advtim_bsp.o
 drv_advtim_gen_interrupt_handler                  drv_advtim_gen.o
+                                                  interrupt.o
 drv_advtim_gen_set_config                         drv_advtim_gen.o
-drv_bastim_channel0_interrupt_handler             drv_bastim.o
-drv_bastim_channel1_interrupt_handler             drv_bastim.o
-drv_bastim_channel2_interrupt_handler             drv_bastim.o
-drv_bastim_channel3_interrupt_handler             drv_bastim.o
-drv_bastim_deinit                                 drv_bastim.o
-                                                  bastim_bsp.o
-drv_bastim_init                                   drv_bastim.o
-                                                  bastim_bsp.o
-drv_bastim_set_config                             drv_bastim.o
 drv_check_data                                    drv_common.o
 drv_check_rw_data                                 drv_common.o
                                                   drv_uart.o
-                                                  drv_eth_mac.o
-                                                  drv_eth.o
-                                                  drv_bastim.o
                                                   drv_advtim_gen.o
-drv_eth_mac_address_set                           drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_deinit                                drv_eth_mac.o
-drv_eth_mac_dma_default_config                    drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_dma_interrupt_handler                 drv_eth_mac.o
-                                                  interrupt.o
-drv_eth_mac_init                                  drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_pe_default_config                     drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_rx_descriptor_clear                   drv_eth_mac.o
-drv_eth_mac_rx_descriptor_config                  drv_eth_mac.o
-drv_eth_mac_rx_descriptor_default_config          drv_eth_mac.o
-drv_eth_mac_rx_interrupt_handler                  drv_eth_mac.o
-                                                  interrupt.o
-drv_eth_mac_set_dma_config                        drv_eth_mac.o
-drv_eth_mac_set_pe_config                         drv_eth_mac.o
-drv_eth_mac_set_rx_descriptor_and_rx_enable       drv_eth_mac.o
-drv_eth_mac_set_rx_descriptor_config              drv_eth_mac.o
-drv_eth_mac_set_tx_descriptor_and_tx_enable       drv_eth_mac.o
-                                                  eth_test.o
-drv_eth_mac_set_tx_descriptor_config              drv_eth_mac.o
-drv_eth_mac_tx_descriptor_clear                   drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_tx_descriptor_config                  drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_tx_descriptor_default_config          drv_eth_mac.o
-                                                  eth_bsp.o
-drv_eth_mac_tx_interrupt_handler                  drv_eth_mac.o
-                                                  interrupt.o
-drv_eth_sma_default_config                        drv_eth.o
-                                                  eth_bsp.o
-drv_eth_sma_deinit                                drv_eth.o
-drv_eth_sma_init                                  drv_eth.o
-                                                  eth_bsp.o
-drv_eth_sma_interrupt_handler                     drv_eth.o
-                                                  interrupt.o
-drv_eth_sma_master_read_reg                       drv_eth.o
-                                                  eth_bsp.o
-drv_eth_sma_master_read_reglist                   drv_eth.o
-                                                  eth_test.o
-drv_eth_sma_master_write_reg                      drv_eth.o
-                                                  eth_bsp.o
-drv_eth_sma_master_write_reglist                  drv_eth.o
-                                                  eth_bsp.o
-drv_eth_sma_set_config                            drv_eth.o
-                                                  eth_bsp.o
+                                                  drv_advtim_enc.o
+                                                  drv_advtim_cap.o
 drv_uart_default_config                           drv_uart.o
                                                   uart_bsp.o
 drv_uart_deinit                                   drv_uart.o
@@ -1498,6 +1272,7 @@ drv_uart_init                                     drv_uart.o
 drv_uart_interrupt_handler                        drv_uart.o
                                                   interrupt.o
 drv_uart_printf                                   drv_uart_ex.o
+                                                  uart_bsp.o
                                                   main.o
 drv_uart_putchar                                  drv_uart.o
 drv_uart_putchars                                 drv_uart.o
@@ -1509,116 +1284,18 @@ drv_uart_tx_data                                  drv_uart.o
 end                                               /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libnosys.a(sbrk.o)
 errno                                             /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
                                                   /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
-eth_arp_hw_insertion_frame                        eth_test.o
-eth_arp_hw_replacement_frame                      eth_test.o
-eth_icmp_hw_insertion_frame                       eth_test.o
-eth_icmp_hw_replacement_frame                     eth_test.o
-eth_igmp_hw_crc_replacement_frame                 eth_test.o
-eth_igmp_hw_insertion_frame                       eth_test.o
-eth_igmp_hw_padding_crc_insertion_frame           eth_test.o
-eth_igmp_hw_replacement_frame                     eth_test.o
-eth_igmp_sw_padding_crc_frame                     eth_test.o
-eth_mac_descriptor_arp_frame_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_arp_frame_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_hw_handle_prepare              eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_icmp_frame_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_icmp_frame_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_igmp_frame_crc_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_igmp_frame_crc_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_igmp_frame_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_igmp_frame_padding_crc_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_igmp_frame_padding_crc_sw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_igmp_frame_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_tcp_frame_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_tcp_frame_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_udp_frame2_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_udp_frame2_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_udp_frame_insertion_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_ip_udp_frame_replacement_hw_handle_prepare eth_bsp.o
-                                                  eth_test.o
-eth_mac_descriptor_sw_handle_prepare              eth_bsp.o
-                                                  eth_test.o
-eth_mac_dma_int_bus_error_callback                drv_eth_mac.o
-eth_mac_dma_int_hready_to_callback                drv_eth_mac.o
-eth_mac_dma_int_once_process_done_callback        drv_eth_mac.o
-eth_mac_init                                      eth_bsp.o
-                                                  eth_test.o
-eth_mac_rx_int_rx_frame_done_callback             drv_eth_mac.o
-eth_mac_testcase                                  eth_test.o
-eth_mac_tx_arp_frame_by_hw_insertion              eth_test.o
-eth_mac_tx_arp_frame_by_hw_replacement            eth_test.o
-eth_mac_tx_data_by_hw                             eth_test.o
-eth_mac_tx_data_by_sw                             eth_test.o
-eth_mac_tx_int_tx_frame_done_callback             drv_eth_mac.o
-eth_mac_tx_ip_icmp_frame_by_hw_insertion          eth_test.o
-eth_mac_tx_ip_icmp_frame_by_hw_replacement        eth_test.o
-eth_mac_tx_ip_igmp_frame_by_hw_crc_insertion      eth_test.o
-eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement    eth_test.o
-                                                  main.o
-eth_mac_tx_ip_igmp_frame_by_hw_insertion          eth_test.o
-eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion eth_test.o
-                                                  main.o
-eth_mac_tx_ip_igmp_frame_by_hw_replacement        eth_test.o
-eth_mac_tx_ip_igmp_frame_by_sw_padding_crc        eth_test.o
-                                                  main.o
-eth_mac_tx_ip_tcp_frame_by_hw_insertion           eth_test.o
-eth_mac_tx_ip_tcp_frame_by_hw_replacement         eth_test.o
-eth_mac_tx_ip_udp_frame2_by_hw_insertion          eth_test.o
-                                                  main.o
-eth_mac_tx_ip_udp_frame2_by_hw_replacement        eth_test.o
-                                                  main.o
-eth_mac_tx_ip_udp_frame_by_hw_insertion           eth_test.o
-eth_mac_tx_ip_udp_frame_by_hw_replacement         eth_test.o
-eth_sma_init                                      eth_bsp.o
-                                                  eth_test.o
-eth_sma_int_master_frame_done_callback            drv_eth.o
-eth_sma_int_rx_fifo_noempty_callback              drv_eth.o
-eth_sma_int_rx_fifo_thres_callback                drv_eth.o
-eth_sma_int_rx_turn_nack_callback                 drv_eth.o
-eth_sma_int_tx_fifo_empty_callback                drv_eth.o
-eth_sma_int_tx_fifo_thres_callback                drv_eth.o
-eth_tcp_hw_insertion_frame                        eth_test.o
-eth_tcp_hw_replacement_frame                      eth_test.o
-eth_testmenu                                      eth_test.o
-                                                  main.o
-eth_udp_hw_insertion_frame                        eth_test.o
-eth_udp_hw_insertion_frame2                       eth_test.o
-eth_udp_hw_replacement_frame                      eth_test.o
-eth_udp_hw_replacement_frame2                     eth_test.o
 exit                                              /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-exit.o)
                                                   startup_CM3DS.o
                                                   /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
-exit_current_test                                 main.o
+exit_current_test_detection                       main.o
+exit_current_test_loop                            main.o
+                                                  advtim_test.o
 g_advtim_menu                                     advtim_test.o
-g_bastim_menu                                     bastim_test.o
-g_eth_menu                                        eth_test.o
 g_mcu_menu                                        main.o
 hadvtim                                           advtim_bsp.o
+                                                  interrupt.o
                                                   advtim_test.o
 hardware_init_hook                                /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
-heth                                              eth_bsp.o
-                                                  interrupt.o
-                                                  eth_test.o
-hethmac                                           eth_bsp.o
-                                                  interrupt.o
-                                                  eth_test.o
-hethmac_desccfg                                   eth_bsp.o
 huart0                                            uart_bsp.o
                                                   main.o
                                                   interrupt.o
@@ -1638,28 +1315,17 @@ memmove                                           /export/SoftWare/ARM/gcc-arm-n
                                                   /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 memset                                            /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memset.o)
                                                   /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
-rx_data                                           eth_test.o
 show_testmenu                                     main.o
-                                                  eth_test.o
-                                                  bastim_test.o
                                                   advtim_test.o
-sma_callback_cnt                                  eth_test.o
 software_init_hook                                /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 strlen                                            /export/SoftWare/ARM/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
                                                   drv_uart_ex.o
 test_execute                                      main.o
-                                                  eth_test.o
-                                                  bastim_test.o
                                                   advtim_test.o
 test_printf_ch                                    uart_bsp.o
-                                                  eth_test.o
-                                                  eth_bsp.o
 test_printf_s                                     uart_bsp.o
-                                                  eth_test.o
-                                                  eth_bsp.o
-                                                  bastim_test.o
+                                                  interrupt.o
                                                   advtim_test.o
-tx_data                                           eth_test.o
 uart0_init                                        uart_bsp.o
                                                   main.o
 uart1_init                                        uart_bsp.o

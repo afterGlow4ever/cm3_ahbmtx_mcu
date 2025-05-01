@@ -28,12 +28,13 @@ typedef struct Menu
 {
 	char ch;
 	void (*pFun)(void);
-	uint8_t str[64];
+	uint8_t str[128];
 }TestMenu;
 
 void show_testmenu(TestMenu menu[], uint8_t num);
 void test_execute(TestMenu menu[], uint8_t num);
-uint8_t exit_current_test(void);
+uint8_t exit_current_test_detection(void);
+void exit_current_test_loop(void);
 void mcu_testmenu(void);
 
 //===============================================

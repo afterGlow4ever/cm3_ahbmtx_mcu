@@ -336,9 +336,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>KEIL_SDK, COMMON_DRIVER, UART_DRIVER, UART_EX_DRIVER, GPIO_DRIVER, BASTIM_DRIVER, ETH_DRIVER, ETH_TEST</Define>
+              <Define>KEIL_SDK, COMMON_DRIVER, UART_DRIVER, UART_EX_DRIVER, GPIO_DRIVER, BASTIM_DRIVER, ETH_DRIVER, ETH_MAC_DRIVER, ADVTIM_DRIVER, ADVTIM_TEST</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\library\cmsis\Device\ARM\CM3DS\Include;..\..\..\library\cmsis\CMSIS\Include;..\..\..\library\drivers;..\..\..\library\drivers\common\inc;..\..\..\library\drivers\uart\inc;..\..\..\library\drivers\gpio\inc;..\..\..\library\drivers\bastim\inc;..\..\..\library\drivers\eth\inc;..\..\..\user\firmware\fw_test;..\..\..\user\firmware\fw_test\uart_bsp;..\..\..\user\firmware\fw_test\gpio_bsp;..\..\..\user\firmware\fw_test\bastim_bsp;..\..\..\user\firmware\fw_test\eth_bsp</IncludePath>
+              <IncludePath>..\..\..\library\cmsis\Device\ARM\CM3DS\Include;..\..\..\library\cmsis\CMSIS\Include;..\..\..\library\drivers;..\..\..\library\drivers\common\inc;..\..\..\library\drivers\uart\inc;..\..\..\library\drivers\gpio\inc;..\..\..\library\drivers\bastim\inc;..\..\..\library\drivers\eth\inc;..\..\..\library\drivers\advtim\inc;..\..\..\user\firmware\fw_test;..\..\..\user\firmware\fw_test\uart_bsp;..\..\..\user\firmware\fw_test\gpio_bsp;..\..\..\user\firmware\fw_test\bastim_bsp;..\..\..\user\firmware\fw_test\eth_bsp;..\..\..\user\firmware\fw_test\advtim_bsp</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -412,6 +412,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\library\drivers\eth\src\drv_eth.c</FilePath>
             </File>
+            <File>
+              <FileName>drv_eth_mac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\library\drivers\eth\src\drv_eth_mac.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_advtim_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\library\drivers\advtim\src\drv_advtim_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_advtim_enc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\library\drivers\advtim\src\drv_advtim_enc.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_advtim_gen.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\library\drivers\advtim\src\drv_advtim_gen.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -481,6 +501,16 @@
               <FileName>eth_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\user\firmware\fw_test\eth_bsp\eth_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>advtim_bsp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\user\firmware\fw_test\advtim_bsp\advtim_bsp.c</FilePath>
+            </File>
+            <File>
+              <FileName>advtim_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\user\firmware\fw_test\advtim_bsp\advtim_test.c</FilePath>
             </File>
           </Files>
         </Group>

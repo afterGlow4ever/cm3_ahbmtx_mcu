@@ -18,7 +18,7 @@
 */
 void NMI_Handler(void)
 {
-
+	test_printf_s("NMI");
 }
 
 /**
@@ -202,7 +202,13 @@ void AdvtimGen_Handler(void)
 void AdvtimCap_Handler(void)
 {
 	NVIC_ClearPendingIRQ(AdvtimCap_IRQn);
-//	drv_advtim_cap_interrupt_handler(&hadvtim);
+	drv_advtim_cap_interrupt_handler(&hadvtim);
+}
+
+void AdvtimEnc_Handler(void)
+{
+	NVIC_ClearPendingIRQ(AdvtimEnc_IRQn);
+	drv_advtim_enc_interrupt_handler(&hadvtim);
 }
 
 #endif

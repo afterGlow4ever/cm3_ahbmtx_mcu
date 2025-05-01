@@ -1,0 +1,119 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 473 251 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+windowTimeUnit 1ns
+
+; waveform viewport range
+zoom 589262.594265 2267942.375000 1n
+cursor 1458987.500000
+marker 146837.500000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 37
+; marker line index
+markerPos 53
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+aliasmapname advtim_cnt_cap.current_state
+nalias CAPTURE_FIRST_STAGE		3'b010		NULL
+nalias CAPTURE_IDLE		4'b0001		NULL
+nalias CAPTURE_SECOND_STAGE		4'b0100		NULL
+nalias CAPTURE_IDLE		3'b001		NULL
+nalias CAPTURE_SECOND_STAGE		3'b100		NULL
+nalias CAPTURE_FIRST_STAGE		4'b0010		NULL
+nalias CAPTURE_WAIT		4'b1000		NULL
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+addSignal -h 15 /TOP/u_pwm_model/pwm_enable
+addSignal -h 15 -holdScope pwm_output
+addSignal -h 15 -UNSIGNED -HEX -holdScope pwm_half[15:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addGroup "G2"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/advtim_pe_cap_tim_enable
+aliasname advtim_cnt_cap.current_state
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_cap/current_state[3:0]
+aliasname advtim_cnt_cap.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_state[3:0]
+addSignal -h 15 -holdScope capture_state_idle_to_first_stage
+addSignal -h 15 -holdScope capture_state_first_stage_to_wait
+addSignal -h 15 -holdScope capture_state_first_stage_to_idle
+addSignal -h 15 -holdScope cap_reload_finish
+addSignal -h 15 -UNSIGNED -HEX -holdScope period_cnt[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_rcr[15:0]
+addSignal -h 15 -holdScope cap_reload_finish
+addSignal -h 15 -holdScope cnt_end
+addSignal -h 15 -holdScope cap_reload_last
+addSignal -h 15 -holdScope ic1prefc_first_detected
+addSignal -h 15 -holdScope ic1prefc_second_detected
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/ic1prefc_first_valid
+addSignal -h 15 -holdScope ic1prefc
+addSignal -h 15 -holdScope ic1prefc_first_detected
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_cap/psc_cnt[15:0]
+addSignal -h 15 -holdScope psc_flag_end
+addSignal -h 15 -UNSIGNED -UDEC -holdScope rcr_cnt[15:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope arr_cnt[15:0]
+addSignal -h 15 -holdScope arr_flag_end
+addSignal -h 15 -holdScope psc_flag_end
+addSignal -h 15 -holdScope arr_flag_end
+addSignal -h 15 -holdScope cnt_end
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/cap_channel_input_enable
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/u_input_capture_channel1p_first_detect/detection_cnt[3:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_regs_wrap/r1_update
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_cap/cap_reload_last
+addSignal -h 15 -holdScope cap_reload_finish
+addSignal -h 15 -UNSIGNED -UDEC /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_cap/u_channel_input_capture/r_ifr[15:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope r_ilr[15:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope r_ifc[15:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope r_ilc[15:0]
+addGroup "G3"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_cap/ic1prefc_first_detected
+addSignal -h 15 -holdScope int_status_cap_end
+addSignal -h 15 -UNSIGNED -UDEC -holdScope temp2[31:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope temp[31:0]
+addSignal -h 15 -holdScope cap_period_start
+addSignal -h 15 -holdScope psc_flag_end
+addGroup "G4"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_cap/int_status_cap_end
+addSignal -h 15 -holdScope int_status_cap_reload
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

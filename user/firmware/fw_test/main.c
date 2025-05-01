@@ -78,12 +78,12 @@ int main(void)
 //	eth_mac_tx_ip_udp_frame_by_hw_insertion();
 //	eth_mac_tx_ip_igmp_frame_by_hw_replacement();
 //	eth_mac_tx_ip_igmp_frame_by_hw_insertion();
-	eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement();
-	eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion();
-//	eth_mac_tx_ip_igmp_frame_by_hw_crc_insertion();
-	eth_mac_tx_ip_igmp_frame_by_sw_padding_crc();
-	eth_mac_tx_ip_udp_frame2_by_hw_replacement();
-	eth_mac_tx_ip_udp_frame2_by_hw_insertion();
+//	eth_mac_tx_ip_igmp_frame_by_hw_crc_replacement();
+//	eth_mac_tx_ip_igmp_frame_by_hw_padding_crc_insertion();
+////	eth_mac_tx_ip_igmp_frame_by_hw_crc_insertion();
+//	eth_mac_tx_ip_igmp_frame_by_sw_padding_crc();
+//	eth_mac_tx_ip_udp_frame2_by_hw_replacement();
+//	eth_mac_tx_ip_udp_frame2_by_hw_insertion();
 //	b50610_init_test();
 //	writereg32(0x40000008, 0xbd1);
 //	b50610_get_reglist_test();
@@ -103,10 +103,22 @@ int main(void)
 //	advtim_ch_all_pwm_with_deadzone_test();
 //	advtim_ch1_mode_with_deadzone_test();
 //	advtim_ch_all_pwm_and_gpio_with_deadzone_test();
+//	advtim_ch1_step_input_test();
+//	advtim_ch1_step_once_input_test();
+//	advtim_ch1_pwm_input_test();
+//	advtim_ch1_encoder_input_test();
+//	advtim_ch1_encoder_both_edge_input_test();
+//	advtim_ch1_encoder_dq_input_test();
+//	advtim_ch_all_pwm_with_deadzone_with_break_test();
+//	advtim_ch_all_pwm_and_gpio_with_deadzone_with_break_test();
+//	advtim_ch_all_pwm_with_deadzone_with_break_on_test();
+//	advtim_ch_all_pwm_gpio_with_deadzone_with_break_on_test();
+//	advtim_ch_all_pwm_logic_with_deadzone_with_break_on_test();
+	advtim_ch1_encoder_direct_both_edge_on_test();
 	writereg32(0x40000008, 0xed);
 #else
 #endif
-
+//advtim_ch_all_pwm_and_gpio_with_deadzone_with_break_on_test();
 	while(1)
 	{
 #ifdef SIM
@@ -170,10 +182,10 @@ void test_execute(TestMenu menu[], uint8_t num)
 // return 1 when press 'Q'
 //===============================================
 
-uint8_t exit_current_test(void)
+uint8_t exit_current_test_detection(void)
 {
-#ifdef SIM
-#else
+//#ifdef SIM
+//#else
 	uint8_t ch, ret;
 	ret = drv_uart_getchar_timeout(&huart0, &ch, 250000);
 	if(ret == FALSE)
@@ -181,7 +193,28 @@ uint8_t exit_current_test(void)
 		if(ch == 'Q')
 			return 1;
 	}
-#endif
+//#endif
 	return 0;
+}
+
+//===============================================
+// return 1 when press 'Q'
+//===============================================
+
+void exit_current_test_loop(void)
+{
+	uint8_t ch, ret;
+	while(1)
+	{
+//#ifdef SIM
+//#else
+		ret = drv_uart_getchar_timeout(&huart0, &ch, 250000);
+		if(ret == FALSE)
+		{
+			if(ch == 'Q')
+				return;
+		}
+//#endif
+	}
 }
 

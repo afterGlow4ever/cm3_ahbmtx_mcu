@@ -52,15 +52,22 @@ u_src_detect
 	.Y							(src_detect)
 );
 
-always @(posedge src_clk or negedge src_rstn)
-begin
-	if(!src_rstn)
-		src_step <= DEFAULT_VAL;
-	else if(src_detect)
-		src_step <= ~src_step;
-	else
-		src_step <= src_step;
-end
+genvar										i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin:input_detection
+		always @(posedge src_clk or negedge src_rstn)
+		begin
+			if(!src_rstn)
+				src_step[i] <= DEFAULT_VAL;
+			else if(src_detect[i])
+				src_step[i] <= ~src_step[i];
+			else
+				src_step[i] <= src_step[i];
+		end
+	end
+endgenerate
 
 sync_ff_2d
 #(
@@ -133,15 +140,22 @@ u_src_detect
 	.Y							(src_detect)
 );
 
-always @(posedge src_clk or negedge src_rstn)
-begin
-	if(!src_rstn)
-		src_step <= DEFAULT_VAL;
-	else if(src_detect)
-		src_step <= ~src_step;
-	else
-		src_step <= src_step;
-end
+genvar										i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin:input_detection
+		always @(posedge src_clk or negedge src_rstn)
+		begin
+			if(!src_rstn)
+				src_step[i] <= DEFAULT_VAL;
+			else if(src_detect[i])
+				src_step[i] <= ~src_step[i];
+			else
+				src_step[i] <= src_step[i];
+		end
+	end
+endgenerate
 
 sync_ff_2d
 #(
@@ -207,15 +221,22 @@ u_src_detect
 	.Y							(src_detect)
 );
 
-always @(posedge src_clk or negedge src_rstn)
-begin
-	if(!src_rstn)
-		src_step <= DEFAULT_VAL;
-	else if(src_detect)
-		src_step <= ~src_step;
-	else
-		src_step <= src_step;
-end
+genvar										i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin:input_detection
+		always @(posedge src_clk or negedge src_rstn)
+		begin
+			if(!src_rstn)
+				src_step[i] <= DEFAULT_VAL;
+			else if(src_detect[i])
+				src_step[i] <= ~src_step[i];
+			else
+				src_step[i] <= src_step[i];
+		end
+	end
+endgenerate
 
 sync_ff_2d
 #(
@@ -288,15 +309,22 @@ u_src_detect
 	.Y							(src_detect)
 );
 
-always @(posedge src_clk or negedge src_rstn)
-begin
-	if(!src_rstn)
-		src_step <= DEFAULT_VAL;
-	else if(src_detect)
-		src_step <= ~src_step;
-	else
-		src_step <= src_step;
-end
+genvar										i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin:input_detection
+		always @(posedge src_clk or negedge src_rstn)
+		begin
+			if(!src_rstn)
+				src_step[i] <= DEFAULT_VAL;
+			else if(src_detect[i])
+				src_step[i] <= ~src_step[i];
+			else
+				src_step[i] <= src_step[i];
+		end
+	end
+endgenerate
 
 sync_ff_2d
 #(
@@ -349,15 +377,22 @@ wire			[WIDTH-1:0]					des_detect;
 reg				[WIDTH-1:0]					src_step;
 wire			[WIDTH-1:0]					des_step;
 
-always @(posedge src_clk or negedge src_rstn)
-begin
-	if(!src_rstn)
-		src_step <= DEFAULT_VAL;
-	else if(src_A)
-		src_step <= ~src_step;
-	else
-		src_step <= src_step;
-end
+genvar										i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin:input_detection
+		always @(posedge src_clk or negedge src_rstn)
+		begin
+			if(!src_rstn)
+				src_step[i] <= DEFAULT_VAL;
+			else if(src_A[i])
+				src_step[i] <= ~src_step[i];
+			else
+				src_step[i] <= src_step[i];
+		end
+	end
+endgenerate
 
 sync_ff_2d
 #(
@@ -422,15 +457,22 @@ wire			[WIDTH-1:0]					des_detect;
 reg				[WIDTH-1:0]					src_step;
 wire			[WIDTH-1:0]					des_step;
 
-always @(posedge src_clk or negedge src_rstn)
-begin
-	if(!src_rstn)
-		src_step <= DEFAULT_VAL;
-	else if(src_A)
-		src_step <= ~src_step;
-	else
-		src_step <= src_step;
-end
+genvar										i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin:input_detection
+		always @(posedge src_clk or negedge src_rstn)
+		begin
+			if(!src_rstn)
+				src_step[i] <= DEFAULT_VAL;
+			else if(src_A[i])
+				src_step[i] <= ~src_step[i];
+			else
+				src_step[i] <= src_step[i];
+		end
+	end
+endgenerate
 
 sync_ff_2d
 #(

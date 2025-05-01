@@ -1,0 +1,113 @@
+#!SPYGLASS_PROJECT_FILE
+#!VERSION 3.0
+#  -------------------------------------------------------------------
+#  This is a software generated project file. Manual edits to this file could be lost during the next save operation
+#  Copyright Synopsys Inc.
+#  Last Updated By: SpyGlass SpyGlass_vT-2022.06-1
+#  Last Updated On Sun Aug 25 17:28:25 2024
+#
+#  -------------------------------------------------------------------
+
+##Data Import Section
+
+read_file -type sgdc ../script/eth_sg.sgdc
+read_file -type awl ../script/eth_top.awl
+read_file -type verilog ../tb/eth_sg.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:15
+read_file -type verilog ../../../library/rtl_logic/edge_detect.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:17
+read_file -type verilog ../../../library/rtl_logic/fifo_gen.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:19
+read_file -type verilog ../../../library/rtl_logic/interrupt_gen.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:21
+read_file -type verilog ../../../library/rtl_logic/sync_ff.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:23
+read_file -type verilog ../../../user/verilog/eth/eth_apb_cfg.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:25
+read_file -type verilog ../../../user/verilog/eth/eth_regs_wrap.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:27
+read_file -type verilog ../../../user/verilog/eth/eth_sma_data_buffer.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:29
+read_file -type verilog ../../../user/verilog/eth/eth_top.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:31
+read_file -type verilog ../../../user/verilog/eth/eth_pe_core/eth_pe_core.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:33
+read_file -type verilog ../../../user/verilog/eth/eth_pe_core/eth_sma_pe_master.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:35
+read_file -type verilog ../../../library/rtl_logic/crc.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:37
+read_file -type verilog ../../../user/verilog/eth/eth_mac_data_buffer/eth_ahb_master.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:39
+read_file -type verilog ../../../user/verilog/eth/eth_mac_data_buffer/eth_ahb_master_arbiter.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:41
+read_file -type verilog ../../../user/verilog/eth/eth_mac_data_buffer/eth_descriptor_handler.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:43
+read_file -type verilog ../../../user/verilog/eth/eth_mac_data_buffer/eth_mac_data_buffer.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:45
+read_file -type verilog ../../../user/verilog/eth/eth_mac_data_buffer/eth_mac_data_tx_buffer.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:47
+read_file -type verilog ../../../user/verilog/eth/eth_pe_core/eth_mac_pe_tx.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:49
+read_file -type verilog ../../../user/verilog/eth/eth_pe_core/eth_mac_pe_tx_protocol_handle.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:51
+read_file -type verilog ../../../user/verilog/eth/eth_pe_core/hw_header_checksum_with_pseudoheader.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:53
+read_file -type verilog ../../../user/verilog/eth/eth_pe_core/hw_header_checksum_without_pseudoheader.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:55
+read_file -type verilog ../../../library/rtl_logic/gray_code_gen.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:57
+read_file -type verilog ../../../library/rtl_logic/pulse_sync.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:59
+read_file -type verilog ../../../library/rtl_logic/sp_sram/sp_sram_1k_256x32_wrapper.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:61
+read_file -type verilog ../../../library/rtl_logic/sp_sram/sp_sram_2k_2048x8_wrapper.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:63
+read_file -type verilog ../../../library/rtl_logic/sp_sram/fpga_universal_sp_sram_gen.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:65
+read_file -type verilog ../../../library/rtl_logic/sp_sram/sim_sp_sram_gen.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:67
+read_file -type verilog ../../../library/rtl_logic/rst_sync.v
+#BackRefFile:/home/master/project/cm3_ahbmtx_mcu/sim/spyglass_prj/eth_sg/eth_sg.prj #LineNumber:69
+
+##Common Options Section
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis no
+set_option designread_disable_flatten no
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option top eth_sg
+set_option enableSV yes
+set_option mthresh 32768
+set_option sgsyn_loop_limit 32768
+set_option define_cell_sim_depth 12
+
+
+##Goal Setup Section
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+current_goal lint/lint_rtl -top eth_sg
+set_goal_option default_waiver_file ../script/eth_top.awl
+
+
+current_goal lint/lint_rtl_enhanced -top eth_sg
+set_goal_option default_waiver_file ../script/eth_top.awl
+
+
+current_goal lint/lint_turbo_rtl -top eth_sg
+set_goal_option default_waiver_file ../script/eth_top.awl
+
+
+current_goal adv_lint/adv_lint_verify -top eth_sg
+set_goal_option default_waiver_file ../script/eth_top.awl
+
+
+current_goal cdc/cdc_verify_struct -top eth_sg
+set_goal_option default_waiver_file ../script/eth_top.awl
+
+
+current_goal cdc/cdc_verify -top eth_sg
+set_goal_option default_waiver_file ../script/eth_top.awl
+

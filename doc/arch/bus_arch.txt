@@ -28,7 +28,7 @@ ahb master to slave:
 2: reserve bootrom 16k 0x00020000~0x00024000
 3: reserve flash0 32k 0x08000000~0x08008000
 4: reserve ?flash1?
-5: sram0 128k 0x10000000~0x10020000
+5: reserve sram0 128k 0x10000000~0x10020000
 6: apb0sync	normal peripherals 0x40000000~0x4000FFFF
 7: apb1async low peripherals 0x40010000~0x4001FFFF
 8: apb2async hyper peripherals 0x40020000~0x4002FFFF

@@ -54,6 +54,7 @@ typedef enum IRQn
   Resv15_IRQn                 	=  15,    /*!< 16+15 Resv15 Interrupt							   */
   AdvtimGen_IRQn                =  16,    /*!< 16+16 AdvtimGen Interrupt						   */
   AdvtimCap_IRQn                =  17,    /*!< 16+17 AdvtimCap Interrupt						   */
+  AdvtimEnc_IRQn                =  18,    /*!< 16+17 AdvtimEnc Interrupt						   */
 
 /******  MCU Specific Interrupt Numbers *******************************************************/
 } IRQn_Type;

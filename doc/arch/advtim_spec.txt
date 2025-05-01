@@ -12,4 +12,31 @@ ADVANCE TIMER PWM OUTPUT FEATURE:
 4. Supporting logic operation between channel 1 and 5, 2 and 5, 3 and 5.
 5. Supporting complementary pwm output in channel 1, 2, 3.
 6. Supporting deadzone in comlementary pwm output.
+7. Supporting fault detection in 2 channels for emergercy stop. Channel 2 is also connected with internal fault event.
+
+ADVANCE TIMER INPUT CAPTURE FEATURE:
+1. Supporting up to 1 input channel capture.
+2. Each capture channel's polarity is configurable. 
+
+ADVANCE TIMER ENCODER INPUT FEATURE:
+1. Supporting up to 2 encoder input channel.
+2. Each encoder channel's polarity is configurable. 
+3. Supporting 1, 2, 4 edge(s) mode for encoder. Direction detected is available in 4 edges mode.
+4. Loop timer for encoder edges counter output. This also can be used for feedback control. The encoder counter in this 
+period can be directly read from regs.
+
+PWM GENERATOR INTERRUPT LINE:
+0. ARR counter reloaded, which is corresponding to 1 pwm period.
+1. Output pwm period number has reached RCR set.
+2. A fault event has been detected from external event or internal event.
+
+INPUT CAPTURE INTERRUPT LINE:
+0. 1 pwm period has been captured.
+1. Input capture period number has reached RCR set.
+
+ENCODER INPUT INTERRUPT LINE:
+0. A period is elapsed.
+1. A valid encoder edge has been captured.
+
+
 

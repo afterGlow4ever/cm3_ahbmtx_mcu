@@ -17,6 +17,11 @@
 // 	Initial value can be defined.
 // 	Enable control for 1 step delay.
 //
+//	Date: 12072022
+//	Version: v1.2
+//
+//  Edge detection added for 2 steps delay.
+//
 //===============================================
 
 //===============================================
@@ -141,6 +146,63 @@ begin
 		Y <= Y;
 	end
 end
+
+endmodule
+
+module sync_ff_2d_2edge
+#(
+	parameter								WIDTH = 1,
+	parameter								DEFAULT_VAL = 0
+)
+(
+	input									clk,
+	input									rstn,
+
+	input 		[WIDTH-1:0]					A,
+	output reg 	[WIDTH-1:0]					Y,
+	output  	[WIDTH-1:0]					Y_r,
+	output  	[WIDTH-1:0]					Y_f
+);
+
+reg 			[WIDTH-1:0]					A_d;
+
+always @(posedge clk or negedge rstn)
+begin
+	if(!rstn)
+	begin
+		A_d <= DEFAULT_VAL;
+		Y <= DEFAULT_VAL;
+	end
+	else
+	begin
+		A_d <= A;
+		Y <= A_d;
+	end
+end
+
+posedge_detect 
+#(
+	.WIDTH									(WIDTH)
+)
+u_posedge_detect
+(
+	.clk									(clk),
+	.rstn									(rstn),
+	.A										(Y),
+	.Y										(Y_r)
+);
+
+negedge_detect 
+#(
+	.WIDTH									(WIDTH)
+)
+u_negedge_detect 
+(
+	.clk									(clk),
+	.rstn									(rstn),
+	.A										(Y),
+	.Y										(Y_f)
+);
 
 endmodule
 

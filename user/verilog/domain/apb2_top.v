@@ -35,7 +35,41 @@ module apb2_top
 	output 						eth_tx_ctrl_oen,
 	output						eth_tx_clk,	
 	output						eth_tx_clk_oen,	
+	output						advtmr0_pwm_ch1p,
+	output						advtmr0_pwm_ch1n,
+	output						advtmr0_pwm_ch2p,
+	output						advtmr0_pwm_ch2n,
+	output						advtmr0_pwm_ch3p,
+	output						advtmr0_pwm_ch3n,
+	output						advtmr0_pwm_ch4,
+	output						advtmr0_pwm_ch5,
+	output						advtmr0_pwm_ch6,
+	output						advtmr0_pwm_ch1p_oen,
+	output						advtmr0_pwm_ch1n_oen,
+	output						advtmr0_pwm_ch2p_oen,
+	output						advtmr0_pwm_ch2n_oen,
+	output						advtmr0_pwm_ch3p_oen,
+	output						advtmr0_pwm_ch3n_oen,
+	output						advtmr0_pwm_ch4_oen,
+	output						advtmr0_pwm_ch5_oen,
+	output						advtmr0_pwm_ch6_oen,
+	input						advtmr0_bk1,
+	input						advtmr0_bk2,
+	output						advtmr0_bk1_oen,
+	output						advtmr0_bk2_oen,
+	input						advtmr0_cap_ch1p,
+	input						advtmr0_cap_ch1n,
+	output						advtmr0_cap_ch1p_oen,
+	output						advtmr0_cap_ch1n_oen,
+	input						advtmr0_enc_ch1p,
+	input						advtmr0_enc_ch1n,
+	output						advtmr0_enc_ch1p_oen,
+	output						advtmr0_enc_ch1n_oen,
 
+	// event
+	input						system_failure,
+
+	// ahb bus
 	input						eth_hclk,
 	input						eth_hrstn,
 	output						eth_hsel,
@@ -51,6 +85,7 @@ module apb2_top
 	input	[ 1:0]				eth_hresp,
 	input	[31:0]				eth_hrdata,	
 
+	// apb bus
 	input	[31:0]				paddr,  
 	input						penable,
 	input	[ 3:0]				pstrb,  
@@ -62,12 +97,14 @@ module apb2_top
 	output						pready,
 	output						pslverr,
 
+	// interrupt line
 	output						eth_sma_int,
 	output						eth_mac_tx_int,
 	output						eth_mac_rx_int,
 	output						eth_mac_dma_int,
 	output						advtim_gen_int,
-	output						advtim_cap_int
+	output						advtim_cap_int,
+	output						advtim_enc_int
 );
 
 //===============================================
@@ -296,6 +333,39 @@ advtim_top u_advtim
 	.module_clk					(advtim_pe_clk),  
 	.module_rstn				(advtim_pe_rstn),
 
+	.advtmr_pwm_ch1p			(advtmr0_pwm_ch1p),
+	.advtmr_pwm_ch1n			(advtmr0_pwm_ch1n),
+	.advtmr_pwm_ch2p			(advtmr0_pwm_ch2p),
+	.advtmr_pwm_ch2n			(advtmr0_pwm_ch2n),
+	.advtmr_pwm_ch3p			(advtmr0_pwm_ch3p),
+	.advtmr_pwm_ch3n			(advtmr0_pwm_ch3n),
+	.advtmr_pwm_ch4				(advtmr0_pwm_ch4),
+	.advtmr_pwm_ch5				(advtmr0_pwm_ch5),
+	.advtmr_pwm_ch6				(advtmr0_pwm_ch6),
+	.advtmr_pwm_ch1p_oen		(advtmr0_pwm_ch1p_oen),
+	.advtmr_pwm_ch1n_oen		(advtmr0_pwm_ch1n_oen),
+	.advtmr_pwm_ch2p_oen		(advtmr0_pwm_ch2p_oen),
+	.advtmr_pwm_ch2n_oen		(advtmr0_pwm_ch2n_oen),
+	.advtmr_pwm_ch3p_oen		(advtmr0_pwm_ch3p_oen),
+	.advtmr_pwm_ch3n_oen		(advtmr0_pwm_ch3n_oen),
+	.advtmr_pwm_ch4_oen			(advtmr0_pwm_ch4_oen),
+	.advtmr_pwm_ch5_oen			(advtmr0_pwm_ch5_oen),
+	.advtmr_pwm_ch6_oen			(advtmr0_pwm_ch6_oen),
+	.advtmr_bk1					(advtmr0_bk1),
+	.advtmr_bk2					(advtmr0_bk2),
+	.advtmr_bk1_oen				(advtmr0_bk1_oen),
+	.advtmr_bk2_oen				(advtmr0_bk2_oen),
+	.advtmr_cap_ch1p			(advtmr0_cap_ch1p),
+	.advtmr_cap_ch1n			(advtmr0_cap_ch1n),
+	.advtmr_cap_ch1p_oen		(advtmr0_cap_ch1p_oen),
+	.advtmr_cap_ch1n_oen		(advtmr0_cap_ch1n_oen),
+	.advtmr_enc_ch1p			(advtmr0_enc_ch1p),
+	.advtmr_enc_ch1n			(advtmr0_enc_ch1n),
+	.advtmr_enc_ch1p_oen		(advtmr0_enc_ch1p_oen),
+	.advtmr_enc_ch1n_oen		(advtmr0_enc_ch1n_oen),
+
+	.system_failure				(system_failure),
+
 	.reg_clk					(apb2_root_clk),
 	.reg_rstn					(apb2_root_rstn),
 	.pwrite						(pwrite),
@@ -306,10 +376,36 @@ advtim_top u_advtim
 	.prdata						(prdata_advtim),
 
 	.advtim_gen_int_line		(advtim_gen_int),
-	.advtim_cap_int_line		(advtim_cap_int)
+	.advtim_cap_int_line		(advtim_cap_int),
+	.advtim_enc_int_line		(advtim_enc_int)
 );
 `else
+assign advtmr0_pwm_ch1p = 1'b0;
+assign advtmr0_pwm_ch1n = 1'b0;
+assign advtmr0_pwm_ch2p = 1'b0;
+assign advtmr0_pwm_ch2n = 1'b0;
+assign advtmr0_pwm_ch3p = 1'b0;
+assign advtmr0_pwm_ch3n = 1'b0;
+assign advtmr0_pwm_ch4 = 1'b0;
+assign advtmr0_pwm_ch5 = 1'b0;
+assign advtmr0_pwm_ch6 = 1'b0;
+assign advtmr0_pwm_ch1p_oen = 1'b0;
+assign advtmr0_pwm_ch1n_oen = 1'b0;
+assign advtmr0_pwm_ch2p_oen = 1'b0;
+assign advtmr0_pwm_ch2n_oen = 1'b0;
+assign advtmr0_pwm_ch3p_oen = 1'b0;
+assign advtmr0_pwm_ch3n_oen = 1'b0;
+assign advtmr0_pwm_ch4_oen = 1'b0;
+assign advtmr0_pwm_ch5_oen = 1'b0;
+assign advtmr0_pwm_ch6_oen = 1'b0;
+assign advtmr0_bk1_oen = 1'b0;
+assign advtmr0_bk2_oen = 1'b0;
+assign advtmr0_cap_ch1p_oen = 1'b0;
+assign advtmr0_cap_ch1n_oen = 1'b0;
 assign prdata_advtim = 32'h0;
+assign advtim_gen_int = 1'b0;
+assign advtim_cap_int = 1'b0;
+assign advtim_enc_int = 1'b0;
 `endif
 
 endmodule

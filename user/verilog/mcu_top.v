@@ -24,13 +24,34 @@ module mcu_top
 `ifdef GPIO
 	inout	[15:0]				GPIOA,
 `else
+`ifdef UART1
 	input  						RXD1, 
 	output  					TXD1, 
+`endif
+`ifdef ETH
 	output						MDC,
 	inout						MDIO,
 	output	[ 3:0]				ETH_TXD,
 	output						ETH_TXC,
 	output						ETH_TXEN,
+`endif
+`ifdef ADVTIM
+	output						ADVTIM0_PWM_CH1P,
+	output						ADVTIM0_PWM_CH1N,
+	output						ADVTIM0_PWM_CH2P,
+	output						ADVTIM0_PWM_CH2N,
+	output						ADVTIM0_PWM_CH3P,
+	output						ADVTIM0_PWM_CH3N,
+	output						ADVTIM0_PWM_CH4,
+	output						ADVTIM0_PWM_CH5,
+	output						ADVTIM0_PWM_CH6,
+	input						ADVTIM0_BK1,
+	input						ADVTIM0_BK2,
+	input						ADVTIM0_CAP_CH1P,
+	input						ADVTIM0_CAP_CH1N,
+	input						ADVTIM0_ENC_CH1P,
+	input						ADVTIM0_ENC_CH1N,
+`endif
 `endif
 `ifdef ETH
 	output						ETH_RST,
@@ -99,6 +120,32 @@ wire								eth_tx_ctrl;
 wire								eth_tx_ctrl_oen;
 wire								eth_tx_clk;	
 wire								eth_tx_clk_oen;
+wire								advtmr0_pwm_ch1p;
+wire								advtmr0_pwm_ch1n;
+wire								advtmr0_pwm_ch2p;
+wire								advtmr0_pwm_ch2n;
+wire								advtmr0_pwm_ch3p;
+wire								advtmr0_pwm_ch3n;
+wire								advtmr0_pwm_ch4;
+wire								advtmr0_pwm_ch5;
+wire								advtmr0_pwm_ch6;
+wire								advtmr0_pwm_ch1p_oen;
+wire								advtmr0_pwm_ch1n_oen;
+wire								advtmr0_pwm_ch2p_oen;
+wire								advtmr0_pwm_ch2n_oen;
+wire								advtmr0_pwm_ch3p_oen;
+wire								advtmr0_pwm_ch3n_oen;
+wire								advtmr0_pwm_ch4_oen;
+wire								advtmr0_pwm_ch5_oen;
+wire								advtmr0_pwm_ch6_oen;
+wire								advtmr0_bk1;
+wire								advtmr0_bk2;
+wire								advtmr0_bk1_oen;
+wire								advtmr0_bk2_oen;
+wire								advtmr0_cap_ch1p;
+wire								advtmr0_cap_ch1n;
+wire								advtmr0_cap_ch1p_oen;
+wire								advtmr0_cap_ch1n_oen;
 
 wire	      						gpioa_int; 
 
@@ -136,10 +183,14 @@ gpio_top u_gpio
 );
 `else
 
+`ifdef UART1
 // uart1
 assign TXD1 = uart1_tx;
 assign uart1_rx = RXD1;
-
+`else
+assign uart1_rx = 1'b0;
+`endif
+`ifdef ETH
 // ethernet
 assign MDC = eth_mdc;
 assign MDIO = eth_mdio_oen ? 1'bz : eth_mdio_o;
@@ -147,7 +198,34 @@ assign eth_mdio_i = MDIO;
 assign ETH_TXD = eth_tx;
 assign ETH_TXC = eth_tx_clk;
 assign ETH_TXEN = eth_tx_ctrl;
-
+`else
+assign eth_mdio_i = 1'b0;			
+`endif
+`ifdef ADVTIM
+// advance timer 0
+assign ADVTIM0_PWM_CH1P = advtmr0_pwm_ch1p;
+assign ADVTIM0_PWM_CH1N = advtmr0_pwm_ch1n;
+assign ADVTIM0_PWM_CH2P = advtmr0_pwm_ch2p;
+assign ADVTIM0_PWM_CH2N = advtmr0_pwm_ch2n;
+assign ADVTIM0_PWM_CH3P = advtmr0_pwm_ch3p;
+assign ADVTIM0_PWM_CH3N = advtmr0_pwm_ch3n;
+assign ADVTIM0_PWM_CH4 = advtmr0_pwm_ch4;
+assign ADVTIM0_PWM_CH5 = advtmr0_pwm_ch5;
+assign ADVTIM0_PWM_CH6 = advtmr0_pwm_ch6;
+assign advtmr0_bk1 = ADVTIM0_BK1;
+assign advtmr0_bk2 = ADVTIM0_BK2;
+assign advtmr0_cap_ch1p = ADVTIM0_CAP_CH1P;
+assign advtmr0_cap_ch1n = ADVTIM0_CAP_CH1N;
+assign advtmr0_enc_ch1p = ADVTIM0_ENC_CH1P;
+assign advtmr0_enc_ch1n = ADVTIM0_ENC_CH1N;
+`else
+assign advtmr0_bk1 = 1'b0;
+assign advtmr0_bk2 = 1'b0;
+assign advtmr0_cap_ch1p = 1'b0;
+assign advtmr0_cap_ch1n = 1'b0;
+assign advtmr0_enc_ch1p = 1'b0;
+assign advtmr0_enc_ch1n = 1'b0;
+`endif
 assign gpioa_int = 1'b0;
 
 `endif
@@ -174,10 +252,9 @@ fp_domain u_fp_domain
 	.eth_pe_tx_rstn				(eth_pe_tx_rstn		),
 	.eth_pe_rx_clk				(eth_pe_rx_clk		),  
 	.eth_pe_rx_rstn				(eth_pe_rx_rstn		),
-	.advtim_pe_clk				(advtim_pe_clk),  
-	.advtim_pe_rstn				(advtim_pe_rstn),
+	.advtim_pe_clk				(advtim_pe_clk		),  
+	.advtim_pe_rstn				(advtim_pe_rstn		),
 	.power_on_rstn				(RSTN				),
-
 
 	.uart0_tx					(TXD				),
 	.uart0_tx_oen				(					),
@@ -191,7 +268,7 @@ fp_domain u_fp_domain
 	.pwrite0_o					(pwrite0			), 
 	.pwdata0_o					(pwdata0			),
 	.prdata0_gpioa				(prdata0_gpioa		), 	
-`else
+`endif
 	.uart1_tx					(uart1_tx			), 
 	.uart1_tx_oen				(uart1_tx_oen		), 
 	.uart1_rx					(uart1_rx			), 
@@ -207,7 +284,37 @@ fp_domain u_fp_domain
 	.eth_tx_ctrl_oen			(eth_tx_ctrl_oen	),
 	.eth_tx_clk					(eth_tx_clk			),	
 	.eth_tx_clk_oen				(eth_tx_clk_oen		),	
-`endif
+
+	.advtmr0_pwm_ch1p			(advtmr0_pwm_ch1p	),
+	.advtmr0_pwm_ch1n			(advtmr0_pwm_ch1n	),
+	.advtmr0_pwm_ch2p			(advtmr0_pwm_ch2p	),
+	.advtmr0_pwm_ch2n			(advtmr0_pwm_ch2n	),
+	.advtmr0_pwm_ch3p			(advtmr0_pwm_ch3p	),
+	.advtmr0_pwm_ch3n			(advtmr0_pwm_ch3n	),
+	.advtmr0_pwm_ch4			(advtmr0_pwm_ch4	),
+	.advtmr0_pwm_ch5			(advtmr0_pwm_ch5	),
+	.advtmr0_pwm_ch6			(advtmr0_pwm_ch6	),
+	.advtmr0_pwm_ch1p_oen		(advtmr0_pwm_ch1p_oen),
+	.advtmr0_pwm_ch1n_oen		(advtmr0_pwm_ch1n_oen),
+	.advtmr0_pwm_ch2p_oen		(advtmr0_pwm_ch2p_oen),
+	.advtmr0_pwm_ch2n_oen		(advtmr0_pwm_ch2n_oen),
+	.advtmr0_pwm_ch3p_oen		(advtmr0_pwm_ch3p_oen),
+	.advtmr0_pwm_ch3n_oen		(advtmr0_pwm_ch3n_oen),
+	.advtmr0_pwm_ch4_oen		(advtmr0_pwm_ch4_oen),
+	.advtmr0_pwm_ch5_oen		(advtmr0_pwm_ch5_oen),
+	.advtmr0_pwm_ch6_oen		(advtmr0_pwm_ch6_oen),
+	.advtmr0_bk1				(advtmr0_bk1		),
+	.advtmr0_bk2				(advtmr0_bk2		),
+	.advtmr0_bk1_oen			(advtmr0_bk1_oen	),
+	.advtmr0_bk2_oen			(advtmr0_bk2_oen	),
+	.advtmr0_cap_ch1p			(advtmr0_cap_ch1p	),
+	.advtmr0_cap_ch1n			(advtmr0_cap_ch1n	),
+	.advtmr0_cap_ch1p_oen		(advtmr0_cap_ch1p_oen),
+	.advtmr0_cap_ch1n_oen		(advtmr0_cap_ch1n_oen),
+	.advtmr0_enc_ch1p			(advtmr0_enc_ch1p	),
+	.advtmr0_enc_ch1n			(advtmr0_enc_ch1n	),
+	.advtmr0_enc_ch1p_oen		(advtmr0_enc_ch1p_oen),
+	.advtmr0_enc_ch1n_oen		(advtmr0_enc_ch1n_oen),
 
 	.gpioa_int					(gpioa_int			),
 
