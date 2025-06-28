@@ -168,20 +168,20 @@ DELETE:	Vivado 32k ram ip.
 
 Date: 05012025 (release)
 ADD:    Advance timer pwm generation rtl, driver, spyglass and simualtion.
-ADD:    PWM and encoder models.
-ADD:	Input detection related module in RTL logic lib.
-ADD:	Spyglass project file has been added from now on.
-FIX:	Bit width issue in pulse_sync.v and sync_ff.v.
-MODIFY:	Documents modified about design spec, interrupt line, bus arch.
-MODIFY:	UART printf array space in drv_uart_ex.c.
-MODIFY:	Redundant M5 port in AHB bus has been removed.
-MODIFY:	CPU interrupt connection.
-MODIFY:	TOP testbench,
-MODIFY:	Vivado fpga script has been updated for more reports generated automatically.
-MODIFY:	Vivado fpga pin assignments.
-MODIFY:	7020 fpga bitstream.
+ADD:		Input detection related module in RTL logic lib.
+MODIFY:	UART printf array space. 
+MODIFY:	Vivado fpga script including pin assignments.
 MODIFY:	FPGA platform connection in verilog file. 80MHz clk can be used.
-MODIFY:	Firmware test.
-DELETE:	Redundant .o files has been deleted.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 06292025
+ADD:    Example case : DC motor speed open loop control with tb6612.
+MODIFY:	Advance timer reg table.
+MODIFY:	Redundant logic in advance timer channel control and encoder input is removed.
+MODIFY:	Advance timer pwm and input capture functions' condition about disable is modified. 
+				Now those can be disabled by deaserting enable bit.
+				Modifying objects are including RTL and driver.
+FIX:		Bugs in reg operation macro. (Cody)
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

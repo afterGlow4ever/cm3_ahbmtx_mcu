@@ -58,7 +58,7 @@ begin
 	begin
 		dtg_cnt_valid_for_posedge <= 1'b0;
 	end
-	else if(ocrefc_r || ~r_dze)
+	else if(ocrefc_r)
 	begin
 		dtg_cnt_valid_for_posedge <= 1'b1;
 	end
@@ -78,7 +78,7 @@ begin
 	begin
 		dtg_cnt_valid_for_negedge <= 1'b0;
 	end
-	else if(ocrefc_f || ~r_dze)
+	else if(ocrefc_f)
 	begin
 		dtg_cnt_valid_for_negedge <= 1'b1;
 	end

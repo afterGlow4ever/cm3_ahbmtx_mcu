@@ -70,7 +70,7 @@ bool drv_advtim_cap_init(ADVTIM_HandleTypeDef *advtim)
 
 void drv_advtim_cap_deinit(ADVTIM_HandleTypeDef *advtim)
 {
-	drv_advtim_cap_logic_reset(advtim);
+	drv_advtim_cap_disable(advtim);
 	drv_advtim_cap_int_disable_all(advtim);
 	drv_advtim_cap_int_allclear(advtim);
 }

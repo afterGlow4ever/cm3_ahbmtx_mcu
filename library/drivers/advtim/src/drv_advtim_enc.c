@@ -66,7 +66,7 @@ bool drv_advtim_enc_init(ADVTIM_HandleTypeDef *advtim)
 
 void drv_advtim_enc_deinit(ADVTIM_HandleTypeDef *advtim)
 {
-	drv_advtim_enc_logic_reset(advtim);
+	drv_advtim_enc_disable(advtim);
 	drv_advtim_enc_int_disable_all(advtim);
 	drv_advtim_enc_int_allclear(advtim);
 }

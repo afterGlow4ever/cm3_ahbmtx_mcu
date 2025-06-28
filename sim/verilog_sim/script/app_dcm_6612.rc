@@ -1,0 +1,78 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 421 251 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/app_dcm_6612/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+windowTimeUnit 1us
+
+; waveform viewport range
+zoom 568.731511 614.994046 1u
+cursor 572.887500
+marker 1070.918750
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 4
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/app_dcm_6612/TOP.fsdb"
+addSignal -h 15 /TOP/u_encoder_model/encoder_quadrature_enable
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/haddri[31:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addGroup "G2"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_enc/u_channel_encoder_input/encoder_cnt[15:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope r_ec[15:0]
+addSignal -h 15 -UNSIGNED -UDEC /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_enc/arr_cnt[23:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_enc/u_channel_encoder_input/arr_cnt_end
+addSignal -h 15 /TOP/u_mcu_top/ADVTIM0_PWM_CH1P
+addSignal -h 15 -holdScope ADVTIM0_PWM_CH1N
+addSignal -h 15 -holdScope ADVTIM0_PWM_CH2P
+addSignal -h 15 -holdScope ADVTIM0_PWM_CH2N
+addSignal -h 15 -holdScope ADVTIM0_PWM_CH3P
+addSignal -h 15 -holdScope ADVTIM0_PWM_CH3N
+addSignal -h 15 -UNSIGNED -UDEC /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/u_channel_output_compare/r_cc1[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope arr_cnt[15:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_enc/int_status_enc_reloaded
+addGroup "G3"
+addGroup "G4"
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

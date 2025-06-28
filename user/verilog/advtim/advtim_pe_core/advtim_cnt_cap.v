@@ -123,6 +123,7 @@ wire							capture_state_first_stage_to_idle;
 wire							capture_state_second_stage_to_idle;
 wire							capture_state_second_stage_to_first_stage;
 wire							capture_state_wait_to_first_stage;
+wire							capture_state_wait_to_idle;
 
 // state transition: sequential logic circuit
 always @(posedge pe_cap_clk or negedge pe_cap_rstn)
@@ -174,7 +175,7 @@ begin
 		else
 			next_state = CAPTURE_SECOND_STAGE;
 	CAPTURE_WAIT:
-		if(pe_cap_logic_clr)
+		if(capture_state_wait_to_idle || pe_cap_logic_clr)
 			next_state = CAPTURE_IDLE;
 		else if(capture_state_wait_to_first_stage)
 			next_state = CAPTURE_FIRST_STAGE;
@@ -209,11 +210,12 @@ assign capture_state_second_stage = current_state == CAPTURE_SECOND_STAGE;
 assign capture_state_idle_to_first_stage = ic1prefc_first_detected && pe_cap_tim_enable;
 assign capture_state_first_stage_to_second_stage = capture_state_first_stage && r_ic1m && ic1prefc_second_detected;
 assign capture_state_first_stage_to_wait = capture_state_first_stage && ~r_ic1m && ic1prefc_second_detected;
-assign capture_state_first_stage_to_idle = capture_state_first_stage && ~r_ic1m && cap_reload_last && ic1prefc_second_detected;
+assign capture_state_first_stage_to_idle = (capture_state_first_stage && ~r_ic1m && cap_reload_last && ic1prefc_second_detected) || ~pe_cap_tim_enable;
 //assign capture_state_first_stage_to_idle = capture_state_first_stage && ~r_ic1m && cap_reload_finish;
-assign capture_state_second_stage_to_idle = ic1prefc_first_detected && cap_reload_last;// only consecutive pwm can exit capture correctly ??? timing error ???
+assign capture_state_second_stage_to_idle = (ic1prefc_first_detected && cap_reload_last) || ~pe_cap_tim_enable;// only consecutive pwm can exit capture correctly ??? timing error ???
 assign capture_state_second_stage_to_first_stage = ic1prefc_first_detected;// ???
 assign capture_state_wait_to_first_stage = ic1prefc_first_detected;
+assign capture_state_wait_to_idle = ~pe_cap_tim_enable;
 
 assign cap_start = capture_state_idle_to_first_stage;
 assign cap_period_start = capture_state_idle_to_first_stage || capture_state_second_stage_to_first_stage || capture_state_wait_to_first_stage;
@@ -243,7 +245,7 @@ begin
 	begin
 		period_cnt <= 16'h0;
 	end
-	else if(pe_cap_logic_clr || cap_reload_finish)
+	else if(pe_cap_logic_clr || cap_reload_finish || ~pe_cap_tim_enable)
 	begin
 		period_cnt <= 16'h0;
 	end
@@ -285,13 +287,9 @@ begin
 	end
 	// If enabled and counter is running, this signal will remain.
 	// If idle, enable control will occur at rising edge.
-	else if(pe_cap_tim_enable_r)
-	begin
-		timing_base_enable <= 1'b1;
-	end
 	else
 	begin
-		timing_base_enable <= timing_base_enable;
+		timing_base_enable <= pe_cap_tim_enable;
 	end
 end
 
@@ -350,8 +348,8 @@ wire							arr_flag_start;
 wire							arr_flag_pre_end;
 wire							arr_flag_end;
 assign arr_flag_start = (arr_cnt == 1'b0) ? 1'b1 : 1'b0;
-assign arr_flag_end = (((arr_cnt == (r_arr_last - 1'b1)) ? 1'b1 : 1'b0) && psc_flag_end) || cap_period_start;// ???
-assign arr_flag_pre_end = (((arr_cnt == (r_arr_last - 2'h2)) ? 1'b1 : 1'b0)  && psc_flag_end) || cap_period_start;// ???
+assign arr_flag_end = (((arr_cnt == (r_arr_last - 1'b1)) ? 1'b1 : 1'b0) && psc_flag_end) || cap_period_start;// update arr, rcr
+assign arr_flag_pre_end = (((arr_cnt == (r_arr_last - 2'h2)) ? 1'b1 : 1'b0)  && psc_flag_end) || (cap_period_start && capture_state_idle);// only using to update
 
 // channel cnt for input capture
 always @(posedge pe_cap_clk or negedge pe_cap_rstn)

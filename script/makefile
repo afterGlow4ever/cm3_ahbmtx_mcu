@@ -124,8 +124,8 @@ bootloader:
 fw_test:
 	make -f makefile.fw_test
 
-fw_bin_test:
-	make -f makefile.fw_bin_test
+fw_bin_sim:
+	make -f makefile.fw_bin_sim
 
 #===============================================
 # cpu boot simulation
@@ -152,4 +152,11 @@ fpga_ep4_mcu_update_mif:
 
 fpga_7020_mcu_full_vivado:
 	make -f makefile.fpga_7020_mcu_full_vivado
+
+#===============================================
+# applications
+#===============================================
+
+app_dcm_6612:
+	make -f makefile.app_dcm_6612
 

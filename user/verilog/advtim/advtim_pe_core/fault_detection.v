@@ -82,51 +82,6 @@ edge_delay_hold_detect u_break2_detection
 	.input_valid				(break2_valid)
 );
 
-//reg				[ 3:0]			break1_cnt;
-//reg				[ 3:0]			break2_cnt;
-//assign break1_valid = (break1_cnt == r_bt);
-//assign break2_valid = (break2_cnt == r_bt);
-
-//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
-//begin
-//	if(!pe_gen_rstn)
-//	begin
-//		break1_cnt <= 4'h0;
-//	end
-//	else if(break1_valid)
-//	begin
-//		break1_cnt <= 4'h0;
-//	end
-//	else if(advtmr_bk1 == r_bk1p)
-//	begin
-//		break1_cnt <= break1_cnt + 1'b1;
-//	end
-//	else
-//	begin
-//		break1_cnt <= 4'h0;
-//	end
-//end
-//
-//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
-//begin
-//	if(!pe_gen_rstn)
-//	begin
-//		break2_cnt <= 4'h0;
-//	end
-//	else if(break2_valid)
-//	begin
-//		break2_cnt <= 4'h0;
-//	end
-//	else if((advtmr_bk2 == r_bk2p) || system_failure)
-//	begin
-//		break2_cnt <= break2_cnt + 1'b1;
-//	end
-//	else
-//	begin
-//		break2_cnt <= 4'h0;
-//	end
-//end
-
 //===============================================
 // fault detect
 //===============================================

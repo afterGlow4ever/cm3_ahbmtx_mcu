@@ -230,10 +230,10 @@ void advtim_ch_all_pwm_test(void)
 	advtim_ch_all_pwm_int_init();
 	advtim_int_flag = 0;
 	advtim_int_flag1 = 0;
-	drv_advtim_gen_set_channel3_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE14);
-	drv_advtim_gen_set_channel4_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE15);
-	drv_advtim_gen_set_channel1_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE12);
-	drv_advtim_gen_set_channel2_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE13);
+	drv_advtim_gen_set_channel3_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE12);
+	drv_advtim_gen_set_channel4_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE13);
+	drv_advtim_gen_set_channel1_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE6);
+	drv_advtim_gen_set_channel2_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE7);
 	drv_advtim_gen_set_channel5_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE14);
 	drv_advtim_gen_set_channel6_output_compare_mode(&hadvtim, ADVTIM_GEN_OUTPUT_COMPARE_MODE15);
 	drv_advtim_config_sw_update(&hadvtim);
@@ -520,6 +520,7 @@ void advtim_ch_all_pwm_and_gpio_with_deadzone_test(void)
 
 	test_printf_s("advtim ch all deadzone pwm.\r\n");
 
+	drv_advtim_gen_disable(&hadvtim);
 	NVIC_DisableIRQ(AdvtimGen_IRQn);
 	advtim_deinit();
 }
@@ -664,6 +665,7 @@ void advtim_ch1_step_input_test(void)
 		}
 	}
 
+	drv_advtim_cap_disable(&hadvtim);
 	NVIC_DisableIRQ(AdvtimCap_IRQn);
 
 	drv_advtim_cap_set_channel1_input_positive_polarity(&hadvtim, ADVTIM_CAP_INPUT_CHANNEL_POLARITY_REVERSE);
@@ -696,6 +698,7 @@ void advtim_ch1_step_input_test(void)
 		}
 	}
 
+	drv_advtim_cap_disable(&hadvtim);
 	NVIC_DisableIRQ(AdvtimCap_IRQn);
 
 	drv_advtim_cap_set_channel1_input_positive_polarity(&hadvtim, ADVTIM_CAP_INPUT_CHANNEL_POLARITY_REVERSE);
@@ -771,6 +774,7 @@ void advtim_ch1_pwm_input_test(void)
 	}
 
 	NVIC_DisableIRQ(AdvtimCap_IRQn);
+	drv_advtim_cap_disable(&hadvtim);
 
 	drv_advtim_cap_set_channel1_input_positive_polarity(&hadvtim, ADVTIM_CAP_INPUT_CHANNEL_POLARITY_REVERSE);
 	advtim_int_flag = 0;
@@ -803,6 +807,7 @@ void advtim_ch1_pwm_input_test(void)
 	}
 
 	NVIC_DisableIRQ(AdvtimCap_IRQn);
+	drv_advtim_cap_disable(&hadvtim);
 
 	drv_advtim_cap_set_channel1_input_positive_polarity(&hadvtim, ADVTIM_CAP_INPUT_CHANNEL_POLARITY_REVERSE);
 	drv_advtim_cap_set_psc(&hadvtim, 10);
@@ -1119,6 +1124,7 @@ void advtim_ch1_encoder_dq_input_test(void)
 
 void advtim_ch_all_pwm_with_deadzone_with_break_test(void)
 {
+//	advtim_ch_all_pwm_with_break_init();
 	advtim_ch_all_pwm_with_deadzone_with_break_init();
 	advtim_int_flag = 0;
 	advtim_int_flag1 = 0;
@@ -1158,6 +1164,8 @@ void advtim_ch_all_pwm_with_deadzone_with_break_test(void)
 		writereg32(0x40000000, advtim_int_flag);
 		writereg32(0x40000004, advtim_int_flag1);
 	}
+
+	drv_advtim_gen_disable(&hadvtim);
 
 	advtim_int_flag = 0;
 	advtim_int_flag1 = 0;
@@ -1273,10 +1281,10 @@ void advtim_ch_all_pwm_gpio_with_deadzone_with_break_on_test(void)
 	advtim_int_flag2 = 0;
 	advtim_case_flag = 1;
 	advtim_temp = 0;
-	drv_advtim_gen_set_channel2_output_negative_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_LOW_IN_GPIO_MODE);
-	drv_advtim_gen_set_channel2_output_negative_mode(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_GPIO_MODE);
 	drv_advtim_gen_set_channel3_output_positive_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_HIGH_IN_GPIO_MODE);
 	drv_advtim_gen_set_channel3_output_positive_mode(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_GPIO_MODE);
+	drv_advtim_gen_set_channel3_output_negative_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_LOW_IN_GPIO_MODE);
+	drv_advtim_gen_set_channel3_output_negative_mode(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_GPIO_MODE);
 	drv_advtim_config_sw_update(&hadvtim);
 	NVIC_SetPriority(AdvtimGen_IRQn, 0);
 	NVIC_EnableIRQ(AdvtimGen_IRQn);
@@ -1397,18 +1405,20 @@ void advtim_gen_int_reloaded_callback(ADVTIM_HandleTypeDef *advtim)
 	if(advtim_case_flag == 1)
 	{
 		drv_advtim_gen_set_channel1_output_compare_value(&hadvtim, advtim_int_flag);
-		drv_advtim_gen_set_channel3_output_compare_value(&hadvtim, advtim_int_flag);
-		if(advtim_int_flag >= 499)
+		drv_advtim_gen_set_channel2_output_compare_value(&hadvtim, advtim_int_flag);
+		if(advtim_int_flag >= 2499)
 		{
-			drv_advtim_gen_set_channel2_output_negative_gpio_value(&hadvtim, ~advtim_temp);
-			drv_advtim_gen_set_channel3_output_positive_gpio_value(&hadvtim, advtim_temp);
 			advtim_int_flag = 0;
 			if(advtim_temp)
 			{
+				drv_advtim_gen_set_channel3_output_positive_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_HIGH_IN_GPIO_MODE);
+				drv_advtim_gen_set_channel3_output_negative_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_LOW_IN_GPIO_MODE);
 				advtim_temp = 0;
 			}
 			else
 			{
+				drv_advtim_gen_set_channel3_output_positive_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_LOW_IN_GPIO_MODE);
+				drv_advtim_gen_set_channel3_output_negative_gpio_value(&hadvtim, ADVTIM_GEN_OUTPUT_CHANNEL_HIGH_IN_GPIO_MODE);
 				advtim_temp = 1;
 			}
 		}

@@ -115,9 +115,13 @@ begin
 	begin
 		loss_cnt <= {WIDTH{1'b0}};
 	end
+	else if(~enable)
+	begin
+		loss_cnt <= {WIDTH{1'b0}};
+	end
 	else if(|loss_cnt)
 	begin
-		if((input_value == expected_value) || ~enable)
+		if(input_value == expected_value)
 		begin
 			loss_cnt <= delay_value;
 		end

@@ -95,6 +95,7 @@ reg	 			[15:0]			r_cc6_last;
 //===============================================
 
 wire							pe_gen_tim_enable_r;
+wire							pe_gen_tim_enable_f;
 
 posedge_detect u_posedge_detect 
 (
@@ -102,6 +103,14 @@ posedge_detect u_posedge_detect
 	.rstn						(pe_gen_rstn),
 	.A							(pe_gen_tim_enable),
 	.Y							(pe_gen_tim_enable_r)
+);
+
+negedge_detect u_negedge_detect 
+(
+	.clk						(pe_gen_clk),
+	.rstn						(pe_gen_rstn),
+	.A							(pe_gen_tim_enable),
+	.Y							(pe_gen_tim_enable_f)
 );
 
 //===============================================
@@ -122,7 +131,8 @@ begin
 	begin
 		rcr_counter <= 16'h0;
 	end
-	else if(pe_gen_logic_clr || gen_reload_finish || fault_detected)
+//	else if(pe_gen_logic_clr || gen_reload_finish || fault_detected || pe_gen_tim_enable_f)
+	else if(pe_gen_logic_clr || gen_reload_finish || fault_detected || ~pe_gen_tim_enable)
 	begin
 		rcr_counter <= 16'h0;
 	end
@@ -149,6 +159,31 @@ wire							timing_base_real_enable;
 assign timing_base_real_enable = timing_base_enable && ~gen_reload_finish; 
 assign gen_cnt_enable = timing_base_real_enable;
 
+//always @(posedge pe_gen_clk or negedge pe_gen_rstn)
+//begin
+//	if(!pe_gen_rstn)
+//	begin
+//		timing_base_enable <= 1'b0;
+//	end
+//	// If disabled, the counter will stop immediately.
+//	// If reload occuring,  the counter will continue 
+//	// only when reloading is not finish.
+//	else if(pe_gen_logic_clr || gen_reload_finish || fault_detected || pe_gen_tim_enable_f)
+//	begin
+//		timing_base_enable <= 1'b0;
+//	end
+//	// If enabled and counter is running, this signal will remain.
+//	// If idle, enable control will occur at rising edge.
+//	else if(pe_gen_tim_enable_r)
+//	begin
+//		timing_base_enable <= 1'b1;
+//	end
+//	else
+//	begin
+//		timing_base_enable <= timing_base_enable;
+//	end
+//end
+
 always @(posedge pe_gen_clk or negedge pe_gen_rstn)
 begin
 	if(!pe_gen_rstn)
@@ -164,13 +199,9 @@ begin
 	end
 	// If enabled and counter is running, this signal will remain.
 	// If idle, enable control will occur at rising edge.
-	else if(pe_gen_tim_enable_r == 1'b1)
-	begin
-		timing_base_enable <= 1'b1;
-	end
 	else
 	begin
-		timing_base_enable <= timing_base_enable;
+		timing_base_enable <= pe_gen_tim_enable;
 	end
 end
 
@@ -215,7 +246,7 @@ end
 // 1  0  0  0  1  0  0  0  1  0  0  0  1  0  0  0 psc start
 // 0  0  0  1  0  0  0  1  0  0  0  1  0  0  0  1 psc end
 // 1  1  1  1  0  0  0  0  0  0  0  0  0  0  0  0 arr start
-// 0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1 arr end
+// 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1 arr end
 // 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 cnt start
 // 0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0 cnt pre end
 // 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1 cnt end
@@ -225,13 +256,11 @@ reg				[15:0]			psc_cnt;// the smallest unit of timing base
 reg				[15:0]			arr_cnt;// this unit is composed of psc_cnt
 wire							psc_flag_start;
 wire							psc_flag_end;
-//wire							psc_flag_pre_end;
 wire							arr_flag_start;
 wire							arr_flag_pre_end;
 wire							arr_flag_end;
 assign psc_flag_start = (psc_cnt == 1'b0) ? 1'b1 : 1'b0;
 assign psc_flag_end = (psc_cnt == (r_psc_last - 1'b1)) ? 1'b1 : 1'b0;
-//assign psc_flag_pre_end = (psc_cnt == (r_psc - 2'h2)) ? 1'b1 : 1'b0;
 
 // div cnt for clkdiv
 always @(posedge pe_gen_clk or negedge pe_gen_rstn)
@@ -261,10 +290,8 @@ end
 // which from N to 1.
 // The other one is from N-1 to 0.
 assign arr_flag_start = (arr_cnt == 1'b0) ? 1'b1 : 1'b0;
-//assign arr_flag_end = ((r_dir_last == 1'b1) ? ((arr_cnt == 16'h1) ? 1'b1 : 1'b0) : ((arr_cnt == (r_arr_last - 1'b1)) ? 1'b1 : 1'b0)) && psc_flag_end;// ???
-//assign arr_flag_pre_end = ((r_dir_last == 1'b1) ? ((arr_cnt == 16'h2) ? 1'b1 : 1'b0) : ((arr_cnt == (r_arr_last - 2'h2)) ? 1'b1 : 1'b0)) && psc_flag_end;// ???
-assign arr_flag_end = ((r_dir_last == 1'b1) ? ((|arr_cnt == 1'b0) ? 1'b1 : 1'b0) : ((arr_cnt == (r_arr_last - 1'b1)) ? 1'b1 : 1'b0)) && psc_flag_end;// ???
-assign arr_flag_pre_end = ((r_dir_last == 1'b1) ? ((arr_cnt == 16'h1) ? 1'b1 : 1'b0) : ((arr_cnt == (r_arr_last - 2'h2)) ? 1'b1 : 1'b0)) && psc_flag_end;// ???
+assign arr_flag_end = ((r_dir_last == 1'b1) ? ((|arr_cnt == 1'b0) ? 1'b1 : 1'b0) : ((arr_cnt == (r_arr_last - 1'b1)) ? 1'b1 : 1'b0)) && psc_flag_end;
+assign arr_flag_pre_end = ((r_dir_last == 1'b1) ? ((arr_cnt == 16'h1) ? 1'b1 : 1'b0) : ((arr_cnt == (r_arr_last - 2'h2)) ? 1'b1 : 1'b0)) && psc_flag_end;
 
 // channel cnt for pwm generator
 always @(posedge pe_gen_clk or negedge pe_gen_rstn)
@@ -314,7 +341,7 @@ end
 assign cnt_end = psc_flag_end && arr_flag_end && timing_base_enable; // only sustaining 1 clock
 assign cnt_pre_end = psc_flag_end && arr_flag_pre_end && timing_base_enable; // only sustaining 1 clock
 assign gen_reload_flag = cnt_end;
-assign pe_gen_hw_update = cnt_pre_end;//???? 
+assign pe_gen_hw_update = cnt_pre_end;
 assign gen_cnt_pre_end = cnt_pre_end;
 
 //===============================================

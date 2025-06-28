@@ -144,7 +144,6 @@ wire							encoder_detected_in_mode3;
 // concise logic
 assign encoder_detected_in_mode1 = (r_ec1e && ec1prefc_first_detected) || (r_ec1ne && ec1nrefc_first_detected);
 assign encoder_detected_in_mode2 = (r_ec1e && ec1prefc_second_detected) || (r_ec1ne && ec1nrefc_second_detected) || encoder_detected_in_mode1 ;
-assign encoder_detected_in_mode3 = encoder_detected_in_mode2;
 assign encoder_detected = timing_enable && (r_encoder_mode1 ? encoder_detected_in_mode1 : encoder_detected_in_mode2);
 
 //===============================================

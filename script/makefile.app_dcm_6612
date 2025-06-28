@@ -1,6 +1,6 @@
-SIM_TARGET := fw_test
-#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP2_2 +define+ENCODER_MONITOR +define+SIMULATION 
-SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+PWM_MONITOR +define+SIMULATION 
+SIM_TARGET := app_dcm_6612
+SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP2_1 +define+ENCODER_MONITOR +define+SIMULATION 
+#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+PWM_MONITOR +define+SIMULATION 
 #SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+TP1_6 +define+PWM_MONITOR +define+SIMULATION 
 #SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+PWM_MONITOR +define+SIMULATION 
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
@@ -10,23 +10,23 @@ SIM_INC_LIST := sim_inc.list
 SIM_SCRIPTS_PATH := ${PRJ_SIM_DIR}/script
 CMDFILE := ${SIM_SCRIPTS_PATH}/vcs_sim_cmdfile.f
 WAVEFORM := TOP.fsdb
-WAVELIST := ${SIM_SCRIPTS_PATH}/advtim.rc
-#WAVELIST := ${SIM_SCRIPTS_PATH}/advtim_enc.rc
+WAVELIST := ${SIM_SCRIPTS_PATH}/app_dcm_6612.rc
 
-SDK_TARGET := fw_test
-SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DADVTIM_DRIVER -DCOMMON_DRIVER -DADVTIM_TEST -DSIM
+SDK_TARGET := dc_motor_6612
+SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DADVTIM_DRIVER -DCOMMON_DRIVER
+#SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DADVTIM_DRIVER -DCOMMON_DRIVER -DSIM
 
 SDK_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}
 BUILD_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/build
 OUTPUT_PATH := ${PRJ_SDK_DIR}/${SDK_TARGET}/output
 FW_PATH := ${PRJ_FW_DIR}/${SDK_TARGET}
-FW_INC_PATH := -I ${PRJ_FW_DIR}/${SDK_TARGET} -I ${PRJ_FW_DIR}/${SDK_TARGET}/uart_bsp -I ${PRJ_FW_DIR}/${SDK_TARGET}/advtim_bsp
+FW_INC_PATH := -I ${PRJ_FW_DIR}/${SDK_TARGET} -I ${PRJ_FW_DIR}/${SDK_TARGET}/uart_bsp -I ${PRJ_FW_DIR}/${SDK_TARGET}/dc_motor_ctrl
 
 CPU_INC_PATH := -I ${PRJ_LIB_DIR}/cmsis/CMSIS/Include -I ${PRJ_LIB_DIR}/cmsis/Device/ARM/CM3DS/Include
 DRV_INC_PATH := -I ${PRJ_DRV_DIR} -I ${PRJ_DRV_DIR}/common/inc -I ${PRJ_DRV_DIR}/uart/inc -I ${PRJ_DRV_DIR}/advtim/inc
 INC_PATH := ${FW_INC_PATH} ${DRV_INC_PATH} ${CPU_INC_PATH} 
 
-LDSCRIPT := ${FW_PATH}/itcm.ld
+LDSCRIPT := ${FW_PATH}/ram0.ld
 STARTUP_S := ${PRJ_LIB_DIR}/cmsis/Device/ARM/CM3DS/Source/GCC/startup_CM3DS.s
 
 CFLAG := -std=c99 -DPRJ=${SDK_TARGET} -D__GNUC__=9 -Og -Wall -Wextra -fdata-sections -ffunction-sections
@@ -36,9 +36,8 @@ FLAG := ${CFLAG} ${ARCH_FLAG}
 
 SHELL := /bin/bash
 
-#all: prepare build_driver build_fw
-all: prepare build_driver build_fw compile_rtl sim waveform
-#all: prepare compile_rtl sim waveform
+all: prepare build_driver build_fw
+#all: prepare build_driver build_fw compile_rtl sim waveform
 #all: waveform
 
 prepare:
@@ -62,9 +61,12 @@ build_driver:
 
 build_fw:
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/uart_bsp/uart_bsp.c -o ${BUILD_PATH}/uart_bsp.o
-	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/uart_bsp/uart_test.c -o ${BUILD_PATH}/uart_test.o
-	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/advtim_bsp/advtim_bsp.c -o ${BUILD_PATH}/advtim_bsp.o
-	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/advtim_bsp/advtim_test.c -o ${BUILD_PATH}/advtim_test.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/dc_motor_ctrl/advtim_bsp.c -o ${BUILD_PATH}/advtim_bsp.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/dc_motor_ctrl/dcm_sys_ctrl.c -o ${BUILD_PATH}/dcm_sys_ctrl.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/dc_motor_ctrl/dcm_sys_actutor.c -o ${BUILD_PATH}/dcm_sys_actutor.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/dc_motor_ctrl/dcm_sys_feedback.c -o ${BUILD_PATH}/dcm_sys_feedback.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/dc_motor_ctrl/pwm.c -o ${BUILD_PATH}/pwm.o
+	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/dc_motor_ctrl/encoder.c -o ${BUILD_PATH}/encoder.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/main.c -o ${BUILD_PATH}/main.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${FW_PATH}/interrupt.c -o ${BUILD_PATH}/interrupt.o
 	cd ${BUILD_PATH} && arm-none-eabi-gcc ${SDK_DEFINE} ${FLAG} ${INC_PATH} -c ${STARTUP_S} -o ${BUILD_PATH}/startup_CM3DS.o

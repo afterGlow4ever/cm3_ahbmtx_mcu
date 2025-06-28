@@ -74,12 +74,14 @@ module advtim_top
 
 wire							r0_gen_enable;
 wire							r0_gen_enable_af;
+wire							r0_gen_enable_af_r;
 wire							r0_logic_clr;
 wire							advtim_pe_gen_hw_update;
 wire 							advtim_pe_gen_running;
 wire							advtim_pe_fault_detected;
 wire							r1_cap_enable;
 wire							r1_cap_enable_af;
+wire							r1_cap_enable_af_r;
 wire							r1_logic_clr;
 wire							advtim_pe_cap_hw_update;
 wire 							advtim_pe_cap_running;
@@ -366,22 +368,22 @@ wire							advtim_pe_gen_tim_end;
 wire							advtim_pe_gen_logic_clr;
 assign advtim_pe_gen_logic_clr = r0_logic_clr;
 
-pos_step_sync2pulse u_advtim_gen_enable_sync
+sync_ff_2d_2edge u_advtim_gen_enable_sync
 (
-	.src_clk					(reg_clk),
-	.src_rstn					(reg_rstn),	
-	.des_clk					(module_clk),
-	.des_rstn					(module_rstn),	
+	.clk						(module_clk),
+	.rstn						(module_rstn),
 
-	.src_A						(r0_gen_enable),
-	.des_Y						(r0_gen_enable_af)
+	.A							(r0_gen_enable),
+	.Y							(r0_gen_enable_af),
+	.Y_r						(r0_gen_enable_af_r),
+	.Y_f						()
 );
 
 always @(posedge module_clk or negedge module_rstn)
 begin
 	if(!module_rstn)
 		advtim_pe_gen_tim_enable_temp <= 1'b0;
-	else if(r0_gen_enable_af)
+	else if(r0_gen_enable_af_r)
 		advtim_pe_gen_tim_enable_temp <= 1'b1;
 	else if(advtim_pe_gen_tim_enable)
 		advtim_pe_gen_tim_enable_temp <= 1'b0;
@@ -393,7 +395,7 @@ always @(posedge module_clk or negedge module_rstn)
 begin
 	if(!module_rstn)
 		advtim_pe_gen_tim_enable <= 1'b0;
-	else if(((advtim_pe_gen_tim_enable == 1'b1) && advtim_pe_gen_tim_end) || advtim_pe_gen_logic_clr || advtim_pe_fault_detected)
+	else if(((advtim_pe_gen_tim_enable == 1'b1) && (advtim_pe_gen_tim_end || ~r0_gen_enable_af)) || advtim_pe_gen_logic_clr || advtim_pe_fault_detected)
 		advtim_pe_gen_tim_enable <= 1'b0;
 	else if((advtim_pe_gen_tim_enable == 1'b0) && (advtim_pe_gen_tim_enable_temp))
 		advtim_pe_gen_tim_enable <= 1'b1;
@@ -424,22 +426,22 @@ wire							advtim_pe_cap_tim_end;
 wire							advtim_pe_cap_logic_clr;
 assign advtim_pe_cap_logic_clr = r1_logic_clr;
 
-pos_step_sync2pulse u_advtim_cap_enable_sync
+sync_ff_2d_2edge u_advtim_cap_enable_sync
 (
-	.src_clk					(reg_clk),
-	.src_rstn					(reg_rstn),	
-	.des_clk					(module_clk),
-	.des_rstn					(module_rstn),	
+	.clk						(module_clk),
+	.rstn						(module_rstn),
 
-	.src_A						(r1_cap_enable),
-	.des_Y						(r1_cap_enable_af)
+	.A							(r1_cap_enable),
+	.Y							(r1_cap_enable_af),
+	.Y_r						(r1_cap_enable_af_r),
+	.Y_f						()
 );
 
 always @(posedge module_clk or negedge module_rstn)
 begin
 	if(!module_rstn)
 		advtim_pe_cap_tim_enable_temp <= 1'b0;
-	else if(r1_cap_enable_af)
+	else if(r1_cap_enable_af_r)
 		advtim_pe_cap_tim_enable_temp <= 1'b1;
 	else if(advtim_pe_cap_tim_enable)
 		advtim_pe_cap_tim_enable_temp <= 1'b0;
@@ -451,7 +453,7 @@ always @(posedge module_clk or negedge module_rstn)
 begin
 	if(!module_rstn)
 		advtim_pe_cap_tim_enable <= 1'b0;
-	else if(((advtim_pe_cap_tim_enable == 1'b1) && advtim_pe_cap_tim_end) || advtim_pe_cap_logic_clr)
+	else if(((advtim_pe_cap_tim_enable == 1'b1) && (advtim_pe_cap_tim_end || ~r1_cap_enable_af)) || advtim_pe_cap_logic_clr)
 		advtim_pe_cap_tim_enable <= 1'b0;
 	else if((advtim_pe_cap_tim_enable == 1'b0) && advtim_pe_cap_tim_enable_temp)
 		advtim_pe_cap_tim_enable <= 1'b1;
@@ -563,7 +565,6 @@ wire							advtmr_cap_ch1n_afsync;
 // 1d 70% ~80%
 // 2d 99%%
 // 3d is used to detect negedge
-
 sync_ff_2d u_sync_ff_2d_inst3
 (
 	.clk						(module_clk),
@@ -794,8 +795,8 @@ interrupt_gen
 )
 u_interrupt0_gen
 (
-	.clk						(module_clk),
-	.rstn						(module_rstn),
+	.clk						(reg_clk),
+	.rstn						(reg_rstn),
 
 	.int_en						(int0_en),
 	.int_tgr					(int0_pos),

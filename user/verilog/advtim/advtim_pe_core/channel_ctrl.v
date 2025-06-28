@@ -572,43 +572,6 @@ sync_ff u_input_capture_channel1n_d
 // input edge detect
 //===============================================
 
-wire							ic1prefc_r;
-wire							ic1prefc_f;
-wire							ic1nrefc_r;
-wire							ic1nrefc_f;
-
-posedge_detect u_input_capture_channel1p_posedge_detect 
-(
-	.clk						(pe_cap_clk),
-	.rstn						(pe_cap_rstn),
-	.A							(ic1prefc && r1_cc1e),// enable ???
-	.Y							(ic1prefc_r)
-);
-
-negedge_detect u_input_capture_channel1p_negedge_detect 
-(
-	.clk						(pe_cap_clk),
-	.rstn						(pe_cap_rstn),
-	.A							(ic1prefc || ~r1_cc1e),
-	.Y							(ic1prefc_f)
-);
-
-posedge_detect u_input_capture_channel1n_posedge_detect 
-(
-	.clk						(pe_cap_clk),
-	.rstn						(pe_cap_rstn),
-	.A							(ic1nrefc && r1_cc1ne),
-	.Y							(ic1nrefc_r)
-);
-
-negedge_detect u_input_capture_channel1n_negedge_detect 
-(
-	.clk						(pe_cap_clk),
-	.rstn						(pe_cap_rstn),
-	.A							(ic1nrefc || ~r1_cc1ne),
-	.Y							(ic1nrefc_f)
-);
-
 edge_delay_hold_detect u_input_capture_channel1p_first_detect
 (
 	.clk						(pe_cap_clk),
@@ -661,94 +624,11 @@ edge_delay_hold_detect u_input_capture_channel1n_second_detect
 	.input_detected				(ic1nrefc_second_detected)
 );
 
-reg								ic1prefc_first_valid_temp;
-reg								ic1nrefc_first_valid_temp;
-reg								ic1prefc_second_valid_temp;
-reg								ic1nrefc_second_valid_temp;
-assign ic1prefc_first_capturing = ic1prefc_first_valid_temp && ic1prefc_first_valid;
-assign ic1prefc_second_capturing = ic1prefc_second_valid_temp && ic1prefc_second_valid;
-assign ic1nrefc_first_capturing = ic1nrefc_first_valid_temp && ic1nrefc_first_valid;
-assign ic1nrefc_second_capturing = ic1nrefc_second_valid_temp && ic1nrefc_second_valid;
+assign ic1prefc_first_capturing = 1'b0;
+assign ic1prefc_second_capturing = 1'b0;
+assign ic1nrefc_first_capturing = 1'b0;
+assign ic1nrefc_second_capturing = 1'b0;
 
-always @(posedge pe_cap_clk or negedge pe_cap_rstn)
-begin
-	if(!pe_cap_rstn)
-	begin
-		ic1prefc_first_valid_temp <= 1'b0;
-	end
-	else if(~r1_cc1e || ~cap_channel_input_enable)
-	begin
-		ic1prefc_first_valid_temp <= 1'b0;
-	end
-	else if((ic1prefc_r && r1_cc1p) || (ic1prefc_f && ~r1_cc1p))
-	begin
-		ic1prefc_first_valid_temp <= 1'b1;
-	end
-	else
-	begin
-		ic1prefc_first_valid_temp <= ic1prefc_first_valid_temp;
-	end
-end
-
-always @(posedge pe_cap_clk or negedge pe_cap_rstn)
-begin
-	if(!pe_cap_rstn)
-	begin
-		ic1prefc_second_valid_temp <= 1'b0;
-	end
-	else if(~r1_cc1e || ~cap_channel_input_enable)
-	begin
-		ic1prefc_second_valid_temp <= 1'b0;
-	end
-	else if((ic1prefc_r && ~r1_cc1p) || (ic1prefc_f && r1_cc1p))
-	begin
-		ic1prefc_second_valid_temp <= 1'b1;
-	end
-	else
-	begin
-		ic1prefc_second_valid_temp <= ic1prefc_second_valid_temp;
-	end
-end
-
-always @(posedge pe_cap_clk or negedge pe_cap_rstn)
-begin
-	if(!pe_cap_rstn)
-	begin
-		ic1nrefc_first_valid_temp <= 1'b0;
-	end
-	else if(~r1_cc1ne || ~cap_channel_input_enable)
-	begin
-		ic1nrefc_first_valid_temp <= 1'b0;
-	end
-	else if((ic1nrefc_r && r1_cc1np) || (ic1nrefc_f && ~r1_cc1np))
-	begin
-		ic1nrefc_first_valid_temp <= 1'b1;
-	end
-	else
-	begin
-		ic1nrefc_first_valid_temp <= ic1nrefc_first_valid_temp;
-	end
-end
-
-always @(posedge pe_cap_clk or negedge pe_cap_rstn)
-begin
-	if(!pe_cap_rstn)
-	begin
-		ic1nrefc_second_valid_temp <= 1'b0;
-	end
-	else if(~r1_cc1ne || ~cap_channel_input_enable)
-	begin
-		ic1nrefc_second_valid_temp <= 1'b0;
-	end
-	else if((ic1nrefc_r && ~r1_cc1np) || (ic1nrefc_f && r1_cc1np))
-	begin
-		ic1nrefc_second_valid_temp <= 1'b1;
-	end
-	else
-	begin
-		ic1nrefc_second_valid_temp <= ic1nrefc_second_valid_temp;
-	end
-end
 //===============================================
 // encoder input pin direction
 //===============================================

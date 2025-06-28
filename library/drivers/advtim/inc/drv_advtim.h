@@ -338,6 +338,11 @@ static inline void drv_advtim_config_sw_update(ADVTIM_HandleTypeDef *advtim)
 static inline void drv_advtim_gen_enable(ADVTIM_HandleTypeDef *advtim)
 {
 	REG_SETBIT(advtim->regs->top_ctrl, 2, 1);
+//	REG_SETBIT(advtim->regs->top_ctrl, 2, 0);
+}
+
+static inline void drv_advtim_gen_disable(ADVTIM_HandleTypeDef *advtim)
+{
 	REG_SETBIT(advtim->regs->top_ctrl, 2, 0);
 }
 
@@ -677,6 +682,11 @@ static inline void drv_advtim_cap_logic_reset(ADVTIM_HandleTypeDef *advtim)
 static inline void drv_advtim_cap_enable(ADVTIM_HandleTypeDef *advtim)
 {
 	REG_SETBIT(advtim->regs->top_ctrl, 3, 1);
+//	REG_SETBIT(advtim->regs->top_ctrl, 3, 0);
+}
+
+static inline void drv_advtim_cap_disable(ADVTIM_HandleTypeDef *advtim)
+{
 	REG_SETBIT(advtim->regs->top_ctrl, 3, 0);
 }
 
