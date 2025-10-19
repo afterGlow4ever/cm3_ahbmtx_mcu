@@ -92,6 +92,9 @@ eth_mac_fw_sim:
 advtim_fw_sim:
 	make -f makefile.advtim_fw_sim
 
+spim_fw_sim:
+	make -f makefile.spim_fw_sim
+
 #===============================================
 # RTL auto generation
 #===============================================
@@ -113,6 +116,9 @@ advtim_reg_gen:
 
 eth_reg_gen:
 	make -f makefile.eth_reg_gen
+
+spim_reg_gen:
+	make -f makefile.spim_reg_gen
 
 #===============================================
 # firmware build
@@ -159,4 +165,7 @@ fpga_7020_mcu_full_vivado:
 
 app_dcm_6612:
 	make -f makefile.app_dcm_6612
+
+app_spim:
+	make -f makefile.app_spim
 

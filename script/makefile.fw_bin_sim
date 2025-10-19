@@ -1,5 +1,6 @@
 SIM_TARGET := fw_bin_sim
-SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+TP1_6 +define+PWM_MONITOR +define+SIMULATION 
+SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+SPIM +define+SPIM_FW_TEST +define+SPIM_MONITOR +define+SIMULATION 
+#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+TP1_6 +define+PWM_MONITOR +define+SIMULATION 
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
 DUT_LIST := dut.list
 SIM_LIST := sim.list
@@ -9,7 +10,8 @@ CMDFILE := ${SIM_SCRIPTS_PATH}/vcs_sim_cmdfile.f
 WAVEFORM := TOP.fsdb
 WAVELIST := ${SIM_SCRIPTS_PATH}/advtim_bk.rc
 
-FW_BIN := /mnt/hgfs/share/bin/fw_test.bin
+FW_BIN := /mnt/hgfs/share/bin/spim_applications.bin
+#FW_BIN := /mnt/hgfs/share/bin/fw_test.bin
 #FW_BIN := ${PRJ_SDK_DIR}/keil_fw_test/Objects/baremental.bin
 #FW_BIN := ${PRJ_SDK_DIR}/baremental.bin
 

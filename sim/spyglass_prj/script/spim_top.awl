@@ -1,0 +1,10 @@
+waive -rule {  {W240}  }  -comment {Created by master on 03-Mar-2026 15:14:11} 
+waive -rule {  {W287b}  }  -comment {Created by master on 03-Mar-2026 15:15:27} 
+waive -rule {  {FlopEConst}  }  -comment {Created by master on 03-Mar-2026 15:16:46} 
+waive -rule {  {STARC05-1.1.1.1}  }  -comment {Created by master on 03-Mar-2026 15:21:17} 
+waive -rule {  {W528}  }  -comment {Created by master on 03-Mar-2026 15:27:57} 
+waive -rule {  {W240}  }  -comment {Created by master on 03-Mar-2026 15:30:02} 
+waive -msg {Enable pin of '2' Flop (instance 'spim_sg.u_spim.u_spim_data_buffer.u_rx_fifo.u_rdclr_sync.src_step[0]') of module 'posedge_pulse_sync' tie to constant}  -rule {  {FlopEConst}  }  -comment {parent_waived_as_child_get_waived}  -parent
+waive -rule {  {FlopEConst}  }  -comment {Created by master on 03-Mar-2026 15:30:21} 
+waive -rule {  {W528}  }  -comment {Created by master on 03-Mar-2026 15:32:50} 
+waive -rule {  {Ac_conv04}  }  -comment {Created by master on 03-Mar-2026 15:59:08} 

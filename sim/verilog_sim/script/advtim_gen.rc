@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_T-2022.06
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 25 1920 473 251 65
+viewPort 0 25 1920 508 185 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -18,16 +18,16 @@ signalSpacing 5
 windowTimeUnit 1us
 
 ; waveform viewport range
-zoom 0.000000 734.585625 1u
-cursor 37.931250
-marker 69.462500
+zoom 0.000000 563.730927 1u
+cursor 262.318750
+marker 262.331250
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 5
+top 0
 ; marker line index
-markerPos 12
+markerPos 4
 
 ; event list
 ; addEvent event_name event_expression
@@ -49,10 +49,13 @@ curSTATUS ByChange
 
 addGroup "G1"
 activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
 addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_regs_wrap/r0_sw_update_af
 addSignal -h 15 -holdScope r0_sw_update
 addSignal -h 15 -holdScope r0_update
-addGroup "G2"
 addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/r0_gen_enable
 addSignal -h 15 -holdScope r0_gen_enable_af
 addSignal -h 15 -holdScope r0_gen_enable_af_r
@@ -64,43 +67,70 @@ addSignal -h 15 -holdScope pe_gen_tim_enable
 addSignal -h 15 -holdScope timing_base_real_enable
 addSignal -h 15 -holdScope timing_base_enable
 addSignal -h 15 -holdScope gen_reload_finish
+addGroup "G2"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/psc_cnt[15:0]
+addSignal -h 15 -holdScope psc_flag_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_psc[15:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/u_channel_output_compare/arr_cnt[15:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/arr_flag_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_arr[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope rcr_counter[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_rcr[15:0]
+addSignal -h 15 -holdScope gen_reload_finish
+addSignal -h 15 -holdScope gen_cnt_dir
+addSignal -h 15 -holdScope r_dir
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_cms[1:0]
+addGroup "G3"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/cnt_pre_end
 addSignal -h 15 -holdScope pe_gen_hw_update
+addSignal -h 15 -holdScope arr_flag_end
+addSignal -h 15 -holdScope psc_flag_end
 addSignal -h 15 -UNSIGNED -HEX -holdScope r_psc_last[15:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope r_psc[15:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope r_arr_last[15:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope r_arr[15:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope rcr_counter[15:0]
-addSignal -h 15 -holdScope r_dir
-addSignal -h 15 -holdScope r_dir_last
-addSignal -w analog -ds pwc -h 15 -UNSIGNED -HEX -holdScope arr_cnt[15:0]
-addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/u_channel_output_compare/arr_cnt[15:0]
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/cnt_end
-addSignal -h 15 -holdScope arr_flag_end
-addSignal -h 15 -holdScope psc_flag_end
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/oc1refc
-addSignal -h 15 -holdScope oc2refc
-addSignal -h 15 -holdScope oc3refc
-addSignal -h 15 -holdScope oc5c1refc
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_regs_wrap/r0_cc4p_shadow
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_regs_wrap/u_advtim_apb_cfg/r0_cc4p
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_regs_wrap/r0_cc4e
-addSignal -h 15 -holdScope r0_cc4e
-addSignal -h 15 -holdScope r0_cc4p_shadow
-addGroup "G3"
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/int_status_gen_end
-addGroup "G4"
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/oc5c1refc
-addSignal -h 15 -holdScope oc5c1refc
-addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/u_channel_output_compare/oc1ref[6]
-addSignal -h 15 -holdScope timing_enable
 addSignal -h 15 -UNSIGNED -HEX -holdScope arr_cnt[15:0]
-addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/psc_cnt[15:0]
+addGroup "G4"
 addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/u_channel_output_compare/arr_cnt[15:0]
+addSignal -w analog -ds pwc -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/arr_cnt[15:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/u_channel_output_compare/r_oc1m[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_oc2m[3:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope r_cc1[15:0]
-addSignal -h 15 -holdScope oc1ref[6]
-addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addSignal -h 15 -holdScope oc1refc
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_cc2[15:0]
+addSignal -h 15 -holdScope oc2refc
 addGroup "G5"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/r0_cc1p
+addSignal -h 15 -holdScope r0_cc1np
+addSignal -h 15 -holdScope r0_moe1n
+addSignal -h 15 -holdScope oc5c1refc
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/pe_gen_hw_update
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/pwm_channel1p
+addSignal -h 15 -holdScope pwm_channel1n
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/u_pwm_channel1_deadzone/dtg_cnt_valid_for_posedge
+addSignal -h 15 -holdScope dtg_cnt_valid_for_negedge
+addSignal -h 15 -UNSIGNED -HEX -holdScope dtg_cnt[9:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/pwm_channel1p_deadzone
+addSignal -h 15 -holdScope pwm_channel1n_deadzone
+addGroup "G6"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_fault_detection/r_bk1e
+addSignal -h 15 -holdScope r_bk2e
+addSignal -h 15 -holdScope r_bk1p
+addSignal -h 15 -holdScope r_bk2p
+addSignal -h 15 -holdScope advtmr_bk1
+addSignal -h 15 -holdScope break1_valid
+addSignal -h 15 -holdScope advtmr_bk2
+addSignal -h 15 -holdScope break2_valid
+addSignal -h 15 -holdScope system_failure
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_channel_ctrl/fault_detected
+addSignal -h 15 -holdScope pwm_channel1p
+addSignal -h 15 -holdScope pwm_channel1n
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_advtim/u_advtim_pe_core/u_advtim_cnt_gen/timing_base_enable
+addSignal -h 15 -UNSIGNED -HEX -holdScope arr_cnt[15:0]
+addGroup "G7"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug0[31:0]
+addSignal -expanded -h 15 -UNSIGNED -HEX -holdScope debug1[31:0]
+addGroup "G8"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

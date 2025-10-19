@@ -37,6 +37,9 @@ TestMenu g_mcu_menu[] =
 #ifdef ADVTIM_TEST
 	{'5', advtim_testmenu,							"[ADVTIM] test menu\r\n"},
 #endif
+#ifdef SPIM_TEST
+	{'6', spim_testmenu,							"[SPIM] test menu\r\n"},
+#endif
 	{'0', mcu_testmenu,								"[MCU] test menu\r\n"}
 };
 
@@ -114,7 +117,12 @@ int main(void)
 //	advtim_ch_all_pwm_with_deadzone_with_break_on_test();
 //	advtim_ch_all_pwm_gpio_with_deadzone_with_break_on_test();//
 //	advtim_ch_all_pwm_logic_with_deadzone_with_break_on_test();
-	advtim_ch1_encoder_direct_both_edge_on_test();
+//	advtim_ch1_encoder_direct_both_edge_on_test();
+//	spim_tx_data_test();
+//	spim_tx_data_pending_test();
+//	spim_trans_data_pending_test();
+//	spim_rx_data_pending_test();
+	spim_trans_frame_pending_test();
 	writereg32(0x40000008, 0xed);
 #else
 #endif

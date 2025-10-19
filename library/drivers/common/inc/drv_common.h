@@ -32,6 +32,12 @@
 
 bool drv_check_data(uint32_t address, uint32_t data);
 bool drv_check_rw_data(uint32_t address, uint32_t wdata, uint32_t rdata);
+void drv_byte_data_array_clear(uint8_t *data, uint32_t length);
+void drv_halfword_data_array_clear(uint16_t *data, uint32_t length);
+void drv_word_data_array_clear(uint32_t *data, uint32_t length);
+void drv_dual_byte_data_array_clear(uint8_t *data0, uint8_t *data1, uint32_t length);
+void drv_dual_halfword_data_array_clear(uint16_t *data0, uint16_t *data1, uint32_t length);
+void drv_dual_word_data_array_clear(uint32_t *data0, uint32_t *data1, uint32_t length);
 
 #endif
 

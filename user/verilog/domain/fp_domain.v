@@ -22,6 +22,7 @@ module fp_domain
 	input  						eth_pe_tx_clk,  
 	input  						eth_pe_rx_clk,  
 	input  						advtim_pe_clk,  
+	input  						spim_pe_clk,  
 	input						sys_root_rstn,
 	input						apb0_root_rstn,
 	input						apb1_root_rstn,
@@ -29,6 +30,7 @@ module fp_domain
 	input  						eth_pe_tx_rstn,
 	input  						eth_pe_rx_rstn,
 	input  						advtim_pe_rstn,
+	input  						spim_pe_rstn,
 	input						power_on_rstn,
 	
 	// pins
@@ -81,6 +83,14 @@ module fp_domain
 	input						advtmr0_enc_ch1n,
 	output						advtmr0_enc_ch1p_oen,
 	output						advtmr0_enc_ch1n_oen,
+	output 						spim0_sck,
+	output 						spim0_sck_oen,
+	output 						spim0_mosi_o,
+	output 						spim0_mosi_oen,
+	input						spim0_miso_i,
+	output 						spim0_miso_oen,
+	output 						spim0_cs_o,
+	output 						spim0_cs_oen,
 
 `ifdef GPIO
 	output						psel0_gpioa,
@@ -874,12 +884,13 @@ wire	[ 3:0]				bastim_int;// No.8~11
 wire						eth_sma_int;// No.12
 wire						eth_mac_tx_int;// No.13
 wire						eth_mac_rx_int;// No.14
-wire						advtim_gen_int;// No.16
-wire						advtim_cap_int;// No.17
-wire						advtim_enc_int;// No.18
+wire						advtim0_gen_int;// No.16
+wire						advtim0_cap_int;// No.17
+wire						advtim0_enc_int;// No.18
+wire						spim0_int;// No.19
 
 assign sync_irq = {2'h0, gpioa_int, eth_mac_dma_int, 1'b0, 1'b0, uart1_int, uart0_int};
-assign async_irq_bf = {5'b0, advtim_enc_int, advtim_cap_int, advtim_gen_int, 1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
+assign async_irq_bf = {4'b0, spim0_int, advtim0_enc_int, advtim0_cap_int, advtim0_gen_int, 1'b0, eth_mac_rx_int, eth_mac_tx_int, eth_sma_int, bastim_int};
 
 sync_ff_2d
 #(
@@ -1025,6 +1036,8 @@ apb2_top u_apb2_async_top
 	.eth_pe_rx_rstn				(eth_pe_rx_rstn),
 	.advtim_pe_clk				(advtim_pe_clk),  
 	.advtim_pe_rstn				(advtim_pe_rstn),
+	.spim_pe_clk				(spim_pe_clk),  
+	.spim_pe_rstn				(spim_pe_rstn),
 
 	.eth_mdc					(eth_mdc),
 	.eth_mdc_oen				(eth_mdc_oen),
@@ -1068,6 +1081,14 @@ apb2_top u_apb2_async_top
 	.advtmr0_enc_ch1n			(advtmr0_enc_ch1n),
 	.advtmr0_enc_ch1p_oen		(advtmr0_enc_ch1p_oen),
 	.advtmr0_enc_ch1n_oen		(advtmr0_enc_ch1n_oen),
+	.spim0_sck					(spim0_sck),
+	.spim0_sck_oen				(spim0_sck_oen),
+	.spim0_mosi_o				(spim0_mosi_o),
+	.spim0_mosi_oen				(spim0_mosi_oen),
+	.spim0_miso_i				(spim0_miso_i),
+	.spim0_miso_oen				(spim0_miso_oen),
+	.spim0_cs_o					(spim0_cs_o),
+	.spim0_cs_oen				(spim0_cs_oen),
 
 	.system_failure				(system_failure),
 
@@ -1101,9 +1122,10 @@ apb2_top u_apb2_async_top
 	.eth_mac_tx_int				(eth_mac_tx_int),
 	.eth_mac_rx_int				(eth_mac_rx_int),
 	.eth_mac_dma_int			(eth_mac_dma_int),
-	.advtim_gen_int				(advtim_gen_int),
-	.advtim_cap_int				(advtim_cap_int),
-	.advtim_enc_int				(advtim_enc_int)
+	.advtim0_gen_int			(advtim0_gen_int),
+	.advtim0_cap_int			(advtim0_cap_int),
+	.advtim0_enc_int			(advtim0_enc_int),
+	.spim0_int					(spim0_int)
 );
 
 endmodule

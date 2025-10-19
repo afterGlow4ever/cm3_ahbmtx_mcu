@@ -5,6 +5,7 @@
 ../library/models/eth_phy_sma_model.v
 ../library/models/pwm_model.v
 ../library/models/encoder_model.v
+../library/models/spis_model.v
 ../library/altera_sim/altera_mf.v
 ../library/altera_ip/ram_128k/ram_128k.v
 ../library/altera_ip/ram_32k/ram_32k.v

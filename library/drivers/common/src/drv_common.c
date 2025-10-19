@@ -58,5 +58,67 @@ bool drv_check_rw_data(uint32_t address, uint32_t wdata, uint32_t rdata)
 	}
 }
 
+//===============================================
+// data array clear
+//===============================================
+
+void drv_byte_data_array_clear(uint8_t *data, uint32_t length)
+{
+	uint32_t i;
+
+	for(i=0;i<length;i++)
+		data[i] = 0x00;
+}
+
+void drv_halfword_data_array_clear(uint16_t *data, uint32_t length)
+{
+	uint32_t i;
+
+	for(i=0;i<length;i++)
+		data[i] = 0x0000;
+}
+
+void drv_word_data_array_clear(uint32_t *data, uint32_t length)
+{
+	uint32_t i;
+
+	for(i=0;i<length;i++)
+		data[i] = 0x00000000;
+}
+
+void drv_dual_byte_data_array_clear(uint8_t *data0, uint8_t *data1, uint32_t length)
+{
+	uint32_t i;
+
+	for(i=0;i<length;i++)
+	{
+		data0[i] = 0x00;
+		data1[i] = 0x00;
+	}
+}
+
+void drv_dual_halfword_data_array_clear(uint16_t *data0, uint16_t *data1, uint32_t length)
+{
+	uint32_t i;
+
+	for(i=0;i<length;i++)
+	{
+		data0[i] = 0x0000;
+		data1[i] = 0x0000;
+	}
+}
+
+void drv_dual_word_data_array_clear(uint32_t *data0, uint32_t *data1, uint32_t length)
+{
+	uint32_t i;
+
+	for(i=0;i<length;i++)
+	{
+		data0[i] = 0x00000000;
+		data1[i] = 0x00000000;
+	}
+}
+
+
 #endif
 

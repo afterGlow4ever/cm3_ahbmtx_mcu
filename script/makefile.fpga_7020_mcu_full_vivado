@@ -1,6 +1,6 @@
 FPGA_TARGET := fpga_7020_mcu_full_vivado
 TOP_NAME := mcu_top
-FPGA_DEFINE := "\`define+FPGA \`define+SRAM_128K \`define+FPGA_SRAM \`define+ZYNQ_7020 \`define+UART0 \`define+ADVTIM"
+FPGA_DEFINE := "\`define+FPGA \`define+SRAM_128K \`define+FPGA_SRAM \`define+ZYNQ_7020 \`define+UART0 \`define+SPIM"
 DUT_LIST := dut.list
 FPGA_DUT_LIST := fpga_7020_dut.list
 FPGA_IP_LIST := fpga_7020_ip.list

@@ -136,7 +136,7 @@ assign r_rx_data_fifo_rd = r_rx_data_rd;
 always @(posedge reg_clk or negedge reg_rstn)
 begin
 	if(!reg_rstn)
-		r_rx_data_d <= 1'b0;
+		r_rx_data_d <= 10'h0;
 	else
 		r_rx_data_d <= r_rx_data;
 end

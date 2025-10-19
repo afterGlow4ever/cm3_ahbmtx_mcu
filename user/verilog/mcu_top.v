@@ -52,6 +52,12 @@ module mcu_top
 	input						ADVTIM0_ENC_CH1P,
 	input						ADVTIM0_ENC_CH1N,
 `endif
+`ifdef SPIM
+	output						SPIM0_SCK,
+	inout						SPIM0_MOSI,
+	input						SPIM0_MISO,
+	output						SPIM0_CS,
+`endif
 `endif
 `ifdef ETH
 	output						ETH_RST,
@@ -93,6 +99,7 @@ assign apb2_root_clk = hsi2;
 assign eth_pe_tx_clk = hsi2;
 assign eth_pe_rx_clk = hsi2;
 assign advtim_pe_clk = hsi3;
+assign spim_pe_clk = hsi3;
 assign sys_root_rstn = RSTN & pll_locked;
 assign apb0_root_rstn = RSTN & pll_locked;
 assign apb1_root_rstn = RSTN & pll_locked;
@@ -100,6 +107,7 @@ assign apb2_root_rstn = RSTN & pll_locked;
 assign eth_pe_tx_rstn = RSTN & pll_locked;
 assign eth_pe_rx_rstn = RSTN & pll_locked;
 assign advtim_pe_rstn = RSTN & pll_locked;
+assign spim_pe_rstn = RSTN & pll_locked;
 
 //===============================================
 // gpio
@@ -146,6 +154,14 @@ wire								advtmr0_cap_ch1p;
 wire								advtmr0_cap_ch1n;
 wire								advtmr0_cap_ch1p_oen;
 wire								advtmr0_cap_ch1n_oen;
+wire		 						spim0_sck;
+wire		 						spim0_sck_oen;
+wire		 						spim0_cs_o;
+wire		 						spim0_cs_oen;
+wire		 						spim0_mosi_o;
+wire		 						spim0_mosi_oen;
+wire		 						spim0_miso_i;
+wire		 						spim0_miso_oen;
 
 wire	      						gpioa_int; 
 
@@ -226,6 +242,14 @@ assign advtmr0_cap_ch1n = 1'b0;
 assign advtmr0_enc_ch1p = 1'b0;
 assign advtmr0_enc_ch1n = 1'b0;
 `endif
+`ifdef SPIM
+assign SPIM0_SCK = spim0_sck;
+assign SPIM0_CS = spim0_cs_oen ? 1'bz : spim0_cs_o;
+assign SPIM0_MOSI = spim0_mosi_oen ? 1'bz : spim0_mosi_o;
+assign spim0_miso_i = SPIM0_MISO;
+`else
+
+`endif
 assign gpioa_int = 1'b0;
 
 `endif
@@ -254,6 +278,8 @@ fp_domain u_fp_domain
 	.eth_pe_rx_rstn				(eth_pe_rx_rstn		),
 	.advtim_pe_clk				(advtim_pe_clk		),  
 	.advtim_pe_rstn				(advtim_pe_rstn		),
+	.spim_pe_clk				(spim_pe_clk		),
+	.spim_pe_rstn				(spim_pe_rstn		),
 	.power_on_rstn				(RSTN				),
 
 	.uart0_tx					(TXD				),
@@ -315,6 +341,14 @@ fp_domain u_fp_domain
 	.advtmr0_enc_ch1n			(advtmr0_enc_ch1n	),
 	.advtmr0_enc_ch1p_oen		(advtmr0_enc_ch1p_oen),
 	.advtmr0_enc_ch1n_oen		(advtmr0_enc_ch1n_oen),
+	.spim0_sck					(spim0_sck			),
+	.spim0_sck_oen				(spim0_sck_oen		),
+	.spim0_mosi_o				(spim0_mosi_o		),
+	.spim0_mosi_oen				(spim0_mosi_oen		),
+	.spim0_miso_i				(spim0_miso_i		),
+	.spim0_miso_oen				(spim0_miso_oen		),
+	.spim0_cs_o					(spim0_cs_o			),
+	.spim0_cs_oen				(spim0_cs_oen		),
 
 	.gpioa_int					(gpioa_int			),
 

@@ -42,6 +42,10 @@ wire							advtmr0_cap_ch1p;
 wire							advtmr0_cap_ch1n;
 wire							advtmr0_enc_ch1p;
 wire							advtmr0_enc_ch1n;
+wire							spim0_sck;
+wire							spim0_mosi;
+wire							spim0_miso;
+wire							spim0_cs;
 
 wire							tdi;
 wire							tdo;
@@ -138,6 +142,7 @@ begin
 	force TOP.u_mcu_top.eth_pe_tx_clk = clk_50mhz;
 	force TOP.u_mcu_top.eth_pe_rx_clk = clk_50mhz;
 	force TOP.u_mcu_top.advtim_pe_clk = clk_80mhz;
+	force TOP.u_mcu_top.spim_pe_clk = clk_80mhz;
 	force TOP.u_mcu_top.apb2_root_clk = clk_50mhz;
 `endif
 end
@@ -189,6 +194,12 @@ mcu_top u_mcu_top
 	.ADVTIM0_CAP_CH1N			(advtmr0_cap_ch1n	),
 	.ADVTIM0_ENC_CH1P			(advtmr0_enc_ch1p	),
 	.ADVTIM0_ENC_CH1N			(advtmr0_enc_ch1n	),
+`endif
+`ifdef SPIM
+	.SPIM0_SCK					(spim0_sck			),
+	.SPIM0_MOSI					(spim0_mosi			),
+	.SPIM0_MISO					(spim0_miso			),
+	.SPIM0_CS					(spim0_cs			),
 `endif
 `endif
 	.TXD						(txd				),

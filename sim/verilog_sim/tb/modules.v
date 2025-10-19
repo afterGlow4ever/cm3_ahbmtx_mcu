@@ -82,3 +82,7 @@
 `include "advtim_fw_test.v"
 `endif
 
+`ifdef SPIM_FW_TEST
+`include "spim_fw_test.v"
+`endif
+

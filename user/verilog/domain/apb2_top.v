@@ -8,7 +8,9 @@
 //
 // 	This is top for apb2 async peripherals domain.
 //	This domain is including:
-//	1. Ethernet
+//	1. ethernet
+//	2. advtim
+//	3. spi master
 //
 //===============================================
 
@@ -22,6 +24,8 @@ module apb2_top
 	input  						eth_pe_rx_rstn,
 	input  						advtim_pe_clk,  
 	input  						advtim_pe_rstn,
+	input  						spim_pe_clk,  
+	input  						spim_pe_rstn,
 	
 	// pin
 	output 						eth_mdc,
@@ -65,6 +69,14 @@ module apb2_top
 	input						advtmr0_enc_ch1n,
 	output						advtmr0_enc_ch1p_oen,
 	output						advtmr0_enc_ch1n_oen,
+	output 						spim0_sck,
+	output 						spim0_sck_oen,
+	output 						spim0_mosi_o,
+	output 						spim0_mosi_oen,
+	input						spim0_miso_i,
+	output 						spim0_miso_oen,
+	output 						spim0_cs_o,
+	output 						spim0_cs_oen,
 
 	// event
 	input						system_failure,
@@ -102,9 +114,10 @@ module apb2_top
 	output						eth_mac_tx_int,
 	output						eth_mac_rx_int,
 	output						eth_mac_dma_int,
-	output						advtim_gen_int,
-	output						advtim_cap_int,
-	output						advtim_enc_int
+	output						advtim0_gen_int,
+	output						advtim0_cap_int,
+	output						advtim0_enc_int,
+	output						spim0_int
 );
 
 //===============================================
@@ -121,12 +134,17 @@ wire						 	pready_advtim;
 wire	[31:0]				 	prdata_advtim; 
 wire						 	pslverr_advtim; 
 wire	[31:0]				 	paddr_advtim; 
+wire						 	psel_spim; 
+wire						 	pready_spim; 
+wire	[31:0]				 	prdata_spim; 
+wire						 	pslverr_spim; 
+wire	[31:0]				 	paddr_spim; 
 
 cmsdk_apb_slave_mux 
 #(
     .PORT0_ENABLE                       (1),
     .PORT1_ENABLE                       (1),
-    .PORT2_ENABLE                       (0),
+    .PORT2_ENABLE                       (1),
     .PORT3_ENABLE                       (0),
     .PORT4_ENABLE                       (0),
     .PORT5_ENABLE                       (0),
@@ -156,10 +174,10 @@ u_apb2_slave_mux
     .PRDATA1                            (prdata_advtim),
     .PSLVERR1                           (pslverr_advtim),
 
-    .PSEL2                              (),
-    .PREADY2                            (1'b0),
-    .PRDATA2                            (32'b0),
-    .PSLVERR2                           (1'b0),
+    .PSEL2                              (psel_spim),
+    .PREADY2                            (pready_spim),
+    .PRDATA2                            (prdata_spim),
+    .PSLVERR2                           (pslverr_spim),
 
     .PSEL3                              (),
     .PREADY3                            (1'b0),
@@ -375,9 +393,9 @@ advtim_top u_advtim
 	.pwdata						(pwdata),
 	.prdata						(prdata_advtim),
 
-	.advtim_gen_int_line		(advtim_gen_int),
-	.advtim_cap_int_line		(advtim_cap_int),
-	.advtim_enc_int_line		(advtim_enc_int)
+	.advtim_gen_int_line		(advtim0_gen_int),
+	.advtim_cap_int_line		(advtim0_cap_int),
+	.advtim_enc_int_line		(advtim0_enc_int)
 );
 `else
 assign advtmr0_pwm_ch1p = 1'b0;
@@ -403,10 +421,56 @@ assign advtmr0_bk2_oen = 1'b0;
 assign advtmr0_cap_ch1p_oen = 1'b0;
 assign advtmr0_cap_ch1n_oen = 1'b0;
 assign prdata_advtim = 32'h0;
-assign advtim_gen_int = 1'b0;
-assign advtim_cap_int = 1'b0;
-assign advtim_enc_int = 1'b0;
+assign advtim0_gen_int = 1'b0;
+assign advtim0_cap_int = 1'b0;
+assign advtim0_enc_int = 1'b0;
 `endif
+
+//===============================================
+// APB2 spi master
+// 0x40022000~0x40022FFF
+//===============================================
+
+assign pready_spim = 1'b1;
+assign pslverr_spim = 1'b0;
+
+`ifdef SPIM
+assign paddr_spim = paddr;// compatible with uart reg
+
+spim_top u_spim
+(
+	.module_clk					(spim_pe_clk),  
+	.module_rstn				(spim_pe_rstn),
+	
+	.spim_sck					(spim0_sck),
+	.spim_sck_oen				(spim0_sck_oen),
+	.spim_mosi_o				(spim0_mosi_o),
+	.spim_mosi_oen				(spim0_mosi_oen),
+	.spim_miso_i				(spim0_miso_i),
+	.spim_miso_oen				(spim0_miso_oen),
+	.spim_cs_o					(spim0_cs_o),
+	.spim_cs_oen				(spim0_cs_oen),
+
+	.reg_clk					(apb2_root_clk),
+	.reg_rstn					(apb2_root_rstn),
+	.pwrite						(pwrite),
+	.psel						(psel_spim),						
+	.penable					(penable),
+	.paddr						(paddr_spim),
+	.pwdata						(pwdata),
+	.prdata						(prdata_spim),
+
+	.spim_int_line				(spim0_int)
+);
+`else
+assign spim0_sck = 1'b0;
+assign spim0_sck_oen = 1'b0;
+assign spim0_mosi_o = 1'b0;
+assign spim0_mosi_oen = 1'b0;
+assign prdata_spim = 32'h0;
+assign spim0_int = 1'b0;
+`endif
+
 
 endmodule
 

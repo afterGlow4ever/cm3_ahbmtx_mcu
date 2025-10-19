@@ -25,6 +25,8 @@
 (7)	CPU可以正确驱动基本定时器进行计时操作。
 (8)	CPU可以正确驱动网卡并于上位机建立连接。
 (9)	CPU可以正确驱动网卡收发以太网帧。
+(10)	CPU可以正确驱动高级定时器驱动电机转动并反馈转速。
+(11)	CPU可以正确驱动spi master与spi flash进行基本读写擦操作。
 2	实验内容：
 (1)	在MCU内集成CPU、总线、存储器、外设等。
 (2)	使用Jlink的SWD模式读写指定地址。
@@ -35,6 +37,8 @@
 (7)	使用CPU驱动基本定时器，完成定时的功能。
 (8)	使用CPU驱动网卡与上位机建立连接。
 (9)	使用CPU驱动网卡与上位机通信。
+(10)	使用高级定时器驱动电机。
+(11)	使用spi master进行spi flash基本读写擦操作。
 3	具体要求：
 (1)	CPU使用ARM Cortex-M3。
 (2)	片内总线使用AHB总线矩阵。
@@ -47,7 +51,8 @@
 (9)	编写基本定时器的RTL，编写配套的firmware驱动并实现计时功能，包括中断方式定时。
 (10)	编写以太网的SMA接口的RTL，编写配套的firmware驱动并实现与上位机连接。
 (11)	编写以太网的MAC接口的RTL，编写配套的firmware驱动并实现与上位机通信。
-(12)	编写高级定时器的RTL，编写配套的firmware驱动并实现与上位机通信。
+(12)	编写高级定时器的RTL，编写配套的firmware驱动并实现基本电机驱动。
+(13)	编写spi master的RTL，编写配套的firmware驱动并实现与spi flash通信。
 
 三	学习目标（下述内容非先后顺序）：
 1	学习MCU的基本架构。
@@ -102,36 +107,40 @@
 (2)	对以太网SMA和MAC进行功能测试和spyglass检查，修改其中的错误和问题。
 (3)	学习以太网SMA和MAC的软件驱动编写。
 (4)	掌握如何使用以太网SMA和MAC并实现特定的功能。
-12	学习基本定时器：
-(1)	学习基本定时器的硬件RTL实现。
+12	学习高级定时器：
+(1)	学习高级定时器的硬件RTL实现。
 (2)	对基本定时器进行功能测试和spyglass检查，修改其中的错误和问题。
 (3)	学习基本定时器的软件驱动编写。
 (4)	掌握如何使用基本定时器并实现多路PWM输出、输入捕获、编码器输入的功能。
-13	学习VCS与Verdi联合仿真环境：
+13	学习spi master：
+(1)	学习spi master的硬件RTL实现。
+(2)	对基本定时器进行功能测试和spyglass检查，修改其中的错误和问题。
+(3)	学习基本定时器的软件驱动编写。
+(4)	掌握如何使用spi master并实现spi flash读写擦的操作。
+14	学习VCS与Verdi联合仿真环境：
 (1)	掌握如何使用VCS进行仿真并使用Verdi记录波形。
-14	学习gcc-arm-none-eabi编译firmware环境：
+15	学习gcc-arm-none-eabi编译firmware环境：
 (1)	掌握如何使用gcc-arm-none-eabi编一个cpu可执行的程序。
-15	学习Quartus和Vivado的fpga综合编译环境：
+16	学习Quartus和Vivado的fpga综合编译环境：
 (1)	掌握如何使用Quartus和Vivado生成或修改IP核，包括RAM核和PLL核。
 (2)	掌握如何使用Quartus和Vivado进行fpga综合并下载bit文件。
 (3)	掌握如何使用Quartus和Vivado进行在线debug。
 (4)	掌握如何使用Quartus和Vivado编写时序约束文件并进行时序分析。
 (5)	掌握如何使用Quartus和Vivado进行ECO操作。
-16	学习spyglass环境：
+17	学习spyglass环境：
 (1)	掌握如何编写sgdc约束文件。
 (2)	掌握如何使用spyglass进行语法和cdc分析。
 (3)	了解根据spyglass的分析结果对于rtl的意义。
 
 四	可以重复利用的资源：
 1	工程项目目录下Library下面的内容，包括Altera及Xilinx的部分仿真库、基本功能逻辑RTL的实现、Cortex-M3的建议版本模型、CMSDK模型（包括AHB总线矩阵、APB总线）、SWD模型、仿真结果监视器模型等。
-2	工程项目目录下User\Verilog，这里是MCU的基本集成结构，另外包含Uart、GPIO、基本定时器、以太网SMA外设、高级定时器。
-3	工程项目目录下Library\drivers和Library\cmsis，这里是MCU的基本软件环境和Uart、GPIO、基本定时器、以太网SMA、高级定时器的RTL配套驱动程序。
+2	工程项目目录下User\Verilog，这里是MCU的基本集成结构，另外包含Uart、GPIO、基本定时器、以太网SMA外设、高级定时器、spi master。
+3	工程项目目录下Library\drivers和Library\cmsis，这里是MCU的基本软件环境和Uart、GPIO、基本定时器、以太网SMA、高级定时器和spi master的RTL配套驱动程序。
 4	便于使用者进行工作的“爱上实验室”开发工程环境，包含setenv.sh文件和Script目录下的makefile文件。
 
 五	注意事项：
 1	该项目会持续更新。
 2	小编时间仓促，因此项目中有不完善的地方敬请大家提出建议。
-
 六	“爱上实验室”开发工程环境的目录介绍：
 项目目录下，各文件夹的含义是（含空文件夹，加粗的是本项目包含的文件）：
 Doc目录为项目文档，包括参考资料、设计文档、原理图等。

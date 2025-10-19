@@ -1,0 +1,17 @@
+Spi Master Feature:
+
+SPI MASTER FEATURE:
+1. 16bytes for tx & rx fifo.
+2. Supporting tle, tls & ti.
+3. Supporting tx or rx mask.
+4. Supporting frame mode where transferring a frame with tx first and rx second.
+5. Supporting pending state if tx fifo is empty or rx fifo is full.
+
+SPI MASTER INTERRUPT LINE:
+0. Tx fifo warning when the number of tx fifo is over threshold.
+1. Tx fifo empty.
+2. Rx fifo warning when the number of rx fifo is over threshold.
+3. Rx fifo full.
+4. Pending state.
+5. Frame done.
+

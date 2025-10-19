@@ -1,0 +1,84 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 414 251 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/app_spim/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 187620452.825439 206200342.328541
+cursor 194670000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 16
+; marker line index
+markerPos 30
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/app_spim/TOP.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/paddr[31:0]
+addSignal -h 15 -holdScope spim_mosi_o
+addSignal -h 15 -holdScope spim_sck
+addSignal -h 15 -holdScope spim_cs_o
+addSignal -h 15 -holdScope spim_miso_i
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_wdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/tx_data[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_data[7:0]
+addSignal -h 15 -holdScope tx_data_preloaded
+addSignal -h 15 -holdScope spim_state_idle
+addSignal -h 15 -holdScope tx_fifo_empty
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_clear
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/dp_tx_waiting_for_rx
+addSignal -h 15 -holdScope rx_num_is_more
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_trans_num[7:0]
+addSignal -h 15 -holdScope rx_num_is_more
+addGroup "G2"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/rx_fifo_we
+addSignal -h 15 -holdScope dp_rx_waiting_for_tx
+addSignal -h 15 -holdScope rx_num_is_more
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addSignal -h 15 -holdScope dp_tx_waiting_for_rx
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/rx_fifo_full
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_state_pending_to_dp_trans
+addGroup "G3"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

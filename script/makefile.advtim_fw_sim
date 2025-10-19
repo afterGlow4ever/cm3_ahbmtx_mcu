@@ -1,6 +1,7 @@
 SIM_TARGET := fw_test
-#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP2_2 +define+ENCODER_MONITOR +define+SIMULATION 
-SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+PWM_MONITOR +define+SIMULATION 
+SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP2_2 +define+ENCODER_MONITOR +define+SIMULATION 
+#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP2_1 +define+ENCODER_MONITOR +define+SIMULATION 
+#SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_1 +define+PWM_MONITOR +define+SIMULATION 
 #SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+TP1_6 +define+PWM_MONITOR +define+SIMULATION 
 #SIM_DEFINE := +define+FSDB_DUMP +define+UART0 +define+ADVTIM +define+ADVTIM_FW_TEST +define+TP1_5 +define+PWM_MONITOR +define+SIMULATION 
 SIM_PATH := ${PRJ_SIM_DIR}/${SIM_TARGET}
@@ -10,8 +11,9 @@ SIM_INC_LIST := sim_inc.list
 SIM_SCRIPTS_PATH := ${PRJ_SIM_DIR}/script
 CMDFILE := ${SIM_SCRIPTS_PATH}/vcs_sim_cmdfile.f
 WAVEFORM := TOP.fsdb
-WAVELIST := ${SIM_SCRIPTS_PATH}/advtim.rc
-#WAVELIST := ${SIM_SCRIPTS_PATH}/advtim_enc.rc
+#WAVELIST := ${SIM_SCRIPTS_PATH}/advtim_cap.rc
+#WAVELIST := ${SIM_SCRIPTS_PATH}/advtim_gen.rc
+WAVELIST := ${SIM_SCRIPTS_PATH}/advtim_enc.rc
 
 SDK_TARGET := fw_test
 SDK_DEFINE := -D__NO_SYSTEM_INIT -DUART_DRIVER -DUART_EX_DRIVER -DADVTIM_DRIVER -DCOMMON_DRIVER -DADVTIM_TEST -DSIM

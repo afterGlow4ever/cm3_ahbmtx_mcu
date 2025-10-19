@@ -298,9 +298,6 @@ end
 // fifo current data number
 // just test, redesigne later
 
-
-
-
 //assign fifo_num = (rd_bin <= wr_bin ) ? (wr_bin - rd_bin) : (2**ADDR_WIDTH - rd_bin + wr_bin);
 
 //// using write end to caculate
@@ -337,6 +334,328 @@ u_bin_code_gen_inst1
 );
 
 assign rd_fifo_num = rd_wptr2_bin - rd_bin;
+
+endmodule
+
+
+module fifo_async_f
+#(
+	parameter							ADDR_WIDTH = 4,
+	parameter					 		DATA_WIDTH = 8
+)
+(
+	input								wr_clk,
+	input								rd_clk,
+	input								wr_rstn,
+	input								rd_rstn,
+	input								wr_clear,
+	input								rd_clear,
+
+	input								wr_req,
+	input								rd_req,
+	output reg 							rd_empty,
+	output reg							wr_full,
+	output		[ADDR_WIDTH:0]			wr_fifo_num,
+	output		[ADDR_WIDTH:0]			rd_fifo_num,
+	output reg							wr_overflow,
+	output reg							rd_underflow,
+
+	input		[DATA_WIDTH-1:0]		data,
+	output 		[DATA_WIDTH-1:0]		q
+);
+
+wire	 		[ADDR_WIDTH-1:0]		wr_addr;
+reg 			[ADDR_WIDTH:0]			wr_bin;
+wire 			[ADDR_WIDTH:0]			wr_gray_next;
+wire 			[ADDR_WIDTH:0]			wr_bin_next;
+reg			 	[ADDR_WIDTH:0]			wr_ptr;
+reg 			[ADDR_WIDTH:0]			wr_rptr1;
+reg 			[ADDR_WIDTH:0]			wr_rptr2;
+wire 			[ADDR_WIDTH-1:0]		rd_addr;
+reg 			[ADDR_WIDTH:0]			rd_bin;
+wire 			[ADDR_WIDTH:0]			rd_gray_next;
+wire 			[ADDR_WIDTH:0]			rd_bin_next;
+reg 			[ADDR_WIDTH:0]			rd_ptr;
+reg 			[ADDR_WIDTH:0]			rd_wptr1;
+reg 			[ADDR_WIDTH:0]			rd_wptr2;
+
+wire 									rd_empty_val;
+wire									wr_full_val;
+wire 									wr_rdclr;
+wire 									rd_wrclr;
+wire									wr_clr;
+wire									rd_clr;
+
+reg 			[DATA_WIDTH-1:0]		fifo [2**ADDR_WIDTH:0];
+integer									i;
+
+// clear logic
+assign wr_clr = wr_rdclr || wr_clear;
+posedge_pulse_sync u_wrclr_sync
+(
+	.src_clk							(rd_clk),
+	.src_rstn							(rd_rstn),
+	.des_clk 							(wr_clk),
+	.des_rstn							(wr_rstn),
+
+	.src_A	 							(rd_clear),
+	.des_Y	 							(wr_rdclr)
+);
+
+assign rd_clr = rd_wrclr || rd_clear;
+posedge_pulse_sync u_rdclr_sync
+(
+	.src_clk							(wr_clk),
+	.src_rstn							(wr_rstn),
+	.des_clk 							(rd_clk),
+	.des_rstn							(rd_rstn),
+
+	.src_A	 							(wr_clear),
+	.des_Y	 							(rd_wrclr)
+);
+
+reg 									wr_clear_active;
+reg 									rd_clear_active;
+wire									fifo_clr;
+assign fifo_clr = wr_clear_active || rd_clear_active;
+
+always @(posedge wr_clk or negedge wr_rstn)
+begin
+	if(!wr_rstn)
+	begin
+		wr_clear_active <= 0;
+	end
+	else if(~(|rd_wptr2) && ~(|wr_rptr2))
+	begin
+		wr_clear_active <= 0;
+	end
+	else if(wr_clr)
+	begin
+		wr_clear_active <= 1;
+	end
+	else
+	begin
+		wr_clear_active <= wr_clear_active;
+	end
+end
+
+always @(posedge rd_clk or negedge rd_rstn)
+begin
+	if(!rd_rstn)
+	begin
+		rd_clear_active <= 0;
+	end
+	else if(~(|rd_wptr2) && ~(|wr_rptr2))
+	begin
+		rd_clear_active <= 0;
+	end
+	else if(rd_clr)
+	begin
+		rd_clear_active <= 1;
+	end
+	else
+	begin
+		rd_clear_active <= rd_clear_active;
+	end
+end
+
+// Fifo
+assign q = fifo[rd_addr];
+
+//always @(posedge wr_clk or negedge rstn)
+always @(posedge wr_clk or negedge wr_rstn)
+begin
+	if(!wr_rstn)
+		for(i = 0;i <= 2**ADDR_WIDTH;i=i+1)
+			fifo[i] <= 0;
+	else if(wr_req && !wr_full)
+		fifo[wr_addr] <= data;
+end
+
+// Ptr sync from write to read
+always @(posedge rd_clk or negedge rd_rstn)
+begin
+	if(!rd_rstn)
+	begin
+		rd_wptr2 <= 0;
+		rd_wptr1 <= 0;
+	end
+	else
+	begin
+		rd_wptr2 <= rd_wptr1;
+		rd_wptr1 <= wr_ptr;
+	end
+end
+
+// Ptr sync from read to write
+always @(posedge wr_clk or negedge wr_rstn)
+begin
+	if(!wr_rstn)
+	begin
+		wr_rptr2 <= 0;
+		wr_rptr1 <= 0;
+	end
+	else
+	begin
+		wr_rptr2 <= wr_rptr1;
+		wr_rptr1 <= rd_ptr;
+	end
+end
+
+// Read address generation
+assign rd_addr = rd_bin[ADDR_WIDTH-1:0];
+assign rd_bin_next = rd_bin + (rd_req && !rd_empty);
+
+bin_to_gray_gen
+#(
+	ADDR_WIDTH		
+)
+u_gray_code_gen_inst0
+(
+	.bin_code							(rd_bin_next),
+	.gray_code							(rd_gray_next)
+);
+
+always @(posedge rd_clk or negedge rd_rstn)
+begin
+	if(!rd_rstn)
+	begin
+		rd_bin <= 0;
+		rd_ptr <= 0;
+	end
+	else if(rd_clr || rd_clear_active)
+	begin
+		rd_bin <= 0;
+		rd_ptr <= 0;
+	end
+	else
+	begin
+		rd_bin <= rd_bin_next;
+		rd_ptr <= rd_gray_next;
+	end
+end
+
+// Write address generation
+assign wr_addr = wr_bin[ADDR_WIDTH-1:0];
+assign wr_bin_next = wr_bin + (wr_req && !wr_full);
+
+bin_to_gray_gen
+#(
+	ADDR_WIDTH		
+)
+u_gray_code_gen_inst1
+(
+	.bin_code							(wr_bin_next),
+	.gray_code							(wr_gray_next)
+);
+
+always @(posedge wr_clk or negedge wr_rstn)
+begin
+	if(!wr_rstn)
+	begin
+		wr_bin <= 0;
+		wr_ptr <= 0;
+	end
+	else if(wr_clr || wr_clear_active)
+	begin
+		wr_bin <= 0;
+		wr_ptr <= 0;
+	end
+	else
+	begin
+		wr_bin <= wr_bin_next;
+		wr_ptr <= wr_gray_next;
+	end
+end
+
+// Read empty generation
+assign rd_empty_val = fifo_clr ? 0 : (rd_wptr2 == rd_gray_next);
+
+always @(posedge rd_clk or negedge rd_rstn)
+begin
+	if(!rd_rstn)
+		rd_empty <= 1;
+	else
+		rd_empty <= rd_empty_val;
+end
+
+always @(posedge rd_clk or negedge rd_rstn)
+begin
+	if(!rd_rstn)
+		rd_underflow <= 0;
+	else if(rd_clr || rd_clear_active)
+		rd_underflow <= 0;
+	else if((rd_empty_val || rd_empty) && rd_req)
+		rd_underflow <= 1;
+	else
+		rd_underflow <= rd_underflow;
+end
+
+// Write full generation
+assign wr_full_val = fifo_clr ? 0 : ({~wr_rptr2[ADDR_WIDTH:ADDR_WIDTH-1], wr_rptr2[ADDR_WIDTH-2:0]} == wr_gray_next);
+
+always @(posedge wr_clk or negedge wr_rstn)
+begin
+	if(!wr_rstn)
+		wr_full <= 0;
+	else
+		wr_full <= wr_full_val;
+end
+
+always @(posedge wr_clk or negedge wr_rstn)
+begin
+	if(!wr_rstn)
+		wr_overflow <= 0;
+	else if(wr_clr || wr_clear_active)
+		wr_overflow <= 0;
+	else if((wr_full_val || wr_full) && wr_req)
+		wr_overflow <= 1;
+	else
+		wr_overflow <= wr_overflow;
+end
+
+// fifo current data number
+// just test, redesigne later
+
+
+
+
+//assign fifo_num = (rd_bin <= wr_bin ) ? (wr_bin - rd_bin) : (2**ADDR_WIDTH - rd_bin + wr_bin);
+
+//// using write end to caculate
+//
+
+// fifo current data number in tx end
+
+wire			[ADDR_WIDTH:0]			wr_rptr2_bin;
+
+gray_to_bin_gen
+#(
+	ADDR_WIDTH		
+)
+u_bin_code_gen_inst0
+(
+	.gray_code							(wr_rptr2),
+	.bin_code							(wr_rptr2_bin)
+);
+
+assign wr_fifo_num = fifo_clr ? 'h0 : (wr_bin - wr_rptr2_bin);
+
+// fifo current data number in rx end
+
+wire			[ADDR_WIDTH:0]			rd_wptr2_bin;
+
+gray_to_bin_gen
+#(
+	ADDR_WIDTH		
+)
+u_bin_code_gen_inst1
+(
+	.gray_code							(rd_wptr2),
+	.bin_code							(rd_wptr2_bin)
+);
+
+assign rd_fifo_num = fifo_clr ? 'h0 : (rd_wptr2_bin - rd_bin);
 
 endmodule
 

@@ -123,6 +123,7 @@ __isr_vector:
     .long   AdvtimGen_Handler			/* 16+16: ADVTIM GEN Handler	   	*/
     .long   AdvtimCap_Handler			/* 16+17: ADVTIM CAP Handler	   	*/
     .long   AdvtimEnc_Handler			/* 16+18: ADVTIM ENC Handler	   	*/
+    .long   Spim_Handler				/* 16+19: SPIM Handler	   			*/
     .size    __isr_vector, . - __isr_vector
 
 /* Reset Handler */
@@ -232,6 +233,7 @@ Reset_Handler:
     def_default_handler    AdvtimGen_Handler
     def_default_handler    AdvtimCap_Handler
     def_default_handler    AdvtimEnc_Handler
+    def_default_handler    Spim_Handler
 
     /*
     def_default_handler    Default_Handler

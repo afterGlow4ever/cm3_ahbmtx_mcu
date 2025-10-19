@@ -92,5 +92,10 @@ read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/advtim/advtim_pe_c
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/advtim/advtim_pe_core/fault_detection.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/advtim/advtim_top.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/advtim/advtim_apb_cfg.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/spim/spim_apb_cfg.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/spim/spim_data_buffer.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/spim/spim_pe_core/spim_pe_core.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/spim/spim_regs_wrap.v
+read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/spim/spim_top.v
 read_verilog /home/master/project/cm3_ahbmtx_mcu/user/verilog/mcu_top.v
 

@@ -1,0 +1,289 @@
+Magic 271485
+Revision Verdi_T-2022.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 560 251 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 50331478.607606 52621836.435949
+cursor 50981250.000000
+marker 129250000.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+userMarker 954193750 M1 ID_GREEN5 long_dashed
+
+; visible top row signal index
+top 166
+; marker line index
+markerPos 187
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+aliasmapname ahb_bus_matrix_arbiterM0.i_addr_in_port
+nalias {2{1'bx}}		2'bXX		NULL
+
+aliasmapname ahb_bus_matrix_arbiterM1.i_addr_in_port
+nalias {2{1'bx}}		2'bXX		NULL
+
+aliasmapname cmsdk_ahb_to_apb_async_h.curr_state
+nalias fsm_idle		2'b00		NULL
+nalias fsm_done		2'b01		NULL
+nalias fsm_wr1		2'b10		NULL
+nalias fsm_wait		2'b11		NULL
+
+aliasmapname cmsdk_ahb_to_apb_async_p.curr_state
+nalias fsm_apb_idle		2'b00		NULL
+nalias fsm_apb_cyc1		2'b01		NULL
+nalias fsm_apb_wait		2'b11		NULL
+
+aliasmapname uart_pe_tx.current_state
+nalias TX_START		7'b0000010		NULL
+nalias TX_PARITY		7'b0001000		NULL
+nalias TX_INTERVAL		7'b0100000		NULL
+nalias TX_IDLE		7'b0000001		NULL
+nalias TX_DATA		7'b0000100		NULL
+nalias TX_STOP		7'b0010000		NULL
+nalias TX_END		7'b1000000		NULL
+
+aliasmapname uart_pe_rx.current_state
+nalias RX_START		6'b000010		NULL
+nalias RX_PARITY		6'b001000		NULL
+nalias RX_END		6'b100000		NULL
+nalias RX_IDLE		6'b000001		NULL
+nalias RX_DATA		6'b000100		NULL
+nalias RX_STOP		6'b010000		NULL
+
+aliasmapname spim_pe_core.current_state
+nalias SPIM_TLS		8'b00000010		NULL
+nalias SPIM_SP_TRANS		8'b00001000		NULL
+nalias SPIM_TLE		8'b00100000		NULL
+nalias SPIM_END		8'b10000000		NULL
+nalias SPIM_IDLE		8'b00000001		NULL
+nalias SPIM_DP_TRANS		8'b00000100		NULL
+nalias SPIM_TI		8'b01000000		NULL
+nalias SPIM_PENDING		8'b00010000		NULL
+
+addGroup "G1"
+activeDirFile "" "/home/master/project/cm3_ahbmtx_mcu/sim/verilog_sim/fw_test/TOP.fsdb"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/pe_trans_enable
+addSignal -h 15 -UNSIGNED -HEX -holdScope clkdiv_cnt[7:0]
+addSignal -h 15 -holdScope timing_base_enable
+aliasname spim_pe_core.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope current_state[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope clkdiv_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope sdr_ddr_cnt[1:0]
+addSignal -h 15 -holdScope clkdiv_flag_end
+addSignal -h 15 -holdScope sdr_ddr_flag_end
+addSignal -h 15 -holdScope bit_end
+addSignal -h 15 -holdScope bit_value_sample_point
+addGroup "G2"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/dp_tx_data_bit_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -holdScope dp_tx_data_byte_end
+addSignal -h 15 -holdScope spim_state_dp_trans_to_end
+addSignal -h 15 -holdScope spim_state_dp_trans_to_ti
+addSignal -h 15 -holdScope spim_state_dp_trans_to_tle
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_bit_cnt[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addGroup "G3"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/tx_data_preloaded
+addSignal -h 15 -holdScope tx_fifo_re_for_preloading
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_data[7:0]
+addSignal -h 15 -holdScope tx_fifo_re
+addSignal -h 15 -holdScope tx_fifo_re_for_preloading
+addSignal -h 15 -holdScope tx_fifo_re_for_loading
+addSignal -h 15 -holdScope spim_mosi_o
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_data[7:0]
+addSignal -h 15 -holdScope tx_data_preloaded
+addGroup "G4"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/clk_gen
+addSignal -h 15 -holdScope bit_value_sample_point
+addSignal -h 15 -holdScope sdr_ddr_flag_end
+addSignal -h 15 -holdScope sdr_ddr_flag_start
+addSignal -h 15 -holdScope bit_end
+addSignal -h 15 -holdScope bit_end
+addGroup "G5"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/r_mode[1:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_we_num[4:0]
+addSignal -h 15 -holdScope tx_fifo_re
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_state_pending
+addSignal -h 15 -holdScope spim_state_dp_trans_to_pending
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_empty
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_rdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/u_tx_fifo/rd_addr[3:0]
+addSignal -h 15 -holdScope fifo[16:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_wdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_we_num[4:0]
+addSignal -h 15 -holdScope tx_fifo_re
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_rdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_re_num[4:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_state_pending_to_dp_trans
+addSignal -h 15 -holdScope r_pause_enable
+addSignal -h 15 -holdScope r_pause_continue
+addSignal -h 15 -holdScope duplex_mode
+addSignal -h 15 -holdScope tx_data_preloaded
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_regs_wrap/r_pause_continue
+addSignal -h 15 -holdScope r_pause_continue_bfsync
+addGroup "G6"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/spim_mosi_o
+addSignal -h 15 -holdScope spim_sck
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_state_dp_trans
+addSignal -h 15 -holdScope bit_value_sample_point
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -holdScope bit_end
+addSignal -h 15 -holdScope sdr_ddr_flag_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_bit_cnt[3:0]
+addGroup "G7"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/rx_data[8:0]
+addSignal -h 15 -holdScope spim_state_dp_trans_to_tle
+addSignal -h 15 -holdScope spim_state_dp_trans_to_end
+addSignal -h 15 -holdScope spim_state_dp_trans_to_ti
+addSignal -h 15 -holdScope spim_state_dp_trans
+addSignal -h 15 -holdScope bit_value_sample_point
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_data[7:0]
+addSignal -h 15 -holdScope rx_data_loaded
+addSignal -h 15 -holdScope spim_miso_i
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_bit_cnt[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_data[8:0]
+addSignal -h 15 -holdScope dp_rx_data_byte_end
+addSignal -h 15 -holdScope dp_rx_data_last_byte
+addSignal -h 15 -holdScope dp_rx_data_bit_end
+addSignal -h 15 -holdScope spim_state_dp_trans
+addSignal -h 15 -holdScope dp_rx_data_bit_end
+addSignal -h 15 -holdScope spim_state_dp_trans_to_pending
+addGroup "G8"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_miso_i
+addSignal -h 15 -holdScope spim_cs_o
+addSignal -h 15 -holdScope spim_sck
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tls[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tle[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_mode[1:0]
+addGroup "G9"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/rx_fifo_we_num[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_wdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_rdata[7:0]
+addSignal -h 15 -holdScope rx_fifo_we
+addSignal -h 15 -holdScope rx_fifo_re
+addSignal -h 15 -holdScope rx_fifo_full
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_state_pending
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/rx_fifo_empty
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/dp_tx_data_bit_cnt[2:0]
+addSignal -h 15 -holdScope dp_tx_data_bit_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_bit_cnt[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -holdScope spim_state_dp_trans_to_pending
+addSignal -h 15 -holdScope spim_state_dp_trans_to_pending_waiting_for_rx
+addSignal -h 15 -holdScope spim_state_dp_trans_to_pending_waiting_for_tx
+aliasname spim_pe_core.current_state
+addSignal -h 15 -UNSIGNED -HEX -holdScope current_state[7:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_we
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/tx_fifo_empty
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_data[7:0]
+addSignal -h 15 -holdScope tx_fifo_re
+addSignal -h 15 -holdScope tx_fifo_re_for_preloading
+addSignal -h 15 -holdScope tx_fifo_re_for_loading
+addSignal -h 15 -holdScope tx_data_preloaded
+addSignal -h 15 -holdScope tx_data_loaded
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_data[7:0]
+addSignal -h 15 -holdScope dp_tx_waiting_for_rx
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_bit_cnt[2:0]
+addSignal -h 15 -holdScope dp_tx_data_bit_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -holdScope dp_tx_data_byte_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_bit_cnt[3:0]
+addSignal -h 15 -holdScope dp_rx_data_bit_end
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_byte_cnt[7:0]
+addSignal -h 15 -holdScope dp_rx_data_byte_end
+addSignal -h 15 -holdScope spim_state_pending
+addSignal -h 15 -holdScope spim_state_idle_to_tls
+addSignal -h 15 -holdScope bit_end
+addSignal -h 15 -holdScope spim_state_idle
+addSignal -h 15 -holdScope tx_data_preloaded
+addSignal -h 15 -holdScope rx_fifo_full
+addSignal -h 15 -holdScope pe_trans_enable
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/pe_trans_end
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/tx_fifo_empty
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_wdata[7:0]
+addGroup "G10"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb0_sync_top/u_debug_reg/debug1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope debug3[31:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/rx_fifo_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_data[7:0]
+addSignal -h 15 -holdScope rx_fifo_re
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_q[7:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/spim_state_idle_to_dp_trans
+addSignal -h 15 -holdScope tx_data_preloaded
+addSignal -h 15 -holdScope dp_tx_waiting_for_rx
+addSignal -h 15 -holdScope tx_data_loaded
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/rx_fifo_re_num[4:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/tx_data[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_trans_num[7:0]
+addGroup "G11"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/tx_fifo_we_num[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_re_num[4:0]
+addSignal -h 15 -holdScope tx_fifo_we
+addSignal -h 15 -holdScope tx_fifo_re
+addSignal -h 15 -holdScope tx_fifo_clear
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_wdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_rdata[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope tx_fifo_we_num[4:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/u_tx_fifo/wr_ptr[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope rd_wptr2[4:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/tx_fifo_re
+addSignal -h 15 -holdScope dp_tx_waiting_for_rx
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/u_tx_fifo/rd_ptr[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope wr_rptr2[4:0]
+addGroup "G12"
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_data_buffer/u_rx_fifo/q[7:0]
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/spim_miso_i
+addSignal -h 15 /TOP/u_mcu_top/SPIM0_MISO
+addSignal -h 15 /TOP/u_spis_model/spim_sck
+addSignal -h 15 -UNSIGNED -HEX /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/r_mode[1:0]
+addSignal -h 15 -UNSIGNED -HEX /TOP/lt_i[31:0]
+addGroup "G13"
+addSignal -h 15 /TOP/u_mcu_top/u_fp_domain/u_apb2_async_top/u_spim/u_spim_pe_core/dp_rx_waiting_for_tx
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_fifo_data[7:0]
+addSignal -h 15 -holdScope rx_fifo_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_rx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dp_tx_data_byte_cnt[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope r_tx_num[7:0]
+addGroup "G14"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

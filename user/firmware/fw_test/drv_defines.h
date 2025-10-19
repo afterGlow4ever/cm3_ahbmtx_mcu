@@ -67,6 +67,9 @@
 #ifdef ADVTIM_DRIVER
 #include "drv_advtim.h"
 #endif
+#ifdef SPIM_DRIVER
+#include "drv_spim.h"
+#endif
 
 #endif
 

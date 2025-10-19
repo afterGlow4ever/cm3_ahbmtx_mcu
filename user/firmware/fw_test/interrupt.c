@@ -213,3 +213,16 @@ void AdvtimEnc_Handler(void)
 
 #endif
 
+#ifdef SPIM_TEST
+
+extern SPIM_HandleTypeDef hspim;
+
+void Spim_Handler(void)
+{
+	NVIC_ClearPendingIRQ(Spim_IRQn);
+	drv_spim_interrupt_handler(&hspim);
+	
+}
+
+#endif
+

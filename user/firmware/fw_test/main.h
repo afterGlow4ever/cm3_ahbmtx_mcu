@@ -64,6 +64,9 @@ void mcu_testmenu(void);
 #ifdef ADVTIM_DRIVER
 #include "advtim_bsp.h"
 #endif
+#ifdef SPIM_DRIVER
+#include "spim_bsp.h"
+#endif
 
 //===============================================
 // including test header files
@@ -81,6 +84,9 @@ void mcu_testmenu(void);
 #endif
 #ifdef ADVTIM_TEST
 #include "advtim_test.h"
+#endif
+#ifdef SPIM_TEST
+#include "spim_test.h"
 #endif
 
 #endif

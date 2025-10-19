@@ -97,6 +97,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
 				DCD     AdvtimGen_Handler		  ; ADVTIM GEN Handler	
 				DCD     AdvtimCap_Handler		  ; ADVTIM CAP Handler	
 				DCD     AdvtimEnc_Handler		  ; ADVTIM ENC Handler	
+				DCD     Spim_Handler		 	  ; SPIM Handler	
 __Vectors_End
 
 __Vectors_Size  EQU     __Vectors_End - __Vectors
@@ -183,6 +184,7 @@ Default_Handler PROC
 				EXPORT AdvtimGen_Handler		  [WEAK]	
 				EXPORT AdvtimCap_Handler		  [WEAK]	
 				EXPORT AdvtimEnc_Handler		  [WEAK]	
+				EXPORT Spim_Handler				  [WEAK]
 Uart0_Handler
 Uart1_Handler
 Resv2_Handler
@@ -202,6 +204,7 @@ Resv15_Handler
 AdvtimGen_Handler
 AdvtimCap_Handler
 AdvtimEnc_Handler
+Spim_Handler
                 B       .
 
                 ENDP

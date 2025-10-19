@@ -185,3 +185,19 @@ MODIFY:	Advance timer pwm and input capture functions' condition about disable i
 FIX:		Bugs in reg operation macro. (Cody)
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Date: 10192025
+ADD:		Spi master rtl & driver.
+ADD:		Spi slave sim model and sim env.
+ADD:		Spi spyglass env.
+ADD:    Example case : spi master with gd25lb256e spi flash.
+ADD:		Xilinx ZYNQ for mcu spi master test.
+ADD:		Full function async fifo.(clear logic need update later)
+ADD:		More function about data array handle and preparation in common driver.
+MODIFY:	Apb reg script for RWSC.
+MODIFY:	Redundant logic in advance timer channel control and encoder input is removed.
+MODIFY:	Advance timer pwm and input capture functions' condition about disable is modified. 
+				Now those can be disabled by deaserting enable bit.
+				Modifying objects are including RTL and driver.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

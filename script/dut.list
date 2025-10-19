@@ -92,5 +92,10 @@
 ../user/verilog/advtim/advtim_pe_core/fault_detection.v
 ../user/verilog/advtim/advtim_top.v
 ../user/verilog/advtim/advtim_apb_cfg.v
+../user/verilog/spim/spim_apb_cfg.v
+../user/verilog/spim/spim_data_buffer.v
+../user/verilog/spim/spim_pe_core/spim_pe_core.v
+../user/verilog/spim/spim_regs_wrap.v
+../user/verilog/spim/spim_top.v
 ../user/verilog/mcu_top.v
 

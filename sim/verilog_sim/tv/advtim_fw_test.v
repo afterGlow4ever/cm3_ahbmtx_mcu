@@ -21,6 +21,8 @@ pwm_model u_pwm_model
 	.pwm_period_number			(16'd999),
 	.pwm_half					(16'd63),
 	.pwm_period					(16'd127),
+//	.pwm_half					(16'd1),
+//	.pwm_period					(16'd3),
 	.pwm_enable					(pwm_enable),
 	.pwm_output					(advtmr0_cap_ch1p)
 );
@@ -36,8 +38,8 @@ reg								encoder_quadrature_enable;
 encoder_model u_encoder_model
 (
 	.encoder_period_number		(16'd9999),
-	.encoder_half				(16'd1),
-	.encoder_period				(16'd3),
+	.encoder_half				(16'd15),
+	.encoder_period				(16'd31),
 	.encoder_direction			(encoder_direction),
 	.encoder_direct_enable		(encoder_direct_enable),
 	.encoder_quadrature_enable	(encoder_quadrature_enable),
@@ -100,7 +102,7 @@ begin
 `endif
 `ifdef TP2_1
 	encoder_direct_enable = 1'b1;
-	encoder_quadrature_enable = 1'b1;
+	encoder_quadrature_enable = 1'b0;
 `endif
 `ifdef TP2_2
 	encoder_direct_enable = 1'b1;

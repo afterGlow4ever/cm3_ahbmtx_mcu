@@ -1,0 +1,32 @@
+current_design "spim_sg"
+
+clock -name "spim_sg.apb2_root_clk" 	-domain apb2_root_clk -period 100.0 -edge 0.0 50.0
+clock -name "spim_sg.spim_clk" 	-domain spim_clk -period 20.0 -edge 0.0 10.0
+
+reset -name "spim_sg.apb2_root_rstn" 	-value 0
+reset -name "spim_sg.spim_rstn" 	-value 0
+
+abstract_port -module spim_sg -ports spim_miso_i 		-clock spim_sg.spim_clk
+
+abstract_port -module spim_sg -ports paddr[31:0]		-clock spim_sg.apb2_root_clk
+abstract_port -module spim_sg -ports penable			-clock spim_sg.apb2_root_clk
+abstract_port -module spim_sg -ports psel				-clock spim_sg.apb2_root_clk
+abstract_port -module spim_sg -ports pwrite			-clock spim_sg.apb2_root_clk
+abstract_port -module spim_sg -ports pwdata[31:0]		-clock spim_sg.apb2_root_clk
+
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_clkdiv
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_mode
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_tm	 
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_fm_en
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_txm
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_rxm	 
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_tls 
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_tle 
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_ti
+
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_tx_num
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_trans_num
+
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_int_en
+quasi_static -name spim_sg.u_spim.u_spim_regs_wrap.r_int_sta
+

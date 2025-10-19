@@ -65,6 +65,22 @@ def wr_block(p_reg,p_fld,p_rst,p_bit):
     wr_str.append("end\n")
     return wr_str
 
+#def wrsc_block
+def wrsc_block(p_reg,p_fld,p_rst,p_bit):
+    wr_str=[]
+    wr_str.append("always@(posedge clk or negedge rst_n) begin\n")
+    wr_str.append("    if(!rst_n) begin\n")
+    wr_str.append("        %s <= %s'%s;\n"%(p_fld,bit2width(p_bit),p_rst))
+    wr_str.append("    end\n")
+    wr_str.append("    else if(%s_wr) begin\n"%(p_reg.lower()))
+    wr_str.append("        %s <= pwdata%s;\n"%(p_fld,p_bit))
+    wr_str.append("    end\n")
+    wr_str.append("    else begin\n")
+    wr_str.append("        %s <= %s'%s;\n"%(p_fld,bit2width(p_bit),p_rst))
+    wr_str.append("    end\n")
+    wr_str.append("end\n")
+    return wr_str
+
 #def wrc_block
 def wrc_block(p_reg,p_fld,p_rst,p_bit):
     wrc_str=[]
@@ -205,7 +221,7 @@ def gen_reg_hdl(p_sheet,ModuleName):
     fo.write("\n"+16*" "+",pwdata")
     fo.write("\n"+16*" "+",prdata")
     #insert other port
-    as_is_list = ['RW','WRC','WRS','WO','W1','WO1']
+    as_is_list = ['RW','RWSC','WRC','WRS','WO','W1','WO1']
     
     w1c_list =['W1C','W1CRS']
     w0c_list =['W0C','W0CRS']
@@ -475,6 +491,8 @@ def gen_reg_hdl(p_sheet,ModuleName):
         if(fld_name.lower() != 'reserved'):
             if(fld_type == 'RW'): 
                 fo.write("".join(wr_block(reg_name,fld_name,rst_value,bit)))
+            if(fld_type == 'RWSC'): 
+                fo.write("".join(wrsc_block(reg_name,fld_name,rst_value,bit)))
             if(fld_type == 'WRC'): 
                 fo.write("".join(wrc_block(reg_name,fld_name,rst_value,bit)))
             if(fld_type == 'WRS'): 

@@ -128,3 +128,44 @@ end
 
 endmodule
 
+module both_edge_detect
+#(
+	parameter						WIDTH = 1
+)
+(
+	input							clk,
+	input							rstn,
+
+	input 		[WIDTH-1:0]			A,
+	output  	[WIDTH-1:0]			Y_r,
+	output  	[WIDTH-1:0]			Y_f
+);
+
+reg				[WIDTH-1:0]			A_d;
+
+genvar								i;
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin: POSEDGE_DET
+		assign Y_r[i] = A[i] & ~A_d[i];
+	end
+endgenerate
+
+generate
+	for(i = 0; i < WIDTH; i = i + 1)
+	begin: NEGEDGE_DET
+		assign Y_f[i] = ~A[i] & A_d[i];
+	end
+endgenerate
+
+always @(posedge clk or negedge rstn)
+begin
+	if(!rstn)
+		A_d <= {WIDTH{1'b0}};
+	else
+		A_d <= A;
+end
+
+endmodule
+

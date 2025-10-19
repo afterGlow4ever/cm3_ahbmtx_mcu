@@ -41,5 +41,8 @@ set_property -dict {PACKAGE_PIN T19 IOSTANDARD LVCMOS33} [get_ports ADVTIM0_ENC_
 set_property -dict {PACKAGE_PIN L20 IOSTANDARD LVCMOS33} [get_ports ADVTIM0_BK1]
 set_property -dict {PACKAGE_PIN J20 IOSTANDARD LVCMOS33} [get_ports ADVTIM0_BK2]
 
-
+set_property -dict {PACKAGE_PIN P15 IOSTANDARD LVCMOS33} [get_ports SPIM0_CS]
+set_property -dict {PACKAGE_PIN P16 IOSTANDARD LVCMOS33} [get_ports SPIM0_SCK]
+set_property -dict {PACKAGE_PIN T17 IOSTANDARD LVCMOS33} [get_ports SPIM0_MOSI]
+set_property -dict {PACKAGE_PIN R18 IOSTANDARD LVCMOS33} [get_ports SPIM0_MISO]
 
